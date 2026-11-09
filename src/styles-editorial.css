@@ -1,0 +1,190 @@
+
+/* ============================================================
+   GREEN SOUND — STAGE NOTES / EDITORIAL HOMEPAGE (2026)
+   Distinctive art direction, progressive enhancement, no
+   full-bleed hero or expensive animation dependencies.
+   ============================================================ */
+.gs2-home {
+  --gs2-ink: #111612;
+  --gs2-black: #101513;
+  --gs2-green: #9ce47b;
+  --gs2-paper: #eae8de;
+  --gs2-darkgreen: #20342a;
+  background: var(--gs2-paper);
+  color: var(--gs2-ink);
+  overflow: clip;
+}
+.gs2-home * { box-sizing: border-box; }
+.gs2-home .gs2-shell { width: min(100% - clamp(38px,7.2vw,152px), 1450px); margin-inline: auto; }
+.gs2-home h1,.gs2-home h2,.gs2-home h3,.gs2-home p,.gs2-home figure { margin: 0; }
+.gs2-home a { text-decoration: none; }
+.gs2-home em { font-family: var(--font-serif), Georgia, serif; font-style: italic; font-weight: 400; text-transform: none; letter-spacing: -.045em; }
+.gs2-home .gs2-kicker, .gs2-home .gs2-section-meta, .gs2-home .gs2-overline, .gs2-home .gs2-num {
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: .11em;
+  font-weight: 700;
+}
+.gs2-home .gs2-num { opacity: .5; margin-right: 18px; }
+.gs2-home .gs2-link-arrow,.gs2-home .gs2-link-inline { display: inline-flex; gap: 13px; align-items: center; font-size: 13px; font-weight: 700; border-bottom: 1px solid currentColor; padding-bottom: 7px; width: fit-content; }
+.gs2-home .gs2-link-arrow svg,.gs2-home .gs2-link-inline svg,.gs2-home .gs2-cta-primary svg { transition: transform .25s ease; }
+.gs2-home .gs2-link-arrow:hover svg,.gs2-home .gs2-link-inline:hover svg,.gs2-home .gs2-cta-primary:hover svg { transform: translate(3px,-3px); }
+.gs2-home .gs2-hero { position: relative; background: #171d19; color: var(--gs2-paper); min-height: min(890px, 100svh); padding-top: 105px; isolation: isolate; }
+.gs2-home .gs2-hero-grid { min-height: min(760px, calc(100svh - 105px)); display: grid; grid-template-columns: minmax(0,1.23fr) minmax(0,.78fr); gap: clamp(30px,4vw,74px); align-items: stretch; }
+.gs2-home .gs2-hero-copy { min-width:0; display: flex; flex-direction: column; padding-bottom: clamp(38px,5vw,70px); }
+.gs2-home .gs2-overline { display: flex; justify-content: space-between; gap: 12px; color: #a6b0a6; padding-block: 10px 21px; border-bottom: 1px solid #5c685e; }
+.gs2-home .gs2-hero-chapter { margin-top: clamp(38px, 5vw, 80px); font-size: 12px; font-weight: 700; letter-spacing: .12em; color: var(--gs2-green); display:flex; gap: 11px; align-items: center; }
+.gs2-home .gs2-chapter-dot { width: 7px;height:7px;background:var(--gs2-green);border-radius:50%;box-shadow:0 0 0 5px #9ce47b20; }
+.gs2-home .gs2-hero-title { margin-top: 24px; font-family: var(--font-display); font-size: clamp(62px,7.45vw,124px); font-weight: 800; line-height: .91; letter-spacing: -.085em; }
+.gs2-home .gs2-hero-title span { color: #9daa9e; }
+.gs2-home .gs2-hero-title em { color: var(--gs2-green); font-size: 1.12em; letter-spacing: -.09em; }
+.gs2-home .gs2-hero-bottom { margin-top: clamp(38px,5vw,75px); display: flex; justify-content: space-between; align-items:end; gap: 25px; max-width: 600px; }
+.gs2-home .gs2-hero-bottom p { max-width: 360px; font-size: clamp(16px,1.4vw,19px); line-height: 1.55; color: #d3dacf; }
+.gs2-home .gs2-round-link { flex-shrink: 0; display:grid;place-items:center; height: 64px; width: 64px; border-radius:50%; border: 1px solid #98a69b; transition: background .25s,color .25s, transform .25s; }
+.gs2-home .gs2-round-link:hover { background:var(--gs2-green);color:var(--gs2-ink);transform:translateY(4px); }
+.gs2-home .gs2-hero-cta-row { display: flex; flex-wrap:wrap; align-items:center; gap: 24px; margin-top: 28px; }
+.gs2-home .gs2-cta-primary { display: inline-flex; gap:20px; justify-content:space-between; align-items:center; background:var(--gs2-green);color:var(--gs2-ink); padding: 17px 20px; font-size: 13px; font-weight: 800; transition: background .25s; }
+.gs2-home .gs2-cta-primary:hover { background:#bfff9d; }
+.gs2-home .gs2-hero-visual { min-width:0; display:flex;flex-direction:column; padding-top: clamp(32px,4vw,58px);padding-bottom: clamp(28px,4vw,52px); }
+.gs2-home .gs2-visual-label, .gs2-home .gs2-frame-footer { display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.12em;font-weight:700;color:#b3bdb2; }
+.gs2-home .gs2-hero-frame { position:relative; overflow:hidden; flex:1; min-height: 380px; margin:20px 0 18px; background:#303b34; }
+.gs2-home .gs2-hero-frame img { height:100%;width:100%;object-fit:cover;object-position: 50% 44%;position:absolute;inset:0;filter:contrast(1.04) saturate(.85);transition:transform 1.1s cubic-bezier(.2,.7,.2,1); }
+.gs2-home .gs2-hero-frame:hover img { transform:scale(1.035); }
+.gs2-home .gs2-hero-frame::after { content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08110c8a,transparent 40%);pointer-events:none; }
+.gs2-home .gs2-hero-frame figcaption { position:absolute;z-index:1;left:25px;bottom:20px;right:20px;color:#fff;font-size:10px;letter-spacing:.12em;font-weight:700; }
+.gs2-home .gs2-hero-edge { position:absolute;bottom:12px;right:7px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.2em;color:#6f8475; }
+.gs2-home .gs2-signal { overflow:hidden;background:var(--gs2-green);color:var(--gs2-ink);padding:17px 0; }
+.gs2-home .gs2-signal-track {display:flex;width:max-content;animation:gs2-ticker 48s linear infinite;}
+.gs2-home .gs2-signal-track>span { display:flex;align-items:center;gap:40px;margin-right:40px;font-family:var(--font-display);font-size:clamp(15px,1.7vw,23px);font-weight:800;letter-spacing:-.03em;white-space:nowrap;}
+.gs2-home .gs2-signal-track i { display:block;width:8px;height:8px;background:var(--gs2-ink);transform:rotate(45deg); }
+@keyframes gs2-ticker { to {transform:translateX(-50%);} }
+.gs2-home .gs2-manifesto { padding-block:clamp(90px,11vw,174px); }
+.gs2-home .gs2-manifesto-row { margin-top:56px; display:grid;grid-template-columns:1.65fr .65fr;gap:7vw;align-items:end; }
+.gs2-home .gs2-manifesto h2 { font-size:clamp(62px,8vw,140px);line-height:.92;letter-spacing:-.085em;font-weight:800; }
+.gs2-home .gs2-manifesto h2 em {color:#477b51;}
+.gs2-home .gs2-manifesto-aside { padding-bottom:15px; }
+.gs2-home .gs2-aside-mark { display:block;font-size:48px;line-height:1;color:#568462;margin-bottom:36px; }
+.gs2-home .gs2-manifesto-aside p { font-size:clamp(17px,1.55vw,22px);line-height:1.55;letter-spacing:-.02em; }
+.gs2-home .gs2-manifesto-aside .gs2-link-arrow { margin-top:40px; }
+.gs2-home .gs2-services { background:var(--gs2-black);color:var(--gs2-paper);padding-block:clamp(85px,10vw,150px); }
+.gs2-home .gs2-section-top { display:flex;justify-content:space-between;gap:24px;align-items:center;margin-bottom:clamp(55px,7vw,110px); }
+.gs2-home .gs2-services .gs2-section-meta {color:#a2a9a0;}
+.gs2-home .gs2-services-layout {display:grid;grid-template-columns:1.1fr .8fr;gap:8vw;align-items:start;}
+.gs2-home .gs2-section-display {font-size:clamp(62px,6.6vw,106px);line-height:.92;letter-spacing:-.075em;font-weight:800;}
+.gs2-home .gs2-section-display em {color:var(--gs2-green);}
+.gs2-home .gs2-services-intro {max-width:590px;margin-top:36px!important;margin-bottom:56px!important;color:#bbc5b9;font-size:18px;line-height:1.6;}
+.gs2-home .gs2-services-list {border-top:1px solid #46524a;}
+.gs2-home .gs2-service-line { display:grid;grid-template-columns:45px 1fr 22px;gap:14px;align-items:center;min-height:92px;border-bottom:1px solid #46524a;transition:color .25s,padding .25s; }
+.gs2-home .gs2-service-no {font-family:var(--font-serif);font-style:italic;font-size:21px;color:#8c9c8d;}
+.gs2-home .gs2-service-name { font-size:clamp(20px,2.1vw,34px);font-weight:700;letter-spacing:-.04em;line-height:1.18; }
+.gs2-home .gs2-service-arrow { transition:transform .25s; }
+.gs2-home .gs2-service-line:hover,.gs2-home .gs2-service-line:focus-visible,.gs2-home .gs2-service-line.gs2-active {color:var(--gs2-green);padding-left:8px;}
+.gs2-home .gs2-service-line:hover .gs2-service-arrow,.gs2-home .gs2-service-line:focus-visible .gs2-service-arrow {transform:translate(3px,-3px);}
+.gs2-home .gs2-services-all {margin-top:35px;}
+.gs2-home .gs2-service-preview { position:sticky;top:110px;overflow:hidden;min-height:650px;background:#28352e; }
+.gs2-home .gs2-service-preview img {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;animation:gs2-img-in .55s ease both;}
+@keyframes gs2-img-in {from{opacity:.65;transform:scale(1.035)}to{opacity:1;transform:scale(1)}}
+.gs2-home .gs2-service-preview::after {content:"";position:absolute;inset:0;background:linear-gradient(to bottom,#0009,transparent 25%,transparent 68%,#000b);pointer-events:none;}
+.gs2-home .gs2-preview-tape {position:absolute;top:20px;left:22px;right:22px;z-index:2;display:flex;justify-content:space-between;gap:10px;color:white;font-size:10px;letter-spacing:.1em;font-weight:700;}
+.gs2-home .gs2-preview-caption { position:absolute;bottom:30px;left:26px;right:26px;z-index:2;max-width:400px;color:white;font-size:19px;line-height:1.35;font-weight:600;}
+.gs2-home .gs2-works {padding-block:clamp(90px,11vw,164px);}
+.gs2-home .gs2-works-title { font-size:clamp(65px,8vw,132px);line-height:.88;font-weight:800;letter-spacing:-.08em;margin-bottom:clamp(62px,8vw,110px)!important;}
+.gs2-home .gs2-works-title em {color:#4e805a;}
+.gs2-home .gs2-event-grid { display:grid;grid-template-columns:1.1fr .9fr;column-gap:clamp(22px,5vw,75px);row-gap:50px;align-items:start;}
+.gs2-home .gs2-event-2 {margin-top:130px;}
+.gs2-home .gs2-event-3 {grid-column:1;max-width:76%;margin-left:13%;}
+.gs2-home .gs2-event-image {position:relative;aspect-ratio:1.16;overflow:hidden;background:#839184;}
+.gs2-home .gs2-event-2 .gs2-event-image {aspect-ratio:.83;}
+.gs2-home .gs2-event-3 .gs2-event-image {aspect-ratio:1.38;}
+.gs2-home .gs2-event-image img {width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .7s;filter:saturate(.85);}
+.gs2-home .gs2-event:hover .gs2-event-image img {transform:scale(1.055);filter:saturate(1);}
+.gs2-home .gs2-event-jump {position:absolute;bottom:18px;right:18px;display:grid;place-items:center;height:53px;width:53px;border-radius:50%;background:var(--gs2-green);color:var(--gs2-ink);transition:transform .3s;}
+.gs2-home .gs2-event:hover .gs2-event-jump {transform:rotate(45deg);}
+.gs2-home .gs2-event-foot {display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #8f9a8f;padding:19px 0;text-transform:uppercase;font-size:12px;font-weight:800;letter-spacing:.06em;}
+.gs2-home .gs2-event-foot span:last-child {display:flex;gap:10px;align-items:center;font-size:10px;}
+.gs2-home .gs2-works-outro {text-align:right;max-width:520px;margin:100px 0 0 auto!important;font-size:19px;line-height:1.6;}
+.gs2-home .gs2-film {background:#25392e;color:var(--gs2-paper);padding-block:clamp(95px,10vw,145px);}
+.gs2-home .gs2-film-head {display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:70px;}
+.gs2-home .gs2-film-head h2 {font-size:clamp(60px,7vw,116px);font-weight:800;line-height:.9;letter-spacing:-.075em;}
+.gs2-home .gs2-film-head h2 em {color:var(--gs2-green);}
+.gs2-home .gs2-film-head>p {width:min(310px,100%);font-size:18px;line-height:1.55;color:#d1dbd2;}
+.gs2-home .gs2-film-stage {position:relative;max-width:1250px;margin-inline:auto;}
+.gs2-home .gs2-film-stage figure>div {border-radius:0; }
+.gs2-home .gs2-film-number {position:absolute;z-index:3;top:18px;right:20px;color:white;font-size:11px;letter-spacing:.1em;}
+.gs2-home .gs2-film-stage figcaption {color:#d2ddd4;}
+.gs2-home .gs2-film-foot {display:flex;justify-content:space-between;border-top:1px solid #7e9384;margin-top:50px;padding-top:18px;font-size:11px;letter-spacing:.12em;}
+.gs2-home .gs2-process {padding-block:clamp(95px,10vw,150px);}
+.gs2-home .gs2-process-grid {display:grid;grid-template-columns:1fr 1fr;gap:7vw;}
+.gs2-home .gs2-process-grid h2 {font-size:clamp(54px,6vw,95px);line-height:.98;letter-spacing:-.075em;font-weight:800;}
+.gs2-home .gs2-process-grid h2 em {color:#4e805a;}
+.gs2-home .gs2-process-grid>div {color:var(--gs2-ink);}
+.gs2-home .gs2-questions {background:#d5d9cb;padding-block:clamp(95px,10vw,145px);}
+.gs2-home .gs2-faq-layout {display:grid;grid-template-columns:.9fr 1.1fr;gap:8vw;}
+.gs2-home .gs2-faq-layout h2 {font-size:clamp(58px,6vw,102px);line-height:.96;letter-spacing:-.075em;font-weight:800;margin-top:32px!important;}
+.gs2-home .gs2-faq-layout h2 em {color:#4e805a;}
+.gs2-home .gs2-quote-intro {padding-block:clamp(92px,10vw,140px) 30px;}
+.gs2-home .gs2-quote-intro h2 {font-size:clamp(58px,7.3vw,120px);line-height:.94;letter-spacing:-.075em;margin-top:33px!important;}
+.gs2-home .gs2-quote-intro h2 em {color:#4e805a;}
+.gs2-home .gs2-quote-intro p {max-width:550px;font-size:18px;line-height:1.55;margin-top:35px!important;}
+.gs2-home [data-gs2-reveal] {transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+.gs2-home.gs2-motion-ready [data-gs2-reveal]:not(.gs2-in) {opacity:0;transform:translateY(26px);}
+.gs2-home [data-gs2-reveal].gs2-in {opacity:1;transform:translateY(0);}
+.gs2-home .gs2-questions button,.gs2-home .gs2-process button {color:inherit;}
+@media(max-width:1150px){
+ .gs2-home .gs2-hero-title{font-size:clamp(57px,7vw,91px);}
+ .gs2-home .gs2-hero-grid{grid-template-columns:1.1fr .9fr;gap:28px;}
+ .gs2-home .gs2-service-preview{min-height:570px;}
+ .gs2-home .gs2-services-layout{gap:40px;}
+}
+@media(max-width:850px){
+ .gs2-home .gs2-hero { min-height:auto; padding-top:94px;}
+ .gs2-home .gs2-hero-grid{grid-template-columns:1fr;gap:28px;min-height:0;}
+ .gs2-home .gs2-hero-title{font-size:clamp(66px,11vw,108px);}
+ .gs2-home .gs2-hero-copy{padding-bottom:0;}
+ .gs2-home .gs2-hero-chapter{margin-top:45px;}
+ .gs2-home .gs2-hero-visual{padding-top:15px;padding-bottom:45px;}
+ .gs2-home .gs2-hero-frame{height:430px;min-height:0;flex:none;}
+ .gs2-home .gs2-manifesto-row,.gs2-home .gs2-services-layout,.gs2-home .gs2-faq-layout{grid-template-columns:1fr;}
+ .gs2-home .gs2-manifesto-aside{max-width:500px;margin-left:auto;}
+ .gs2-home .gs2-service-preview{position:relative;top:auto;min-height:430px;margin-top:35px;}
+ .gs2-home .gs2-film-head{align-items:start;flex-direction:column;}
+ .gs2-home .gs2-process-grid{grid-template-columns:1fr;}
+ .gs2-home .gs2-process-grid>div{max-width:650px;}
+ .gs2-home .gs2-section-top{margin-bottom:45px;}
+}
+@media(max-width:600px){
+ .gs2-home .gs2-shell{width:calc(100% - 36px);}
+ .gs2-home .gs2-hero{padding-top:86px;}
+ .gs2-home .gs2-overline{font-size:9px;letter-spacing:.07em;}
+ .gs2-home .gs2-hero-title{font-size:clamp(58px,13vw,84px);letter-spacing:-.075em;}
+ .gs2-home .gs2-hero-bottom{align-items:center;margin-top:42px;}
+ .gs2-home .gs2-hero-bottom p{font-size:16px;}
+ .gs2-home .gs2-round-link{height:50px;width:50px;}
+ .gs2-home .gs2-hero-cta-row{gap:16px;}
+ .gs2-home .gs2-cta-primary{width:100%;font-size:12px;}
+ .gs2-home .gs2-hero-frame{height:350px;margin-top:12px;}
+ .gs2-home .gs2-hero-edge{display:none;}
+ .gs2-home .gs2-manifesto h2,.gs2-home .gs2-section-display,.gs2-home .gs2-works-title,.gs2-home .gs2-film-head h2,.gs2-home .gs2-faq-layout h2,.gs2-home .gs2-quote-intro h2{font-size:clamp(51px,11vw,75px);}
+ .gs2-home .gs2-manifesto-row{margin-top:38px;gap:40px;}
+ .gs2-home .gs2-manifesto-aside{margin-left:0;}
+ .gs2-home .gs2-section-meta{display:none;}
+ .gs2-home .gs2-services-intro{font-size:16px;margin-top:25px!important;margin-bottom:30px!important;}
+ .gs2-home .gs2-service-line{min-height:80px;}
+ .gs2-home .gs2-service-name{font-size:23px;}
+ .gs2-home .gs2-service-preview{min-height:390px;}
+ .gs2-home .gs2-event-grid{display:block;}
+ .gs2-home .gs2-event{display:block;margin:0 0 32px;max-width:none;}
+ .gs2-home .gs2-event-2 .gs2-event-image{aspect-ratio:1.16;}
+ .gs2-home .gs2-event-3{margin:0;max-width:none;}
+ .gs2-home .gs2-works-outro{text-align:left;font-size:16px;margin-top:38px!important;}
+ .gs2-home .gs2-film-head{margin-bottom:35px;}
+ .gs2-home .gs2-film-head>p{font-size:16px;}
+ .gs2-home .gs2-film-foot{font-size:9px;}
+ .gs2-home .gs2-quote-intro p{font-size:16px;}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs2-home .gs2-signal-track{animation:none;}
+ .gs2-home [data-gs2-reveal]{transition:none!important;opacity:1!important;transform:none!important;}
+ .gs2-home .gs2-service-preview img{animation:none;}
+ .gs2-home .gs2-event-image img,.gs2-home .gs2-hero-frame img{transition:none;}
+}
