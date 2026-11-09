@@ -43,6 +43,8 @@ export const images = {
   ursitoare: { src: ursitoareAsset.url, alt: "Ursitoare Green Sound Music la un botez", w: 810, h: 541 },
   ursitoare2: { src: ursitoare2Asset.url, alt: "Trei ursitoare cu baghete și ramă decorativă", w: 1024, h: 684 },
   copii: { src: copiiAsset.url, alt: "Animatoare pentru petreceri de copii, înconjurate de baloane colorate", w: 1024, h: 684 },
+  studio: { src: "https://i.ytimg.com/vi/xN0J8_3GlgY/maxresdefault.jpg", alt: "Cadru din videoclipul „Muzica ne leagă”, produs de Green Sound", w: 1280, h: 720 },
+  fum: { src: "https://i.ytimg.com/vi/u7EW622vE3Q/maxresdefault.jpg", alt: "Efect de fum greu cu gheață carbonică la un eveniment Green Sound Music", w: 1280, h: 720 },
 } as const;
 
 export type ImageRef = (typeof images)[keyof typeof images];
