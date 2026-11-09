@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowRight, ArrowUpRight, MoveUpRight, Play, Volume2 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { FaqList, ProcessSteps, QuoteSection } from "@/components/site/blocks";
 import { VideoLite } from "@/components/site/VideoLite";
 import { business, events, generalFaqs, images, services, videos } from "@/data/site";
+import "@/styles-editorial.css";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
 
 /**
