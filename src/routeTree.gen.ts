@@ -10,33 +10,195 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DjMcRouteImport } from './routes/dj-mc'
+import { Route as EchipamenteDeSunetSiLuminiRouteImport } from './routes/echipamente-de-sunet-si-lumini'
+import { Route as HostessRouteImport } from './routes/hostess'
+import { Route as MasinaFumGreuCuGheataCarbonicaRouteImport } from './routes/masina-fum-greu-cu-gheata-carbonica'
+import { Route as PortofoliuRouteImport } from './routes/portofoliu'
+import { Route as ServiciiRouteImport } from './routes/servicii'
+import { Route as StartVeseliaRouteImport } from './routes/start-veselia'
+import { Route as StudioInregistrariRouteImport } from './routes/studio-inregistrari'
+import { Route as TrupaRouteImport } from './routes/trupa'
+import { Route as UrsitoareBotezRouteImport } from './routes/ursitoare-botez'
+import { Route as EvenimenteIndexRouteImport } from './routes/evenimente.index'
+import { Route as EvenimenteSlugRouteImport } from './routes/evenimente.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DjMcRoute = DjMcRouteImport.update({
+  id: '/dj-mc',
+  path: '/dj-mc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EchipamenteDeSunetSiLuminiRoute =
+  EchipamenteDeSunetSiLuminiRouteImport.update({
+    id: '/echipamente-de-sunet-si-lumini',
+    path: '/echipamente-de-sunet-si-lumini',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HostessRoute = HostessRouteImport.update({
+  id: '/hostess',
+  path: '/hostess',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasinaFumGreuCuGheataCarbonicaRoute =
+  MasinaFumGreuCuGheataCarbonicaRouteImport.update({
+    id: '/masina-fum-greu-cu-gheata-carbonica',
+    path: '/masina-fum-greu-cu-gheata-carbonica',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const PortofoliuRoute = PortofoliuRouteImport.update({
+  id: '/portofoliu',
+  path: '/portofoliu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciiRoute = ServiciiRouteImport.update({
+  id: '/servicii',
+  path: '/servicii',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StartVeseliaRoute = StartVeseliaRouteImport.update({
+  id: '/start-veselia',
+  path: '/start-veselia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudioInregistrariRoute = StudioInregistrariRouteImport.update({
+  id: '/studio-inregistrari',
+  path: '/studio-inregistrari',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrupaRoute = TrupaRouteImport.update({
+  id: '/trupa',
+  path: '/trupa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UrsitoareBotezRoute = UrsitoareBotezRouteImport.update({
+  id: '/ursitoare-botez',
+  path: '/ursitoare-botez',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvenimenteIndexRoute = EvenimenteIndexRouteImport.update({
+  id: '/evenimente/',
+  path: '/evenimente/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvenimenteSlugRoute = EvenimenteSlugRouteImport.update({
+  id: '/evenimente/$slug',
+  path: '/evenimente/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dj-mc': typeof DjMcRoute
+  '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
+  '/hostess': typeof HostessRoute
+  '/masina-fum-greu-cu-gheata-carbonica': typeof MasinaFumGreuCuGheataCarbonicaRoute
+  '/portofoliu': typeof PortofoliuRoute
+  '/servicii': typeof ServiciiRoute
+  '/start-veselia': typeof StartVeseliaRoute
+  '/studio-inregistrari': typeof StudioInregistrariRoute
+  '/trupa': typeof TrupaRoute
+  '/ursitoare-botez': typeof UrsitoareBotezRoute
+  '/evenimente/$slug': typeof EvenimenteSlugRoute
+  '/evenimente/': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dj-mc': typeof DjMcRoute
+  '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
+  '/hostess': typeof HostessRoute
+  '/masina-fum-greu-cu-gheata-carbonica': typeof MasinaFumGreuCuGheataCarbonicaRoute
+  '/portofoliu': typeof PortofoliuRoute
+  '/servicii': typeof ServiciiRoute
+  '/start-veselia': typeof StartVeseliaRoute
+  '/studio-inregistrari': typeof StudioInregistrariRoute
+  '/trupa': typeof TrupaRoute
+  '/ursitoare-botez': typeof UrsitoareBotezRoute
+  '/evenimente/$slug': typeof EvenimenteSlugRoute
+  '/evenimente': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dj-mc': typeof DjMcRoute
+  '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
+  '/hostess': typeof HostessRoute
+  '/masina-fum-greu-cu-gheata-carbonica': typeof MasinaFumGreuCuGheataCarbonicaRoute
+  '/portofoliu': typeof PortofoliuRoute
+  '/servicii': typeof ServiciiRoute
+  '/start-veselia': typeof StartVeseliaRoute
+  '/studio-inregistrari': typeof StudioInregistrariRoute
+  '/trupa': typeof TrupaRoute
+  '/ursitoare-botez': typeof UrsitoareBotezRoute
+  '/evenimente/$slug': typeof EvenimenteSlugRoute
+  '/evenimente/': typeof EvenimenteIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dj-mc'
+    | '/echipamente-de-sunet-si-lumini'
+    | '/hostess'
+    | '/masina-fum-greu-cu-gheata-carbonica'
+    | '/portofoliu'
+    | '/servicii'
+    | '/start-veselia'
+    | '/studio-inregistrari'
+    | '/trupa'
+    | '/ursitoare-botez'
+    | '/evenimente/$slug'
+    | '/evenimente/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/dj-mc'
+    | '/echipamente-de-sunet-si-lumini'
+    | '/hostess'
+    | '/masina-fum-greu-cu-gheata-carbonica'
+    | '/portofoliu'
+    | '/servicii'
+    | '/start-veselia'
+    | '/studio-inregistrari'
+    | '/trupa'
+    | '/ursitoare-botez'
+    | '/evenimente/$slug'
+    | '/evenimente'
+  id:
+    | '__root__'
+    | '/'
+    | '/dj-mc'
+    | '/echipamente-de-sunet-si-lumini'
+    | '/hostess'
+    | '/masina-fum-greu-cu-gheata-carbonica'
+    | '/portofoliu'
+    | '/servicii'
+    | '/start-veselia'
+    | '/studio-inregistrari'
+    | '/trupa'
+    | '/ursitoare-botez'
+    | '/evenimente/$slug'
+    | '/evenimente/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DjMcRoute: typeof DjMcRoute
+  EchipamenteDeSunetSiLuminiRoute: typeof EchipamenteDeSunetSiLuminiRoute
+  HostessRoute: typeof HostessRoute
+  MasinaFumGreuCuGheataCarbonicaRoute: typeof MasinaFumGreuCuGheataCarbonicaRoute
+  PortofoliuRoute: typeof PortofoliuRoute
+  ServiciiRoute: typeof ServiciiRoute
+  StartVeseliaRoute: typeof StartVeseliaRoute
+  StudioInregistrariRoute: typeof StudioInregistrariRoute
+  TrupaRoute: typeof TrupaRoute
+  UrsitoareBotezRoute: typeof UrsitoareBotezRoute
+  EvenimenteSlugRoute: typeof EvenimenteSlugRoute
+  EvenimenteIndexRoute: typeof EvenimenteIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +210,107 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dj-mc': {
+      id: '/dj-mc'
+      path: '/dj-mc'
+      fullPath: '/dj-mc'
+      preLoaderRoute: typeof DjMcRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/echipamente-de-sunet-si-lumini': {
+      id: '/echipamente-de-sunet-si-lumini'
+      path: '/echipamente-de-sunet-si-lumini'
+      fullPath: '/echipamente-de-sunet-si-lumini'
+      preLoaderRoute: typeof EchipamenteDeSunetSiLuminiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hostess': {
+      id: '/hostess'
+      path: '/hostess'
+      fullPath: '/hostess'
+      preLoaderRoute: typeof HostessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masina-fum-greu-cu-gheata-carbonica': {
+      id: '/masina-fum-greu-cu-gheata-carbonica'
+      path: '/masina-fum-greu-cu-gheata-carbonica'
+      fullPath: '/masina-fum-greu-cu-gheata-carbonica'
+      preLoaderRoute: typeof MasinaFumGreuCuGheataCarbonicaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portofoliu': {
+      id: '/portofoliu'
+      path: '/portofoliu'
+      fullPath: '/portofoliu'
+      preLoaderRoute: typeof PortofoliuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicii': {
+      id: '/servicii'
+      path: '/servicii'
+      fullPath: '/servicii'
+      preLoaderRoute: typeof ServiciiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/start-veselia': {
+      id: '/start-veselia'
+      path: '/start-veselia'
+      fullPath: '/start-veselia'
+      preLoaderRoute: typeof StartVeseliaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/studio-inregistrari': {
+      id: '/studio-inregistrari'
+      path: '/studio-inregistrari'
+      fullPath: '/studio-inregistrari'
+      preLoaderRoute: typeof StudioInregistrariRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trupa': {
+      id: '/trupa'
+      path: '/trupa'
+      fullPath: '/trupa'
+      preLoaderRoute: typeof TrupaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ursitoare-botez': {
+      id: '/ursitoare-botez'
+      path: '/ursitoare-botez'
+      fullPath: '/ursitoare-botez'
+      preLoaderRoute: typeof UrsitoareBotezRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evenimente/': {
+      id: '/evenimente/'
+      path: '/evenimente'
+      fullPath: '/evenimente/'
+      preLoaderRoute: typeof EvenimenteIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evenimente/$slug': {
+      id: '/evenimente/$slug'
+      path: '/evenimente/$slug'
+      fullPath: '/evenimente/$slug'
+      preLoaderRoute: typeof EvenimenteSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DjMcRoute: DjMcRoute,
+  EchipamenteDeSunetSiLuminiRoute: EchipamenteDeSunetSiLuminiRoute,
+  HostessRoute: HostessRoute,
+  MasinaFumGreuCuGheataCarbonicaRoute: MasinaFumGreuCuGheataCarbonicaRoute,
+  PortofoliuRoute: PortofoliuRoute,
+  ServiciiRoute: ServiciiRoute,
+  StartVeseliaRoute: StartVeseliaRoute,
+  StudioInregistrariRoute: StudioInregistrariRoute,
+  TrupaRoute: TrupaRoute,
+  UrsitoareBotezRoute: UrsitoareBotezRoute,
+  EvenimenteSlugRoute: EvenimenteSlugRoute,
+  EvenimenteIndexRoute: EvenimenteIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
