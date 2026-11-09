@@ -17,8 +17,8 @@ import {
 import { Link } from "@tanstack/react-router";
 
 type Props = {
-  defaultEventType?: (typeof eventTypeOptions)[number];
-  defaultServices?: string[];
+  defaultEventType?: (typeof eventTypeOptions)[number] | undefined;
+  defaultServices?: string[] | undefined;
   id?: string;
 };
 
@@ -26,7 +26,7 @@ const fieldCls =
   "w-full rounded-lg border border-input bg-foreground/[0.03] px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 transition-colors focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30";
 const labelCls = "mb-2 block text-sm font-medium text-foreground/90";
 
-function FieldError({ id, msg }: { id: string; msg?: string }) {
+function FieldError({ id, msg }: { id: string; msg?: string | undefined }) {
   if (!msg) return null;
   return (
     <p id={id} role="alert" className="mt-1.5 text-sm text-destructive">
@@ -50,7 +50,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], id = "cerere
       name: "",
       phone: "",
       email: "",
-      eventType: defaultEventType,
+      ...(defaultEventType ? { eventType: defaultEventType } : {}),
       date: "",
       location: "",
       guests: "",
