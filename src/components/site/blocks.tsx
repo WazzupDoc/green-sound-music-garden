@@ -137,8 +137,8 @@ export function QuoteSection({
 }: {
   title?: string;
   intro?: string;
-  defaultEventType?: (typeof eventTypeOptions)[number];
-  defaultServices?: string[];
+  defaultEventType?: (typeof eventTypeOptions)[number] | undefined;
+  defaultServices?: string[] | undefined;
 }) {
   return (
     <section aria-labelledby="oferta-titlu" className="section surface-stage grain scroll-mt-20">

@@ -55,7 +55,7 @@ export type ImageRef = (typeof images)[keyof typeof images];
 
 export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number };
 
-export const videos: Record<string, Video> = {
+export const videos = {
   nuntaRamada: {
     id: "37QlXW3NlxU",
     title: "Nuntă la Ramada Pitești — DJ Green Sound & MC Dana",
@@ -93,7 +93,7 @@ export const videos: Record<string, Video> = {
     caption: "Efect de fum greu la dansul mirilor",
     tags: ["nunti", "fum-greu"],
   },
-};
+} satisfies Record<string, Video>;
 
 /* ------------------------------------------------------------------ */
 /* Services                                                            */

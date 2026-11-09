@@ -121,7 +121,7 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
       {fitEvents.length > 0 && (
         <section className="section surface-paper">
           <div className="container-site">
-            <SectionHeading eyebrow="Potrivit pentru" title={<>Unde se potrivește <span className="serif-accent">{s.name.split(",")[0].toLowerCase()}</span></>} />
+            <SectionHeading eyebrow="Potrivit pentru" title={<>Unde se potrivește <span className="serif-accent">{s.name.split(",")[0]!.toLowerCase()}</span></>} />
             <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-paper-border bg-paper-border sm:grid-cols-2 lg:grid-cols-5">
               {fitEvents.map((e) => (
                 <li key={e.slug} className="bg-paper">
@@ -148,7 +148,7 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
       )}
 
       <QuoteSection
-        title={`Vrei ${s.name.split(" —")[0].toLowerCase()} la evenimentul tău?`}
+        title={`Vrei ${s.name.split(" —")[0]!.toLowerCase()} la evenimentul tău?`}
         defaultServices={[s.formLabel]}
         defaultEventType={defaultEvent}
       />
