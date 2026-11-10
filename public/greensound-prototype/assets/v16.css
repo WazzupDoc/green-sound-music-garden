@@ -156,3 +156,13 @@
 @media(prefers-reduced-motion:reduce){
  .hero-v16__signal,.hero-v16__live i,.hero-v16__pictogram,.hero-v16__audiostrip span{animation:none!important}
 }
+
+/* Context-specific real Green Sound event-video calls — never autoplay */
+.service-card__img{position:relative}
+.service-card__img .gs-service-play,.event-card>.gs-service-play{position:absolute;z-index:7;display:inline-flex;align-items:center;gap:9px;min-height:38px;padding:8px 13px;border:1px solid #d6ffca93;border-radius:100px;background:#07160ddc;color:#f1ffe8;font-size:9px;font-weight:800;letter-spacing:.10em;backdrop-filter:blur(9px);transition:transform .2s,border-color .2s,background .2s}
+.gs-service-play span{font-size:11px;color:#b1f477}
+.service-card__img .gs-service-play{bottom:13px;left:12px;right:12px;justify-content:center}
+.event-card>.gs-service-play{top:20px;left:24px}
+.gs-service-play:hover,.gs-service-play:focus-visible{transform:translateY(-2px);background:#174126;border-color:#b1f477}
+.event-card>.gs-service-play~.event-card__number{z-index:6}
+@media(max-width:650px){.service-card__img .gs-service-play{bottom:10px;left:8px;right:8px;padding:7px 9px;min-height:34px;font-size:8px}.event-card>.gs-service-play{top:17px;left:18px}}
