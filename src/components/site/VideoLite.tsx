@@ -1,12 +1,21 @@
 import { Play } from "lucide-react";
 import { useState } from "react";
 import type { Video } from "@/data/site";
+import { ytThumb } from "@/data/site";
 
 /**
- * Click-to-load YouTube player: shows a poster only, so no third-party scripts,
- * cookies or sound load until the visitor presses play (youtube-nocookie).
+ * Click-to-load YouTube player: shows an authentic poster only, so no third-party
+ * scripts, cookies or audio are loaded until the visitor chooses to play it.
  */
-export function VideoLite({ video, className = "", priority = false }: { video: Video; className?: string; priority?: boolean }) {
+export function VideoLite({
+  video,
+  className = "",
+  priority = false,
+}: {
+  video: Video;
+  className?: string;
+  priority?: boolean;
+}) {
   const [active, setActive] = useState(false);
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (video.start) params.set("start", String(video.start));
@@ -26,21 +35,25 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
           <button
             type="button"
             onClick={() => setActive(true)}
-            className="absolute inset-0 size-full text-left"
+            className="absolute inset-0 size-full text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-primary"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
             <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+              src={ytThumb(video)}
               alt=""
-              width={480}
-              height={360}
+              width={1280}
+              height={720}
               loading={priority ? "eager" : "lazy"}
+              fetchPriority={priority ? "high" : "auto"}
               decoding="async"
               className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <span className="hero-fade absolute inset-0 opacity-80" />
-            <span className="absolute left-5 top-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110 animate-pulse-ring">
-              <Play className="ml-0.5 size-5 fill-current" aria-hidden />
+            <span className="hero-fade absolute inset-0 opacity-80" aria-hidden="true" />
+            <span
+              className="absolute left-5 top-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-105"
+              aria-hidden="true"
+            >
+              <Play className="ml-0.5 size-5 fill-current" />
             </span>
             <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-foreground">
               {video.title}
