@@ -6,7 +6,9 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
   try {
     const page = await browser.newPage({ viewport:{width:1440,height:900} });
     await page.goto(origin,{waitUntil:"domcontentloaded"});
-    assert.match(await page.locator("h1").innerText(),/SUNET.*LUMINI.*EMOȚIE/s);
+    assert.match(await page.locator("h1").innerText(),/SE AUDE.*SE VEDE.*SE SIMTE/s);
+    assert.equal(await page.locator(".gs-strip__item").count(),4);
+    assert.equal(await page.locator(".hero-v16__visual").count(),1);
     assert.equal(await page.locator("h1").count(),1);
     assert.equal(await page.locator(".mood").count(),3);
     await page.locator('[data-mood="wedding"].mood').click();
