@@ -11,6 +11,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import atmospheresCss from "../atmospheres.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -77,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { name: "theme-color", content: "#0b100e" },
+      { name: "theme-color", content: "#101c28" },
       { title: "Green Sound Music — DJ, trupă, sonorizare și lumini în Pitești" },
       { name: "description", content: "Muzică, sunet, lumini și efecte pentru evenimente, din Pitești, din 2008." },
       { name: "author", content: "Green Sound Music" },
@@ -92,6 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600&family=Instrument+Serif:ital@1&display=swap&subset=latin-ext",
       },
       { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: atmospheresCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
@@ -105,13 +107,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="ro">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
+      <head><HeadContent /></head>
+      <body>{children}<Scripts /></body>
     </html>
   );
 }
@@ -122,9 +119,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteHeader />
-      <main id="continut">
-        <Outlet />
-      </main>
+      <main id="continut"><Outlet /></main>
       <SiteFooter />
       <MobileActionBar />
     </QueryClientProvider>
