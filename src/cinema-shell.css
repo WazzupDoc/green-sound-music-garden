@@ -1,3 +1,4 @@
+:root{--primary:#daf05d;--primary-glow:#e5ff75;--primary-foreground:#151b10;--ring:#daf05d;--background:#0b0d0b;--ink:#0b0d0b;--foreground:#f4f1e8;--card:#171c17;--secondary:#1c231c;--muted:#273027;--accent:#273527;--paper:#efede5;--paper-foreground:#151915}
 /* Green Sound / V12 universal nav and footer */
 .gs12-header{position:fixed;z-index:110;top:0;left:0;right:0;color:#f6f3ed;border-bottom:1px solid rgba(255,255,255,.14);transition:background .32s,border-color .32s,backdrop-filter .32s}
 .gs12-header.is-scrolled{background:rgba(10,12,11,.92);border-color:rgba(255,255,255,.22);backdrop-filter:blur(18px)}
