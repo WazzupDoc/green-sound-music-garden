@@ -70,6 +70,13 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     const mobile=await browser.newPage({viewport:{width:390,height:844}});
     await mobile.goto(origin,{waitUntil:"domcontentloaded"});
     const size=await mobile.evaluate(()=>({content:document.documentElement.scrollWidth,viewport:innerWidth}));
+    if(size.content>size.viewport+2){
+      const offenders=await mobile.evaluate(()=>[...document.querySelectorAll("body *")].map(el=>{
+        const rect=el.getBoundingClientRect();
+        return {tag:el.tagName,cls:typeof el.className==="string"?el.className.slice(0,100):"",txt:(el.textContent||"").trim().slice(0,65),left:Math.round(rect.left),right:Math.round(rect.right),width:Math.round(rect.width)};
+      }).filter(x=>x.right>innerWidth+4&&x.width>0).slice(0,20));
+      console.log("V17 MOBILE OVERFLOW OFFENDERS:",JSON.stringify(offenders));
+    }
     assert.ok(size.content <= size.viewport+2, "Unexpected horizontal mobile overflow: "+JSON.stringify(size));
     await mobile.locator("#showreel").scrollIntoViewIfNeeded();
     await mobile.screenshot({path:"screenshots/home-showreel-mobile.png"});
