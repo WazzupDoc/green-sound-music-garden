@@ -44,6 +44,7 @@ jobs:
               assert "GSMUSIC" not in s,filename
               assert 'src="assets/site.js"' in s and 'href="assets/site.css"' in s, filename
               assert '<meta name="robots" content="noindex,nofollow">' in s,filename
+              assert 'assets/v17.css' in s,filename
               doc=Page();doc.feed(s)
               assert doc.h1==1,(filename,doc.h1)
               for name in filenames:
@@ -60,6 +61,7 @@ jobs:
           print("All six standalone pages, navigation, HTML headings, controls and licensed attribution verified")
           PY
           node --check public/greensound-prototype/assets/site.js
+          node --check public/greensound-prototype/assets/v17.js
       - name: Install chromium for real browser screenshots
         run: npx --yes playwright@1.56.1 install --with-deps chromium
       - name: Serve standalone prototype on port 4173
