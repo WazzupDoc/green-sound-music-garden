@@ -1,4 +1,4 @@
-name: Verify Green Sound multipage prototype
+name: Verify Green Sound premium V17 prototype
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - "public/greensound-prototype/**"
+      - ".github/scripts/verify-gs-v14.cjs"
       - ".github/workflows/verify-gs-prototype.yml"
 
 permissions:
