@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import atmospheresCss from "../atmospheres.css?url";
+import cinemaCss from "../cinema.css?url";
+import cinemaShellCss from "../cinema-shell.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -94,6 +96,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "stylesheet", href: appCss },
       { rel: "stylesheet", href: atmospheresCss },
+      { rel: "stylesheet", href: cinemaCss },
+      { rel: "stylesheet", href: cinemaShellCss },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
