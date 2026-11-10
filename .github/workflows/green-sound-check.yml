@@ -1,0 +1,60 @@
+name: Verify Green Sound redesign
+
+on:
+  push:
+    branches:
+      - design/atmospheres-in-motion-2026
+  pull_request:
+    paths:
+      - "src/**"
+      - "package.json"
+      - "vite.config.ts"
+      - ".github/workflows/green-sound-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pnpm
+        run: npm install --global pnpm@10
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+      - name: TypeScript
+        run: pnpm exec tsc --noEmit
+      - name: Build
+        run: pnpm run build
+      - name: ESLint semantic rules (existing Prettier debt excluded)
+        run: pnpm exec eslint . --rule "prettier/prettier: off"
+      - name: Install Chromium for real-page screenshots
+        run: pnpm dlx playwright install chromium --with-deps
+      - name: Start actual TanStack app
+        run: |
+          (pnpm run dev -- --host 127.0.0.1 --port 4173 >/tmp/gs-dev.log 2>&1 &)
+          for i in $(seq 1 35); do
+            if curl --silent --fail http://127.0.0.1:4173/ >/dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:4173/ >/dev/null || (cat /tmp/gs-dev.log && exit 1)
+      - name: Capture desktop and mobile screenshots from the running app
+        run: |
+          mkdir -p screenshots
+          pnpm dlx playwright screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=1800 http://127.0.0.1:4173/ screenshots/home-desktop.png
+          pnpm dlx playwright screenshot --browser chromium --viewport-size="390,844" --wait-for-timeout=1800 http://127.0.0.1:4173/ screenshots/home-mobile.png
+          pnpm dlx playwright screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=1800 http://127.0.0.1:4173/contact screenshots/contact-desktop.png
+      - name: Upload actual browser captures
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: green-sound-browser-captures
+          path: screenshots/
+          if-no-files-found: ignore

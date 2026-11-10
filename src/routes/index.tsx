@@ -1,261 +1,341 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, Phone } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { FaqList, ProcessSteps, QuoteSection, SectionHeading } from "@/components/site/blocks";
+import { ArrowDown, ArrowRight, ArrowUpRight, Play, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { FaqList, QuoteSection } from "@/components/site/blocks";
 import { VideoLite } from "@/components/site/VideoLite";
-import { business, events, generalFaqs, images, people, services, videos } from "@/data/site";
+import { business, events, generalFaqs, images, services, videos } from "@/data/site";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
 
-const yearsActive = new Date().getFullYear() - business.founded;
-
+/**
+ * GREEN SOUND / LIVE EXPERIENCES — V12
+ * An immersive, image-led portfolio built on real Green Sound media.
+ * Inspired by the cinematic language of event-production studios, never their assets.
+ */
 export const Route = createFileRoute("/")({
   head: () =>
     pageHead({
-      title: "Green Sound Music Pitești — DJ, trupă live, sonorizare și lumini pentru evenimente",
+      title: "Green Sound Music Pitești | DJ, scenotehnică, sunet, lumini și evenimente",
       description:
-        "Din 2008, în Pitești: DJ & MC, trupă live, sonorizare, lumini, ecrane LED, fum greu, hostess, ursitoare și studio de înregistrări. Cere o ofertă pentru evenimentul tău.",
+        "Din 2008, Green Sound Music creează experiențe live: DJ & MC, trupă live, sunet, lumini, ecrane LED, efecte și evenimente în Pitești și nu numai.",
       path: "/",
       jsonLd: [localBusinessLd(), faqLd(generalFaqs)],
     }),
-  component: Index,
+  component: Home,
 });
 
-const marquee = ["DJ & MC", "Trupă live", "Sonorizare", "Lumini", "Ecrane LED", "Fum greu", "Hostess", "Ursitoare", "Studio", "Start Veselia"];
+const scenes = [
+  { image: images.concert, title: "Energia publicului", tag: "LIVE / CONCERTE", index: "01" },
+  { image: images.scena, title: "Lumina spectacolului", tag: "STAGE / PRODUCTION", index: "02" },
+  { image: images.dj, title: "Ritmul petrecerii", tag: "MUSIC / PEOPLE", index: "03" },
+] as const;
 
-function Index() {
-  const featured = services.slice(0, 5);
-  const more = services.slice(5);
+const spotlights = [
+  {
+    number: "01",
+    name: "Concerte & festivaluri",
+    tagline: "Energie care se simte în fiecare colț al publicului.",
+    image: images.concert,
+    destination: "/evenimente/concerte-festivaluri",
+    disciplines: "SUNET / LUMINI / SCENOTEHNICĂ",
+  },
+  {
+    number: "02",
+    name: "Nunți & petreceri",
+    tagline: "Fiecare intrare, fiecare dans, fiecare moment.",
+    image: images.dj,
+    destination: "/evenimente/nunti",
+    disciplines: "DJ & MC / SHOW / ATMOSFERĂ",
+  },
+  {
+    number: "03",
+    name: "Producție de eveniment",
+    tagline: "Tot ce nu se vede în culise. Tot ce se simte în sală.",
+    image: images.scena,
+    destination: "/echipamente-de-sunet-si-lumini",
+    disciplines: "TEHNICĂ / LUMINI / LED",
+  },
+] as const;
+
+const films = [
+  { label: "Un eveniment în mișcare", video: videos.nuntaRamada },
+  { label: "Luminile vorbesc", video: videos.showLumini },
+  { label: "Momentul special", video: videos.fumGreu },
+] as const;
+
+function Home() {
+  const [activeScene, setActiveScene] = useState(0);
+  const [activeService, setActiveService] = useState(0);
+  const [activeFilm, setActiveFilm] = useState(0);
+  const [showReel, setShowReel] = useState(false);
+  const scene = scenes[activeScene] ?? scenes[0]!;
+  const service = services[activeService] ?? services[0]!;
+
+  useEffect(() => {
+    if (!showReel) return;
+    const onEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowReel(false);
+    };
+    window.addEventListener("keydown", onEscape);
+    return () => window.removeEventListener("keydown", onEscape);
+  }, [showReel]);
 
   return (
-    <>
-      {/* HERO */}
-      <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden">
-        <div className="absolute inset-0 -z-10">
-          <img
-            src={images.scena.src}
-            alt={images.scena.alt}
-            width={images.scena.w}
-            height={images.scena.h}
-            fetchPriority="high"
-            className="size-full object-cover object-[50%_35%] md:object-center"
-          />
-          <div className="hero-fade absolute inset-0" />
-          <div className="side-fade absolute inset-0 opacity-90" />
+    <div className="gs12-site">
+      <section className="gs12-hero" aria-labelledby="gs12-hero-title">
+        <div className="gs12-hero__images" aria-hidden="true">
+          {scenes.map((item, i) => (
+            <img
+              key={item.index}
+              className={"gs12-hero__image " + (i === activeScene ? "is-active" : "")}
+              src={item.image.src}
+              width={item.image.w}
+              height={item.image.h}
+              alt=""
+              fetchPriority={i === 0 ? "high" : "auto"}
+            />
+          ))}
+          <div className="gs12-hero__grade" />
         </div>
-        <div className="container-site pb-16 pt-36 md:pb-24">
-          <p className="eyebrow animate-rise">
-            <span className="equalizer" aria-hidden><span /><span /><span /></span>
-            Pitești · evenimente din {business.founded}
-          </p>
-          <h1 className="display-xl mt-6 max-w-5xl animate-rise [animation-delay:80ms]">
-            Muzica, sunetul și luminile evenimentului tău.{" "}
-            <span className="serif-accent font-normal text-primary">De la aceeași echipă.</span>
-          </h1>
-          <p className="lead mt-7 max-w-xl text-foreground/80 animate-rise [animation-delay:160ms]">
-            DJ & MC, trupă live, sonorizare, lumini, ecrane LED și efecte speciale pentru nunți, botezuri, evenimente corporate și festivaluri.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3 animate-rise [animation-delay:240ms]">
-            <Button asChild variant="hero" size="xl">
-              <a href="#cerere-oferta">Cere ofertă pentru data ta</a>
-            </Button>
-            <Button asChild variant="stage" size="xl">
-              <a href={business.phoneHref}>
-                <Phone aria-hidden /> {business.phoneDisplay}
-              </a>
-            </Button>
+
+        <div className="gs12-hero__rail" aria-hidden="true">
+          <span>EST. 2008 / PITEȘTI, RO</span>
+          <span>SCROLL TO EXPLORE</span>
+        </div>
+
+        <div className="gs12-hero__body container-site">
+          <div className="gs12-hero__chapter">
+            <span className="gs12-signal" />
+            PRODUCTION · MUSIC · EXPERIENCE
+          </div>
+          <div className="gs12-hero__statement">
+            <p className="gs12-hero__pretitle">Nu organizăm doar evenimente.</p>
+            <h1 id="gs12-hero-title">
+              CREĂM<br />
+              <span>ATMOSFERĂ.</span>
+            </h1>
+            <div className="gs12-hero__under">
+              <p>
+                Sunetul potrivit. Lumina exact când trebuie. Oamenii care
+                transformă o seară într-o experiență.
+              </p>
+              <button
+                type="button"
+                className="gs12-reel-trigger"
+                onClick={() => setShowReel(true)}
+                aria-label="Deschide showreel Green Sound Music"
+              >
+                <span className="gs12-reel-trigger__circle"><Play size={21} fill="currentColor" aria-hidden="true" /></span>
+                <span>VEZI SHOWREEL <small>REAL FOOTAGE / GREEN SOUND</small></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="gs12-hero__bottom container-site">
+          <a href="#poveste" className="gs12-hero__explore">
+            <span>EXPLOREAZĂ EXPERIENȚA</span>
+            <ArrowDown size={20} aria-hidden="true" />
+          </a>
+          <div className="gs12-scenes" role="group" aria-label="Alege scena din deschidere">
+            {scenes.map((item, i) => (
+              <button
+                type="button"
+                key={item.index}
+                aria-pressed={activeScene === i}
+                className={"gs12-scenes__item " + (activeScene === i ? "is-active" : "")}
+                onClick={() => setActiveScene(i)}
+              >
+                <span className="gs12-scenes__count">{item.index}</span>
+                <img src={item.image.src} alt="" width={80} height={80} loading="lazy" />
+                <span className="gs12-scenes__name">{item.title}<small>{item.tag}</small></span>
+              </button>
+            ))}
+          </div>
+          <span className="gs12-hero__count">0{activeScene + 1} / 03</span>
+        </div>
+      </section>
+
+      <section className="gs12-bridge" aria-label="Serviciile Green Sound Music">
+        <div className="gs12-bridge__track" aria-hidden="true">
+          SOUND <span>✳</span> LIGHT <span>✳</span> LIVE <span>✳</span> FEELING <span>✳</span>
+          SOUND <span>✳</span> LIGHT <span>✳</span> LIVE <span>✳</span> FEELING <span>✳</span>
+        </div>
+      </section>
+
+      <section className="gs12-intent" id="poveste" aria-labelledby="gs12-intent-title">
+        <div className="container-site gs12-intent__layout">
+          <div className="gs12-overline"><span className="gs12-dot" /> 01 / CE FACEM</div>
+          <div className="gs12-intent__copy">
+            <p className="gs12-intent__small">DINCOLO DE SCENĂ</p>
+            <h2 id="gs12-intent-title">
+              Tehnologia dă ritmul.<br />
+              <em>Oamenii dau emoția.</em>
+            </h2>
+            <div className="gs12-intent__line">
+              <p>De la o petrecere privată la un concert în aer liber, construim experiența completă: muzică live, DJ, sunet, lumini, efecte și coordonare tehnică.</p>
+              <Link to="/despre-noi" className="gs12-round-action" aria-label="Descoperă echipa Green Sound">
+                <ArrowUpRight size={28} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* MARQUEE */}
-      <div aria-hidden className="overflow-hidden border-y border-border bg-ink py-5">
-        <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-display text-2xl font-semibold text-foreground/70">
-          {[...marquee, ...marquee].map((m, i) => (
-            <span key={i} className="flex items-center gap-10">
-              {m}
-              <span className="size-2 rounded-full bg-primary" />
-            </span>
+      <section className="gs12-expertise" aria-labelledby="gs12-expertise-title">
+        <div className="container-site">
+          <div className="gs12-section-head">
+            <div>
+              <p className="gs12-overline"><span className="gs12-dot" /> 02 / EXPERTIZA NOASTRĂ</p>
+              <h2 id="gs12-expertise-title">UN SINGUR PARTENER.<br /><em>TOATĂ ENERGIA.</em></h2>
+            </div>
+            <p>Producție de eveniment, cap-coadă. Alege o direcție și descoperă ce putem face împreună.</p>
+          </div>
+
+          <div className="gs12-expertise__layout">
+            <div className="gs12-expertise__list">
+              {services.map((item, i) => (
+                <Link
+                  to={"/" + item.slug}
+                  key={item.slug}
+                  className={"gs12-expertise__row " + (activeService === i ? "is-active" : "")}
+                  onMouseEnter={() => setActiveService(i)}
+                  onFocus={() => setActiveService(i)}
+                >
+                  <span className="gs12-expertise__index">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="gs12-expertise__name">{item.name}</span>
+                  <ArrowUpRight aria-hidden="true" size={20} />
+                </Link>
+              ))}
+              <Link to="/servicii" className="gs12-expertise__all">TOATE SERVICIILE <ArrowRight size={18} aria-hidden="true" /></Link>
+            </div>
+            <div className="gs12-expertise__frame">
+              <img key={service.image.src} src={service.image.src} alt={service.image.alt} width={service.image.w} height={service.image.h} loading="lazy" />
+              <div className="gs12-expertise__info">
+                <span>EXPERTISE / {String(activeService + 1).padStart(2, "0")}</span>
+                <p>{service.short}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="gs12-work" aria-labelledby="gs12-work-title">
+        <div className="container-site gs12-work__head">
+          <div>
+            <p className="gs12-overline"><span className="gs12-dot" /> 03 / ÎN LUMINA REFLECTOARELOR</p>
+            <h2 id="gs12-work-title">FIECARE MOMENT<br /><em>ARE O POVESTE.</em></h2>
+          </div>
+          <Link to="/portofoliu" className="gs12-plain-link">VEZI PORTOFOLIUL <ArrowUpRight size={17} aria-hidden="true" /></Link>
+        </div>
+        <div className="gs12-work__items">
+          {spotlights.map((item) => (
+            <Link to={item.destination} key={item.number} className="gs12-work__item">
+              <div className="gs12-work__visual">
+                <img src={item.image.src} alt={item.image.alt} width={item.image.w} height={item.image.h} loading="lazy" />
+                <span className="gs12-work__num">{item.number} / 03</span>
+                <span className="gs12-work__open"><ArrowUpRight size={26} aria-hidden="true" /></span>
+              </div>
+              <div className="gs12-work__caption">
+                <div>
+                  <span>{item.disciplines}</span>
+                  <h3>{item.name}</h3>
+                  <p>{item.tagline}</p>
+                </div>
+                <ArrowUpRight size={24} aria-hidden="true" />
+              </div>
+            </Link>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* EVENTS CHOOSER */}
-      <section aria-labelledby="ev-titlu" className="section">
-        <div className="container-site">
-          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <SectionHeading
-              eyebrow="Ce sărbătorești?"
-              title={<span id="ev-titlu">Alege evenimentul. <span className="serif-accent font-normal text-primary">Îți arătăm ce se potrivește.</span></span>}
-            />
-            <Link to="/evenimente" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-              Toate evenimentele <ArrowRight className="size-4" aria-hidden />
-            </Link>
+      <section className="gs12-film" aria-labelledby="gs12-film-title">
+        <div className="gs12-film__image" aria-hidden="true">
+          <img src={images.scena.src} alt="" width={images.scena.w} height={images.scena.h} loading="lazy" />
+        </div>
+        <div className="container-site gs12-film__content">
+          <p className="gs12-overline"><span className="gs12-dot" /> 04 / ÎN MIȘCARE</p>
+          <h2 id="gs12-film-title">NU DOAR VEZI.<br /><em>SIMȚI.</em></h2>
+          <p>Imaginile adevărate spun cel mai bine povestea. Vezi fragmente din evenimente și spectacole Green Sound Music.</p>
+          <div className="gs12-film__actions">
+            <button type="button" onClick={() => setShowReel(true)} className="gs12-film__play">
+              <Play fill="currentColor" size={25} aria-hidden="true" /> VEZI VIDEO
+            </button>
+            <span>REAL EVENTS / REAL MOMENTS</span>
           </div>
-          <ul className="mt-14 grid gap-4 md:grid-cols-6">
-            {events.map((e, i) => (
-              <li key={e.slug} className={i < 2 ? "md:col-span-3" : "md:col-span-2"}>
-                <Link
-                  to="/evenimente/$slug"
-                  params={{ slug: e.slug }}
-                  className="group relative flex h-72 flex-col justify-end overflow-hidden rounded-2xl border border-border p-7 md:h-96"
-                >
-                  <img src={e.image.src} alt="" width={e.image.w} height={e.image.h} loading="lazy" decoding="async" className="absolute inset-0 -z-10 size-full object-cover opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:opacity-80" />
-                  <span className="hero-fade absolute inset-0 -z-10" />
-                  <span className="flex items-end justify-between gap-4">
-                    <span>
-                      <span className="block font-display text-3xl font-bold">{e.name}</span>
-                      <span className="mt-2 block max-w-sm text-sm text-foreground/75">{e.short}</span>
-                    </span>
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full border border-foreground/30 transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-                      <ArrowUpRight className="size-5" aria-hidden />
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-muted-foreground">
-            Nu știi încă de ce ai nevoie?{" "}
-            <a href="#cerere-oferta" className="font-semibold text-foreground underline decoration-primary underline-offset-4">
-              Spune-ne data și locația — îți propunem noi combinația.
-            </a>
-          </p>
         </div>
       </section>
 
-      {/* SERVICES — editorial index */}
-      <section aria-labelledby="serv-titlu" className="section surface-paper">
+      <section className="gs12-occasions" aria-labelledby="gs12-occasions-title">
         <div className="container-site">
-          <SectionHeading
-            eyebrow="Servicii"
-            title={<span id="serv-titlu">Tot ce se aude și se vede <span className="serif-accent font-normal">la un eveniment.</span></span>}
-            intro="Fiecare serviciu se poate rezerva separat. Împreună, înseamnă un singur interlocutor pentru tot ce ține de muzică și tehnică."
-          />
-          <ol className="mt-16 border-t border-paper-border">
-            {featured.map((s, i) => (
-              <li key={s.slug}>
-                <Link
-                  to={`/${s.slug}`}
-                  className="group grid items-center gap-5 border-b border-paper-border py-8 md:grid-cols-[5rem_1.1fr_1fr_8rem] md:gap-10"
-                >
-                  <span className="serif-accent text-3xl text-paper-muted">0{i + 1}</span>
-                  <span className="font-display text-3xl font-bold tracking-tight transition-transform duration-300 group-hover:translate-x-2 md:text-4xl">
-                    {s.name}
-                  </span>
-                  <span className="text-paper-muted">{s.short}</span>
-                  <span className="relative hidden h-20 overflow-hidden rounded-lg md:block">
-                    <img src={s.image.src} alt="" width={s.image.w} height={s.image.h} loading="lazy" decoding="async" className="size-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0" />
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-          <div className="mt-10 flex flex-wrap gap-3">
-            {more.map((s) => (
-              <Link key={s.slug} to={`/${s.slug}`} className="rounded-full border border-paper-foreground/25 px-5 py-2.5 text-sm font-medium transition-colors hover:bg-paper-foreground hover:text-paper">
-                {s.name}
+          <div className="gs12-occasions__heading">
+            <div>
+              <p className="gs12-overline"><span className="gs12-dot" /> 05 / EVENIMENTE</p>
+              <h2 id="gs12-occasions-title">ORICE OCAZIE.<br /><em>ENERGIA POTRIVITĂ.</em></h2>
+            </div>
+            <p>Concerte, nunți, botezuri, corporate și petreceri private. Fiecare eveniment are propria lui scenă.</p>
+          </div>
+          <div className="gs12-occasions__grid">
+            {events.map((event, i) => (
+              <Link to="/evenimente/$slug" params={{ slug: event.slug }} key={event.slug} className={"gs12-occasion gs12-occasion--" + i}>
+                <div className="gs12-occasion__image">
+                  <img src={event.image.src} width={event.image.w} height={event.image.h} alt={event.image.alt} loading="lazy" />
+                </div>
+                <div className="gs12-occasion__footer">
+                  <span>0{i + 1} / {event.name}</span>
+                  <ArrowUpRight size={22} aria-hidden="true" />
+                </div>
               </Link>
             ))}
-            <Link to="/servicii" className="inline-flex items-center gap-2 px-3 py-2.5 text-sm font-semibold">
-              Toate serviciile <ArrowRight className="size-4" aria-hidden />
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* SHOWREEL */}
-      <section aria-labelledby="video-titlu" className="section surface-stage">
-        <div className="container-site">
-          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-            <SectionHeading
-              eyebrow="Video"
-              title={<span id="video-titlu">Vezi și auzi <span className="serif-accent font-normal text-primary">înainte să rezervi.</span></span>}
-              intro="Filmări reale de la evenimentele și producțiile noastre. Videoclipurile pornesc doar când apeși play."
-            />
-            <Link to="/portofoliu" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
-              Tot portofoliul <ArrowRight className="size-4" aria-hidden />
-            </Link>
-          </div>
-          <div className="mt-14 grid gap-8 lg:grid-cols-[1.4fr_1fr]">
-            <VideoLite video={videos.nuntaRamada} />
-            <div className="grid gap-8">
-              <VideoLite video={videos.showLumini} />
-              <VideoLite video={videos.fumGreu} />
-            </div>
+      <section className="gs12-statement" aria-labelledby="gs12-statement-title">
+        <div className="container-site gs12-statement__inner">
+          <div className="gs12-overline"><span className="gs12-dot" /> DIN PITEȘTI / ÎN MIȘCARE DIN {business.founded}</div>
+          <h2 id="gs12-statement-title">WE MAKE<br /><span>IT FEEL</span><br />ALIVE<span className="gs12-statement__period">.</span></h2>
+          <div className="gs12-statement__last">
+            <p>De {new Date().getFullYear() - business.founded} ani construim atmosfera, de la primele pregătiri până la ultimul bis.</p>
+            <Link to="/contact" className="gs12-statement__link">HAI SĂ DISCUTĂM <ArrowUpRight size={30} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
 
-      {/* WHY — facts only */}
-      <section aria-labelledby="de-ce-titlu" className="section border-t border-border">
-        <div className="container-site grid gap-16 lg:grid-cols-2">
-          <div className="relative">
-            <img src={images.dj.src} alt={images.dj.alt} width={images.dj.w} height={images.dj.h} loading="lazy" decoding="async" className="aspect-[4/5] w-full rounded-2xl object-cover shadow-card" />
-            <div className="absolute -bottom-6 right-6 rounded-2xl bg-primary p-6 text-primary-foreground md:-right-6">
-              <p className="font-display text-5xl font-bold leading-none">{yearsActive}+</p>
-              <p className="mt-1 text-sm font-medium">ani de evenimente, din {business.founded}</p>
-            </div>
+      <section className="gs12-faq" aria-labelledby="gs12-faq-title">
+        <div className="container-site gs12-faq__layout">
+          <div>
+            <p className="gs12-overline"><span className="gs12-dot" /> 06 / ÎNAINTE DE EVENIMENT</p>
+            <h2 id="gs12-faq-title">CÂTEVA<br /><em>RĂSPUNSURI.</em></h2>
           </div>
-          <div className="lg:pt-10">
-            <SectionHeading
-              eyebrow="De ce Green Sound"
-              title={<span id="de-ce-titlu">Mai puțini furnizori de coordonat. <span className="serif-accent font-normal text-primary">Mai multă liniște în ziua evenimentului.</span></span>}
-            />
-            <dl className="mt-12 grid gap-8 sm:grid-cols-2">
-              {[
-                { t: "O singură echipă", d: "Artiști, sunet, lumini și efecte de la același furnizor, cu un singur plan pentru seară." },
-                { t: "Tehnică proprie", d: "Sisteme audio TW Audio, DYNACORD, FBT, lumini LS și moving head-uri BEAM și WASH." },
-                { t: "Sunet mixat live", d: "La trupa live, un inginer de sunet echilibrează mixul pe tot parcursul evenimentului." },
-                { t: "Muzicieni full-time", d: "Soliști și instrumentiști cu experiență în emisiuni TV, radio, concursuri și turnee." },
-              ].map((x) => (
-                <div key={x.t} className="border-t border-border pt-5">
-                  <dt className="font-display text-xl font-semibold">{x.t}</dt>
-                  <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{x.d}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </section>
-
-      {/* PEOPLE */}
-      <section aria-labelledby="echipa-titlu" className="section pt-12">
-        <div className="container-site">
-          <p className="eyebrow">Oamenii din spatele scenei</p>
-          <h2 id="echipa-titlu" className="sr-only">Echipa</h2>
-          <ul className="mt-8 grid border-t border-border sm:grid-cols-2 lg:grid-cols-4">
-            {people.map((p) => (
-              <li key={p.name} className="border-b border-border py-7 sm:pr-6 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
-                <p className="font-display text-2xl font-bold">{p.name}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{p.role}</p>
-              </li>
-            ))}
-          </ul>
-          <Link to="/despre-noi" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-            Povestea Green Sound Music <ArrowRight className="size-4" aria-hidden />
-          </Link>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section aria-labelledby="proces-titlu" className="section surface-paper">
-        <div className="container-site">
-          <SectionHeading eyebrow="Cum lucrăm" title={<span id="proces-titlu">De la primul mesaj <span className="serif-accent font-normal">la ultimul dans.</span></span>} />
-          <div className="mt-14">
-            <ProcessSteps />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section aria-labelledby="faq-titlu" className="section">
-        <div className="container-site grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <SectionHeading eyebrow="Întrebări frecvente" title={<span id="faq-titlu">Răspunsuri rapide</span>} />
           <FaqList faqs={generalFaqs} />
         </div>
       </section>
+      <QuoteSection title="Următorul moment memorabil începe aici." intro="Spune-ne ce pregătești, când și unde. Cererea se deschide în WhatsApp sau email, de unde o poți trimite." />
 
-      <QuoteSection />
-    </>
+      {showReel && (
+        <div className="gs12-modal" role="presentation" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setShowReel(false);
+        }}>
+          <div className="gs12-modal__panel" role="dialog" aria-modal="true" aria-label="Showreel Green Sound Music">
+            <div className="gs12-modal__top">
+              <span>GREEN SOUND / SELECTED FOOTAGE</span>
+              <button type="button" onClick={() => setShowReel(false)} aria-label="Închide video"><X size={26} aria-hidden="true" /></button>
+            </div>
+            <div className="gs12-modal__tabs" role="group" aria-label="Selectează clipul">
+              {films.map((film, i) => (
+                <button
+                  type="button"
+                  key={film.video.id}
+                  className={i === activeFilm ? "is-active" : ""}
+                  aria-pressed={i === activeFilm}
+                  onClick={() => setActiveFilm(i)}
+                >{String(i + 1).padStart(2, "0")} / {film.label}</button>
+              ))}
+            </div>
+            <VideoLite key={films[activeFilm]!.video.id} video={films[activeFilm]!.video} className="gs12-modal__video" />
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

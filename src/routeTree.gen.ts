@@ -10,6 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DespreNoiRouteImport } from './routes/despre-noi'
+import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
 import { Route as DjMcRouteImport } from './routes/dj-mc'
 import { Route as EchipamenteDeSunetSiLuminiRouteImport } from './routes/echipamente-de-sunet-si-lumini'
 import { Route as HostessRouteImport } from './routes/hostess'
@@ -26,6 +29,21 @@ import { Route as EvenimenteSlugRouteImport } from './routes/evenimente.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DespreNoiRoute = DespreNoiRouteImport.update({
+  id: '/despre-noi',
+  path: '/despre-noi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
+  id: '/confidentialitate',
+  path: '/confidentialitate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DjMcRoute = DjMcRouteImport.update({
@@ -93,6 +111,9 @@ const EvenimenteSlugRoute = EvenimenteSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
   '/hostess': typeof HostessRoute
@@ -108,6 +129,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
   '/hostess': typeof HostessRoute
@@ -123,6 +147,9 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/contact': typeof ContactRoute
+  '/despre-noi': typeof DespreNoiRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/': typeof IndexRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
@@ -141,6 +168,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/confidentialitate'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -156,6 +186,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/confidentialitate'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -171,6 +204,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/contact'
+    | '/despre-noi'
+    | '/confidentialitate'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -186,6 +222,9 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  ContactRoute: typeof ContactRoute
+  DespreNoiRoute: typeof DespreNoiRoute
+  ConfidentialitateRoute: typeof ConfidentialitateRoute
   IndexRoute: typeof IndexRoute
   DjMcRoute: typeof DjMcRoute
   EchipamenteDeSunetSiLuminiRoute: typeof EchipamenteDeSunetSiLuminiRoute
@@ -203,6 +242,27 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despre-noi': {
+      id: '/despre-noi'
+      path: '/despre-noi'
+      fullPath: '/despre-noi'
+      preLoaderRoute: typeof DespreNoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialitate': {
+      id: '/confidentialitate'
+      path: '/confidentialitate'
+      fullPath: '/confidentialitate'
+      preLoaderRoute: typeof ConfidentialitateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -299,6 +359,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  DespreNoiRoute: DespreNoiRoute,
+  ConfidentialitateRoute: ConfidentialitateRoute,
   DjMcRoute: DjMcRoute,
   EchipamenteDeSunetSiLuminiRoute: EchipamenteDeSunetSiLuminiRoute,
   HostessRoute: HostessRoute,
