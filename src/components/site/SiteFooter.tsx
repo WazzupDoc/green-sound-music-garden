@@ -1,91 +1,50 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
 import { business, navEvents, navServices } from "@/data/site";
 import { Logo } from "./Logo";
 
 export function SiteFooter() {
-  const year = new Date().getFullYear();
   return (
-    <footer className="grain border-t border-border bg-ink pb-24 sm:pb-0">
-      <div className="container-site overflow-hidden py-16">
-        <p aria-hidden className="display-xl select-none whitespace-nowrap text-foreground/[0.06]">
-          Culoarea petrecerii tale
-        </p>
-      </div>
-      <div className="container-site grid gap-12 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="space-y-6">
-          <Logo />
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Muzică, sunet, lumini și efecte pentru evenimente. Firmă din Pitești, activă din {business.founded}.
-          </p>
-          <address className="space-y-1 text-sm not-italic text-foreground/85">
-            <p>
-              {business.address.street}, {business.address.city} {business.address.postalCode}, jud. {business.address.region}
-            </p>
-            <p>
-              <a href={business.phoneHref} className="link-underline font-semibold">
-                {business.phoneDisplay}
-              </a>
-            </p>
-            <p>
-              <a href={`mailto:${business.email}`} className="link-underline">
-                {business.email}
-              </a>
-            </p>
-          </address>
+    <footer className="gs12-footer">
+      <div className="container-site">
+        <div className="gs12-footer__top">
+          <div className="gs12-footer__intro">
+            <span className="gs12-footer__label">GREEN SOUND MUSIC / LET'S CREATE</span>
+            <h2>AI UN EVENIMENT?<br /><em>HAI SĂ-I DĂM VIAȚĂ.</em></h2>
+          </div>
+          <Link to="/contact" className="gs12-footer__cta">
+            ÎNCEPE O CONVERSAȚIE <ArrowUpRight size={27} aria-hidden="true" />
+          </Link>
         </div>
-        <div>
-          <h2 className="eyebrow mb-5">Evenimente</h2>
-          <ul className="space-y-2.5 text-sm">
-            {navEvents.map((it) => (
-              <li key={it.to}>
-                <Link to={it.to} className="link-underline text-foreground/80 hover:text-foreground">
-                  {it.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="gs12-footer__grid">
+          <div>
+            <Logo />
+            <p>DJ & MC, muzică live, sunet, lumini și experiențe de eveniment. Din Pitești, din {business.founded}.</p>
+            <p>{business.address.street}<br />{business.address.city}, jud. {business.address.region}, România</p>
+            <a href={business.phoneHref}>{business.phoneDisplay}</a>
+            <a href={"mailto:" + business.email}>{business.email}</a>
+          </div>
+          <div>
+            <h3>EXPERIENȚE</h3>
+            {navEvents.map(item => <Link to={item.to} key={item.to}>{item.label}</Link>)}
+          </div>
+          <div>
+            <h3>EXPERTIZĂ</h3>
+            {navServices.map(item => <Link to={item.to} key={item.to}>{item.label}</Link>)}
+          </div>
+          <div>
+            <h3>GREEN SOUND</h3>
+            <Link to="/despre-noi">Despre noi</Link>
+            <Link to="/portofoliu">Portofoliu</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/confidentialitate">Confidențialitate</Link>
+            <h3 className="mt-8">SOCIAL</h3>
+            {business.socials.map(item => <a href={item.href} target="_blank" rel="noopener noreferrer" key={item.href}>{item.label}</a>)}
+          </div>
         </div>
-        <div>
-          <h2 className="eyebrow mb-5">Servicii</h2>
-          <ul className="space-y-2.5 text-sm">
-            {navServices.map((it) => (
-              <li key={it.to}>
-                <Link to={it.to} className="link-underline text-foreground/80 hover:text-foreground">
-                  {it.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="eyebrow mb-5">Green Sound</h2>
-          <ul className="space-y-2.5 text-sm">
-            <li><Link to="/portofoliu" className="link-underline text-foreground/80 hover:text-foreground">Portofoliu</Link></li>
-            <li><Link to="/despre-noi" className="link-underline text-foreground/80 hover:text-foreground">Despre noi</Link></li>
-            <li><Link to="/contact" className="link-underline text-foreground/80 hover:text-foreground">Contact & ofertă</Link></li>
-            <li><Link to="/confidentialitate" className="link-underline text-foreground/80 hover:text-foreground">Confidențialitate</Link></li>
-          </ul>
-          <h2 className="eyebrow mb-4 mt-8">Urmărește-ne</h2>
-          <ul className="flex flex-wrap gap-2">
-            {business.socials.map((s) => (
-              <li key={s.href}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-full border border-border px-3 py-1.5 text-xs text-foreground/80 transition-colors hover:border-primary hover:text-primary"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="container-site flex flex-col gap-2 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
-          <p>© {year} Green Sound Music. Toate drepturile rezervate.</p>
-          <p className="serif-accent text-sm text-primary">{business.tagline}</p>
+        <div className="gs12-footer__bottom">
+          <p>© {new Date().getFullYear()} GREEN SOUND MUSIC. TOATE DREPTURILE REZERVATE.</p>
+          <p>BUILT FOR THE MOMENTS THAT MATTER.</p>
         </div>
       </div>
     </footer>
