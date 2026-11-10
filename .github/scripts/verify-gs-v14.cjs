@@ -52,6 +52,8 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     assert.equal(await page.locator("dialog").evaluate(el=>el.open),false);
     const mobile=await browser.newPage({viewport:{width:390,height:844}});
     await mobile.goto(origin,{waitUntil:"domcontentloaded"});
+    await mobile.locator("#showreel").scrollIntoViewIfNeeded();
+    await mobile.screenshot({path:"screenshots/home-showreel-mobile.png"});
     assert.equal(await mobile.locator(".topbar__menu").getAttribute("aria-expanded"),"false");
     await mobile.locator(".topbar__menu").click();
     assert.equal(await mobile.locator(".topbar__menu").getAttribute("aria-expanded"),"true");
