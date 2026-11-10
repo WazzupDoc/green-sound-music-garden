@@ -53,7 +53,11 @@ export type ImageRef = (typeof images)[keyof typeof images];
 /* Real videos published by Green Sound Music                           */
 /* ------------------------------------------------------------------ */
 
-export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number };
+export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number; noHdThumb?: boolean };
+
+/** YouTube poster; maxres exists for every video except the ones flagged noHdThumb. */
+export const ytThumb = (v: Video, size: "hd" | "sd" = "hd") =>
+  `https://i.ytimg.com/vi/${v.id}/${size === "hd" && !v.noHdThumb ? "maxresdefault" : "hqdefault"}.jpg`;
 
 export const videos = {
   nuntaRamada: {
@@ -74,6 +78,7 @@ export const videos = {
     title: "Lansarea single-ului „Muzica ne leagă” la Neatza cu Răzvan și Dani",
     caption: "Green Sound Music, alături de Bogdan și Mugurel, la TV",
     tags: ["trupa", "studio"],
+    noHdThumb: true,
   },
   muzicaNeLeaga: {
     id: "xN0J8_3GlgY",
@@ -640,6 +645,72 @@ export const process = [
   { title: "Stabilim combinația", text: "Îți propunem serviciile potrivite și răspundem la întrebări." },
   { title: "Primești oferta", text: "O ofertă personalizată pentru data și locația ta." },
   { title: "Ziua evenimentului", text: "Montaj, probe de sunet și o echipă prezentă la ora stabilită." },
+];
+
+/* ------------------------------------------------------------------ */
+/* Media library — every item is real Green Sound material             */
+/* ------------------------------------------------------------------ */
+
+export type MediaItem = {
+  key: string;
+  kind: "video" | "photo";
+  title: string;
+  caption: string;
+  tags: string[];
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  video?: Video;
+};
+
+export const videoItem = (v: Video): MediaItem => ({
+  key: `v-${v.id}`,
+  kind: "video",
+  title: v.title,
+  caption: v.caption,
+  tags: v.tags,
+  src: ytThumb(v),
+  w: 1280,
+  h: 720,
+  alt: "",
+  video: v,
+});
+
+export const photoItem = (img: ImageRef, title: string, tags: string[]): MediaItem => ({
+  key: `p-${img.src}`,
+  kind: "photo",
+  title,
+  caption: img.alt,
+  tags,
+  src: img.src,
+  w: img.w,
+  h: img.h,
+  alt: img.alt,
+});
+
+export const mediaLibrary: MediaItem[] = [
+  videoItem(videos.nuntaRamada),
+  photoItem(images.scena, "Scenă de concert, lasere și moving head-uri", ["sonorizare"]),
+  videoItem(videos.showLumini),
+  photoItem(images.dj, "DJ Green Sound și MC Dana", ["dj-mc"]),
+  videoItem(videos.fumGreu),
+  photoItem(images.concert, "Concert în aer liber", ["sonorizare"]),
+  videoItem(videos.neatza),
+  photoItem(images.hostess, "Hostess Green Sound", ["copii-hostess"]),
+  videoItem(videos.muzicaNeLeaga),
+  photoItem(images.ursitoare2, "Ursitoare la botez", ["copii-hostess"]),
+  videoItem(videos.secretOfMyLife),
+  photoItem(images.copii, "Animație pentru copii", ["copii-hostess"]),
+];
+
+/** Technical rider — gear and capabilities stated on greensoundmusic.com. */
+export const rider = [
+  { area: "Sunet", items: ["Sisteme PA TW Audio", "DYNACORD", "FBT", "Echipamente pentru DJ și trupe live"] },
+  { area: "Lumini", items: ["Echipamente LS", "Schele de lumini", "Moving head BEAM și WASH", "Lumini LED și efecte"] },
+  { area: "Ecrane", items: ["Ecrane LED de diverse dimensiuni", "Interior și exterior"] },
+  { area: "Efecte", items: ["Fum greu cu gheață carbonică", "Baloane cu fum", "Lumini arhitecturale pentru fum"] },
+  { area: "Operare", items: ["Montaj, probe de sunet și operare de echipa noastră", "Echipamente verificate înainte de fiecare eveniment"] },
 ];
 
 export const navEvents = events.map((e) => ({ to: `/evenimente/${e.slug}`, label: e.name }));
