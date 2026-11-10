@@ -72,6 +72,10 @@ jobs:
           for page in index servicii evenimente portofoliu studio contact; do
             curl --fail "http://127.0.0.1:4173/greensound-prototype/$page.html" >/dev/null
           done
+      - name: Browser interaction tests (real Chromium)
+        run: |
+          npm install --prefix /tmp/gs-playwright playwright@1.56.1 --no-audit --no-fund
+          NODE_PATH=/tmp/gs-playwright/node_modules node .github/scripts/verify-gs-v14.cjs
       - name: Take browser screenshots of homepage and inner pages
         run: |
           mkdir -p screenshots
