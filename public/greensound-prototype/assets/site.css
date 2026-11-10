@@ -21,3 +21,17 @@
 @media(max-width:650px){.container{width:calc(100% - 36px)}.brand__wordmark{font-size:19px}.brand__wordmark span:last-child{font-size:12px}.hero{min-height:710px;height:100svh;max-height:880px}.hero__inside{padding-top:115px;padding-bottom:185px}.hero h1{font-size:clamp(65px,15vw,105px)}.hero__lead{font-size:13px;line-height:1.65;margin-top:17px}.hero__preline{font-size:9px;letter-spacing:.11em;margin-bottom:20px}.hero__buttons{gap:9px;margin-top:22px}.hero__buttons .btn{min-height:48px;padding:12px 17px;font-size:10px}.hero__bottom-inner{align-items:start;flex-direction:column;justify-content:center;gap:12px;padding:12px 0;min-height:145px}.moods__label{width:100%;margin-bottom:3px}.mood{font-size:9px;padding:9px 10px}.hero__hint{font-size:9px}.hero--sub{min-height:480px;height:510px}.hero--sub .hero__inside{padding-bottom:65px}.hero--sub h1{font-size:clamp(66px,14vw,96px)}.section{padding:75px 0}.section-heading{display:block}.section-heading h2{font-size:clamp(52px,12vw,83px)}.section-heading p{margin-top:22px}.cards,.event-grid,.gallery,.video-grid{grid-template-columns:1fr}.cards .card:last-child:nth-child(odd){grid-column:auto}.card{min-height:390px}.service-card{min-height:275px;grid-template-columns:41% 1fr}.service-card__body{padding:21px 16px}.service-card h2{font-size:32px;margin:14px 0 8px}.service-card p{font-size:11px}.service-card .section-link{font-size:9px}.event-card{height:370px}.gallery__item,.gallery__item:nth-child(1),.gallery__item:nth-child(7){min-height:320px;grid-row:auto}.gallery__item:nth-child(1){min-height:460px}.video-grid{gap:14px}.studio-feature__visual{min-height:310px}.studio-feature h2{font-size:69px}.studio-points{gap:10px}.split-callout{display:block;padding:34px 24px}.split-callout .btn{margin-top:30px}.split-callout h2{font-size:62px}.footer__top{display:block}.footer__top h2{font-size:78px}.footer__top .btn{margin-top:26px}.footer__grid{grid-template-columns:1fr 1fr}.footer__grid>div:first-child{grid-column:1/-1}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
 @media(max-width:390px){.hero h1{font-size:61px}.hero__buttons .btn{font-size:9px;padding:12px}.brand img{height:39px;width:39px}.brand__wordmark{font-size:17px}.mood{font-size:8px}.service-card{grid-template-columns:37% 1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal[data-inview=false]{opacity:1;transform:none}}
+
+/* V14 screenshot review: keep the opening kicker below the fixed navigation,
+   and use the visual breathing space on small displays for stage equipment. */
+@media(min-width:991px){
+  .hero:not(.hero--sub) .hero__inside{padding-bottom:clamp(115px,10vw,145px)}
+  .hero:not(.hero--sub) h1{font-size:clamp(78px,10.2vw,150px)}
+}
+@media(max-width:650px){
+  .hero:not(.hero--sub) .hero__speaker{display:block;top:121px;bottom:auto;right:7%;width:72px;opacity:.65}
+  .hero:not(.hero--sub) .hero__soundbar{display:flex;top:180px;bottom:auto;right:30%;height:39px;gap:4px;opacity:.68}
+  .hero:not(.hero--sub) .hero__soundbar span{width:4px}
+  .hero:not(.hero--sub) .hero__note{display:block;top:138px;right:43%;opacity:.68}
+  .hero:not(.hero--sub) .hero__note svg{width:26px;height:26px}
+}
