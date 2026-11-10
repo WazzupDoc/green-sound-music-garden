@@ -10,6 +10,12 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     assert.equal(await page.locator(".gs-curation").count(),1);
     assert.equal(await page.locator(".hero--v17 .hero-v17__pointer-light").count(),1);
     assert.equal(await page.locator(".gs-curation .cards .card").count(),3);
+    const editorialArrow=await page.locator(".gs-curation .card__more svg").first().boundingBox();
+    assert.ok(editorialArrow&&editorialArrow.width<=24&&editorialArrow.height<=24,
+      "Curation card arrow must be a small SVG icon, not giant default-size artwork");
+    const editorialTitleColor=await page.locator(".gs-curation .card h3").first().evaluate(el=>getComputedStyle(el).color);
+    assert.equal(editorialTitleColor,"rgb(255, 255, 255)","Editorial photo card text needs white contrast");
+
     assert.equal(await page.locator(".gs-strip__item").count(),4);
     assert.equal(await page.locator(".hero-v16__visual").count(),1);
     assert.equal(await page.locator("h1").count(),1);
