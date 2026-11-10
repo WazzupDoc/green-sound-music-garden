@@ -37,9 +37,19 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     await page.waitForURL(/servicii\.html$/);
     assert.match(await page.locator("h1").innerText(),/TOT SHOW-UL/);
     assert.equal(await page.locator(".service-card").count(),8);
+    assert.equal(await page.locator(".service-card__img .gs-service-play").count(),4);
+    await page.locator(".service-card__img .gs-service-play").first().click();
+    assert.equal(await page.locator("#video-dialog").evaluate(el=>el.open),true);
+    await page.locator("[data-close-video]").click();
+
     await page.locator('.topnav a[href="evenimente.html"]').click();
     await page.waitForURL(/evenimente\.html$/);
     assert.equal(await page.locator(".event-card").count(),6);
+    assert.equal(await page.locator(".event-card>.gs-service-play").count(),2);
+    await page.locator(".event-card>.gs-service-play").first().click();
+    assert.equal(await page.locator("#video-dialog").evaluate(el=>el.open),true);
+    await page.locator("[data-close-video]").click();
+
     await page.locator('.event-card a[href*="tip=Nunt"]').first().click();
     await page.waitForURL(/contact\.html/);
     assert.equal(await page.locator('[name="eventType"]').inputValue(),"Nuntă");
@@ -54,6 +64,8 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     assert.equal(await page.locator("dialog").evaluate(el=>el.open),false);
     const mobile=await browser.newPage({viewport:{width:390,height:844}});
     await mobile.goto(origin,{waitUntil:"domcontentloaded"});
+    const size=await mobile.evaluate(()=>({content:document.documentElement.scrollWidth,viewport:innerWidth}));
+    assert.ok(size.content <= size.viewport+2, "Unexpected horizontal mobile overflow: "+JSON.stringify(size));
     await mobile.locator("#showreel").scrollIntoViewIfNeeded();
     await mobile.screenshot({path:"screenshots/home-showreel-mobile.png"});
     assert.equal(await mobile.locator(".topbar__menu").getAttribute("aria-expanded"),"false");
@@ -62,7 +74,7 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     await mobile.locator('.mobile-nav a[href="evenimente.html"]').click();
     await mobile.waitForURL(/evenimente\.html$/);
     assert.equal(await mobile.locator("h1").count(),1);
-    console.log("PASS: stage presets, lighting toggle, three unique visual cards, homepage event showreel & video switcher, page links, services, events, portfolio filters, responsive navigation");
+    console.log("PASS: stage presets, lighting toggle, three unique visual cards, homepage event showreel & video switcher, page links, services, events, portfolio filters, responsive navigation and zero mobile overflow");
     await mobile.close();
     await page.close();
   } finally { await browser.close(); }
