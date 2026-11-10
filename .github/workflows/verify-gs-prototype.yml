@@ -1,4 +1,4 @@
-name: Verify Green Sound Sillage prototype
+name: Verify Green Sound multipage prototype
 
 on:
   push:
@@ -21,43 +21,69 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Validate licensed template adaption and custom script syntax
+      - name: Validate 6 pages, navigation, functional controls and JS
         run: |
           python3 - <<'PY'
-          import re
           from pathlib import Path
-          h = Path("public/greensound-prototype/index.html").read_text()
-          assert h.count('class="works__card"') == 8, "Expected 8 cards for original animation"
-          assert h.count('class="crew__card"') == 6, "Expected 6 cards for original animation"
-          assert h.count('class="method__frame"') == 4, "Expected 4 stage frames"
-          assert 'Green Sound Music' in h and 'Sillage' not in h
-          assert 'data-8b-placeholder' not in h and 'images.unsplash.com' not in h
-          assert '<dialog' in h and 'gs-lights-button' in h
-          assert Path("public/greensound-prototype/LICENSE-8B.txt").exists()
-          js = re.search(r'<script id="gs-ui">([\s\S]*?)</script>',h)
-          assert js is not None
-          Path("/tmp/gs-ux.js").write_text(js.group(1))
-          print("Verified template structure, branding, demo data removal, license and controls")
+          from html.parser import HTMLParser
+          base=Path("public/greensound-prototype")
+          filenames=["index.html","servicii.html","evenimente.html","portofoliu.html","studio.html","contact.html"]
+          class Page(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links=[]
+                  self.h1=0
+              def handle_starttag(self,tag,attrs):
+                  a=dict(attrs)
+                  if tag=="a":self.links.append(a.get("href",""))
+                  if tag=="h1":self.h1+=1
+          for filename in filenames:
+              p=base / filename
+              assert p.exists(), filename
+              s=p.read_text()
+              assert "GSMUSIC" not in s,filename
+              assert 'src="assets/site.js"' in s and 'href="assets/site.css"' in s, filename
+              assert '<meta name="robots" content="noindex,nofollow">' in s,filename
+              doc=Page();doc.feed(s)
+              assert doc.h1==1,(filename,doc.h1)
+              for name in filenames:
+                  assert name in doc.links,(filename,name)
+              for href in doc.links:
+                  link=href.split("#")[0].split("?")[0]
+                  if link.endswith(".html"):
+                      assert (base / link).exists(),(filename,href)
+          assert "data-mood" in (base/"index.html").read_text()
+          assert "data-gs-scene" not in (base/"index.html").read_text()
+          assert (base/"index.html").read_text().count('class="mood"') == 3
+          assert "id=\"offer-form\"" in (base/"contact.html").read_text()
+          assert (base/"LICENSE-8B.txt").exists()
+          print("All six standalone pages, navigation, HTML headings, controls and licensed attribution verified")
           PY
-          node --check /tmp/gs-ux.js
-      - name: Install chromium
+          node --check public/greensound-prototype/assets/site.js
+      - name: Install chromium for real browser screenshots
         run: npx --yes playwright@1.56.1 install --with-deps chromium
-      - name: Serve the actual standalone prototype
+      - name: Serve standalone prototype on port 4173
         run: |
           (python3 -m http.server 4173 --bind 127.0.0.1 --directory public >/tmp/gs-http.log 2>&1 &)
-          for i in $(seq 1 30); do
+          for i in $(seq 1 35); do
             if curl --silent --fail http://127.0.0.1:4173/greensound-prototype/index.html >/dev/null; then break; fi
             sleep 1
           done
-          curl --fail http://127.0.0.1:4173/greensound-prototype/index.html >/dev/null
-      - name: Take actual desktop and mobile snapshots
+          for page in index servicii evenimente portofoliu studio contact; do
+            curl --fail "http://127.0.0.1:4173/greensound-prototype/$page.html" >/dev/null
+          done
+      - name: Take browser screenshots of homepage and inner pages
         run: |
           mkdir -p screenshots
-          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=2500 http://127.0.0.1:4173/greensound-prototype/index.html screenshots/green-sound-desktop.png
-          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="390,844" --wait-for-timeout=2500 http://127.0.0.1:4173/greensound-prototype/index.html screenshots/green-sound-mobile.png
-      - uses: actions/upload-artifact@v4
+          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=2000 http://127.0.0.1:4173/greensound-prototype/index.html screenshots/home-desktop.png
+          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="390,844" --wait-for-timeout=2000 http://127.0.0.1:4173/greensound-prototype/index.html screenshots/home-mobile.png
+          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=1200 http://127.0.0.1:4173/greensound-prototype/servicii.html screenshots/servicii-desktop.png
+          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=1200 http://127.0.0.1:4173/greensound-prototype/evenimente.html screenshots/evenimente-desktop.png
+          npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="390,844" --wait-for-timeout=1200 http://127.0.0.1:4173/greensound-prototype/contact.html screenshots/contact-mobile.png
+      - name: Upload browser captures
+        uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: green-sound-sillage-browser-screenshots
+          name: green-sound-v14-multipage-screenshots
           path: screenshots/
           if-no-files-found: ignore
