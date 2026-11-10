@@ -99,6 +99,9 @@
     const type=qs('[name="eventType"]',form);
     const requested=params.get("tip");
     if(type&&requested&&[...type.options].some(o=>o.value===requested))type.value=requested;
+    const requestedService=params.get("serviciu");
+    const serviceInput=qs('[name="services"]',form);
+    if(serviceInput&&requestedService)serviceInput.value=requestedService;
     const date=qs('[name="date"]',form);
     if(date)date.min=new Date().toISOString().slice(0,10);
     form.addEventListener("submit",ev=>{
