@@ -166,3 +166,25 @@
 .gs-service-play:hover,.gs-service-play:focus-visible{transform:translateY(-2px);background:#174126;border-color:#b1f477}
 .event-card>.gs-service-play~.event-card__number{z-index:6}
 @media(max-width:650px){.service-card__img .gs-service-play{bottom:10px;left:8px;right:8px;padding:7px 9px;min-height:34px;font-size:8px}.event-card>.gs-service-play{top:17px;left:18px}}
+
+/* Real browser capture refinements: crop out dead-black top space in the concert photo */
+.hero--v16 .hero__photo img{transform-origin:center 63%;animation:gs-v16-photo-closer 24s ease-in-out infinite alternate;filter:brightness(1.06) saturate(1.23) contrast(1.06)}
+@keyframes gs-v16-photo-closer{0%{transform:scale(1.23) translateY(-1.5%)}100%{transform:scale(1.34) translateY(-3%)}}
+/* Inner pages now echo the deliberately edited homepage, without fake equipment clipart. */
+.hero--sub{min-height:0;height:clamp(470px,57svh,610px);max-height:none;background:#0a1b0e}
+.hero--sub .hero__speaker,.hero--sub .hero__soundbar,.hero--sub .hero__note,.hero--sub .stage-rig{display:none!important}
+.hero--sub .hero__inside{padding-top:130px;padding-bottom:60px;justify-content:center}
+.hero--sub h1{font-size:clamp(64px,7.15vw,106px);line-height:.94;letter-spacing:-.013em;max-width:1040px}
+.hero--sub .hero__lead{max-width:600px;margin-top:25px;color:#dfebdc;font-size:15px;line-height:1.84}
+.hero--sub .hero__photo img{filter:brightness(.89) saturate(1.13) contrast(1.04);object-position:center 45%}
+.hero--sub .hero__photo:after{background:linear-gradient(90deg,#051309ed 0%,#051309b9 37%,#0513093b 100%),linear-gradient(0deg,#06140977,transparent 64%)}
+.hero--sub .hero__beamfield{opacity:.29}
+.hero--sub .hero__haze{opacity:.28}
+@media(max-width:650px){
+ .hero--sub{height:clamp(460px,67svh,585px);min-height:460px}
+ .hero--sub .hero__inside{padding-top:120px;padding-bottom:45px}
+ .hero--sub h1{font-size:clamp(52px,11.8vw,76px);line-height:.93}
+ .hero--sub .hero__lead{font-size:13px;line-height:1.65;margin-top:19px}
+ .hero--sub .hero__photo:after{background:linear-gradient(90deg,#03140cec,#0616087c),linear-gradient(0deg,#06150ad6,transparent 75%)}
+}
+@media(prefers-reduced-motion:reduce){.hero--v16 .hero__photo img{animation:none!important;transform:scale(1.23)}}
