@@ -691,6 +691,32 @@ html[data-gs-scene="corporate"] .gs-smoke{background:radial-gradient(ellipse at 
 @media(max-width:650px){.gs-stage-picker{justify-content:space-around;padding:1.2rem .75rem;gap:.45rem}.gs-stage-picker__caption{width:100%;text-align:center;margin:0 0 .45rem}.gs-stage-picker__option{padding:.7rem .75rem;min-height:44px;font-size:.59rem;gap:.3rem}}
 @media(prefers-reduced-motion:reduce){.gs-stage-picker__option,.gs-stage-picker__option::before,.gs-nav-cta,.gs-nav-cta::before,.gs-brand-note{transition:none!important;animation:none!important}}
 </style>
+
+<style id="gs-browsertest-audit">
+/* Browser-capture audit: keep Sillage's kinetic wordmark choreography, but let
+   the actual stage photograph lead. Both real brand and service offer remain visible. */
+#hero .hero__title{padding-top:clamp(7px,1vw,13px);padding-bottom:clamp(7px,1vw,13px)}
+#hero .m-mark{font-size:calc(100cqi / (var(--len) * 1.02))!important;line-height:.76}
+#hero .hero__info{padding-top:10px;padding-bottom:10px}
+#hero .hero__media{background:#151d15}
+#hero .hero__drift img{filter:brightness(1.08) saturate(1.17) contrast(1.05)!important;object-position:center 38%}
+#hero .hero__media:after{background:linear-gradient(0deg,rgba(2,8,4,.62),transparent 65%),linear-gradient(90deg,rgba(3,11,5,.52),transparent 78%)!important}
+#hero .gs-hero-copy{text-shadow:0 4px 24px rgba(0,0,0,.5)}
+#hero .gs-hero-copy h2{font-size:clamp(2.6rem,4.8vw,6rem);line-height:.97}
+#hero .gs-hero-copy>span{background:rgba(4,15,7,.55);padding:.5rem .65rem;display:inline-flex;border-left:2px solid var(--green)}
+#hero .gs-hero-ctas{margin-top:1.9rem}
+.gs-stage-picker__option[aria-pressed="true"]{box-shadow:0 4px 20px rgba(111,240,93,.24)}
+@media(max-width:700px){
+ #hero .m-mark{font-size:calc(100cqi / (var(--len) * .91))!important}
+ #hero .hero__title{padding-block:8px}
+ #hero .hero__drift img{object-position:48% 46%}
+ #hero .gs-hero-copy{bottom:clamp(2.6rem,6vw,4rem)}
+ #hero .gs-hero-copy h2{font-size:clamp(2.2rem,8.3vw,4.1rem)}
+ #hero .gs-hero-ctas{margin-top:1.6rem}
+ #hero .hero__media:after{background:linear-gradient(0deg,rgba(2,7,4,.64),rgba(2,7,4,.07) 75%),linear-gradient(90deg,rgba(2,7,4,.4),transparent 90%)!important}
+}
+@media(prefers-reduced-motion:reduce){#hero .m-mark{animation:none!important}}
+</style>
 </head>
 <body class="m-text">
 <!-- navigation: top bar: wordmark, two groups of section links; phone menu overlay with email and phone -->
