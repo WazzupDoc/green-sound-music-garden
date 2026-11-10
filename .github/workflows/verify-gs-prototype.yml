@@ -80,6 +80,7 @@ jobs:
           npm install --prefix /tmp/gs-playwright playwright@1.56.1 --no-audit --no-fund
           NODE_PATH=/tmp/gs-playwright/node_modules node .github/scripts/verify-gs-v14.cjs
       - name: Take browser screenshots of homepage and inner pages
+        if: always()
         run: |
           mkdir -p screenshots
           npx --yes playwright@1.56.1 screenshot --browser chromium --viewport-size="1440,900" --wait-for-timeout=2000 http://127.0.0.1:4173/greensound-prototype/index.html screenshots/home-desktop.png
