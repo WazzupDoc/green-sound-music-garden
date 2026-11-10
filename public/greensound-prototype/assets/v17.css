@@ -200,3 +200,9 @@ main{animation:gs17-arrive .48s ease-out both}
  .hero-v17__pointer-light{display:none}
  .hero--v17 .hero__photo img{animation:none!important}
 }
+
+/* QA: the footer's long word EVENIMENT. exceeded 390px viewport at V16's 78px size.
+   Fix typography at its source rather than hiding horizontal scroll on the page. */
+@media(max-width:650px){
+  .footer__top h2{font-size:clamp(49px,12.5vw,70px);line-height:.96;max-width:100%}
+}
