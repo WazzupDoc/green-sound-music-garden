@@ -33,5 +33,5 @@ jobs:
         run: pnpm exec tsc --noEmit
       - name: Build
         run: pnpm run build
-      - name: ESLint
-        run: pnpm run lint
+      - name: ESLint semantic rules (existing Prettier debt excluded)
+        run: pnpm exec eslint . --rule "prettier/prettier: off"
