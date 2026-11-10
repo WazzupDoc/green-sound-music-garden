@@ -44,19 +44,21 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden pt-32 md:pt-40">
-      <div className="absolute inset-0 -z-10">
-        <img src={image.src} alt="" width={image.w} height={image.h} fetchPriority="high" className="size-full object-cover opacity-55" />
-        <div className="hero-fade absolute inset-0" />
-        <div className="side-fade absolute inset-0 hidden md:block" />
-      </div>
-      <div className="container-site pb-16 md:pb-24">
-        <Breadcrumbs items={crumbs} />
-        <p className="eyebrow mt-10 animate-rise">{eyebrow}</p>
-        <h1 className="display-lg mt-5 max-w-4xl animate-rise [animation-delay:80ms]">{title}</h1>
-        <p className="lead mt-6 max-w-2xl text-foreground/80 animate-rise [animation-delay:160ms]">{lead}</p>
-        <div className="mt-9 flex flex-wrap gap-3 animate-rise [animation-delay:240ms]">
-          {children ?? <HeroCtas />}
+    <section className="gs-page-hero">
+      <div className="container-site gs-page-hero__layout">
+        <div className="gs-page-hero__content">
+          <Breadcrumbs items={crumbs} />
+          <p className="gs-page-hero__eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <p className="gs-page-hero__lead">{lead}</p>
+          <div className="gs-page-hero__actions">
+            {children ?? <HeroCtas />}
+          </div>
+          <div className="gs-page-hero__folio"><span>GREEN SOUND MUSIC / PITEȘTI</span><span>EST. 2008</span></div>
+        </div>
+        <div className="gs-page-hero__visual">
+          <img src={image.src} alt={image.alt} width={image.w} height={image.h} fetchPriority="high" />
+          <div className="gs-page-hero__visual-caption">SOUND / LIGHT / FEELING</div>
         </div>
       </div>
     </section>
