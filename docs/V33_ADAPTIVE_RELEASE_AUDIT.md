@@ -1,8 +1,8 @@
-# V33 — Adaptive Performance / Copyable Event Pass
+# V33B — Adaptive Performance / Copyable Event Pass
 
 Updated 2026-11-11 | Source branch `design/crafted-atmospheres-v33-adaptive-performance`
-Stacked review PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/18
-Base version: V32 PR #17. No live deployment or main-branch changes.
+Stacked review PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/19
+Review base: V33 safe structured data PR #18 (security serializer and tests integrated into this branch). Retains all V20–V32 work. No live deployment or main-branch changes.
 
 ## Problem confirmed in actual code and CI
 - V32's GitHub Actions Vite production build logged approximately **155.7 kB gzip** for the homepage `index` chunk, **39.4 kB gzip** for shared CSS and **38.6 kB gzip** for the quote form chunk. These were measured **build artifacts**, not downloaded bytes on all routes, field performance, or Lighthouse scores.
