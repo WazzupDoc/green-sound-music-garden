@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories]
     paths:
       - "src/**"
       - "package.json"
@@ -46,6 +46,7 @@ jobs:
           assert 'crafted-stage-lights' in css
           assert Path('src/styles/directors-cut.css').is_file()
           assert Path('src/styles/soundcheck.css').is_file()
+          assert Path('src/styles/scene-console.css').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')
           PY
