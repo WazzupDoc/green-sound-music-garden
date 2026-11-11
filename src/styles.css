@@ -19,6 +19,7 @@
 @import "./styles/atmosphere-interlude.css";
 @import "./styles/production-journey.css";
 @import "./styles/service-mix.css";
+@import "./styles/frequency-finder.css";
 @import "./styles/event-journal.css";
 
 @custom-variant dark (&:is(.dark *));
