@@ -1,3 +1,14 @@
+# V40 — Business contact single source of truth (draft)
+
+- Branch: `design/crafted-atmospheres-v40-business-contact-consistency`, based on V39 PR #25 (CI successful: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43107697432).
+- Schema.org LocalBusiness telephone is derived from the same verified `business.phoneHref` used for visible call links, rather than duplicating a literal phone number. Email, name and locality are checked for parity with the source-of-truth catalogue.
+- Regression: Vitest guards telephone, email, business name and address locality. No new API, tracking, external service, content claims or dependencies.
+- Release gate: strict TypeScript, SSR build, unit tests, gzip budgets and six-width Chromium browser CI must pass for this exact commit; staging/mobile field metrics remain unverified.
+- SEO backlog: audit real Google Search Console queries if connected; prioritize commercial DJ / sonorizare / lumini service pages, then authentic local coverage. Do not invent search volumes or rankings.
+- Main and production remain unchanged. PR is draft; no automatic deployment authorized.
+
+---
+
 # Green Sound Music — Current development source of truth
 
 Updated: 2026-11-11 (V39 draft)
