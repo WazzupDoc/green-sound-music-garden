@@ -1,16 +1,40 @@
 import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff, MoveUpRight } from "lucide-react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
-import { business, images, videos } from "@/data/site";
+import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 type StageMode = "live" | "private" | "production";
-const modes = [
-  { key: "live", label: "Live stage", number: "01", tag: "Public & emoție", src: images.concert.src, alt: images.concert.alt },
-  { key: "private", label: "Private party", number: "02", tag: "Momente personale", src: images.dj.src, alt: images.dj.alt },
-  { key: "production", label: "Technical show", number: "03", tag: "Lumini & scenotehnică", src: images.scena.src, alt: images.scena.alt },
-] as const;
+const modes: ReadonlyArray<{
+  key: StageMode; label: string; number: string; tag: string; src: string; alt: string;
+  eyebrow: string; headline: string; description: string; eventSlug: EventSlug; eventLabel: string;
+}> = [
+  {
+    key: "live", label: "Live stage", number: "01", tag: "Public & emoție",
+    src: images.concert.src, alt: images.concert.alt,
+    eyebrow: "CONCERTE / FESTIVALURI",
+    headline: "Un public. Un ritm. O energie comună.",
+    description: "Sunet, lumini și scenă, gândite ca o singură producție pentru fiecare moment live.",
+    eventSlug: "concerte-festivaluri", eventLabel: "Explorează concertele",
+  },
+  {
+    key: "private", label: "Private party", number: "02", tag: "Momente personale",
+    src: images.dj.src, alt: images.dj.alt,
+    eyebrow: "NUNȚI / PETRECERI PRIVATE",
+    headline: "Serile speciale merită o atmosferă a lor.",
+    description: "DJ & MC, muzică live și lumină coordonate în ritmul oamenilor și al poveștii.",
+    eventSlug: "nunti", eventLabel: "Descoperă nunțile",
+  },
+  {
+    key: "production", label: "Technical show", number: "03", tag: "Lumini & scenotehnică",
+    src: images.scena.src, alt: images.scena.alt,
+    eyebrow: "PRODUCȚIE / EVENIMENTE CORPORATE",
+    headline: "Tehnologia din spatele emoției.",
+    description: "Ecrane LED, sisteme audio și lumini transformate într-o experiență coerentă.",
+    eventSlug: "evenimente-corporate", eventLabel: "Descoperă producția",
+  },
+];
 
 /** All footage is sourced from Green Sound's project. Stage light cones are decorative CSS. */
 export function StageHero() {
@@ -43,7 +67,8 @@ export function StageHero() {
   const pointerX = useMotionValue(50);
   const pointerY = useMotionValue(50);
   const spotlight = useMotionTemplate`radial-gradient(ellipse 33% 39% at ${pointerX}% ${pointerY}%, rgba(166,244,146,.20), transparent 80%)`;
-  const scene = useMemo(() => modes.find((mode) => mode.key === active) ?? modes[0], [active]);
+  const scene = useMemo(() => modes.find((mode) => mode.key === active) ?? modes[0]!, [active]);
+  const reel = active === "private" ? videos.nuntaRamada : videos.showLumini;
   const onMove = (event: PointerEvent<HTMLDivElement>) => {
     if (event.pointerType !== "mouse" || reduced) return;
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -63,7 +88,7 @@ export function StageHero() {
             height={active === "live" ? images.concert.h : active === "private" ? images.dj.h : images.scena.h}
             fetchPriority={active === "live" ? "high" : undefined}
             decoding="async"
-            className="crafted-hero__image" initial={reduced ? false : { opacity: 0, scale: 1.04 }}
+            className="crafted-hero__image" initial={false}
             animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: reduced ? 0 : .68, ease: [.16, 1, .3, 1] }} />
         </AnimatePresence>
@@ -100,7 +125,26 @@ export function StageHero() {
           </div>
         </div>
 
-        <div className="crafted-hero__label" aria-hidden="true"><span className="crafted-hero__label-line" /> EXPERIENCE / SOUND / LIGHT</div>
+        <div className="scene-console" aria-live="polite" aria-atomic="true">
+          <div className="scene-console__top">
+            <span className="scene-console__icon" aria-hidden="true"><Radio className="size-4" /></span>
+            <span className="scene-console__top-label">GREEN SOUND / SCENE NOTES</span>
+            <span className="scene-console__counter">{scene.number} / 03</span>
+          </div>
+          <div key={scene.key} className="scene-console__content">
+            <span className="scene-console__eyebrow">{scene.eyebrow}</span>
+            <h2>{scene.headline}</h2>
+            <p>{scene.description}</p>
+            <Link to="/evenimente/$slug" params={{ slug: scene.eventSlug }}
+              className="scene-console__link" aria-label={scene.eventLabel}>
+              {scene.eventLabel} <MoveUpRight className="size-4" aria-hidden />
+            </Link>
+          </div>
+          <div className="scene-console__bottom" aria-hidden="true">
+            <span>G / S</span>
+            <span>PRODUCTION / PITEȘTI</span>
+          </div>
+        </div>
         <div className="crafted-hero__bottom">
           <div className="crafted-hero__modes" role="group" aria-label="Schimbă atmosfera vizuală a scenei">
             {modes.map((mode) => (
@@ -128,11 +172,11 @@ export function StageHero() {
 
       <Dialog open={showReel} onOpenChange={setShowReel}>
         <DialogContent className="max-h-[92dvh] max-w-4xl overflow-y-auto rounded-none border-[#c7e3ba]/35 bg-[#08120b] p-4 sm:p-6">
-          <DialogTitle className="pr-8 font-display text-xl font-semibold">Green Sound Music / Show de lumini</DialogTitle>
+          <DialogTitle className="pr-8 font-display text-xl font-semibold">{reel.title}</DialogTitle>
           <DialogDescription className="text-sm text-foreground/60">Filmări reale. Redarea videoclipului încarcă YouTube doar după ce ai apăsat butonul de vizionare.</DialogDescription>
           {showReel && (
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${videos.showLumini.id}?autoplay=1&rel=0`}
+              src={`https://www.youtube-nocookie.com/embed/${reel.id}?autoplay=1&rel=0${active === "private" ? `&start=${videos.nuntaRamada.start}` : ""}`}
               title={videos.showLumini.title}
               loading="lazy"
               allow="autoplay; encrypted-media; picture-in-picture"
