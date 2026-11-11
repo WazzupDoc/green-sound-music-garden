@@ -302,11 +302,20 @@ fs.mkdirSync(dir,{recursive:true});
           "Service Mix must not overflow mobile: "+JSON.stringify(serviceOverflow));
         await page.locator(".gs-service-mix__layout").screenshot({
           path:dir+"/service-mix-mobile-390.png",animations:"disabled"});
+        assert.equal(await page.locator('form.gs-service-mix__form input[name="services"]').inputValue(),
+          "DJ & MC|Sonorizare, lumini, ecrane LED","The native GET contains exact first-party form labels");
         await page.locator(".gs-service-mix__submit").click();
         await page.waitForURL(url=>url.pathname==="/contact"&&url.searchParams.has("services"),{timeout:15000});
+        // TanStack Router may canonicalize the native GET pipe string into a
+        // JSON list after running validateSearch. Check the same allowlisted
+        // values in either route representation AND the actual checked form.
         const handoff = new URL(page.url());
-        assert.equal(handoff.searchParams.get("services"),
-          "DJ & MC|Sonorizare, lumini, ecrane LED","Use exact allowlisted form labels");
+        const rawServices = handoff.searchParams.get("services") ?? "";
+        const decodedServices = rawServices.startsWith("[")
+          ? JSON.parse(rawServices) : rawServices.split("|");
+        assert.deepEqual(decodedServices,
+          ["DJ & MC","Sonorizare, lumini, ecrane LED"],
+          "The route carries precisely the two real service labels");
         await page.waitForFunction(()=>
           document.querySelectorAll('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').length===2,
           null,{timeout:15000});
