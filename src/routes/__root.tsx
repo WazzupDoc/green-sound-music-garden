@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
+import { ClientMotion } from "@/components/atelier/ClientMotion";
 
 function NotFoundComponent() {
   return (
@@ -77,7 +78,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
-      { name: "theme-color", content: "#0b100e" },
+      { name: "theme-color", content: "#070c08" },
       { title: "Green Sound Music — DJ, trupă, sonorizare și lumini în Pitești" },
       { name: "description", content: "Muzică, sunet, lumini și efecte pentru evenimente, din Pitești, din 2008." },
       { name: "author", content: "Green Sound Music" },
@@ -121,6 +122,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ClientMotion />
       <SiteHeader />
       <main id="continut">
         <Outlet />
