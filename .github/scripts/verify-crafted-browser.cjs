@@ -44,15 +44,15 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await studio.locator("#gs-pulse-tempo").inputValue(),"128",
           "Scene selection restores a deterministic visual tempo");
         assert.match(await studio.locator(".gs-pulse__scene-note strong").innerText(),/scena prinde viață/i);
-        assert.match(await studio.locator(".gs-pulse__scene-link").getAttribute("href"),
-          /\\/evenimente\\/concerte-festivaluri/,
+        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/concerte-festivaluri"),
+
           "Scene opens an existing concert event page, not a fabricated destination");
         const slider=studio.locator("#gs-pulse-tempo");
         await slider.focus();
         await slider.press("End");
         assert.equal(await slider.inputValue(),"140",
           "Native keyboard tempo slider reaches its valid 140 BPM upper bound");
-        assert.match(await studio.getAttribute("style"),/--gs-tempo:\\s*0\\.857s/,
+        assert.equal(await studio.evaluate(el => el.style.getPropertyValue("--gs-tempo").trim()),"0.857s",
           "Visual beat duration derives from the real slider value");
         assert.equal(await studio.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
           getComputedStyle(el).animationName),"gs-studio-signal",
@@ -67,8 +67,8 @@ fs.mkdirSync(dir,{recursive:true});
         await modes.nth(2).click();
         assert.equal(await slider.inputValue(),"104",
           "Afterglow switches to its own visual rhythm");
-        assert.match(await studio.locator(".gs-pulse__scene-link").getAttribute("href"),
-          /\\/evenimente\\/petreceri-private/);
+        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/petreceri-private"));
+
         await studio.locator(".gs-pulse__art").screenshot({
           path:dir+"/frequency-studio-"+width+".png",animations:"disabled"});
         await motionToggle.click();
