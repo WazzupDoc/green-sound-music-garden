@@ -34,6 +34,9 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".crafted-services__row").count(),5);
       assert.equal(await page.locator(".soundcheck__event").count(),5,"Five native event options");
       assert.equal(await page.locator(".soundcheck__service").count(),7,"Seven actual event services");
+      assert.equal(await page.locator(".soundcheck__story-beat").count(),5,
+        "Five real wedding story beats, drawn from existing event data");
+      assert.equal(await page.locator(".soundcheck__story-beat").first().getAttribute("aria-pressed"),"true");
       assert.equal(await page.locator(".soundcheck__form input[name=services]").count(),1,
         "A single bounded service list, submitted as part of a native GET form");
       const bbox=await page.evaluate(()=>({doc:document.documentElement.scrollWidth,inner:innerWidth}));
@@ -50,6 +53,7 @@ fs.mkdirSync(dir,{recursive:true});
         await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
         await page.locator(".soundcheck").scrollIntoViewIfNeeded();
         await page.screenshot({path:dir+"/soundcheck-"+width+".png",fullPage:false});
+        await page.locator(".soundcheck__storyboard").screenshot({path:dir+"/storyboard-"+width+".png",animations:"disabled"});
         await page.locator(".director-reel").scrollIntoViewIfNeeded();
         await page.waitForFunction(() => {
           const image = document.querySelector(".director-reel__player img");
@@ -96,10 +100,21 @@ fs.mkdirSync(dir,{recursive:true});
         // request and populate the existing validated quote form (without sending it).
         await page.locator(".soundcheck__event").nth(2).click();
         assert.equal(await page.locator(".soundcheck__event").nth(2).getAttribute("aria-pressed"),"true");
+        assert.equal(await page.locator(".soundcheck__story-beat").count(),4,"Corporate story beat count");
         const before=await page.locator(".soundcheck__service input:checked").count();
         await page.locator(".soundcheck__service").first().click();
         const after=await page.locator(".soundcheck__service input:checked").count();
         assert.equal(Math.abs(after-before),1,"One service selection changes on click");
+        await page.locator(".soundcheck__story-beat").nth(2).click();
+        assert.equal(await page.locator(".soundcheck__story-beat").nth(2).getAttribute("aria-pressed"),"true");
+        assert.match(await page.locator(".soundcheck__story-detail strong").innerText(),/Lansarea/);
+        const addMomentService=page.locator(".soundcheck__story-add");
+        assert.equal(await addMomentService.count(),1,"Missing service can be added from real story moment");
+        await addMomentService.click();
+        assert.equal(await page.locator(".soundcheck__service input:checked").count(),after+1,
+          "Storyboard adds the missing service exactly once");
+        assert.equal(await page.locator(".soundcheck__story-included").count(),1,
+          "Moment visibly confirms the new service is included");
         await page.locator('.soundcheck__form input[name="date"]').fill("2027-08-21");
         await page.locator('.soundcheck__form input[name="location"]').fill("Pitești");
         await page.locator(".soundcheck__cta").click();
@@ -113,7 +128,7 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator("#q-date").inputValue(),"2027-08-21");
         assert.equal(await page.locator("#q-location").inputValue(),"Pitești");
         assert.equal(await page.locator('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').count(),
-          after,"Selected services must prefill exactly, without silently checking other options");
+          after+1,"Selected services must prefill exactly, including the storyboard addition");
         await page.screenshot({path:dir+"/soundcheck-prefilled-390.png",fullPage:false});
         await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
         await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
@@ -154,6 +169,6 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     await reduced.close();
-    console.log("PASS V22: six widths, stage and real reels, soundcheck selection-to-contact prefill, native quick brief, mobile menu, reduced motion");
+    console.log("PASS V23: six widths, stage and real reels, event storyboard service addition, soundcheck-to-contact prefill, mobile menu, reduced motion");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
