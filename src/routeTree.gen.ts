@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactGreenRouteImport } from './routes/contact-green'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DespreNoiRouteImport } from './routes/despre-noi'
 import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
@@ -29,6 +30,11 @@ import { Route as EvenimenteSlugRouteImport } from './routes/evenimente.$slug'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactGreenRoute = ContactGreenRouteImport.update({
+  id: '/contact-green',
+  path: '/contact-green',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -110,6 +116,7 @@ const EvenimenteSlugRoute = EvenimenteSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/contact-green': typeof ContactGreenRoute
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/confidentialitate': typeof ConfidentialitateRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/evenimente/': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesByTo {
+  '/contact-green': typeof ContactGreenRoute
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/confidentialitate': typeof ConfidentialitateRoute
@@ -146,6 +154,7 @@ export interface FileRoutesByTo {
   '/evenimente': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesById {
+  '/contact-green': typeof ContactGreenRoute
   '/contact': typeof ContactRoute
   '/despre-noi': typeof DespreNoiRoute
   '/confidentialitate': typeof ConfidentialitateRoute
@@ -167,6 +176,7 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
+    | '/contact-green'
     | '/contact'
     | '/despre-noi'
     | '/confidentialitate'
@@ -185,6 +195,7 @@ export interface FileRouteTypes {
     | '/evenimente/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/contact-green'
     | '/contact'
     | '/despre-noi'
     | '/confidentialitate'
@@ -202,6 +213,7 @@ export interface FileRouteTypes {
     | '/evenimente/$slug'
     | '/evenimente'
   id:
+    | '/contact-green'
     | '/contact'
     | '/despre-noi'
     | '/confidentialitate'
@@ -222,6 +234,7 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  ContactGreenRoute: typeof ContactGreenRoute
   ContactRoute: typeof ContactRoute
   DespreNoiRoute: typeof DespreNoiRoute
   ConfidentialitateRoute: typeof ConfidentialitateRoute
@@ -242,6 +255,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact-green': {
+      id: '/contact-green'
+      path: '/contact-green'
+      fullPath: '/contact-green'
+      preLoaderRoute: typeof ContactGreenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -358,6 +378,7 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  ContactGreenRoute: ContactGreenRoute,
   ContactRoute: ContactRoute,
   DespreNoiRoute: DespreNoiRoute,
   ConfidentialitateRoute: ConfidentialitateRoute,

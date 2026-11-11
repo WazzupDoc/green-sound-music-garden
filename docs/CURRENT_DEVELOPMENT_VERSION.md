@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V37 draft)
+Updated: 2026-11-11 (V38 draft)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v37-frequency-studio`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/23
-- PR review base: `design/crafted-atmospheres-v36-contact-error-regression` (PR #22); retains all V20–V36 improvements, including safe SEO, guided briefs and accessible validation.
+- Current branch: `design/crafted-atmospheres-v38-audit-service-discovery`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/24
+- PR review base: `design/crafted-atmospheres-v37-frequency-studio` (PR #23); retains all V20–V37 improvements, including Frequency Studio, guided briefs, and safe SEO.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V37 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v37-frequency-studio?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V38 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v38-audit-service-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v37-frequency-studio
-git pull origin design/crafted-atmospheres-v37-frequency-studio
+git switch design/crafted-atmospheres-v38-audit-service-discovery
+git pull origin design/crafted-atmospheres-v38-audit-service-discovery
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -170,3 +170,15 @@ Draft PR #20 only. Do not merge or deploy `greensoundmusic.com` until owner appr
 - Rationale, limits and release checklist at `docs/V37_FREQUENCY_STUDIO_AUDIT.md`.
 
 Review PR #23 only. Never merge or deploy to `main`/`greensoundmusic.com` without owner approval.
+
+
+## V38 — Comprehensive release audit, service media quality and contextual discovery
+- **Public vs draft reality**: public WordPress `greensoundmusic.com` still uses the old template (`© 2017`) and the old Contact URL `/contact-green/`; these observations are not evidence of a V38 deployment.
+- **301 legacy Contact migration**: `src/routes/contact-green.tsx` redirects the verified WordPress URL permanently to the current `/contact/`. The new 20-page sitemap correctly lists canonical URLs, not redirect aliases; CI verifies the real status and Location.
+- **Entire route graph audit**: `.github/scripts/audit-public-pages.cjs` visits all twenty canonical URLs in the actual preview, checks genuine HTTP status, unique H1, site-specific title, description, social share images, same canonical, parseable schema.org JSON-LD, internal navigation graph, and first-party image HTTP presence. No Search Console or real public indexing claims.
+- **No repeated photos**: `uniqueServiceGallery` removes the hero photo and duplicates from the reused service-gallery slots. Sidebar photos and additional photo journal get unique real images only once.
+- **Premium, actually relevant pairings**: `serviceCompanions` replaces generic always-first-three services with three curated genuine matches for each of eight pages. New image-led dark-green relationship cards contain truthful editorial context, authentic first-party photos, focus and reduced-motion-safe interactions, and real route deep-links.
+- **QA**: service discovery and media unit tests, 390/1440 screenshot and first-party links/dupe tests; all V20–V37 regressions, TypeScript, SSR build and client asset budgets preserved. Detailed matrix and remaining release risks in `docs/V38_SITEWIDE_AUDIT.md`; check final CI run before treating version as green.
+- **No authorization to merge, deploy or promise rank/availability.** The business inbox is still WhatsApp/email initiated by the visitor until an approved backend provider is connected.
+
+Review PR #24 (draft); production remains unchanged.
