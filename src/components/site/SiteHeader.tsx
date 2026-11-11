@@ -29,8 +29,16 @@ export function SiteHeader() {
   }, [path]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 22);
-    onScroll();
+    // Avoid dispatching React state on every scroll frame; the floating header
+    // only needs to know when the 22px threshold changes.
+    let aboveThreshold = window.scrollY > 22;
+    setScrolled(aboveThreshold);
+    const onScroll = () => {
+      const next = window.scrollY > 22;
+      if (next === aboveThreshold) return;
+      aboveThreshold = next;
+      setScrolled(next);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
