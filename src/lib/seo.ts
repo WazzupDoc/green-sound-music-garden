@@ -1,5 +1,8 @@
 import { SITE_URL, business, images, type ImageRef } from "@/data/site";
 
+/** Canonical route URL shared by metadata and Schema.org; avoid duplicate trailing slashes. */
+export const canonicalUrl = (path: string) => `${SITE_URL}${path === "/" ? "/" : `${path.replace(/\/+$/, "")}/`}`;
+
 type HeadInput = {
   title: string;
   description: string;
@@ -16,7 +19,7 @@ export const serializeJsonLd = (data: Record<string, unknown>) =>
 
 /** Builds the per-page head(): unique title/description, OG/Twitter, canonical and JSON-LD. */
 export function pageHead({ title, description, path, jsonLd = [], noindex, image = images.concert }: HeadInput) {
-  const url = `${SITE_URL}${path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`}`;
+  const url = canonicalUrl(path);
   // Use the existing first-party event image (or this page's real image);
   // never fabricate a review, campaign artwork, rating or social preview.
   const imageUrl = new URL(image.src, SITE_URL).href;
@@ -85,7 +88,7 @@ export const breadcrumbLd = (items: { name: string; path: string }[]) => ({
     "@type": "ListItem",
     position: i + 1,
     name: it.name,
-    item: `${SITE_URL}${it.path === "/" ? "/" : `${it.path}/`}`,
+    item: canonicalUrl(it.path),
   })),
 });
 
@@ -94,7 +97,7 @@ export const serviceLd = (name: string, description: string, path: string) => ({
   "@type": "Service",
   name,
   description,
-  url: `${SITE_URL}${path}/`,
+  url: canonicalUrl(path),
   provider: { "@id": `${SITE_URL}/#business` },
   areaServed: { "@type": "City", name: "Pitești" },
 });
