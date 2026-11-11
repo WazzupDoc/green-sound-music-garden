@@ -11,8 +11,9 @@ import { getRequest } from "@tanstack/react-start/server";
  */
 const legacyContactMiddleware = createMiddleware().server(async ({ next }) => {
   const request = getRequest();
+  const path = new URL(request.url).pathname;
   if ((request.method === "GET" || request.method === "HEAD") &&
-      /^\\/contact-green\\/?$/.test(new URL(request.url).pathname)) {
+      (path === "/contact-green" || path === "/contact-green/")) {
     return Response.redirect(new URL("/contact/", request.url), 301);
   }
   return next();
