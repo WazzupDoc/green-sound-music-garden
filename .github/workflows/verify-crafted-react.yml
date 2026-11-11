@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard]
     paths:
       - "src/**"
       - "package.json"

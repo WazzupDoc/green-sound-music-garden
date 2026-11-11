@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Check, Plus, SlidersHorizontal } from "lucide-react";
+import { ArrowUpRight, Check, Plus, SlidersHorizontal, Sparkles } from "lucide-react";
 import { events, services, type EventSlug, type ServiceSlug } from "@/data/site";
 
 const eventServices = services.filter((service) => service.slug !== "studio-inregistrari");
@@ -15,11 +15,16 @@ const suggestedFor = (slug: EventSlug): ServiceSlug[] =>
 export function EventSoundcheck() {
   const [eventSlug, setEventSlug] = useState<EventSlug>("nunti");
   const [selected, setSelected] = useState<ServiceSlug[]>(() => suggestedFor("nunti"));
+  const [activeMoment, setActiveMoment] = useState(0);
   const event = events.find((item) => item.slug === eventSlug) ?? events[0]!;
   const chosen = eventServices.filter((item) => selected.includes(item.slug));
+  const moment = event.moments[activeMoment] ?? event.moments[0];
+  const momentService = moment ? eventServices.find((item) => item.slug === moment.service) : undefined;
+  const momentAlreadyIncluded = momentService ? selected.includes(momentService.slug) : false;
 
   const changeEvent = (slug: EventSlug) => {
     setEventSlug(slug);
+    setActiveMoment(0);
     // Explicitly replace the proposal with recommendations for this occasion.
     setSelected(suggestedFor(slug));
   };
@@ -85,6 +90,48 @@ export function EventSoundcheck() {
                 loading="lazy" decoding="async" />
               <div className="soundcheck__visual-label"><span>GREEN SOUND / CURATED FOR YOU</span><strong>{event.name}</strong></div>
             </div>
+
+            {moment && (
+              <div className="soundcheck__storyboard" aria-labelledby="soundcheck-storyboard-title">
+                <div className="soundcheck__story-head">
+                  <span className="soundcheck__story-overline"><Sparkles className="size-3.5" aria-hidden /> EVENT STORYBOARD</span>
+                  <span className="soundcheck__story-counter">{String(activeMoment + 1).padStart(2, "0")} / {String(event.moments.length).padStart(2, "0")}</span>
+                </div>
+                <h3 id="soundcheck-storyboard-title">Cum prinde viață <em>evenimentul tău</em></h3>
+                <div className="soundcheck__story-track" role="group" aria-label="Explorează momentele evenimentului">
+                  {event.moments.map((item, index) => (
+                    <button type="button" key={`${event.slug}-${index}`} className="soundcheck__story-beat"
+                      aria-pressed={activeMoment === index}
+                      onClick={() => setActiveMoment(index)}
+                      aria-label={`Momentul ${index + 1}: ${item.title}`}
+                      title={item.title}>
+                      <span />
+                    </button>
+                  ))}
+                </div>
+                <div className="soundcheck__story-detail" aria-live="polite">
+                  <span className="soundcheck__story-kicker">MOMENTUL {String(activeMoment + 1).padStart(2, "0")}</span>
+                  <strong>{moment.title}</strong>
+                  <p>{moment.text}</p>
+                  {momentService && (
+                    momentAlreadyIncluded ? (
+                      <span className="soundcheck__story-included">
+                        <Check className="size-3.5" aria-hidden />
+                        {momentService.name} — inclus în selecție
+                      </span>
+                    ) : (
+                      <button type="button" className="soundcheck__story-add"
+                        onClick={() => setSelected((current) =>
+                          current.includes(momentService.slug) ? current : [...current, momentService.slug],
+                        )}>
+                        <Plus className="size-4" aria-hidden />
+                        Adaugă {momentService.name}
+                      </button>
+                    )
+                  )}
+                </div>
+              </div>
+            )}
             <div className="soundcheck__summary">
               <div className="soundcheck__summary-head">
                 <span className="soundcheck__step"><span>03</span> CONFIGURAȚIA TA</span>
