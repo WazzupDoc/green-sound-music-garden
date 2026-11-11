@@ -347,6 +347,23 @@ fs.mkdirSync(dir,{recursive:true});
         assert.match(await page.locator(".quote-preview__ticket").innerText(),/2027-12-18/);
         assert.match(await page.locator(".quote-preview__whatsapp").getAttribute("href"),/^https:\/\/wa\.me\//);
         assert.match(await page.locator(".quote-preview__email").getAttribute("href"),/^mailto:/);
+        // V33: a quote can also be copied for a user's chosen messaging app.
+        // Clipboard success must correspond to an ACTUAL copied message.
+        await page.context().grantPermissions(["clipboard-read","clipboard-write"]);
+        await page.locator(".quote-preview__copy").click();
+        await page.waitForFunction(() => document.querySelector(".quote-preview__copy-status")?.textContent?.includes("clipboard"));
+        const copiedText=await page.evaluate(() => navigator.clipboard.readText());
+        assert.match(copiedText,/Ana Test/);
+        assert.match(copiedText,/Nuntă/);
+        assert.match(copiedText,/18\\.12\\.2027/);
+        assert.match(await page.locator(".quote-preview__copy-status").innerText(),/nu a fost trimis automat/i);
+        // Browser with disabled clipboard: never claim success, show manual text.
+        await page.evaluate(() => Object.defineProperty(navigator,"clipboard",{
+          configurable:true,value:{writeText:async()=>{throw new Error("Clipboard denied")}}
+        }));
+        await page.locator(".quote-preview__copy").click();
+        await page.waitForFunction(() => document.querySelector(".quote-preview__copy-status")?.textContent?.includes("nu este disponibilă"));
+        assert.match(await page.locator(".quote-preview__manual textarea").inputValue(),/Ana Test/);
         await page.screenshot({path:dir+"/event-pass-preview-390.png",fullPage:false});
         await page.locator(".quote-preview__edit").click();
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:10000});
@@ -545,6 +562,29 @@ fs.mkdirSync(dir,{recursive:true});
       assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
       await page.close();
     }
+    // V33: Chrome's optional Save-Data hint should avoid heavy decorative
+    // animation without hiding real content or the booking/contact paths.
+    const lite=await browser.newPage({viewport:{width:1440,height:900}});
+    await lite.addInitScript(() => {
+      Object.defineProperty(navigator,"connection",{configurable:true,value:{
+        saveData:true,effectiveType:"2g",addEventListener(){},removeEventListener(){}
+      }});
+    });
+    await lite.goto(origin+"/",{waitUntil:"domcontentloaded"});
+    await lite.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
+    await lite.waitForFunction(() => document.documentElement.dataset.gsPerformance==="lite",
+      null,{timeout:15000});
+    assert.equal(await lite.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName),
+      "none","Save-Data must stop expensive stage beam animation");
+    assert.equal(await lite.locator(".gs-cursor__toggle").isVisible(),false,
+      "The low-resource visitor shouldn't render decorative cursor controls");
+    assert.equal(await lite.locator(".crafted-hero__mode").count(),3,
+      "Lite mode must preserve all real scene navigation");
+    assert.equal(await lite.locator(".atelier-header__quote").count(),1,
+      "Lite mode must preserve offer conversion");
+    await lite.screenshot({path:dir+"/adaptive-lite-1440.png",fullPage:false});
+    await lite.close();
+
     const reduced=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
     await reduced.goto(origin+"/",{waitUntil:"domcontentloaded"});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
@@ -553,6 +593,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V32: real sitemap/robots, canonical/social previews, V31 quote integrity, V30 finder, service mix, stage effects, responsive and reduced-motion QA");
+    console.log("PASS V33: adaptive Save-Data hero, genuine clipboard success/denial, homepage/CSS budget, V32 SEO, V31 quote integrity, V30 finder and six responsive widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

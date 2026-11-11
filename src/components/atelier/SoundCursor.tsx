@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Music2, WandSparkles } from "lucide-react";
+import { getPerformanceSignals, shouldUseLiteEffects } from "@/lib/performance";
 
 /**
  * Brand-driven visual cursor accent.
@@ -18,8 +19,7 @@ export function SoundCursor() {
     if (!node || !label || !enabled) return;
     const fine = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
-    if (!fine.matches || reduced.matches || saveData) return;
+    if (!fine.matches || shouldUseLiteEffects(getPerformanceSignals())) return;
 
     const target = { x: -150, y: -150 };
     const current = { x: -150, y: -150 };
@@ -54,7 +54,7 @@ export function SoundCursor() {
       moving = false;
     };
     const onMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse" || reduced.matches || !fine.matches) return;
+      if (event.pointerType !== "mouse" || !fine.matches || shouldUseLiteEffects(getPerformanceSignals())) return;
       target.x = event.clientX;
       target.y = event.clientY;
       if (!awake) {
@@ -78,7 +78,7 @@ export function SoundCursor() {
       if (!event.relatedTarget) hide();
     };
     const onVisibility = () => { if (document.hidden) hide(); };
-    const onMotionChange = () => { if (reduced.matches || !fine.matches) hide(); };
+    const onMotionChange = () => { if (shouldUseLiteEffects(getPerformanceSignals()) || !fine.matches) hide(); };
     window.addEventListener("pointermove", onMove, { passive: true });
     document.addEventListener("pointerout", onPointerOut, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
