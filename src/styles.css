@@ -21,6 +21,7 @@
 @import "./styles/service-mix.css";
 @import "./styles/frequency-finder.css";
 @import "./styles/event-journal.css";
+@import "./styles/performance-adaptive.css";
 
 @custom-variant dark (&:is(.dark *));
 
