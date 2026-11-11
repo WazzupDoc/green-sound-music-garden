@@ -75,7 +75,7 @@ export function StageHero() {
   const onMove = (event: PointerEvent<HTMLDivElement>) => {
     // In adaptive lite mode stop updating expensive radial-gradient motion values.
     if (event.pointerType !== "mouse" || reduced ||
-      document.documentElement.dataset.gsPerformance === "lite") return;
+      document.documentElement.dataset["gsPerformance"] === "lite") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     pointerX.set(((event.clientX - bounds.left) / bounds.width) * 100);
     pointerY.set(((event.clientY - bounds.top) / bounds.height) * 100);
