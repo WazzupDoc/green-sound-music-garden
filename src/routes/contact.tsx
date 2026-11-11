@@ -71,7 +71,7 @@ function Contact() {
       <section className="director-contact-intro" aria-labelledby="director-contact-title">
         <div className="container-site">
           <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
-          <h1 id="director-contact-title">Avem începutul. <em>Completăm detaliile.</em></h1>
+          <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
           <p>
             {fromBrief
               ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
