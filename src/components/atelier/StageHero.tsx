@@ -73,7 +73,9 @@ export function StageHero() {
   const scene = useMemo(() => modes.find((mode) => mode.key === active) ?? modes[0]!, [active]);
   const reel = active === "private" ? videos.nuntaRamada : videos.showLumini;
   const onMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "mouse" || reduced) return;
+    // In adaptive lite mode stop updating expensive radial-gradient motion values.
+    if (event.pointerType !== "mouse" || reduced ||
+      document.documentElement.dataset.gsPerformance === "lite") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     pointerX.set(((event.clientX - bounds.left) / bounds.width) * 100);
     pointerY.set(((event.clientY - bounds.top) / bounds.height) * 100);
