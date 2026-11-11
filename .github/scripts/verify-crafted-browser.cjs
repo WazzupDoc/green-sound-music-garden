@@ -243,6 +243,10 @@ fs.mkdirSync(dir,{recursive:true});
         await page.waitForFunction(()=>{const img=document.querySelector(".journal__photo img");return img && img.complete && img.naturalWidth>0},null,{timeout:15000});
         await page.screenshot({path:dir+"/portfolio-desktop-1440.png",fullPage:false});
         await page.locator(".film-archive__grid").scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>{
+          const image=document.querySelector(".film-archive__player img");
+          return image && image.complete && image.naturalWidth>0;
+        },null,{timeout:15000});
         await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
       }
       await page.close();
