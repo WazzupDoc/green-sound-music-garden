@@ -1,11 +1,12 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff, MoveUpRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff, MoveUpRight, SlidersHorizontal } from "lucide-react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 type StageMode = "live" | "private" | "production";
+type StageLightTone = "mint" | "gold" | "ice";
 const modes: ReadonlyArray<{
   key: StageMode; label: string; number: string; tag: string; src: string; alt: string;
   eyebrow: string; headline: string; description: string; eventSlug: EventSlug; eventLabel: string;
@@ -43,6 +44,8 @@ export function StageHero() {
   useEffect(() => setHydrated(true), []);
   const [showReel, setShowReel] = useState(false);
   const [lightsEnabled, setLightsEnabled] = useState(true);
+  const [lightTone, setLightTone] = useState<StageLightTone>("mint");
+  const [lightPower, setLightPower] = useState(65);
   const [stageVisible, setStageVisible] = useState(true);
   const stageRef = useRef<HTMLElement>(null);
 
@@ -79,7 +82,8 @@ export function StageHero() {
   return (
     <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
-      data-hydrated={hydrated ? "true" : "false"}>
+      data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
+      data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
       <div className="crafted-hero__canvas" onPointerMove={onMove}
         onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
         <AnimatePresence mode="wait" initial={false}>
@@ -119,7 +123,7 @@ export function StageHero() {
             <Link to="/evenimente" className="crafted-button crafted-button--light">
               Descoperă experiențele <ArrowUpRight aria-hidden className="size-4" />
             </Link>
-            <button type="button" className="crafted-text-action" onClick={() => setShowReel(true)}>
+            <button type="button" className="crafted-text-action" onClick={() => setShowReel(true)} data-cursor-label="PLAY FILM">
               <CirclePlay aria-hidden className="size-5" /> Privește un show real
             </button>
           </div>
@@ -149,7 +153,7 @@ export function StageHero() {
           <div className="crafted-hero__modes" role="group" aria-label="Schimbă atmosfera vizuală a scenei">
             {modes.map((mode) => (
               <button key={mode.key} type="button" aria-pressed={mode.key === active}
-                className="crafted-hero__mode" onClick={() => setActive(mode.key)}>
+                className="crafted-hero__mode" onClick={() => setActive(mode.key)} data-cursor-label="MIX SCENE">
                 <span className="crafted-hero__mode-nr">{mode.number}</span>
                 <span>{mode.label}</span>
               </button>
@@ -162,6 +166,45 @@ export function StageHero() {
               {lightsEnabled && !reduced ? <Lightbulb className="size-4" aria-hidden /> : <LightbulbOff className="size-4" aria-hidden />}
               {reduced ? "Mișcare redusă" : lightsEnabled ? "Lumini: ON" : "Lumini: OFF"}
             </button>
+            <details className="gs-lightboard">
+              <summary className="gs-lightboard__summary" data-cursor-label="LIGHT DESK">
+                <SlidersHorizontal className="size-4" aria-hidden />
+                <span>LIGHT DESK</span>
+                <span className="gs-lightboard__chevron" aria-hidden>+</span>
+              </summary>
+              <div className="gs-lightboard__panel">
+                <span className="gs-lightboard__eyebrow">GREEN SOUND / VISUAL MIXER</span>
+                <p className="gs-lightboard__title">Tu regizezi <em>lumina.</em></p>
+                <p className="gs-lightboard__description">Explorează trei tonuri și intensitatea efectelor scenice. Efectul este doar vizual, fără sunet.</p>
+                <fieldset className="gs-lightboard__tones">
+                  <legend>TONUL SCENEI</legend>
+                  {([
+                    {value:"mint",label:"ELECTRIC GREEN"},
+                    {value:"gold",label:"WARM GOLD"},
+                    {value:"ice",label:"BLUE HOUR"},
+                  ] as const).map(tone => (
+                    <button type="button" key={tone.value} aria-pressed={lightTone===tone.value}
+                      className="gs-lightboard__tone" onClick={() => setLightTone(tone.value)}
+                      data-cursor-label="SET TONE">
+                      <span aria-hidden className={`gs-lightboard__swatch gs-lightboard__swatch--${tone.value}`} />
+                      {tone.label}
+                    </button>
+                  ))}
+                </fieldset>
+                <label className="gs-lightboard__power" htmlFor="gs-light-power">
+                  <span>INTENSITATEA LUMINII</span>
+                  <output htmlFor="gs-light-power">{lightPower}%</output>
+                </label>
+                <input type="range" id="gs-light-power" min="15" max="100" step="5"
+                  value={lightPower} onChange={(event) => setLightPower(Number(event.target.value))}
+                  aria-label="Intensitatea efectelor vizuale de scenă" disabled={Boolean(reduced)} />
+                <p className="gs-lightboard__disclaimer">
+                  {reduced ? "Animațiile sunt reduse prin setarea dispozitivului." :
+                    !lightsEnabled ? "Pornește luminile pentru a vedea modificările." :
+                    "Tonul și intensitatea schimbă doar efectele decorative ale acestei pagini."}
+                </p>
+              </div>
+            </details>
             <a className="crafted-hero__scroll" href="#director-brief">
               Explorează <ArrowDownRight className="size-4" aria-hidden />
             </a>
