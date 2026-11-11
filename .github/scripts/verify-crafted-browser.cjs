@@ -34,6 +34,13 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
       if(width>=1024){
         assert.equal(await page.locator(".gs-cursor__toggle").isVisible(),true,"Fine pointer cursor FX can be switched off");
+        const fxPosition=await page.evaluate(()=>{
+          const toggle=document.querySelector(".gs-cursor__toggle")?.getBoundingClientRect();
+          const header=document.querySelector(".atelier-header")?.getBoundingClientRect();
+          return {top:toggle?.top ?? 0,bottomOfHeader:header?.bottom ?? 10000};
+        });
+        assert.ok(fxPosition.top > fxPosition.bottomOfHeader+7,
+          "Brand cursor toggle must sit below the fixed header, not over the nav: "+JSON.stringify(fxPosition));
         await page.mouse.move(230,270);
         await page.waitForFunction(() => document.querySelector(".gs-cursor")?.getAttribute("data-visible")==="true",null,{timeout:7000});
         await page.locator(".gs-cursor__toggle").click();
