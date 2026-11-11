@@ -57,6 +57,7 @@ export function PortfolioJournal() {
             <button key={item.id} type="button"
               className={`journal__photo journal__photo--${index + 1}`}
               onClick={() => setActiveIndex(index)}
+              data-cursor-label="VIEW FRAME"
               aria-label={`Deschide fotografia ${index + 1}: ${item.title}`}>
               <img src={item.image.src} alt={item.image.alt} width={item.image.w} height={item.image.h}
                 loading="lazy" decoding="async" />
