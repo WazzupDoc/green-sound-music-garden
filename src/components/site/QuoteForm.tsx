@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Mail, MessageCircle } from "lucide-react";
-import { useRef, useState } from "react";
+import { ArrowUpRight, CheckCircle2, Mail, MessageCircle, PencilLine } from "lucide-react";
+import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/site";
@@ -38,8 +38,9 @@ function FieldError({ id, msg }: { id: string; msg?: string | undefined }) {
 }
 
 export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate = "", defaultLocation = "", id = "cerere-oferta" }: Props) {
-  const channel = useRef<"whatsapp" | "email">("whatsapp");
-  const [sent, setSent] = useState<{ channel: "whatsapp" | "email"; href: string } | null>(null);
+  // The visitor must explicitly choose a channel after reviewing their message.
+  // Never open a popup from an asynchronous schema validation callback.
+  const [prepared, setPrepared] = useState<Quote | null>(null);
 
   const {
     register,
@@ -64,33 +65,77 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   });
 
   const onSubmit = (q: Quote) => {
-    const text = buildQuoteMessage(q);
-    const href = channel.current === "whatsapp" ? whatsappUrl(text) : mailtoUrl(q, text);
-    setSent({ channel: channel.current, href });
-    if (channel.current === "whatsapp") window.open(href, "_blank", "noopener,noreferrer");
-    else window.location.href = href;
+    // Preparing the quote is not sending it. Both destination links are opened
+    // only from a deliberate tap/click to avoid popup blockers and false success.
+    setPrepared(q);
   };
 
-  if (sent) {
+  if (prepared) {
+    const message = buildQuoteMessage(prepared);
     return (
-      <div id={id} role="status" className="rounded-2xl border border-primary/40 bg-card p-8 md:p-10">
-        <CheckCircle2 className="size-10 text-primary" aria-hidden />
-        <h3 className="display-md mt-5">Mulțumim! Cererea ta e pregătită.</h3>
-        <p className="mt-3 max-w-lg text-muted-foreground">
-          {sent.channel === "whatsapp"
-            ? "Am deschis WhatsApp cu mesajul completat. Apasă „Trimite” în conversație ca să ajungă la noi."
-            : "Am deschis aplicația de email cu mesajul completat. Apasă „Trimite” ca să ajungă la noi."}
-        </p>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <Button asChild variant="hero" size="xl">
-            <a href={sent.href} target={sent.channel === "whatsapp" ? "_blank" : undefined} rel="noopener noreferrer">
-              {sent.channel === "whatsapp" ? "Deschide din nou WhatsApp" : "Deschide din nou emailul"}
-            </a>
-          </Button>
-          <Button variant="stage" size="xl" onClick={() => setSent(null)}>
-            Modifică cererea
-          </Button>
+      <div id={id} className="quote-preview" aria-labelledby="quote-preview-title">
+        <div className="quote-preview__top" role="status">
+          <CheckCircle2 className="size-5" aria-hidden />
+          <span>GREEN SOUND / CERERE PREGĂTITĂ</span>
+          <span className="quote-preview__step">PASUL 02 / 02</span>
         </div>
+        <h3 id="quote-preview-title" className="quote-preview__title">
+          Evenimentul începe <em>cu un mesaj.</em>
+        </h3>
+        <p className="quote-preview__intro">
+          Verifică detaliile și alege unde vrei să le trimiți. <strong>Nimic nu a fost transmis încă.</strong>
+        </p>
+
+        <div className="quote-preview__ticket" aria-label="Rezumatul cererii tale">
+          <div className="quote-preview__ticket-top">
+            <span>YOUR EVENT / GREEN SOUND</span>
+            <span>PREVIEW ONLY</span>
+          </div>
+          <strong className="quote-preview__event">{prepared.eventType}</strong>
+          <div className="quote-preview__facts">
+            <div>
+              <small>DATA</small>
+              <span>{prepared.date || "De stabilit"}</span>
+            </div>
+            <div>
+              <small>LOCAȚIA</small>
+              <span>{prepared.location || "De stabilit"}</span>
+            </div>
+          </div>
+          {prepared.services.length > 0 && (
+            <div className="quote-preview__services">
+              <small>SERVICII SELECTATE</small>
+              <div>{prepared.services.map((service) => <span key={service}>{service}</span>)}</div>
+            </div>
+          )}
+          <p className="quote-preview__identity">Solicitat de {prepared.name}</p>
+        </div>
+
+        <details className="quote-preview__details">
+          <summary>Vezi mesajul complet care va fi pregătit</summary>
+          <pre>{message}</pre>
+        </details>
+
+        <div className="quote-preview__actions" aria-label="Alege cum trimiți cererea">
+          <a className="quote-preview__whatsapp" href={whatsappUrl(message)}
+            target="_blank" rel="noopener noreferrer">
+            <MessageCircle className="size-5" aria-hidden />
+            Deschide WhatsApp
+            <ArrowUpRight className="size-4" aria-hidden />
+          </a>
+          <a className="quote-preview__email" href={mailtoUrl(prepared, message)}>
+            <Mail className="size-5" aria-hidden />
+            Deschide emailul
+            <ArrowUpRight className="size-4" aria-hidden />
+          </a>
+        </div>
+        <p className="quote-preview__notice">
+          În WhatsApp sau aplicația de email, verifică destinatarul și apasă „Trimite”.
+          Green Sound Music nu primește mesajul până nu îl expediezi tu.
+        </p>
+        <button className="quote-preview__edit" type="button" onClick={() => setPrepared(null)}>
+          <PencilLine className="size-4" aria-hidden /> Modifică detaliile
+        </button>
       </div>
     );
   }
@@ -201,13 +246,16 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <FieldError id="q-consent-err" msg={errors.consent?.message} />
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row md:col-span-2">
-        <Button type="submit" variant="hero" size="xl" disabled={isSubmitting} onClick={() => (channel.current = "whatsapp")}>
-          <MessageCircle aria-hidden /> Trimite pe WhatsApp
+      <div className="flex flex-col gap-3 md:col-span-2">
+        <Button type="submit" variant="hero" size="xl" disabled={isSubmitting}
+          className="w-full justify-center">
+          <CheckCircle2 className="size-5" aria-hidden /> Verifică și continuă spre trimitere
+          <ArrowUpRight className="size-4" aria-hidden />
         </Button>
-        <Button type="submit" variant="stage" size="xl" disabled={isSubmitting} onClick={() => (channel.current = "email")}>
-          <Mail aria-hidden /> Trimite pe email
-        </Button>
+        <p className="text-xs leading-relaxed text-muted-foreground">
+          Următorul pas îți arată mesajul complet și îți oferă alegerea între WhatsApp și email.
+          Nu trimitem nimic automat.
+        </p>
       </div>
     </form>
   );
