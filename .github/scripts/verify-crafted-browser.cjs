@@ -23,6 +23,61 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
+      // V37: existing static frequency artwork is now a meaningful,
+      // keyboard-operable visual studio; it never initiates audio playback.
+      if(width===390 || width===1440){
+        const studio=page.locator(".gs-pulse");
+        assert.equal(await studio.locator(".gs-pulse__mode").count(),3,
+          "The original frequency interlude offers exactly three real event-linked scenes");
+        assert.equal(await page.locator("audio, .gs-pulse iframe").count(),0,
+          "Visual frequency studio must not autoplay or embed music");
+        assert.equal(await studio.getAttribute("data-playing"),"false",
+          "Offscreen signal animation must not run on initial homepage load");
+        await studio.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
+        await page.waitForFunction(() => document.querySelector(".gs-pulse")?.getAttribute("data-playing")==="true",
+          null,{timeout:12000});
+        const modes=studio.locator(".gs-pulse__mode");
+        assert.equal(await modes.nth(0).getAttribute("aria-pressed"),"true");
+        await modes.nth(1).click();
+        assert.equal(await modes.nth(1).getAttribute("aria-pressed"),"true",
+          "Live production mode becomes actively selected");
+        assert.equal(await studio.locator("#gs-pulse-tempo").inputValue(),"128",
+          "Scene selection restores a deterministic visual tempo");
+        assert.match(await studio.locator(".gs-pulse__scene-note strong").innerText(),/scena prinde viață/i);
+        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/concerte-festivaluri"),
+
+          "Scene opens an existing concert event page, not a fabricated destination");
+        const slider=studio.locator("#gs-pulse-tempo");
+        await slider.focus();
+        await slider.press("End");
+        assert.equal(await slider.inputValue(),"140",
+          "Native keyboard tempo slider reaches its valid 140 BPM upper bound");
+        assert.equal(await studio.evaluate(el => el.style.getPropertyValue("--gs-tempo").trim()),"0.857s",
+          "Visual beat duration derives from the real slider value");
+        assert.equal(await studio.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
+          getComputedStyle(el).animationName),"gs-studio-signal",
+          "Exactly compositor-friendly bar animation is active inside viewport");
+        const motionToggle=studio.locator(".gs-pulse__transport");
+        await motionToggle.click();
+        assert.equal(await motionToggle.getAttribute("aria-pressed"),"false");
+        assert.equal(await studio.getAttribute("data-playing"),"false");
+        assert.equal(await studio.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
+          getComputedStyle(el).animationName),"none",
+          "Pausing removes the animation rather than just hiding its controls");
+        await modes.nth(2).click();
+        assert.equal(await slider.inputValue(),"104",
+          "Afterglow switches to its own visual rhythm");
+        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/petreceri-private"));
+
+        await studio.locator(".gs-pulse__art").screenshot({
+          path:dir+"/frequency-studio-"+width+".png",animations:"disabled"});
+        await motionToggle.click();
+        assert.equal(await motionToggle.getAttribute("aria-pressed"),"true");
+        assert.equal(await studio.getAttribute("data-playing"),"true");
+        await page.evaluate(() => window.scrollTo(0,0));
+        await page.waitForFunction(() => document.querySelector(".gs-pulse")?.getAttribute("data-playing")==="false",
+          null,{timeout:12000});
+      }
       // V32 search-engine discovery: both responses must be real static files,
       // not an HTML fallback pretending to be an XML sitemap.
       if(width===390 || width===1440){
@@ -635,7 +690,13 @@ fs.mkdirSync(dir,{recursive:true});
       "The low-resource visitor shouldn't render decorative cursor controls");
     assert.equal(await lite.locator(".crafted-hero__mode").count(),3,
       "Lite mode must preserve all real scene navigation");
-    assert.equal(await lite.locator(".atelier-header__quote").count(),1,
+    await lite.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
+    assert.equal(await lite.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
+      getComputedStyle(el).animationName),"none",
+      "Save-Data disables live pulse motion while preserving the controls");
+    assert.equal(await lite.locator(".gs-pulse__modes button").count(),3,
+      "All visual mode controls remain selectable in lite mode");
+        assert.equal(await lite.locator(".atelier-header__quote").count(),1,
       "Lite mode must preserve offer conversion");
     await lite.screenshot({path:dir+"/adaptive-lite-1440.png",fullPage:false});
     await lite.close();
@@ -645,9 +706,10 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     assert.equal(await reduced.locator(".gs-cursor__toggle").isVisible(),false,"Reduced motion hides cursor FX");
-    const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
+    await reduced.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
+        const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V34: guided catalogue suggestions, exclusive advice, eight-selection ceiling, V33 adaptive+clipboard, V32 SEO, and six responsive widths");
+    console.log("PASS V37: frequency studio three scenes, real event routes, tempo slider, play/pause, offscreen/lite/reduced motion, and V20–V36 six-width regression");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
