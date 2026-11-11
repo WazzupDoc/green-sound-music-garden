@@ -12,6 +12,7 @@ export function serviceHead(slug: ServiceSlug) {
   return pageHead({
     title: s.seoTitle,
     description: s.seoDescription,
+    image: s.image,
     path,
     jsonLd: [
       serviceLd(s.name, s.seoDescription, path),
