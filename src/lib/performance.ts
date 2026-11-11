@@ -6,11 +6,11 @@
  * This controls decorative effects only; content and interactions stay intact.
  */
 export type PerformanceSignals = {
-  reducedMotion?: boolean;
-  saveData?: boolean;
-  effectiveType?: string;
-  deviceMemory?: number;
-  hardwareConcurrency?: number;
+  reducedMotion?: boolean | undefined;
+  saveData?: boolean | undefined;
+  effectiveType?: string | undefined;
+  deviceMemory?: number | undefined;
+  hardwareConcurrency?: number | undefined;
 };
 
 export function shouldUseLiteEffects({
