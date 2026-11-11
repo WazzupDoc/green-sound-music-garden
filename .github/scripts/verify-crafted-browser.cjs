@@ -45,7 +45,15 @@ fs.mkdirSync(dir,{recursive:true});
         await page.locator(".crafted-services").scrollIntoViewIfNeeded();
         await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
         await page.locator(".director-reel").scrollIntoViewIfNeeded();
+        await page.waitForFunction(() => {
+          const image = document.querySelector(".director-reel__player img");
+          return image && image.complete && image.naturalWidth >= 640 &&
+            image.currentSrc.includes("/media/greensound/film-");
+        },null,{timeout:15000});
         await page.screenshot({path:dir+"/reel-"+width+".png",fullPage:false});
+        if(width === 1440){
+          await page.locator(".director-reel__layout").screenshot({path:dir+"/reel-component-desktop.png",animations:"disabled"});
+        }
       }
       await page.locator(".crafted-hero__mode").nth(1).click();
       await page.waitForFunction(() => document.querySelector(".crafted-hero")?.getAttribute("data-scene")==="private",null,{timeout:10000}).catch(async e=>{
