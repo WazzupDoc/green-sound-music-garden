@@ -14,7 +14,7 @@ export function ClientMotion() {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const connection = getBrowserConnection();
     const apply = () => {
-      document.documentElement.dataset.gsPerformance =
+      document.documentElement.dataset["gsPerformance"] =
         shouldUseLiteEffects(getPerformanceSignals()) ? "lite" : "full";
     };
     apply();
@@ -23,7 +23,7 @@ export function ClientMotion() {
     return () => {
       motion.removeEventListener("change", apply);
       connection?.removeEventListener?.("change", apply);
-      delete document.documentElement.dataset.gsPerformance;
+      delete document.documentElement.dataset["gsPerformance"];
     };
   }, []);
 
