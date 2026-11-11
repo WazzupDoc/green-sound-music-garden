@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { SITE_URL, events, images, services } from "@/data/site";
-import { pageHead, serializeJsonLd } from "./seo";
+import { breadcrumbLd, canonicalUrl, pageHead, serializeJsonLd, serviceLd } from "./seo";
 
 /** Canonical business pages only; no query variants, invented city pages or 404s. */
 const editorialPaths = [
@@ -85,5 +85,34 @@ describe("safe SSR JSON-LD serialization", () => {
     const payload = { "@context": "https://schema.org", name: "</script><img src=x>" };
     const head = pageHead({ title: "Test", description: "Test", path: "/", jsonLd: [payload] });
     expect(head.scripts[0]?.children).toBe(serializeJsonLd(payload));
+  });
+});
+
+
+describe("canonical consistency in structured data", () => {
+  it("normalizes root, bare and already canonical routes without duplicate slashes", () => {
+    expect(canonicalUrl("/")).toBe(SITE_URL + "/");
+    expect(canonicalUrl("/contact")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/contact/")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/contact///")).toBe(SITE_URL + "/contact/");
+  });
+
+  it("keeps service schema URL identical to its canonical head URL", () => {
+    for (const path of ["/dj-mc", "/dj-mc/"]) {
+      const schema = serviceLd("DJ & MC", "Muzică pentru evenimente", path);
+      const head = pageHead({ title: "DJ & MC", description: "Muzică pentru evenimente", path });
+      expect(schema.url).toBe(head.links[0]?.href);
+    }
+  });
+
+  it("does not duplicate separators in breadcrumb item URLs", () => {
+    const schema = breadcrumbLd([
+      { name: "Acasă", path: "/" },
+      { name: "Servicii", path: "/servicii/" },
+      { name: "DJ", path: "/dj-mc" },
+    ]);
+    expect(schema.itemListElement.map(item => item.item)).toEqual([
+      SITE_URL + "/", SITE_URL + "/servicii/", SITE_URL + "/dj-mc/",
+    ]);
   });
 });

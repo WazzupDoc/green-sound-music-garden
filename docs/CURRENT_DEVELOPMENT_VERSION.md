@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V38 draft)
+Updated: 2026-11-11 (V39 draft)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v38-audit-service-discovery`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/24
-- PR review base: `design/crafted-atmospheres-v37-frequency-studio` (PR #23); retains all V20–V37 improvements, including Frequency Studio, guided briefs, and safe SEO.
+- Current branch: `design/crafted-atmospheres-v39-schema-url-integrity`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/25 (base V38 PR #24)
+- PR review base: `design/crafted-atmospheres-v38-audit-service-discovery` (PR #24); retains all V20–V38 improvements, including Frequency Studio, guided briefs, and safe SEO.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V38 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v38-audit-service-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V38 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v39-schema-url-integrity?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v38-audit-service-discovery
-git pull origin design/crafted-atmospheres-v38-audit-service-discovery
+git switch design/crafted-atmospheres-v39-schema-url-integrity
+git pull origin design/crafted-atmospheres-v39-schema-url-integrity
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -182,3 +182,12 @@ Review PR #23 only. Never merge or deploy to `main`/`greensoundmusic.com` withou
 - **No authorization to merge, deploy or promise rank/availability.** The business inbox is still WhatsApp/email initiated by the visitor until an approved backend provider is connected.
 
 Review PR #24 (draft); production remains unchanged.
+
+
+## V39 — Canonical URL integrity for structured data (draft)
+- Root cause: Schema.org `breadcrumbLd` and `serviceLd` appended a slash unconditionally, while `pageHead` correctly normalized existing trailing slashes. When callers supplied canonical paths ending in `/`, structured data produced `//` and disagreed with the canonical link.
+- Introduced a shared `canonicalUrl` helper for metadata, service and breadcrumb structured data. Added regression tests for root, slash/no-slash, duplicate slash, and schema/head parity.
+- Scope is strictly SEO correctness: no invented local landing pages, search volumes, backend, new dependencies or design regressions intended.
+- Validation pending GitHub Actions for this exact V39 head: strict TypeScript, SSR build, Vitest, gzip budgets, Chromium at 360/390/430/768/1440/1920. Do not merge or deploy until verified.
+- SEO backlog: (1) confirm real service geography and original copy with owner; (2) inspect Search Console after connected and authorized; (3) test actual live SERP/social previews only after approved deployment. No claims of first-page rankings.
+- Release safety: `main` and production unchanged. Before any future `main` integration, verify CI/CD deploy triggers, create/verify rollback tag, and secure explicit production authorization if merge triggers deployment.
