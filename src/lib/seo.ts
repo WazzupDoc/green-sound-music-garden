@@ -59,7 +59,7 @@ export const localBusinessLd = () => ({
   name: business.name,
   slogan: business.tagline,
   url: `${SITE_URL}/`,
-  telephone: "+40766566275",
+  telephone: business.phoneHref.replace(/^tel:/, ""),
   email: business.email,
   foundingDate: String(business.founded),
   description: "Green Sound Music oferă DJ & MC, trupă live, sonorizare, scenotehnică, lumini și producție muzicală pentru evenimente.",
