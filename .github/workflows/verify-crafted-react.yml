@@ -4,7 +4,7 @@ on:
   push:
     branches: [design/crafted-atmospheres-react-v20]
   pull_request:
-    branches: [main]
+    branches: [main, design/green-sound-sillage-open-source]
     paths:
       - "src/**"
       - "package.json"
