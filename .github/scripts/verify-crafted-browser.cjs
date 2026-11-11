@@ -282,6 +282,43 @@ fs.mkdirSync(dir,{recursive:true});
         assert.ok(aboutOverflow.documentWidth<=aboutOverflow.viewport+2,
           "Production Journey must never overflow a narrow viewport: "+JSON.stringify(aboutOverflow));
         await page.locator(".gs-journey__body").screenshot({path:dir+"/production-journey-mobile-390.png",animations:"disabled"});
+
+        // V29: selection, overview, quote handoff and safe reset are all real.
+        await page.goto(origin+"/servicii",{waitUntil:"domcontentloaded"});
+        await page.locator('.gs-service-mix[data-hydrated="true"]').waitFor({timeout:30000});
+        assert.equal(await page.locator(".gs-service-mix__pick").count(),8,
+          "Eight real Green Sound services are selectable");
+        assert.equal(await page.locator(".gs-service-mix__submit").isDisabled(),true,
+          "Empty brief must not submit a meaningless quote");
+        await page.locator('.gs-service-mix__pick[data-service-slug="dj-mc"]').click();
+        assert.equal(await page.locator('.gs-service-mix__pick[data-service-slug="dj-mc"]').getAttribute("aria-pressed"),"true");
+        await page.locator('.gs-service-mix__pick[data-service-slug="echipamente-de-sunet-si-lumini"]').click();
+        assert.equal(await page.locator(".gs-service-mix__token").count(),2,
+          "Two genuine company services appear in the editable brief");
+        assert.equal(await page.locator(".gs-service-mix__submit").isEnabled(),true);
+        assert.match(await page.locator(".gs-service-mix__visual-title h3").innerText(),/Sonorizare/i);
+        const serviceOverflow = await page.evaluate(()=>({doc:document.documentElement.scrollWidth,viewport:innerWidth}));
+        assert.ok(serviceOverflow.doc <= serviceOverflow.viewport+2,
+          "Service Mix must not overflow mobile: "+JSON.stringify(serviceOverflow));
+        await page.locator(".gs-service-mix__layout").screenshot({
+          path:dir+"/service-mix-mobile-390.png",animations:"disabled"});
+        await page.locator(".gs-service-mix__submit").click();
+        await page.waitForURL(url=>url.pathname==="/contact"&&url.searchParams.has("services"),{timeout:15000});
+        const handoff = new URL(page.url());
+        assert.equal(handoff.searchParams.get("services"),
+          "DJ & MC|Sonorizare, lumini, ecrane LED","Use exact allowlisted form labels");
+        await page.waitForFunction(()=>
+          document.querySelectorAll('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').length===2,
+          null,{timeout:15000});
+        assert.equal(await page.locator('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').count(),2,
+          "Selected services survive native GET and validated Contact initialization");
+
+        await page.goto(origin+"/servicii",{waitUntil:"domcontentloaded"});
+        await page.locator('.gs-service-mix[data-hydrated="true"]').waitFor();
+        await page.locator('.gs-service-mix__pick[data-service-slug="dj-mc"]').click();
+        await page.locator(".gs-service-mix__clear").click();
+        assert.equal(await page.locator(".gs-service-mix__token").count(),0,"Clear selection really empties the brief");
+        assert.equal(await page.locator(".gs-service-mix__submit").isDisabled(),true);
         await page.goto(origin+"/confidentialitate",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
         // V25: the original-photo editorial journal is actually interactive,
@@ -341,6 +378,19 @@ fs.mkdirSync(dir,{recursive:true});
       }
       assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
       if(width===1440){
+        await page.goto(origin+"/servicii",{waitUntil:"domcontentloaded"});
+        await page.locator('.gs-service-mix[data-hydrated="true"]').waitFor();
+        await page.locator('.gs-service-mix__pick[data-service-slug="trupa"]').click();
+        await page.locator('.gs-service-mix__pick[data-service-slug="echipamente-de-sunet-si-lumini"]').click();
+        await page.locator(".gs-service-mix__layout").scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>{
+          const image=document.querySelector(".gs-service-mix__visual img");
+          return image&&image.complete&&image.naturalWidth>0;
+        },null,{timeout:15000});
+        await page.locator(".gs-service-mix__layout").screenshot({
+          path:dir+"/service-mix-desktop-1440.png",animations:"disabled"});
+        await page.locator(".gs-service-mix__brief").screenshot({
+          path:dir+"/service-mix-brief-desktop-1440.png",animations:"disabled"});
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         await page.locator(".gs-journey__body").scrollIntoViewIfNeeded();
         await page.waitForFunction(()=>{
@@ -397,6 +447,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V28: branded recovery, interactive authentic Production Journey, mobile keyboard focus, prioritized LCP hero, V26/V27 features and six responsive widths");
+    console.log("PASS V29: service mix with real services and validated contact handoff, production journey, cursor/light desk, branded 404, reduced-motion and 6 responsive widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
