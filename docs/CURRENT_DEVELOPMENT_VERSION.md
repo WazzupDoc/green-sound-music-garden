@@ -1,5 +1,29 @@
 # Green Sound Music — current development version
 
+Updated: 2026-11-11 (V25, review pending)
+
+## Current source of truth
+- **Latest development branch:** `design/crafted-atmospheres-v25-event-journal`
+- **Base:** `design/crafted-atmospheres-v24-stage-stories`, draft PR #9.
+- **Production:** `main` and greensoundmusic.com unchanged.
+- **Verification:** CI/browser checks for V25 not yet confirmed; do not publish.
+
+## V25 — Event-to-quote conversion
+The existing event selector now includes a direct event-specific offer CTA. It carries the existing validated `event` search parameter to the contact form, preserving the selected event and reducing navigation friction. Uses existing verified event data, no invented imagery, testimonials, or business claims. Added keyboard-focusable 44px-target CTA and reduced-motion styling.
+
+## Pending QA
+- Confirm TypeScript/build and browser CI, including React hydration warnings in Contact.
+- Check all event variants on narrow mobile, tablet and desktop and keyboard navigation.
+- Verify all event labels are accepted by the existing contact query allowlist.
+- Consider a visual portfolio lightbox only after current CTA and contact journey are verified.
+
+## Preview
+[Open V25 Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v25-event-journal?quickstart=1). Use forwarded port 4175; not a production deployment.
+
+---
+
+# Archived V24 development notes
+
 Updated: 2026-11-11 (V24)
 
 ## Current source of truth
