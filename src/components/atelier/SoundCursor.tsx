@@ -16,7 +16,7 @@ export function SoundCursor() {
     const node = followerRef.current;
     const label = labelRef.current;
     if (!node || !label || !enabled) return;
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine) and (min-width: 1024px)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
     if (!fine.matches || reduced.matches || saveData) return;
