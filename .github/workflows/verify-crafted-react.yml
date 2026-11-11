@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut]
     paths:
       - "src/**"
       - "package.json"
@@ -39,12 +39,13 @@ jobs:
           r=Path('src/routes')
           for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
               assert (r/page).is_file(), page
-          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief']:
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck']:
               assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
           css=Path('src/styles/atelier.css').read_text()
           assert 'prefers-reduced-motion' in css
           assert 'crafted-stage-lights' in css
           assert Path('src/styles/directors-cut.css').is_file()
+          assert Path('src/styles/soundcheck.css').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')
           PY
