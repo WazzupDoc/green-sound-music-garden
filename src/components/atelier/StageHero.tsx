@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Volume2 } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff } from "lucide-react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -18,6 +18,27 @@ export function StageHero() {
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
   const [showReel, setShowReel] = useState(false);
+  const [lightsEnabled, setLightsEnabled] = useState(true);
+  const [stageVisible, setStageVisible] = useState(true);
+  const stageRef = useRef<HTMLElement>(null);
+
+  // Never keep running stage animations while the hero is offscreen or the tab is hidden.
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => setStageVisible(Boolean(entry?.isIntersecting) && !document.hidden),
+      { threshold: 0.025 });
+    observer.observe(el);
+    const onVisibility = () => {
+      const rect = el.getBoundingClientRect();
+      setStageVisible(!document.hidden && rect.bottom > 0 && rect.top < window.innerHeight);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
   const reduced = useReducedMotion();
   const pointerX = useMotionValue(50);
   const pointerY = useMotionValue(50);
@@ -31,7 +52,9 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" className="crafted-hero" data-scene={active} data-hydrated={hydrated ? "true" : "false"}>
+    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero" data-scene={active}
+      data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
+      data-hydrated={hydrated ? "true" : "false"}>
       <div className="crafted-hero__canvas" onPointerMove={onMove}
         onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
         <AnimatePresence mode="wait" initial={false}>
@@ -45,6 +68,11 @@ export function StageHero() {
             transition={{ duration: reduced ? 0 : .68, ease: [.16, 1, .3, 1] }} />
         </AnimatePresence>
         <div className="crafted-hero__shade" aria-hidden />
+        <div className="director-stage-ambient" aria-hidden>
+          <span className="director-stage-ambient__ring" />
+          <span className="director-stage-ambient__ring director-stage-ambient__ring--two" />
+          <span className="director-stage-ambient__grid" />
+        </div>
         <div className="crafted-stage-lights" aria-hidden>
           <span className="crafted-stage-lights__beam crafted-stage-lights__beam--one" />
           <span className="crafted-stage-lights__beam crafted-stage-lights__beam--two" />
@@ -83,9 +111,17 @@ export function StageHero() {
               </button>
             ))}
           </div>
-          <a className="crafted-hero__scroll" href="#crafted-experiences">
-            Explorează <ArrowDownRight className="size-4" aria-hidden />
-          </a>
+          <div className="director-hero__utilities">
+            <button type="button" className="director-hero__lights" aria-pressed={lightsEnabled && !reduced}
+              disabled={Boolean(reduced)} onClick={() => setLightsEnabled(value => !value)}
+              title={reduced ? "Animațiile sunt dezactivate în setările dispozitivului" : "Activează sau dezactivează efectele de lumină"}>
+              {lightsEnabled && !reduced ? <Lightbulb className="size-4" aria-hidden /> : <LightbulbOff className="size-4" aria-hidden />}
+              {reduced ? "Mișcare redusă" : lightsEnabled ? "Lumini: ON" : "Lumini: OFF"}
+            </button>
+            <a className="crafted-hero__scroll" href="#director-brief">
+              Explorează <ArrowDownRight className="size-4" aria-hidden />
+            </a>
+          </div>
         </div>
       </div>
       <div className="crafted-hero__side-label" aria-hidden><Radio className="size-4" /> GREEN SOUND / {scene.tag.toUpperCase()}</div>
