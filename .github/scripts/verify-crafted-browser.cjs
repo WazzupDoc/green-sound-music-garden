@@ -206,7 +206,18 @@ fs.mkdirSync(dir,{recursive:true});
         await page.locator('.event-brief input[name="location"]').fill("Pitești");
         await page.locator(".event-brief__submit").click();
         await page.waitForURL(url => url.pathname === "/contact" && url.searchParams.has("event"), {timeout:15000});
+        const nativeBriefUrl = new URL(page.url());
+        assert.equal(nativeBriefUrl.searchParams.get("event"),"Nuntă","The event is in the native GET URL");
+        assert.equal(nativeBriefUrl.searchParams.get("date"),"2027-09-18","The date is in the native GET URL");
+        assert.equal(nativeBriefUrl.searchParams.get("location"),"Pitești","The location is in the native GET URL");
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
+        // RHF initializes after the /contact route hydrates; assert final client input
+        // state, not the brief SSR placeholders before the form becomes interactive.
+        await page.waitForFunction(() => {
+          const event=document.querySelector("#q-event"),date=document.querySelector("#q-date"),
+            place=document.querySelector("#q-location"),services=document.querySelectorAll('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked');
+          return event?.value==="Nuntă" && date?.value==="2027-09-18" && place?.value==="Pitești" && services.length===5;
+        },null,{timeout:15000});
         assert.equal(await page.locator("#q-event").inputValue(),"Nuntă");
         assert.equal(await page.locator("#q-date").inputValue(),"2027-09-18");
         assert.equal(await page.locator("#q-location").inputValue(),"Pitești");
