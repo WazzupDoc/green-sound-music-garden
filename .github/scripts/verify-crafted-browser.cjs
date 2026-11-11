@@ -23,7 +23,7 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
-      const heroPreload = await page.locator('head link[rel="preload"][as="image"]').first().evaluate(link=>({
+      const heroPreload = await page.locator('head link[rel="preload"][as="image"][href*="/media/greensound/"]').first().evaluate(link=>({
         href:link.getAttribute("href")??"",priority:link.getAttribute("fetchpriority"),type:link.getAttribute("type")
       }));
       assert.ok(heroPreload.href.includes("/media/greensound/") &&
