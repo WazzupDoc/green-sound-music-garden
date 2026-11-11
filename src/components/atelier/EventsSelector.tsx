@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CalendarCheck2 } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { events, type EventSlug } from "@/data/site";
 
@@ -8,6 +8,7 @@ export function EventsSelector() {
   const [slug, setSlug] = useState<EventSlug>("nunti");
   const reduce = useReducedMotion();
   const current = events.find((event) => event.slug === slug) ?? events[0]!;
+  const briefLink = `/contact?event=${encodeURIComponent(current.formLabel)}`;
   return (
     <section id="crafted-experiences" className="crafted-experiences section" aria-labelledby="crafted-events-title">
       <div className="container-site">
@@ -43,6 +44,10 @@ export function EventsSelector() {
                   <Link to="/evenimente/$slug" params={{ slug: current.slug }} className="crafted-button crafted-button--light">
                     Vezi experiența <ArrowUpRight className="size-4" aria-hidden />
                   </Link>
+                  <a href={briefLink} className="crafted-experiences__brief-link">
+                    <CalendarCheck2 className="size-4" aria-hidden /> Cere ofertă pentru {current.name.toLowerCase()}
+                    <ArrowUpRight className="size-4" aria-hidden />
+                  </a>
                 </div>
               </motion.div>
             </AnimatePresence>
