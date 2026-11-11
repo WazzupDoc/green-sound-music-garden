@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
-import { events, getService, services, type ServiceSlug } from "@/data/site";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { events, getService, type ServiceSlug } from "@/data/site";
+import { serviceCompanions, uniqueServiceGallery } from "@/lib/service-discovery";
 import { pageHead, breadcrumbLd, serviceLd, faqLd } from "@/lib/seo";
-import { FaqList, LinkCard, PageHero, QuoteSection, SectionHeading } from "./blocks";
+import { FaqList, PageHero, QuoteSection, SectionHeading } from "./blocks";
 import { VideoLite } from "./VideoLite";
 import type { eventTypeOptions } from "@/lib/quote";
 
@@ -28,7 +29,8 @@ export function serviceHead(slug: ServiceSlug) {
 
 export function ServicePage({ slug }: { slug: ServiceSlug }) {
   const s = getService(slug);
-  const related = services.filter((x) => x.slug !== slug).slice(0, 3);
+  const related = serviceCompanions(slug);
+  const { side: sidebarGallery, after: additionalGallery } = uniqueServiceGallery(s);
   const fitEvents = events.filter((e) => s.events.includes(e.slug));
   const defaultEvent: (typeof eventTypeOptions)[number] | undefined =
     slug === "studio-inregistrari" ? "Studio înregistrări" : slug === "ursitoare-botez" ? "Botez" : undefined;
@@ -94,19 +96,29 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
           <div className="space-y-6 lg:sticky lg:top-28 lg:self-start">
             {s.videos.length > 0
               ? s.videos.slice(0, 2).map((v) => <VideoLite key={v.id} video={v} />)
-              : s.gallery?.slice(0, 2).map((img) => (
+              : sidebarGallery.map((img) => (
                   <img key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" decoding="async" className="w-full rounded-2xl object-cover shadow-card" />
                 ))}
           </div>
         </div>
       </section>
 
-      {s.gallery && s.gallery.length > 2 && (
-        <section aria-label="Galerie foto" className="pb-24">
-          <div className="container-site grid gap-4 sm:grid-cols-3">
-            {s.gallery.map((img) => (
-              <img key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" decoding="async" className="aspect-[4/3] w-full rounded-xl object-cover" />
-            ))}
+      {additionalGallery.length > 0 && (
+        <section aria-label="Alte fotografii din activitatea Green Sound Music" className="gs-service-photo-journal">
+          <div className="container-site">
+            <div className="gs-service-photo-journal__heading">
+              <span>GREEN SOUND / REAL MOMENTS</span>
+              <h2>Din culisele <em>evenimentelor.</em></h2>
+            </div>
+            <div className="gs-service-photo-journal__grid">
+              {additionalGallery.map((img) => (
+                <figure key={img.src}>
+                  <img src={img.src} alt={img.alt} width={img.w} height={img.h}
+                    loading="lazy" decoding="async" />
+                  <figcaption>{img.alt}</figcaption>
+                </figure>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -154,14 +166,40 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
         defaultEventType={defaultEvent}
       />
 
-      <section className="section border-t border-border">
+      <section className="gs-service-relations section border-t border-border"
+        aria-labelledby="gs-service-relations-title">
         <div className="container-site">
-          <SectionHeading eyebrow="Se combină bine cu" title="Alte servicii" />
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {related.map((r) => (
-              <LinkCard key={r.slug} to={`/${r.slug}`} title={r.name} text={r.short} />
+          <div className="gs-service-relations__heading">
+            <div>
+              <span className="gs-service-relations__eyebrow">GREEN SOUND / PRODUCȚIA COMPLETĂ</span>
+              <h2 id="gs-service-relations-title">Pune împreună <em>momentele.</em></h2>
+            </div>
+            <p>Fiecare eveniment are propria combinație. Iată câteva servicii complementare, din oferta noastră reală.</p>
+          </div>
+          <div className="gs-service-relations__grid">
+            {related.map(({ service: item, why }, index) => (
+              <Link key={item.slug} to={`/${item.slug}`} className="gs-service-relations__card"
+                data-related-service={item.slug}>
+                <div className="gs-service-relations__photo">
+                  <img src={item.image.src} alt="" width={item.image.w} height={item.image.h}
+                    loading="lazy" decoding="async" />
+                  <span className="gs-service-relations__number">0{index + 1} / 03</span>
+                  <ArrowUpRight className="gs-service-relations__arrow size-5" aria-hidden />
+                </div>
+                <div className="gs-service-relations__body">
+                  <span>SE POTRIVEȘTE CU</span>
+                  <h3>{item.name}</h3>
+                  <p>{why}</p>
+                  <span className="gs-service-relations__detail">
+                    Descoperă serviciul <ArrowUpRight className="size-4" aria-hidden />
+                  </span>
+                </div>
+              </Link>
             ))}
           </div>
+          <Link to="/servicii" className="gs-service-relations__all">
+            Vezi toate serviciile <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
         </div>
       </section>
     </>
