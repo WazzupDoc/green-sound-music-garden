@@ -2,11 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { StageHero } from "@/components/atelier/StageHero";
+import { QuickBrief } from "@/components/atelier/QuickBrief";
 import { EventsSelector } from "@/components/atelier/EventsSelector";
 import { ServicesAtelier } from "@/components/atelier/ServicesAtelier";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { FaqList, QuoteSection } from "@/components/site/blocks";
-import { business, generalFaqs } from "@/data/site";
+import { generalFaqs, images } from "@/data/site";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -22,10 +23,7 @@ function Home() {
   return (
     <>
       <StageHero />
-      <div className="crafted-ticker" aria-hidden="true">
-        <span>GREEN SOUND MUSIC</span><i /> LIVE PRODUCTION <i /> MUSIC <i /> LIGHT <i /> EXPERIENCE <i />
-        <span>DIN {business.founded} / PITEȘTI</span>
-      </div>
+      <QuickBrief />
       <EventsSelector />
       <ServicesAtelier />
       <EditorialPortfolio />
