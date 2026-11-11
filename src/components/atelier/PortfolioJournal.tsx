@@ -22,6 +22,8 @@ const frames: Frame[] = [
 
 export function PortfolioJournal() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const frame = activeIndex === null ? null : frames[activeIndex]!;
   const move = (difference: number) =>
     setActiveIndex((index) => index === null ? null : (index + difference + frames.length) % frames.length);
@@ -39,7 +41,8 @@ export function PortfolioJournal() {
   }, [activeIndex]);
 
   return (
-    <section className="journal section" id="portfolio-photos" aria-labelledby="journal-title">
+    <section className="journal section" id="portfolio-photos" aria-labelledby="journal-title"
+      data-hydrated={hydrated ? "true" : "false"}>
       <div className="container-site">
         <div className="journal__heading">
           <div>
