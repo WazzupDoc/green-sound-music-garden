@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Volume2 } from "lucide-react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos } from "@/data/site";
-import { VideoLite } from "@/components/site/VideoLite";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 type StageMode = "live" | "private" | "production";
 const modes = [
@@ -88,20 +88,23 @@ export function StageHero() {
       </div>
       <div className="crafted-hero__side-label" aria-hidden><Radio className="size-4" /> GREEN SOUND / {scene.tag.toUpperCase()}</div>
 
-      {showReel && (
-        <div className="crafted-film-dialog" role="dialog" aria-modal="true" aria-label="Videoclip Green Sound Music"
-          onKeyDown={(event) => { if (event.key === "Escape") setShowReel(false); }}>
-          <button type="button" className="crafted-film-dialog__backdrop" tabIndex={-1}
-            onClick={() => setShowReel(false)} aria-label="Închide videoclipul" />
-          <div className="crafted-film-dialog__body">
-            <div className="flex items-center justify-between gap-4 py-4">
-              <span className="label-tech text-foreground/65"><Volume2 className="mr-2 inline size-4" /> VIDEO REAL / GREEN SOUND MUSIC</span>
-              <button type="button" autoFocus className="crafted-text-action" onClick={() => setShowReel(false)}>Închide ✕</button>
-            </div>
-            <VideoLite video={videos.showLumini} />
-          </div>
-        </div>
-      )}
+      <Dialog open={showReel} onOpenChange={setShowReel}>
+        <DialogContent className="max-h-[92dvh] max-w-4xl overflow-y-auto rounded-none border-[#c7e3ba]/35 bg-[#08120b] p-4 sm:p-6">
+          <DialogTitle className="pr-8 font-display text-xl font-semibold">Green Sound Music / Show de lumini</DialogTitle>
+          <DialogDescription className="text-sm text-foreground/60">Filmări reale. Redarea videoclipului încarcă YouTube doar după ce ai apăsat butonul de vizionare.</DialogDescription>
+          {showReel && (
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${videos.showLumini.id}?autoplay=1&rel=0`}
+              title={videos.showLumini.title}
+              loading="lazy"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="aspect-video w-full border-0"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
