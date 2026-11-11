@@ -355,7 +355,7 @@ fs.mkdirSync(dir,{recursive:true});
         const copiedText=await page.evaluate(() => navigator.clipboard.readText());
         assert.match(copiedText,/Ana Test/);
         assert.match(copiedText,/Nuntă/);
-        assert.match(copiedText,/18\\.12\\.2027/);
+        assert.ok(copiedText.includes("Data: 18.12.2027"),"The copied message must preserve the actual event date");
         assert.match(await page.locator(".quote-preview__copy-status").innerText(),/nu a fost trimis automat/i);
         // Browser with disabled clipboard: never claim success, show manual text.
         await page.evaluate(() => Object.defineProperty(navigator,"clipboard",{
