@@ -75,8 +75,10 @@ fs.mkdirSync(dir,{recursive:true});
           "Empty search offers a real contact alternative");
         await page.keyboard.press("Escape");
         await page.locator(".gs-finder").waitFor({state:"hidden",timeout:7000});
+        await page.waitForFunction(() => document.activeElement?.classList.contains("atelier-header__finder-btn"),
+          null,{timeout:7000});
         assert.equal(await finderButton.evaluate(el=>el===document.activeElement),true,
-          "Escape closes the modal and returns focus to its trigger");
+          "Escape closes the modal and returns focus to its trigger after Radix dismissal");
         if(width===1440){
           await page.keyboard.press("/");
           await page.locator("#gs-finder-input").waitFor({timeout:7000});
