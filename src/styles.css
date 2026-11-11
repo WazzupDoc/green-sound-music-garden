@@ -14,6 +14,7 @@
 @import "./styles/contact-editorial.css";
 @import "./styles/quote-preview.css";
 @import "./styles/signature-cursor.css";
+@import "./styles/light-desk.css";
 @import "./styles/event-journal.css";
 
 @custom-variant dark (&:is(.dark *));
