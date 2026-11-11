@@ -181,6 +181,7 @@ fs.mkdirSync(dir,{recursive:true});
         // V25: the original-photo editorial journal is actually interactive,
         // navigation is accessible, and the film archive never auto-plays.
         await page.goto(origin+"/portofoliu",{waitUntil:"domcontentloaded"});
+        await page.locator('.journal[data-hydrated="true"]').waitFor({timeout:30000});
         assert.equal(await page.locator(".journal__photo").count(),6,"Six first-party photo journal frames");
         await page.locator(".journal__photo").first().click();
         await page.locator('[role="dialog"]').waitFor();
