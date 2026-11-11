@@ -23,12 +23,15 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
-      const heroPreload = await page.locator('head link[rel="preload"][as="image"][href*="/media/greensound/"]').first().evaluate(link=>({
-        href:link.getAttribute("href")??"",priority:link.getAttribute("fetchpriority"),type:link.getAttribute("type")
-      }));
-      assert.ok(heroPreload.href.includes("/media/greensound/") &&
-        heroPreload.priority === "high" && heroPreload.type === "image/webp",
-        "Exactly the real first-party hero photo should be prioritized for LCP: "+JSON.stringify(heroPreload));
+      // React can add a favicon image preload before the hero. Inspect only
+      // the real first-party hero and reject duplicate hero resource hints.
+      const heroPreloads = await page.locator('head link[rel="preload"][as="image"][href*="/media/greensound/"]').evaluateAll(nodes =>
+        nodes.map(link=>({href:link.getAttribute("href")??"",
+          priority:link.getAttribute("fetchpriority"),type:link.getAttribute("type")})));
+      assert.equal(heroPreloads.length,1,
+        "Exactly one first-party hero preload must exist: "+JSON.stringify(heroPreloads));
+      assert.ok(heroPreloads[0].priority === "high" && heroPreloads[0].type === "image/webp",
+        "The actual hero preload must carry high priority and WebP type: "+JSON.stringify(heroPreloads));
       const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
       assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
         "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
