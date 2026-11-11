@@ -97,7 +97,7 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
             {s.videos.length > 0
               ? s.videos.slice(0, 2).map((v) => <VideoLite key={v.id} video={v} />)
               : sidebarGallery.map((img) => (
-                  <img key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" decoding="async" className="w-full rounded-2xl object-cover shadow-card" />
+                  <img key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy" decoding="async" data-service-gallery="sidebar" className="w-full rounded-2xl object-cover shadow-card" />
                 ))}
           </div>
         </div>
@@ -114,7 +114,7 @@ export function ServicePage({ slug }: { slug: ServiceSlug }) {
               {additionalGallery.map((img) => (
                 <figure key={img.src}>
                   <img src={img.src} alt={img.alt} width={img.w} height={img.h}
-                    loading="lazy" decoding="async" />
+                    loading="lazy" decoding="async" data-service-gallery="additional" />
                   <figcaption>{img.alt}</figcaption>
                 </figure>
               ))}
