@@ -1,10 +1,13 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowUpRight, Menu, Phone, X, MessageCircle } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
+
+// The searchable directory is requested only when opened, not on every page load.
+const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
 const navigation = [
   { to: "/", title: "Acasă" },
@@ -17,8 +20,10 @@ const navigation = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [finderOpen, setFinderOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const finderButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
   const path = useRouterState({ select: state => state.location.pathname });
@@ -26,6 +31,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     setOpen(false);
+    setFinderOpen(false);
   }, [path]);
 
   useEffect(() => {
@@ -72,6 +78,32 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.repeat) return;
+      const key = event.key.toLowerCase();
+      const command = (event.metaKey || event.ctrlKey) && key === "k" && !event.altKey;
+      const target = event.target;
+      const editing = target instanceof Element &&
+        Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      const slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey &&
+        !editing && !document.querySelector('[role="dialog"]');
+      // Never steal keystrokes from an existing dialog or a form.
+      if (!slash && !command) return;
+      if (!finderOpen && document.querySelector('[role="dialog"]')) return;
+      event.preventDefault();
+      setOpen(false);
+      setFinderOpen(previous => !previous);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [finderOpen]);
+
+  const onFinderOpenChange = (next: boolean) => {
+    setFinderOpen(next);
+    if (!next) window.requestAnimationFrame(() => finderButtonRef.current?.focus());
+  };
+
   return (
     <header ref={headerRef} className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
@@ -86,6 +118,13 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="atelier-header__actions">
+          <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
+            aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
+            aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
+            onClick={() => { setOpen(false); setFinderOpen(true); }}>
+            <Search className="size-5" aria-hidden />
+            <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
+          </button>
           <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
             <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
           </a>
@@ -121,6 +160,9 @@ export function SiteHeader() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Suspense fallback={null}>
+        {finderOpen && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange} />}
+      </Suspense>
     </header>
   );
 }
