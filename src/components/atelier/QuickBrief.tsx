@@ -8,7 +8,7 @@ import { eventTypeOptions } from "@/lib/quote";
  */
 export function QuickBrief() {
   return (
-    <section className="director-brief" aria-labelledby="director-brief-title">
+    <section id="director-brief" className="director-brief" aria-labelledby="director-brief-title">
       <div className="container-site director-brief__inner">
         <div className="director-brief__intro">
           <span className="director-brief__tag"><SlidersHorizontal className="size-4" aria-hidden /> ÎNCEPE DE AICI</span>
