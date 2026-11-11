@@ -265,6 +265,7 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator("#q-name").inputValue(),"Ana Test","Editing must restore existing data");
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
+        await page.locator('.gs-journey[data-hydrated="true"]').waitFor({timeout:30000});
         await page.locator(".gs-journey__step").first().waitFor();
         assert.equal(await page.locator(".gs-journey__step").count(),4,
           "The About page has four accessible production stages");
