@@ -137,3 +137,14 @@
  .gs-curation .card,
  .gs-curation .stage-graphic{contain:paint;overflow:clip}
 }
+
+/* Tiny 320px screens: a compact stage mix reduces offscreen transformed paint,
+ * retaining the actual concert photo, fixtures, LED line and interactive controls. */
+@media(max-width:350px){
+ .hero--v18 .hero__photo img{animation:none!important;transform:scale(1.01)!important;object-position:50% 43%}
+ .hero--v18 .hero__beamfield .beam{display:none}
+ .hero--v18 .gs18-beam--1,.hero--v18 .gs18-beam--5,
+ .hero--v18 .gs18-laser--1,.hero--v18 .gs18-laser--6{display:none}
+ .hero--v18 .gs18-beam,.hero--v18 .gs18-laser{animation:none;transform:none;opacity:.26;filter:none}
+ .gs-curation .stage-graphic__grid,.gs-curation .stage-graphic__laser,.gs-curation .stage-graphic__ring{display:none}
+}
