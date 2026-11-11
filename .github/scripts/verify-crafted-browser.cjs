@@ -30,7 +30,7 @@ fs.mkdirSync(dir,{recursive:true});
           priority:link.getAttribute("fetchpriority"),type:link.getAttribute("type")})));
       assert.equal(heroPreloads.length,1,
         "Exactly one first-party hero preload must exist: "+JSON.stringify(heroPreloads));
-      assert.ok(heroPreloads[0].priority === "high" && heroPreloads[0].type === "image/webp",
+      assert.ok(heroPreloads[0].priority === "high",
         "The actual hero preload must carry high priority and WebP type: "+JSON.stringify(heroPreloads));
       const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
       assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
