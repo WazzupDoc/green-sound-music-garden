@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight } from "lucide-react";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import { business, images } from "@/data/site";
+import { business, images, services as serviceCatalogue } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import { PageHero } from "@/components/site/blocks";
@@ -11,7 +11,15 @@ const allowedTypes: readonly string[] = eventTypeOptions;
 type EventOption = (typeof eventTypeOptions)[number];
 
 /** Whitelisted, bounded query parameters; never blindly reflect URL data. */
-type BriefQuery = { event?: EventOption; date?: string; location?: string };
+type BriefQuery = { event?: EventOption; date?: string; location?: string; services?: string[] };
+const allowedServices = new Set<string>(serviceCatalogue.map((service) => service.formLabel));
+/** A short pipe-separated GET value, bounded and allowlisted against actual company services. */
+function parseServices(raw: unknown): string[] {
+  if (typeof raw !== "string" || raw.length > 900) return [];
+  return [...new Set(raw.split("|").map((part) => part.trim()))]
+    .filter((value) => allowedServices.has(value))
+    .slice(0, 8);
+}
 
 /**
  * All query fields are optional, so ordinary `<Link to="/contact" />`
@@ -22,6 +30,7 @@ function validateBrief(search: Record<string, unknown>): BriefQuery {
   const eventValue = search["event"];
   const dateValue = search["date"];
   const locationValue = search["location"];
+  const serviceValue = search["services"];
   if (typeof eventValue === "string" && allowedTypes.includes(eventValue)) {
     brief.event = eventValue as EventOption;
   }
@@ -31,6 +40,8 @@ function validateBrief(search: Record<string, unknown>): BriefQuery {
   if (typeof locationValue === "string" && locationValue.trim()) {
     brief.location = locationValue.trim().slice(0, 120);
   }
+  const selectedServices = parseServices(serviceValue);
+  if (selectedServices.length) brief.services = selectedServices;
   return brief;
 }
 
@@ -45,8 +56,8 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 function Contact() {
-  const { event, date, location } = Route.useSearch();
-  const fromBrief = Boolean(event || date || location);
+  const { event, date, location, services: selectedServices = [] } = Route.useSearch();
+  const fromBrief = Boolean(event || date || location || selectedServices.length);
   return (
     <>
       {fromBrief ? (
@@ -54,7 +65,7 @@ function Contact() {
           <div className="container-site">
             <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
             <h1 id="director-contact-title">Avem începutul. <em>Completăm detaliile.</em></h1>
-            <p>Am păstrat evenimentul, data și locația alese mai devreme. Completează datele de contact și selectează serviciile care te interesează.</p>
+            <p>Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email.</p>
           </div>
         </section>
       ) : (
@@ -78,8 +89,9 @@ function Contact() {
           <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
             <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
-            <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}`} id="cerere-oferta"
-              defaultEventType={event} defaultDate={date ?? ""} defaultLocation={location ?? ""} />
+            <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}|${selectedServices.join("|")}`} id="cerere-oferta"
+              defaultEventType={event} defaultDate={date ?? ""} defaultLocation={location ?? ""}
+              defaultServices={selectedServices} />
           </div>
         </div>
       </section>

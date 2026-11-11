@@ -6,6 +6,7 @@ import { QuickBrief } from "@/components/atelier/QuickBrief";
 import { EventsSelector } from "@/components/atelier/EventsSelector";
 import { ServicesAtelier } from "@/components/atelier/ServicesAtelier";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
+import { EventSoundcheck } from "@/components/atelier/EventSoundcheck";
 import { FaqList, QuoteSection } from "@/components/site/blocks";
 import { generalFaqs, images } from "@/data/site";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
@@ -34,10 +35,11 @@ function Home() {
       <QuickBrief />
       <EventsSelector />
       <ServicesAtelier />
+      <EventSoundcheck />
       <EditorialPortfolio />
       <section className="crafted-finale" aria-labelledby="crafted-finale-title">
         <div className="container-site crafted-finale__grid">
-          <span className="crafted-index">04 / URMĂTORUL EVENIMENT</span>
+          <span className="crafted-index">05 / URMĂTORUL EVENIMENT</span>
           <div>
             <h2 id="crafted-finale-title">Povestea următoarei seri <em>poate fi a ta.</em></h2>
             <p>Spune-ne data și locul. Construim o ofertă pornind de la atmosfera pe care vrei să o creezi.</p>
@@ -49,7 +51,7 @@ function Home() {
       </section>
       <section className="section crafted-questions" aria-labelledby="crafted-faq-title">
         <div className="container-site grid gap-12 lg:grid-cols-[.8fr_1.2fr]">
-          <div><span className="crafted-index">05 / ÎNTREBĂRI</span>
+          <div><span className="crafted-index">06 / ÎNTREBĂRI</span>
             <h2 id="crafted-faq-title" className="crafted-heading mt-5">Tot ce vrei să știi <em>înainte de eveniment.</em></h2>
           </div>
           <FaqList faqs={generalFaqs} />
