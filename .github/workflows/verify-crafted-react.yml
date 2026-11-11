@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery]
     paths:
       - "src/**"
       - "package.json"
@@ -64,6 +64,8 @@ jobs:
           assert Path('src/styles/production-journey.css').is_file()
           assert Path('src/styles/service-mix.css').is_file()
           assert Path('src/styles/frequency-finder.css').is_file()
+          assert Path('public/sitemap.xml').is_file()
+          assert 'Sitemap: https://greensoundmusic.com/sitemap.xml' in Path('public/robots.txt').read_text()
           assert (Path('src/components/site')/'StageFallback.tsx').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')

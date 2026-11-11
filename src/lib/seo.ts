@@ -1,4 +1,4 @@
-import { SITE_URL, business } from "@/data/site";
+import { SITE_URL, business, images, type ImageRef } from "@/data/site";
 
 type HeadInput = {
   title: string;
@@ -6,11 +6,15 @@ type HeadInput = {
   path: string;
   jsonLd?: Record<string, unknown>[];
   noindex?: boolean;
+  image?: ImageRef;
 };
 
 /** Builds the per-page head(): unique title/description, OG/Twitter, canonical and JSON-LD. */
-export function pageHead({ title, description, path, jsonLd = [], noindex }: HeadInput) {
+export function pageHead({ title, description, path, jsonLd = [], noindex, image = images.concert }: HeadInput) {
   const url = `${SITE_URL}${path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`}`;
+  // Use the existing first-party event image (or this page's real image);
+  // never fabricate a review, campaign artwork, rating or social preview.
+  const imageUrl = new URL(image.src, SITE_URL).href;
   return {
     meta: [
       { title },
@@ -21,9 +25,15 @@ export function pageHead({ title, description, path, jsonLd = [], noindex }: Hea
       { property: "og:url", content: url },
       { property: "og:locale", content: "ro_RO" },
       { property: "og:site_name", content: business.name },
+      { property: "og:image", content: imageUrl },
+      { property: "og:image:alt", content: image.alt },
+      { property: "og:image:width", content: String(image.w) },
+      { property: "og:image:height", content: String(image.h) },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
+      { name: "twitter:image", content: imageUrl },
+      { name: "twitter:image:alt", content: image.alt },
       ...(noindex ? [{ name: "robots", content: "noindex, follow" }] : []),
     ],
     links: [{ rel: "canonical", href: url }],

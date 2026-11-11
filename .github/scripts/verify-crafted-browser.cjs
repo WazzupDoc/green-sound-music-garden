@@ -23,6 +23,31 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
+      // V32 search-engine discovery: both responses must be real static files,
+      // not an HTML fallback pretending to be an XML sitemap.
+      if(width===390 || width===1440){
+        const sitemapResponse = await page.request.get(origin+"/sitemap.xml");
+        assert.equal(sitemapResponse.status(),200,"Canonical sitemap is an actual HTTP 200 resource");
+        const xml = await sitemapResponse.text();
+        assert.match(xml,/^<\?xml version="1\.0" encoding="UTF-8"\?>/);
+        const discovery = await page.evaluate(xmlText => {
+          const dom=new DOMParser().parseFromString(xmlText,"application/xml");
+          return { parseErrors:dom.querySelectorAll("parsererror").length,
+            links:Array.from(dom.getElementsByTagName("loc")).map(e=>e.textContent) };
+        },xml);
+        assert.equal(discovery.parseErrors,0,"Sitemap must be valid XML, not HTML");
+        assert.equal(discovery.links.length,20,"All twenty real routes are discoverable");
+        assert.equal(new Set(discovery.links).size,20,"No duplicate canonical addresses");
+        assert.ok(discovery.links.every(url=>url?.startsWith("https://greensoundmusic.com/")),
+          "Sitemap URLs must be absolute and canonical");
+        const robotsResponse = await page.request.get(origin+"/robots.txt");
+        assert.equal(robotsResponse.status(),200);
+        assert.match(await robotsResponse.text(),/^Sitemap: https:\/\/greensoundmusic\.com\/sitemap\.xml$/m);
+      }
+      const homeOgImage=await page.locator('head meta[property="og:image"]').getAttribute("content");
+      assert.match(homeOgImage??"",/^https:\/\/greensoundmusic\.com\/media\/greensound\/concert-public-lumini\.webp$/);
+      assert.equal(await page.locator('head meta[name="twitter:image"]').getAttribute("content"),homeOgImage,
+        "Social images should match on OG and Twitter cards");
       // React can add a favicon image preload before the hero. Inspect only
       // the real first-party hero and reject duplicate hero resource hints.
       const heroPreloads = await page.locator('head link[rel="preload"][as="image"][href*="/media/greensound/"]').evaluateAll(nodes =>
@@ -482,6 +507,15 @@ fs.mkdirSync(dir,{recursive:true});
         await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
       }
       if(width===390 || width===1440){
+        await page.goto(origin+"/dj-mc",{waitUntil:"domcontentloaded"});
+        const serviceOg=await page.locator('head meta[property="og:image"]').getAttribute("content");
+        assert.match(serviceOg??"",/\/media\/greensound\/dj-mc-green-sound\.webp$/,
+          "Real service pages should share their own real photographed service image");
+        assert.equal(await page.locator('head meta[name="twitter:image"]').getAttribute("content"),serviceOg);
+        assert.equal(await page.locator('head link[rel="canonical"]').getAttribute("href"),
+          "https://greensoundmusic.com/dj-mc/","Sitemap and page canonical URLs must agree");
+      }
+      if(width===390 || width===1440){
         const errorsBefore404 = failures.length;
         const missingUrl = origin+"/pagina-care-nu-exista-green-sound";
         const notFoundResponse = await page.goto(missingUrl,{waitUntil:"domcontentloaded"});
@@ -519,6 +553,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V30: lazy local frequency finder, keyboard shortcuts/focus, real 8-service directory, real event search, service mix/quote, reduced motion and six responsive widths");
+    console.log("PASS V32: real sitemap/robots, canonical/social previews, V31 quote integrity, V30 finder, service mix, stage effects, responsive and reduced-motion QA");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
