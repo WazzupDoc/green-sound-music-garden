@@ -1,0 +1,48 @@
+name: Crafted Atmospheres React — typecheck and production build
+
+on:
+  push:
+    branches: [design/crafted-atmospheres-react-v20]
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/verify-crafted-react.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  react-quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Install project dependencies
+        run: bun install --no-save
+      - name: TypeScript strict check
+        run: bun run typecheck
+      - name: Production SSR / Vite build
+        run: bun run build
+      - name: Test existing application
+        run: bun run test
+      - name: Validate site architecture
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          r=Path('src/routes')
+          for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
+              assert (r/page).is_file(), page
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion']:
+              assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
+          css=Path('src/styles/atelier.css').read_text()
+          assert 'prefers-reduced-motion' in css
+          assert 'crafted-stage-lights' in css
+          assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
+          print('PASS: React modular pages, editorial CSS and accessible motion primitives')
+          PY
