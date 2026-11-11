@@ -156,7 +156,7 @@ export function PortfolioFilmArchive({ initialFilmId }: { initialFilmId?: string
               <span><span className="film-archive__signal" aria-hidden /> GREEN SOUND / ORIGINAL FOOTAGE</span>
               <span>{String(filtered.findIndex((v) => v.id === active.id) + 1).padStart(2, "0")} / {String(filtered.length).padStart(2, "0")}</span>
             </div>
-            <div className="film-archive__player" aria-live="polite">
+            <div className="film-archive__player" aria-live="polite" data-selected-film={active.id}>
               <VideoLite key={active.id} video={active} className="film-archive__video" />
             </div>
             <p className="film-archive__hint"><Play className="size-3.5" aria-hidden /> PLAY PORNEȘTE DOAR LA CERERE</p>
@@ -166,7 +166,7 @@ export function PortfolioFilmArchive({ initialFilmId }: { initialFilmId?: string
             <span className="film-archive__list-label"><Clapperboard className="size-4" aria-hidden /> SELECTED FILMS / {String(filtered.length).padStart(2, "0")}</span>
             {filtered.map((video, index) => (
               <button type="button" key={video.id} className="film-archive__pick"
-                aria-pressed={active.id === video.id} onClick={() => setSelected(video.id)}>
+                aria-pressed={active.id === video.id} data-film-id={video.id} onClick={() => setSelected(video.id)}>
                 <span className="film-archive__pick-no">{String(index + 1).padStart(2, "0")}</span>
                 <span className="film-archive__pick-info"><strong>{video.title}</strong><small>{video.caption}</small></span>
                 <ArrowUpRight className="size-4" aria-hidden />
