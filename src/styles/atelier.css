@@ -194,7 +194,8 @@ body{background:var(--atelier-bg);overflow-x:clip}
 .atelier-header{top:8px;left:8px;right:8px}
 .atelier-header__inner{height:62px}
 .atelier-header__quote{display:none}
-.atelier-header__phone{font-size:0;padding:12px}
+/* The sticky mobile action bar already provides a real phone CTA; free room for search + navigation. */
+.atelier-header__phone{display:none}
 .atelier-header__phone svg{width:19px;height:19px}
 .crafted-hero{min-height:0}
 .crafted-hero__layout{grid-template-columns:1fr;padding-top:130px;padding-bottom:25px;gap:28px}
