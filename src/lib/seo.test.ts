@@ -19,7 +19,7 @@ describe("search discovery: genuine sitemap and shared preview", () => {
   ].map(path => SITE_URL + path);
 
   it("lists exactly the verified indexable routes once with canonical trailing slashes", () => {
-    const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+    const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]!);
     expect(urls).toHaveLength(20);
     expect(new Set(urls).size).toBe(urls.length);
     expect(new Set(urls)).toEqual(new Set(expected));
