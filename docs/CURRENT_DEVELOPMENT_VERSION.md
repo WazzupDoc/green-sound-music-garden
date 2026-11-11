@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V32)
+Updated: 2026-11-11 (V33)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v32-search-discovery`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/17
-- Base version: `design/crafted-atmospheres-v31-quote-integrity` (PR #16), retaining all earlier V20–V31 work.
+- Current branch: `design/crafted-atmospheres-v33-safe-structured-data`
+- Draft PR: pending creation (V33)
+- Base version: `design/crafted-atmospheres-v32-search-discovery` (PR #17), retaining all earlier V20–V32 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v32-search-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v33-safe-structured-data?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v32-search-discovery
-git pull origin design/crafted-atmospheres-v32-search-discovery
+git switch design/crafted-atmospheres-v33-safe-structured-data
+git pull origin design/crafted-atmospheres-v33-safe-structured-data
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -122,3 +122,10 @@ Draft development only. No merge into `main`, production deployment or real sear
 - Sources and checklist: `docs/V32_SEARCH_DISCOVERY_AUDIT.md`.
 
 Review-only draft PR #17. Never merge into main or deploy `greensoundmusic.com` without explicit owner approval.
+
+
+## V33 — SSR structured-data safety (draft)
+- The shared `pageHead()` JSON-LD serializer now escapes `<`, `>`, `&`, U+2028 and U+2029 before embedding schema as inline script content. This preserves JSON semantics and prevents future dynamic editorial content from closing the `<script>` element.
+- Added regression tests for hostile script terminators, valid JSON round-trip and actual `pageHead().scripts` output. No content changes, dependencies, tracking, schema embellishment or backend claims.
+- V32 baseline GitHub Actions run #43060351176 passed. V33 CI and browser regression must be verified separately; do not claim passing before the new run finishes.
+- Release gate: draft PR only; no merge to main or deployment without owner approval.
