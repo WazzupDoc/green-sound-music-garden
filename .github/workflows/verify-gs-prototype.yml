@@ -1,4 +1,4 @@
-name: Verify Green Sound premium V17 prototype
+name: Verify Green Sound V19 premium motion + performance
 
 on:
   push:
@@ -44,9 +44,9 @@ jobs:
               assert p.exists(), filename
               s=p.read_text()
               assert "GSMUSIC" not in s,filename
-              assert 'src="assets/site.js"' in s and 'href="assets/site.css"' in s, filename
+              assert 'src="assets/gs-v19.bundle.js"' in s and 'href="assets/gs-v19.bundle.css"' in s, filename
               assert '<meta name="robots" content="noindex,nofollow">' in s,filename
-              assert 'assets/v17.css' in s and 'assets/v18.css' in s,filename
+              assert 'class="gs19-progress"' in s,filename
               doc=Page();doc.feed(s)
               assert doc.h1==1,(filename,doc.h1)
               for name in filenames:
@@ -72,6 +72,9 @@ jobs:
           node --check public/greensound-prototype/assets/site.js
           node --check public/greensound-prototype/assets/v17.js
           node --check public/greensound-prototype/assets/v18.js
+          node --check public/greensound-prototype/assets/v19.js
+          node --check public/greensound-prototype/assets/gs-v19.bundle.js
+          python3 .github/scripts/build_gs_v19.py --check
       - name: Install chromium for real browser screenshots
         run: npx --yes playwright@1.56.1 install --with-deps chromium
       - name: Serve standalone prototype on port 4173
@@ -101,6 +104,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: green-sound-v14-multipage-screenshots
+          name: green-sound-v19-premium-motion-screenshots
           path: screenshots/
           if-no-files-found: ignore
