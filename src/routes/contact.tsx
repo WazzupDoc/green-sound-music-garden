@@ -25,7 +25,7 @@ function validateBrief(search: Record<string, unknown>): BriefQuery {
   if (typeof eventValue === "string" && allowedTypes.includes(eventValue)) {
     brief.event = eventValue as EventOption;
   }
-  if (typeof dateValue === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(dateValue)) {
+  if (typeof dateValue === "string" && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
     brief.date = dateValue;
   }
   if (typeof locationValue === "string" && locationValue.trim()) {
