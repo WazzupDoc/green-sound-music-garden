@@ -36,11 +36,7 @@ interaction closes it. We do not wrongly claim `aria-modal` or add a
 keyboard trap.
 
 ### Performance
-The only preloaded homepage hero image is first-party and already present
-in SSR HTML; it now declares high fetch priority and the WebP type.
-The hero `img` remains `fetchPriority=high`; below-the-fold
-production photographs use loading="lazy", decoding="async" and intrinsic
-width/height to mitigate layout shifts. This is a browser scheduling hint,
+The first-party hero image is already present in SSR HTML with `fetchPriority=high` on its real `img`. React 19 **automatically** emits a corresponding high-priority image preload, so a second explicit route-head preload was duplicating the resource hint (verified by Chromium). V28 removes the extra head declaration and tests that exactly one native high-priority preload remains. Below-the-fold photos are lazy, async-decode and intrinsic-size dimensioned to reduce CLS. This is a browser scheduling hint,
 not a measured LCP improvement until a deployed staging build is profiled.
 
 ## References examined (ideas/standards, no copied code)
@@ -73,3 +69,6 @@ not a measured LCP improvement until a deployed staging build is profiled.
 
 No guaranteed Awwwards results, conversions, search rankings or 100/100
 Lighthouse scores are asserted.
+
+## LCP finding from actual V28 browser test
+The initial audit found two high-priority preloads pointing at the same real concert WebP: React 19's automatic `img fetchPriority=high` preload plus an explicit `Route.head` preload. This was a code-level regression, not a Lighthouse field metric. Removed the duplicate, preserved the automatic preload and added a one-resource assertion. Don't reintroduce an explicit image preload unless SSR behavior materially changes.
