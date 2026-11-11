@@ -634,6 +634,32 @@ fs.mkdirSync(dir,{recursive:true});
         await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
       }
       if(width===390 || width===1440){
+        await page.goto(origin+"/ursitoare-botez",{waitUntil:"domcontentloaded"});
+        await page.locator(".gs-service-relations__grid").waitFor({timeout:15000});
+        const matches = page.locator(".gs-service-relations__card");
+        assert.equal(await matches.count(),3,
+          "Three curated services, not arbitrary globally repeated links");
+        assert.deepEqual(await matches.evaluateAll(nodes =>
+          nodes.map(n=>n.getAttribute("data-related-service"))),
+          ["start-veselia","dj-mc","hostess"],
+          "Ursitoare page must recommend only context-relevant real services");
+        assert.equal(await matches.first().getAttribute("href"),"/start-veselia");
+        const photoReport = await page.evaluate(() => {
+          const hero = document.querySelector(".atelier-inner-hero img")?.getAttribute("src");
+          const images=[...document.querySelectorAll("[data-service-gallery]")].map(img=>img.getAttribute("src"));
+          return { hero, images };
+        });
+        assert.equal(photoReport.images.length,2,
+          "Only the two first-party non-hero photographic gallery frames appear");
+        assert.equal(new Set(photoReport.images).size,photoReport.images.length,
+          "Actual service gallery must never duplicate its photo");
+        assert.ok(photoReport.images.every(image => image !== photoReport.hero),
+          "Hero photo is not re-rendered inside service gallery");
+        await page.locator(".gs-service-relations__grid").scrollIntoViewIfNeeded();
+        await page.locator(".gs-service-relations__grid").screenshot({
+          path:dir+"/service-relations-"+width+".png",animations:"disabled"});
+      }
+      if(width===390 || width===1440){
         await page.goto(origin+"/dj-mc",{waitUntil:"domcontentloaded"});
         const serviceOg=await page.locator('head meta[property="og:image"]').getAttribute("content");
         assert.match(serviceOg??"",/\/media\/greensound\/dj-mc-green-sound\.webp$/,
@@ -710,6 +736,6 @@ fs.mkdirSync(dir,{recursive:true});
         const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V37: frequency studio three scenes, real event routes, tempo slider, play/pause, offscreen/lite/reduced motion, and V20–V36 six-width regression");
+    console.log("PASS V38: contextual premium service relations, nonduplicated gallery, V37 Frequency Studio, V34 Guided Quote and V20–V37 six-width browser regressions");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
