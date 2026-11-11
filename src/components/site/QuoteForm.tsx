@@ -235,7 +235,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
       <div>
         <label htmlFor="q-date" className={labelCls}>Data evenimentului</label>
-        <input id="q-date" type="date" className={`${fieldCls} [color-scheme:dark]`} {...register("date")} />
+        <input id="q-date" type="date" className={`${fieldCls} [color-scheme:dark]`} aria-invalid={!!errors.date} aria-describedby={errors.date ? "q-date-err" : undefined} {...register("date")} />
+        <FieldError id="q-date-err" msg={errors.date?.message} />
       </div>
 
       <div>
@@ -245,12 +246,13 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
       <div>
         <label htmlFor="q-guests" className={labelCls}>Număr aproximativ de invitați</label>
-        <select id="q-guests" className={fieldCls} defaultValue="" {...register("guests")}>
+        <select id="q-guests" className={fieldCls} defaultValue="" aria-invalid={!!errors.guests} aria-describedby={errors.guests ? "q-guests-err" : undefined} {...register("guests")}>
           <option value="">Alege…</option>
           {guestOptions.map((o) => (
             <option key={o} value={o} className="bg-popover">{o}</option>
           ))}
         </select>
+        <FieldError id="q-guests-err" msg={errors.guests?.message} />
       </div>
 
       <fieldset className="md:col-span-2 gs-quote__services" aria-describedby="q-services-guide q-services-err">
