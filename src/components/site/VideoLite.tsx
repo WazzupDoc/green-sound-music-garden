@@ -30,16 +30,16 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             aria-label={`Redă videoclipul: ${video.title}`}
           >
             <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+              src={video.poster ?? `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
               alt=""
-              width={480}
-              height={360}
+              width={video.poster ? 1280 : 480}
+              height={video.poster ? 720 : 360}
               loading={priority ? "eager" : "lazy"}
               decoding="async"
               className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <span className="hero-fade absolute inset-0 opacity-80" />
-            <span className="absolute left-5 top-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110 animate-pulse-ring">
+            <span className="absolute left-5 top-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110">
               <Play className="ml-0.5 size-5 fill-current" aria-hidden />
             </span>
             <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-foreground">

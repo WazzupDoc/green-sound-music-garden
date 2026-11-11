@@ -122,6 +122,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <div className="director-progress" aria-hidden="true"><div className="director-progress__line" /></div>
       <ClientMotion />
       <SiteHeader />
       <main id="continut">

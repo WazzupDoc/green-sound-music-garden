@@ -19,6 +19,8 @@ import { Link } from "@tanstack/react-router";
 type Props = {
   defaultEventType?: (typeof eventTypeOptions)[number] | undefined;
   defaultServices?: string[] | undefined;
+  defaultDate?: string | undefined;
+  defaultLocation?: string | undefined;
   id?: string;
 };
 
@@ -35,7 +37,7 @@ function FieldError({ id, msg }: { id: string; msg?: string | undefined }) {
   );
 }
 
-export function QuoteForm({ defaultEventType, defaultServices = [], id = "cerere-oferta" }: Props) {
+export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate = "", defaultLocation = "", id = "cerere-oferta" }: Props) {
   const channel = useRef<"whatsapp" | "email">("whatsapp");
   const [sent, setSent] = useState<{ channel: "whatsapp" | "email"; href: string } | null>(null);
 
@@ -51,8 +53,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], id = "cerere
       phone: "",
       email: "",
       ...(defaultEventType ? { eventType: defaultEventType } : {}),
-      date: "",
-      location: "",
+      date: defaultDate,
+      location: defaultLocation,
       guests: "",
       services: defaultServices,
       message: "",

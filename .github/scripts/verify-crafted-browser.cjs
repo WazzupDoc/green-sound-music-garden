@@ -27,18 +27,33 @@ fs.mkdirSync(dir,{recursive:true});
       assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
         "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
       assert.equal(await page.locator(".crafted-hero__mode").count(),3);
+      assert.equal(await page.locator('.director-brief form[action="/contact"]').count(),1,"Native quote planner exists");
+      assert.equal(await page.locator(".director-reel__choice").count(),3,"Three real showreel chapters exist");
+      assert.equal(await page.locator(".director-reel iframe").count(),0,"Real video player must not auto-load");
       assert.equal(await page.locator(".crafted-experiences__option").count(),5);
       assert.equal(await page.locator(".crafted-services__row").count(),5);
       const bbox=await page.evaluate(()=>({doc:document.documentElement.scrollWidth,inner:innerWidth}));
       assert.ok(bbox.doc<=bbox.inner+2,width+"px root overflow: "+JSON.stringify(bbox));
       if(width===360 || width===390 || width===1440){
         await page.screenshot({path:dir+"/home-"+width+".png",fullPage:false});
+        await page.locator(".director-brief").scrollIntoViewIfNeeded();
+        await page.screenshot({path:dir+"/brief-"+width+".png",fullPage:false});
         await page.locator(".crafted-experiences").scrollIntoViewIfNeeded();
         await page.waitForFunction(()=>Array.from(document.querySelectorAll(".crafted-experiences__frame img")).some(i=>i.complete&&i.naturalWidth>0),null,{timeout:12000});
 
         await page.screenshot({path:dir+"/events-"+width+".png",fullPage:false});
         await page.locator(".crafted-services").scrollIntoViewIfNeeded();
         await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
+        await page.locator(".director-reel").scrollIntoViewIfNeeded();
+        await page.waitForFunction(() => {
+          const image = document.querySelector(".director-reel__player img");
+          return image && image.complete && image.naturalWidth >= 640 &&
+            image.currentSrc.includes("/media/greensound/film-");
+        },null,{timeout:15000});
+        await page.screenshot({path:dir+"/reel-"+width+".png",fullPage:false});
+        if(width === 1440){
+          await page.locator(".director-reel__layout").screenshot({path:dir+"/reel-component-desktop.png",animations:"disabled"});
+        }
       }
       await page.locator(".crafted-hero__mode").nth(1).click();
       await page.waitForFunction(() => document.querySelector(".crafted-hero")?.getAttribute("data-scene")==="private",null,{timeout:10000}).catch(async e=>{
@@ -51,11 +66,38 @@ fs.mkdirSync(dir,{recursive:true});
         throw new Error("Stage selector failed; JS errors: "+JSON.stringify(failures)+"; Network: "+JSON.stringify(netFailures)+"; Diagnostic: "+JSON.stringify(diag)+"; "+e.message);
       });
       assert.equal(await page.locator(".crafted-hero").getAttribute("data-scene"),"private");
+      const stageSwitch=page.locator(".director-hero__lights");
+      assert.equal(await page.locator(".crafted-hero").getAttribute("data-lights"),"on");
+      await stageSwitch.click();
+      assert.equal(await page.locator(".crafted-hero").getAttribute("data-lights"),"off");
+      await stageSwitch.click();
+      assert.equal(await page.locator(".crafted-hero").getAttribute("data-lights"),"on");
       await page.locator(".crafted-experiences__option").first().click();
       assert.equal(await page.locator(".crafted-experiences__option").first().getAttribute("aria-pressed"),"true");
       await page.locator(".crafted-services__row .crafted-services__select").nth(1).click();
       assert.equal(await page.locator(".crafted-services__row").nth(1).getAttribute("data-selected"),"true");
+      await page.locator(".director-reel").scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => {
+        const image=document.querySelector(".director-reel__player img");
+        return image && image.complete && image.naturalWidth >= 640 && image.currentSrc.includes("/media/greensound/film-");
+      },null,{timeout:15000});
+      const reelChoice=page.locator(".director-reel__choice");
+      await reelChoice.nth(1).click();
+      assert.equal(await reelChoice.nth(1).getAttribute("aria-pressed"),"true");
+      assert.equal(await page.locator(".director-reel iframe").count(),0,"Changing chapters must not start sound");
       if(width===390){
+        await page.locator("#brief-event").selectOption("Nuntă");
+        await page.locator("#brief-date").fill("2027-07-18");
+        await page.locator("#brief-location").fill("Pitești");
+        await page.locator(".director-brief__submit").click();
+        await page.waitForURL(/\/contact\?/, {timeout:15000});
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
+        await page.waitForFunction(() => document.querySelector("#q-event")?.value === "Nuntă" &&
+          document.querySelector("#q-date")?.value === "2027-07-18" &&
+          document.querySelector("#q-location")?.value === "Pitești",null,{timeout:15000});
+        await page.screenshot({path:dir+"/contact-prefilled-390.png",fullPage:false});
+        await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
+        await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
         const menu=page.locator(".atelier-header__menu-btn");
         await menu.click();
         assert.equal(await menu.getAttribute("aria-expanded"),"true");
@@ -80,6 +122,6 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     await reduced.close();
-    console.log("PASS: six viewport widths, home interactions, menu, routes, contact, reduced motion");
+    console.log("PASS V21: six widths, real locally served photos, stage light controls, 3 film chapters without autoplay, native brief prefill, mobile menu, reduced motion");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

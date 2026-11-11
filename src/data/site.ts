@@ -53,7 +53,7 @@ export type ImageRef = (typeof images)[keyof typeof images];
 /* Real videos published by Green Sound Music                           */
 /* ------------------------------------------------------------------ */
 
-export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number; noHdThumb?: boolean };
+export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number; noHdThumb?: boolean; poster?: string };
 
 /** YouTube poster; maxres exists for every video except the ones flagged noHdThumb. */
 export const ytThumb = (v: Video, size: "hd" | "sd" = "hd") =>
@@ -62,6 +62,7 @@ export const ytThumb = (v: Video, size: "hd" | "sd" = "hd") =>
 export const videos = {
   nuntaRamada: {
     id: "37QlXW3NlxU",
+    poster: "/media/greensound/film-nunta-ramada.webp",
     title: "Nuntă la Ramada Pitești — DJ Green Sound & MC Dana",
     caption: "DJ și MC la o nuntă din Pitești",
     tags: ["nunti", "dj-mc"],
@@ -69,12 +70,14 @@ export const videos = {
   },
   showLumini: {
     id: "eGLykw1G0EQ",
+    poster: "/media/greensound/film-show-lumini.webp",
     title: "DJ Green Sound, MC Dana & LJ Dom — show de lumini",
     caption: "DJ, MC și show de lumini la evenimente",
     tags: ["dj-mc", "sonorizare", "petreceri-private"],
   },
   neatza: {
     id: "nc_aWk8QPIU",
+    poster: "/media/greensound/film-studio-live.webp",
     title: "Lansarea single-ului „Muzica ne leagă” la Neatza cu Răzvan și Dani",
     caption: "Green Sound Music, alături de Bogdan și Mugurel, la TV",
     tags: ["trupa", "studio"],
