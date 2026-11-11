@@ -21,7 +21,7 @@
 .gs-cursor[data-active=true] .gs-cursor__halo{transform:scale(1.3);border-color:#cbf5a9}
 .gs-cursor[data-active=true] .gs-cursor__note{transform:rotate(-12deg)}
 .gs-cursor[data-active=true] .gs-cursor__label:not(:empty){opacity:1;transform:translateY(0)}
-.gs-cursor__toggle{position:fixed;z-index:35;left:clamp(17px,2vw,32px);bottom:clamp(18px,2vw,35px);
+.gs-cursor__toggle{position:fixed;z-index:35;right:clamp(17px,2vw,32px);top:104px;
   display:none;align-items:center;gap:9px;min-height:35px;padding:8px 12px;border:1px solid #cfebbe7c;
   background:#07140edc;color:#e9f6df;backdrop-filter:blur(12px);font-size:.59rem;
   font-weight:800;letter-spacing:.13em;cursor:pointer;transition:background .18s,border-color .18s}
@@ -37,4 +37,4 @@
   .gs-cursor[data-active=true] .gs-cursor__meter i:nth-child(4){animation-delay:-.11s}
 }
 @keyframes gs-eq{from{transform:scaleY(.45)}to{transform:scaleY(1)}}
-@media(max-width:920px){.gs-cursor__toggle{bottom:14px;left:14px}}
+/* Toggle lives below the floating header; it never covers the fixed mobile quote bar. */

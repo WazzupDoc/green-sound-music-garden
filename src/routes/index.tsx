@@ -7,6 +7,7 @@ import { EventsSelector } from "@/components/atelier/EventsSelector";
 import { ServicesAtelier } from "@/components/atelier/ServicesAtelier";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { EventSoundcheck } from "@/components/atelier/EventSoundcheck";
+import { AtmosphereInterlude } from "@/components/atelier/AtmosphereInterlude";
 import { FaqList, QuoteSection } from "@/components/site/blocks";
 import { generalFaqs, images } from "@/data/site";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
@@ -36,6 +37,7 @@ function Home() {
       <EventsSelector />
       <ServicesAtelier />
       <EventSoundcheck />
+      <AtmosphereInterlude />
       <EditorialPortfolio />
       <section className="crafted-finale" aria-labelledby="crafted-finale-title">
         <div className="container-site crafted-finale__grid">

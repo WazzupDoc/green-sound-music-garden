@@ -1,0 +1,49 @@
+/* V27 / FREQUENCY — strong editorial rhythm without a JavaScript animation library. */
+.gs-pulse{position:relative;overflow:hidden;background:#dfe6d8;color:#193522;isolation:isolate}
+.gs-pulse:before{content:"";position:absolute;width:70vw;max-width:970px;aspect-ratio:1;right:-15%;bottom:-60%;border-radius:50%;
+border:1px solid #5a8a5a30;box-shadow:0 0 0 60px #6f9c7010,0 0 0 130px #8ba5890c;pointer-events:none}
+.gs-pulse__head{border-bottom:1px solid #648b6970}
+.gs-pulse__heading{display:flex;justify-content:space-between;align-items:center;gap:15px;min-height:61px}
+.gs-pulse__index{display:inline-flex;align-items:center;gap:10px;font-size:.64rem;letter-spacing:.16em;font-weight:800;color:#3b6b43}
+.gs-pulse__number{color:#58735a;font-size:.62rem;letter-spacing:.12em;font-weight:800}
+.gs-pulse__body{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(30px,7vw,110px);
+align-items:center;padding-top:clamp(55px,7vw,105px);padding-bottom:clamp(60px,8vw,130px)}
+.gs-pulse__text h2{font-family:var(--font-display);font-size:clamp(2.8rem,5.6vw,6.6rem);line-height:.99;
+letter-spacing:-.065em;font-weight:650;max-width:800px}
+.gs-pulse__text h2 em{font-family:var(--font-serif);font-weight:400;color:#4a784a;letter-spacing:-.026em}
+.gs-pulse__text p{line-height:1.72;font-size:clamp(.89rem,1.14vw,1.12rem);color:#536956;margin-top:25px;max-width:510px}
+.gs-pulse__link{display:inline-flex;justify-content:space-between;align-items:center;gap:24px;min-height:52px;
+margin-top:clamp(23px,3.1vw,43px);border-bottom:1px solid #376c40;color:#284c2d;
+font-weight:800;font-size:.83rem;text-decoration:none;transition:gap .25s,color .25s}
+.gs-pulse__link:hover{gap:33px;color:#0d2613}
+.gs-pulse__link:focus-visible{outline:2px solid #22522a;outline-offset:3px}
+.gs-pulse__art{position:relative;min-width:0;border:1px solid #4d86534a;padding:clamp(23px,3.2vw,46px);
+background:linear-gradient(140deg,#e7ede0bd,#c4d6c158);box-shadow:0 40px 90px #40664420}
+.gs-pulse__art:before{content:"";position:absolute;inset:11px;border:1px solid #72967521;pointer-events:none}
+.gs-pulse__wave{height:clamp(180px,25vw,350px);display:flex;align-items:center;
+justify-content:space-between;gap:clamp(2px,.45vw,7px)}
+.gs-pulse__wave span{display:block;min-width:2px;flex:1;height:45%;transform:scaleY(1);
+background:linear-gradient(180deg,#265b33,#9abc8f);transform-origin:center;
+box-shadow:inset 0 0 0 1px #d6edd11b;opacity:.93}
+.gs-pulse__wave span:nth-child(5n){background:linear-gradient(180deg,#143d21,#71a274)}
+.gs-pulse__art-foot{display:flex;justify-content:space-between;gap:14px;align-items:center;
+border-top:1px solid #60936766;margin-top:20px;padding-top:19px;font-size:.57rem;
+color:#4b7450;font-weight:800;letter-spacing:.16em}
+@media(max-width:890px){.gs-pulse__body{grid-template-columns:1fr}.gs-pulse__art{width:100%}}
+@media(max-width:640px){.gs-pulse__heading{min-height:52px}.gs-pulse__number{display:none}
+.gs-pulse__body{padding-top:60px;gap:32px}.gs-pulse__text h2{font-size:clamp(2.65rem,11vw,4.6rem)}
+.gs-pulse__art{padding:20px}.gs-pulse__wave{height:185px;gap:3px}}
+/* Progressive scroll-driven choreography: visual only, static everywhere else.
+   No hidden content, no scroll event handlers, no polyfill, no layout shifts. */
+@supports ((animation-timeline: view()) and (animation-range: entry)) {
+  @media (min-width:891px) and (prefers-reduced-motion:no-preference){
+    .gs-pulse__wave span{
+      animation:gs-pulse-energize linear both;
+      animation-timeline:view(block);
+      animation-range:entry 0% cover 40%;
+    }
+  }
+}
+@keyframes gs-pulse-energize{from{transform:scaleY(.18);opacity:.7}to{transform:scaleY(1);opacity:.93}}
+@media(prefers-reduced-motion:reduce){.gs-pulse__wave span{animation:none!important;transform:none!important}
+.gs-pulse__link{transition:none}}
