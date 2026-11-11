@@ -101,3 +101,16 @@
 @media(prefers-reduced-motion:reduce){
 .journal__photo img,.journal__photo-open,.film-archive__filter,.film-archive__pick,.film-archive__cta,.journal-dialog__arrow{transition:none!important;transform:none!important}
 }
+
+/* Short navigation and typographic interlude bridge the portfolio chapters. */
+.journal__quicknav{background:#0d1c12;color:#e1eed8;border-top:1px solid #c8e5b534;border-bottom:1px solid #c8e5b534}
+.journal__quicknav-inner{display:flex;align-items:center;justify-content:flex-start;gap:clamp(15px,4vw,70px);padding-top:17px;padding-bottom:17px;flex-wrap:wrap}
+.journal__quicknav-inner>span{flex:1;color:#9cbd99;font-weight:800;font-size:.63rem;letter-spacing:.14em}
+.journal__quicknav-inner>a{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:800;color:#e4f5d8;min-height:35px;transition:color .2s}
+.journal__quicknav-inner>a:hover{color:#a9e595}
+.journal__manifesto{padding:clamp(45px,7vw,125px) 0;background:#e7e8dd;color:#18351f;text-align:center;border-top:1px solid #bfd0b72b}
+.journal__manifesto span{display:block;font-size:.65rem;font-weight:800;letter-spacing:.18em;color:#648366}
+.journal__manifesto p{font-family:var(--font-display);font-size:clamp(2.3rem,6vw,7.4rem);font-weight:600;letter-spacing:-.065em;line-height:1.03;margin-top:20px}
+.journal__manifesto p em{font-family:var(--font-serif);font-weight:400;color:#62885a;letter-spacing:-.02em}
+@media(max-width:530px){.journal__quicknav-inner>span{flex-basis:100%}.journal__quicknav-inner{gap:8px 27px}.journal__manifesto span{font-size:.54rem}}
+@media(prefers-reduced-motion:reduce){.journal__quicknav-inner>a{transition:none}}
