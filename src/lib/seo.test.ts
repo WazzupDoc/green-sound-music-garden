@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { SITE_URL, events, images, services } from "@/data/site";
-import { breadcrumbLd, canonicalUrl, pageHead, serializeJsonLd, serviceLd } from "./seo";
+import { SITE_URL, business, events, images, services } from "@/data/site";
+import { breadcrumbLd, canonicalUrl, localBusinessLd, pageHead, serializeJsonLd, serviceLd } from "./seo";
 
 /** Canonical business pages only; no query variants, invented city pages or 404s. */
 const editorialPaths = [
@@ -114,5 +114,16 @@ describe("canonical consistency in structured data", () => {
     expect(schema.itemListElement.map(item => item.item)).toEqual([
       SITE_URL + "/", SITE_URL + "/servicii/", SITE_URL + "/dj-mc/",
     ]);
+  });
+});
+
+
+describe("business contact single source of truth", () => {
+  it("publishes the same phone and email in structured data as the visible business contact", () => {
+    const schema = localBusinessLd();
+    expect(schema.telephone).toBe(business.phoneHref.replace(/^tel:/, ""));
+    expect(schema.email).toBe(business.email);
+    expect(schema.name).toBe(business.name);
+    expect(schema.address.addressLocality).toBe(business.address.city);
   });
 });
