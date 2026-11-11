@@ -75,7 +75,7 @@ export function SiteHeader() {
         {open && (
           <motion.div key="atelier-menu" id="atelier-mobile-navigation" className="atelier-mobile-menu"
             initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? undefined : { opacity: 0, y: -10 }}
+            exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: reduced ? 0 : .27, ease: [.16, 1, .3, 1] }}>
             <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
               {navigation.map((entry, index) => (
