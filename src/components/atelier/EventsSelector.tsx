@@ -33,7 +33,7 @@ export function EventsSelector() {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div key={current.slug} className="crafted-experiences__frame"
                 initial={reduce ? false : { opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }} exit={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
                 transition={{ duration: reduce ? 0 : .36, ease: [.16, 1, .3, 1] }}>
                 <img src={current.image.src} alt={current.image.alt}
                   width={current.image.w} height={current.image.h} loading="lazy" decoding="async" />
