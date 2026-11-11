@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       ...head,
       // First-party hero photograph is the primary LCP candidate.
       // Make the browser discover it in SSR <head>, before React hydrates.
-      links: [...head.links, { rel: "preload", as: "image", href: images.concert.src }],
+      links: [...head.links, { rel: "preload", as: "image", href: images.concert.src, fetchPriority: "high", type: "image/webp" }],
     };
   },
   component: Home,
