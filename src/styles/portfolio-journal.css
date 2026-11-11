@@ -78,8 +78,8 @@
 .film-archive__pick{padding-block:14px}
 }
 @media(max-width:680px){
-.journal__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(180px,52vw);gap:10px}
-.journal__photo--1{grid-column:1/-1;grid-row:auto;min-height:310px}
+.journal__grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(310px,82vw);grid-auto-rows:minmax(180px,52vw);gap:10px}
+.journal__photo--1{grid-column:1/-1;grid-row:1;min-height:0}
 .journal__photo--2,.journal__photo--3,.journal__photo--4,.journal__photo--5,.journal__photo--6{grid-column:span 1;grid-row:auto}
 .journal__photo--6{grid-column:1/-1;max-height:280px}
 .journal__photo-copy{left:13px;bottom:14px;right:10px;gap:6px}
@@ -97,7 +97,7 @@
 .film-archive__closer{flex-direction:column;align-items:stretch;gap:20px}
 .film-archive__cta{width:100%}
 }
-@media(max-width:380px){.journal__grid{grid-auto-rows:minmax(160px,49vw)}.journal__photo--1{min-height:270px}.journal__photo-cat{font-size:.49rem}}
+@media(max-width:380px){.journal__grid{grid-template-rows:270px;grid-auto-rows:minmax(160px,49vw)}.journal__photo-cat{font-size:.49rem}}
 @media(prefers-reduced-motion:reduce){
 .journal__photo img,.journal__photo-open,.film-archive__filter,.film-archive__pick,.film-archive__cta,.journal-dialog__arrow{transition:none!important;transform:none!important}
 }
