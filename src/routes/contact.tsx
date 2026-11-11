@@ -5,8 +5,24 @@ import { business, images } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import { PageHero } from "@/components/site/blocks";
+import { eventTypeOptions } from "@/lib/quote";
+
+const allowedTypes: readonly string[] = eventTypeOptions;
+type EventOption = (typeof eventTypeOptions)[number];
+
+/** Whitelisted, bounded query parameters; never blindly reflect URL data. */
+function validateBrief(search: Record<string, unknown>) {
+  const event = typeof search.event === "string" && allowedTypes.includes(search.event)
+    ? (search.event as EventOption) : undefined;
+  const date = typeof search.date === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(search.date)
+    ? search.date : "";
+  const location = typeof search.location === "string" ? search.location.trim().slice(0,120) : "";
+  return { event, date, location };
+}
+
 
 export const Route = createFileRoute("/contact")({
+  validateSearch: validateBrief,
   head: () => pageHead({
     title: "Contact Green Sound Music Pitești | Ofertă DJ, muzică, sunet și lumini",
     description: "Cere ofertă pentru nunți, botezuri, corporate și concerte. Contact Green Sound Music Pitești prin telefon, WhatsApp sau email. Muzică, sunet și lumini pentru evenimente.",
@@ -16,6 +32,7 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 function Contact() {
+  const { event, date, location } = Route.useSearch();
   return (
     <>
       <PageHero eyebrow="CONTACT / HAI SĂ VORBIM" title="Spune-ne ce ai în minte. De atmosferă ne ocupăm noi."
@@ -37,7 +54,8 @@ function Contact() {
           <div className="border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
             <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
-            <QuoteForm id="cerere-oferta" />
+            <QuoteForm key={`${event ?? ""}|${date}|${location}`} id="cerere-oferta"
+              defaultEventType={event} defaultDate={date} defaultLocation={location} />
           </div>
         </div>
       </section>
