@@ -311,7 +311,10 @@ fs.mkdirSync(dir,{recursive:true});
         await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
       }
       if(width===390 || width===1440){
-        await page.goto(origin+"/pagina-care-nu-exista-green-sound",{waitUntil:"domcontentloaded"});
+        const errorsBefore404 = failures.length;
+        const missingUrl = origin+"/pagina-care-nu-exista-green-sound";
+        const notFoundResponse = await page.goto(missingUrl,{waitUntil:"domcontentloaded"});
+        assert.equal(notFoundResponse?.status(),404,"Unknown paths must return a genuine HTTP 404, not a 200");
         await page.locator('.gs-offstage[data-variant="missing"]').waitFor({timeout:15000});
         assert.equal(await page.locator("main h1").count(),1,"Custom 404 has exactly one meaningful H1");
         assert.match(await page.locator("main h1").innerText(),/Aici încă nu a început.*spectacolul/s);
@@ -326,8 +329,15 @@ fs.mkdirSync(dir,{recursive:true});
         assert.ok(missingPageWidth.doc <= missingPageWidth.window+2,
           "404 must not horizontally overflow: "+JSON.stringify(missingPageWidth));
         await page.screenshot({path:dir+"/offstage-404-"+width+".png",fullPage:false});
+        // Browsers log an intentional top-level 404 as a console resource error.
+        // We assert the HTTP status and accept precisely that expected message,
+        // while any other console or page error remains a hard failure.
+        const errorsOn404 = failures.splice(errorsBefore404);
+        assert.deepEqual(errorsOn404.filter(error =>
+          !error.startsWith("console @ "+missingUrl+": Failed to load resource: the server responded with a status of 404")
+        ),[],"Unexpected errors on the genuine 404 page");
       }
-      assert.deepEqual(failures,[],"Unexpected page errors including branded 404 at "+width+"px");
+      assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
       await page.close();
     }
     const reduced=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
