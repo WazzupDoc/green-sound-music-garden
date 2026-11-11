@@ -21,6 +21,7 @@ const navigation = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [finderOpen, setFinderOpen] = useState(false);
+  const [finderActivated, setFinderActivated] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const finderButtonRef = useRef<HTMLButtonElement>(null);
@@ -93,6 +94,7 @@ export function SiteHeader() {
       if (!finderOpen && document.querySelector('[role="dialog"]')) return;
       event.preventDefault();
       setOpen(false);
+      setFinderActivated(true);
       setFinderOpen(previous => !previous);
     };
     document.addEventListener("keydown", onKey);
@@ -100,8 +102,8 @@ export function SiteHeader() {
   }, [finderOpen]);
 
   const onFinderOpenChange = (next: boolean) => {
+    // Keep the dialog root mounted after first use; Radix owns close focus.
     setFinderOpen(next);
-    if (!next) window.requestAnimationFrame(() => finderButtonRef.current?.focus());
   };
 
   return (
@@ -121,7 +123,7 @@ export function SiteHeader() {
           <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
             aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
             aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
-            onClick={() => { setOpen(false); setFinderOpen(true); }}>
+            onClick={() => { setOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
             <Search className="size-5" aria-hidden />
             <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
           </button>
@@ -161,7 +163,8 @@ export function SiteHeader() {
         )}
       </AnimatePresence>
       <Suspense fallback={null}>
-        {finderOpen && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange} />}
+        {finderActivated && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange}
+          returnFocusRef={finderButtonRef} />}
       </Suspense>
     </header>
   );
