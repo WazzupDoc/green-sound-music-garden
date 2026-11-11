@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V31)
+Updated: 2026-11-11 (V32)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v31-quote-integrity`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/16
-- Base version: `design/crafted-atmospheres-v30-frequency-finder` (PR #15), retaining all earlier V20–V30 work.
+- Current branch: `design/crafted-atmospheres-v32-search-discovery`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/17
+- Base version: `design/crafted-atmospheres-v31-quote-integrity` (PR #16), retaining all earlier V20–V31 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v31-quote-integrity?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v32-search-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v31-quote-integrity
-git pull origin design/crafted-atmospheres-v31-quote-integrity
+git switch design/crafted-atmospheres-v32-search-discovery
+git pull origin design/crafted-atmospheres-v32-search-discovery
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -111,3 +111,14 @@ Draft development only. No merge into `main`, production deployment or real sear
 - Prioritized follow-up: (1) verify CI and 6-width browser screenshots, including Contact prefill and Event Pass; (2) verify whether the current hosting can support secure server-side delivery before proposing a backend; (3) audit service page titles/FAQ/canonical and compare actual Search Console impressions/CTR if access becomes available; (4) validate structured data with Google's Rich Results Test before release.
 - Sources: https://developers.google.com/search/docs/appearance/structured-data/local-business ; https://www.dj-maryo.ro/dj-nunta/oras/Pitesti/ ; https://djmadastudio.com/dj-mc-sonorizare-lumini.html . Competitor pages are only evidence of phrases in page content, not proof of search volume or recommendations to copy.
 - **Release gate:** draft only, no merge to main, no deployment or live-domain change.
+
+
+## V32 — Search Discovery and Social Sharing Quality
+- **Canonical XML sitemap** at `/sitemap.xml`: twenty actual URLs — 7 editorial/legal pages, all 8 verified services and 5 actual event types. Consistent trailing-slash canonicals, fully qualified `https://greensoundmusic.com/` origins. Excludes fake locations, broken paths, search query variants and unverified `lastmod` timestamps.
+- **Crawler discovery** via one `Sitemap: https://greensoundmusic.com/sitemap.xml` directive added to the existing `public/robots.txt`; crawler access remains open.
+- **Social previews**: the existing `pageHead()` now emits `og:image`, `og:image:alt`, real pixel width/height, `twitter:image` and alt from an existing authentic Green Sound photograph. Every service and event detail uses its own already-published photographed page image. Other pages use the genuine concert photograph. No fabricated artwork or social proof.
+- **Regression**: unit tests compare all sitemap URLs against actual `services` and `events` in `src/data/site.ts`, reject duplicates, invalid prefixes/lastmod, and verify image metadata/canonical consistency. Chromium checks real HTTP `/sitemap.xml` and `/robots.txt` responses, XML well-formedness, route canonicals and social images alongside existing six-width visual QA.
+- **No new runtime dependency, no SEO doorway pages, no changes to pricing or backend and no inferred rankings/volumes.** Search Console submission, public web crawl and social share previews cannot be verified until a real owner-approved staging/production deploy.
+- Sources and checklist: `docs/V32_SEARCH_DISCOVERY_AUDIT.md`.
+
+Review-only draft PR #17. Never merge into main or deploy `greensoundmusic.com` without explicit owner approval.
