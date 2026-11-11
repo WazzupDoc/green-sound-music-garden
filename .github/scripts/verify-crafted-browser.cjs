@@ -31,6 +31,15 @@ fs.mkdirSync(dir,{recursive:true});
       assert.match(await page.locator(".scene-console__content h2").innerText(),/Un public/i);
       assert.equal(await page.locator(".scene-console__link").getAttribute("href"),"/evenimente/concerte-festivaluri");
       assert.ok(await page.locator(".scene-console").isVisible(),"Scene notes must be visible, including mobile");
+      if(width <= 430){
+        const order=await page.evaluate(()=>{
+          const controls=document.querySelector(".crafted-hero__bottom").getBoundingClientRect();
+          const notes=document.querySelector(".scene-console").getBoundingClientRect();
+          return {controlsTop:controls.top,notesTop:notes.top};
+        });
+        assert.ok(order.controlsTop < order.notesTop,
+          "On mobile the selectable scenes must be discoverable before the story card: "+JSON.stringify(order));
+      }
       assert.equal(await page.locator('.director-brief form[action="/contact"]').count(),1,"Native quote planner exists");
       assert.equal(await page.locator(".director-reel__choice").count(),3,"Three real showreel chapters exist");
       assert.equal(await page.locator(".director-reel iframe").count(),0,"Real video player must not auto-load");
