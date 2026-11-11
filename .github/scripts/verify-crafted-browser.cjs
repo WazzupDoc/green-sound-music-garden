@@ -175,6 +175,15 @@ fs.mkdirSync(dir,{recursive:true});
         // essential phone/email contacts remain server-rendered and immediately usable.
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:30000});
         assert.equal(await page.locator('form[aria-label="Cerere de ofertă"]').count(),1);
+        const contactLayout = await page.evaluate(()=>{
+          const heading=document.querySelector(".director-contact-intro h1");
+          const header=document.querySelector(".atelier-header");
+          const headingTop=heading?.getBoundingClientRect().top ?? 0;
+          const headerBottom=header?.getBoundingClientRect().bottom ?? 10000;
+          return {headingTop,headerBottom};
+        });
+        assert.ok(contactLayout.headingTop > contactLayout.headerBottom + 15,
+          "Contact title must clear floating mobile nav: "+JSON.stringify(contactLayout));
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/contact-mobile.png",fullPage:false});
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
