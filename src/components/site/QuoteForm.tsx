@@ -241,7 +241,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-location" className={labelCls}>Localitate / locație</label>
-        <input id="q-location" placeholder="ex. Pitești, restaurantul…" className={fieldCls} aria-describedby="q-loc-err" {...register("location")} />
+        <input id="q-location" placeholder="ex. Pitești, restaurantul…" className={fieldCls} aria-invalid={!!errors.location} aria-describedby={errors.location ? "q-loc-err" : undefined} {...register("location")} />
         <FieldError id="q-loc-err" msg={errors.location?.message} />
       </div>
       <div>
@@ -330,13 +330,13 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
       <div className="md:col-span-2">
         <label htmlFor="q-message" className={labelCls}>Detalii <span className="text-muted-foreground">(opțional)</span></label>
-        <textarea id="q-message" rows={4} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-describedby="q-msg-err" {...register("message")} />
+        <textarea id="q-message" rows={4} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "q-msg-err" : undefined} {...register("message")} />
         <FieldError id="q-msg-err" msg={errors.message?.message} />
       </div>
 
       <div className="md:col-span-2">
         <label className="flex items-start gap-3 text-sm text-foreground/85">
-          <input type="checkbox" className="mt-1 size-4 accent-primary" aria-describedby="q-consent-err" {...register("consent")} />
+          <input type="checkbox" className="mt-1 size-4 accent-primary" aria-invalid={!!errors.consent} aria-describedby={errors.consent ? "q-consent-err" : undefined} {...register("consent")} />
           <span>
             Sunt de acord ca Green Sound Music să folosească aceste date doar pentru a-mi răspunde la cerere. Detalii în{" "}
             <Link to="/confidentialitate" className="text-primary underline underline-offset-4">politica de confidențialitate</Link>.
