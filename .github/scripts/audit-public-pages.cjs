@@ -21,6 +21,20 @@ const normalizePath = path => path === "/" ? "/" : path.replace(/\/+$/, "") + "/
     assert.equal(urls.length, 20, "expected twenty editorial and service routes");
     assert.equal(new Set(urls).size, 20, "all sitemap URLs must be unique");
 
+    // Verified on the 2026 public WordPress site. Preserve the existing
+    // contact URL through a real HTTP permanent redirect during migration.
+    const legacy = await page.request.get(origin + "/contact-green/", {
+      maxRedirects: 0,
+      timeout: 15000,
+    });
+    assert.equal(legacy.status(), 301,
+      "Legacy public Contact /contact-green/ must permanently redirect, not 404 or a soft 200");
+    assert.match(legacy.headers()["location"] ?? "", /\/contact\/?$/,
+      "Legacy contact must resolve to the canonical new Contact page");
+    assert.ok(!urls.some(url => new URL(url).pathname.includes("/contact-green")),
+      "Sitemap contains only final canonical Contact URL, not redirected legacy URLs");
+
+
     const paths = new Set(urls.map(url => normalizePath(new URL(url).pathname)));
     const assets = new Set();
     const brokenLinks = new Map();
@@ -90,7 +104,7 @@ const normalizePath = path => path === "/" ? "/" : path.replace(/\/+$/, "") + "/
       assert.match(response.headers()["content-type"] ?? "", /^image\//i, "Photo serves valid image content: " + asset);
     }
 
-    console.log("PASS V38 site-wide audit: " + summaries.length +
+    console.log("PASS V38 legacy /contact-green/ → /contact/ 301, site-wide audit: " + summaries.length +
       " canonical pages with HTTP 200, unique H1, brand titles, SEO metadata, OG/Twitter images, safe JSON-LD, " +
       "no broken first-party links, " + assets.size + " existing first-party images.");
     console.log("Path + structured-data count (no private visitor data):");
