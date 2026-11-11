@@ -9,6 +9,11 @@ type HeadInput = {
   image?: ImageRef;
 };
 
+/** Escape HTML-significant characters so structured data cannot terminate a script tag. */
+export const serializeJsonLd = (data: Record<string, unknown>) =>
+  JSON.stringify(data).replace(/[<>&\u2028\u2029]/g, (character) =>
+    `\\u${character.charCodeAt(0).toString(16).padStart(4, "0")}`);
+
 /** Builds the per-page head(): unique title/description, OG/Twitter, canonical and JSON-LD. */
 export function pageHead({ title, description, path, jsonLd = [], noindex, image = images.concert }: HeadInput) {
   const url = `${SITE_URL}${path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`}`;
@@ -39,7 +44,7 @@ export function pageHead({ title, description, path, jsonLd = [], noindex, image
     links: [{ rel: "canonical", href: url }],
     scripts: jsonLd.map((data) => ({
       type: "application/ld+json",
-      children: JSON.stringify(data),
+      children: serializeJsonLd(data),
     })),
   };
 }
