@@ -177,7 +177,7 @@ export function StageHero() {
           {showReel && (
             <iframe
               src={`https://www.youtube-nocookie.com/embed/${reel.id}?autoplay=1&rel=0${active === "private" ? `&start=${videos.nuntaRamada.start}` : ""}`}
-              title={videos.showLumini.title}
+              title={reel.title}
               loading="lazy"
               allow="autoplay; encrypted-media; picture-in-picture"
               referrerPolicy="strict-origin-when-cross-origin"

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { getService, type EventType } from "@/data/site";
+import { EventBriefCard } from "@/components/atelier/EventBriefCard";
 import { FaqList, PageHero, QuoteSection, SectionHeading } from "./blocks";
 import { VideoLite } from "./VideoLite";
 import type { eventTypeOptions } from "@/lib/quote";
@@ -65,6 +66,8 @@ export function EventPage({ event }: { event: EventType }) {
           </ul>
         </div>
       </section>
+
+      <EventBriefCard event={event} />
 
       {event.videos.length > 0 && (
         <section className="section">

@@ -171,15 +171,93 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/services-page-mobile.png",fullPage:false});
         await page.goto(origin+"/contact",{waitUntil:"domcontentloaded"});
+        // The quote form is intentionally client-only to prevent RHF SSR mismatches;
+        // essential phone/email contacts remain server-rendered and immediately usable.
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:30000});
         assert.equal(await page.locator('form[aria-label="Cerere de ofertă"]').count(),1);
+        const contactLayout = await page.evaluate(()=>{
+          const heading=document.querySelector(".director-contact-intro h1");
+          const header=document.querySelector(".atelier-header");
+          const headingTop=heading?.getBoundingClientRect().top ?? 0;
+          const headerBottom=header?.getBoundingClientRect().bottom ?? 10000;
+          return {headingTop,headerBottom};
+        });
+        assert.ok(contactLayout.headingTop > contactLayout.headerBottom + 15,
+          "Contact title must clear floating mobile nav: "+JSON.stringify(contactLayout));
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/contact-mobile.png",fullPage:false});
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
         await page.goto(origin+"/confidentialitate",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
+        // V25: the original-photo editorial journal is actually interactive,
+        // navigation is accessible, and the film archive never auto-plays.
+        await page.goto(origin+"/portofoliu",{waitUntil:"domcontentloaded"});
+        await page.locator('.journal[data-hydrated="true"]').waitFor({timeout:30000});
+        assert.equal(await page.locator(".journal__photo").count(),6,"Six first-party photo journal frames");
+        const journalTiles = await page.locator(".journal__photo").evaluateAll((nodes) =>
+          nodes.slice(0,3).map(node => {
+            const r=node.getBoundingClientRect();
+            return {top:r.top,bottom:r.bottom,left:r.left,right:r.right};
+          }));
+        assert.ok(journalTiles[1].top >= journalTiles[0].bottom - 2,
+          "Mobile gallery must not overlap the hero photo with the next row: "+JSON.stringify(journalTiles));
+        await page.locator(".journal__photo").first().click();
+        await page.locator('[role="dialog"]').waitFor();
+        assert.match(await page.locator(".journal-dialog__title").innerText(),/Ritmul serii/);
+        await page.locator('.journal-dialog__arrow[aria-label="Fotografia următoare"]').click();
+        assert.match(await page.locator(".journal-dialog__title").innerText(),/Scena se transformă/);
+        await page.keyboard.press("Escape");
+        await page.locator('[role="dialog"]').waitFor({state:"hidden"});
+        assert.equal(await page.locator(".film-archive__pick").count(),6,"Six authentic Green Sound films");
+        assert.equal(await page.locator(".film-archive iframe").count(),0,"No autoplay or remote iframe");
+        await page.locator(".film-archive__filter").filter({hasText:"Studio"}).click();
+        assert.equal(await page.locator(".film-archive__pick").count(),3,"Studio filters actual published clips");
+        assert.equal(await page.locator(".film-archive__filter").filter({hasText:"Studio"}).getAttribute("aria-pressed"),"true");
+        await page.locator(".journal__grid").screenshot({path:dir+"/portfolio-journal-390.png",animations:"disabled"});
+        await page.locator(".film-archive__grid").screenshot({path:dir+"/film-archive-390.png",animations:"disabled"});
+
+        // Every event detail page uses actual recommended services in the native
+        // quote journey. No auto-submit, pricing or availability claims.
+        await page.goto(origin+"/evenimente/nunti",{waitUntil:"domcontentloaded"});
+        assert.equal(await page.locator(".event-brief__items li").count(),5,"Wedding brief recommendations");
+        await page.locator('.event-brief input[name="date"]').fill("2027-09-18");
+        await page.locator('.event-brief input[name="location"]').fill("Pitești");
+        await page.locator(".event-brief__submit").click();
+        await page.waitForURL(url => url.pathname === "/contact" && url.searchParams.has("event"), {timeout:15000});
+        const nativeBriefUrl = new URL(page.url());
+        assert.equal(nativeBriefUrl.searchParams.get("event"),"Nuntă","The event is in the native GET URL");
+        assert.equal(nativeBriefUrl.searchParams.get("date"),"2027-09-18","The date is in the native GET URL");
+        assert.equal(nativeBriefUrl.searchParams.get("location"),"Pitești","The location is in the native GET URL");
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
+        // RHF initializes after the /contact route hydrates; assert final client input
+        // state, not the brief SSR placeholders before the form becomes interactive.
+        await page.waitForFunction(() => {
+          const event=document.querySelector("#q-event"),date=document.querySelector("#q-date"),
+            place=document.querySelector("#q-location"),services=document.querySelectorAll('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked');
+          return event?.value==="Nuntă" && date?.value==="2027-09-18" && place?.value==="Pitești" && services.length===5;
+        },null,{timeout:15000});
+        assert.equal(await page.locator("#q-event").inputValue(),"Nuntă");
+        assert.equal(await page.locator("#q-date").inputValue(),"2027-09-18");
+        assert.equal(await page.locator("#q-location").inputValue(),"Pitești");
+        assert.equal(await page.locator('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').count(),5,
+          "All actual wedding recommendations survive validation");
+        await page.screenshot({path:dir+"/event-brief-contact-390.png",fullPage:false});
+
       }
       assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
+      if(width===1440){
+        await page.goto(origin+"/portofoliu",{waitUntil:"domcontentloaded"});
+        await page.locator(".journal__photo").first().scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>{const img=document.querySelector(".journal__photo img");return img && img.complete && img.naturalWidth>0},null,{timeout:15000});
+        await page.screenshot({path:dir+"/portfolio-desktop-1440.png",fullPage:false});
+        await page.locator(".film-archive__grid").scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>{
+          const image=document.querySelector(".film-archive__player img");
+          return image && image.complete && image.naturalWidth>0;
+        },null,{timeout:15000});
+        await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
+      }
       await page.close();
     }
     const reduced=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
@@ -187,6 +265,6 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     await reduced.close();
-    console.log("PASS V24: six widths, cinematic scene-specific hero panel, authentic reels, storyboard service addition, soundcheck contact prefill, mobile menu and reduced motion");
+    console.log("PASS V25: six responsive widths, hero stage, V23 Soundcheck, full photo lightbox + film archive, wedding recommended brief to contact, mobile menu, reduced motion");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

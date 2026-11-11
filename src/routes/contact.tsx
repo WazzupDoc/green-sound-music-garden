@@ -1,10 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { ClientOnly, createFileRoute, useHydrated } from "@tanstack/react-router";
 import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight } from "lucide-react";
 import { QuoteForm } from "@/components/site/QuoteForm";
-import { business, images, services as serviceCatalogue } from "@/data/site";
+import { business, services as serviceCatalogue } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
-import { PageHero } from "@/components/site/blocks";
 import { eventTypeOptions } from "@/lib/quote";
 
 const allowedTypes: readonly string[] = eventTypeOptions;
@@ -56,25 +55,32 @@ export const Route = createFileRoute("/contact")({
   component: Contact,
 });
 function Contact() {
-  const { event, date, location, services: selectedServices = [] } = Route.useSearch();
+  // On native GET navigation the dev SSR/router may initially omit validated
+  // search values; the client must not render different initial markup.
+  // useHydrated is false on the server AND the first client render.
+  const hydrated = useHydrated();
+  const search = Route.useSearch();
+  const event = hydrated ? search.event : undefined;
+  const date = hydrated ? search.date : undefined;
+  const location = hydrated ? search.location : undefined;
+  const selectedServices = hydrated ? search.services ?? [] : [];
   const fromBrief = Boolean(event || date || location || selectedServices.length);
+
   return (
     <>
-      {fromBrief ? (
-        <section className="director-contact-intro" aria-labelledby="director-contact-title">
-          <div className="container-site">
-            <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
-            <h1 id="director-contact-title">Avem începutul. <em>Completăm detaliile.</em></h1>
-            <p>Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email.</p>
-          </div>
-        </section>
-      ) : (
-        <PageHero eyebrow="CONTACT / HAI SĂ VORBIM" title="Spune-ne ce ai în minte. De atmosferă ne ocupăm noi."
-          lead="Alegem muzica, sunetul și luminile în funcție de eveniment, spațiu și oamenii pentru care pregătești totul."
-          image={images.dj} crumbs={[{ name: "Acasă", to: "/" }, { name: "Contact" }]} />
-      )}
-      <section className={`section ${fromBrief ? "director-contact-brief-flow" : ""}`} aria-labelledby="contact-form-title">
-        <div className={`container-site grid items-start gap-14 lg:grid-cols-[.72fr_1.28fr] xl:gap-24 ${fromBrief ? "director-contact-brief-layout" : ""}`}>
+      <section className="director-contact-intro" aria-labelledby="director-contact-title">
+        <div className="container-site">
+          <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
+          <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
+          <p>
+            {fromBrief
+              ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
+              : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
+          </p>
+        </div>
+      </section>
+      <section className="section director-contact-brief-flow" aria-labelledby="contact-form-title">
+        <div className="container-site grid items-start gap-14 lg:grid-cols-[.72fr_1.28fr] xl:gap-24 director-contact-brief-layout">
           <aside>
             <span className="crafted-index">01 / CONTACT DIRECT</span>
             <h2 className="crafted-heading mt-6">O discuție bună <em>pornește totul.</em></h2>
@@ -89,9 +95,16 @@ function Contact() {
           <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
             <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
-            <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}|${selectedServices.join("|")}`} id="cerere-oferta"
-              defaultEventType={event} defaultDate={date ?? ""} defaultLocation={location ?? ""}
-              defaultServices={selectedServices} />
+            <ClientOnly fallback={
+              <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
+                <p>Pregătim formularul pentru evenimentul tău…</p>
+                <p className="text-sm">Poți folosi și telefonul sau WhatsApp din zona de contact.</p>
+              </div>
+            }>
+              <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}|${selectedServices.join("|")}`}
+                id="cerere-oferta" defaultEventType={event} defaultDate={date ?? ""}
+                defaultLocation={location ?? ""} defaultServices={selectedServices} />
+            </ClientOnly>
           </div>
         </div>
       </section>
