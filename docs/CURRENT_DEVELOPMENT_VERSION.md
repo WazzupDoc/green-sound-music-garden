@@ -38,3 +38,12 @@ V23 is stacked on V22 for review. This does not mean it has been merged to `main
 ## Next iteration rule
 
 Start from the latest working development branch, make one coherent improvement, verify it, and create a new draft review. Avoid replacing real business media with stock images, inventing business facts, or merging/publishing without approval.
+
+
+## One-click visual preview in Codespaces
+
+[Open / resume V23 preview workspace](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v23-storyboard?quickstart=1)
+
+This links to a Codespaces workspace for the **V23 development branch**, not a production deployment. The `.devcontainer/devcontainer.json` auto-installs dependencies and starts the Vite server on forwarded port `4175`. The browser should offer to open the preview automatically. If it does not, use **PORTS → 4175 → Open in Browser**. Allow initial workspace setup to finish. Preview is private and runs only when the Codespace is active; the URL is unique per user workspace. The automated setup has not been exercised end-to-end from this chat.
+
+Production domain `greensoundmusic.com` and `main` stay unchanged.
