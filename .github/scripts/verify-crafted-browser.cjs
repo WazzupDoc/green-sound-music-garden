@@ -31,7 +31,7 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(heroPreloads.length,1,
         "Exactly one first-party hero preload must exist: "+JSON.stringify(heroPreloads));
       assert.ok(heroPreloads[0].priority === "high",
-        "The actual hero preload must carry high priority and WebP type: "+JSON.stringify(heroPreloads));
+        "The real SSR hero preload must carry high priority: "+JSON.stringify(heroPreloads));
       const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
       assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
         "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
