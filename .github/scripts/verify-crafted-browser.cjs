@@ -41,6 +41,54 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".gs-pulse h2").count(),1,"Editorial music frequency section is accessible");
       assert.equal(await page.locator(".gs-pulse__wave span").count(),36,"Thirty-six static frequency bars exist without JS");
       assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
+      assert.equal(await page.locator(".atelier-header__finder-btn").isVisible(),true,
+        "Search must be reachable from every viewport without opening the mobile nav");
+      assert.equal(await page.locator(".gs-finder").count(),0,
+        "Lazy search directory should not mount until explicitly opened");
+      if(width===390 || width===1440){
+        const finderButton = page.locator(".atelier-header__finder-btn");
+        if(width===1440) await page.keyboard.press("Control+k");
+        else await finderButton.click();
+        const finderInput = page.locator("#gs-finder-input");
+        await finderInput.waitFor({timeout:15000});
+        assert.equal(await finderInput.evaluate(el=>el===document.activeElement),true,
+          "Search focus enters the text field after opening");
+        assert.equal(await page.locator(".gs-finder__result").count(),6,
+          "The empty query offers six useful first-party destinations");
+        await finderInput.fill("LUMINI");
+        assert.equal(await page.locator('.gs-finder__result[data-result-url="/echipamente-de-sunet-si-lumini"]').count(),1,
+          "Local search finds existing lighting services case-insensitively");
+        await page.locator(".gs-finder").screenshot({path:dir+"/frequency-finder-"+width+".png",animations:"disabled"});
+        await finderInput.fill("nunta");
+        assert.ok(await page.locator(".gs-finder__result").count()>0,
+          "Accent-insensitive search finds the wedding event by its real form label");
+        await finderInput.press("ArrowDown");
+        assert.equal(await page.evaluate(()=>document.activeElement?.classList.contains("gs-finder__result")),true,
+          "Down Arrow focuses the first result");
+        await page.keyboard.press("ArrowUp");
+        assert.equal(await finderInput.evaluate(el=>el===document.activeElement),true,
+          "Up Arrow returns focus to the search input");
+        await finderInput.fill("not-a-real-service-xyz");
+        assert.equal(await page.locator(".gs-finder__result").count(),0,
+          "Unknown text must never fabricate matching services");
+        assert.equal(await page.locator(".gs-finder__empty a[href='/contact']").count(),1,
+          "Empty search offers a real contact alternative");
+        await page.keyboard.press("Escape");
+        await page.locator(".gs-finder").waitFor({state:"hidden",timeout:7000});
+        assert.equal(await finderButton.evaluate(el=>el===document.activeElement),true,
+          "Escape closes the modal and returns focus to its trigger");
+        if(width===1440){
+          await page.keyboard.press("/");
+          await page.locator("#gs-finder-input").waitFor({timeout:7000});
+          await page.locator("#gs-finder-input").fill("sonorizare");
+          await page.locator('.gs-finder__result[data-result-url="/echipamente-de-sunet-si-lumini"]').click();
+          await page.waitForURL(url=>url.pathname==="/echipamente-de-sunet-si-lumini",{timeout:15000});
+          assert.equal(await page.locator(".gs-finder").count(),0,
+            "Choosing a result should close the directory and navigate to the existing page");
+          await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
+          await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
+        }
+      }
       if(width>=1024){
         assert.equal(await page.locator(".gs-cursor__toggle").isVisible(),true,"Fine pointer cursor FX can be switched off");
         const fxPosition=await page.evaluate(()=>{
@@ -456,6 +504,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V29: service mix with real services and validated contact handoff, production journey, cursor/light desk, branded 404, reduced-motion and 6 responsive widths");
+    console.log("PASS V30: lazy local frequency finder, keyboard shortcuts/focus, real 8-service directory, real event search, service mix/quote, reduced motion and six responsive widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
