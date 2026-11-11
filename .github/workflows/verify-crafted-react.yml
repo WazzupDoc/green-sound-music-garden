@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio]
     paths:
       - "src/**"
       - "package.json"
@@ -66,6 +66,10 @@ jobs:
           assert Path('src/styles/light-desk.css').is_file()
           assert Path('src/styles/offstage.css').is_file()
           assert Path('src/styles/atmosphere-interlude.css').is_file()
+          signal=Path('src/components/atelier/AtmosphereInterlude.tsx').read_text()
+          assert 'gs-pulse__transport' in signal and 'gs-pulse-tempo' in signal
+          assert 'IntersectionObserver' in signal and 'visibilitychange' in signal
+          assert 'gs-studio-signal' in Path('src/styles/atmosphere-interlude.css').read_text()
           assert Path('src/styles/production-journey.css').is_file()
           assert Path('src/styles/service-mix.css').is_file()
           assert Path('src/styles/frequency-finder.css').is_file()
