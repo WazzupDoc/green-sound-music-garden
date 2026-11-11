@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowUpRight, CheckCircle2, Mail, MessageCircle, PencilLine } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ClipboardCopy, Mail, MessageCircle, PencilLine } from "lucide-react";
 import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,19 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   // The visitor must explicitly choose a channel after reviewing their message.
   // Never open a popup from an asynchronous schema validation callback.
   const [prepared, setPrepared] = useState<Quote | null>(null);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
+
+  const copyMessage = async (message: string) => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard not available");
+      await navigator.clipboard.writeText(message);
+      setCopyStatus("success");
+    } catch {
+      // Permissions and insecure contexts vary. Never claim the copy worked.
+      // Render a keyboard-selectable alternative directly below the actions.
+      setCopyStatus("failed");
+    }
+  };
 
   const {
     register,
@@ -67,6 +80,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const onSubmit = (q: Quote) => {
     // Preparing the quote is not sending it. Both destination links are opened
     // only from a deliberate tap/click to avoid popup blockers and false success.
+    setCopyStatus("idle");
     setPrepared(q);
   };
 
@@ -128,12 +142,33 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             Deschide emailul
             <ArrowUpRight className="size-4" aria-hidden />
           </a>
+          <button type="button" className="quote-preview__copy"
+            onClick={() => { void copyMessage(message); }}>
+            <ClipboardCopy className="size-5" aria-hidden />
+            {copyStatus === "success" ? "Mesaj copiat" : "Copiază mesajul"}
+            <ArrowUpRight className="size-4" aria-hidden />
+          </button>
         </div>
+        <p className="quote-preview__copy-status" role="status" aria-live="polite">
+          {copyStatus === "success"
+            ? "Mesajul este în clipboard. Îl poți lipi în aplicația pe care o alegi; nu a fost trimis automat."
+            : copyStatus === "failed"
+              ? "Copierea automată nu este disponibilă în acest browser. Poți selecta și copia manual textul de mai jos."
+              : "Poți copia mesajul pentru a-l trimite și prin altă aplicație."}
+        </p>
+        {copyStatus === "failed" && (
+          <label className="quote-preview__manual">
+            Selectează și copiază manual mesajul
+            <textarea readOnly rows={6} value={message}
+              onFocus={event => event.currentTarget.select()}
+              aria-label="Textul complet al cererii, selectabil pentru copiere manuală" />
+          </label>
+        )}
         <p className="quote-preview__notice">
           În WhatsApp sau aplicația de email, verifică destinatarul și apasă „Trimite”.
           Green Sound Music nu primește mesajul până nu îl expediezi tu.
         </p>
-        <button className="quote-preview__edit" type="button" onClick={() => setPrepared(null)}>
+        <button className="quote-preview__edit" type="button" onClick={() => { setCopyStatus("idle"); setPrepared(null); }}>
           <PencilLine className="size-4" aria-hidden /> Modifică detaliile
         </button>
       </div>
