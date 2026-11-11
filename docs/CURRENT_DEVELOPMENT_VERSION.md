@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V30)
+Updated: 2026-11-11 (V31)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v30-frequency-finder`
+- Current branch: `design/crafted-atmospheres-v31-quote-integrity`
 - Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/15
-- Base version: `design/crafted-atmospheres-v29-service-mix` (PR #14), retaining all earlier V20–V29 work.
+- Base version: `design/crafted-atmospheres-v30-frequency-finder` (PR #15), retaining all earlier V20–V30 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v30-frequency-finder?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v31-quote-integrity?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v30-frequency-finder
-git pull origin design/crafted-atmospheres-v30-frequency-finder
+git switch design/crafted-atmospheres-v31-quote-integrity
+git pull origin design/crafted-atmospheres-v31-quote-integrity
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -101,3 +101,13 @@ This is **draft only**, no merge and no live deployment without the owner's expl
 - Audit sources and remaining release gates in `docs/V30_FREQUENCY_FINDER_AUDIT.md`.
 
 Draft development only. No merge into `main`, production deployment or real search-volume/ranking claims without owner approval and measurements.
+
+
+## V31 — Contact integrity and search-intent research (draft)
+- Source: V30 / PR #15. Verified V30 GitHub Actions run 43052202500: completed successfully for commit 427fc392703d50e35567ad8c3ef3d212fdd5621e. No new V31 CI result should be presumed green.
+- Hardened client-side Zod quote validation against invented service labels, duplicated services, arbitrary guest-count options, and malformed/impossible ISO calendar dates. Blank date remains valid. Service labels derive directly from the real eight-service catalogue, plus the explicit “Nu știu încă” option. Tests added for these boundaries.
+- **Architecture boundary:** Contact is an explicit user-mediated WhatsApp/mailto handoff, not an API submission or automatic delivery. This change does not add a backend, rate limiting, server-side validation, a database, or guaranteed delivery. Do not describe the preview as a sent message.
+- SEO research snapshot (2026-11-11): public Romanian search results contain commercial-intent phrases around “DJ nuntă Pitești”, “DJ botez”, “sonorizare evenimente”, “lumini evenimente”, “fum greu dansul mirilor”, and “trupă live nuntă”. These are *SERP content observations*, not measured query volumes, Google Trends, Search Console, keyword ranking or demand estimates. Existing service/event routes should be mapped to intent before creating any new city pages.
+- Prioritized follow-up: (1) verify CI and 6-width browser screenshots, including Contact prefill and Event Pass; (2) verify whether the current hosting can support secure server-side delivery before proposing a backend; (3) audit service page titles/FAQ/canonical and compare actual Search Console impressions/CTR if access becomes available; (4) validate structured data with Google's Rich Results Test before release.
+- Sources: https://developers.google.com/search/docs/appearance/structured-data/local-business ; https://www.dj-maryo.ro/dj-nunta/oras/Pitesti/ ; https://djmadastudio.com/dj-mc-sonorizare-lumini.html . Competitor pages are only evidence of phrases in page content, not proof of search volume or recommendations to copy.
+- **Release gate:** draft only, no merge to main, no deployment or live-domain change.
