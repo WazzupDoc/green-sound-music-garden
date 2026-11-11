@@ -17,6 +17,9 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(2000);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
+      const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
+      assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
+        "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
       assert.equal(await page.locator(".crafted-hero__mode").count(),3);
       assert.equal(await page.locator(".crafted-experiences__option").count(),5);
       assert.equal(await page.locator(".crafted-services__row").count(),5);
@@ -25,6 +28,8 @@ fs.mkdirSync(dir,{recursive:true});
       if(width===360 || width===390 || width===1440){
         await page.screenshot({path:dir+"/home-"+width+".png",fullPage:false});
         await page.locator(".crafted-experiences").scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>Array.from(document.querySelectorAll(".crafted-experiences__frame img")).some(i=>i.complete&&i.naturalWidth>0),null,{timeout:12000});
+
         await page.screenshot({path:dir+"/events-"+width+".png",fullPage:false});
         await page.locator(".crafted-services").scrollIntoViewIfNeeded();
         await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
