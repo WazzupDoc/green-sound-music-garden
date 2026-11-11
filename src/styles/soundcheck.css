@@ -1,0 +1,54 @@
+/* V22 — SOUNDCHECK / original event composition workspace */
+.soundcheck{background:#0a100c;color:#eff5e9;border-top:1px solid #b4dc9e1e;border-bottom:1px solid #b4dc9e1e}
+.soundcheck__intro{margin-bottom:clamp(30px,4vw,58px)}
+.soundcheck__intro .crafted-index{color:#aadf8e}
+.soundcheck__grid{display:grid;grid-template-columns:minmax(0,1.23fr) minmax(320px,.77fr);gap:clamp(24px,4.6vw,76px);align-items:start}
+.soundcheck__studio{min-width:0}
+.soundcheck__fieldset{min-width:0;border:0;padding:0;margin:0}
+.soundcheck__fieldset--services{margin-top:clamp(34px,4vw,55px)}
+.soundcheck__step{display:inline-flex;align-items:center;gap:12px;color:#c8d8c0;font-size:.69rem;letter-spacing:.14em;font-weight:800;text-transform:uppercase}
+.soundcheck__step>span{display:grid;place-items:center;width:30px;height:30px;border:1px solid #a8da9080;color:#b3eaa0;font-family:var(--font-serif);font-size:.99rem;letter-spacing:0;font-weight:400}
+.soundcheck__events{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.soundcheck__event{min-height:44px;padding:10px 17px;border:1px solid #c5e4b63d;background:#17221a;color:#d6e3d1;font-size:.83rem;font-weight:700;transition:background .2s,color .2s,border-color .2s}
+.soundcheck__event:hover,.soundcheck__event:focus-visible{border-color:#bde7a6}
+.soundcheck__event[aria-pressed="true"]{background:#d9edd0;color:#112015;border-color:#d9edd0}
+.soundcheck__hint{margin-top:13px;margin-bottom:18px;color:#a6b6a2;line-height:1.6;font-size:.85rem;max-width:600px}
+.soundcheck__service-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.soundcheck__service{position:relative;display:flex;min-width:0;gap:12px;align-items:flex-start;min-height:118px;padding:17px 13px;border:1px solid #cbe0bb32;background:#131c16;cursor:pointer;transition:background .23s,border-color .23s,transform .23s}
+.soundcheck__service:hover{border-color:#b7dc9d9c;transform:translateY(-2px)}
+.soundcheck__service:focus-within{outline:2px solid #d8f1c5;outline-offset:3px}
+.soundcheck__service[data-checked="yes"]{background:#1b2d1d;border-color:#91be78bd}
+.soundcheck__service input{position:absolute;opacity:0;width:1px;height:1px}
+.soundcheck__service-nr{font-family:var(--font-serif);font-size:1.2rem;color:#9bba8b;line-height:1.15}
+.soundcheck__service-copy{display:flex;flex-direction:column;gap:9px;min-width:0;flex:1}
+.soundcheck__service-copy strong{font-family:var(--font-display);font-size:clamp(.93rem,1.23vw,1.1rem);font-weight:600;line-height:1.12;letter-spacing:-.025em}
+.soundcheck__service-copy small{font-size:.72rem;color:#afbeaa;line-height:1.5}
+.soundcheck__service-indicator{flex:none;display:grid;place-items:center;width:24px;height:24px;border:1px solid #b0d99a72;color:#d6efd1}
+.soundcheck__service[data-checked="yes"] .soundcheck__service-indicator{background:#cbe9b8;color:#12201a}
+.soundcheck__preview{min-width:0;position:sticky;top:112px;border:1px solid #a0bd8f4d;background:#162218;box-shadow:0 30px 70px #0003}
+.soundcheck__visual{position:relative;height:clamp(190px,20vw,310px);overflow:hidden;background:#0b100b}
+.soundcheck__visual::after{content:"";position:absolute;inset:30% 0 0;background:linear-gradient(0deg,#09150df2,transparent 93%);pointer-events:none}
+.soundcheck__visual img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:contrast(1.06) brightness(.84)}
+.soundcheck__visual-label{position:absolute;z-index:1;bottom:19px;left:24px;right:24px;display:flex;flex-direction:column;gap:5px}
+.soundcheck__visual-label span{font-size:.58rem;font-weight:700;letter-spacing:.17em;color:#d9e9ce}
+.soundcheck__visual-label strong{font-family:var(--font-display);font-size:clamp(1.5rem,2.4vw,2.4rem);font-weight:600;letter-spacing:-.05em}
+.soundcheck__summary{padding:clamp(21px,2.4vw,34px)}
+.soundcheck__summary-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.soundcheck__count{white-space:nowrap;font-size:.7rem;color:#d7ebc9}
+.soundcheck__picks{display:flex;flex-direction:column;gap:9px;margin-top:22px;margin-bottom:23px;list-style:none}
+.soundcheck__picks li{display:flex;align-items:center;gap:9px;font-size:.8rem;line-height:1.35;color:#e5edde}
+.soundcheck__picks svg{color:#a6dd8f;flex-shrink:0}
+.soundcheck__empty{margin:22px 0;color:#bbcbb3;font-size:.82rem;line-height:1.5}
+.soundcheck__form{border-top:1px solid #c8deb43b;padding-top:21px}
+.soundcheck__details{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.soundcheck__details label{font-size:.64rem;font-weight:800;letter-spacing:.08em;color:#c9dec1}
+.soundcheck__details label span{font-weight:400;letter-spacing:0;text-transform:none;color:#acbda7}
+.soundcheck__details input{display:block;min-width:0;width:100%;margin-top:7px;min-height:40px;padding:8px 10px;background:#f0f1e9;color:#17251b;color-scheme:light;border:1px solid #d5ddcb;border-radius:0;font-size:.78rem}
+.soundcheck__details input:focus-visible{outline:2px solid #bce8a1;outline-offset:2px}
+.soundcheck__cta{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;min-height:56px;padding:14px 17px;background:#d3ebbf;color:#132218;border:1px solid #d3ebbf;font-size:.82rem;font-weight:800;transition:background .25s,transform .25s}
+.soundcheck__cta:hover{background:#eef4e7;transform:translateY(-2px)}
+.soundcheck__cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.soundcheck__disclaimer{margin-top:12px;color:#a5b8a1;font-size:.71rem;line-height:1.55}
+@media(max-width:1070px){.soundcheck__grid{grid-template-columns:1fr}.soundcheck__preview{position:static;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}.soundcheck__visual{height:100%;min-height:320px}}
+@media(max-width:680px){.soundcheck__service-grid{grid-template-columns:1fr}.soundcheck__service{min-height:92px}.soundcheck__preview{display:block}.soundcheck__visual{height:195px;min-height:0}.soundcheck__details{grid-template-columns:1fr}.soundcheck__event{font-size:.77rem;padding:9px 12px;min-height:42px}.soundcheck__summary-head{align-items:flex-start}}
+@media(prefers-reduced-motion:reduce){.soundcheck__event,.soundcheck__service,.soundcheck__cta{transition:none!important;transform:none!important}}
