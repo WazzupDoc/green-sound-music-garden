@@ -168,3 +168,9 @@ html[data-gs19-tier="lite"] .gs19-stage-gloss{display:none}
 @media(prefers-reduced-motion:reduce){
  .gs-curation .section-heading::after,.gs-reel__header::after{transform:scaleX(1);transition:none}
 }
+
+/* Browser QA at 320px: layout boxes now fit; only transformed pseudo-art can
+ * extend the root scroll area by a few pixels. Clip the ROOT painting surface,
+ * not interactive content or headings. Keep vertical overflow fully scrollable. */
+html{overflow-x:clip}
+@supports not (overflow:clip){html{overflow-x:hidden}}
