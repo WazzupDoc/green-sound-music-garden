@@ -8,6 +8,7 @@
 @import "./styles/atelier.css";
 @import "./styles/directors-cut.css";
 @import "./styles/soundcheck.css";
+@import "./styles/scene-console.css";
 
 @custom-variant dark (&:is(.dark *));
 
