@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey]
     paths:
       - "src/**"
       - "package.json"
@@ -13,9 +13,9 @@ on:
       - ".github/scripts/verify-crafted-browser.cjs"
 
 # When iterative design work produces several commits, only the latest branch
-# state needs visual/browser QA; cancel stale runs to avoid wasting CI time.
+# state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.
 concurrency:
-  group: crafted-react-${{ github.head_ref || github.ref_name }}
+  group: crafted-react-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 permissions:
@@ -45,7 +45,7 @@ jobs:
           r=Path('src/routes')
           for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
               assert (r/page).is_file(), page
-          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck','PortfolioJournal','EventBriefCard','SoundCursor','AtmosphereInterlude']:
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck','PortfolioJournal','EventBriefCard','SoundCursor','AtmosphereInterlude','ProductionJourney']:
               assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
           css=Path('src/styles/atelier.css').read_text()
           assert 'prefers-reduced-motion' in css
@@ -61,6 +61,7 @@ jobs:
           assert Path('src/styles/light-desk.css').is_file()
           assert Path('src/styles/offstage.css').is_file()
           assert Path('src/styles/atmosphere-interlude.css').is_file()
+          assert Path('src/styles/production-journey.css').is_file()
           assert (Path('src/components/site')/'StageFallback.tsx').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')

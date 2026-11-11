@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/site/blocks";
+import { ProductionJourney } from "@/components/atelier/ProductionJourney";
 import { business, images } from "@/data/site";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 export const Route=createFileRoute("/despre-noi")({
@@ -18,6 +19,7 @@ function About(){
  <p className="atelier-prose mt-5">Lucrăm cu publicul, spațiul și programul evenimentului în minte. Aceeași echipă poate coordona muzica și partea tehnică, astfel încât fiecare moment să se desfășoare natural.</p>
  <Link to="/servicii" className="mt-8 inline-flex items-center gap-3 font-semibold text-[#295637]">Descoperă serviciile <ArrowUpRight className="size-5" aria-hidden /></Link>
  </div></div></section>
+ <ProductionJourney />
  <section className="section"><div className="container-site grid gap-12 lg:grid-cols-2">
  <img src={images.dj.src} width={images.dj.w} height={images.dj.h} alt={images.dj.alt} loading="lazy" className="aspect-[4/3] w-full object-cover"/>
  <div className="self-center"><span className="crafted-index">ÎN CENTRUL EVENIMENTULUI</span><h2 className="crafted-heading mt-6">Totul începe <em>cu o conversație.</em></h2>

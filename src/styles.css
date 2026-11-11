@@ -17,6 +17,7 @@
 @import "./styles/light-desk.css";
 @import "./styles/offstage.css";
 @import "./styles/atmosphere-interlude.css";
+@import "./styles/production-journey.css";
 @import "./styles/event-journal.css";
 
 @custom-variant dark (&:is(.dark *));

@@ -23,6 +23,15 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
+      // React can add a favicon image preload before the hero. Inspect only
+      // the real first-party hero and reject duplicate hero resource hints.
+      const heroPreloads = await page.locator('head link[rel="preload"][as="image"][href*="/media/greensound/"]').evaluateAll(nodes =>
+        nodes.map(link=>({href:link.getAttribute("href")??"",
+          priority:link.getAttribute("fetchpriority"),type:link.getAttribute("type")})));
+      assert.equal(heroPreloads.length,1,
+        "Exactly one first-party hero preload must exist: "+JSON.stringify(heroPreloads));
+      assert.ok(heroPreloads[0].priority === "high",
+        "The real SSR hero preload must carry high priority: "+JSON.stringify(heroPreloads));
       const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
       assert.ok(heroPhoto.loaded && heroPhoto.url.includes("/media/greensound/"),
         "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
@@ -208,6 +217,15 @@ fs.mkdirSync(dir,{recursive:true});
         const menu=page.locator(".atelier-header__menu-btn");
         await menu.click();
         assert.equal(await menu.getAttribute("aria-expanded"),"true");
+        await page.waitForFunction(() =>
+          document.activeElement?.classList.contains("atelier-mobile-menu__link"),null,{timeout:7000});
+        assert.equal(await page.locator(".atelier-mobile-menu__link").first().evaluate(el => el === document.activeElement),true,
+          "Keyboard focus should enter mobile navigation on its first link");
+        await page.keyboard.press("Escape");
+        assert.equal(await menu.getAttribute("aria-expanded"),"false","Escape must close the menu");
+        assert.equal(await menu.evaluate(el=>el === document.activeElement),true,
+          "Escape restores focus to the menu trigger");
+        await menu.click();
         await page.locator(".atelier-mobile-menu__link").filter({hasText:"Servicii"}).click();
         await page.waitForURL(/\/servicii/,{timeout:15000});
         assert.equal(await page.locator("main h1").count(),1);
@@ -247,6 +265,23 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator("#q-name").inputValue(),"Ana Test","Editing must restore existing data");
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
+        await page.locator('.gs-journey[data-hydrated="true"]').waitFor({timeout:30000});
+        await page.locator(".gs-journey__step").first().waitFor();
+        assert.equal(await page.locator(".gs-journey__step").count(),4,
+          "The About page has four accessible production stages");
+        assert.match(await page.locator(".gs-journey__chapter h3").innerText(),/Începem cu povestea ta/);
+        await page.locator(".gs-journey__step").nth(2).click();
+        assert.equal(await page.locator(".gs-journey__step").nth(2).getAttribute("aria-pressed"),"true");
+        assert.match(await page.locator(".gs-journey__chapter h3").innerText(),/Punem tehnica în acord/);
+        await page.locator(".gs-journey__chapter-bottom button").click();
+        assert.match(await page.locator(".gs-journey__chapter h3").innerText(),/ideea devine experiență/);
+        await page.locator(".gs-journey__chapter-bottom button").click();
+        assert.match(await page.locator(".gs-journey__chapter h3").innerText(),/Începem cu povestea ta/,
+          "The final journey action should return to step 01");
+        const aboutOverflow = await page.evaluate(()=>({documentWidth:document.documentElement.scrollWidth,viewport:innerWidth}));
+        assert.ok(aboutOverflow.documentWidth<=aboutOverflow.viewport+2,
+          "Production Journey must never overflow a narrow viewport: "+JSON.stringify(aboutOverflow));
+        await page.locator(".gs-journey__body").screenshot({path:dir+"/production-journey-mobile-390.png",animations:"disabled"});
         await page.goto(origin+"/confidentialitate",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
         // V25: the original-photo editorial journal is actually interactive,
@@ -306,6 +341,13 @@ fs.mkdirSync(dir,{recursive:true});
       }
       assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
       if(width===1440){
+        await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
+        await page.locator(".gs-journey__body").scrollIntoViewIfNeeded();
+        await page.waitForFunction(()=>{
+          const image=document.querySelector(".gs-journey__image img");
+          return image && image.complete && image.naturalWidth>0;
+        },null,{timeout:15000});
+        await page.locator(".gs-journey__body").screenshot({path:dir+"/production-journey-desktop-1440.png",animations:"disabled"});
         await page.goto(origin+"/portofoliu",{waitUntil:"domcontentloaded"});
         await page.locator(".journal__photo").first().scrollIntoViewIfNeeded();
         await page.waitForFunction(()=>{const img=document.querySelector(".journal__photo img");return img && img.complete && img.naturalWidth>0},null,{timeout:15000});
@@ -355,6 +397,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V27: high-performance branded 404, semantic navigation, static/reduced-motion frequency artwork, existing V26 cursor/light desk/event pass, 6 widths");
+    console.log("PASS V28: branded recovery, interactive authentic Production Journey, mobile keyboard focus, prioritized LCP hero, V26/V27 features and six responsive widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
