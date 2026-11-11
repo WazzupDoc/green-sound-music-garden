@@ -1,7 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowUpRight, AudioLines, CornerDownLeft, Search, X } from "lucide-react";
-import { useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { useMemo, useRef, useState, type KeyboardEvent, type RefObject } from "react";
 import { events, services } from "@/data/site";
 
 type FinderEntry = {
@@ -62,9 +62,11 @@ const featuredPaths = [
 export function FrequencyFinder({
   open,
   onOpenChange,
+  returnFocusRef,
 }: {
   open: boolean;
   onOpenChange: (next: boolean) => void;
+  returnFocusRef: RefObject<HTMLButtonElement | null>;
 }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -126,6 +128,10 @@ export function FrequencyFinder({
           onOpenAutoFocus={event => {
             event.preventDefault();
             inputRef.current?.focus();
+          }}
+          onCloseAutoFocus={event => {
+            event.preventDefault();
+            returnFocusRef.current?.focus();
           }}>
           <div className="gs-finder__topline">
             <span><AudioLines className="size-4" aria-hidden /> GREEN SOUND / FREQUENCY FINDER</span>
