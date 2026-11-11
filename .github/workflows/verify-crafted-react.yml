@@ -2,15 +2,16 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio, design/crafted-atmospheres-v38-audit-service-discovery]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio, design/crafted-atmospheres-v38-audit-service-discovery]
     paths:
       - "src/**"
       - "package.json"
       - "bun.lock"
       - ".github/workflows/verify-crafted-react.yml"
       - ".github/scripts/verify-crafted-browser.cjs"
+      - ".github/scripts/audit-public-pages.cjs"
 
 # When iterative design work produces several commits, only the latest branch
 # state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.
@@ -72,6 +73,10 @@ jobs:
           assert 'gs-studio-signal' in Path('src/styles/atmosphere-interlude.css').read_text()
           assert Path('src/styles/production-journey.css').is_file()
           assert Path('src/styles/service-mix.css').is_file()
+          assert Path('src/styles/service-discovery.css').is_file()
+          assert Path('src/lib/service-discovery.ts').is_file()
+          assert Path('src/lib/service-discovery.test.ts').is_file()
+          assert Path('.github/scripts/audit-public-pages.cjs').is_file()
           assert Path('src/styles/frequency-finder.css').is_file()
           assert Path('src/styles/performance-adaptive.css').is_file()
           assert Path('src/lib/performance.ts').is_file()
@@ -113,6 +118,8 @@ jobs:
         run: |
           npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
           NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-crafted-browser.cjs
+      - name: Audit every actual sitemap page, canonical, image and internal link
+        run: NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/audit-public-pages.cjs
       - name: Upload responsive browser screenshots
         if: always()
         uses: actions/upload-artifact@v4
