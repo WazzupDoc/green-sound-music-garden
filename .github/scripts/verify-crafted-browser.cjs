@@ -19,7 +19,8 @@ fs.mkdirSync(dir,{recursive:true});
       page.on("console",msg=>{if(msg.type()==="error")failures.push("console: "+msg.text().slice(0,300))});
 
       await page.goto(origin+"/",{waitUntil:"domcontentloaded",timeout:45000});
-      await page.waitForTimeout(2000);
+      await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
+      await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
       const heroPhoto=await page.locator(".crafted-hero__image").evaluate(el=>({url:el.currentSrc,loaded:el.complete && el.naturalWidth>0}));
