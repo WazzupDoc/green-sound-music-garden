@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V26)
+Updated: 2026-11-11 (V27)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v26-preview-and-premiere`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/11
-- Base version: `design/crafted-atmospheres-v25-event-journal` (PR #10), retaining all earlier V20–V25 work.
+- Current branch: `design/crafted-atmospheres-v27-motion-and-offstage`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/12
+- Base version: `design/crafted-atmospheres-v26-preview-and-premiere` (PR #11), retaining all earlier V20–V26 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v26-preview-and-premiere?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v27-motion-and-offstage?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v26-preview-and-premiere
-git pull origin design/crafted-atmospheres-v26-preview-and-premiere
+git switch design/crafted-atmospheres-v27-motion-and-offstage
+git pull origin design/crafted-atmospheres-v27-motion-and-offstage
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -50,3 +50,14 @@ Always inspect the latest branches, PRs, `docs/CURRENT_DEVELOPMENT_VERSION.md` a
 - Research, constraints and release notes: `docs/V26_INTERACTION_DESIGN.md`.
 
 Current branch is a **draft review only**, not the production website. Do not merge or deploy without owner approval.
+
+
+## V27 — The Offstage Room + Frequency / performance-first motion
+- A shared **StageFallback** replaces the generic site-wide 404 and recoverable error UI. For unknown routes: real Green Sound concert imagery, explicit "Aici încă nu a început spectacolul", natural CTA to contact, event discovery, homepage and direct call; no fake performance or false success claim. For runtime errors: different explanation and a real retry callback.
+- An original **Frequency** interlude extends the premium editorial brand identity on the homepage with a coherent, deterministic 36-bar graphic and contextual link to real portfolio clips. No background audio, stock visuals, generic template animation or JS timeline.
+- Optional compositor-friendly native scroll animation only when the browser fully supports `animation-timeline: view()` and `animation-range`, at desktop sizes and with reduced-motion off. Unsupported devices display the complete static design. 404 waveform is also fully static under reduced motion.
+- Strict mobile CSS avoids accidental overflow, with custom 404 screenshot QA and semantic route checks at 390 and 1440 px.
+- GitHub Actions Chromium setup avoids apt `--with-deps` after external Ubuntu mirror DNS failures in V26; browser cache reduces repeat downloads. CI runs continue with strict TS, build, unit tests and 6-width Playwright checks. Confirm the actual V27 result before claiming verified.
+- References, content provenance and full release checklist: `docs/V27_MOTION_RELEASE_AUDIT.md`.
+
+This is a **draft review branch**. Do not merge, deploy or make claims about production Core Web Vitals without owner approval and proper performance measurements.
