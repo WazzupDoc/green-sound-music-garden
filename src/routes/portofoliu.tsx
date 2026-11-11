@@ -8,8 +8,8 @@ import { breadcrumbLd, pageHead } from "@/lib/seo";
 const availableFilms = new Set(Object.values(videos).map(video => video.id));
 /** Only the company's documented video IDs are accepted in shareable portfolio links. */
 function validatePortfolioSearch(search: Record<string, unknown>): { film?: string } {
-  return typeof search.film === "string" && availableFilms.has(search.film)
-    ? { film: search.film } : {};
+  return typeof search['film'] === "string" && availableFilms.has(search['film'])
+    ? { film: search['film'] } : {};
 }
 
 export const Route = createFileRoute("/portofoliu")({
