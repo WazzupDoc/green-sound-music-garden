@@ -9,24 +9,16 @@ import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { EventSoundcheck } from "@/components/atelier/EventSoundcheck";
 import { AtmosphereInterlude } from "@/components/atelier/AtmosphereInterlude";
 import { FaqList, QuoteSection } from "@/components/site/blocks";
-import { generalFaqs, images } from "@/data/site";
+import { generalFaqs } from "@/data/site";
 import { faqLd, localBusinessLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => {
-    const head = pageHead({
+  head: () => pageHead({
     title: "Green Sound Music Pitești | DJ & MC, muzică live, sunet și lumini",
     description: "Atmosfere create prin muzică și lumină. DJ & MC, trupă live, sonorizare, scenotehnică, LED și efecte pentru nunți, botezuri, petreceri și concerte în Pitești și Argeș.",
     path: "/",
     jsonLd: [localBusinessLd(), faqLd(generalFaqs)],
-    });
-    return {
-      ...head,
-      // First-party hero photograph is the primary LCP candidate.
-      // Make the browser discover it in SSR <head>, before React hydrates.
-      links: [...head.links, { rel: "preload", as: "image", href: images.concert.src, fetchPriority: "high", type: "image/webp" }],
-    };
-  },
+  }),
   component: Home,
 });
 function Home() {
