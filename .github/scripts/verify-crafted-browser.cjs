@@ -183,6 +183,13 @@ fs.mkdirSync(dir,{recursive:true});
         await page.goto(origin+"/portofoliu",{waitUntil:"domcontentloaded"});
         await page.locator('.journal[data-hydrated="true"]').waitFor({timeout:30000});
         assert.equal(await page.locator(".journal__photo").count(),6,"Six first-party photo journal frames");
+        const journalTiles = await page.locator(".journal__photo").evaluateAll((nodes) =>
+          nodes.slice(0,3).map(node => {
+            const r=node.getBoundingClientRect();
+            return {top:r.top,bottom:r.bottom,left:r.left,right:r.right};
+          }));
+        assert.ok(journalTiles[1].top >= journalTiles[0].bottom - 2,
+          "Mobile gallery must not overlap the hero photo with the next row: "+JSON.stringify(journalTiles));
         await page.locator(".journal__photo").first().click();
         await page.locator('[role="dialog"]').waitFor();
         assert.match(await page.locator(".journal-dialog__title").innerText(),/Ritmul serii/);
