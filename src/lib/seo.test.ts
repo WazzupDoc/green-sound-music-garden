@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { SITE_URL, events, images, services } from "@/data/site";
-import { pageHead } from "./seo";
+import { pageHead, serializeJsonLd } from "./seo";
 
 /** Canonical business pages only; no query variants, invented city pages or 404s. */
 const editorialPaths = [
@@ -65,5 +65,25 @@ describe("search discovery: genuine sitemap and shared preview", () => {
     expect(preview && "content" in preview ? preview.content : undefined)
       .toBe(new URL(chosen.image.src, SITE_URL).href);
     expect(h.links[0]?.href).toBe(SITE_URL + "/" + chosen.slug + "/");
+  });
+});
+
+
+describe("safe SSR JSON-LD serialization", () => {
+  it("escapes script terminators and HTML-sensitive characters without losing schema data", () => {
+    const malicious = '</script><script>alert("x")</script> & \u2028 \u2029';
+    const encoded = serializeJsonLd({ "@type": "Service", name: malicious });
+    expect(encoded).not.toContain("<");
+    expect(encoded).not.toContain(">");
+    expect(encoded).not.toContain("&");
+    expect(encoded).not.toContain("\u2028");
+    expect(encoded).not.toContain("\u2029");
+    expect(JSON.parse(encoded)).toEqual({ "@type": "Service", name: malicious });
+  });
+
+  it("uses safe serialization in the actual page head scripts", () => {
+    const payload = { "@context": "https://schema.org", name: "</script><img src=x>" };
+    const head = pageHead({ title: "Test", description: "Test", path: "/", jsonLd: [payload] });
+    expect(head.scripts[0]?.children).toBe(serializeJsonLd(payload));
   });
 });
