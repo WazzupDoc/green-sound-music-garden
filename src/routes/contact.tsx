@@ -11,15 +11,28 @@ const allowedTypes: readonly string[] = eventTypeOptions;
 type EventOption = (typeof eventTypeOptions)[number];
 
 /** Whitelisted, bounded query parameters; never blindly reflect URL data. */
-function validateBrief(search: Record<string, unknown>) {
-  const event = typeof search.event === "string" && allowedTypes.includes(search.event)
-    ? (search.event as EventOption) : undefined;
-  const date = typeof search.date === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(search.date)
-    ? search.date : "";
-  const location = typeof search.location === "string" ? search.location.trim().slice(0,120) : "";
-  return { event, date, location };
-}
+type BriefQuery = { event?: EventOption; date?: string; location?: string };
 
+/**
+ * All query fields are optional, so ordinary `<Link to="/contact" />`
+ * calls stay valid. Only trusted allowed enum values and bounded text survive.
+ */
+function validateBrief(search: Record<string, unknown>): BriefQuery {
+  const brief: BriefQuery = {};
+  const eventValue = search["event"];
+  const dateValue = search["date"];
+  const locationValue = search["location"];
+  if (typeof eventValue === "string" && allowedTypes.includes(eventValue)) {
+    brief.event = eventValue as EventOption;
+  }
+  if (typeof dateValue === "string" && /^\\d{4}-\\d{2}-\\d{2}$/.test(dateValue)) {
+    brief.date = dateValue;
+  }
+  if (typeof locationValue === "string" && locationValue.trim()) {
+    brief.location = locationValue.trim().slice(0, 120);
+  }
+  return brief;
+}
 
 export const Route = createFileRoute("/contact")({
   validateSearch: validateBrief,
@@ -54,8 +67,8 @@ function Contact() {
           <div className="border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
             <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
-            <QuoteForm key={`${event ?? ""}|${date}|${location}`} id="cerere-oferta"
-              defaultEventType={event} defaultDate={date} defaultLocation={location} />
+            <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}`} id="cerere-oferta"
+              defaultEventType={event} defaultDate={date ?? ""} defaultLocation={location ?? ""} />
           </div>
         </div>
       </section>
