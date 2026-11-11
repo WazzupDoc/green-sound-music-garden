@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V28)
+Updated: 2026-11-11 (V29)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v28-production-journey`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/13
-- Base version: `design/crafted-atmospheres-v27-motion-and-offstage` (PR #12), retaining all earlier V20–V27 work.
+- Current branch: `design/crafted-atmospheres-v29-service-mix`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/14
+- Base version: `design/crafted-atmospheres-v28-production-journey` (PR #13), retaining all earlier V20–V28 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v28-production-journey?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v29-service-mix?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v28-production-journey
-git pull origin design/crafted-atmospheres-v28-production-journey
+git switch design/crafted-atmospheres-v29-service-mix
+git pull origin design/crafted-atmospheres-v29-service-mix
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -79,3 +79,14 @@ Preview in Codespaces on forwarded port 4175, visit `/despre-noi` for the new se
 - Failure at browser assertion line 29: the selector `head link[rel="preload"][as="image"]` incorrectly chose React's `/favicon.png` preload, not the original Green Sound concert photo. This is a test-selection defect, not evidence of an LCP regression.
 - Browser regression now scopes the assertion to `href*="/media/greensound/"` and explicitly checks exactly one such resource with `fetchpriority="high"` and `type="image/webp"` (commit `d8b4a66bcb1eb16c9275014fb0a38966a5852b4c`). The previous first-only selector would silently allow duplicate preloads.
 - **No green V28 CI run has been confirmed for this correction.** Do not branch V29 from V28 until all six viewport checks pass, the 404/Frequency/reduced-motion/cursor/Light Desk/Event Pass/Contact assertions finish, and both mobile/desktop screenshots are available for review.
+
+
+## V29 — Service Mix: interactive service discovery and useful conversion
+- Replaces static 8-item catalogue on `/servicii` with a premium two-column **Service Mix** experience: real searchable-by-eye service selection, current image/story, two verified catalogue strengths and a direct link to its detail page. No copied assets and no unsupported service/product claims.
+- Visitors can select any combination of the actual eight services, remove one via editable chips, or clear everything; native GET `/contact?services=...` prepopulates the existing quote form through the same bounded allowlist already established in V25. An empty selection disables the CTA, preventing an accidental meaningless request.
+- The section uses existing `src/data/site.ts` image and service copy as single source of truth. No fabricated packages, fake pricing, claims about real-time availability, auto-sent WhatsApp messages or extra npm runtime dependencies.
+- Responsive mobile stacking (no new horizontal overflow), large touch targets, `aria-pressed`, focus-visible and reduced-motion fallbacks. CSS-only composited image entrance at desktop, no scroll hijacking and no autoplay audio.
+- Six-width Playwright regression extends to 390px mix buttons and native quote handoff with two real services, selection reset, plus 1440px layout/screenshots. Verify actual branch CI before declaring validated.
+- Research notes in `docs/V29_SERVICE_EXPERIENCE_AUDIT.md`, based on W3C WCAG 2.2 and Google INP guidance.
+
+This is **draft only**, no merge and no live deployment without the owner's explicit approval.
