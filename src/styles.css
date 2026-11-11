@@ -9,6 +9,7 @@
 @import "./styles/directors-cut.css";
 @import "./styles/soundcheck.css";
 @import "./styles/scene-console.css";
+@import "./styles/event-journal.css";
 
 @custom-variant dark (&:is(.dark *));
 
