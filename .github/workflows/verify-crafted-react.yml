@@ -57,6 +57,15 @@ jobs:
             sleep 2
           done
           curl --fail http://127.0.0.1:4175/ > /dev/null || (cat /tmp/crafted-vite.log && exit 1)
+      - name: Diagnose original media source accessibility
+        run: |
+          for uri in \
+            "https://green-sound-music-garden.lovable.app/__l5e/assets-v1/1abc50fa-ea8d-4ab4-9360-53942b5154c8/concert-public-lumini.webp" \
+            "https://i.ytimg.com/vi/eGLykw1G0EQ/hqdefault.jpg" \
+            "https://greensoundmusic.com/wp-json/wp/v2/media?per_page=1"; do
+            echo "SOURCE: $uri"
+            curl -sS -L -o /tmp/gs-media-response -w 'http=%{http_code} bytes=%{size_download} type=%{content_type}\n' --max-time 12 "$uri" || true
+          done
       - name: Browser interaction and responsive screenshot audit
         run: |
           npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
