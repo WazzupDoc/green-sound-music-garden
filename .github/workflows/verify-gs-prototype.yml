@@ -15,7 +15,8 @@ permissions:
 
 jobs:
   static-and-screenshots:
-    runs-on: ubuntu-latest
+    # Pin runner until Playwright browser binaries support newer Ubuntu images.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
