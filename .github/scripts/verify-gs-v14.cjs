@@ -116,6 +116,10 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     const small=await browser.newPage({viewport:{width:320,height:700}});
     await small.goto(origin,{waitUntil:"domcontentloaded"});
     const narrow=await small.evaluate(()=>({content:document.documentElement.scrollWidth,viewport:innerWidth}));
+    if(narrow.content>narrow.viewport+2){
+      const offenders=await small.evaluate(()=>[...document.querySelectorAll("body *")].map(el=>{const r=el.getBoundingClientRect();return {tag:el.tagName,cls:typeof el.className==="string"?el.className.slice(0,80):"",text:(el.textContent||"").trim().slice(0,36),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)}}).filter(x=>x.right>innerWidth+2&&x.width>0).slice(0,25));
+      console.log("V18 320px overflow offenders:",JSON.stringify(offenders));
+    }
     assert.ok(narrow.content<=narrow.viewport+2,"320px device must have no horizontal overflow: "+JSON.stringify(narrow));
     await small.close();
 
