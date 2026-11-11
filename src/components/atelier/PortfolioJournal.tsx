@@ -118,7 +118,7 @@ const filters = [
 
 const films: Video[] = Object.values(videos);
 
-export function PortfolioFilmArchive({ initialFilmId }: { initialFilmId?: string }) {
+export function PortfolioFilmArchive({ initialFilmId }: { initialFilmId?: string | undefined }) {
   const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("toate");
   const [selected, setSelected] = useState(videos.nuntaRamada.id);
   // Deep links restore the selected published film after client hydration.
