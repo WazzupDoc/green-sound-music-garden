@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V32)
+Updated: 2026-11-11 (V33)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v32-search-discovery`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/17
-- Base version: `design/crafted-atmospheres-v31-quote-integrity` (PR #16), retaining all earlier V20–V31 work.
+- Current branch: `design/crafted-atmospheres-v33-adaptive-performance`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/18
+- Base version: `design/crafted-atmospheres-v32-search-discovery` (PR #17), retaining all earlier V20–V32 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v32-search-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V33 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v33-adaptive-performance?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v32-search-discovery
-git pull origin design/crafted-atmospheres-v32-search-discovery
+git switch design/crafted-atmospheres-v33-adaptive-performance
+git pull origin design/crafted-atmospheres-v33-adaptive-performance
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -122,3 +122,14 @@ Draft development only. No merge into `main`, production deployment or real sear
 - Sources and checklist: `docs/V32_SEARCH_DISCOVERY_AUDIT.md`.
 
 Review-only draft PR #17. Never merge into main or deploy `greensoundmusic.com` without explicit owner approval.
+
+
+## V33 — Adaptive Performance / Copyable Event Pass
+- **Local adaptive performance profile** in `src/lib/performance.ts`: detect explicit reduced-motion, Save-Data, 2G/slow-2G and corroborated low memory/CPU where browser APIs exist. Unknown/unsupported values default to normal presentation; never fingerprint, send or store device signals.
+- **Actual reduced work**: don't fetch optional Lenis on lightweight desktop connections; stop Lenis immediately when reduced-data/motion preferences change; skip moving spotlight gradient updates in the StageHero; turn off expensive decorative CSS animations and backdrop-blur while keeping first-party images, scene selection, quotes and real navigation accessible. The user does not lose core content or functionality.
+- **Quote copy delivery**: explicit third option to copy the already-validated preview message to the device clipboard. Show success only after the browser confirms `writeText`; if unsupported/blocked, offer a readable, keyboard-selectable textarea for manual copy. Never auto-send or store PII to any backend.
+- **Build budget guardrail**: `.github/scripts/check-client-budget.py` reads **actual production output** `.output/public/assets` and fails CI when compressed homepage entry, QuoteForm or shared CSS exceed documented caps based on V32’s real build (+headroom). These are asset-size **regression** budgets, not measured LCP/INP/Lighthouse performance scores.
+- **Regression**: new deterministic performance-signal unit tests, Chromium Save-Data session, clipboard permitted/denied flows, full six-width responsive and earlier V20–V32 suite. Full release checklist in `docs/V33_ADAPTIVE_RELEASE_AUDIT.md`. Check latest actual GitHub Actions result before calling V33 green.
+- **No new runtime dependency, paid analytics, backend, autoplay, invented claims or public deployment.**
+
+Draft PR #18. Keep `main` and `greensoundmusic.com` unchanged until owner approval.
