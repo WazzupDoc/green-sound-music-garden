@@ -171,6 +171,9 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/services-page-mobile.png",fullPage:false});
         await page.goto(origin+"/contact",{waitUntil:"domcontentloaded"});
+        // The quote form is intentionally client-only to prevent RHF SSR mismatches;
+        // essential phone/email contacts remain server-rendered and immediately usable.
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:30000});
         assert.equal(await page.locator('form[aria-label="Cerere de ofertă"]').count(),1);
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/contact-mobile.png",fullPage:false});
