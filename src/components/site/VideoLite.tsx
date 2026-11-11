@@ -30,10 +30,10 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             aria-label={`Redă videoclipul: ${video.title}`}
           >
             <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+              src={video.poster ?? `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
               alt=""
-              width={480}
-              height={360}
+              width={video.poster ? 1280 : 480}
+              height={video.poster ? 720 : 360}
               loading={priority ? "eager" : "lazy"}
               decoding="async"
               className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
