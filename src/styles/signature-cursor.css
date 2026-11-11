@@ -28,7 +28,7 @@
 .gs-cursor__toggle:hover{background:#1e3723;border-color:#ccefbb}
 .gs-cursor__toggle:focus-visible{outline:2px solid #edfbdc;outline-offset:4px}
 .gs-cursor__toggle[aria-pressed=false]{opacity:.77}
-@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+@media (min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
   .gs-cursor{display:block}
   .gs-cursor__toggle{display:inline-flex}
   .gs-cursor[data-active=true] .gs-cursor__meter i{animation:gs-eq .67s ease-in-out infinite alternate}
