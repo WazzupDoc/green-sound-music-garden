@@ -43,7 +43,7 @@ export function EditorialPortfolio() {
     <section className="director-reel section" aria-labelledby="director-reel-title" id="director-reel">
       <div className="container-site">
         <div className="crafted-section-intro">
-          <span className="crafted-index"><Clapperboard className="mr-2 inline size-4" aria-hidden /> 03 / SHOWREEL</span>
+          <span className="crafted-index"><Clapperboard className="mr-2 inline size-4" aria-hidden /> 04 / SHOWREEL</span>
           <div>
             <h2 id="director-reel-title" className="crafted-heading">Atmosfera nu se descrie. <em>Se trăiește.</em></h2>
             <p className="crafted-section-intro__copy">
