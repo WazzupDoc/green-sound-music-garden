@@ -1,0 +1,79 @@
+name: Crafted Atmospheres React — typecheck and production build
+
+on:
+  push:
+    branches: [design/crafted-atmospheres-react-v20]
+  pull_request:
+    branches: [main, design/green-sound-sillage-open-source]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "bun.lock"
+      - ".github/workflows/verify-crafted-react.yml"
+      - ".github/scripts/verify-crafted-browser.cjs"
+
+permissions:
+  contents: read
+
+jobs:
+  react-quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Install project dependencies
+        run: bun install --no-save
+      - name: TypeScript strict check
+        run: bun run typecheck
+      - name: Production SSR / Vite build
+        run: bun run build
+      - name: Test existing application
+        run: bun run test
+      - name: Validate site architecture
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          r=Path('src/routes')
+          for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
+              assert (r/page).is_file(), page
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion']:
+              assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
+          css=Path('src/styles/atelier.css').read_text()
+          assert 'prefers-reduced-motion' in css
+          assert 'crafted-stage-lights' in css
+          assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
+          print('PASS: React modular pages, editorial CSS and accessible motion primitives')
+          PY
+      - name: Install Chromium browser for visual QA
+        run: npx --yes playwright@1.56.1 install --with-deps chromium
+      - name: Serve React Vite development preview
+        run: |
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/crafted-vite.log 2>&1 &)
+          for i in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:4175/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:4175/ > /dev/null || (cat /tmp/crafted-vite.log && exit 1)
+      - name: Diagnose original media source accessibility
+        run: |
+          for uri in \
+            "https://green-sound-music-garden.lovable.app/__l5e/assets-v1/1abc50fa-ea8d-4ab4-9360-53942b5154c8/concert-public-lumini.webp" \
+            "https://i.ytimg.com/vi/eGLykw1G0EQ/hqdefault.jpg" \
+            "https://greensoundmusic.com/wp-json/wp/v2/media?per_page=1"; do
+            echo "SOURCE: $uri"
+            curl -sS -L -o /tmp/gs-media-response -w 'http=%{http_code} bytes=%{size_download} type=%{content_type}\n' --max-time 12 "$uri" || true
+          done
+      - name: Browser interaction and responsive screenshot audit
+        run: |
+          npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
+          NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-crafted-browser.cjs
+      - name: Upload responsive browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-crafted-atmospheres-browser-review
+          path: screenshots/crafted-atmospheres/
+          if-no-files-found: ignore

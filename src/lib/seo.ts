@@ -36,7 +36,7 @@ export function pageHead({ title, description, path, jsonLd = [], noindex }: Hea
 
 export const localBusinessLd = () => ({
   "@context": "https://schema.org",
-  "@type": "EntertainmentBusiness",
+  "@type": "LocalBusiness",
   "@id": `${SITE_URL}/#business`,
   name: business.name,
   slogan: business.tagline,
@@ -44,6 +44,14 @@ export const localBusinessLd = () => ({
   telephone: "+40766566275",
   email: business.email,
   foundingDate: String(business.founded),
+  description: "Green Sound Music oferă DJ & MC, trupă live, sonorizare, scenotehnică, lumini și producție muzicală pentru evenimente.",
+  areaServed: [
+    { "@type": "City", name: "Pitești" },
+    { "@type": "AdministrativeArea", name: "Județul Argeș" },
+    { "@type": "Country", name: "România" },
+  ],
+  knowsAbout: ["DJ nuntă Pitești", "sonorizare evenimente", "lumini profesionale", "trupă live", "producție muzicală"],
+
   address: {
     "@type": "PostalAddress",
     streetAddress: business.address.street,

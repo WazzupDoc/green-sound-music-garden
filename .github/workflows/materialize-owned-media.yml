@@ -1,0 +1,39 @@
+name: Materialize original Green Sound photographs for React preview
+
+on:
+  push:
+    branches: [design/crafted-atmospheres-react-v20]
+    paths:
+      - ".github/scripts/download_gs_own_media.py"
+      - ".github/workflows/materialize-owned-media.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  owned-assets:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: design/crafted-atmospheres-react-v20
+          persist-credentials: true
+      - name: Download exactly the photos referenced in original asset manifests
+        run: python3 .github/scripts/download_gs_own_media.py
+      - name: Commit verified WebP assets to draft branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/media/greensound
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: bundle seven authentic Green Sound event WebP photos locally"
+            git push origin HEAD:design/crafted-atmospheres-react-v20
+          fi
+      - name: Upload photos if branch push was not permitted
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-original-media
+          path: public/media/greensound/
+          if-no-files-found: ignore

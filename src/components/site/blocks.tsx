@@ -44,7 +44,7 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="relative isolate overflow-hidden pt-32 md:pt-40">
+    <section className="atelier-inner-hero relative isolate overflow-hidden pt-32 md:pt-40">
       <div className="absolute inset-0 -z-10">
         <img src={image.src} alt="" width={image.w} height={image.h} fetchPriority="high" className="size-full object-cover opacity-55" />
         <div className="hero-fade absolute inset-0" />
