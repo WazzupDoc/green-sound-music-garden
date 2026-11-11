@@ -24,14 +24,22 @@
 .quote-preview__details summary:focus-visible{outline:2px solid #e4ffd2;outline-offset:2px}
 .quote-preview__details pre{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;border-top:1px solid #b6dca537;padding:18px;font-family:var(--font-sans);font-size:.78rem;color:#d7e9d3;max-height:310px;overflow-y:auto}
 .quote-preview__actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:clamp(24px,3vw,35px)}
-.quote-preview__whatsapp,.quote-preview__email{display:flex;justify-content:center;align-items:center;gap:10px;min-height:60px;padding:13px 17px;text-decoration:none;font-size:.78rem;font-weight:800;line-height:1.3;transition:background .2s,color .2s,border-color .2s}
+.quote-preview__whatsapp,.quote-preview__email,.quote-preview__copy{display:flex;justify-content:center;align-items:center;gap:10px;min-height:60px;padding:13px 17px;text-decoration:none;font-size:.78rem;font-weight:800;line-height:1.3;transition:background .2s,color .2s,border-color .2s}
 .quote-preview__whatsapp{background:#d2eec3;border:1px solid #d2eec3;color:#142719}
 .quote-preview__email{background:transparent;border:1px solid #d2eec37d;color:#e6f3e1}
 .quote-preview__whatsapp:hover{background:#f1f9e9}
 .quote-preview__email:hover{background:#d2eec31d;border-color:#d2eec3}
-.quote-preview__whatsapp:focus-visible,.quote-preview__email:focus-visible,.quote-preview__edit:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.quote-preview__whatsapp:focus-visible,.quote-preview__email:focus-visible,.quote-preview__copy:focus-visible,.quote-preview__edit:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .quote-preview__notice{color:#b0c7a9;font-size:.72rem;line-height:1.63;margin-top:18px}
 .quote-preview__edit{display:inline-flex;align-items:center;gap:9px;margin-top:21px;min-height:40px;padding:7px 0;border-bottom:1px solid #b2e09c;color:#d1ecbf;font-size:.75rem;font-weight:800}
 .quote-preview__edit:hover{color:#fff}
-@media(max-width:600px){.quote-preview__actions{grid-template-columns:1fr}.quote-preview__whatsapp,.quote-preview__email{justify-content:space-between}.quote-preview__step{margin-left:0}.quote-preview__ticket{padding:20px}.quote-preview__facts{gap:12px}}
-@media(prefers-reduced-motion:reduce){.quote-preview__whatsapp,.quote-preview__email{transition:none}}
+@media(max-width:600px){.quote-preview__actions{grid-template-columns:1fr}.quote-preview__whatsapp,.quote-preview__email,.quote-preview__copy{justify-content:space-between}.quote-preview__step{margin-left:0}.quote-preview__ticket{padding:20px}.quote-preview__facts{gap:12px}}
+@media(prefers-reduced-motion:reduce){.quote-preview__whatsapp,.quote-preview__email,.quote-preview__copy{transition:none}}
+
+/* V33 / THREE DELIVERY ROUTES — copy is local, never an automated submission. */
+.quote-preview__copy{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:11px;min-height:57px;padding:13px 17px;border:1px solid #b8dfa49e;background:#153220;color:#e8f8df;font-size:.78rem;font-weight:800;line-height:1.3;text-align:center;transition:background .2s,border-color .2s}
+.quote-preview__copy:hover{background:#2a4c31;border-color:#d8f4c0}
+.quote-preview__copy-status{color:#b5d1aa;font-size:.73rem;line-height:1.6;margin-top:13px;min-height:1.8em}
+.quote-preview__manual{display:grid;gap:10px;margin-top:17px;color:#d5e9cc;font-size:.76rem;font-weight:700;line-height:1.5}
+.quote-preview__manual textarea{display:block;width:100%;max-height:220px;min-height:110px;border:1px solid #c2e9a984;background:#0b1b10;padding:13px;color:#e6f5e1;font-family:var(--font-sans);font-size:.8rem;line-height:1.6;resize:vertical;overflow-wrap:anywhere}
+.quote-preview__manual textarea:focus-visible{outline:2px solid #e1f9d4;outline-offset:3px}
