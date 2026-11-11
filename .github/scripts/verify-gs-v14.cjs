@@ -7,6 +7,15 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     const page = await browser.newPage({ viewport:{width:1440,height:900} });
     await page.goto(origin,{waitUntil:"domcontentloaded"});
     assert.match(await page.locator("h1").innerText(),/SE AUDE.*SE VEDE.*Se simte/is);
+    assert.equal(await page.locator(".gs19-progress").count(),1);
+    assert.equal(await page.locator('.gs19-discover[href="#home-directions"]').count(),1);
+    assert.equal(await page.locator('.hero--v18').count(),1);
+    const assetCount=await page.evaluate(()=>({
+      css:performance.getEntriesByType("resource").filter(e=>/\/assets\/gs-v19\.bundle\.css/.test(e.name)).length,
+      js:performance.getEntriesByType("resource").filter(e=>/\/assets\/gs-v19\.bundle\.js/.test(e.name)).length
+    }));
+    assert.equal(assetCount.css,1,"V19 must load one bundled stylesheet");
+    assert.equal(assetCount.js,1,"V19 must load one bundled script");
     assert.equal(await page.locator(".gs-curation").count(),1);
     assert.equal(await page.locator(".hero--v17 .hero-v17__pointer-light").count(),1);
     assert.equal(await page.locator(".gs-curation .cards .card").count(),3);
@@ -65,6 +74,11 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     await page.locator("[data-close-video]").click();
     assert.equal(await page.locator("#video-dialog").evaluate(el=>el.open),false);
     await page.locator("#showreel").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(220);
+    assert.equal(await page.locator('.hero--v18').getAttribute('data-stage-visible'),'false',
+      'Offscreen concert lighting must be paused to save animation work');
+    assert.equal(await page.locator('.gs-reel-section').getAttribute('data-stage-visible'),'true',
+      'Visible showreel may continue its subtle motion');
     require("node:fs").mkdirSync("screenshots",{recursive:true});
     await page.screenshot({path:"screenshots/home-showreel-desktop.png"});
     await page.locator(".gs-curation .card").first().scrollIntoViewIfNeeded();
@@ -112,6 +126,8 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
       console.log("V17 MOBILE OVERFLOW OFFENDERS:",JSON.stringify(offenders));
     }
     assert.ok(size.content <= size.viewport+2, "Unexpected horizontal mobile overflow: "+JSON.stringify(size));
+    assert.equal(await mobile.locator("html").getAttribute("data-gs19-tier"),"lite",
+      "Small devices should get lower-cost stage motion");
     assert.equal(await mobile.locator(".gs18-console button").count(),2);
     await mobile.locator("[data-party-mode]").click();
     assert.equal(await mobile.locator(".hero--v18").getAttribute("data-party"),"on");
@@ -128,6 +144,12 @@ const origin = "http://127.0.0.1:4173/greensound-prototype/";
     }
     assert.ok(narrow.content<=narrow.viewport+2,"320px device must have no horizontal overflow: "+JSON.stringify(narrow));
     await small.close();
+    const accessible=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
+    await accessible.goto(origin,{waitUntil:"domcontentloaded"});
+    assert.equal(await accessible.locator(".hero-v17__line").first().evaluate(el=>getComputedStyle(el).animationName),"none",
+      "Reduced-motion visitors should never have forced headline motion");
+    await accessible.close();
+
 
     await mobile.locator("#showreel").scrollIntoViewIfNeeded();
     await mobile.screenshot({path:"screenshots/home-showreel-mobile.png"});
