@@ -1,10 +1,10 @@
-import scenaAsset from "@/assets/scena-concert-lumini.webp.asset.json";
-import djAsset from "@/assets/dj-mc-green-sound.webp.asset.json";
-import concertAsset from "@/assets/concert-public-lumini.webp.asset.json";
-import hostessAsset from "@/assets/hostess-evenimente.webp.asset.json";
-import ursitoareAsset from "@/assets/ursitoare-botez.webp.asset.json";
-import ursitoare2Asset from "@/assets/ursitoare-botez-2.webp.asset.json";
-import copiiAsset from "@/assets/animatie-petreceri-copii.webp.asset.json";
+const scenaAsset = { url: "/media/greensound/scena-concert-lumini.webp" } as const;
+const djAsset = { url: "/media/greensound/dj-mc-green-sound.webp" } as const;
+const concertAsset = { url: "/media/greensound/concert-public-lumini.webp" } as const;
+const hostessAsset = { url: "/media/greensound/hostess-evenimente.webp" } as const;
+const ursitoareAsset = { url: "/media/greensound/ursitoare-botez.webp" } as const;
+const ursitoare2Asset = { url: "/media/greensound/ursitoare-botez-2.webp" } as const;
+const copiiAsset = { url: "/media/greensound/animatie-petreceri-copii.webp" } as const;
 
 /* ------------------------------------------------------------------ */
 /* Business facts — verified on greensoundmusic.com. Edit here only.   */
