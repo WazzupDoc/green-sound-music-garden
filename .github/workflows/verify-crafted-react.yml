@@ -12,6 +12,12 @@ on:
       - ".github/workflows/verify-crafted-react.yml"
       - ".github/scripts/verify-crafted-browser.cjs"
 
+# When iterative design work produces several commits, only the latest branch
+# state needs visual/browser QA; cancel stale runs to avoid wasting CI time.
+concurrency:
+  group: crafted-react-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
