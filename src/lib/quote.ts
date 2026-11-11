@@ -25,7 +25,7 @@ const allowedServiceLabels = new Set<string>([
 /** Calendar-valid ISO date; blank is allowed because event dates may be undecided. */
 const eventDateSchema = z.string().trim().refine((value) => {
   if (!value) return true;
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(value)) return false;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return false;
   const parsed = new Date(Date.UTC(year, month - 1, day));
