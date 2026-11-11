@@ -11,6 +11,7 @@
 @import "./styles/scene-console.css";
 @import "./styles/portfolio-journal.css";
 @import "./styles/event-brief.css";
+@import "./styles/contact-editorial.css";
 @import "./styles/event-journal.css";
 
 @custom-variant dark (&:is(.dark *));
