@@ -16,7 +16,7 @@ fs.mkdirSync(dir,{recursive:true});
       const netFailures=[];
       page.on("requestfailed",req=>{if(req.url().startsWith(origin))netFailures.push({url:req.url().slice(0,200),error:req.failure()?.errorText})});
       page.on("response",res=>{if(res.status()>=400&&res.url().startsWith(origin))netFailures.push({url:res.url().slice(0,200),status:res.status()})});
-      page.on("console",msg=>{if(msg.type()==="error")failures.push("console: "+msg.text().slice(0,300))});
+      page.on("console",msg=>{if(msg.type()==="error")failures.push("console @ "+page.url()+": "+msg.text().slice(0,5000))});
 
       await page.goto(origin+"/",{waitUntil:"domcontentloaded",timeout:45000});
       await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
