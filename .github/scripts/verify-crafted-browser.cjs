@@ -43,6 +43,19 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
       assert.equal(await page.locator(".atelier-header__finder-btn").isVisible(),true,
         "Search must be reachable from every viewport without opening the mobile nav");
+      if(width<=1120){
+        const headerControls = await page.evaluate(() => {
+          const menu=document.querySelector(".atelier-header__menu-btn")?.getBoundingClientRect();
+          const finder=document.querySelector(".atelier-header__finder-btn")?.getBoundingClientRect();
+          return {menuRight:menu?.right ?? -1,menuLeft:menu?.left ?? -1,
+            finderRight:finder?.right ?? -1,finderLeft:finder?.left ?? -1,
+            viewport:innerWidth};
+        });
+        assert.ok(headerControls.menuRight<=headerControls.viewport-6 &&
+          headerControls.menuLeft>=6 && headerControls.finderRight<=headerControls.menuLeft+1 &&
+          headerControls.finderLeft>=6,
+          "Search and hamburger must remain distinct and fully inside narrow headers: "+JSON.stringify(headerControls));
+      }
       assert.equal(await page.locator(".gs-finder").count(),0,
         "Lazy search directory should not mount until explicitly opened");
       if(width===390 || width===1440){
