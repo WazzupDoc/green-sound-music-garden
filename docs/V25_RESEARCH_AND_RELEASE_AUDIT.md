@@ -38,3 +38,9 @@ Date: 2026-11-11. Repository: WazzupDoc/green-sound-music-garden.
 
 ## Prior known risk
 Intermittent React 19 SSR hydration attributes warning on the quote form was observed in an earlier GitHub Actions run. Retain the browser error assertion, investigate if it recurs. Do not suppress console errors simply to get green CI.
+
+## Findings from iteration and actual browser screenshots
+- A first visual test found that the mobile 2-column grid's first image had a larger min-height than its CSS grid row, so it visually overlapped the next photo. Allocated a dedicated first row, then added bounding-box regression.
+- Initial native GET to `/contact` intermittently emitted React hydration attribute differences from RHF inputs. Resolved by deterministic shell + `ClientOnly` RHF form and hydration-gated search defaults, **not** by suppressing console errors. Official TanStack guidance: https://tanstack.com/start/latest/docs/framework/react/guide/hydration-errors and https://tanstack.com/start/latest/docs/framework/react/guide/execution-model.
+- Real browser screenshot showed that previously unstyled `director-contact-intro` began behind the fixed navigation; added a dedicated editorial design and viewport geometry assertion.
+- Desktop film screenshot captured an image before it loaded; the site retains lazy loading for below-fold media but has a visual fallback and browser QA awaits the poster load. Google guidance: https://web.dev/learn/performance/lazy-load-images-and-iframe-elements.
