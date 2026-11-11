@@ -204,7 +204,7 @@ fs.mkdirSync(dir,{recursive:true});
         await page.locator('.event-brief input[name="date"]').fill("2027-09-18");
         await page.locator('.event-brief input[name="location"]').fill("Pitești");
         await page.locator(".event-brief__submit").click();
-        await page.waitForURL(/\\/contact\\?/, {timeout:15000});
+        await page.waitForURL(url => url.pathname === "/contact" && url.searchParams.has("event"), {timeout:15000});
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
         assert.equal(await page.locator("#q-event").inputValue(),"Nuntă");
         assert.equal(await page.locator("#q-date").inputValue(),"2027-09-18");
