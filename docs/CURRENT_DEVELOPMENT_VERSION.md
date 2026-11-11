@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V27)
+Updated: 2026-11-11 (V28)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v27-motion-and-offstage`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/12
-- Base version: `design/crafted-atmospheres-v26-preview-and-premiere` (PR #11), retaining all earlier V20–V26 work.
+- Current branch: `design/crafted-atmospheres-v28-production-journey`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/13
+- Base version: `design/crafted-atmospheres-v27-motion-and-offstage` (PR #12), retaining all earlier V20–V27 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v27-motion-and-offstage?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v28-production-journey?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v27-motion-and-offstage
-git pull origin design/crafted-atmospheres-v27-motion-and-offstage
+git switch design/crafted-atmospheres-v28-production-journey
+git pull origin design/crafted-atmospheres-v28-production-journey
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -61,3 +61,14 @@ Current branch is a **draft review only**, not the production website. Do not me
 - References, content provenance and full release checklist: `docs/V27_MOTION_RELEASE_AUDIT.md`.
 
 This is a **draft review branch**. Do not merge, deploy or make claims about production Core Web Vitals without owner approval and proper performance measurements.
+
+
+## V28 — Production Journey and professional interaction polish
+- **Real-image Production Journey on /despre-noi:** four interactive editorial chapters (Ideea, Atmosfera, Producția, Momentul), each with first-party Green Sound imagery, a legible story, sequential navigation, links to real portfolio and the contact form. This isn't a fake fixed-price package, scheduling calendar or guarantee of a specific production process.
+- **Mobile keyboard navigation:** when users open the actual mobile navigation disclosure the first link receives focus, Escape closes it and restores focus to its menu button, and a click outside dismisses it. Normal Tab navigation remains available (not a faux modal trap). Existing scroll-lock cleanup and normal click navigation are retained.
+- **LCP hint:** the single first-party homepage concert image is discoverable in SSR HTML with `rel=preload`, `as=image`, explicit `fetchPriority=high` and the truthful WebP MIME type. The hero actual `img` still sets `fetchPriority=high`; gallery images remain lazy.
+- **No additional runtime dependency**, sound effects, scroll handlers, fake testimonials, prices, guaranteed availability or autoplay. Reduced-motion support and mobile first progressive enhancement.
+- Browser regression adds exact focus checks, step switching, next-step wraparound, image-load screenshot capture, mobile overflow and server-rendered LCP preload assertions.
+- Research and release gates: `docs/V28_PROFESSIONAL_QA.md`. Verify latest GitHub Actions run before claiming verified.
+
+Preview in Codespaces on forwarded port 4175, visit `/despre-noi` for the new section and `/` for the prioritized real hero. **Do not merge or deploy without owner approval.**
