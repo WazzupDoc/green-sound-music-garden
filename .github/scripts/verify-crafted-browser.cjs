@@ -29,6 +29,8 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".crafted-hero__mode").count(),3);
       assert.equal(await page.locator(".scene-console").count(),1,"An editorial scene-notes panel must exist");
       assert.equal(await page.locator(".gs-lightboard").count(),1,"User-controlled lighting desk exists");
+      assert.equal(await page.locator(".gs-pulse h2").count(),1,"Editorial music frequency section is accessible");
+      assert.equal(await page.locator(".gs-pulse__wave span").count(),36,"Thirty-six static frequency bars exist without JS");
       assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
       if(width>=1024){
         assert.equal(await page.locator(".gs-cursor__toggle").isVisible(),true,"Fine pointer cursor FX can be switched off");
@@ -308,6 +310,24 @@ fs.mkdirSync(dir,{recursive:true});
         },null,{timeout:15000});
         await page.screenshot({path:dir+"/film-archive-desktop-1440.png",fullPage:false});
       }
+      if(width===390 || width===1440){
+        await page.goto(origin+"/pagina-care-nu-exista-green-sound",{waitUntil:"domcontentloaded"});
+        await page.locator('.gs-offstage[data-variant="missing"]').waitFor({timeout:15000});
+        assert.equal(await page.locator("main h1").count(),1,"Custom 404 has exactly one meaningful H1");
+        assert.match(await page.locator("main h1").innerText(),/Aici încă nu a început.*spectacolul/s);
+        assert.match(await page.locator(".gs-offstage__lead").innerText(),/petrecerea ta/i);
+        assert.equal(await page.locator(".gs-offstage__primary").getAttribute("href"),"/contact",
+          "Missing pages help visitors reach a real event offer");
+        assert.equal(await page.locator('.gs-offstage__extra a[href="/evenimente"]').count(),1,
+          "404 still connects visitors to actual event pages");
+        const missingPageWidth = await page.evaluate(() => ({
+          doc:document.documentElement.scrollWidth,window:window.innerWidth
+        }));
+        assert.ok(missingPageWidth.doc <= missingPageWidth.window+2,
+          "404 must not horizontally overflow: "+JSON.stringify(missingPageWidth));
+        await page.screenshot({path:dir+"/offstage-404-"+width+".png",fullPage:false});
+      }
+      assert.deepEqual(failures,[],"Unexpected page errors including branded 404 at "+width+"px");
       await page.close();
     }
     const reduced=await browser.newPage({viewport:{width:390,height:844},reducedMotion:"reduce"});
@@ -315,7 +335,9 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     assert.equal(await reduced.locator(".gs-cursor__toggle").isVisible(),false,"Reduced motion hides cursor FX");
+    const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
+    assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V26: musical cursor, stage light desk, proposal preview with explicit channel links, film deep links, six responsive widths and reduced motion");
+    console.log("PASS V27: high-performance branded 404, semantic navigation, static/reduced-motion frequency artwork, existing V26 cursor/light desk/event pass, 6 widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
