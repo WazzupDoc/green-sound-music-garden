@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V29)
+Updated: 2026-11-11 (V30)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v29-service-mix`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/14
-- Base version: `design/crafted-atmospheres-v28-production-journey` (PR #13), retaining all earlier V20–V28 work.
+- Current branch: `design/crafted-atmospheres-v30-frequency-finder`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/15
+- Base version: `design/crafted-atmospheres-v29-service-mix` (PR #14), retaining all earlier V20–V29 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v29-service-mix?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V26 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v30-frequency-finder?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v29-service-mix
-git pull origin design/crafted-atmospheres-v29-service-mix
+git switch design/crafted-atmospheres-v30-frequency-finder
+git pull origin design/crafted-atmospheres-v30-frequency-finder
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -90,3 +90,14 @@ Preview in Codespaces on forwarded port 4175, visit `/despre-noi` for the new se
 - Research notes in `docs/V29_SERVICE_EXPERIENCE_AUDIT.md`, based on W3C WCAG 2.2 and Google INP guidance.
 
 This is **draft only**, no merge and no live deployment without the owner's explicit approval.
+
+
+## V30 — Frequency Finder: premium navigation without heavy scripts
+- **Frequency Finder** adds a distinctive site-wide, accessible quick-navigation dialog for the existing eight service pages, five event pages and six useful destinations. Filters are built directly from verified service/event copy and route slugs in `src/data/site.ts`. Search is local, case/diacritic insensitive and requires no backend, tracking service or search index downloads.
+- Trigger appears on desktop/mobile in the floating header; keyboard shortcuts **Ctrl/Cmd+K** and **/** (except when editing text/another modal is open) open the directory. Radix Dialog provides focus trapping, accessible modal semantics, Escape and backdrop dismissal. ArrowDown from input enters results, ArrowUp from the first result returns to input; Enter or tapping a real link navigates. Empty searches show curated real entry points; no-match searches link to Contact instead of fabricating results.
+- Search implementation is **React.lazy / Suspense code-split**: the directory is loaded only after a visitor invokes it. It retains native router links, no autofocus during SSR, no third-party analytics, images or API calls.
+- Original matte-green editorial interface, large touch targets, restrained CSS-only reveal for desktop and **prefers-reduced-motion** fallback. The header keeps telephone, quote and mobile menu access.
+- Browser QA added at 390/1440px: click/keyboard shortcut, focus, result filtering, diacritic search, no-result fallback, arrow navigation, Escape return-focus, real service route and responsiveness at all six existing viewport widths.
+- Audit sources and remaining release gates in `docs/V30_FREQUENCY_FINDER_AUDIT.md`.
+
+Draft development only. No merge into `main`, production deployment or real search-volume/ranking claims without owner approval and measurements.
