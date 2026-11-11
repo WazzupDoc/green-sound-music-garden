@@ -16,6 +16,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { MobileActionBar } from "@/components/site/MobileActionBar";
 import { ClientMotion } from "@/components/atelier/ClientMotion";
+import { SoundCursor } from "@/components/atelier/SoundCursor";
 
 function NotFoundComponent() {
   return (
@@ -124,6 +125,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="director-progress" aria-hidden="true"><div className="director-progress__line" /></div>
       <ClientMotion />
+      <SoundCursor />
       <SiteHeader />
       <main id="continut">
         <Outlet />
