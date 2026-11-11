@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight } from "lucide-react";
 import { PageHero, QuoteSection } from "@/components/site/blocks";
 import { PortfolioJournal, PortfolioFilmArchive } from "@/components/atelier/PortfolioJournal";
-import { business, images } from "@/data/site";
+import { business, images, videos } from "@/data/site";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 
+const availableFilms = new Set(Object.values(videos).map(video => video.id));
+/** Only the company's documented video IDs are accepted in shareable portfolio links. */
+function validatePortfolioSearch(search: Record<string, unknown>): { film?: string } {
+  return typeof search.film === "string" && availableFilms.has(search.film)
+    ? { film: search.film } : {};
+}
+
 export const Route = createFileRoute("/portofoliu")({
+  validateSearch: validatePortfolioSearch,
   head: () => pageHead({
     title: "Portofoliu foto video real | Nunți, DJ, concerte și lumini — Green Sound Music",
     description: "Explorează fotografii reale, filmări de nuntă, DJ, concerte și lumini din portofoliul Green Sound Music Pitești. Selectează proiectele și cere o ofertă.",
@@ -16,6 +24,7 @@ export const Route = createFileRoute("/portofoliu")({
 });
 
 function Portfolio() {
+  const { film } = Route.useSearch();
   return (
     <>
       <PageHero eyebrow="THE EVENT JOURNAL / GREEN SOUND MUSIC"
@@ -37,7 +46,7 @@ function Portfolio() {
           <p>Se aude. <em>Se vede.</em> Se simte.</p>
         </div>
       </div>
-      <PortfolioFilmArchive />
+      <PortfolioFilmArchive initialFilmId={film} />
       <QuoteSection
         title="Vrei o atmosferă asemănătoare la evenimentul tău?"
         intro="Spune-ne tipul evenimentului, data și locul. Îți pregătim împreună o propunere de muzică, sunet, lumini sau efecte, fără rezervare automată." />
