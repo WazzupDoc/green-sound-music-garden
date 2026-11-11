@@ -51,6 +51,7 @@
 .film-archive__chrome>span:first-child{display:flex;gap:11px;align-items:center}
 .film-archive__signal{display:block;background:#9fda87;width:6px;height:6px;border-radius:50%;box-shadow:0 0 13px #b4f38a5e}
 .film-archive__player{padding-top:15px}
+.film-archive__player .group{background:radial-gradient(circle at 68% 30%,#2c57388c,transparent 55%),linear-gradient(140deg,#16291c,#08130c)}
 .film-archive__video>div{border-radius:0}
 .film-archive__video>figcaption{font-size:.82rem;padding:10px 5px 1px;color:#c7d7c1;line-height:1.4}
 .film-archive__hint{display:flex;align-items:center;gap:9px;padding:18px 7px 6px;font-size:.61rem;letter-spacing:.16em;font-weight:800;color:#9ebc99}
