@@ -1,0 +1,148 @@
+/* GREEN SOUND MUSIC V19 — ANIMATED EDITORIAL PERFORMANCE LAYER
+ * An incremental enhancement of V18, not a new site/template.
+ * Native View Transitions, compositor transforms, adaptive stage animation,
+ * accessible scroll cues, precision hover motion and low-powered fallbacks.
+ * No new runtime libraries or remote assets.
+ */
+@view-transition { navigation: auto; }
+@supports (view-transition-name: gs-nav) {
+  .topbar { view-transition-name: gs-nav; }
+}
+::view-transition-old(root) { animation: .18s ease-in both gs19-page-out; }
+::view-transition-new(root) { animation: .34s cubic-bezier(.2,.77,.22,1) both gs19-page-in; }
+::view-transition-old(gs-nav),::view-transition-new(gs-nav) {
+  animation-duration:.18s;animation-timing-function:ease-out;
+}
+@keyframes gs19-page-out {to{opacity:0;transform:translateY(-7px)}}
+@keyframes gs19-page-in {from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+/* Eliminate V17 main-wide blur animation: it repaints large surfaces on arrival. */
+main {animation:none !important}
+/* Quiet page progress line; CSS scroll-driven so there is no JS on-scroll loop. */
+.gs19-progress {position:fixed;inset:0 0 auto;z-index:150;pointer-events:none;height:2px;
+  background:linear-gradient(90deg,#75ca61,#d7ff9e 57%,#edf9d4);transform:scaleX(0);
+  transform-origin:left center;opacity:0;box-shadow:0 0 8px #b5f47977}
+@supports (animation-timeline:scroll()) {
+  .gs19-progress {opacity:.92;animation:gs19-scroll-progress linear both;animation-timeline:scroll(root block)}
+}
+@keyframes gs19-scroll-progress {from{transform:scaleX(0)}to{transform:scaleX(1)}}
+/* The heading comes in as a choreographed sequence; no on-scroll hero parallax. */
+.hero--v18 .hero-v17__line {opacity:0;animation:gs19-headline-rise .66s cubic-bezier(.19,.91,.19,1) both}
+.hero--v18 .hero-v17__line:nth-child(1){animation-delay:.07s}
+.hero--v18 .hero-v17__line:nth-child(2){animation-delay:.18s}
+.hero--v18 .hero-v17__line:nth-child(3){animation-delay:.3s}
+.hero--v18 .hero-v16__topline{animation:gs19-soft-enter .5s ease-out .04s both}
+.hero--v18 .hero-v16__lead{animation:gs19-soft-enter .58s ease-out .38s both}
+.hero--v18 .hero-v16__actions{animation:gs19-soft-enter .58s ease-out .49s both}
+.hero--v18 .hero-v16__visual{animation:gs19-stage-enter .85s cubic-bezier(.18,.82,.15,1) .08s both}
+@keyframes gs19-headline-rise{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes gs19-soft-enter{from{opacity:0;transform:translate3d(0,12px,0)}to{opacity:1;transform:none}}
+@keyframes gs19-stage-enter{from{opacity:0;transform:translate3d(0,20px,0) scale(.982)}to{opacity:1;transform:translate3d(0,0,0) scale(1)}}
+/* A discover link that actually leads to the next content chapter. */
+.gs19-discover{display:inline-flex;align-items:center;gap:15px;max-width:max-content;
+ font-size:10px;font-weight:800;letter-spacing:.15em;color:#d1e9c6;text-transform:uppercase;
+ padding:14px 0 8px;transition:color .25s}
+.gs19-discover:hover{color:#eaffdc}
+.gs19-discover__track{display:inline-flex;align-items:center;justify-content:center;width:35px;height:35px;
+ border:1px solid rgba(211,255,195,.43);border-radius:50%;position:relative;
+ transition:background .25s,transform .25s}
+.gs19-discover:hover .gs19-discover__track{background:rgba(181,245,125,.14);transform:translateY(3px)}
+.gs19-discover__track svg{width:15px;height:15px;transition:transform .25s}
+.gs19-discover:hover svg{transform:translateY(3px)}
+.hero--v18 .hero-v16__footnote{margin-top:27px}
+.hero--v18 .gs19-discover{margin-top:14px}
+.hero--v18 .hero-v16__shell{align-items:center}
+/* Refined natural light: one unobtrusive animated edge only while card visible. */
+.hero--v18 .hero-v16__visual{outline:1px solid rgba(211,251,199,.12);outline-offset:7px}
+.hero--v18 .hero-v16__visual::after{box-shadow:inset 0 0 56px #06130866}
+.hero--v18 .gs18-control{transition:color .2s,background .2s,border-color .2s,transform .2s}
+.hero--v18 .gs18-control:hover{transform:translate3d(0,-2px,0)}
+/* The full concert rig is only animated while visible.
+   Browsers release work for non-visible stage without sacrificing state. */
+.hero--v18[data-stage-visible="false"] .gs18-beam,
+.hero--v18[data-stage-visible="false"] .gs18-laser,
+.hero--v18[data-stage-visible="false"] .gs18-haze,
+.hero--v18[data-stage-visible="false"] .gs18-lens,
+.hero--v18[data-stage-visible="false"] .gs18-note,
+.hero--v18[data-stage-visible="false"] .gs18-ledline span,
+.hero--v18[data-stage-visible="false"] .hero__photo img,
+.hero--v18[data-stage-visible="false"] .hero__beamfield .beam,
+.hero--v18[data-stage-visible="false"] .hero__haze,
+.hero--v18[data-stage-visible="false"] .hero-v16__audiostrip span,
+.gs-reel-section[data-stage-visible="false"] .gs-reel__wave span,
+.gs-curation[data-stage-visible="false"] .stage-graphic__laser,
+.gs-curation[data-stage-visible="false"] .stage-graphic__ring,
+.gs-curation[data-stage-visible="false"] .stage-graphic__wave span{
+  animation-play-state:paused !important;
+}
+/* Adaptive motion is based on device preference/capability, never user identity. */
+html[data-gs19-tier="lite"] .hero--v18 .gs18-haze,
+html[data-gs19-tier="lite"] .hero--v18 .hero__haze,
+html[data-gs19-tier="lite"] .hero--v18 .gs18-lens--two{display:none}
+html[data-gs19-tier="lite"] .hero--v18 .gs18-beam--2,
+html[data-gs19-tier="lite"] .hero--v18 .gs18-beam--4,
+html[data-gs19-tier="lite"] .hero--v18 .gs18-laser--1,
+html[data-gs19-tier="lite"] .hero--v18 .gs18-laser--3,
+html[data-gs19-tier="lite"] .hero--v18 .gs18-laser--6{display:none}
+html[data-gs19-tier="lite"] .hero--v18 .gs18-beam{filter:blur(5px);opacity:.32}
+html[data-gs19-tier="lite"] .hero--v18 .hero__photo img{animation:none!important;transform:scale(1.035)}
+html[data-gs19-tier="lite"] .hero--v18 .gs18-ledline span{animation-duration:.85s}
+html[data-gs19-tier="lite"] .gs19-stage-gloss{display:none}
+/* Compositor-based editorial chapter reveal; initiated only after IO is ready. */
+.gs19-chapter{transition:opacity .66s cubic-bezier(.2,.77,.2,1),transform .66s cubic-bezier(.2,.77,.2,1)}
+.gs19-enhanced .gs19-chapter:not(.gs19-visible){opacity:0;transform:translate3d(0,28px,0)}
+.gs19-chapter.gs19-visible{opacity:1;transform:none}
+.gs-curation .section-heading h2,.gs-reel__header h2{max-width:900px}
+.gs-curation .section-heading .kicker,.gs-reel__header .kicker{letter-spacing:.23em}
+.gs-curation .card,.gs-reel__tile,.service-card,.event-card{
+ transition-duration:.36s;transition-timing-function:cubic-bezier(.2,.8,.22,1);
+}
+/* Image-only micro-parallax, not whole cards flipping around. */
+@media (hover:hover) and (pointer:fine) {
+  .gs-curation .card:hover .card__media img{
+    transform:translate3d(var(--gs19-card-x,0px),var(--gs19-card-y,0px),0) scale(1.075);
+  }
+  .gs-reel__tile:hover img{
+    transform:translate3d(var(--gs19-card-x,0px),var(--gs19-card-y,0px),0) scale(1.06);
+  }
+  .gs-curation .card .card__media img,.gs-reel__tile img{
+    transition:transform .45s cubic-bezier(.16,.84,.21,1),filter .4s ease;
+  }
+  .gs19-magnetic{translate:var(--gs19-mx,0px) var(--gs19-my,0px);transition:translate .18s ease-out,background .24s,box-shadow .24s}
+}
+/* Video cards: elegant quiet accent instead of a continuously flashing halo. */
+.gs-reel__tile{backface-visibility:hidden}
+.gs-reel__tile .gs-reel__play{transition:transform .35s cubic-bezier(.17,.89,.32,1.23),box-shadow .35s,background .35s}
+.gs-reel__tile:hover .gs-reel__play{transform:translate(-50%,-50%) scale(1.12)}
+/* Make all non-critical images paint predictably, don't hide elements from crawlers. */
+.gs-curation .card__media img,.gs-reel__tile img,.gallery__item img,.service-card__img img,.event-card__img img{backface-visibility:hidden}
+/* Inset shadows are expensive to animate, so keep them static. */
+.gs18-stage,.gs18-beam,.gs18-laser{contain:paint}
+@media(max-width:990px){
+  .hero--v18 .hero-v16__visual{outline:none}
+  .gs19-discover{margin-top:6px;font-size:9px}
+  .gs19-chapter{transition-duration:.46s}
+}
+/* Dense mobile experience: preserve scene but don't push the first CTA away. */
+@media(max-width:650px){
+ .hero--v18 .hero-v16__footnote{margin-top:16px}
+ .hero--v18 .gs19-discover{margin-top:7px;padding-block:7px;font-size:8px}
+ .gs19-discover__track{width:29px;height:29px}
+ .hero--v18 .hero-v16__shell{padding-bottom:23px}
+ .gs19-chapter{transition-duration:.34s}
+ .gs-reel__tile:hover,.gs-curation .card:hover{transform:none}
+}
+/* No fancy transitions or hidden content for reduced-motion users. */
+@media(prefers-reduced-motion:reduce){
+ @view-transition{navigation:none}
+ ::view-transition-old(root),::view-transition-new(root),
+ ::view-transition-old(gs-nav),::view-transition-new(gs-nav){animation:none!important}
+ .hero--v18 .hero-v17__line,
+ .hero--v18 .hero-v16__topline,
+ .hero--v18 .hero-v16__lead,
+ .hero--v18 .hero-v16__actions,
+ .hero--v18 .hero-v16__visual{animation:none!important;opacity:1!important;transform:none!important}
+ .gs19-chapter{opacity:1!important;transform:none!important;transition:none!important}
+ .gs19-discover,.gs19-discover__track,.gs19-discover svg,
+ .gs19-magnetic{transition:none!important;translate:none!important}
+ .gs19-progress{display:none}
+}
