@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder]
     paths:
       - "src/**"
       - "package.json"
@@ -45,7 +45,7 @@ jobs:
           r=Path('src/routes')
           for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
               assert (r/page).is_file(), page
-          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck','PortfolioJournal','EventBriefCard','SoundCursor','AtmosphereInterlude','ProductionJourney','ServiceMix']:
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck','PortfolioJournal','EventBriefCard','SoundCursor','AtmosphereInterlude','ProductionJourney','ServiceMix','FrequencyFinder']:
               assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
           css=Path('src/styles/atelier.css').read_text()
           assert 'prefers-reduced-motion' in css
@@ -63,6 +63,7 @@ jobs:
           assert Path('src/styles/atmosphere-interlude.css').is_file()
           assert Path('src/styles/production-journey.css').is_file()
           assert Path('src/styles/service-mix.css').is_file()
+          assert Path('src/styles/frequency-finder.css').is_file()
           assert (Path('src/components/site')/'StageFallback.tsx').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')
