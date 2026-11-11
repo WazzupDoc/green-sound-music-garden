@@ -337,6 +337,28 @@ fs.mkdirSync(dir,{recursive:true});
         await page.locator("#q-name").fill("Ana Test");
         await page.locator("#q-phone").fill("0766566275");
         await page.locator("#q-event").selectOption("Nuntă");
+        const suggestions = page.locator(".gs-quote__suggestion");
+        await suggestions.first().waitFor({timeout:15000});
+        assert.equal(await suggestions.count(),4,"Real wedding catalogue produces four curated suggestions");
+        assert.equal(await page.locator(".gs-quote__choice input").count(),9,
+          "Eight real services and one exclusive request-for-advice");
+        assert.equal(await page.locator(".gs-quote__choice input:checked").count(),0,
+          "Event suggestions must never select options without visitor consent");
+        await suggestions.first().click();
+        assert.equal(await suggestions.first().getAttribute("aria-pressed"),"true",
+          "Explicitly chosen recommendation becomes a selected real service");
+        assert.equal(await page.locator(".gs-quote__choice input:checked").count(),1);
+        const helpChoice = page.locator(".gs-quote__choice").filter({hasText:"Nu știu încă"});
+        await helpChoice.click();
+        assert.equal(await page.locator(".gs-quote__choice input:checked").count(),1,
+          "Asking for a recommendation clears concrete service choices");
+        assert.equal(await helpChoice.locator("input").isChecked(),true);
+        await suggestions.first().click();
+        assert.equal(await helpChoice.locator("input").isChecked(),false,
+          "Selecting a concrete service must deselect the exclusive advice state");
+        assert.equal(await page.locator(".gs-quote__choice input:checked").count(),1);
+        await page.locator(".gs-quote__suggestions").screenshot({
+          path:dir+"/guided-quote-wedding-mobile-390.png",animations:"disabled"});
         await page.locator("#q-date").fill("2027-12-18");
         await page.locator('input[name="consent"]').check();
         await page.getByRole("button",{name:/Verifică și continuă spre trimitere/}).click();
@@ -368,6 +390,19 @@ fs.mkdirSync(dir,{recursive:true});
         await page.locator(".quote-preview__edit").click();
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:10000});
         assert.equal(await page.locator("#q-name").inputValue(),"Ana Test","Editing must restore existing data");
+        // V34: no silent ninth option; selecting all eight authentic services
+        // remains legal while the separate advisory choice clears them instead.
+        const realServiceInputs = page.locator(".gs-quote__choice").filter({hasNotText:"Nu știu încă"});
+        assert.equal(await realServiceInputs.count(),8);
+        for(let i=0;i<8;i++){
+          const input=realServiceInputs.nth(i).locator("input");
+          if(!await input.isChecked()) await realServiceInputs.nth(i).click();
+        }
+        assert.equal(await realServiceInputs.locator("input:checked").count(),8);
+        assert.match(await page.locator(".gs-quote__count").innerText(),/8 \/ 8/);
+        await helpChoice.click();
+        assert.equal(await realServiceInputs.locator("input:checked").count(),0);
+        assert.equal(await helpChoice.locator("input").isChecked(),true);
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
         await page.locator('.gs-journey[data-hydrated="true"]').waitFor({timeout:30000});
@@ -492,6 +527,15 @@ fs.mkdirSync(dir,{recursive:true});
       }
       assert.deepEqual(failures,[],"Unexpected page errors at "+width+"px");
       if(width===1440){
+        await page.goto(origin+"/contact",{waitUntil:"domcontentloaded"});
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:30000});
+        await page.locator("#q-event").selectOption("Eveniment corporate");
+        await page.locator(".gs-quote__suggestions").waitFor({timeout:15000});
+        assert.equal(await page.locator(".gs-quote__suggestion").count(),4,
+          "Real corporate event suggestions use the genuine company catalogue");
+        await page.locator(".gs-quote__suggestions").scrollIntoViewIfNeeded();
+        await page.locator(".gs-quote__suggestions").screenshot({
+          path:dir+"/guided-quote-corporate-desktop-1440.png",animations:"disabled"});
         await page.goto(origin+"/servicii",{waitUntil:"domcontentloaded"});
         await page.locator('.gs-service-mix[data-hydrated="true"]').waitFor();
         await page.locator('.gs-service-mix__pick[data-service-slug="trupa"]').click();
@@ -593,6 +637,6 @@ fs.mkdirSync(dir,{recursive:true});
     const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
     await reduced.close();
-    console.log("PASS V33: adaptive Save-Data hero, genuine clipboard success/denial, homepage/CSS budget, V32 SEO, V31 quote integrity, V30 finder and six responsive widths");
+    console.log("PASS V34: guided catalogue suggestions, exclusive advice, eight-selection ceiling, V33 adaptive+clipboard, V32 SEO, and six responsive widths");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
