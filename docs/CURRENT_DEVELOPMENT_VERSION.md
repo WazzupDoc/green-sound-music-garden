@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V35 draft)
+Updated: 2026-11-11 (V36 draft)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v35-form-error-accessibility`
-- Draft PR: V35 (see latest GitHub PR)
-- PR review base: `design/crafted-atmospheres-v34-guided-quote` (PR #20); retains V33B performance, V33 security and all earlier V20–V34 work.
+- Current branch: `design/crafted-atmospheres-v36-contact-error-regression`
+- Draft PR: V36 (see latest GitHub PR)
+- PR review base: `design/crafted-atmospheres-v35-form-error-accessibility` (PR #21); retains V33B performance, V33 security and all earlier V20–V34 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V34 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v34-guided-quote?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V36 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v36-contact-error-regression?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v34-guided-quote
-git pull origin design/crafted-atmospheres-v34-guided-quote
+git switch design/crafted-atmospheres-v36-contact-error-regression
+git pull origin design/crafted-atmospheres-v36-contact-error-regression
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -151,3 +151,10 @@ Draft PR #20 only. Do not merge or deploy `greensoundmusic.com` until owner appr
 - The guest-count select now exposes the same accessible validation treatment for any invalid values (defensive consistency).
 - No new dependency, API, database, analytics, external service or automatic message sending. No changes to SEO routes, site assets, event recommendations or V34 business logic.
 - Baseline V34 PR #20 Actions run 43085032323 passed. V35 CI must pass independently before review; inspect browser behavior, keyboard navigation and six viewport regressions. No production deployment or main merge.
+
+
+## V36 — Contact validation accessibility regression
+- Preserves V35 date and guest errors and adds `aria-invalid` with conditional `aria-describedby` for location, message and required privacy consent. Error messages remain visible and linked when validation fails.
+- Extends real Chromium Contact regression at 1440px: submit empty form, assert name and consent error semantics, and verify no false Event Pass is prepared. Existing six viewport checks and earlier V20–V35 features remain mandatory.
+- This is a frontend-only WhatsApp/email preparation flow. No backend, server-side delivery, email API, persistence or anti-spam service is implied.
+- CI must be verified on the final V36 commit before treating this version as validated; no main merge or live deployment.
