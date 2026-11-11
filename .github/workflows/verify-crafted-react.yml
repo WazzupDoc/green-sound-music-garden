@@ -49,6 +49,7 @@ jobs:
           assert Path('src/styles/scene-console.css').is_file()
           assert Path('src/styles/portfolio-journal.css').is_file()
           assert Path('src/styles/event-brief.css').is_file()
+          assert Path('src/styles/contact-editorial.css').is_file()
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')
           PY
