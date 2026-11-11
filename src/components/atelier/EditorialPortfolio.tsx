@@ -90,7 +90,9 @@ export function EditorialPortfolio() {
               <RadioTower className="size-5 text-primary" aria-hidden />
               <p>Un singur partener pentru muzică, sunet și lumini, de la idee până la ultima piesă.</p>
             </div>
-            <Link to="/portofoliu" className="crafted-text-link director-reel__all">
+            <Link to="/portofoliu" hash="portfolio-films"
+              search={{ film: active.video.id }}
+              className="crafted-text-link director-reel__all">
               Vezi tot portofoliul <ArrowUpRight className="size-4" aria-hidden />
             </Link>
           </div>
