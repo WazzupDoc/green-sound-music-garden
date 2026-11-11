@@ -17,9 +17,12 @@ export const guestOptions = ["Sub 50", "50–100", "100–200", "200–400", "Pe
 export const RO_PHONE = /^(?:\+40|0040|0)7\d{8}$/;
 export const normalizePhone = (v: string) => v.replace(/[\s.\-()]/g, "");
 
+export const ADVICE_SERVICE_LABEL = "Nu știu încă — recomandați-mi";
+export const MAX_QUOTE_SERVICES = serviceCatalogue.length;
+
 const allowedServiceLabels = new Set<string>([
-  ...serviceCatalogue.map((service) => service.formLabel),
-  "Nu știu încă — recomandați-mi",
+  ...serviceCatalogue.map(service => service.formLabel),
+  ADVICE_SERVICE_LABEL,
 ]);
 
 /** Calendar-valid ISO date; blank is allowed because event dates may be undecided. */
@@ -49,7 +52,7 @@ export const quoteSchema = z.object({
   date: eventDateSchema.optional().default(""),
   location: z.string().trim().max(120, "Maximum 120 de caractere.").optional().default(""),
   guests: z.union([z.literal(""), z.enum(guestOptions)]).default(""),
-  services: z.array(z.string().refine((label) => allowedServiceLabels.has(label), "Serviciu necunoscut.")).max(8).refine((labels) => new Set(labels).size === labels.length, "Elimină serviciile duplicate.").default([]),
+  services: z.array(z.string().refine((label) => allowedServiceLabels.has(label), "Serviciu necunoscut.")).max(MAX_QUOTE_SERVICES, "Poți selecta cel mult opt servicii.").refine((labels) => new Set(labels).size === labels.length, "Elimină serviciile duplicate.").refine((labels) => !(labels.includes(ADVICE_SERVICE_LABEL) && labels.length > 1), "Alege servicii concrete sau opțiunea de recomandare, nu ambele.").default([]),
   message: z.string().trim().max(1500, "Maximum 1500 de caractere.").optional().default(""),
   consent: z.literal(true, { errorMap: () => ({ message: "Avem nevoie de acordul tău pentru a te contacta." }) }),
   /** Honeypot: real users never see or fill this. */

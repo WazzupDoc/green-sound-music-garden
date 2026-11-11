@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V33B)
+Updated: 2026-11-11 (V34)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v33-adaptive-performance`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/19
-- PR review base: `design/crafted-atmospheres-v33-safe-structured-data` (PR #18); includes the same safe JSON-LD serializer and its regression tests, plus all V20–V32 work.
+- Current branch: `design/crafted-atmospheres-v34-guided-quote`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/20
+- PR review base: `design/crafted-atmospheres-v33-adaptive-performance` (PR #19); retains the integrated V33 security branch and all earlier V20–V33B work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V33 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v33-adaptive-performance?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V34 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v34-guided-quote?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v33-adaptive-performance
-git pull origin design/crafted-atmospheres-v33-adaptive-performance
+git switch design/crafted-atmospheres-v34-guided-quote
+git pull origin design/crafted-atmospheres-v34-guided-quote
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -133,3 +133,14 @@ Review-only draft PR #17. Never merge into main or deploy `greensoundmusic.com` 
 - **No new runtime dependency, paid analytics, backend, autoplay, invented claims or public deployment.**
 
 Draft PR #19. Keep `main` and `greensoundmusic.com` unchanged until owner approval.
+
+
+## V34 — The Guided Event Brief / Event-aware quote UX
+- Quote form keeps its two-step review-and-manual-send architecture, but adds an original premium editorial header **"Construim oferta pe ritmul tău"**, an accessible live service count and visible correction notice after validation errors.
+- Selecting an existing real event type reveals up to four **curated real services** from `events[].recommended` and `services[]` in `src/data/site.ts`, including each service's genuine company-authored explanation. Suggestions never preselect, price, promise availability or create bookings.
+- Both individual service chips and one-click recommendations use a shared pure toggle function: **8 real services maximum**; the “Nu știu încă — recomandați-mi” state is **exclusive** and reversible. The Zod schema independently rejects malicious or contradictory mixed selections. A count and responsive status explain the current state.
+- Keyboard/tab and touch work via native buttons/checkboxes; disabled states only after real catalogue ceiling. Original restrained green editorial CSS is motion-safe with no added animation loop or npm dependency. No personal information is stored to browser storage or transmitted silently.
+- New helper Vitest checks all five genuine event sets, real service mapping, advisory exclusivity, duplicate removal and schema guard. Chromium checks wedding selection, advice toggle and all eight service limit at 390px; corporate suggestion cards at 1440px, six full responsive regressions.
+- Complete QA and factual sources in `docs/V34_GUIDED_QUOTE_AUDIT.md`. Confirm CI and inspect screenshots before treating version as validated.
+
+Draft PR #20 only. Do not merge or deploy `greensoundmusic.com` until owner approval.

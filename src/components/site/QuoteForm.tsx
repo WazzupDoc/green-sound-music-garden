@@ -1,11 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, CheckCircle2, ClipboardCopy, Mail, MessageCircle, PencilLine } from "lucide-react";
 import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/site";
+import { quoteRecommendations, toggleQuoteService } from "@/lib/quote-service-guidance";
 import {
   buildQuoteMessage,
+  ADVICE_SERVICE_LABEL,
+  MAX_QUOTE_SERVICES,
   eventTypeOptions,
   guestOptions,
   mailtoUrl,
@@ -59,6 +62,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     register,
     handleSubmit,
     control,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<QuoteInput, unknown, Quote>({
     resolver: zodResolver(quoteSchema),
@@ -76,6 +80,16 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       website: "",
     },
   });
+
+  const chosenServices = useWatch({ control, name: "services" }) ?? [];
+  const chosenEvent = useWatch({ control, name: "eventType" });
+  const suggestions = quoteRecommendations(chosenEvent);
+  const atLimit = chosenServices.filter(label => label !== ADVICE_SERVICE_LABEL).length >= MAX_QUOTE_SERVICES;
+
+  const toggleRecommendation = (label: string) => {
+    setValue("services", toggleQuoteService(chosenServices, label),
+      { shouldDirty: true, shouldTouch: true, shouldValidate: true });
+  };
 
   const onSubmit = (q: Quote) => {
     // Preparing the quote is not sending it. Both destination links are opened
@@ -177,6 +191,19 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
   return (
     <form id={id} onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5 md:grid-cols-2" aria-label="Cerere de ofertă">
+      <div className="gs-quote__intro md:col-span-2">
+        <div className="gs-quote__stephead">
+          <span>PASUL 01 / 02</span>
+          <span>GREEN SOUND / EVENT BRIEF</span>
+        </div>
+        <h3>Construim oferta <em>pe ritmul tău.</em></h3>
+        <p>Spune-ne câteva detalii despre eveniment. Următorul pas îți arată mesajul înainte de a-l trimite.</p>
+      </div>
+      {Object.keys(errors).some(key => key !== "website") && (
+        <p className="gs-quote__errors md:col-span-2" role="alert">
+          Verifică informațiile marcate mai jos. Cererea nu a fost trimisă.
+        </p>
+      )}
       {/* Honeypot — hidden from people and assistive tech */}
       <div aria-hidden className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label>
@@ -226,30 +253,32 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         </select>
       </div>
 
-      <fieldset className="md:col-span-2">
+      <fieldset className="md:col-span-2 gs-quote__services" aria-describedby="q-services-guide q-services-err">
         <legend className={labelCls}>Ce servicii te interesează?</legend>
+        <div className="gs-quote__selection-meta" id="q-services-guide">
+          <span>Poți alege serviciile dorite sau ne poți cere recomandări.</span>
+          <span className="gs-quote__count" role="status" aria-live="polite">
+            {chosenServices.length === 1 && chosenServices.includes(ADVICE_SERVICE_LABEL)
+              ? "RECOMANDARE SOLICITATĂ" : `${chosenServices.length} / ${MAX_QUOTE_SERVICES} SELECTATE`}
+          </span>
+        </div>
         <Controller
           control={control}
           name="services"
           render={({ field }) => (
-            <div className="flex flex-wrap gap-2">
-              {[...services.map((s) => s.formLabel), "Nu știu încă — recomandați-mi"].map((label) => {
+            <div className="gs-quote__choices">
+              {[...services.map((item) => item.formLabel), ADVICE_SERVICE_LABEL].map(label => {
                 const checked = field.value?.includes(label) ?? false;
+                const disabled = !checked && label !== ADVICE_SERVICE_LABEL &&
+                  (field.value ?? []).filter(value => value !== ADVICE_SERVICE_LABEL).length >= MAX_QUOTE_SERVICES;
                 return (
-                  <label
-                    key={label}
-                    className={`cursor-pointer select-none rounded-full border px-4 py-2 text-sm transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring ${
-                      checked ? "border-primary bg-primary text-primary-foreground" : "border-input text-foreground/85 hover:border-foreground/50"
-                    }`}
-                  >
-                    <input
-                      type="checkbox"
-                      className="sr-only"
-                      checked={checked}
-                      onChange={() =>
-                        field.onChange(checked ? field.value?.filter((v) => v !== label) : [...(field.value ?? []), label])
-                      }
-                    />
+                  <label key={label} data-checked={checked} data-disabled={disabled}
+                    className="gs-quote__choice">
+                    <input type="checkbox" className="sr-only" checked={checked} disabled={disabled}
+                      aria-describedby="q-services-guide" onChange={() =>
+                        field.onChange(toggleQuoteService(field.value ?? [], label))} />
+                    {checked ? <CheckCircle2 className="size-3.5" aria-hidden /> :
+                      <span className="gs-quote__choice-plus" aria-hidden>+</span>}
                     {label}
                   </label>
                 );
@@ -257,7 +286,40 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             </div>
           )}
         />
+        <FieldError id="q-services-err" msg={errors.services?.message} />
+        {atLimit && <p className="gs-quote__limit" role="status">
+          Ai selectat toate cele opt servicii. Poți debifa unul pentru a modifica selecția.
+        </p>}
       </fieldset>
+      {suggestions.length > 0 && (
+        <aside className="gs-quote__suggestions md:col-span-2" aria-labelledby="gs-quote-suggestions-title">
+          <div className="gs-quote__suggestions-heading">
+            <span className="gs-quote__suggestions-index">GREEN SOUND / ÎN TON CU EVENIMENTUL</span>
+            <h4 id="gs-quote-suggestions-title">Idei pentru {chosenEvent?.toLowerCase()}</h4>
+            <p>Servicii din oferta noastră, potrivite acestui tip de eveniment. Adaugă doar ce te interesează.</p>
+          </div>
+          <div className="gs-quote__suggestions-grid" role="group" aria-label="Servicii sugerate pentru eveniment">
+            {suggestions.map(item => {
+              const isChosen = chosenServices.includes(item.label);
+              return (
+                <button key={item.slug} type="button" className="gs-quote__suggestion"
+                  aria-pressed={isChosen} data-selected={isChosen} disabled={!isChosen && atLimit}
+                  onClick={() => toggleRecommendation(item.label)}
+                  aria-label={`${isChosen ? "Elimină" : "Adaugă"} ${item.name}`}>
+                  <span className="gs-quote__suggestion-icon" aria-hidden>{isChosen ? "✓" : "+"}</span>
+                  <span className="gs-quote__suggestion-copy">
+                    <strong>{item.name}</strong>
+                    <small>{item.why}</small>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <p className="gs-quote__suggestions-note">
+            Sugestiile nu sunt pachete fixe, oferte de preț sau confirmări de disponibilitate.
+          </p>
+        </aside>
+      )}
 
       <div>
         <label htmlFor="q-email" className={labelCls}>Email <span className="text-muted-foreground">(opțional)</span></label>
@@ -288,7 +350,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <ArrowUpRight className="size-4" aria-hidden />
         </Button>
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Următorul pas îți arată mesajul complet și îți oferă alegerea între WhatsApp și email.
+          Următorul pas îți arată mesajul complet și îți permite să alegi WhatsApp, email sau copierea textului.
           Nu trimitem nimic automat.
         </p>
       </div>

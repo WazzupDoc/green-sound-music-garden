@@ -2,9 +2,9 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance]
+    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote]
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance]
+    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote]
     paths:
       - "src/**"
       - "package.json"
@@ -59,6 +59,9 @@ jobs:
           assert Path('src/styles/event-brief.css').is_file()
           assert Path('src/styles/contact-editorial.css').is_file()
           assert Path('src/styles/quote-preview.css').is_file()
+          assert Path('src/styles/quote-guidance.css').is_file()
+          assert Path('src/lib/quote-service-guidance.ts').is_file()
+          assert Path('src/lib/quote-service-guidance.test.ts').is_file()
           assert Path('src/styles/signature-cursor.css').is_file()
           assert Path('src/styles/light-desk.css').is_file()
           assert Path('src/styles/offstage.css').is_file()
