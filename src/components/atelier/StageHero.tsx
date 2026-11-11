@@ -1,4 +1,4 @@
-import { useMemo, useState, type PointerEvent } from "react";
+import { useEffect, useMemo, useState, type PointerEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Volume2 } from "lucide-react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
@@ -15,6 +15,8 @@ const modes = [
 /** All footage is sourced from Green Sound's project. Stage light cones are decorative CSS. */
 export function StageHero() {
   const [active, setActive] = useState<StageMode>("live");
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const [showReel, setShowReel] = useState(false);
   const reduced = useReducedMotion();
   const pointerX = useMotionValue(50);
@@ -29,7 +31,7 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" className="crafted-hero" data-scene={active}>
+    <section aria-labelledby="crafted-hero-title" className="crafted-hero" data-scene={active} data-hydrated={hydrated ? "true" : "false"}>
       <div className="crafted-hero__canvas" onPointerMove={onMove}
         onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
         <AnimatePresence mode="wait" initial={false}>
