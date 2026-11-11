@@ -126,3 +126,14 @@
  .gs-strip__item .gs-open-icon{width:19px;height:19px;flex-basis:19px}
  .gs-strip__num{font-size:7px}
 }
+
+/* Extremely narrow viewports: contain the deliberately over-sized light cones,
+ * photo zoom and animated light-grid in their own visual frames.
+ * Content headings/buttons remain full width and readable. */
+@media(max-width:350px){
+ .hero--v18 .hero-v16__visual,
+ .hero--v18 .hero__photo,
+ .hero--v18 .gs18-stage,
+ .gs-curation .card,
+ .gs-curation .stage-graphic{contain:paint;overflow:clip}
+}
