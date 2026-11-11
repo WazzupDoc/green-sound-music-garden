@@ -529,6 +529,17 @@ fs.mkdirSync(dir,{recursive:true});
       if(width===1440){
         await page.goto(origin+"/contact",{waitUntil:"domcontentloaded"});
         await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:30000});
+        // V36: real invalid submit must keep the visitor in the form and expose
+        // associated error text to both sighted and assistive-tech users.
+        await page.locator('form[aria-label="Cerere de ofertă"] button[type="submit"]').click();
+        await page.locator("#q-name-err").waitFor({state:"visible"});
+        assert.equal(await page.locator("#q-name").getAttribute("aria-invalid"),"true");
+        assert.equal(await page.locator("#q-name").getAttribute("aria-describedby"),"q-name-err");
+        assert.equal(await page.locator("#q-consent").count(),0,"Consent checkbox is associated by label, not a duplicate ID");
+        assert.equal(await page.locator('input[name="consent"]').getAttribute("aria-invalid"),"true");
+        assert.equal(await page.locator('input[name="consent"]').getAttribute("aria-describedby"),"q-consent-err");
+        assert.equal(await page.locator("#q-consent-err").getAttribute("role"),"alert");
+        assert.equal(await page.locator(".quote-preview").count(),0,"Invalid quote must never produce a prepared ticket");
         await page.locator("#q-event").selectOption("Eveniment corporate");
         await page.locator(".gs-quote__suggestions").waitFor({timeout:15000});
         assert.equal(await page.locator(".gs-quote__suggestion").count(),4,
