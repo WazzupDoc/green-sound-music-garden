@@ -38,8 +38,11 @@ describe("search discovery: genuine sitemap and shared preview", () => {
     const title = "DJ și muzică pentru evenimente | Green Sound Music";
     const h = pageHead({ title, description: "Sonorizare și lumini la evenimente.", path: "/servicii" });
     const meta = h.meta;
-    const get = (key: string) => meta.find(m =>
-      ("property" in m && m.property === key) || ("name" in m && m.name === key))?.content;
+    const get = (key: string) => {
+      const hit = meta.find(m =>
+        ("property" in m && m.property === key) || ("name" in m && m.name === key));
+      return hit && "content" in hit ? hit.content : undefined;
+    };
     const expectedImage = SITE_URL + images.concert.src;
     expect(get("og:image")).toBe(expectedImage);
     expect(get("twitter:image")).toBe(expectedImage);
@@ -58,7 +61,8 @@ describe("search discovery: genuine sitemap and shared preview", () => {
       path: "/" + chosen.slug,
       image: chosen.image,
     });
-    expect(h.meta.find(m => "property" in m && m.property === "og:image")?.content)
+    const preview = h.meta.find(m => "property" in m && m.property === "og:image");
+    expect(preview && "content" in preview ? preview.content : undefined)
       .toBe(new URL(chosen.image.src, SITE_URL).href);
     expect(h.links[0]?.href).toBe(SITE_URL + "/" + chosen.slug + "/");
   });
