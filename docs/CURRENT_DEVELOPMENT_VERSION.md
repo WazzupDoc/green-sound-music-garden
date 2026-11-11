@@ -4,10 +4,10 @@ Updated: 2026-11-11 (V39 draft)
 
 ## Latest
 - Current branch: `design/crafted-atmospheres-v39-schema-url-integrity`
-- Draft PR: V39 pending; base V38 https://github.com/WazzupDoc/green-sound-music-garden/pull/24
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/25 (base V38 PR #24)
 - PR review base: `design/crafted-atmospheres-v38-audit-service-discovery` (PR #24); retains all V20–V38 improvements, including Frequency Studio, guided briefs, and safe SEO.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V38 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v38-audit-service-discovery?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V38 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v39-schema-url-integrity?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v38-audit-service-discovery
-git pull origin design/crafted-atmospheres-v38-audit-service-discovery
+git switch design/crafted-atmospheres-v39-schema-url-integrity
+git pull origin design/crafted-atmospheres-v39-schema-url-integrity
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
