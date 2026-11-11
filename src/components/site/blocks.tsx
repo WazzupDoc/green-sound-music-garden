@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { ClientOnly, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Phone } from "lucide-react";
 import type { ReactNode } from "react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -167,7 +167,9 @@ export function QuoteSection({
           </dl>
         </div>
         <div className="relative rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm md:p-10">
-          <QuoteForm defaultEventType={defaultEventType} defaultServices={defaultServices} />
+          <ClientOnly fallback={<p role="status" className="py-14 text-sm text-muted-foreground">Pregătim formularul pentru evenimentul tău… Poți folosi și telefonul sau emailul din această secțiune.</p>}>
+            <QuoteForm defaultEventType={defaultEventType} defaultServices={defaultServices} />
+          </ClientOnly>
         </div>
       </div>
     </section>

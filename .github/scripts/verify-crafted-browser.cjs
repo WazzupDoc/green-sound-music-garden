@@ -28,6 +28,20 @@ fs.mkdirSync(dir,{recursive:true});
         "Original Green Sound hero photo must load as locally hosted WebP: "+JSON.stringify(heroPhoto));
       assert.equal(await page.locator(".crafted-hero__mode").count(),3);
       assert.equal(await page.locator(".scene-console").count(),1,"An editorial scene-notes panel must exist");
+      assert.equal(await page.locator(".gs-lightboard").count(),1,"User-controlled lighting desk exists");
+      assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
+      if(width>=1024){
+        assert.equal(await page.locator(".gs-cursor__toggle").isVisible(),true,"Fine pointer cursor FX can be switched off");
+        await page.mouse.move(230,270);
+        await page.waitForFunction(() => document.querySelector(".gs-cursor")?.getAttribute("data-visible")==="true",null,{timeout:7000});
+        await page.locator(".gs-cursor__toggle").click();
+        assert.equal(await page.locator(".gs-cursor__toggle").getAttribute("aria-pressed"),"false");
+        await page.locator(".gs-cursor__toggle").click();
+        assert.equal(await page.locator(".gs-cursor__toggle").getAttribute("aria-pressed"),"true");
+      }else{
+        assert.equal(await page.locator(".gs-cursor__toggle").isVisible(),false,
+          "No decoration UI on narrow screens");
+      }
       assert.match(await page.locator(".scene-console__content h2").innerText(),/Un public/i);
       assert.equal(await page.locator(".scene-console__link").getAttribute("href"),"/evenimente/concerte-festivaluri");
       assert.ok(await page.locator(".scene-console").isVisible(),"Scene notes must be visible, including mobile");
@@ -100,6 +114,15 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".crafted-hero").getAttribute("data-lights"),"off");
       await stageSwitch.click();
       assert.equal(await page.locator(".crafted-hero").getAttribute("data-lights"),"on");
+      await page.locator(".gs-lightboard__summary").click();
+      assert.equal(await page.locator(".gs-lightboard").getAttribute("open"),"");
+      await page.locator(".gs-lightboard__tone").nth(1).click();
+      assert.equal(await page.locator(".crafted-hero").getAttribute("data-light-tone"),"gold");
+      assert.equal(await page.locator(".gs-lightboard__tone").nth(1).getAttribute("aria-pressed"),"true");
+      await page.locator("#gs-light-power").focus();
+      await page.keyboard.press("End");
+      assert.equal(await page.locator(".crafted-hero").getAttribute("data-light-power"),"100");
+      await page.locator(".gs-lightboard__summary").click();
       await page.locator(".crafted-experiences__option").first().click();
       assert.equal(await page.locator(".crafted-experiences__option").first().getAttribute("aria-pressed"),"true");
       await page.locator(".crafted-services__row .crafted-services__select").nth(1).click();
@@ -113,6 +136,16 @@ fs.mkdirSync(dir,{recursive:true});
       await reelChoice.nth(1).click();
       assert.equal(await reelChoice.nth(1).getAttribute("aria-pressed"),"true");
       assert.equal(await page.locator(".director-reel iframe").count(),0,"Changing chapters must not start sound");
+      if(width===1440){
+        await page.locator(".director-reel__all").click();
+        await page.waitForURL(url => url.pathname === "/portofoliu" && url.searchParams.has("film"),{timeout:15000});
+        const pickedFilm = new URL(page.url()).searchParams.get("film");
+        await page.waitForFunction(id => document.querySelector(".film-archive__player")?.getAttribute("data-selected-film")===id,
+          pickedFilm,{timeout:15000});
+        assert.equal(await page.locator(`.film-archive__pick[data-film-id="${pickedFilm}"]`).getAttribute("aria-pressed"),"true",
+          "Homepage film link should select the same real archived film");
+        assert.equal(await page.locator(".film-archive iframe").count(),0,"Deep-linked film must not autoplay");
+      }
       if(width===390){
         // V22: selected event, selected service, date and location survive the native
         // request and populate the existing validated quote form (without sending it).
@@ -186,6 +219,23 @@ fs.mkdirSync(dir,{recursive:true});
           "Contact title must clear floating mobile nav: "+JSON.stringify(contactLayout));
         assert.equal(await page.locator("main h1").count(),1);
         await page.screenshot({path:dir+"/contact-mobile.png",fullPage:false});
+        await page.locator("#q-name").fill("Ana Test");
+        await page.locator("#q-phone").fill("0766566275");
+        await page.locator("#q-event").selectOption("Nuntă");
+        await page.locator("#q-date").fill("2027-12-18");
+        await page.locator('input[name="consent"]').check();
+        await page.getByRole("button",{name:/Verifică și continuă spre trimitere/}).click();
+        await page.locator(".quote-preview").waitFor({timeout:15000});
+        assert.match(await page.locator(".quote-preview__event").innerText(),/Nuntă/);
+        assert.match(await page.locator(".quote-preview__intro").innerText(),/Nimic nu a fost transmis încă/);
+        assert.match(await page.locator(".quote-preview__ticket").innerText(),/Ana Test/);
+        assert.match(await page.locator(".quote-preview__ticket").innerText(),/2027-12-18/);
+        assert.match(await page.locator(".quote-preview__whatsapp").getAttribute("href"),/^https:\/\/wa\.me\//);
+        assert.match(await page.locator(".quote-preview__email").getAttribute("href"),/^mailto:/);
+        await page.screenshot({path:dir+"/event-pass-preview-390.png",fullPage:false});
+        await page.locator(".quote-preview__edit").click();
+        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout:10000});
+        assert.equal(await page.locator("#q-name").inputValue(),"Ana Test","Editing must restore existing data");
         await page.goto(origin+"/despre-noi",{waitUntil:"domcontentloaded"});
         assert.equal(await page.locator("main h1").count(),1);
         await page.goto(origin+"/confidentialitate",{waitUntil:"domcontentloaded"});
@@ -264,7 +314,8 @@ fs.mkdirSync(dir,{recursive:true});
     await reduced.goto(origin+"/",{waitUntil:"domcontentloaded"});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
+    assert.equal(await reduced.locator(".gs-cursor__toggle").isVisible(),false,"Reduced motion hides cursor FX");
     await reduced.close();
-    console.log("PASS V25: six responsive widths, hero stage, V23 Soundcheck, full photo lightbox + film archive, wedding recommended brief to contact, mobile menu, reduced motion");
+    console.log("PASS V26: musical cursor, stage light desk, proposal preview with explicit channel links, film deep links, six responsive widths and reduced motion");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
