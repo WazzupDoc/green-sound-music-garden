@@ -13,6 +13,11 @@ fs.mkdirSync(dir,{recursive:true});
       const page=await browser.newPage({viewport:{width,height},isMobile:false});
       const failures=[];
       page.on("pageerror",e=>failures.push(e.message));
+      const netFailures=[];
+      page.on("requestfailed",req=>{if(req.url().startsWith(origin))netFailures.push({url:req.url().slice(0,200),error:req.failure()?.errorText})});
+      page.on("response",res=>{if(res.status()>=400&&res.url().startsWith(origin))netFailures.push({url:res.url().slice(0,200),status:res.status()})});
+      page.on("console",msg=>{if(msg.type()==="error")failures.push("console: "+msg.text().slice(0,300))});
+
       await page.goto(origin+"/",{waitUntil:"domcontentloaded",timeout:45000});
       await page.waitForTimeout(2000);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
@@ -35,7 +40,15 @@ fs.mkdirSync(dir,{recursive:true});
         await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
       }
       await page.locator(".crafted-hero__mode").nth(1).click();
-      await page.waitForFunction(() => document.querySelector(".crafted-hero")?.getAttribute("data-scene")==="private",null,{timeout:10000}).catch(e=>{throw new Error("Stage selector did not hydrate/respond. Browser errors: "+JSON.stringify(failures)+", URL: "+page.url()+", "+e.message)});
+      await page.waitForFunction(() => document.querySelector(".crafted-hero")?.getAttribute("data-scene")==="private",null,{timeout:10000}).catch(async e=>{
+        const diag=await page.evaluate(()=>({
+          ready:document.readyState,
+          scripts:[...document.scripts].map(s=>({src:s.src,type:s.type,inline:s.textContent?.slice(0,100)})),
+          resources:performance.getEntriesByType("resource").filter(x=>x.name.includes("client")||x.name.includes("entry")||x.name.includes("vite")).map(x=>({url:x.name.slice(0,180),duration:x.duration})).slice(0,18),
+          vite:!!document.querySelector("vite-error-overlay"),
+        }));
+        throw new Error("Stage selector failed; JS errors: "+JSON.stringify(failures)+"; Network: "+JSON.stringify(netFailures)+"; Diagnostic: "+JSON.stringify(diag)+"; "+e.message);
+      });
       assert.equal(await page.locator(".crafted-hero").getAttribute("data-scene"),"private");
       await page.locator(".crafted-experiences__option").first().click();
       assert.equal(await page.locator(".crafted-experiences__option").first().getAttribute("aria-pressed"),"true");
