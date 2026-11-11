@@ -48,7 +48,7 @@ export function SoundCursor() {
     };
     const hide = () => {
       awake = false;
-      node.dataset.visible = "false";
+      node.dataset['visible'] = "false";
       window.cancelAnimationFrame(raf);
       raf = 0;
       moving = false;
@@ -61,16 +61,16 @@ export function SoundCursor() {
         current.x = target.x;
         current.y = target.y;
         awake = true;
-        node.dataset.visible = "true";
+        node.dataset['visible'] = "true";
       }
       const element = event.target instanceof Element ? event.target : null;
       const excluded = element?.closest("input, textarea, select, [contenteditable='true'], [role='dialog']");
-      node.dataset.visible = excluded ? "false" : "true";
+      node.dataset['visible'] = excluded ? "false" : "true";
       const interactive = element?.closest("a, button, summary, [data-cursor-label]");
       const hint = interactive?.getAttribute("data-cursor-label") ??
         (interactive?.matches("a") ? "EXPLOREAZĂ" :
           interactive?.matches("button, summary") ? "SELECTEAZĂ" : "");
-      node.dataset.active = interactive && !excluded ? "true" : "false";
+      node.dataset['active'] = interactive && !excluded ? "true" : "false";
       label.textContent = excluded ? "" : hint.slice(0, 24);
       tick();
     };
