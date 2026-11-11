@@ -4,7 +4,7 @@ Updated: 2026-11-11 (V31)
 
 ## Latest
 - Current branch: `design/crafted-atmospheres-v31-quote-integrity`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/15
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/16
 - Base version: `design/crafted-atmospheres-v30-frequency-finder` (PR #15), retaining all earlier V20–V30 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
 - Preview: [Open V31 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v31-quote-integrity?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
