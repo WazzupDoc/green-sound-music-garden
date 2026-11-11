@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, Check, CirclePlay, SlidersHorizontal } from "lucide-react";
 import { images, type ImageRef } from "@/data/site";
@@ -43,10 +43,12 @@ const steps: readonly Step[] = [
 /** Visual storytelling, not a booking wizard or a claim of fixed project deliverables. */
 export function ProductionJourney() {
   const [active, setActive] = useState(0);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const step = steps[active]!;
 
   return (
-    <section className="gs-journey section" aria-labelledby="gs-journey-title">
+    <section className="gs-journey section" aria-labelledby="gs-journey-title" data-hydrated={hydrated ? "true" : "false"}>
       <div className="container-site">
         <div className="gs-journey__intro">
           <div>
