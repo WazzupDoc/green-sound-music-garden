@@ -10,6 +10,7 @@ on:
       - "package.json"
       - "bun.lock"
       - ".github/workflows/verify-crafted-react.yml"
+      - ".github/scripts/verify-crafted-browser.cjs"
 
 permissions:
   contents: read
@@ -46,3 +47,24 @@ jobs:
           assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
           print('PASS: React modular pages, editorial CSS and accessible motion primitives')
           PY
+      - name: Install Chromium browser for visual QA
+        run: npx --yes playwright@1.56.1 install --with-deps chromium
+      - name: Serve React Vite development preview
+        run: |
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/crafted-vite.log 2>&1 &)
+          for i in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:4175/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:4175/ > /dev/null || (cat /tmp/crafted-vite.log && exit 1)
+      - name: Browser interaction and responsive screenshot audit
+        run: |
+          npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
+          NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-crafted-browser.cjs
+      - name: Upload responsive browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-crafted-atmospheres-browser-review
+          path: screenshots/crafted-atmospheres/
+          if-no-files-found: ignore
