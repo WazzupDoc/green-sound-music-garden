@@ -115,3 +115,14 @@
  .hero--v18.gs18-onbeat .gs18-stage{filter:none}
 }
 @media(prefers-reduced-data:reduce){.gs18-haze{display:none}.gs18-beam{filter:none;opacity:.22}}
+
+/* Narrow 320px real-browser QA: source-level wrapping, not blanket overflow hiding */
+@media(max-width:350px){
+ .hero--v18 .hero-v16__topline{font-size:7px;letter-spacing:.035em;gap:6px}
+ .hero--v18 .hero-v16__topline span:last-child{font-size:7px}
+ .gs-reel__header h2 em{font-size:.98em;letter-spacing:-.047em}
+ .gs-strip__item{min-width:0;padding-inline:6px;gap:4px}
+ .gs-strip__item>.icon{width:11px;height:11px;flex:0 0 11px}
+ .gs-strip__item .gs-open-icon{width:19px;height:19px;flex-basis:19px}
+ .gs-strip__num{font-size:7px}
+}
