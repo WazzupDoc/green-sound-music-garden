@@ -45,7 +45,7 @@ jobs:
               assert "GSMUSIC" not in s,filename
               assert 'src="assets/site.js"' in s and 'href="assets/site.css"' in s, filename
               assert '<meta name="robots" content="noindex,nofollow">' in s,filename
-              assert 'assets/v17.css' in s,filename
+              assert 'assets/v17.css' in s and 'assets/v18.css' in s,filename
               doc=Page();doc.feed(s)
               assert doc.h1==1,(filename,doc.h1)
               for name in filenames:
@@ -59,10 +59,18 @@ jobs:
           assert (base/"index.html").read_text().count('class="mood"') == 3
           assert "id=\"offer-form\"" in (base/"contact.html").read_text()
           assert (base/"LICENSE-8B.txt").exists()
+          from pathlib import Path
+          icons=base/"assets/icons"
+          for name in ["confetti","microphone","device-speaker","music","sparkles","balloon","bulb","player-play","headphones","activity-heartbeat","waves-electricity","disc"]:
+              assert (icons/f"{name}.svg").exists(),f"Missing vendored icon: {name}"
+          assert (icons/"LICENSE-TABLER-MIT.txt").exists(),"Missing Tabler icon license"
+          assert 'data-party-mode' in (base/"index.html").read_text()
+          assert 'data-party-audio' in (base/"index.html").read_text()
           print("All six standalone pages, navigation, HTML headings, controls and licensed attribution verified")
           PY
           node --check public/greensound-prototype/assets/site.js
           node --check public/greensound-prototype/assets/v17.js
+          node --check public/greensound-prototype/assets/v18.js
       - name: Install chromium for real browser screenshots
         run: npx --yes playwright@1.56.1 install --with-deps chromium
       - name: Serve standalone prototype on port 4173
