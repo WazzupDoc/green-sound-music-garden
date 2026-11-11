@@ -1,13 +1,13 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V36 draft)
+Updated: 2026-11-11 (V37 draft)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v36-contact-error-regression`
-- Draft PR: V36 (see latest GitHub PR)
-- PR review base: `design/crafted-atmospheres-v35-form-error-accessibility` (PR #21); retains V33B performance, V33 security and all earlier V20–V34 work.
+- Current branch: `design/crafted-atmospheres-v37-frequency-studio`
+- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/23
+- PR review base: `design/crafted-atmospheres-v36-contact-error-regression` (PR #22); retains all V20–V36 improvements, including safe SEO, guided briefs and accessible validation.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
-- Preview: [Open V36 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v36-contact-error-regression?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
+- Preview: [Open V37 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v37-frequency-studio?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
 ## What V25 implements
 1. **The Event Journal** — replaces the generic portfolio photo grid with original six-frame asymmetric editorial layout using existing first-party Green Sound photography. Visitors can inspect full frames through an accessible Radix Dialog with previous/next buttons and keyboard arrow navigation. Every frame leads to a relevant event type; no fake reviews or metrics.
@@ -22,8 +22,8 @@ See `docs/V25_RESEARCH_AND_RELEASE_AUDIT.md`. Core principles: high-end typograp
 ## Preview current development
 ```bash
 git fetch origin
-git switch design/crafted-atmospheres-v36-contact-error-regression
-git pull origin design/crafted-atmospheres-v36-contact-error-regression
+git switch design/crafted-atmospheres-v37-frequency-studio
+git pull origin design/crafted-atmospheres-v37-frequency-studio
 npm install --no-package-lock
 npm run dev -- --host 0.0.0.0 --port 4175
 ```
@@ -158,3 +158,15 @@ Draft PR #20 only. Do not merge or deploy `greensoundmusic.com` until owner appr
 - Extends real Chromium Contact regression at 1440px: submit empty form, assert name and consent error semantics, and verify no false Event Pass is prepared. Existing six viewport checks and earlier V20–V35 features remain mandatory.
 - This is a frontend-only WhatsApp/email preparation flow. No backend, server-side delivery, email API, persistence or anti-spam service is implied.
 - CI must be verified on the final V36 commit before treating this version as validated; no main merge or live deployment.
+
+
+## V37 — Green Sound Frequency Studio / More distinctive music motion
+- **Reworked the existing waveform interlude in-place** (not yet another generic homepage section). The old static Frequency graphic is now a premium instrument-like dark-green console inside the editorial ivory section: custom patterned signal bars, legible live readouts, restrained lighting and touch-first controls.
+- Three real scene links from the event catalogue: `THE OPENING` → `/evenimente/nunti`, `THE DROP` → `/evenimente/concerte-festivaluri`, and `AFTERGLOW` → `/evenimente/petreceri-private`. Each offers original editorial copy, its own repeatable bar profile and a default **visual** tempo. These illustrative profiles do **not** claim to reflect real music BPMs.
+- Visitor can switch among scenes, move an accessible native 68–140 **visual tempo** range slider, and pause/unpause. Exactly 12 of 36 small waveform bars animate with CSS transforms only — no requestAnimationFrame ticker, microphone, Web Audio, audio playback or server API. All meaningful links and descriptions remain visible if animation is off.
+- Pauses automatically while the section is offscreen or the browser tab hidden via IntersectionObserver/visibilitychange; preserves V33 low-resource Save-Data rules and OS reduced-motion. Unknown APIs fall back to browser-native behavior; no analytics or localStorage.
+- Three scene captions and their actual event links are synchronized and screen-reader-friendly; focus-visible controls and ≥44px targets adapt to phone/desktop.
+- Automated Chromium 390/1440: scene switching, no audio, real event route, slider keyboard End→140 and CSS cadence, true animation removal on Pause, resume and offscreen pause; V20–V36 six-width regressions. Screenshot proof, asset budgets, strict TypeScript/SSR build and unit tests required for final CI.
+- Rationale, limits and release checklist at `docs/V37_FREQUENCY_STUDIO_AUDIT.md`.
+
+Review PR #23 only. Never merge or deploy to `main`/`greensoundmusic.com` without owner approval.
