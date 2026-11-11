@@ -118,9 +118,17 @@ const filters = [
 
 const films: Video[] = Object.values(videos);
 
-export function PortfolioFilmArchive() {
+export function PortfolioFilmArchive({ initialFilmId }: { initialFilmId?: string }) {
   const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("toate");
   const [selected, setSelected] = useState(videos.nuntaRamada.id);
+  // Deep links restore the selected published film after client hydration.
+  // Selection never autoplays or preloads the YouTube iframe.
+  useEffect(() => {
+    if (initialFilmId && films.some(video => video.id === initialFilmId)) {
+      setFilter("toate");
+      setSelected(initialFilmId);
+    }
+  }, [initialFilmId]);
   const filtered = films.filter((video) => filter === "toate" || video.tags.includes(filter));
   const active = filtered.find((video) => video.id === selected) ?? filtered[0]!;
 
