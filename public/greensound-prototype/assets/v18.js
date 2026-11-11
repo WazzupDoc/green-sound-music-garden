@@ -19,7 +19,8 @@
    hero.dataset.party=party?"on":"off";
    visual.dataset.party=party?"on":"off";
    partyButton.setAttribute("aria-pressed",String(party));
-   partyButton.textContent=party?"✦ PARTY ON":"✦ PARTY MODE";
+   const partyLabel=partyButton.querySelector(".gs18-control__text");
+   if(partyLabel)partyLabel.textContent=party?"PARTY ON":"PARTY MODE";
    audioButton.setAttribute("aria-pressed",String(playing));
    audioButton.innerHTML=playing?'<span class="gs18-control__icon" aria-hidden="true">♫</span> SUNET ON':'<span class="gs18-control__icon" aria-hidden="true">♫</span> SUNET OFF';
    audioButton.title=playing?"Oprește ritmul electronic original de demonstrație":"Pornește un ritm electronic original de demonstrație. Nu este o înregistrare Green Sound.";
