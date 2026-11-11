@@ -33,7 +33,11 @@
   .crafted-hero__bottom{grid-column:1}
 }
 @media(max-width:640px){
-  .scene-console{justify-self:stretch;width:100%}
+  /* Put the interactive scene selector before the story card on phones,
+     so users discover it early rather than after a tall editorial panel. */
+  .crafted-hero__intro{order:0}
+  .crafted-hero__bottom{order:1}
+  .scene-console{order:2;justify-self:stretch;width:100%}
   .scene-console__top{padding:14px 17px}
   .scene-console__content{padding:18px 17px 19px}
   .scene-console__content h2{font-size:clamp(1.45rem,6vw,2.15rem);margin-top:11px}
