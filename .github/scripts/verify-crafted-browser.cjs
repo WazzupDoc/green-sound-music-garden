@@ -68,6 +68,11 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".crafted-experiences__option").first().getAttribute("aria-pressed"),"true");
       await page.locator(".crafted-services__row .crafted-services__select").nth(1).click();
       assert.equal(await page.locator(".crafted-services__row").nth(1).getAttribute("data-selected"),"true");
+      await page.locator(".director-reel").scrollIntoViewIfNeeded();
+      await page.waitForFunction(() => {
+        const image=document.querySelector(".director-reel__player img");
+        return image && image.complete && image.naturalWidth >= 640 && image.currentSrc.includes("/media/greensound/film-");
+      },null,{timeout:15000});
       const reelChoice=page.locator(".director-reel__choice");
       await reelChoice.nth(1).click();
       assert.equal(await reelChoice.nth(1).getAttribute("aria-pressed"),"true");
