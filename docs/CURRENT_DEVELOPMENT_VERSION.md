@@ -1,11 +1,11 @@
 # Green Sound Music — Current development source of truth
 
-Updated: 2026-11-11 (V34)
+Updated: 2026-11-11 (V35 draft)
 
 ## Latest
-- Current branch: `design/crafted-atmospheres-v34-guided-quote`
-- Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/20
-- PR review base: `design/crafted-atmospheres-v33-adaptive-performance` (PR #19); retains the integrated V33 security branch and all earlier V20–V33B work.
+- Current branch: `design/crafted-atmospheres-v35-form-error-accessibility`
+- Draft PR: V35 (see latest GitHub PR)
+- PR review base: `design/crafted-atmospheres-v34-guided-quote` (PR #20); retains V33B performance, V33 security and all earlier V20–V34 work.
 - Hosting: **NOT DEPLOYED**. The public `greensoundmusic.com` website and the repository `main` branch are unchanged.
 - Preview: [Open V34 in GitHub Codespaces](https://codespaces.new/WazzupDoc/green-sound-music-garden/tree/design/crafted-atmospheres-v34-guided-quote?quickstart=1) then forward port 4175; the workspace preview is private/temporary, not public hosting.
 
@@ -144,3 +144,10 @@ Draft PR #19. Keep `main` and `greensoundmusic.com` unchanged until owner approv
 - Complete QA and factual sources in `docs/V34_GUIDED_QUOTE_AUDIT.md`. Confirm CI and inspect screenshots before treating version as validated.
 
 Draft PR #20 only. Do not merge or deploy `greensoundmusic.com` until owner approval.
+
+
+## V35 — Accessible form validation (draft)
+- Fixed a real Contact accessibility gap: invalid optional event dates were rejected by the Zod schema but the date input did not show the error or announce its description to assistive technology. Date errors now display visibly with `role=alert`, `aria-invalid`, and a linked `aria-describedby`.
+- The guest-count select now exposes the same accessible validation treatment for any invalid values (defensive consistency).
+- No new dependency, API, database, analytics, external service or automatic message sending. No changes to SEO routes, site assets, event recommendations or V34 business logic.
+- Baseline V34 PR #20 Actions run 43085032323 passed. V35 CI must pass independently before review; inspect browser behavior, keyboard navigation and six viewport regressions. No production deployment or main merge.
