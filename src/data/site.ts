@@ -475,7 +475,7 @@ export const events: EventType[] = [
       "Tot ce ține de muzică și atmosferă la nuntă: DJ & MC, trupă live, sonorizare, lumini, ecrane LED, fum greu și hostess, de la o singură echipă din Pitești.",
     h1: "Nunta voastră, de la intrarea în sală până la ultimul dans",
     lead: "Muzica, sunetul, luminile și efectele speciale de la aceeași echipă. Voi vă bucurați de seară; noi ne ocupăm de ritm.",
-    image: images.scena,
+    image: images.dj,
     moments: [
       { title: "Primirea invitaților", text: "Hostess la intrare și muzică de ambient la cocktail.", service: "hostess" },
       { title: "Intrarea mirilor", text: "Anunțată de MC, cu baloane cu fum pentru o intrare de efect.", service: "dj-mc" },
