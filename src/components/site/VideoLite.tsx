@@ -26,6 +26,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
           <button
             type="button"
             onClick={() => setActive(true)}
+            data-cursor-label="PLAY FILM"
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
