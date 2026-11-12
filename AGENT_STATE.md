@@ -1,3 +1,5 @@
+Updated 2026-11-12, V58 draft. Removed layout-affecting hover padding in editorial service links; compositor-only text transform is limited to normal-motion/non-Lite. Added regression test. V57 PR #46 is a separate homepage poster redesign with only its visual QA run confirmed; do not merge it into the V48-clean editorial line without owner review. V56 and V55 exact-head CI unavailable from PR workflow query. PR #19 mergeable=false. No Lighthouse measurements or production merge. Next: exact-head CI, six-width screenshots, keyboard/reduced-motion/Lite behavior, Contact 2-service prefill, main deploy trigger/rollback audit.
+
 Updated 2026-11-12, V56 draft. New keyboard focus-within visual chapter cue on existing editorial service links, CSS-only; guarded by a static Vitest test. V55 CI unverified; V53 live-stage PR #44 is a separate parallel redesign, not merged into this branch. PR #19 mergeable=false. No production merge. Scores remain unmeasured.
 
 # AGENT STATE — Green Sound Music
