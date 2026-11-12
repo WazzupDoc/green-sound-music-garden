@@ -1,3 +1,10 @@
+# V70 — Editorial photo motion gate (draft)
+
+- Branch `design/v70-editorial-photo-motion-gate` stacked on V69 PR #63. The service photo hover zoom now requires a true hover pointer, no reduced-motion preference and no Lite mode. Static color feedback and keyboard focus outline remain. Homepage structure stays V48-clean: hero, 3 editorial chapters/8 links, 3 real films, one CTA.
+- CSS regression tests added; execution, TypeScript, SSR, six-width Chromium and exact-head CI unconfirmed. PR #19 mergeable=false; PR #35 mergeable=true and its exact-head PR workflow was reported successful; V69 PR #63 mergeable=true but CI PR runs not returned. Main and production unchanged.
+
+---
+
 # V69 — Valid Contact calendar dates (draft)
 
 - Branch `design/v69-contact-valid-calendar-date`, stacked on V68 PR #62. Query-prefilled Contact dates now require an actual Gregorian calendar day, not merely YYYY-MM-DD shape. New pure utility and Vitest leap-year/month-length regressions; existing event/service/location allowlists retained.
