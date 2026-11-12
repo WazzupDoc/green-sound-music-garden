@@ -29,6 +29,20 @@ const origin = "http://127.0.0.1:4175";
         "https://greensoundmusic.com/contact/", "OG URL must agree with canonical");
       assert.equal(await page.locator('form[aria-label="Cerere de ofertă"]').count(), 1,
         "Hydration must not duplicate the form");
+      // V48: ensure the form remains usable at every supported viewport, not just mounted.
+      const viewportAudit = await page.evaluate(() => ({
+        scrollWidth: document.documentElement.scrollWidth,
+        innerWidth: window.innerWidth,
+        dateVisible: (() => { const el = document.querySelector("#q-date"); if (!el) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.left >= 0 && r.right <= window.innerWidth + 1; })(),
+        locationVisible: (() => { const el = document.querySelector("#q-location"); if (!el) return false; const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.left >= 0 && r.right <= window.innerWidth + 1; })()
+      }));
+      assert.ok(viewportAudit.scrollWidth <= viewportAudit.innerWidth + 1,
+        "Contact must not create horizontal page overflow at " + width + "px: " + JSON.stringify(viewportAudit));
+      assert.ok(viewportAudit.dateVisible && viewportAudit.locationVisible,
+        "Date and location inputs must remain inside the viewport at " + width + "px");
+      await page.locator("#q-location").focus();
+      assert.equal(await page.evaluate(() => document.activeElement?.id), "q-location",
+        "Location input must be keyboard focusable at " + width + "px");
       assert.deepEqual(errors, [], "No React hydration or browser console errors at " + width + "px");
       await page.reload({ waitUntil: "domcontentloaded" });
       await page.waitForFunction(() =>
@@ -58,6 +72,6 @@ const origin = "http://127.0.0.1:4175";
         "https://greensoundmusic.com/contact/", "No-JS SSR Open Graph URL must match canonical");
       await page.close();
     } finally { await noJs.close(); }
-    console.log("PASS V47: six-width Contact hydration plus no-JS crawler-visible SSR metadata");
+    console.log("PASS V48: six-width Contact hydration, viewport/keyboard usability and no-JS SSR metadata");
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
