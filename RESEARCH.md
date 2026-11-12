@@ -1,3 +1,9 @@
+## 2026-11-12 — V61: CTA regression test reliability
+
+- MDN JavaScript regex guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions — literal regex uses one backslash for a literal dot and shorthand classes. The previous test double-escaped these sequences, so a layout-affecting hover rule could escape detection. Source is documentation only, no code copied.
+- Experiment accepted: replace fragile escaped regex with declaration-level inspection plus positive/negative mutation fixtures. No new package, visual effect, asset or runtime bytes. Rollback: revert V61 test commit.
+- Ideas rejected: add CSS parser dependency for a single compact rule (extra package and attack surface); add runtime observer (unnecessary cost). Browser verification still required.
+
 ## 2026-11-12 — V60: editorial CTA stability
 
 - web.dev performance animation guide: https://web.dev/articles/animations-guide — transform and opacity avoid layout work; do not add will-change without measurements. Documentation guidance, no code copied; no new license/dependency.
