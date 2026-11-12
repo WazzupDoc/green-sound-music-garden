@@ -1,3 +1,14 @@
+# V44 — Full PR quality coverage (draft)
+
+- Branch: `design/crafted-atmospheres-v44-complete-pr-ci`, stacked on V43 PR #29; no merge/deploy.
+- Confirmed V43 PR-head CI PASS on commit `78d515b53f0b83ffbb20da6cb40fa3265e501e21`, run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43138904767.
+- Found remaining CI blind spot: V43 `pull_request.paths` excluded changes limited to `public/**` (sitemap/robots/assets), deployment/configuration and other repository files. A PR with only those changes could skip quality gates despite affecting search discovery or release behavior.
+- V44 removes the pull-request path filter entirely, retaining branch targeting and all existing strict TypeScript, SSR build, Vitest, gzip budget, six-width Chromium and 20-page browser audits. Every PR targeting allowed development/main branches must trigger these checks regardless of changed paths.
+- Release gate: inspect V44 exact-head PR/push workflow run; confirm workflow trigger and all jobs green. CI does not establish staging field CWV or physical-device performance. No main merge before deployment trigger, backup tag and rollback are verified.
+- Next: add explicit browser checks for query-prefilled Contact hydration and SSR canonical/OG parity, plus real staging performance measurements. Do not invent server-side contact delivery or SEO metrics.
+
+---
+
 # V43 — CI coverage for future development branches (draft)
 
 - Branch: `design/crafted-atmospheres-v43-ci-coverage`, stacked on V42 PR #28; draft-only, no main merge or deployment.
