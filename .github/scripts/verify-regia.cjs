@@ -114,8 +114,13 @@ async function main() {
     assert.match(await page.locator("main").innerText(),/WhatsApp|email/i);
     assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"),/noindex/);
     await page.goto(base+"/",{waitUntil:"domcontentloaded"});
+    // Light Desk reads localStorage on mount; wait for React's effect before clicking.
+    await page.waitForFunction(() => document.documentElement.dataset["light"] !== undefined,
+      null, {timeout:30000});
     const desk=page.getByRole("group",{name:"Temperatura luminii"});
     await desk.getByRole("button",{name:"Cald",exact:true}).click();
+    await page.waitForFunction(() => document.documentElement.dataset["light"] === "cald",
+      null, {timeout:10000});
     assert.equal(await page.locator("html").getAttribute("data-light"),"cald");
     await page.goto(base+"/despre-noi",{waitUntil:"domcontentloaded"});
     await page.waitForFunction(()=>document.documentElement.dataset.light==="cald");
