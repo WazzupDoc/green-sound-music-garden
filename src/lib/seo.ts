@@ -28,7 +28,7 @@ export const serializeJsonLd = (data: Record<string, unknown>) =>
 export function pageHead({ title, description, path, jsonLd = [], noindex, image = images.concert }: HeadInput) {
   const url = canonicalUrl(path);
   // Explicit production opt-in: all Codespaces, previews and staged builds are noindex.
-  const isPreview = import.meta.env.VITE_SITE_ENV !== "production";
+  const isPreview = import.meta.env["VITE_SITE_ENV"] !== "production";
   // Use the existing first-party event image (or this page's real image);
   // never fabricate a review, campaign artwork, rating or social preview.
   const imageUrl = new URL(image.src, SITE_URL).href;
