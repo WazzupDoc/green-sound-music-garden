@@ -3,7 +3,10 @@ import { SITE_URL, business, images, type ImageRef } from "@/data/site";
 /** Canonical route URL shared by metadata and Schema.org; avoid duplicate trailing slashes. */
 export const canonicalUrl = (path: string) => {
   // Canonical and structured-data URLs identify pages, never tracking/query states.
-  const pathname = path.split(/[?#]/, 1)[0] || "/";
+  const rawPathname = path.split(/[?#]/, 1)[0] || "/";
+  // A route is always a same-origin pathname, even when passed a relative or
+  // repeated-separator value by a caller. Keep one leading and trailing slash.
+  const pathname = `/${rawPathname.replace(/^\/+/, "").replace(/\/+/g, "/")}`;
   return `${SITE_URL}${pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`}`;
 };
 
