@@ -29,34 +29,24 @@ export function Breadcrumbs({ items }: { items: { name: string; to?: string }[] 
 }
 
 export function PageHero({
-  eyebrow,
-  title,
-  lead,
-  image,
-  crumbs,
-  children,
+  eyebrow,title,lead,image,crumbs,children,
 }: {
-  eyebrow: string;
-  title: string;
-  lead: string;
-  image: ImageRef;
-  crumbs: { name: string; to?: string }[];
-  children?: ReactNode;
+  eyebrow:string;title:string;lead:string;image:ImageRef;
+  crumbs:{name:string;to?:string}[];children?:ReactNode;
 }) {
   return (
-    <section className="atelier-inner-hero relative isolate overflow-hidden pt-32 md:pt-40">
-      <div className="absolute inset-0 -z-10">
-        <img src={image.src} alt="" width={image.w} height={image.h} fetchPriority="high" className="size-full object-cover opacity-55" />
-        <div className="hero-fade absolute inset-0" />
-        <div className="side-fade absolute inset-0 hidden md:block" />
-      </div>
-      <div className="container-site pb-16 md:pb-24">
-        <Breadcrumbs items={crumbs} />
-        <p className="eyebrow mt-10 animate-rise">{eyebrow}</p>
-        <h1 className="display-lg mt-5 max-w-4xl animate-rise [animation-delay:80ms]">{title}</h1>
-        <p className="lead mt-6 max-w-2xl text-foreground/80 animate-rise [animation-delay:160ms]">{lead}</p>
-        <div className="mt-9 flex flex-wrap gap-3 animate-rise [animation-delay:240ms]">
-          {children ?? <HeroCtas />}
+    <section className="atelier-inner-hero rs-inner-hero" aria-label={eyebrow}>
+      <div className="container-site rs-inner-hero__layout">
+        <div className="rs-inner-hero__copy">
+          <Breadcrumbs items={crumbs} />
+          <p className="rs-inner-hero__eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <p className="rs-inner-hero__lead">{lead}</p>
+          <div className="rs-inner-hero__actions">{children ?? <HeroCtas />}</div>
+        </div>
+        <div className="rs-inner-hero__image">
+          <img src={image.src} alt={image.alt} width={image.w} height={image.h}
+            fetchPriority="high" decoding="async" />
         </div>
       </div>
     </section>
@@ -67,7 +57,7 @@ export function HeroCtas() {
   return (
     <>
       <Button asChild variant="hero" size="xl">
-        <a href="#cerere-oferta">Cere ofertă pentru data ta</a>
+        <Link to="/contact">Cere ofertă pentru data ta</Link>
       </Button>
       <Button asChild variant="stage" size="xl">
         <a href={business.phoneHref}>
@@ -131,7 +121,7 @@ export function ProcessSteps() {
 
 export function QuoteSection({
   title = "Spune-ne data. Restul îl construim împreună.",
-  intro = "Completează câteva detalii și primești o ofertă personalizată. Cererea ajunge direct la noi pe WhatsApp sau email.",
+  intro = "Completează detaliile și pregătește mesajul pentru WhatsApp sau email. Cererea nu se trimite automat.",
   defaultEventType,
   defaultServices,
 }: {
@@ -141,7 +131,7 @@ export function QuoteSection({
   defaultServices?: string[] | undefined;
 }) {
   return (
-    <section aria-labelledby="oferta-titlu" className="section surface-stage grain scroll-mt-20">
+    <section aria-labelledby="oferta-titlu" className="section rs-quote-section scroll-mt-20">
       <div className="container-site grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="eyebrow">Cere ofertă</p>
@@ -166,7 +156,7 @@ export function QuoteSection({
             </div>
           </dl>
         </div>
-        <div className="relative rounded-2xl border border-border bg-card/60 p-6 backdrop-blur-sm md:p-10">
+        <div className="relative border border-border bg-card p-6 md:p-10">
           <ClientOnly fallback={<p role="status" className="py-14 text-sm text-muted-foreground">Pregătim formularul pentru evenimentul tău… Poți folosi și telefonul sau emailul din această secțiune.</p>}>
             <QuoteForm defaultEventType={defaultEventType} defaultServices={defaultServices} />
           </ClientOnly>
