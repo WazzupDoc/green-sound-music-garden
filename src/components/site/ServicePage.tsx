@@ -25,7 +25,7 @@ export function ServicePage({slug}:{slug:ServiceSlug}) {
   const defaultEvent:(typeof eventTypeOptions)[number]|undefined =
     slug==="studio-inregistrari"?"Studio înregistrări":slug==="ursitoare-botez"?"Botez":undefined;
   return <>
-    <PageHero eyebrow={service.eyebrow} title={service.h1} lead={service.lead}
+    <PageHero kind="service" tone={service.slug} eyebrow={service.eyebrow} title={service.h1} lead={service.lead}
       image={service.image}
       crumbs={[{name:"Acasă",to:"/"},{name:"Servicii",to:"/servicii"},{name:service.name}]}/>
     <ServiceSignature service={service} />
