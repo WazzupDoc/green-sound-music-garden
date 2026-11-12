@@ -383,3 +383,31 @@ footer.grain>div:last-child{border-color:#B4E6B159!important}
  .director-contact-brief-layout aside{position:static}
  .director-contact-brief-flow .director-contact-quote{box-shadow:8px 8px 0 #B9E7B0}
 }
+
+/* Bespoke cinematic curtain-call footer replaces a generic four-column card. */
+.v60-footer{position:relative;isolation:isolate;overflow:hidden;background:#061C16;color:#F0F9EB}
+.v60-footer__light{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.v60-footer__light img{position:absolute;top:-10%;left:-8%;width:120%;height:55%;object-fit:cover;opacity:.22;mix-blend-mode:screen}
+.v60-footer__main{max-width:1620px;margin-inline:auto;padding:clamp(65px,7vw,110px) clamp(20px,5vw,90px) 22px}
+.v60-footer__kicker{display:flex;justify-content:space-between;gap:18px;padding:15px 0;border-block:1px solid #A8D5B16b;font-size:.76rem;font-weight:850;letter-spacing:.16em}
+.v60-footer__kicker span:first-child{color:#CCFF9B}
+.v60-footer__grand{display:flex;justify-content:space-between;align-items:end;gap:40px;padding-block:clamp(75px,9vw,155px) clamp(75px,9vw,145px)}
+.v60-footer__grand h2{font-family:"Space Grotesk Variable",Arial,sans-serif!important;font-size:clamp(3.7rem,7vw,9.2rem)!important;line-height:.92!important;letter-spacing:-.08em!important;font-weight:780!important;margin:0!important}
+.v60-footer__grand h2 em{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:-.05em!important;color:#C6FFA1}
+.v60-footer__cta{display:inline-flex;align-items:center;justify-content:space-between;gap:35px;min-width:245px;min-height:72px;padding:19px 25px;color:#0A2418!important;background:#C7FF97;font-weight:830;letter-spacing:.05em;white-space:nowrap;transition:transform .2s,background .2s}
+.v60-footer__cta:hover{background:#F1FFF1;transform:translateY(-3px)}
+.v60-footer__columns{display:grid;grid-template-columns:1.25fr repeat(3,minmax(0,1fr));gap:clamp(30px,4.2vw,70px);padding-block:50px 85px;border-top:1px solid #C8EBD67c}
+.v60-footer__columns :is(nav,.v60-footer__address){display:flex;flex-direction:column;align-items:start;gap:12px}
+.v60-footer__columns p{font-size:.76rem;color:#C6FFA2;letter-spacing:.14em;font-weight:850;margin:0 0 16px}
+.v60-footer__columns a{display:inline-flex;align-items:center;gap:8px;color:#F1FFF0;font-size:clamp(.92rem,1.05vw,1.05rem);line-height:1.4;text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px}
+.v60-footer__columns a:hover{color:#CBFFA3;border-bottom-color:#CBFFA3}
+.v60-footer__address address{font-style:normal;color:#C4DAC6;line-height:1.7;margin-bottom:8px;font-size:1.04rem}
+.v60-footer__lighting{border-block:1px solid #A2D3AC77;padding-block:24px;margin-bottom:10px}
+.v60-footer__lighting .gs-global-light{background:transparent!important}
+.v60-footer__bottom{display:flex;align-items:center;justify-content:space-between;gap:15px 28px;flex-wrap:wrap;padding:26px 0 5px;font-size:.71rem;letter-spacing:.095em;color:#CDDCCC}
+.v60-footer__bottom strong{font-size:1rem;letter-spacing:normal;color:#D6FF9E}
+.v60-footer__bottom a{color:#D5FFE3;text-decoration:none;font-weight:850;border-bottom:1px solid #D5FFE3;padding-bottom:5px}
+.v60-footer :is(a,button):focus-visible{outline:3px solid #C7FF97;outline-offset:3px}
+@media(max-width:950px){.v60-footer__grand{display:block}.v60-footer__cta{margin-top:45px}.v60-footer__columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:50px 30px}}
+@media(max-width:600px){.v60-footer__main{padding:65px 19px 25px}.v60-footer__kicker{font-size:.64rem;line-height:1.4}.v60-footer__kicker span:last-child{text-align:right}.v60-footer__grand{padding:90px 0}.v60-footer__grand h2{font-size:clamp(3.1rem,10vw,5.6rem)!important}.v60-footer__cta{width:100%;min-height:65px;margin-top:35px}.v60-footer__columns{gap:38px 20px;padding-block:45px 65px}.v60-footer__columns p{font-size:.69rem}.v60-footer__columns a{font-size:.92rem}.v60-footer__address address{font-size:.9rem}.v60-footer__lighting{padding-block:14px}.v60-footer__bottom{align-items:start;font-size:.67rem;line-height:1.5}.v60-footer__bottom strong{width:100%}}
+@media(prefers-reduced-motion:reduce){.v60-footer__cta{transition:none!important}}
