@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { events, getService, images, videos, type EventSlug } from "@/data/site";
 import { BeamPhoto } from "@/components/site/BeamPhoto";
 import { VideoLite } from "@/components/site/VideoLite";
+import { LightDesk } from "@/components/site/LightDesk";
 
 const order: EventSlug[] = [
   "nunti", "botezuri", "evenimente-corporate", "concerte-festivaluri", "petreceri-private",
@@ -17,30 +18,59 @@ const films = [
 export function RegiaHome() {
   const hydrated = useHydrated();
   const [selected, setSelected] = useState<EventSlug>("nunti");
+  const heroRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+    const setPageVisibility = () => {
+      hero.dataset["paused"] = document.hidden ? "true" : "false";
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      hero.dataset["inView"] = entry?.isIntersecting ? "true" : "false";
+    }, { threshold: 0 });
+    observer.observe(hero);
+    document.addEventListener("visibilitychange", setPageVisibility);
+    setPageVisibility();
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", setPageVisibility);
+    };
+  }, []);
   const event = events.find(item => item.slug === selected)!;
   return (
     <>
-      <section className="rs-hero" aria-labelledby="rs-hero-title" data-hydrated={hydrated ? "true" : "false"}>
+      <section ref={heroRef} className="rs-hero" aria-labelledby="rs-hero-title"
+        data-hydrated={hydrated ? "true" : "false"} data-in-view="true">
         <BeamPhoto image={images.concert} priority decorative className="rs-hero__photo" />
-        <div className="rs-hero__veil" aria-hidden />
+        <div className="rs-hero__veil" aria-hidden="true" />
+        <div className="rs-hero__beams" aria-hidden="true"><span /><span /></div>
         <div className="container-site rs-hero__inside">
-          <div className="rs-hero__copy">
-            <p className="rs-hero__overline">Green Sound Music · Pitești · Din 2008</p>
-            <h1 id="rs-hero-title">Seara începe <em>înainte</em> de prima piesă.</h1>
-            <p>DJ & MC, muzică live, sonorizare și lumini. Pregătim scena, apoi ținem ritmul evenimentului.</p>
+          <div className="rs-hero__topline">
+            <p>Pitești, Argeș <span aria-hidden="true">—</span> Din 2008</p>
+            <p>Muzică, sonorizare și lumini pentru evenimente</p>
+          </div>
+          <div className="rs-hero__statement">
+            <p className="rs-hero__tagline">Culoarea petrecerii tale.</p>
+            <p className="rs-hero__description">
+              DJ și MC, muzică live, scenotehnică și oameni care pregătesc seara de la prima probă de sunet.
+            </p>
             <div className="rs-hero__actions">
-              <a href="#alege-evenimentul" className="rs-button rs-button--chalk">
-                Alege evenimentul <ArrowRight size={19} aria-hidden />
-              </a>
-              <Link to="/portofoliu" className="rs-button rs-button--plain">
-                Privește filmările <Play size={18} aria-hidden />
+              <Link to="/contact" className="rs-hero__action">
+                Cere ofertă <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
+              <a href="#alege-evenimentul" className="rs-hero__action">
+                Alege evenimentul <ArrowRight size={18} aria-hidden="true" />
+              </a>
             </div>
           </div>
-          <div className="rs-hero__caption">
-            <span>Din arhiva Green Sound Music</span>
-            <span>Concert · scenă · public</span>
+          <div className="rs-hero__wordmark-wrap">
+            <h1 id="rs-hero-title" className="rs-hero__wordmark">GREEN <span>SOUND</span></h1>
+            <div className="rs-hero__footnote">
+              <span>GREEN SOUND MUSIC</span>
+              <span>Fotografie din arhiva proprie</span>
+            </div>
           </div>
+          <LightDesk compact />
         </div>
       </section>
 
@@ -60,7 +90,10 @@ export function RegiaHome() {
           </div>
           <div className="rs-programme__layout">
             <div className="rs-programme__intro">
-              <BeamPhoto image={event.image} className="rs-programme__image" />
+              <div className="rs-programme__stage-photo">
+                <BeamPhoto image={event.image} className="rs-programme__image" />
+                <span key={selected} className="rs-programme__flash" aria-hidden="true" />
+              </div>
               <div>
                 <h3>{event.name}</h3>
                 <p>{event.short}</p>

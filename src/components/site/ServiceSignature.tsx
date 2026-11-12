@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { images, people, videos, type Service, type ServiceSlug } from "@/data/site";
 import { VideoLite } from "./VideoLite";
 import { BeamPhoto } from "./BeamPhoto";
+import { StageRig, SmokePhoto } from "./StageEffects";
 
 function SectionLink({slug}: {slug:ServiceSlug}){
   return <Link to="/contact" className="rs-inline-link">
@@ -54,7 +55,7 @@ export function ServiceSignature({service:s}:{service:Service}){
             <h2>Ce intră în montaj</h2><p>Echipamentul se stabilește după spațiu, tipul evenimentului și program, nu după un pachet fix.</p>
           </div>
           <div className="rs-service-feature__tech-layout">
-            <BeamPhoto image={images.scena} className="rs-service-feature__image"/>
+            <StageRig image={images.scena} />
             <div><h3>Din oferta tehnică</h3>
               <ul>{(list.length?list:s.highlights.map(item=>item.title)).map(text=><li key={text}>{text}</li>)}</ul>
               <p>Modelele și cantitățile exacte: [DE COMPLETAT DE PROPRIETAR].</p>
@@ -69,7 +70,7 @@ export function ServiceSignature({service:s}:{service:Service}){
             <h2>Fumul greu la dans sau la tort</h2><p>Momentul, spațiul și condițiile locației se discută înainte de alegerea efectului.</p></div>
           <div className="rs-service-feature__effect-layout">
             <VideoLite video={videos.fumGreu}/>
-            <div><BeamPhoto image={images.fum}/><h3>Ce confirmăm înainte</h3>
+            <div><SmokePhoto image={images.fum}/><h3>Ce confirmăm înainte</h3>
               <p>Momentul utilizării, accesul la locație, condițiile de siguranță și compatibilitatea cu spațiul.</p>
               <SectionLink slug={s.slug}/></div>
           </div>

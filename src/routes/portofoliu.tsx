@@ -23,7 +23,11 @@ export const Route=createFileRoute("/portofoliu")({
 function Portfolio(){
   const {film,photo}=Route.useSearch();
   return <>
-    <section className="rs-page-intro" aria-labelledby="rs-portfolio-title">
+    <section className="rs-page-intro rs-page-intro--cinema" aria-labelledby="rs-portfolio-title">
+      <div className="rs-page-intro__visual" aria-hidden="true">
+        <img src={videos.showLumini.poster ?? images.concert.src}
+          alt="" width={1280} height={720} fetchPriority="high" decoding="async" />
+      </div>
       <div className="container-site"><p>Portofoliu</p><h1 id="rs-portfolio-title">Nu prezentări. Evenimentele, așa cum au fost.</h1>
       <p>Fotografii și filmări din arhiva Green Sound Music. Imaginile și videoclipurile sunt cele ale proiectului, nu fotografii de catalog.</p></div>
     </section>

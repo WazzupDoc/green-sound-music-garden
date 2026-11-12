@@ -13,7 +13,7 @@ function valid(value: string | null): value is LightMode {
 }
 
 /** Shared control. Storage is optional and SSR always starts with neutral markup. */
-export function LightDesk() {
+export function LightDesk({ compact = false }: { compact?: boolean }) {
   const [active, setActive] = useState<LightMode>("neutru");
 
   useEffect(() => {
@@ -39,11 +39,14 @@ export function LightDesk() {
   };
 
   return (
-    <section className="gs-global-light" aria-labelledby="gs-global-light-title">
-      <div className="gs-global-light__intro">
+    <section className={compact ? "gs-global-light gs-global-light--hero" : "gs-global-light"}
+      aria-label={compact ? "Controlul luminii" : undefined}
+      aria-labelledby={compact ? undefined : "gs-global-light-title"}>
+      {!compact && <div className="gs-global-light__intro">
         <h2 id="gs-global-light-title">Lumina scenei</h2>
         <p>Alege tonul fotografiilor. Setarea se păstrează când schimbi pagina.</p>
-      </div>
+      </div>}
+      {compact && <span className="gs-global-light__caption">LUMINĂ —</span>}
       <div className="gs-global-light__choices" role="group" aria-label="Temperatura luminii">
         {options.map(option => (
           <button key={option.id} type="button" className="gs-global-light__choice"

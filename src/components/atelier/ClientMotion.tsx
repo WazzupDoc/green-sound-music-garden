@@ -22,6 +22,22 @@ export function ClientMotion() {
     };
   }, []);
   useEffect(() => {
+    const valid = (mode: string | null) =>
+      mode === "verde" || mode === "cald" || mode === "albastru" || mode === "neutru"
+        ? mode : "neutru";
+    let stored: string | null = null;
+    try { stored = window.localStorage.getItem("gsm-light"); } catch { /* storage unavailable */ }
+    document.documentElement.dataset["light"] = valid(stored);
+
+    const sync = (event: StorageEvent) => {
+      if (event.key === "gsm-light") {
+        document.documentElement.dataset["light"] = valid(event.newValue);
+      }
+    };
+    window.addEventListener("storage", sync);
+    return () => window.removeEventListener("storage", sync);
+  }, []);
+  useEffect(() => {
     document.body.classList.remove("atelier-menu-locked");
   }, [pathname]);
   return null;

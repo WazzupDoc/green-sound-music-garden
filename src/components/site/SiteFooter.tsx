@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { business, navEvents, navServices } from "@/data/site";
 import { Logo } from "./Logo";
-import { LightDesk } from "./LightDesk";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -77,9 +76,6 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
-      </div>
-      <div className="container-site gs-global-light-wrap">
-        <LightDesk />
       </div>
       <div className="border-t border-border">
         <div className="container-site flex flex-col gap-2 py-6 text-base text-muted-foreground sm:flex-row sm:justify-between">
