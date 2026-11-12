@@ -1,0 +1,11 @@
+# ASSETS — Green Sound Music
+
+Updated 2026-11-12. No new third-party media added in V55.
+
+| Asset | Origin | Usage | License / verification |
+|---|---|---|---|
+| `images.dj`, `images.scena`, `images.ursitoare` from `src/data/site.ts` | Existing Green Sound first-party project paths `/media/greensound/` | Editorial chapter images, descriptive alt, intrinsic dimensions | Existing owner content; ownership/permission should be confirmed before public deployment |
+| `ArrowUpRight`, `MoveUpRight` | Existing `lucide-react` package | Navigation cues | ISC, https://github.com/lucide-icons/lucide |
+| CSS service numbering 01–08 | Original CSS written for Green Sound | Decorative editorial running order | Project-owned code; no third-party dependency |
+
+No stock photos, AI-generated people, external fonts, music or videos were added. Any future non-owner asset must have an item-level license and attribution review first.

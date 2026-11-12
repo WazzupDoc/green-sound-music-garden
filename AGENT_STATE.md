@@ -1,0 +1,20 @@
+# AGENT STATE — Green Sound Music
+
+Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last check, no exact-head CI runs returned); V53 PR #41. PR #19 remains unmergeable due to conflicts.
+
+## Implemented
+- V55 continuous editorial 01–08 running order via native CSS counters; no new homepage section or dependency.
+- Corrected V54 image-path test to use literal prefix checking.
+- Added source/license research, asset provenance, experiment gate and version documentation.
+
+## Unverified
+- TypeScript, SSR, Vitest, Chromium six-width, visual screenshots and CI for V55. No Lighthouse or field SEO scores measured.
+- Main deployment trigger, backup tag/rollback permissions, and public production status. Main must remain unchanged.
+
+## Next backlog
+1. Confirm V55 exact-head CI and fix any failing tests, especially existing test runner imports.
+2. Inspect screenshots at 360, 390, 430, 768, 1440, 1920 and ensure numbering reads 01–08 across chapters.
+3. Audit Contact prefill (two services), hydration, focus, reduced-motion/Lite, Save-Data and keyboard Finder.
+4. Verify true LCP element and image priority in staging before modifying eager/lazy flags.
+5. Research actual local DJ/sound/lighting search intents without invented metrics; document only verified service area.
+6. Inspect PR #19 conflict and main CI/CD deployment settings; do not merge without backup/tag and separate publication approval where needed.

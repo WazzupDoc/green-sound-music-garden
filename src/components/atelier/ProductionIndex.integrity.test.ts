@@ -12,7 +12,7 @@ describe("editorial service programme", () => {
   });
   it("keeps accessible first-party imagery in each chapter", () => {
     for (const chapter of editorialChapters) {
-      expect(chapter.image.src).toMatch(/^\\/media\\/greensound\\//);
+      expect(chapter.image.src.startsWith("/media/greensound/")).toBe(true);
       expect(chapter.image.alt.trim().length).toBeGreaterThan(12);
       expect(chapter.linkedServices.length).toBeGreaterThan(0);
     }
