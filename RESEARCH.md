@@ -1,3 +1,11 @@
+## 2026-11-12 — V60: editorial CTA stability
+
+- web.dev performance animation guide: https://web.dev/articles/animations-guide — transform and opacity avoid layout work; do not add will-change without measurements. Documentation guidance, no code copied; no new license/dependency.
+- Shopify performance guidance: https://shopify.dev/docs/storefronts/themes/best-practices/performance/use-transform-for-animations — supports transform instead of layout properties; reference only.
+- Experiment accepted provisionally: replace intro CTA hover flex-gap expansion (15px to 22px) with a 4px arrow transform, only for no-preference and non-Lite. Preserve text, native link, focus outline and layout. Static regression added; six-width Chromium verification pending.
+- Ideas rejected: animating CTA padding/gap (layout cost); persistent will-change (layer/memory cost); adding a second CTA (violates editorial direction).
+- Rollback: revert V60 CSS/test commit. No performance or Lighthouse score asserted.
+
 ## 2026-11-12 — V59: keyboard-only editorial photo cue
 
 - MDN keyboard accessibility: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard — interactive native links need visible keyboard focus, avoid altering tab order. Documentation only, no code copied.
