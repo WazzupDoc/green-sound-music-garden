@@ -17,7 +17,7 @@ type Chapter = {
  * All eight real company services are visible and clickable without a
  * selector, carousel or animation. No fake bundles, prices or availability.
  */
-const chapters: readonly Chapter[] = [
+export const chapters: readonly Chapter[] = [
   {
     index: "01",
     overline: "THE SOUND",
@@ -46,6 +46,17 @@ const chapters: readonly Chapter[] = [
     art: "people",
   },
 ];
+
+/** Resolve the editorial programme once, not on every render. Missing catalogue
+ * entries are a build-time content regression, never silently omitted links. */
+export const editorialChapters = editorialChapters.map((chapter) => ({
+  ...chapter,
+  linkedServices: chapter.serviceSlugs.map((slug) => {
+    const service = services.find((item) => item.slug === slug);
+    if (!service) throw new Error(`Editorial programme references unknown service: ${slug}`);
+    return service;
+  }),
+}));
 
 export function ProductionIndex() {
   return (
@@ -83,18 +94,14 @@ export function ProductionIndex() {
                 <h3>{chapter.title}</h3>
                 <p>{chapter.note}</p>
                 <ul className="gs-index__links">
-                  {chapter.serviceSlugs.map((slug) => {
-                    const service = services.find((item) => item.slug === slug);
-                    if (!service) return null;
-                    return (
-                      <li key={slug}>
-                        <Link to={`/${service.slug}`} className="gs-index__service">
-                          <span>{service.name}</span>
-                          <MoveUpRight className="size-4" aria-hidden />
-                        </Link>
-                      </li>
-                    );
-                  })}
+                  {chapter.linkedServices.map((service) => (
+                    <li key={service.slug}>
+                      <Link to={`/${service.slug}`} className="gs-index__service">
+                        <span>{service.name}</span>
+                        <MoveUpRight className="size-4" aria-hidden />
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </article>
