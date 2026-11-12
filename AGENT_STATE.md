@@ -1,3 +1,9 @@
+## 2026-11-12 — V68 draft
+
+- Stacked on V67 PR #61; native Map resolves eight editorial links by slug after duplicate-source validation, preserving original references and 3/2/3 order. Added identity/order regression; no media, dependencies, homepage sections or external services.
+- V67 PR #61 mergeable=true, but exact-head CI and browser QA unverified. PR #19 mergeable=false. V48 remains last user-confirmed fully validated editorial baseline. No measured performance/SEO gains.
+- Next: run exact-head CI, TypeScript/SSR/Vitest/Chromium six widths, Contact two-service handoff and audit main deployment triggers. No main merge.
+
 ## 2026-11-12 — V67 draft
 
 - Branch design/v67-catalogue-duplicate-source-guard stacked on V66 PR #60. Fixed integrity blind spot: duplicated slugs in source catalogue were hidden by Set before parity validation. Added source guard and regression test. No visible homepage changes or packages.

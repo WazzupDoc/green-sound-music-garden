@@ -63,10 +63,13 @@ if (editorialServiceSlugs.length !== catalogueSlugs.size ||
   throw new Error("Editorial programme must link to every catalogue service exactly once");
 }
 
+// Resolve services once by slug after the duplicate-source guard; preserve chapter order.
+const servicesBySlug = new Map(services.map((service) => [service.slug, service] as const));
+
 export const editorialChapters = chapters.map((chapter) => ({
   ...chapter,
   linkedServices: chapter.serviceSlugs.map((slug) => {
-    const service = services.find((item) => item.slug === slug);
+    const service = servicesBySlug.get(slug);
     if (!service) throw new Error(`Editorial programme references unknown service: ${slug}`);
     return service;
   }),

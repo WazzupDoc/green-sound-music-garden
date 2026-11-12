@@ -1,3 +1,11 @@
+# V68 — Deterministic editorial service lookup (draft)
+
+- Branch `design/v68-editorial-service-lookup-map` stacked on V67 PR #61. Replaces repeated Array.find resolution with one native slug→service Map after duplicate source validation. Keeps original service object references, order 3/2/3, eight direct links and clean V48 homepage.
+- Adds Vitest identity/order regression. No dependencies, media, new UI, extra CTA or network activity. CI exact-head, TypeScript, SSR, browser six widths and Contact handoff not yet verified. No measured performance gains claimed.
+- PR #19 remains unmergeable; no main merge/deploy without exact-head CI, conflict and rollback audits and publication approval if main deploys.
+
+---
+
 # V67 — Source catalogue duplicate guard (draft)
 
 - Branch design/v67-catalogue-duplicate-source-guard stacked on V66 PR #60. Detects duplicate slugs in the original services catalogue before Set-based editorial completeness validation; regression test documents false-positive scenario.
