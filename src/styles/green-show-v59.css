@@ -405,3 +405,102 @@
 @media(hover:none){
  .gsx-hero__lights span{filter:blur(17px)}
 }
+
+
+/* AI-generated atmospheric textures live in their own separate visual layer.
+   They never replace authentic photographs of actual Green Sound events. */
+.gsx-hero__generated{position:absolute;inset:0;z-index:-5;pointer-events:none;
+ width:100%;height:100%;object-fit:cover;mix-blend-mode:screen;
+ opacity:.37;filter:saturate(.78) contrast(1.15);
+ animation:gsx-art-arrive .6s var(--gsx-speed) both}
+.gsx[data-active-scene="nunta"] .gsx-hero__generated{opacity:.16}
+.gsx[data-active-scene="productie"] .gsx-hero__generated{opacity:.46}
+.gsx[data-light="warm"] .gsx-hero__generated{filter:hue-rotate(-40deg) saturate(.65)}
+.gsx[data-light="ice"] .gsx-hero__generated{filter:hue-rotate(54deg) saturate(.73)}
+@keyframes gsx-art-arrive{from{opacity:0;clip-path:inset(0 100% 0 0)}
+ to{clip-path:inset(0 0 0 0)}}
+.gsx-manifest__graphic img.gsx-manifest__generated{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+ opacity:.35;mix-blend-mode:screen;filter:saturate(.7);animation:none}
+.gsx-manifest__graphic img.gsx-manifest__ribbon{
+ position:absolute;width:112%;height:100%;left:-4%;top:0;opacity:.7;
+ animation:gsx-ribbon-float 18s ease-in-out infinite alternate}
+/* SHOW VISUALS: three art-directed experiences, with an intentional visual
+   transition rather than three rounded cards. */
+.gsx-effects{position:relative;isolation:isolate;background:#030808;color:#f4fff2;
+ padding:80px clamp(18px,4vw,70px) 90px}
+.gsx-effects__micro{margin-bottom:28px}
+.gsx-effects__visual{position:relative;overflow:hidden;isolation:isolate;
+ min-height:clamp(600px,67svh,840px);background:#021008;
+ display:flex;align-items:center}
+.gsx-effects__visual>img{position:absolute;inset:0;z-index:-3;width:100%;height:100%;
+ object-fit:cover;animation:gsx-art-wipe .65s var(--gsx-speed) both}
+@keyframes gsx-art-wipe{from{clip-path:inset(0 100% 0 0);transform:scale(1.018)}
+ to{clip-path:inset(0 0 0 0);transform:scale(1)}}
+.gsx-effects__veil{position:absolute;inset:0;z-index:-2;pointer-events:none;
+ background:linear-gradient(90deg,#020908ed 0%,#0209089b 49%,#02090819 100%),
+ linear-gradient(0deg,#020908a3,transparent 52%,#0209083d)}
+.gsx-effects__light{position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(circle at 76% 36%,#aaffee4f,transparent 36%);
+ mix-blend-mode:screen;opacity:.65}
+.gsx-effects__content{width:min(870px,78%);padding:clamp(35px,6vw,100px);
+ display:flex;flex-direction:column;align-items:flex-start;gap:15px}
+.gsx-effects__content>p{font-size:clamp(.8rem,.9vw,1rem);
+ font-weight:830;letter-spacing:.16em;color:#cfff8b}
+.gsx-effects__content>h2{font-size:clamp(3.6rem,7vw,8.3rem)!important;
+ font-weight:850!important;letter-spacing:-.079em!important;line-height:.88!important;
+ margin:30px 0 15px!important}
+.gsx-effects__content>h2 em{color:#c1ff92;font-weight:500!important}
+.gsx-effects__content>strong{display:block;color:#cfff8b;
+ font-size:clamp(1.8rem,3vw,3.6rem);font-weight:810;letter-spacing:-.045em}
+.gsx-effects__content>span{display:block;max-width:50ch;
+ font-size:clamp(1.03rem,1.4vw,1.38rem);line-height:1.6;color:#ecf3ea}
+.gsx-effects__content>a{display:inline-flex;align-items:center;gap:17px;
+ margin-top:17px;border-bottom:1px solid #C8FF9A;padding-bottom:12px;
+ font-size:.88rem;font-weight:850;letter-spacing:.09em}
+.gsx-effects__tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+ border:1px solid #DAF8D860;border-top:0}
+.gsx-effects__tabs button{padding:clamp(19px,2.4vw,34px);
+ border:0;border-right:1px solid #DAF8D860;background:#092218;color:#e3ffea;
+ display:grid;grid-template-columns:35px 1fr 22px;align-items:center;gap:15px;text-align:left;
+ transition:background .2s,color .2s}
+.gsx-effects__tabs button:last-child{border-right:0}
+.gsx-effects__tabs button small{color:#B7FFA2;font-size:.75rem;font-weight:850}
+.gsx-effects__tabs button strong{font-size:clamp(1.3rem,2vw,2.1rem);
+ letter-spacing:-.045em}
+.gsx-effects__tabs button[aria-pressed="true"]{background:#c9ff86;color:#071a0d}
+.gsx-effects__tabs button[aria-pressed="true"] small{color:#123820}
+.gsx-effects__tabs button:not([aria-pressed="true"]):hover{background:#1a4930}
+.gsx-effects__disclaimer{padding-top:18px;color:#C7D8C6;
+ font-size:.82rem;line-height:1.6;max-width:80ch}
+@media(max-width:850px){
+ .gsx-effects__content{width:100%;max-width:700px;padding:55px 40px}
+ .gsx-effects__content>h2{font-size:clamp(3.3rem,8vw,6.5rem)!important}
+ .gsx-effects__tabs button{grid-template-columns:1fr 20px;gap:10px}
+ .gsx-effects__tabs button small{grid-column:1/-1}
+ .gsx-effects__tabs button strong{font-size:1.55rem}
+}
+@media(max-width:620px){
+ .gsx-hero__generated{opacity:.28}
+ .gsx[data-active-scene="nunta"] .gsx-hero__generated{opacity:.12}
+ .gsx-effects{padding:70px 12px 75px}
+ .gsx-effects__micro{padding-inline:7px}
+ .gsx-effects__visual{min-height:600px}
+ .gsx-effects__visual>img{object-position:58% center}
+ .gsx-effects__veil{background:linear-gradient(0deg,#020908ea 0%,#0209088c 70%,#0209082b)}
+ .gsx-effects__content{padding:38px 22px;justify-content:flex-end;align-self:stretch}
+ .gsx-effects__content>h2{font-size:clamp(2.6rem,10.8vw,4.9rem)!important}
+ .gsx-effects__content>strong{font-size:2.2rem}
+ .gsx-effects__content>span{font-size:1.05rem}
+ .gsx-effects__tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .gsx-effects__tabs button{display:flex;align-items:start;flex-direction:column;
+  justify-content:space-between;min-height:99px;padding:15px 8px;gap:7px}
+ .gsx-effects__tabs button strong{font-size:clamp(.84rem,3.1vw,1.15rem)}
+ .gsx-effects__tabs button svg{display:none}
+ .gsx-effects__disclaimer{font-size:.75rem;padding-inline:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gsx-hero__generated,.gsx-effects__visual>img{
+  animation:none!important;clip-path:none!important}
+ .gsx-manifest__graphic img.gsx-manifest__ribbon{animation:none!important}
+}
