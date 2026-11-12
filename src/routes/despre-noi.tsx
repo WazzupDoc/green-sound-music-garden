@@ -14,7 +14,7 @@ export const Route=createFileRoute("/despre-noi")({
  component:About,
 });
 function About(){return <>
- <PageHero eyebrow="Despre Green Sound Music"
+ <PageHero kind="about" tone="echipa" eyebrow="Despre Green Sound Music"
   title="Muzica și partea tehnică lucrează în aceeași echipă."
   lead={`Green Sound Music este activă din ${business.founded}, din Pitești. Pregătim muzica, sonorizarea, luminile și momentele evenimentului.`}
   image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Despre noi"}]}/>
