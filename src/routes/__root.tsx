@@ -10,6 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import "@fontsource-variable/hanken-grotesk/wght.css";
+import "@fontsource-variable/syne/wght.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
