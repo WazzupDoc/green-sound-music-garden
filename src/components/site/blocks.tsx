@@ -35,19 +35,22 @@ export function PageHero({
   crumbs:{name:string;to?:string}[];children?:ReactNode;transitionName?:string;
 }) {
   return (
-    <section className="atelier-inner-hero rs-inner-hero" aria-label={eyebrow}>
-      <div className="container-site rs-inner-hero__layout">
-        <div className="rs-inner-hero__copy">
-          <Breadcrumbs items={crumbs} />
-          <p className="rs-inner-hero__eyebrow">{eyebrow}</p>
-          <h1>{title}</h1>
-          <p className="rs-inner-hero__lead">{lead}</p>
-          <div className="rs-inner-hero__actions">{children ?? <HeroCtas />}</div>
-        </div>
-        <div className="rs-inner-hero__image">
-          <img src={image.src} alt={image.alt} width={image.w} height={image.h}
-            style={transitionName ? { viewTransitionName: transitionName } : undefined}
-            fetchPriority="high" decoding="async" />
+    <section className="atelier-inner-hero rs-inner-hero gsx-inner-hero" aria-label={eyebrow}>
+      <div className="gsx-inner-hero__photo">
+        <img src={image.src} alt={image.alt} width={image.w} height={image.h}
+          style={transitionName ? { viewTransitionName: transitionName } : undefined}
+          fetchPriority="high" decoding="async" />
+        <div className="gsx-inner-hero__shade" aria-hidden="true" />
+        <div className="gsx-inner-hero__lights" aria-hidden="true"><span/><span/></div>
+        <div className="gsx-inner-hero__index" aria-hidden="true">GREEN SOUND <b>✳</b> LIVE PRODUCTION</div>
+      </div>
+      <div className="container-site gsx-inner-hero__content">
+        <div className="gsx-inner-hero__crumbs"><Breadcrumbs items={crumbs}/></div>
+        <p className="gsx-inner-hero__eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <div className="gsx-inner-hero__bottom">
+          <p className="gsx-inner-hero__lead">{lead}</p>
+          <div className="gsx-inner-hero__actions">{children ?? <HeroCtas/>}</div>
         </div>
       </div>
     </section>

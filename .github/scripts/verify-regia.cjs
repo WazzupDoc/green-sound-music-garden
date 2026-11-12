@@ -81,6 +81,7 @@ async function main() {
     page.on("pageerror",e=>errors.push(e.message));
     await page.goto(base+"/portofoliu", {waitUntil:"domcontentloaded"});
     await page.locator(".rs-gallery__frame").first().waitFor();
+    assert.equal(await page.locator(".gsx-portfolio-intro h1").count(),1);
     assert.equal(await page.locator(".rs-gallery__frame").count(),6);
     assert.equal(await page.locator(".rs-gallery__filters button").count(),4);
     assert.equal(await page.locator(".rs-video-library__filters button").count(),5);
@@ -104,8 +105,20 @@ async function main() {
     await page.locator(".rs-photo-dialog__media").waitFor({timeout:10000});
     assert(await page.locator(".rs-photo-dialog__media").isVisible(),"Photo direct-link hydration");
     await page.goto(base+"/servicii",{waitUntil:"domcontentloaded"});
-    assert.equal(await page.locator(".rs-service-index__group").count(),3);
-    assert.equal(await page.locator(".rs-service-index__group li").count(),8);
+    assert.equal(await page.locator(".gsx-services-portal__nav button").count(),3);
+    assert.equal(await page.locator(".gsx-services-portal__tile").count(),8);
+    assert.equal(await page.locator(".gsx-inner-hero h1").count(),1);
+    await page.locator(".gsx-services-portal[data-hydrated=true]").waitFor({timeout:20000});
+    await page.locator(".gsx-services-portal__feature").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/services-default-1440.png`,fullPage:true,animations:"disabled"});
+    await page.locator(".gsx-services-portal__nav button").first().click();
+    assert.match(await page.locator(".gsx-services-portal__selected").innerText(),/DJ/i);
+    await page.locator(".gsx-services-portal__feature").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/services-1440.png`,fullPage:true,animations:"disabled"});
     await checkNoOverflow(page,"/servicii",1440);
     const services=["dj-mc","trupa","echipamente-de-sunet-si-lumini",
       "masina-fum-greu-cu-gheata-carbonica","studio-inregistrari","hostess","ursitoare-botez","start-veselia"];
@@ -125,6 +138,12 @@ async function main() {
     }
     await page.goto(base+"/evenimente/",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-events-index__row").count(),5);
+    assert.equal(await page.locator(".gsx-event-worlds__card").count(),5);
+    await page.locator(".gsx-event-worlds__rail").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/events-1440.png`,fullPage:true,animations:"disabled"});
+    await checkNoOverflow(page,"/evenimente",1440);
     const events=["nunti","botezuri","evenimente-corporate","concerte-festivaluri","petreceri-private"];
     for(const slug of events){
       await page.goto(base+"/evenimente/"+slug,{waitUntil:"domcontentloaded"});
@@ -133,6 +152,11 @@ async function main() {
     }
     await page.goto(base+"/despre-noi",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-about-copy").count(),1);
+    await page.locator(".gsx-backstage__photo--three").scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => [...document.querySelectorAll(".gsx-backstage__photo img")].every(img => img.complete && img.naturalWidth > 0));
+    await page.locator(".rs-about-copy").scrollIntoViewIfNeeded();
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/about-1440.png`,fullPage:true,animations:"disabled"});
     await page.goto(base+"/confidentialitate",{waitUntil:"domcontentloaded"});
     assert.match(await page.locator("main").innerText(),/DE COMPLETAT DE PROPRIETAR/);
     assert.equal(await page.locator("main main").count(),0);
