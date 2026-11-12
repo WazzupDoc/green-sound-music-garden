@@ -1,0 +1,60 @@
+/* Final shared pages & navigation, keeping contrast and natural reading rhythm. */
+.rs-about-copy{background:#F3F0E9;color:#0A0F15;padding:clamp(70px,9vw,135px) 0}
+.rs-about-copy__inside{display:grid;grid-template-columns:.95fr 1.05fr;gap:40px 90px}
+.rs-about-copy__inside>div:first-child p{color:#1F6B3A;font-weight:730;font-size:1rem;margin-bottom:20px}
+.rs-about-copy h2{font-size:clamp(2rem,3.5vw,3.6rem);font-weight:700;letter-spacing:-.045em;line-height:1.14}
+.rs-about-copy__inside>div:last-child p{font-size:1.1rem;color:#36413C;line-height:1.75;margin-bottom:20px}
+.rs-about-copy .rs-inline-link{margin-top:15px}
+.rs-about-steps{background:#101820;color:#F3F0E9;padding:clamp(70px,8vw,125px) 0}
+.rs-about-steps h2{font-size:clamp(2.2rem,3.5vw,3.7rem);font-weight:700;letter-spacing:-.04em;margin-bottom:35px}
+.rs-about-steps ol{border-top:1px solid #748076}
+.rs-about-steps li{display:grid;grid-template-columns:48px minmax(220px,.7fr) minmax(0,1.3fr);
+ gap:25px;align-items:start;padding:24px 0;border-bottom:1px solid #748076}
+.rs-about-steps li span{font-size:1.08rem;font-weight:740;color:#C1DCC5}
+.rs-about-steps li h3{font-size:1.3rem;font-weight:700}
+.rs-about-steps li p{font-size:1.07rem;line-height:1.65;color:#D3DCD3}
+.rs-about-photo{position:relative;min-height:550px;display:grid;align-items:center;overflow:hidden;
+ background:#0A0F15;color:#F3F0E9;isolation:isolate}
+.rs-about-photo__image{position:absolute;inset:0;z-index:-2;height:100%;width:100%}
+.rs-about-photo__image img{width:100%;height:100%;object-fit:cover}
+.rs-about-photo:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:linear-gradient(90deg,#0A0F15ee,#0A0F1544)}
+.rs-about-photo>div:last-child{padding:75px clamp(25px,6vw,95px);max-width:870px}
+.rs-about-photo p{font-size:1rem;font-weight:690;color:#DAE5DA;margin-bottom:22px}
+.rs-about-photo h2{font-size:clamp(2.2rem,4vw,4rem);font-weight:710;letter-spacing:-.04em;line-height:1.15}
+.rs-about-photo .rs-button{margin-top:30px}
+.rs-privacy{background:#F3F0E9;color:#0A0F15;min-height:100svh;padding:clamp(145px,15vw,210px) 0 120px}
+.rs-privacy .container-site{max-width:1050px}
+.rs-privacy .container-site>p:first-child{font-weight:710;color:#1F6B3A;font-size:1rem}
+.rs-privacy h1{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:730;letter-spacing:-.045em;margin:18px 0 50px}
+.rs-privacy__copy{display:grid;gap:35px}
+.rs-privacy__copy section{border-top:1px solid #9DA89E;padding-top:22px}
+.rs-privacy__copy h2{font-size:1.6rem;font-weight:710;margin-bottom:15px}
+.rs-privacy__copy p{font-size:1.06rem;line-height:1.75;margin:13px 0;max-width:75ch;color:#303C34}
+.rs-privacy__copy a{color:#1F6B3A;text-decoration:underline;text-underline-offset:3px}
+.rs-privacy__notice{border-left:4px solid #1F6B3A;padding:10px 22px}
+.rs-quote-section{background:#101820;color:#F3F0E9}
+.rs-quote-section h2{max-width:18ch}
+.rs-quote-section .border{border-radius:0}
+.rs-quote-section .bg-card{background:#141F29}
+.rs-quote-section .gs-quote__intro p,.rs-quote-section .quote-preview__notice{font-size:1rem}
+.rs-quote-section .gs-quote__intro h3{font-size:clamp(1.7rem,2.7vw,2.6rem)}
+.rs-quote-section :is(input,textarea,select){font-size:1rem;min-height:44px}
+.rs-quote-section .quote-preview__ticket{background:#F3F0E9;color:#0A0F15}
+.rs-quote-section :is(.quote-preview__whatsapp,.quote-preview__email,.quote-preview__copy){min-height:50px;font-size:1rem}
+.rs-quote-section .gs-quote__stephead span{font-size:.85rem}
+/* A single short blackout on route changes, rather than stacking a zoom and two fades. */
+::view-transition-old(root){animation:rs-route-away 180ms ease-in both}
+::view-transition-new(root){animation:rs-route-arrive 220ms ease-out both}
+@keyframes rs-route-away{to{opacity:0}}
+@keyframes rs-route-arrive{from{opacity:0}}
+::view-transition-group(*){animation-duration:220ms}
+@media(max-width:750px){
+ .rs-about-copy__inside{grid-template-columns:1fr}
+ .rs-about-steps li{grid-template-columns:35px 1fr;gap:15px}
+ .rs-about-steps li p{grid-column:2}
+ .rs-privacy{padding-bottom:95px}
+}
+@media(prefers-reduced-motion:reduce){
+ ::view-transition-old(root),::view-transition-new(root),::view-transition-group(*){animation:none!important}
+}
