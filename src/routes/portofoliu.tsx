@@ -6,8 +6,8 @@ import { breadcrumbLd, pageHead } from "@/lib/seo";
 const filmIds = new Set(Object.values(videos).map(item => item.id));
 const photoIds = new Set(galleryFrames.map(item => item.id));
 function validSearch(search:Record<string,unknown>):{film?:string;photo?:string} {
-  if(typeof search.photo==="string" && photoIds.has(search.photo)) return {photo:search.photo};
-  if(typeof search.film==="string" && filmIds.has(search.film)) return {film:search.film};
+  if(typeof search["photo"]==="string" && photoIds.has(search["photo"])) return {photo:search["photo"]};
+  if(typeof search["film"]==="string" && filmIds.has(search["film"])) return {film:search["film"]};
   return {};
 }
 export const Route=createFileRoute("/portofoliu")({
