@@ -2,16 +2,20 @@ name: Crafted Atmospheres React — typecheck and production build
 
 on:
   push:
-    branches: [design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio, design/crafted-atmospheres-v38-audit-service-discovery]
+    branches:
+      - "design/crafted-atmospheres-*"
   pull_request:
-    branches: [main, design/green-sound-sillage-open-source, design/crafted-atmospheres-react-v20, design/crafted-atmospheres-v21-directors-cut, design/crafted-atmospheres-v22-soundcheck, design/crafted-atmospheres-v23-storyboard, design/crafted-atmospheres-v24-stage-stories, design/crafted-atmospheres-v25-event-journal, design/crafted-atmospheres-v26-preview-and-premiere, design/crafted-atmospheres-v27-motion-and-offstage, design/crafted-atmospheres-v28-production-journey, design/crafted-atmospheres-v29-service-mix, design/crafted-atmospheres-v30-frequency-finder, design/crafted-atmospheres-v31-quote-integrity, design/crafted-atmospheres-v32-search-discovery, design/crafted-atmospheres-v33-adaptive-performance, design/crafted-atmospheres-v34-guided-quote, design/crafted-atmospheres-v35-form-error-accessibility, design/crafted-atmospheres-v36-contact-error-regression, design/crafted-atmospheres-v37-frequency-studio, design/crafted-atmospheres-v38-audit-service-discovery]
+    branches:
+      - main
+      - design/green-sound-sillage-open-source
+      - "design/crafted-atmospheres-*"
     paths:
       - "src/**"
       - "package.json"
       - "bun.lock"
       - ".github/workflows/verify-crafted-react.yml"
-      - ".github/scripts/verify-crafted-browser.cjs"
-      - ".github/scripts/audit-public-pages.cjs"
+      - ".github/scripts/**"
+      - "docs/CURRENT_DEVELOPMENT_VERSION.md"
 
 # When iterative design work produces several commits, only the latest branch
 # state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.
