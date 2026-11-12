@@ -187,3 +187,66 @@
  .gsx-inner-hero__photo img,.gsx-services-portal__photo img{animation:none!important}
  .gsx-services-portal__tile img{transition:none!important}
 }
+
+
+/* Five different event scenes; one editorial film strip, not cloned boxes. */
+.gsx-event-worlds{background:#E8EDE5!important;color:#0C261B!important;
+ padding:clamp(85px,10vw,155px) 0}
+.gsx-event-worlds__intro{display:grid;grid-template-columns:.36fr 1.4fr .55fr;
+ gap:20px 40px;align-items:end;border-top:1px solid #2A6D4580;
+ padding:25px 0 clamp(45px,6vw,90px)}
+.gsx-event-worlds__intro>span{font-size:.8rem;letter-spacing:.14em;
+ font-weight:820;color:#275F40;align-self:start}
+.gsx-event-worlds__intro h2{font-family:"Space Grotesk Variable",sans-serif;
+ font-size:clamp(3rem,5.2vw,6.2rem)!important;line-height:.98!important;
+ letter-spacing:-.075em!important;font-weight:780!important}
+.gsx-event-worlds__intro p{font-size:1.12rem;line-height:1.55;max-width:32ch}
+.gsx-event-worlds__rail{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+ gap:10px;align-items:stretch}
+.gsx-event-worlds__card{position:relative!important;display:flex!important;
+ flex-direction:column;justify-content:flex-end;isolation:isolate;
+ min-height:clamp(420px,45vw,680px);padding:0!important;margin:0!important;
+ background:#061810;overflow:hidden;border:0!important;color:#fff!important;
+ grid-column:span 5}
+.gsx-event-worlds__card:nth-child(2){grid-column:span 7}
+.gsx-event-worlds__card:nth-child(3){grid-column:span 4;min-height:480px}
+.gsx-event-worlds__card:nth-child(4){grid-column:span 4;min-height:480px}
+.gsx-event-worlds__card:nth-child(5){grid-column:span 4;min-height:480px}
+.gsx-event-worlds__image{position:absolute!important;inset:0!important;z-index:-2;
+ min-height:100%!important;overflow:hidden}
+.gsx-event-worlds__image img{width:100%!important;height:100%!important;object-fit:cover;
+ position:absolute;inset:0;filter:saturate(.88) contrast(1.07);
+ transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .6s}
+.gsx-event-worlds__card:hover .gsx-event-worlds__image img{
+ transform:scale(1.045);filter:saturate(1.08)}
+.gsx-event-worlds__card:before{position:absolute;inset:0;content:"";z-index:-1;
+ background:linear-gradient(0deg,#020D09ed 0%,#020D0966 40%,#020D0929 75%)}
+.gsx-event-worlds__content{padding:clamp(23px,3vw,55px);z-index:1;max-width:740px}
+.gsx-event-worlds__content>span{font-size:.8rem;color:#C8FF99;
+ letter-spacing:.14em;font-weight:800}
+.gsx-event-worlds__content h3{font-family:"Space Grotesk Variable",sans-serif;
+ font-size:clamp(2.2rem,4vw,5.3rem)!important;line-height:.96!important;
+ margin:18px 0!important;letter-spacing:-.07em!important;font-weight:790!important}
+.gsx-event-worlds__content p{font-size:clamp(1rem,1.2vw,1.25rem);
+ line-height:1.48;max-width:32ch;color:#F4FFF1}
+.gsx-event-worlds__link{display:inline-flex;gap:12px;align-items:center;
+ margin-top:25px;border-bottom:1px solid #CDFF8E;padding-bottom:7px;font-weight:760;
+ color:#F3FFF0}
+@media(max-width:800px){
+ .gsx-event-worlds__intro{grid-template-columns:1fr 1fr}
+ .gsx-event-worlds__intro>span{grid-column:1/-1}
+ .gsx-event-worlds__intro h2{font-size:clamp(2.7rem,7vw,4.6rem)!important}
+ .gsx-event-worlds__rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .gsx-event-worlds__card,.gsx-event-worlds__card:nth-child(n){
+  grid-column:span 1;min-height:460px}
+ .gsx-event-worlds__card:nth-child(1){grid-column:1/-1;min-height:570px}
+}
+@media(max-width:620px){
+ .gsx-event-worlds__intro{display:block}
+ .gsx-event-worlds__intro h2{margin:22px 0!important;font-size:clamp(2.7rem,10vw,4.5rem)!important}
+ .gsx-event-worlds__rail{grid-template-columns:1fr;gap:8px}
+ .gsx-event-worlds__card,.gsx-event-worlds__card:nth-child(n){
+   grid-column:1!important;min-height:500px}
+ .gsx-event-worlds__card:nth-child(1){min-height:550px}
+ .gsx-event-worlds__content h3{font-size:clamp(2.4rem,10vw,4rem)!important}
+}
