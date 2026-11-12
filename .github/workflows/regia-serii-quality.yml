@@ -1,10 +1,11 @@
-name: Green Sound V59 Live Show Control browser QA
+name: Green Sound V60 Complete Interior Redesign browser QA
 on:
   push:
     branches:
-      - design/v59-show-control-cinematic
+      - design/v60-complete-interior-redesign
   pull_request:
     branches:
+      - design/v59-show-control-cinematic
       - design/v58-open-house-from-scratch
       - design/v52-regia-serii-complete-preview
   workflow_dispatch:
