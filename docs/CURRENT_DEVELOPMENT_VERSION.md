@@ -1,3 +1,11 @@
+# V66 — Editorial catalogue completeness (draft)
+
+- Branch `design/v66-editorial-catalogue-completeness` based on V65 PR #59. Existing runtime uniqueness check now also rejects omitted catalogue services; Vitest checks full catalogue parity and per-chapter order.
+- No extra homepage sections, dependencies, assets, autoplay or external services. Preserve V48 hero / 3 chapters / 8 direct service links / 3 real films / single CTA.
+- V65 exact-head PR workflow query returned no runs. V66 exact-head CI, TypeScript, SSR, Chromium and Contact flow unverified. Do not merge main or deploy without all release gates, backup tag, verified rollback and publication approval if main deploys automatically.
+
+---
+
 # V65 — Editorial service uniqueness guard (draft)
 
 - Branch: `design/v65-editorial-service-uniqueness-guard`, based on V64 PR #58. Existing three editorial chapters must contain exactly eight distinct service links. Runtime module initialization rejects duplicates rather than silently repeating a service.
