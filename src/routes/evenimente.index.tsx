@@ -11,7 +11,7 @@ export const Route=createFileRoute("/evenimente/")({
  component:Events,
 });
 function Events(){return <>
- <PageHero eyebrow="Evenimente" title="Fiecare seară are alt program."
+ <PageHero kind="index" tone="events" eyebrow="Evenimente" title="Fiecare seară are alt program."
    lead="Alege ce organizezi. Îți arătăm momentele și serviciile care pot intra în desfășurător."
    image={images.concert} crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente"}]}/>
  <section className="rs-events-index" aria-labelledby="rs-events-title">
