@@ -1,3 +1,10 @@
+## 2026-11-12 — V63
+
+- Branch: design/v63-editorial-service-clarity; base V62 PR #56. New concise, service-specific copy in the existing three chapters and regression test; no new widgets or assets.
+- Scores: Lighthouse, LCP, SEO ranking and conversion unmeasured. V62 exact-head PR workflow query returned no runs; V63 CI and browser QA pending.
+- Blockers: PR #19 mergeable=false; latest editorial stack lacks verified exact-head TypeScript/SSR/browser results; no main deployment/rollback clearance.
+- Next: inspect CI exact-head and six-width screenshots; test Contact 2-service prefill and SSR, then audit main deploy triggers.
+
 Updated 2026-11-12, V62 draft: CSS touch-hover neutralization added to existing editorial service programme, with static Vitest guard. V61 exact-head PR workflow query returned no runs; V62 full CI, Chromium six-width and physical touch QA unverified. PR #19 mergeable=false. No main merge/deployment. Next: run TypeScript/SSR/Vitest/Chromium, inspect screenshots and Contact 2-service flow; verify production deployment and rollback gate.
 
 Updated 2026-11-12, V61 draft: found a real false-negative in V60 static CSS regression: regex literals were double-escaped. Replaced with CSS hover declaration checks and mutation fixtures for gap, padding, margin vs transform. New branch stacked on V60 editorial, not the parallel immersive redesign. V60 exact-head CI unconfirmed; PR #52 has a successful PR workflow run but violates the locked V48 homepage composition, so not used as base. PR #19 mergeable=false. No main merge, deployment or measured Lighthouse. Next: exact-head CI, Chromium and Contact tests.
