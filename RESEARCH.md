@@ -1,3 +1,9 @@
+## 2026-11-13 — V69 Contact calendar date validation
+
+- Sources consulted 2026-11-13: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date and https://www.w3.org/WAI/tutorials/images/decorative/ . The first informed strict calendar date handling; the second was reviewed for editorial photo semantics, but image alt changes were rejected without image-by-image evidence.
+- Applied: original zero-dependency Gregorian calendar validator for untrusted Contact date query prefill; validates YYYY-MM-DD, leap years, month lengths without timezone coercion. Unit cases include 1900/2000 leap distinction, 31 April, invalid months and malformed values. No external code copied.
+- Experiment gate: utility (prevents impossible prefilled dates), differentiation (not visual, intentional), performance (tiny synchronous check, unmeasured), accessibility (avoids misleading form data), SSR (pure deterministic), cost/license (none), testing (Vitest authored, execution unconfirmed), rollback (revert V69 commits). Rejected: Date.parse normalization and client-side date libraries, which add ambiguity or dependencies.
+
 ## 2026-11-12 — V68 deterministic editorial service lookup
 
 - Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map (consulted 2026-11-12). Native Map preserves insertion order and supports keyed lookup; no third-party code or asset used.
