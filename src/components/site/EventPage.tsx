@@ -7,7 +7,7 @@ import type { eventTypeOptions } from "@/lib/quote";
 
 export function EventPage({event}:{event:EventType}){
   return <>
-    <PageHero eyebrow={`Evenimente · ${event.name}`} title={event.h1} lead={event.lead}
+    <PageHero kind="event" tone={event.slug} eyebrow={`Evenimente · ${event.name}`} title={event.h1} lead={event.lead}
       image={event.image} transitionName={`gs-event-${event.slug}`}
       crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}/>
     <section className="rs-event-timeline">
