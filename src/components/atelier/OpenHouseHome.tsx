@@ -1,9 +1,9 @@
 import { useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Play, Volume2 } from "lucide-react";
-import { business, events, images, services, videos, type EventSlug, type ImageRef, type Video } from "@/data/site";
+import { business, events, images, services, videos, type EventSlug, type Video } from "@/data/site";
 
-type Scene = { name: string; kicker: string; note: string; slug: EventSlug; image: ImageRef; color: string; };
+type Scene = { name: string; kicker: string; note: string; slug: EventSlug; image: {src:string;alt:string;w:number;h:number}; color: string; };
 const scenes: readonly Scene[] = [
   { name:"Concerte", kicker:"01 / ENERGIE", note:"Public, scenă, sunet și lumini într-un singur loc.", slug:"concerte-festivaluri", image:images.concert, color:"#aeeeff" },
   { name:"Nunți", kicker:"02 / EMOȚIE", note:"De la primul dans până la ultima piesă.", slug:"nunti", image:{src:videos.nuntaRamada.poster ?? images.dj.src,alt:"Cadru din filmarea de nuntă Green Sound Music la Ramada Pitești",w:1280,h:720}, color:"#f3b7cd" },
