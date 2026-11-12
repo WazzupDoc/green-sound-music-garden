@@ -9,7 +9,7 @@ export function Logo({ tone = "stage" }: { tone?: "stage" | "paper" }) {
       </span>
       <span className="flex flex-col leading-[1.03]">
         <span className={`font-display text-base font-bold tracking-tight ${tone === "paper" ? "text-paper-foreground" : "text-foreground"}`}>GREEN SOUND</span>
-        <span className="mt-1 text-[9px] font-bold tracking-[.24em] text-[#b7e49d]">MUSIC / LIVE PRODUCTION</span>
+        <span className="mt-1 text-xs font-bold tracking-[.24em] text-[#B8BCB9]">MUSIC</span>
       </span>
     </Link>
   );
