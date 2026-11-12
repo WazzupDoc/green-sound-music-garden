@@ -64,6 +64,7 @@ async function main() {
     await page.keyboard.press("Escape");
     await page.waitForFunction(()=>!new URL(location.href).searchParams.has("photo"));
     await page.goto(base+"/portofoliu?photo=ursitoare",{waitUntil:"domcontentloaded"});
+    await page.locator(".rs-photo-dialog__media").waitFor({timeout:10000});
     assert(await page.locator(".rs-photo-dialog__media").isVisible(),"Photo direct-link hydration");
     await page.goto(base+"/servicii",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-service-index__group").count(),3);
@@ -104,6 +105,8 @@ async function main() {
     assert.equal(map.status(),200);
     assert.equal((await map.text()).match(/<loc>/g)?.length,20);
     assert.deepEqual(errors,[],"Browser errors in page flow");
+    // Keep the old CI artifact path populated while changing the UI assertions.
+    fs.cpSync(folder, "screenshots/crafted-atmospheres", {recursive:true});
     console.log("PASS Regia Serii: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
     await page.close();
   } finally {await browser.close();}
