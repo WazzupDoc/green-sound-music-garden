@@ -26,6 +26,7 @@
 @import "./styles/frequency-finder.css";
 @import "./styles/event-journal.css";
 @import "./styles/performance-adaptive.css";
+@import "./styles/regia-serii-foundation.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -36,8 +37,8 @@
  */
 
 @theme inline {
-  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Hanken Grotesk Variable", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
 
   --radius-sm: calc(var(--radius) - 4px);
@@ -99,23 +100,23 @@
   --radius: 0.5rem;
 
   /* Night stage (HEX refs: ink #0B100E, surface #131A17, ivory #F4EFE4) */
-  --ink: oklch(0.155 0.012 160);
-  --background: oklch(0.155 0.012 160);
-  --foreground: oklch(0.955 0.014 85);
-  --card: oklch(0.2 0.014 160);
-  --card-foreground: oklch(0.955 0.014 85);
-  --popover: oklch(0.2 0.014 160);
-  --popover-foreground: oklch(0.955 0.014 85);
+  --ink: #0A0F15;
+  --background: #0A0F15;
+  --foreground: #F3F0E9;
+  --card: #101820;
+  --card-foreground: #F3F0E9;
+  --popover: #101820;
+  --popover-foreground: #F3F0E9;
 
   /* Brand green taken from the existing logo (#2FB24C) */
-  --primary: oklch(0.7 0.18 145);
+  --primary: #49B768;
   --primary-glow: oklch(0.82 0.2 140);
-  --primary-foreground: oklch(0.155 0.012 160);
+  --primary-foreground: #0A0F15;
 
-  --secondary: oklch(0.24 0.016 160);
-  --secondary-foreground: oklch(0.955 0.014 85);
-  --muted: oklch(0.24 0.016 160);
-  --muted-foreground: oklch(0.74 0.02 120);
+  --secondary: #101820;
+  --secondary-foreground: #F3F0E9;
+  --muted: #101820;
+  --muted-foreground: #B8BCB9;
   --accent: oklch(0.27 0.03 155);
   --accent-foreground: oklch(0.955 0.014 85);
 
@@ -123,16 +124,16 @@
   --spotlight: oklch(0.83 0.14 78);
 
   /* Daylight sections (#F4EFE4 paper, ink text) */
-  --paper: oklch(0.955 0.014 85);
-  --paper-foreground: oklch(0.2 0.014 160);
-  --paper-muted: oklch(0.45 0.02 140);
+  --paper: #F3F0E9;
+  --paper-foreground: #0A0F15;
+  --paper-muted: #404B46;
   --paper-border: oklch(0.86 0.02 85);
 
   --destructive: oklch(0.68 0.2 25);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(1 0 0 / 11%);
   --input: oklch(1 0 0 / 16%);
-  --ring: oklch(0.7 0.18 145);
+  --ring: #49B768;
 
   --gradient-stage: radial-gradient(
     120% 80% at 70% 0%,
@@ -182,6 +183,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01";
+    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
