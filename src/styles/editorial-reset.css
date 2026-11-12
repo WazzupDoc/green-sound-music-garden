@@ -58,3 +58,31 @@ background:transparent;box-shadow:none;overflow:visible;backdrop-filter:none}
 @media(prefers-reduced-motion:reduce){
  .gs-finale .crafted-finale__link,.crafted-hero__mode{transition:none!important}
 }
+
+/* V49 / Film-archive direction. The active film gets its own production slate,
+ * not a second gallery, carousel, or additional choice flow. */
+.gs-film-slate{padding:clamp(19px,2.6vw,34px);background:#15241a;color:#e9f3e6;
+ border-top:1px solid #8faf7c55;position:relative;overflow:hidden}
+.gs-film-slate:after{content:"";position:absolute;right:-5%;top:-120%;
+ width:45%;height:330%;background:linear-gradient(90deg,transparent,#d1f5b208,transparent);
+ transform:rotate(23deg);pointer-events:none}
+.gs-film-slate__meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;
+ font-size:.57rem;font-weight:800;letter-spacing:.19em;color:#b7d1ad}
+.gs-film-slate__story{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;
+ gap:clamp(15px,2.8vw,38px);padding:clamp(21px,3vw,38px) 0}
+.gs-film-slate__index{font-family:var(--font-display);font-weight:650;letter-spacing:-.09em;
+ font-size:clamp(4.5rem,9vw,10rem);line-height:.8;color:#a5d28d;opacity:.72}
+.gs-film-slate__story p{font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#b5d6ac}
+.gs-film-slate__story h3{font-family:var(--font-display);font-size:clamp(1.55rem,3.2vw,3.5rem);
+ font-weight:650;letter-spacing:-.045em;line-height:1.05;margin:9px 0}
+.gs-film-slate__story div>span{font-size:clamp(.75rem,1vw,.95rem);color:#c0cfc0}
+.gs-film-slate__timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.gs-film-slate__timeline span{height:3px;background:#6c886c77}
+.gs-film-slate__timeline .is-current{background:#c9f3ab}
+@media(max-width:540px){
+ .gs-film-slate{padding:18px}
+ .gs-film-slate__meta{font-size:.49rem;letter-spacing:.1em}
+ .gs-film-slate__story{gap:17px;padding:24px 0}
+ .gs-film-slate__index{font-size:4.5rem}
+ .gs-film-slate__story h3{font-size:1.65rem}
+}
