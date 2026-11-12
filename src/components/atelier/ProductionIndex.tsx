@@ -49,7 +49,7 @@ const chapters: readonly Chapter[] = [
 
 export function ProductionIndex() {
   return (
-    <section className="gs-index" aria-labelledby="gs-index-title">
+    <section id="gs-production-index" className="gs-index" aria-labelledby="gs-index-title">
       <div className="container-site">
         <header className="gs-index__intro">
           <div className="gs-index__overline">
