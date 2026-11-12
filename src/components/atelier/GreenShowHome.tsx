@@ -33,6 +33,20 @@ const departments = [
   {label:"TEHNICĂ",kicker:"03 / PUTERE",description:"Sunet, lumini, ecrane LED și efecte adaptate spațiului.",slug:"echipamente-de-sunet-si-lumini" as const,image:images.scena},
 ] as const;
 const eventSlug:readonly EventSlug[]=["nunti","botezuri","evenimente-corporate","concerte-festivaluri","petreceri-private"];
+const SCENE_ART=[
+  "/creative/v59/live-lights.webp",
+  "/creative/v59/event-moods.webp",
+  "/creative/v59/stage-lasers.webp",
+] as const;
+const EFFECTS=[
+  {tag:"01 / REFLECTOARE",name:"LUMINĂ",description:"Fascicule, contrast și culoare. Lumina schimbă întregul cadru, nu doar fundalul.",
+    src:"/creative/v59/stage-lasers.webp",service:"echipamente-de-sunet-si-lumini" as const},
+  {tag:"02 / ATMOSFERĂ",name:"FUM",description:"Volum în razele reflectoarelor. Fumul creează profunzime pentru scenă și momente speciale.",
+    src:"/creative/v59/live-lights.webp",service:"masina-fum-greu-cu-gheata-carbonica" as const},
+  {tag:"03 / MIȘCARE",name:"TRANZIȚII",description:"Treceri între atmosfere construite din lumină, textură și ritm vizual. Fără artificii care blochează navigarea.",
+    src:"/creative/v59/sonic-waves.webp",service:"echipamente-de-sunet-si-lumini" as const},
+] as const;
+
 
 function StageControls({
   scene,setScene,light,setLight,fog,setFog,power,setPower
@@ -103,6 +117,7 @@ export function GreenShowHome(){
  const [fog,setFog]=useState(true);
  const [power,setPower]=useState(65);
  const [activeDept,setActiveDept]=useState(0);
+ const [activeEffect,setActiveEffect]=useState(0);
  const [visible,setVisible]=useState(true);
  const current=SCENES[scene]!;
  const dept=departments[activeDept]!;
@@ -132,6 +147,8 @@ export function GreenShowHome(){
         fetchPriority="high" decoding="async"/>
     </div>
     <img className="gsx-hero__aurora" src="/creative/stage-aurora.svg" alt="" aria-hidden="true" width={1920} height={1080}/>
+    <img className="gsx-hero__generated" key={current.key} src={SCENE_ART[scene]}
+       alt="" aria-hidden="true" width={1120} height={630} decoding="async"/>
     <div className="gsx-hero__dark" aria-hidden="true"/>
     <div className="gsx-hero__lights" aria-hidden="true"><span/><span/><span/></div>
     <div className="gsx-hero__smoke" aria-hidden="true"><img src="/creative/velvet-smoke.svg" alt="" width={1920} height={800}/></div>
@@ -165,7 +182,10 @@ export function GreenShowHome(){
    </div>
 
    <section className="gsx-manifest" aria-labelledby="gsx-manifest-title">
-    <div className="gsx-manifest__graphic" aria-hidden="true"><img src="/creative/sonic-ribbon.svg" alt="" width={1600} height={720}/></div>
+    <div className="gsx-manifest__graphic" aria-hidden="true">
+      <img className="gsx-manifest__generated" src="/creative/v59/sonic-waves.webp" alt="" width={1120} height={630} loading="lazy"/>
+      <img className="gsx-manifest__ribbon" src="/creative/sonic-ribbon.svg" alt="" width={1600} height={720} loading="lazy"/>
+    </div>
     <div className="gsx-micro" data-gsx-reveal><span>01 / CINE SUNTEM</span><span>GREEN SOUND MUSIC · PITESTI</span></div>
     <div className="gsx-manifest__layout" data-gsx-reveal>
       <h2 id="gsx-manifest-title">CE SE VEDE<br/><em>ESTE SHOW.</em><br/>CE NU SE VEDE<br/><em>ESTE MUNCĂ.</em></h2>
@@ -198,8 +218,35 @@ export function GreenShowHome(){
      <div className="gsx-departments__all"><Link to="/servicii">TOATE SERVICIILE <ArrowUpRight aria-hidden size={20}/></Link></div>
    </section>
 
+
+   <section className="gsx-effects" aria-labelledby="gsx-effects-title">
+    <div className="gsx-micro gsx-effects__micro" data-gsx-reveal>
+      <span>03 / SHOW VISUALS</span><span>ILUSTRAȚII SCENICE GENERATE ORIGINAL</span>
+    </div>
+    <div className="gsx-effects__visual" key={activeEffect}>
+      <img src={EFFECTS[activeEffect]!.src} alt=""
+        width={1120} height={630} loading="lazy" decoding="async"/>
+      <div className="gsx-effects__veil" aria-hidden="true"/>
+      <div className="gsx-effects__light" aria-hidden="true"/>
+      <div className="gsx-effects__content">
+       <p>{EFFECTS[activeEffect]!.tag}</p>
+       <h2 id="gsx-effects-title">EFECTE CARE<br/><em>AU PREZENȚĂ.</em></h2>
+       <strong>{EFFECTS[activeEffect]!.name}</strong>
+       <span>{EFFECTS[activeEffect]!.description}</span>
+       <Link to={`/${EFFECTS[activeEffect]!.service}`}>DESCOPERĂ SERVICIUL <ArrowUpRight aria-hidden size={20}/></Link>
+      </div>
+    </div>
+    <div className="gsx-effects__tabs" role="group" aria-label="Explorează efectele scenice">
+      {EFFECTS.map((effect,i)=><button key={effect.name} type="button" onClick={()=>setActiveEffect(i)}
+        aria-pressed={activeEffect===i}>
+        <small>0{i+1}</small><strong>{effect.name}</strong><ArrowUpRight aria-hidden size={20}/>
+      </button>)}
+    </div>
+    <p className="gsx-effects__disclaimer">Vizualuri artistice generate pentru conceptul website-ului. Nu sunt fotografii din evenimente reale Green Sound Music.</p>
+   </section>
+
    <section className="gsx-events" aria-labelledby="gsx-events-title">
-    <div className="gsx-micro" data-gsx-reveal><span>03 / MOMENTE</span><span>NU EXISTĂ DOUĂ SERI IDENTICE</span></div>
+    <div className="gsx-micro" data-gsx-reveal><span>04 / MOMENTE</span><span>NU EXISTĂ DOUĂ SERI IDENTICE</span></div>
     <div className="gsx-events__head" data-gsx-reveal>
       <h2 id="gsx-events-title">FIECARE<br/><em>ARE RITMUL EI.</em></h2>
       <p>Ce pregătim se schimbă de la eveniment la eveniment. Descoperă ce se potrivește cu al tău.</p>
@@ -222,7 +269,7 @@ export function GreenShowHome(){
 
    <section className="gsx-film" aria-labelledby="gsx-film-title">
     <div className="gsx-film__heading" data-gsx-reveal>
-      <p>04 / DIN EVENIMENTELE REALE</p>
+      <p>05 / DIN EVENIMENTELE REALE</p>
       <h2 id="gsx-film-title">POȚI SĂ<br/><em>VEZI DIFERENȚA.</em></h2>
       <span>Clipurile sunt materiale publicate de Green Sound Music. Elementele scenice abstracte ale site-ului sunt ilustrații, nu fotografii de portofoliu.</span>
     </div>
