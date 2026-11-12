@@ -314,3 +314,53 @@ html[data-gs-performance="lite"] .rs-hero__beams,
   .rs-service-index__floating,
   .rs-service-index__group li>a{transition:none!important}
 }
+
+
+/* The desktop masthead is exactly one sweeping line; only mobile stacks it. */
+@media(min-width:601px){
+  .rs-hero h1.rs-hero__wordmark{
+    white-space:nowrap!important;
+    text-wrap:nowrap!important;
+    max-width:none!important;
+  }
+}
+.rs-page-intro--cinema{
+  position:relative;isolation:isolate;
+  min-height:clamp(610px,70vh,770px);
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.rs-page-intro--cinema .rs-page-intro__visual{
+  position:absolute;inset:0 0 0 34%;z-index:-2;
+  overflow:hidden;
+}
+.rs-page-intro--cinema .rs-page-intro__visual img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  object-position:55% center;
+}
+.rs-page-intro--cinema:after{
+  content:"";pointer-events:none;
+  position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,#101820 0%,#101820 30%,#101820b8 53%,#10182038 100%),
+    linear-gradient(0deg,#10182099,transparent 48%);
+}
+.rs-page-intro--cinema .container-site{
+  position:relative;z-index:2;width:100%;
+  margin-inline:auto;max-width:1300px;
+}
+.rs-page-intro--cinema h1{
+  font-size:clamp(2.7rem,4.5vw,4.65rem);
+  max-width:12ch;
+  text-shadow:0 2px 14px #10182033;
+}
+.rs-page-intro--cinema .container-site>p:last-child{
+  max-width:46ch;color:#F3F0E9;
+}
+@media(max-width:700px){
+  .rs-page-intro--cinema{min-height:690px}
+  .rs-page-intro--cinema .rs-page-intro__visual{inset:0}
+  .rs-page-intro--cinema:after{
+    background:linear-gradient(0deg,#101820ef 0%,#10182077 50%,#101820c9 100%);
+  }
+  .rs-page-intro--cinema h1{font-size:clamp(2.4rem,9vw,3.8rem)}
+}
