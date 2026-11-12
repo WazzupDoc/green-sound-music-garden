@@ -1,3 +1,11 @@
+## 2026-11-12 — V59: keyboard-only editorial photo cue
+
+- MDN keyboard accessibility: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard — interactive native links need visible keyboard focus, avoid altering tab order. Documentation only, no code copied.
+- MDN :focus-visible: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible — modality-aware focus indication; use it to prevent pointer-click focus from triggering a chapter-level photographic cue. Documentation only.
+- MDN content-visibility: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/content-visibility — considered for offscreen content but rejected until LCP/layout measurements and screenshot audit because intrinsic sizing can affect long editorial layout.
+- Experiment accepted provisionally: original CSS selector :has(.gs-index__service:focus-visible) instead of :focus-within; native link outline remains usable if :has unsupported. No new dependency/assets or script, SSR-safe, Lite and reduced-motion behavior preserved. Regression test added. Browser six-width and physical keyboard QA pending. Rollback: revert V59 selector commit.
+- Ideas rejected: adding another interactive focus overlay or JS keyboard state; duplicates native focus, raises complexity.
+
 ## 2026-11-12 — V58: layout-safe editorial hover (researched)
 
 - MDN CSS performance: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/CSS — changing padding requires layout; prefer transform for purely visual motion. Documentation only, no code copied.
