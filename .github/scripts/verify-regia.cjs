@@ -108,6 +108,7 @@ async function main() {
     assert.equal(await page.locator(".gsx-services-portal__nav button").count(),3);
     assert.equal(await page.locator(".gsx-services-portal__tile").count(),8);
     assert.equal(await page.locator(".gsx-inner-hero h1").count(),1);
+    await page.locator(".gsx-services-portal[data-hydrated=true]").waitFor({timeout:20000});
     await page.locator(".gsx-services-portal__nav button").first().click();
     assert.match(await page.locator(".gsx-services-portal__selected").innerText(),/DJ/i);
     await checkNoOverflow(page,"/servicii",1440);
