@@ -207,7 +207,7 @@ export function StageHero() {
                 </p>
               </div>
             </details>
-            <a className="crafted-hero__scroll" href="#director-brief">
+            <a className="crafted-hero__scroll" href="#gs-production-index">
               Explorează <ArrowDownRight className="size-4" aria-hidden />
             </a>
           </div>

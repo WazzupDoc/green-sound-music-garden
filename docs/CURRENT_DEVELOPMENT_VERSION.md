@@ -1,3 +1,14 @@
+# V48 — Editorial reset / Awwwards Music & Sound inspired, NO duplicated homepage widgets (draft)
+
+- Branch: `design/crafted-atmospheres-v48-editorial-reset`, stacked on V47 PR #33; earlier drafts remain unchanged.
+- Homepage now contains just four substantial moments: real musical hero → bespoke 3-chapter direct service index for all 8 genuine offerings → three real published films → one Contact CTA. Removed repeated QuickBrief / event tabs / service tabs / soundcheck / frequency tab controls / second photo strip / home FAQ / repeated form **from homepage only**. Other dedicated page routes and validated workflows remain available.
+- Hero gains an airy, transparent and smaller scene explanation, no bulky duplicate card, plus typographic restraint; music-inspired, image-led editorial programme uses authentic Green Sound first-party pictures and native accessible links.
+- V48 regression adapts six-width Chromium checks to prove zero redundant homepage widget/forms and eight real service routes; V47 deep-page Contact, ServiceMix, photos, SEO and 301 migration retained. No WebGL, autoplay, new dependencies, unauthorized external code or claims of guaranteed ranks.
+- Full problem inventory, design rationale and release gates: `docs/V48_EDITORIAL_RESET_AUDIT.md`.
+- **CI pending**: verify exact V48 head and visual screenshot artifacts before considering release. No `main` merge or public deploy.
+
+---
+
 # V47 — Contact crawler-visible SSR without JavaScript (draft)
 
 - Branch: `design/crafted-atmospheres-v47-contact-ssr-nojs`, stacked on V46 PR #32; development only, no main merge or deployment.

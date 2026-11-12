@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Clapperboard, Headphones, RadioTower } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { VideoLite } from "@/components/site/VideoLite";
-import { images, videos, type Video } from "@/data/site";
+import { videos, type Video } from "@/data/site";
 
 const cuts: { id: string; title: string; context: string; subtitle: string; video: Video }[] = [
   {
@@ -43,11 +43,11 @@ export function EditorialPortfolio() {
     <section className="director-reel section" aria-labelledby="director-reel-title" id="director-reel">
       <div className="container-site">
         <div className="crafted-section-intro">
-          <span className="crafted-index"><Clapperboard className="mr-2 inline size-4" aria-hidden /> 04 / SHOWREEL</span>
+          <span className="crafted-index"><Clapperboard className="mr-2 inline size-4" aria-hidden /> 02 / FILME REALE</span>
           <div>
-            <h2 id="director-reel-title" className="crafted-heading">Atmosfera nu se descrie. <em>Se trăiește.</em></h2>
+            <h2 id="director-reel-title" className="crafted-heading">Ai văzut serviciile. <em>Acum privește momentele.</em></h2>
             <p className="crafted-section-intro__copy">
-              Nu promisiuni în imagini stock. Filmări publicate de Green Sound Music, alese ca într-o sală de montaj.
+              Trei filmări publicate de Green Sound Music. Fără montaje inventate sau galerii de fotografii repetate.
             </p>
           </div>
         </div>
@@ -98,19 +98,6 @@ export function EditorialPortfolio() {
           </div>
         </div>
 
-        <div className="director-reel__footage" aria-label="Alte momente din evenimente Green Sound Music">
-          {[
-            { image: images.ursitoare, caption: "BOTEZURI / MOMENTE CU POVESTE" },
-            { image: images.hostess, caption: "EVENIMENTE / PRIMIREA INVITAȚILOR" },
-            { image: images.copii, caption: "ANIMAȚIE / PETRECERI PENTRU COPII" },
-          ].map((item, index) => (
-            <figure key={item.image.src} className="director-reel__still">
-              <img src={item.image.src} alt={item.image.alt} width={item.image.w}
-                height={item.image.h} loading="lazy" decoding="async" />
-              <figcaption><span>0{index + 1}</span>{item.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );
