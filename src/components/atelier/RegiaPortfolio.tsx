@@ -114,6 +114,7 @@ const videoList: Video[] = Object.values(videos);
 
 export function RegiaFilmArchive({film}: {film?:string}) {
   const [category,setCategory]=useState<string>("");
+  useEffect(()=>{ if(film) setCategory(""); },[film]);
   const selectedVideos=videoList.filter(v=>!category||v.tags.includes(category));
   const chosen=selectedVideos.find(v=>v.id===film)??selectedVideos[0];
   return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
