@@ -17,7 +17,7 @@ export const Route=createFileRoute("/servicii")({
 });
 function Services(){
  return <>
-  <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
+  <PageHero kind="index" tone="services" eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
     lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
     image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
   <section className="rs-service-index" aria-labelledby="rs-services-title">
