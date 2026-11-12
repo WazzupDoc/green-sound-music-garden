@@ -1,3 +1,13 @@
+# V55 — Eight-track editorial running order (draft)
+
+- Branch: `design/v55-editorial-service-numbering`, stacked on V54 PR #42. Homepage retains hero, 3 asymmetric editorial chapters / 8 direct service links, 3 real films and a single CTA. No new homepage widgets.
+- Implemented CSS-only sequential 01–08 running-order numbering on the existing eight links, preserving native text/focus and reduced-motion/Lite. No added JavaScript, packages, image downloads or external service.
+- Repaired a fragile first-party image-path assertion in V54 integrity test; tests and six-width Chromium screenshots remain **unverified** until exact-head CI completes.
+- Created root `RESEARCH.md`, `ASSETS.md` and `AGENT_STATE.md` with dated official sources, license checks, accepted/rejected experiment, provenance and backlog.
+- PR #19 still reports mergeable=false; V54 PR #42 mergeable=true at last query but exact-head workflow runs absent. No main merge, backup tag or public deployment.
+
+---
+
 # V54 — Editorial service integrity (draft)
 
 - Branch: `design/v54-editorial-service-integrity`, stacked on V53 PR #41; no main merge or public deployment.
