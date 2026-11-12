@@ -1,7 +1,11 @@
 import { SITE_URL, business, images, type ImageRef } from "@/data/site";
 
 /** Canonical route URL shared by metadata and Schema.org; avoid duplicate trailing slashes. */
-export const canonicalUrl = (path: string) => `${SITE_URL}${path === "/" ? "/" : `${path.replace(/\/+$/, "")}/`}`;
+export const canonicalUrl = (path: string) => {
+  // Canonical and structured-data URLs identify pages, never tracking/query states.
+  const pathname = path.split(/[?#]/, 1)[0] || "/";
+  return `${SITE_URL}${pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`}`;
+};
 
 type HeadInput = {
   title: string;

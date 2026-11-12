@@ -95,6 +95,10 @@ describe("canonical consistency in structured data", () => {
     expect(canonicalUrl("/contact")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/contact/")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/contact///")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/contact/?utm_source=instagram")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/contact/#oferta")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/?ref=event")).toBe(SITE_URL + "/");
+    expect(canonicalUrl("/contact/?date=2026-12-01#form")).toBe(SITE_URL + "/contact/");
   });
 
   it("keeps service schema URL identical to its canonical head URL", () => {
