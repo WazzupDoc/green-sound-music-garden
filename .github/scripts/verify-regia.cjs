@@ -111,6 +111,10 @@ async function main() {
     await page.locator(".gsx-services-portal[data-hydrated=true]").waitFor({timeout:20000});
     await page.locator(".gsx-services-portal__nav button").first().click();
     assert.match(await page.locator(".gsx-services-portal__selected").innerText(),/DJ/i);
+    await page.locator(".gsx-services-portal__feature").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/services-1440.png`,fullPage:true,animations:"disabled"});
     await checkNoOverflow(page,"/servicii",1440);
     const services=["dj-mc","trupa","echipamente-de-sunet-si-lumini",
       "masina-fum-greu-cu-gheata-carbonica","studio-inregistrari","hostess","ursitoare-botez","start-veselia"];
@@ -130,6 +134,12 @@ async function main() {
     }
     await page.goto(base+"/evenimente/",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-events-index__row").count(),5);
+    assert.equal(await page.locator(".gsx-event-worlds__card").count(),5);
+    await page.locator(".gsx-event-worlds__rail").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/events-1440.png`,fullPage:true,animations:"disabled"});
+    await checkNoOverflow(page,"/evenimente",1440);
     const events=["nunti","botezuri","evenimente-corporate","concerte-festivaluri","petreceri-private"];
     for(const slug of events){
       await page.goto(base+"/evenimente/"+slug,{waitUntil:"domcontentloaded"});
@@ -138,6 +148,9 @@ async function main() {
     }
     await page.goto(base+"/despre-noi",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-about-copy").count(),1);
+    await page.locator(".rs-about-copy").scrollIntoViewIfNeeded();
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/about-1440.png`,fullPage:true,animations:"disabled"});
     await page.goto(base+"/confidentialitate",{waitUntil:"domcontentloaded"});
     assert.match(await page.locator("main").innerText(),/DE COMPLETAT DE PROPRIETAR/);
     assert.equal(await page.locator("main main").count(),0);
