@@ -108,7 +108,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <span className="quote-preview__step">PASUL 02 / 02</span>
         </div>
         <h3 id="quote-preview-title" className="quote-preview__title">
-          Evenimentul începe <em>cu un mesaj.</em>
+          Verifică mesajul înainte de trimitere.
         </h3>
         <p className="quote-preview__intro">
           Verifică detaliile și alege unde vrei să le trimiți. <strong>Nimic nu a fost transmis încă.</strong>
@@ -116,8 +116,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
         <div className="quote-preview__ticket" aria-label="Rezumatul cererii tale">
           <div className="quote-preview__ticket-top">
-            <span>YOUR EVENT / GREEN SOUND</span>
-            <span>PREVIEW ONLY</span>
+            <span>EVENIMENTUL TĂU / GREEN SOUND</span>
+            <span>PREVIZUALIZARE</span>
           </div>
           <strong className="quote-preview__event">{prepared.eventType}</strong>
           <div className="quote-preview__facts">
@@ -194,9 +194,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       <div className="gs-quote__intro md:col-span-2">
         <div className="gs-quote__stephead">
           <span>PASUL 01 / 02</span>
-          <span>GREEN SOUND / EVENT BRIEF</span>
+          <span>GREEN SOUND / DETALII EVENIMENT</span>
         </div>
-        <h3>Construim oferta <em>pe ritmul tău.</em></h3>
+        <h3>Pregătește cererea pentru evenimentul tău.</h3>
         <p>Spune-ne câteva detalii despre eveniment. Următorul pas îți arată mesajul înainte de a-l trimite.</p>
       </div>
       {Object.keys(errors).some(key => key !== "website") && (
@@ -352,7 +352,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <ArrowUpRight className="size-4" aria-hidden />
         </Button>
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Următorul pas îți arată mesajul complet și îți permite să alegi WhatsApp, email sau copierea textului.
+          Următorul pas îți arată mesajul complet. Îl trimiți tu prin WhatsApp sau email, dacă dorești.
           Nu trimitem nimic automat.
         </p>
       </div>
