@@ -57,6 +57,25 @@ export function EditorialPortfolio() {
               <span><span className="director-reel__record" aria-hidden /> GREEN SOUND / ARCHIVE</span>
               <span>FILM 0{selected + 1} / 03</span>
             </div>
+            <div className="gs-film-slate" aria-live="polite" aria-atomic="true">
+              <div className="gs-film-slate__meta">
+                <span>PRODUCTION FILE / 0{selected + 1}</span>
+                <span>REAL GREEN SOUND FOOTAGE</span>
+              </div>
+              <div className="gs-film-slate__story">
+                <span className="gs-film-slate__index" aria-hidden="true">0{selected + 1}</span>
+                <div>
+                  <p>{active.context}</p>
+                  <h3>{active.title}</h3>
+                  <span>{active.subtitle}</span>
+                </div>
+              </div>
+              <div className="gs-film-slate__timeline" aria-hidden="true">
+                {cuts.map((cut, index) => (
+                  <span key={cut.id} className={index === selected ? "is-current" : ""} />
+                ))}
+              </div>
+            </div>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div key={active.id}
                 className="director-reel__video"
@@ -76,7 +95,8 @@ export function EditorialPortfolio() {
             <span className="crafted-index">Alege un capitol</span>
             {cuts.map((cut, index) => (
               <button key={cut.id} type="button" className="director-reel__choice"
-                aria-pressed={selected === index} onClick={() => setSelected(index)}>
+                aria-pressed={selected === index} aria-label={`Film 0${index + 1}: ${cut.title} — ${cut.subtitle}`}
+                onClick={() => setSelected(index)}>
                 <span className="director-reel__choice-no">0{index + 1}</span>
                 <span className="director-reel__choice-body">
                   <span className="director-reel__choice-overline">{cut.context}</span>
