@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { SITE_URL, business, events, images, services } from "@/data/site";
-import { breadcrumbLd, canonicalUrl, localBusinessLd, pageHead, serializeJsonLd, serviceLd } from "./seo";
+import { breadcrumbLd, canonicalUrl, localBusinessLd, pageHead, serializeJsonLd, serviceLd, webSiteLd, webPageLd } from "./seo";
 
 /** Canonical business pages only; no query variants, invented city pages or 404s. */
 const editorialPaths = [
@@ -132,5 +132,45 @@ describe("business contact single source of truth", () => {
     expect(schema.email).toBe(business.email);
     expect(schema.name).toBe(business.name);
     expect(schema.address.addressLocality).toBe(business.address.city);
+  });
+});
+
+describe("V61 factual local SEO and AI-discovery semantics", () => {
+  it("links WebSite, business and canonical WebPage without invented entities", () => {
+    const website = webSiteLd();
+    const local = localBusinessLd();
+    const page = webPageLd({ title:"Servicii Green Sound Music", description:"Servicii pentru evenimente", path:"/servicii", image:images.scena });
+    expect(website["@id"]).toBe(`${SITE_URL}/#website`);
+    expect(website.publisher["@id"]).toBe(local["@id"]);
+    expect(page.isPartOf["@id"]).toBe(website["@id"]);
+    expect(page.about["@id"]).toBe(local["@id"]);
+    expect(page.url).toBe(canonicalUrl("/servicii"));
+    expect(page.primaryImageOfPage.url).toBe(SITE_URL + images.scena.src);
+    expect(page.inLanguage).toBe("ro-RO");
+  });
+
+  it("advertises all eight ACTUAL services with stable canonical IDs and no fake prices or ratings", () => {
+    const local=localBusinessLd();
+    const items=local.hasOfferCatalog.itemListElement;
+    expect(items).toHaveLength(services.length);
+    expect(items.map(entry=>entry.item.name)).toEqual(services.map(s=>s.name));
+    expect(items.every(entry=>entry.item.provider["@id"]===local["@id"])).toBe(true);
+    expect(items.map(entry=>entry.item.url)).toEqual(services.map(s=>canonicalUrl("/"+s.slug)));
+    const json=JSON.stringify(local);
+    expect(json).not.toContain("aggregateRating");
+    expect(json).not.toContain("priceRange");
+    expect(json).not.toContain("reviewCount");
+  });
+
+  it("emits real page context and preserves preview noindex + one canonical", () => {
+    const head=pageHead({title:"Contact Green Sound Music",description:"Trimite-ne data evenimentului",path:"/contact"});
+    const schemas=head.scripts.map(node=>JSON.parse(node.children));
+    expect(schemas.filter(node=>node["@type"]==="WebPage")).toHaveLength(1);
+    expect(schemas[0]?.url).toBe(canonicalUrl("/contact"));
+    expect(head.links).toEqual([{ rel:"canonical", href:canonicalUrl("/contact") }]);
+    // Branch previews must never be accidentally indexed as the live business site.
+    if (import.meta.env["VITE_SITE_ENV"] !== "production") {
+      expect(head.meta.some(item=>"name" in item && item.name==="robots" && item.content==="noindex, follow")).toBe(true);
+    }
   });
 });
