@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { events, getService, images, videos, type EventSlug } from "@/data/site";
 import { BeamPhoto } from "@/components/site/BeamPhoto";
@@ -15,11 +15,12 @@ const films = [
 ];
 
 export function RegiaHome() {
+  const hydrated = useHydrated();
   const [selected, setSelected] = useState<EventSlug>("nunti");
   const event = events.find(item => item.slug === selected)!;
   return (
     <>
-      <section className="rs-hero" aria-labelledby="rs-hero-title">
+      <section className="rs-hero" aria-labelledby="rs-hero-title" data-hydrated={hydrated ? "true" : "false"}>
         <BeamPhoto image={images.concert} priority decorative className="rs-hero__photo" />
         <div className="rs-hero__veil" aria-hidden />
         <div className="container-site rs-hero__inside">
