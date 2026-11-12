@@ -23,9 +23,21 @@ export const Route=createFileRoute("/portofoliu")({
 function Portfolio(){
   const {film,photo}=Route.useSearch();
   return <>
-    <section className="rs-page-intro" aria-labelledby="rs-portfolio-title">
-      <div className="container-site"><p>Portofoliu</p><h1 id="rs-portfolio-title">Nu prezentări. Evenimentele, așa cum au fost.</h1>
-      <p>Fotografii și filmări din arhiva Green Sound Music. Imaginile și videoclipurile sunt cele ale proiectului, nu fotografii de catalog.</p></div>
+    <section className="gsx-portfolio-intro" aria-labelledby="rs-portfolio-title">
+      <div className="gsx-portfolio-intro__image">
+        <img src={images.concert.src} alt={images.concert.alt}
+          width={images.concert.w} height={images.concert.h}
+          fetchPriority="high" decoding="async"/>
+      </div>
+      <div className="gsx-portfolio-intro__graphic" aria-hidden="true">
+        <img src="/creative/sonic-ribbon.svg" alt="" width={1600} height={720}/>
+      </div>
+      <div className="container-site gsx-portfolio-intro__copy">
+        <span>GREEN SOUND / PORTOFOLIU REAL</span>
+        <h1 id="rs-portfolio-title">Ce se întâmplă când se aprind luminile.</h1>
+        <p>Cadre autentice din evenimente, oameni și filmări ale proiectului. Galeria de mai jos este reală; luminile abstracte sunt doar un element grafic.</p>
+        <a href="#portfolio-photos">Intră în galerie ↓</a>
+      </div>
     </section>
     <RegiaPhotoRail activePhoto={photo} />
     <RegiaFilmArchive film={film} />
