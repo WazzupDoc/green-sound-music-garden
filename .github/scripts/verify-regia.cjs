@@ -61,6 +61,7 @@ async function main() {
     await page.screenshot({path:`${folder}/portfolio-1440.png`,fullPage:true,animations:"disabled"});
     await page.locator(".rs-gallery__frame").first().click();
     await page.waitForURL(url=>url.searchParams.has("photo"));
+    await page.locator(".rs-photo-dialog__media img").waitFor({state:"visible",timeout:10000});
     assert(await page.locator(".rs-photo-dialog__media img").isVisible(),"Deep link photo lightbox");
     const before=new URL(page.url()).searchParams.get("photo");
     await page.keyboard.press("ArrowRight");
