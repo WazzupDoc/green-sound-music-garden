@@ -301,3 +301,25 @@
  .gsx-backstage__photo--three{inset:65% 0 0 0}
  .gsx-backstage__seal{right:4%;top:3%;font-size:clamp(2rem,8vw,3.4rem)}
 }
+
+
+/* Measured by visual review: pale quote surface had washed-out copy because
+   old dark-theme Tailwind foreground tokens leaked into the light section.
+   Scope only to copy pane, do not recolor the dark functional form. */
+.rs-quote-section > .container-site > div:first-child,
+.rs-quote-section > .container-site > div:first-child :is(h2,p,dt,dd,a,span){
+  color:#163525!important;
+}
+.rs-quote-section > .container-site > div:first-child .eyebrow{
+  color:#1E6843!important
+}
+.rs-quote-section > .container-site > div:first-child .lead{
+  color:#385743!important;opacity:1!important
+}
+.rs-quote-section > .container-site > div:first-child dt{color:#355342!important}
+.rs-quote-section > .container-site > div:first-child a{
+  text-decoration-color:#227F51!important
+}
+/* On cinematic labels, use light over real photos, never green-on-green. */
+.gsx-event-worlds__content>span{color:#F1FFDA!important;
+ text-shadow:0 1px 5px #04180b}
