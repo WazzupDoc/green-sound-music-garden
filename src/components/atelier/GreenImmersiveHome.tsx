@@ -1,7 +1,7 @@
 import { useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowDownRight, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Disc3, Play, SlidersHorizontal, Sparkles } from "lucide-react";
-import { images, videos, events, business, getService, type EventSlug } from "@/data/site";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Play, SlidersHorizontal, Sparkles } from "lucide-react";
+import { images, videos, events, business, type EventSlug } from "@/data/site";
 import { StageLightEngine } from "@/components/site/StageLightEngine";
 import { VideoLite } from "@/components/site/VideoLite";
 
