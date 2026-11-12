@@ -39,6 +39,10 @@ async function main() {
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
       await page.getByRole("button",{name:"Botezuri",exact:true}).click();
+      await page.waitForFunction(() =>
+        document.querySelector(".rs-programme__timeline")?.textContent?.includes("Ursitoarele"),
+        null, {timeout:10000});
+      assert.equal(await page.getByRole("button",{name:"Botezuri",exact:true}).getAttribute("aria-pressed"),"true");
       assert.match(await page.locator(".rs-programme__timeline").innerText(),/Ursitoarele/i);
       await checkNoOverflow(page,"/ selector",width);
       assert.deepEqual(errors,[],`Hydration/browser error ${width}px`);
