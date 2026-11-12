@@ -411,3 +411,12 @@ footer.grain>div:last-child{border-color:#B4E6B159!important}
 @media(max-width:950px){.v60-footer__grand{display:block}.v60-footer__cta{margin-top:45px}.v60-footer__columns{grid-template-columns:repeat(2,minmax(0,1fr));gap:50px 30px}}
 @media(max-width:600px){.v60-footer__main{padding:65px 19px 25px}.v60-footer__kicker{font-size:.64rem;line-height:1.4}.v60-footer__kicker span:last-child{text-align:right}.v60-footer__grand{padding:90px 0}.v60-footer__grand h2{font-size:clamp(3.1rem,10vw,5.6rem)!important}.v60-footer__cta{width:100%;min-height:65px;margin-top:35px}.v60-footer__columns{gap:38px 20px;padding-block:45px 65px}.v60-footer__columns p{font-size:.69rem}.v60-footer__columns a{font-size:.92rem}.v60-footer__address address{font-size:.9rem}.v60-footer__lighting{padding-block:14px}.v60-footer__bottom{align-items:start;font-size:.67rem;line-height:1.5}.v60-footer__bottom strong{width:100%}}
 @media(prefers-reduced-motion:reduce){.v60-footer__cta{transition:none!important}}
+
+
+/* QA finding V60 #01: the editorial headline crossed a dark photograph.
+ * Difference blending adapts glyph contrast to BOTH the light paper and
+ * the dark photograph without adding a generic opaque text box. */
+@media(min-width:851px){
+ .v60-hero__message h1{color:#FFFFFF!important;mix-blend-mode:difference}
+ .v60-hero__message h1 span,.v60-hero__message h1 em{color:#FFFFFF!important}
+}
