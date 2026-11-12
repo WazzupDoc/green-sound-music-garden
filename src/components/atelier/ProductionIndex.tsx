@@ -49,7 +49,7 @@ export const chapters: readonly Chapter[] = [
 
 /** Resolve the editorial programme once, not on every render. Missing catalogue
  * entries are a build-time content regression, never silently omitted links. */
-export const editorialChapters = editorialChapters.map((chapter) => ({
+export const editorialChapters = chapters.map((chapter) => ({
   ...chapter,
   linkedServices: chapter.serviceSlugs.map((slug) => {
     const service = services.find((item) => item.slug === slug);
@@ -77,7 +77,7 @@ export function ProductionIndex() {
         </header>
 
         <div className="gs-index__chapters">
-          {chapters.map((chapter) => (
+          {editorialChapters.map((chapter) => (
             <article key={chapter.index} className="gs-index__chapter" data-chapter={chapter.art}>
               <div className="gs-index__photo">
                 <img src={chapter.image.src} alt={chapter.image.alt} width={chapter.image.w}
