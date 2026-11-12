@@ -28,3 +28,18 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+
+## Green Sound Music — creative quality gates (V60)
+
+For every visual PR, use the public MIT anti-ai-slop purpose/convergence tests as inspiration and record outcomes in docs/DESIGN_AUDIT_V60.md. Do NOT treat a successful TypeScript compile as proof of premium art direction.
+
+- Reject repeated standard hero + 3 identical service cards + footer CTA patterns.
+- Design distinct experiences for home, services, events, individual details, portfolio and contact. Keep each page's real function intact.
+- Real photographs and film are evidence. Generated art belongs in clearly conceptual atmospheric layers only.
+- Never invent commercial facts, equipment models, testimonials or event clients.
+- Motion must correspond to stage lighting, physical camera movement, sound or atmosphere; cap continuous work, pause offscreen, honor reduced motion, prohibit auto-play audio.
+- Test screenshots at 360, 390 and 1440 px before asking for visual approval. Also run CI for 430, 768 and 1024 px, keyboard focus and no horizontal overflow.
+- Do not install a library unless the problem, bundle impact, license and no-dependency alternative are recorded in the research log.
+- Do not scrape TikTok or other social platforms; request authorized exports or use official embeds.
+- Never merge into main or publish to greensoundmusic.com without the owner's explicit approval.
