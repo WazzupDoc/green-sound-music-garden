@@ -1,3 +1,7 @@
+## V64 — 2026-11-12
+
+No assets, libraries, fonts, icon packs, sounds or photos added. Uses existing first-party imagery and native HTML semantics only. No new license obligations.
+
 ## V63 — 2026-11-12
 
 No new assets, fonts, images, icons, external embeds or dependencies. Existing first-party Green Sound photography remains unchanged. No licensing assumptions added.
