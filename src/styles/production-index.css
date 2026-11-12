@@ -38,12 +38,12 @@
 .gs-index__chapter[data-chapter=stage] .gs-index__photo img{object-position:center 26%}
 .gs-index__chapter[data-chapter=people] .gs-index__photo img{object-position:center 34%}
 .gs-index__chapter:hover .gs-index__photo img{transform:scale(1.06);filter:saturate(1) contrast(1.06)}
-/* Keyboard users get the same photographic chapter cue as pointer users.
- * No additional focus target, script, or persistent animation. */
-.gs-index__chapter:focus-within .gs-index__photo img{filter:saturate(1) contrast(1.06)}
-.gs-index__chapter:focus-within .gs-index__photo{outline:2px solid #286d3a;outline-offset:3px}
+/* Only keyboard-visible focus highlights the chapter; pointer clicks do not.
+ * The native link outline remains the fallback where :has() is unsupported. */
+.gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo img{filter:saturate(1) contrast(1.06)}
+.gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo{outline:2px solid #286d3a;outline-offset:3px}
 @media (prefers-reduced-motion:no-preference){
- html:not([data-gs-performance=lite]) .gs-index__chapter:focus-within .gs-index__photo img{transform:scale(1.025)}
+ html:not([data-gs-performance=lite]) .gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo img{transform:scale(1.025)}
 }
 .gs-index__photo-mark{position:absolute;z-index:2;left:19px;top:18px;color:#f2ffe9;font-size:.62rem;
  font-weight:800;letter-spacing:.17em}
