@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useHydrated } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { services, images, type ServiceSlug } from "@/data/site";
@@ -17,6 +17,7 @@ export const Route=createFileRoute("/servicii")({
  component:Services,
 });
 function Services(){
+  const hydrated = useHydrated();
   const [selected,setSelected]=useState<ServiceSlug>("echipamente-de-sunet-si-lumini");
   const active = services.find(item=>item.slug===selected)!;
   return <>
@@ -24,7 +25,7 @@ function Services(){
       title="Muzica se aude. Producția se simte."
       lead="Opt servicii reale, o singură echipă. De la DJ și trupă live la sunet, lumină, fum și momente pentru invitați."
       image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
-    <section className="gsx-services-portal" aria-labelledby="gsx-services-title">
+    <section className="gsx-services-portal" aria-labelledby="gsx-services-title" data-hydrated={hydrated ? "true" : "false"}>
       <div className="container-site">
         <div className="gsx-services-portal__intro">
           <h2 id="gsx-services-title">Ce aducem<br/>la eveniment.</h2>
