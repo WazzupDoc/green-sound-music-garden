@@ -1,3 +1,13 @@
+# V59 — Keyboard-only editorial photo focus (draft)
+
+- Branch: `design/v59-editorial-keyboard-only-focus`, stacked on V58 PR #48. Preserve V48 clean homepage and 3-chapter/8-service programme.
+- Change: photographic chapter cue now uses `:has(.gs-index__service:focus-visible)` instead of `:focus-within` to avoid applying keyboard-specific visual emphasis after pointer clicks. Native link focus outline remains, and Lite/reduced-motion guards stay intact.
+- New static Vitest regression verifies selector and motion gates; TypeScript, SSR, Chromium six widths and exact-head GitHub Actions not yet confirmed.
+- Research recorded in RESEARCH.md; no dependencies, external media, extra homepage widgets or production merge.
+- Backlog: inspect browser keyboard and pointer parity, verify CI, Contact 2-service flow, main deploy trigger and rollback permissions. PR #19 remains conflicted.
+
+---
+
 # V58 — Editorial hover motion without layout shift (draft)
 
 - Branch: `design/v58-editorial-motion-layout-safety`, stacked on V56 PR #45, not V57 POSTER PR #46 (separate direction requiring owner visual approval).
