@@ -6,8 +6,8 @@ const origin = "http://127.0.0.1:4175";
 (async () => {
   const browser = await chromium.launch({ headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage"] });
   try {
-    for (const width of [390, 1440]) {
-      const page = await browser.newPage({ viewport: { width, height: 900 } });
+    for (const width of [360, 390, 430, 768, 1440, 1920]) {
+      const page = await browser.newPage({ viewport: { width, height: width <= 430 ? 780 : 900 } });
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       page.on("console", message => {
@@ -35,9 +35,12 @@ const origin = "http://127.0.0.1:4175";
         document.querySelector("#q-date")?.value === "2027-07-18" &&
         document.querySelector("#q-location")?.value === "Pitești",
         null, { timeout: 30000 });
-      assert.deepEqual(errors, [], "Reload must preserve prefill without hydration errors");
+      assert.equal(await page.locator('form[aria-label="Cerere de ofertă"]').count(), 1, "Reload must mount exactly one form at " + width + "px");
+      assert.equal(await page.locator('head link[rel="canonical"]').getAttribute("href"), "https://greensoundmusic.com/contact/", "Reload canonical at " + width + "px");
+      assert.equal(await page.locator('head meta[property="og:url"]').getAttribute("content"), "https://greensoundmusic.com/contact/", "Reload OG URL at " + width + "px");
+      assert.deepEqual(errors, [], "Reload must preserve prefill without hydration errors at " + width + "px");
       await page.close();
     }
-    console.log("PASS V45: Contact direct navigation/reload, prefill, canonical/OG and hydration at 390/1440");
+    console.log("PASS V46: Contact direct navigation/reload, prefill, canonical/OG and hydration at 360/390/430/768/1440/1920");
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
