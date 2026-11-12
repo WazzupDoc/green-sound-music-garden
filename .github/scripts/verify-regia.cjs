@@ -23,38 +23,39 @@ async function main() {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
-      await page.locator(".rs-hero[data-hydrated=\"true\"]").waitFor({timeout:30000});
+      await page.locator(".gp[data-gp-hydrated=\"true\"]").waitFor({timeout:30000});
       await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
-      assert.match(await page.locator(".rs-hero h1").innerText(), /GREEN\s+SOUND/i);
-      assert.equal(await page.locator(".rs-hero__beams > span").count(),2);
-      assert.equal(await page.locator(".rs-hero .gs-global-light__choice").count(),4);
-      assert.equal(await page.locator(".rs-programme__choice").count(),5);
-      assert.equal(await page.locator("main form").count(),0);
-      assert.equal(await page.locator(".gs-index__chapter").count(),0);
-      assert.equal(await page.locator(".rs-films__item").count(),3);
-      assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"),/noindex/);
-      const heroPhoto = await page.locator(".rs-hero__photo img").evaluate(img=>({loaded:img.complete&&img.naturalWidth>0,src:img.getAttribute("src")}));
-      assert(heroPhoto.loaded && heroPhoto.src.includes("/media/greensound/"),"Real hero media failed to load");
+      assert.match(await page.locator(".gp-opening h1").innerText(), /DĂM[\s\S]+TONUL[\s\S]+SERII/i);
+      assert.equal(await page.locator(".gp-opening__frame").count(), 3);
+      assert.equal(await page.locator(".gp-services__choice").count(), 6);
+      assert.equal(await page.locator(".gp-event__tabs button").count(), 5);
+      assert.equal(await page.locator(".gp-film__item").count(), 3);
+      assert.equal(await page.locator("main form").count(), 0);
+      assert.equal(await page.locator(".rs-hero").count(), 0, "V53 layout must not be rendered");
+      assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"), /noindex/);
+      const heroPhoto = await page.locator(".gp-opening__frame--one img").evaluate(img => ({
+        loaded:img.complete && img.naturalWidth > 0, src:img.getAttribute("src")
+      }));
+      assert(heroPhoto.loaded && heroPhoto.src.includes("/media/greensound/"), "Authentic hero photo missing");
       await checkNoOverflow(page,"/",width);
       if ([390,1440].includes(width)) {
         // A screenshot tool does not scroll through a page; real browsers do.
         // Trigger native lazy loading/reveal before taking the full-page frame.
-        for (const selector of [".rs-programme__image",".rs-backstage__photo",".rs-films__rail"]) {
+        for (const selector of [".gp-services__feature", ".gp-event__stage", ".gp-film__grid"]) {
           await page.locator(selector).first().scrollIntoViewIfNeeded();
-          await page.waitForTimeout(350);
+          await page.waitForTimeout(300);
         }
         await page.evaluate(() => window.scrollTo(0, 0));
         await page.waitForTimeout(220);
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
-      await page.getByRole("button",{name:"Botezuri",exact:true}).click();
-      await page.waitForFunction(() =>
-        document.querySelector(".rs-programme__timeline")?.textContent?.includes("Ursitoarele"),
-        null, {timeout:10000});
-      assert.equal(await page.getByRole("button",{name:"Botezuri",exact:true}).getAttribute("aria-pressed"),"true");
-      assert.match(await page.locator(".rs-programme__timeline").innerText(),/Ursitoarele/i);
-      await checkNoOverflow(page,"/ selector",width);
+      await page.locator(".gp-event__tabs button").filter({hasText:"Botezuri"}).click();
+      assert.equal(await page.locator(".gp-event__tabs button[aria-pressed='true']").count(), 1);
+      assert.match(await page.locator(".gp-event__stage-text h3").innerText(), /Botezuri/i);
+      await page.locator(".gp-services__list").getByRole("button",{name:/DJ & MC/}).click();
+      assert.match(await page.locator(".gp-services__feature-copy").innerText(), /DJ & MC/i);
+      await checkNoOverflow(page,"/ interactive",width);
       assert.deepEqual(errors,[],`Hydration/browser error ${width}px`);
       await page.close();
     }
@@ -139,7 +140,7 @@ async function main() {
     assert.deepEqual(errors,[],"Browser errors in page flow");
     // Keep the old CI artifact path populated while changing the UI assertions.
     fs.cpSync(folder, "screenshots/crafted-atmospheres", {recursive:true});
-    console.log("PASS Regia Serii: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
+    console.log("PASS V57 Poster: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
     await page.close();
   } finally {await browser.close();}
 }

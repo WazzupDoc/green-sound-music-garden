@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { RegiaHome } from "@/components/atelier/RegiaHome";
+import { GreenPosterHome } from "@/components/atelier/GreenPosterHome";
 import { localBusinessLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -9,5 +9,5 @@ export const Route = createFileRoute("/")({
     path: "/",
     jsonLd: [localBusinessLd()],
   }),
-  component: RegiaHome,
+  component: GreenPosterHome,
 });
