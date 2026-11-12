@@ -1,3 +1,12 @@
+# V60 — Editorial CTA layout-stable hover (draft)
+
+- Branch `design/v60-editorial-cta-layout-stability` stacked on V59 editorial PR #49, not parallel cinematic homepage PR #50.
+- Replaced layout-affecting intro link hover gap with icon-only transform (4px), gated by normal-motion and non-Lite; native link focus outline preserved. No new widgets, dependencies or assets.
+- Added static Vitest regression; exact-head TypeScript, SSR, Vitest, six-width Chromium, screenshot audit and GitHub Actions not yet verified. No claim of measured CWV gains.
+- Research and experiment rollback recorded in RESEARCH.md. PR #19 still mergeable=false. Main untouched; release requires exact-head CI, deployment trigger audit, backup tag and testable rollback.
+
+---
+
 # V59 — Keyboard-only editorial photo focus (draft)
 
 - Branch: `design/v59-editorial-keyboard-only-focus`, stacked on V58 PR #48. Preserve V48 clean homepage and 3-chapter/8-service programme.
