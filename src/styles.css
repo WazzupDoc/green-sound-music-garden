@@ -27,6 +27,7 @@
 @import "./styles/event-journal.css";
 @import "./styles/performance-adaptive.css";
 @import "./styles/regia-serii-foundation.css";
+@import "./styles/regia-serii-site.css";
 
 @custom-variant dark (&:is(.dark *));
 
