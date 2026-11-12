@@ -5,6 +5,7 @@ import { business, services as serviceCatalogue } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import { eventTypeOptions } from "@/lib/quote";
+import { isValidBriefDate } from "@/lib/brief-date";
 
 const allowedTypes: readonly string[] = eventTypeOptions;
 type EventOption = (typeof eventTypeOptions)[number];
@@ -33,7 +34,7 @@ function validateBrief(search: Record<string, unknown>): BriefQuery {
   if (typeof eventValue === "string" && allowedTypes.includes(eventValue)) {
     brief.event = eventValue as EventOption;
   }
-  if (typeof dateValue === "string" && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
+  if (isValidBriefDate(dateValue)) {
     brief.date = dateValue;
   }
   if (typeof locationValue === "string" && locationValue.trim()) {
