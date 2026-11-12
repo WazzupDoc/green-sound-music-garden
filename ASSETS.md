@@ -1,3 +1,5 @@
+Updated V58 2026-11-12: No new assets, fonts, icons, video, images, sounds or packages. Existing first-party media and ISC-licensed Lucide remain unchanged. CSS-only hover improvement has no third-party license obligations.
+
 Updated V56 2026-11-12: No new image, font, sound, icon, library or license introduced. Existing first-party images and existing Lucide navigation arrows unchanged. CSS focus cue is original project styling.
 
 # ASSETS — Green Sound Music

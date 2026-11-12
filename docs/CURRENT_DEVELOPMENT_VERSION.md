@@ -1,3 +1,12 @@
+# V58 — Editorial hover motion without layout shift (draft)
+
+- Branch: `design/v58-editorial-motion-layout-safety`, stacked on V56 PR #45, not V57 POSTER PR #46 (separate direction requiring owner visual approval).
+- Replaced `padding-left` hover animation with a 3px transform of the existing label, gated by `prefers-reduced-motion:no-preference` and non-Lite; static color and native focus remain. Added CSS regression test. No new homepage section, JS, asset or dependency.
+- Exact-head TypeScript, SSR, Vitest, Chromium six widths, Save-Data/Lite, reduced motion and screenshot review pending. No main merge or public deployment.
+- PR #19 still mergeable=false. Next: inspect CI and visual regression, Contact prefill and browser audits, deployment triggers and rollback permissions.
+
+---
+
 # V56 — Keyboard editorial focus parity (draft)
 
 - Branch `design/v56-editorial-keyboard-focus`, stacked on V55 PR #43, separate from parallel live-stage PR #44. Adds CSS-only chapter photo cue on native keyboard focus, respects prefers-reduced-motion and Lite; no homepage blocks or packages added.
