@@ -1,3 +1,9 @@
+## 2026-11-12 — V67 draft
+
+- Branch design/v67-catalogue-duplicate-source-guard stacked on V66 PR #60. Fixed integrity blind spot: duplicated slugs in source catalogue were hidden by Set before parity validation. Added source guard and regression test. No visible homepage changes or packages.
+- V66 exact-head PR workflow query returned zero runs; no claim of passing CI, TypeScript, SSR or browser QA for V67. PR #19 conflict status requires independent mergeability check. Main untouched.
+- Next: execute CI exact-head, six-width Chromium, Contact two-service handoff, SSR/sitemap/404 and production deployment/rollback audit. Scores unmeasured.
+
 ## 2026-11-12 — V66 draft
 
 Branch `design/v66-editorial-catalogue-completeness` stacked on V65. Added catalogue parity fail-fast guard and unit regression, preserving three chapters and eight direct links. V65 exact-head PR workflow query returned zero runs; V66 CI, TypeScript, SSR and six-width browser audit unverified. No measured Lighthouse or SEO gains. Next: run CI, inspect six widths and Contact two-service handoff; audit deployment triggers. Main unchanged.
