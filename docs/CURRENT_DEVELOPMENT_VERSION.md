@@ -1,3 +1,13 @@
+# V48 — Contact viewport and keyboard accessibility regression (draft)
+
+- Branch: `design/crafted-atmospheres-v48-contact-viewport-a11y`, stacked on V47 PR #33. No production/main changes.
+- Added real Chromium assertions at 360/390/430/768/1440/1920px for horizontal page overflow, date/location input visibility inside the viewport, and programmatic keyboard-focus eligibility of the location field. Retains the six-width SSR hydration/reload checks and the JavaScript-disabled crawler-visible metadata audit.
+- V47 exact-head CI is not yet confirmed; do not assume these new assertions pass until GitHub Actions runs against the final V48 SHA. Review screenshots and diagnose failures rather than weakening checks.
+- Release gate: exact-head CI green, browser artifacts inspected, PR mergeability checked independently; verify main deployment triggers and create tested backup tag before any integration.
+- Backlog: two-service selection → Contact prefill, clipboard denial and invalid form states, reduced motion/Save-Data, real user performance, and PR #19 conflict remediation. No unverified search volumes or rankings.
+
+---
+
 # V47 — Contact crawler-visible SSR without JavaScript (draft)
 
 - Branch: `design/crafted-atmospheres-v47-contact-ssr-nojs`, stacked on V46 PR #32; development only, no main merge or deployment.
