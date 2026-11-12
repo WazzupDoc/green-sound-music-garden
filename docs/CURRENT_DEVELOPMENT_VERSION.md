@@ -1,3 +1,13 @@
+# V51 — Editorial service integrity guard (draft; V49 validated base)
+
+- Branch: `design/v51-editorial-service-integrity`, based on V49 PR #36 (CI verified for V49 exact head); V50 PR #37 is a separate visual experiment whose exact-head PR CI is not yet confirmed, so it is **not** silently inherited.
+- Added a Vitest regression for exactly three unique editorial chapters, exactly eight unique service routes, one-to-one parity with the real services catalogue, and authentic first-party image metadata. The homepage still has no new widget, cards, autoplay, form or additional CTA.
+- The test prevents a future service rename from silently deleting a link in `ProductionIndex` (which currently returns null when a slug cannot be found).
+- **Release gate:** V51 exact-head CI TypeScript, SSR build, Vitest, six-width browser audit and screenshots must pass; PR must be mergeable. No main merge or deployment. PR #19 remains a separate conflict.
+- **Backlog:** validate V50 hero layout/screenshots before accepting its art direction; improve Contact service-selection handoff and keyboard/clipboard denial coverage; obtain real Search Console and field CWV data before making performance or ranking claims.
+
+---
+
 # V48 — Editorial reset / Awwwards Music & Sound inspired, NO duplicated homepage widgets (draft)
 
 - Branch: `design/crafted-atmospheres-v48-editorial-reset`, stacked on V47 PR #33; earlier drafts remain unchanged.
