@@ -109,6 +109,10 @@ async function main() {
     assert.equal(await page.locator(".gsx-services-portal__tile").count(),8);
     assert.equal(await page.locator(".gsx-inner-hero h1").count(),1);
     await page.locator(".gsx-services-portal[data-hydrated=true]").waitFor({timeout:20000});
+    await page.locator(".gsx-services-portal__feature").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.scrollTo(0,0));
+    await page.screenshot({path:`${folder}/services-default-1440.png`,fullPage:true,animations:"disabled"});
     await page.locator(".gsx-services-portal__nav button").first().click();
     assert.match(await page.locator(".gsx-services-portal__selected").innerText(),/DJ/i);
     await page.locator(".gsx-services-portal__feature").scrollIntoViewIfNeeded();
@@ -148,6 +152,8 @@ async function main() {
     }
     await page.goto(base+"/despre-noi",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-about-copy").count(),1);
+    await page.locator(".gsx-backstage__photo--three").scrollIntoViewIfNeeded();
+    await page.waitForFunction(() => [...document.querySelectorAll(".gsx-backstage__photo img")].every(img => img.complete && img.naturalWidth > 0));
     await page.locator(".rs-about-copy").scrollIntoViewIfNeeded();
     await page.evaluate(() => window.scrollTo(0,0));
     await page.screenshot({path:`${folder}/about-1440.png`,fullPage:true,animations:"disabled"});
