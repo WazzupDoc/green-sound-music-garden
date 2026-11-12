@@ -1,92 +1,53 @@
 import { Link } from "@tanstack/react-router";
+import { ArrowUpRight, MoveUpRight } from "lucide-react";
 import { business, navEvents, navServices } from "@/data/site";
-import { Logo } from "./Logo";
 import { LightDesk } from "./LightDesk";
 
-export function SiteFooter() {
-  const year = new Date().getFullYear();
-  return (
-    <footer className="grain border-t border-border bg-ink pb-24 sm:pb-0">
-      <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div className="space-y-6">
-          <Logo />
-          <p className="max-w-xs text-base leading-relaxed text-muted-foreground">
-            Muzică, sunet, lumini și efecte pentru evenimente. Firmă din Pitești, activă din {business.founded}.
-          </p>
-          <address className="space-y-1 text-base not-italic text-foreground/85">
-            <p>
-              {business.address.street}, {business.address.city} {business.address.postalCode}, jud. {business.address.region}
-            </p>
-            <p>
-              <a href={business.phoneHref} className="link-underline font-semibold">
-                {business.phoneDisplay}
-              </a>
-            </p>
-            <p>
-              <a href={`mailto:${business.email}`} className="link-underline">
-                {business.email}
-              </a>
-            </p>
-          </address>
-        </div>
-        <div>
-          <h2 className="eyebrow mb-5">Evenimente</h2>
-          <ul className="space-y-2.5 text-sm">
-            {navEvents.map((it) => (
-              <li key={it.to}>
-                <Link to={it.to} className="link-underline text-foreground/80 hover:text-foreground">
-                  {it.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="eyebrow mb-5">Servicii</h2>
-          <ul className="space-y-2.5 text-sm">
-            {navServices.map((it) => (
-              <li key={it.to}>
-                <Link to={it.to} className="link-underline text-foreground/80 hover:text-foreground">
-                  {it.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 className="eyebrow mb-5">Green Sound</h2>
-          <ul className="space-y-2.5 text-sm">
-            <li><Link to="/portofoliu" className="link-underline text-foreground/80 hover:text-foreground">Portofoliu</Link></li>
-            <li><Link to="/despre-noi" className="link-underline text-foreground/80 hover:text-foreground">Despre noi</Link></li>
-            <li><Link to="/contact" className="link-underline text-foreground/80 hover:text-foreground">Contact & ofertă</Link></li>
-            <li><Link to="/confidentialitate" className="link-underline text-foreground/80 hover:text-foreground">Confidențialitate</Link></li>
-          </ul>
-          <h2 className="eyebrow mb-4 mt-8">Urmărește-ne</h2>
-          <ul className="flex flex-wrap gap-2">
-            {business.socials.map((s) => (
-              <li key={s.href}>
-                <a
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex rounded-full border border-border px-3 py-1.5 text-base text-foreground/80 transition-colors hover:border-primary hover:text-primary"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+export function SiteFooter(){
+ const year=new Date().getFullYear();
+ return <footer className="v60-footer">
+  <div className="v60-footer__light" aria-hidden="true">
+    <img src="/creative/v59/sonic-waves.webp" width={1120} height={630} alt="" loading="lazy" decoding="async"/>
+  </div>
+  <div className="v60-footer__main">
+    <div className="v60-footer__kicker"><span>GREEN SOUND MUSIC</span><span>DIN 2008 · PITEȘTI, ARGEȘ</span></div>
+    <div className="v60-footer__grand">
+      <h2>ULTIMUL REFREN?<br/><em>SAU PRIMA PIESĂ?</em></h2>
+      <Link to="/contact" className="v60-footer__cta">HAI SĂ VORBIM <ArrowUpRight size={29} aria-hidden/></Link>
+    </div>
+    <div className="v60-footer__columns">
+      <div className="v60-footer__address">
+        <p>NE GĂSEȘTI AICI</p>
+        <address>
+          {business.address.street}<br/>{business.address.city}, jud. {business.address.region}
+        </address>
+        <a href={business.phoneHref}>{business.phoneDisplay}</a>
+        <a href={`mailto:${business.email}`}>{business.email}</a>
       </div>
-      <div className="container-site gs-global-light-wrap">
-        <LightDesk />
-      </div>
-      <div className="border-t border-border">
-        <div className="container-site flex flex-col gap-2 py-6 text-base text-muted-foreground sm:flex-row sm:justify-between">
-          <p>© {year} Green Sound Music. Toate drepturile rezervate.</p>
-          <p className="text-base text-[#F3F0E9]">{business.tagline}</p>
-        </div>
-      </div>
-    </footer>
-  );
+      <nav aria-label="Evenimente Green Sound Music">
+        <p>EVENIMENTE</p>
+        {navEvents.map(item=><Link key={item.to} to={item.to}>{item.label}</Link>)}
+      </nav>
+      <nav aria-label="Servicii Green Sound Music">
+        <p>SERVICII</p>
+        {navServices.map(item=><Link key={item.to} to={item.to}>{item.label}</Link>)}
+      </nav>
+      <nav aria-label="Pagini și rețele sociale">
+        <p>MAI MULT</p>
+        <Link to="/portofoliu">Portofoliu</Link>
+        <Link to="/despre-noi">Despre noi</Link>
+        <Link to="/contact">Contact și ofertă</Link>
+        <Link to="/confidentialitate">Confidențialitate</Link>
+        {business.socials.map(item=><a href={item.href} key={item.href} target="_blank" rel="noopener noreferrer">
+          {item.label} <MoveUpRight size={13} aria-hidden/></a>)}
+      </nav>
+    </div>
+    <div className="v60-footer__lighting"><LightDesk/></div>
+    <div className="v60-footer__bottom">
+      <span>© {year} GREEN SOUND MUSIC. TOATE DREPTURILE REZERVATE.</span>
+      <strong>{business.tagline}</strong>
+      <a href="#continut" aria-label="Înapoi la începutul paginii">ÎNAPOI SUS ↑</a>
+    </div>
+  </div>
+ </footer>;
 }
