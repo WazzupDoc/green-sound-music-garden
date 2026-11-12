@@ -113,14 +113,27 @@ export function StageHero() {
         <motion.div className="crafted-hero__pointer" style={{ background: spotlight }} aria-hidden />
       </div>
 
+      <div className="gs-poster__marquee" aria-hidden="true">
+        <span>THE SOUND OF YOUR NIGHT</span><span className="gs-poster__marquee-icon">✳</span><span>PITEȘTI / ROMÂNIA</span>
+      </div>
       <div className="container-site crafted-hero__layout">
         <div className="crafted-hero__intro">
           <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> EST. {business.founded} / PITEȘTI / LIVE EXPERIENCES</div>
+          <div className="gs-poster__stamp" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" className="gs-poster__symbol">
+              <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="1.25" />
+              <circle cx="60" cy="60" r="44" stroke="currentColor" strokeOpacity=".36" />
+              <path d="M20 64H33L39 39L48 83L58 25L68 97L77 47L84 67H100" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="100" cy="67" r="4" fill="currentColor"/>
+            </svg>
+            <span>GREEN SOUND<br/>SIGNAL / 2008</span>
+          </div>
           <h1 id="crafted-hero-title" className="crafted-hero__title">
-            Nu facem doar <span className="crafted-outline-word">zgomot.</span>
-            <em> Construim atmosfera.</em>
+            <span className="gs-poster__title-top">GREEN</span>
+            <span className="gs-poster__title-bottom">SOUND<span className="gs-poster__asterisk" aria-hidden="true">✳</span></span>
+            <span className="gs-poster__title-caption">Construim atmosfera. <em>Culoarea petrecerii tale.</em></span>
           </h1>
-          <p className="crafted-hero__lead">Muzică live, DJ & MC, sunet și scenotehnică. Lumini care schimbă un spațiu. O echipă care le aduce împreună.</p>
+          <p className="crafted-hero__lead">Din 2008, din Pitești: muzică, oameni și scene care prind viață. DJ & MC, trupă live, producție, sunet și lumini — într-un singur ritm.</p>
           <div className="crafted-hero__actions">
             <Link to="/evenimente" className="crafted-button crafted-button--light">
               Descoperă experiențele <ArrowUpRight aria-hidden className="size-4" />
@@ -212,6 +225,10 @@ export function StageHero() {
             </a>
           </div>
         </div>
+      </div>
+      <div className="gs-poster__social"><span>DIN CULISE, DIRECT PE SCENĂ</span>
+        <a href="https://www.tiktok.com/@greensoundmusic" target="_blank" rel="noopener noreferrer"
+          aria-label="Vezi Green Sound Music pe TikTok">TIKTOK ↗</a>
       </div>
       <div className="crafted-hero__side-label" aria-hidden><Radio className="size-4" /> GREEN SOUND / {scene.tag.toUpperCase()}</div>
 
