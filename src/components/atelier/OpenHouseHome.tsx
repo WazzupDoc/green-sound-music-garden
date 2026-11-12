@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Play, Volume2 } from "lucide-react";
 import { business, events, images, services, videos, type EventSlug, type Video } from "@/data/site";
 
@@ -46,6 +46,7 @@ function FilmPlayer({ video, poster }: {video:Video;poster:string}) {
 }
 
 export function OpenHouseHome() {
+  const hydrated = useHydrated();
   const [active,setActive] = useState(0);
   const [techTab,setTechTab] = useState(0);
   const [filmTab,setFilmTab] = useState(0);
@@ -53,7 +54,7 @@ export function OpenHouseHome() {
   const selectedFilm = films[filmTab]!;
   const selectedTech = tech[techTab]!;
   const totalServices = services.length;
-  return <div className="go-2026">
+  return <div className="go-2026" data-hydrated={hydrated ? "true" : "false"}>
     <section className="go-intro" aria-labelledby="go-title">
       <div className="go-intro__top">
         <span className="go-coordinate">PITEȘTI · ARGEȘ</span>
