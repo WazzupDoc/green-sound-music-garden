@@ -302,3 +302,31 @@ body:has(.go-2026) .atelier-header__menu-btn{color:#143629!important}
     animation-duration:.01ms!important;transition-duration:.01ms!important;
     scroll-behavior:auto!important}
 }
+
+/* Purposeful display font change: Syne has a distinct voice from prior
+   Hanken + Instrument Serif hero treatment. Available weights 400–800, OFL. */
+.go-2026 :is(h1,h2,h3) {font-family:"Syne Variable",Arial,sans-serif!important}
+.go-intro__heading h1{font-weight:800!important;letter-spacing:-.085em!important}
+.go-intro__heading h1 i {
+  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-weight:500!important;font-style:normal!important;
+  letter-spacing:-.084em!important;color:#39845c!important;
+}
+.go-2026 em{
+  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-weight:500!important;font-style:normal!important;
+  letter-spacing:-.07em!important;
+}
+.go-manifest h2 span{
+  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-weight:500!important;font-style:normal!important;
+  color:#d4ffc5!important;letter-spacing:-.065em!important;
+}
+.go-contact h2 em{font-weight:500!important}
+body:has(.go-2026) .atelier-header .font-display.text-base{
+  color:#143629!important
+}
+body:has(.go-2026) .atelier-header__finder-btn{
+  background:transparent!important;border:1px solid #a0b1a4!important;
+}
+body:has(.go-2026) .atelier-header__finder-hint{color:#143629!important}
