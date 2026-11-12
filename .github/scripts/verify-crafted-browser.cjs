@@ -23,62 +23,37 @@ fs.mkdirSync(dir,{recursive:true});
       await page.waitForTimeout(250);
       assert.equal(await page.locator("main h1").count(),1,"Home H1 at "+width+"px");
       assert.match(await page.locator("main h1").innerText(),/Construim atmosfera/i);
-      // V37: existing static frequency artwork is now a meaningful,
-      // keyboard-operable visual studio; it never initiates audio playback.
+      // V48: one original no-JS programme instead of three overlapping
+      // event, service and atmosphere selectors on the homepage.
+      assert.equal(await page.locator(".gs-index__chapter").count(),3,
+        "Service programme has three deliberate editorial chapters");
+      assert.equal(await page.locator(".gs-index__service").count(),8,
+        "All eight real services are directly visible without another interactive picker");
+      assert.equal(await page.locator(".director-brief,.crafted-experiences,.crafted-services,.soundcheck,.gs-pulse").count(),0,
+        "The homepage must not reintroduce five repetitive widgets");
+      assert.equal(await page.locator(".crafted-finale").count(),1,
+        "Keep one clear final contact CTA, no repeated embedded quote forms");
+      assert.equal(await page.locator("main form").count(),0,
+        "Home promotes a dedicated, fully validated Contact page instead of duplicate forms");
+      assert.equal(await page.locator(".gs-index__chapter img").count(),3,
+        "All three original brand-photo chapters are visible");
+      const serviceLinks = await page.locator(".gs-index__service").evaluateAll(els =>
+        els.map(el=>el.getAttribute("href")));
+      assert.equal(new Set(serviceLinks).size,8,"Each actual company service links exactly once");
+      assert.ok(serviceLinks.includes("/dj-mc") && serviceLinks.includes("/ursitoare-botez") &&
+        serviceLinks.includes("/echipamente-de-sunet-si-lumini"),
+        "Music, stage and family-event specialties have genuinely usable links");
       if(width===390 || width===1440){
-        const studio=page.locator(".gs-pulse");
-        assert.equal(await studio.locator(".gs-pulse__mode").count(),3,
-          "The original frequency interlude offers exactly three real event-linked scenes");
-        assert.equal(await page.locator("audio, .gs-pulse iframe").count(),0,
-          "Visual frequency studio must not autoplay or embed music");
-        assert.equal(await studio.getAttribute("data-playing"),"false",
-          "Offscreen signal animation must not run on initial homepage load");
-        await studio.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
-        await page.waitForFunction(() => document.querySelector(".gs-pulse")?.getAttribute("data-playing")==="true",
-          null,{timeout:12000});
-        const modes=studio.locator(".gs-pulse__mode");
-        assert.equal(await modes.nth(0).getAttribute("aria-pressed"),"true");
-        await modes.nth(1).click();
-        assert.equal(await modes.nth(1).getAttribute("aria-pressed"),"true",
-          "Live production mode becomes actively selected");
-        assert.equal(await studio.locator("#gs-pulse-tempo").inputValue(),"128",
-          "Scene selection restores a deterministic visual tempo");
-        assert.match(await studio.locator(".gs-pulse__scene-note strong").innerText(),/scena prinde viață/i);
-        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/concerte-festivaluri"),
-
-          "Scene opens an existing concert event page, not a fabricated destination");
-        const slider=studio.locator("#gs-pulse-tempo");
-        await slider.focus();
-        await slider.press("End");
-        assert.equal(await slider.inputValue(),"140",
-          "Native keyboard tempo slider reaches its valid 140 BPM upper bound");
-        assert.equal(await studio.evaluate(el => el.style.getPropertyValue("--gs-tempo").trim()),"0.857s",
-          "Visual beat duration derives from the real slider value");
-        assert.equal(await studio.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
-          getComputedStyle(el).animationName),"gs-studio-signal",
-          "Exactly compositor-friendly bar animation is active inside viewport");
-        const motionToggle=studio.locator(".gs-pulse__transport");
-        await motionToggle.click();
-        assert.equal(await motionToggle.getAttribute("aria-pressed"),"false");
-        assert.equal(await studio.getAttribute("data-playing"),"false");
-        assert.equal(await studio.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
-          getComputedStyle(el).animationName),"none",
-          "Pausing removes the animation rather than just hiding its controls");
-        await modes.nth(2).click();
-        assert.equal(await slider.inputValue(),"104",
-          "Afterglow switches to its own visual rhythm");
-        assert.ok((await studio.locator(".gs-pulse__scene-link").getAttribute("href"))?.includes("/evenimente/petreceri-private"));
-
-        await studio.locator(".gs-pulse__art").screenshot({
-          path:dir+"/frequency-studio-"+width+".png",animations:"disabled"});
-        await motionToggle.click();
-        assert.equal(await motionToggle.getAttribute("aria-pressed"),"true");
-        assert.equal(await studio.getAttribute("data-playing"),"true");
-        await page.evaluate(() => window.scrollTo(0,0));
-        await page.waitForFunction(() => document.querySelector(".gs-pulse")?.getAttribute("data-playing")==="false",
-          null,{timeout:12000});
+        await page.locator(".gs-index__chapters").scrollIntoViewIfNeeded();
+        await page.locator(".gs-index__chapters").screenshot({
+          path:dir+"/v48-production-index-"+width+".png",animations:"disabled"});
+        await page.locator(".gs-index__service").first().click();
+        await page.waitForURL(url=>url.pathname==="/dj-mc",{timeout:15000});
+        assert.equal(await page.locator("main h1").count(),1);
+        await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
+        await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
       }
-      // V32 search-engine discovery: both responses must be real static files,
+            // V32 search-engine discovery: both responses must be real static files,
       // not an HTML fallback pretending to be an XML sitemap.
       if(width===390 || width===1440){
         const sitemapResponse = await page.request.get(origin+"/sitemap.xml");
@@ -118,8 +93,6 @@ fs.mkdirSync(dir,{recursive:true});
       assert.equal(await page.locator(".crafted-hero__mode").count(),3);
       assert.equal(await page.locator(".scene-console").count(),1,"An editorial scene-notes panel must exist");
       assert.equal(await page.locator(".gs-lightboard").count(),1,"User-controlled lighting desk exists");
-      assert.equal(await page.locator(".gs-pulse h2").count(),1,"Editorial music frequency section is accessible");
-      assert.equal(await page.locator(".gs-pulse__wave span").count(),36,"Thirty-six static frequency bars exist without JS");
       assert.equal(await page.locator(".gs-cursor").count(),1,"Original music cursor is mounted as decoration");
       assert.equal(await page.locator(".atelier-header__finder-btn").isVisible(),true,
         "Search must be reachable from every viewport without opening the mobile nav");
@@ -215,33 +188,16 @@ fs.mkdirSync(dir,{recursive:true});
         assert.ok(order.controlsTop < order.notesTop,
           "On mobile the selectable scenes must be discoverable before the story card: "+JSON.stringify(order));
       }
-      assert.equal(await page.locator('.director-brief form[action="/contact"]').count(),1,"Native quote planner exists");
       assert.equal(await page.locator(".director-reel__choice").count(),3,"Three real showreel chapters exist");
       assert.equal(await page.locator(".director-reel iframe").count(),0,"Real video player must not auto-load");
-      assert.equal(await page.locator(".crafted-experiences__option").count(),5);
-      assert.equal(await page.locator(".crafted-services__row").count(),5);
-      assert.equal(await page.locator(".soundcheck__event").count(),5,"Five native event options");
-      assert.equal(await page.locator(".soundcheck__service").count(),7,"Seven actual event services");
-      assert.equal(await page.locator(".soundcheck__story-beat").count(),5,
-        "Five real wedding story beats, drawn from existing event data");
-      assert.equal(await page.locator(".soundcheck__story-beat").first().getAttribute("aria-pressed"),"true");
-      assert.equal(await page.locator(".soundcheck__form input[name=services]").count(),1,
-        "A single bounded service list, submitted as part of a native GET form");
+      assert.equal(await page.locator(".gs-index__chapters > article").count(),3,
+        "The redesigned homepage keeps an intentional three-part production story");
       const bbox=await page.evaluate(()=>({doc:document.documentElement.scrollWidth,inner:innerWidth}));
       assert.ok(bbox.doc<=bbox.inner+2,width+"px root overflow: "+JSON.stringify(bbox));
       if(width===360 || width===390 || width===1440){
         await page.screenshot({path:dir+"/home-"+width+".png",fullPage:false});
-        await page.locator(".director-brief").scrollIntoViewIfNeeded();
-        await page.screenshot({path:dir+"/brief-"+width+".png",fullPage:false});
-        await page.locator(".crafted-experiences").scrollIntoViewIfNeeded();
-        await page.waitForFunction(()=>Array.from(document.querySelectorAll(".crafted-experiences__frame img")).some(i=>i.complete&&i.naturalWidth>0),null,{timeout:12000});
-
-        await page.screenshot({path:dir+"/events-"+width+".png",fullPage:false});
-        await page.locator(".crafted-services").scrollIntoViewIfNeeded();
-        await page.screenshot({path:dir+"/services-"+width+".png",fullPage:false});
-        await page.locator(".soundcheck").scrollIntoViewIfNeeded();
-        await page.screenshot({path:dir+"/soundcheck-"+width+".png",fullPage:false});
-        await page.locator(".soundcheck__storyboard").screenshot({path:dir+"/storyboard-"+width+".png",animations:"disabled"});
+        await page.locator(".gs-index__chapters").scrollIntoViewIfNeeded();
+        await page.screenshot({path:dir+"/v48-index-"+width+".png",fullPage:false});
         await page.locator(".director-reel").scrollIntoViewIfNeeded();
         await page.waitForFunction(() => {
           const image = document.querySelector(".director-reel__player img");
@@ -284,10 +240,6 @@ fs.mkdirSync(dir,{recursive:true});
       await page.keyboard.press("End");
       assert.equal(await page.locator(".crafted-hero").getAttribute("data-light-power"),"100");
       await page.locator(".gs-lightboard__summary").click();
-      await page.locator(".crafted-experiences__option").first().click();
-      assert.equal(await page.locator(".crafted-experiences__option").first().getAttribute("aria-pressed"),"true");
-      await page.locator(".crafted-services__row .crafted-services__select").nth(1).click();
-      assert.equal(await page.locator(".crafted-services__row").nth(1).getAttribute("data-selected"),"true");
       await page.locator(".director-reel").scrollIntoViewIfNeeded();
       await page.waitForFunction(() => {
         const image=document.querySelector(".director-reel__player img");
@@ -308,53 +260,9 @@ fs.mkdirSync(dir,{recursive:true});
         assert.equal(await page.locator(".film-archive iframe").count(),0,"Deep-linked film must not autoplay");
       }
       if(width===390){
-        // V22: selected event, selected service, date and location survive the native
-        // request and populate the existing validated quote form (without sending it).
-        await page.locator(".soundcheck__event").nth(2).click();
-        assert.equal(await page.locator(".soundcheck__event").nth(2).getAttribute("aria-pressed"),"true");
-        assert.equal(await page.locator(".soundcheck__story-beat").count(),4,"Corporate story beat count");
-        const before=await page.locator(".soundcheck__service input:checked").count();
-        await page.locator(".soundcheck__service").first().click();
-        const after=await page.locator(".soundcheck__service input:checked").count();
-        assert.equal(Math.abs(after-before),1,"One service selection changes on click");
-        await page.locator(".soundcheck__story-beat").nth(2).click();
-        assert.equal(await page.locator(".soundcheck__story-beat").nth(2).getAttribute("aria-pressed"),"true");
-        assert.match(await page.locator(".soundcheck__story-detail strong").innerText(),/Lansarea/);
-        const addMomentService=page.locator(".soundcheck__story-add");
-        assert.equal(await addMomentService.count(),1,"Missing service can be added from real story moment");
-        await addMomentService.click();
-        assert.equal(await page.locator(".soundcheck__service input:checked").count(),after+1,
-          "Storyboard adds the missing service exactly once");
-        assert.equal(await page.locator(".soundcheck__story-included").count(),1,
-          "Moment visibly confirms the new service is included");
-        await page.locator('.soundcheck__form input[name="date"]').fill("2027-08-21");
-        await page.locator('.soundcheck__form input[name="location"]').fill("Pitești");
-        await page.locator(".soundcheck__cta").click();
-        await page.waitForURL(/\/contact\?/, {timeout:15000});
-        const soundcheckUrl = new URL(page.url());
-        assert.equal(soundcheckUrl.searchParams.get("date"),"2027-08-21","Date must survive native GET");
-        assert.equal(soundcheckUrl.searchParams.get("location"),"Pitești","Location must survive native GET");
-        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
-        await page.waitForTimeout(250);
-        assert.equal(await page.locator("#q-event").inputValue(),"Eveniment corporate");
-        assert.equal(await page.locator("#q-date").inputValue(),"2027-08-21");
-        assert.equal(await page.locator("#q-location").inputValue(),"Pitești");
-        assert.equal(await page.locator('form[aria-label="Cerere de ofertă"] input[type="checkbox"]:checked').count(),
-          after+1,"Selected services must prefill exactly, including the storyboard addition");
-        await page.screenshot({path:dir+"/soundcheck-prefilled-390.png",fullPage:false});
-        await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
-        await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
-
-        await page.locator("#brief-event").selectOption("Nuntă");
-        await page.locator("#brief-date").fill("2027-07-18");
-        await page.locator("#brief-location").fill("Pitești");
-        await page.locator(".director-brief__submit").click();
-        await page.waitForURL(/\/contact\?/, {timeout:15000});
-        await page.locator('form[aria-label="Cerere de ofertă"]').waitFor();
-        await page.waitForFunction(() => document.querySelector("#q-event")?.value === "Nuntă" &&
-          document.querySelector("#q-date")?.value === "2027-07-18" &&
-          document.querySelector("#q-location")?.value === "Pitești",null,{timeout:15000});
-        await page.screenshot({path:dir+"/contact-prefilled-390.png",fullPage:false});
+        // V48: direct service discovery doesn't require a wizard or intermediate form.
+        await page.locator(".gs-index__service").last().click();
+        await page.waitForURL(url=>url.pathname==="/start-veselia",{timeout:15000});
         await page.goto(origin+"/",{waitUntil:"domcontentloaded"});
         await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({timeout:30000});
         const menu=page.locator(".atelier-header__menu-btn");
@@ -716,12 +624,8 @@ fs.mkdirSync(dir,{recursive:true});
       "The low-resource visitor shouldn't render decorative cursor controls");
     assert.equal(await lite.locator(".crafted-hero__mode").count(),3,
       "Lite mode must preserve all real scene navigation");
-    await lite.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
-    assert.equal(await lite.locator(".gs-pulse__wave span").nth(0).evaluate(el =>
-      getComputedStyle(el).animationName),"none",
-      "Save-Data disables live pulse motion while preserving the controls");
-    assert.equal(await lite.locator(".gs-pulse__modes button").count(),3,
-      "All visual mode controls remain selectable in lite mode");
+    assert.equal(await lite.locator(".gs-index__service").count(),8,
+      "All actual service links remain accessible in Save-Data lite mode");
         assert.equal(await lite.locator(".atelier-header__quote").count(),1,
       "Lite mode must preserve offer conversion");
     await lite.screenshot({path:dir+"/adaptive-lite-1440.png",fullPage:false});
@@ -732,10 +636,9 @@ fs.mkdirSync(dir,{recursive:true});
     const stageMotion=await reduced.locator(".crafted-stage-lights__beam").first().evaluate(e=>getComputedStyle(e).animationName);
     assert.equal(stageMotion,"none","Reduced-motion must disable decorative stage beams");
     assert.equal(await reduced.locator(".gs-cursor__toggle").isVisible(),false,"Reduced motion hides cursor FX");
-    await reduced.locator(".gs-pulse__art").scrollIntoViewIfNeeded();
-        const pulseMotion=await reduced.locator(".gs-pulse__wave span").first().evaluate(e=>getComputedStyle(e).animationName);
-    assert.equal(pulseMotion,"none","Reduced-motion frequency artwork remains fully visible and static");
+    assert.equal(await reduced.locator(".gs-index__service").count(),8,
+      "Reduced-motion visitors can browse the complete service index");
     await reduced.close();
-    console.log("PASS V38: contextual premium service relations, nonduplicated gallery, V37 Frequency Studio, V34 Guided Quote and V20–V37 six-width browser regressions");
+    console.log("PASS V48: lean music-led homepage, 3 chapters/8 direct links, no duplicated widgets/forms, real films, Contact/SEO and six-width browser QA");
   } finally {await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
