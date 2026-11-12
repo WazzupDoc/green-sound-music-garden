@@ -23,8 +23,8 @@ async function main() {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
-      await page.locator(".rs-hero h1").waitFor();
-      await page.waitForTimeout(450);
+      await page.locator(".rs-hero[data-hydrated=\"true\"]").waitFor({timeout:30000});
+      await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
       assert.match(await page.locator(".rs-hero h1").innerText(), /Seara începe/i);
       assert.equal(await page.locator(".rs-programme__choice").count(),5);
