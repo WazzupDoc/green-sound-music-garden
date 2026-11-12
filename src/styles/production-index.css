@@ -19,7 +19,11 @@
 .gs-index__intro-note a{display:inline-flex;align-items:center;gap:15px;padding-block:12px;
  min-height:53px;margin-top:25px;border-bottom:1px solid #2d6338;color:#235d34;font-size:.79rem;
  font-weight:850;letter-spacing:.012em}
-.gs-index__intro-note a:hover{gap:22px}
+/* Keep CTA geometry fixed: a changing flex gap would reflow the label. */
+.gs-index__intro-note a svg{flex:none;transition:transform .24s cubic-bezier(.16,1,.3,1)}
+@media (prefers-reduced-motion:no-preference){
+ html:not([data-gs-performance=lite]) .gs-index__intro-note a:hover svg{transform:translate(4px,-4px)}
+}
 .gs-index__intro-note a:focus-visible{outline:2px solid #27633a;outline-offset:4px}
 .gs-index__chapters{display:grid;grid-template-columns:1.19fr .96fr 1.05fr;
  gap:clamp(13px,1.6vw,27px);align-items:start}
@@ -146,9 +150,10 @@
  .gs-index__service{min-height:56px}
 }
 @media(prefers-reduced-motion:reduce){
- .gs-index__photo img,.gs-index__service,.gs-index__service svg,.gs-index__service span{transition:none!important;transform:none!important}
+ .gs-index__photo img,.gs-index__service,.gs-index__service svg,.gs-index__service span,.gs-index__intro-note a svg{transition:none!important;transform:none!important}
 }
 html[data-gs-performance=lite] .gs-index__photo img,
 html[data-gs-performance=lite] .gs-index__service,
 html[data-gs-performance=lite] .gs-index__service svg,
-html[data-gs-performance=lite] .gs-index__service span{transition:none!important;transform:none!important}
+html[data-gs-performance=lite] .gs-index__service span,
+html[data-gs-performance=lite] .gs-index__intro-note a svg{transition:none!important;transform:none!important}
