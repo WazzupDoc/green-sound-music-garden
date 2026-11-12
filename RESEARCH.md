@@ -1,3 +1,11 @@
+## 2026-11-12 — V62 touch hover persistence
+
+- MDN keyboard accessibility: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard — native links and visible focus must survive interaction changes. Reference only, no code copied.
+- MDN :focus-visible: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible — keyboard focus indication is distinct from hover. Reference only, no code copied.
+- web.dev interaction performance: https://web.dev/articles/optimize-inp — avoid unnecessary visual work during input. Reference only; no measured INP improvement claimed.
+- Experiment: CSS-only @media (hover:none) reset for sticky touch hover image zoom, arrow and label movement. Preserves native keyboard focus and Lite/reduced motion. No new dependencies/assets; reversible by removing V62 CSS/test. Browser validation pending.
+- Ideas rejected: JS touch-detection listeners (unnecessary hydration and event cost); removing all desktop hover cues (worse affordance).
+
 ## 2026-11-12 — V61: CTA regression test reliability
 
 - MDN JavaScript regex guide: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions — literal regex uses one backslash for a literal dot and shorthand classes. The previous test double-escaped these sequences, so a layout-affecting hover rule could escape detection. Source is documentation only, no code copied.
