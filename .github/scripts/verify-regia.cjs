@@ -23,36 +23,41 @@ async function main() {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
-      await page.locator(".rs-hero[data-hydrated=\"true\"]").waitFor({timeout:30000});
+      await page.locator(".go-2026").first().waitFor({timeout:30000});
       await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
-      assert.match(await page.locator(".rs-hero h1").innerText(), /Seara începe/i);
-      assert.equal(await page.locator(".rs-programme__choice").count(),5);
-      assert.equal(await page.locator("main form").count(),0);
-      assert.equal(await page.locator(".gs-index__chapter").count(),0);
-      assert.equal(await page.locator(".rs-films__item").count(),3);
+      assert.match(await page.locator(".go-intro h1").innerText(), /O SEARĂ/);
+      assert.equal(await page.locator(".rs-hero").count(), 0, "No old Regia homepage should render");
+      assert.equal(await page.locator(".gp-opening").count(), 0, "No V57 poster should render");
+      assert.equal(await page.locator(".go-scene").count(), 4);
+      assert.equal(await page.locator(".go-tech__tabs button").count(), 4);
+      assert.equal(await page.locator(".go-cinema__playlist button").count(), 3);
+      assert.equal(await page.locator(".go-scene[data-active='true']").count(), 1);
+      assert.equal(await page.locator("main form").count(), 0);
       assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"),/noindex/);
-      const heroPhoto = await page.locator(".rs-hero__photo img").evaluate(img=>({loaded:img.complete&&img.naturalWidth>0,src:img.getAttribute("src")}));
-      assert(heroPhoto.loaded && heroPhoto.src.includes("/media/greensound/"),"Real hero media failed to load");
+      const photo = await page.locator(".go-scene img").first().evaluate(img => ({
+        loaded:img.complete && img.naturalWidth > 0,src:img.getAttribute("src")
+      }));
+      assert(photo.loaded && photo.src.includes("/media/greensound/"),"Authentic local event photo failed");
       await checkNoOverflow(page,"/",width);
       if ([390,1440].includes(width)) {
         // A screenshot tool does not scroll through a page; real browsers do.
         // Trigger native lazy loading/reveal before taking the full-page frame.
-        for (const selector of [".rs-programme__image",".rs-backstage__photo",".rs-films__rail"]) {
+        for (const selector of [".go-manifest", ".go-tech", ".go-cinema__body"]) {
           await page.locator(selector).first().scrollIntoViewIfNeeded();
-          await page.waitForTimeout(350);
+          await page.waitForTimeout(280);
         }
         await page.evaluate(() => window.scrollTo(0, 0));
         await page.waitForTimeout(220);
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
-      await page.getByRole("button",{name:"Botezuri",exact:true}).click();
-      await page.waitForFunction(() =>
-        document.querySelector(".rs-programme__timeline")?.textContent?.includes("Ursitoarele"),
-        null, {timeout:10000});
-      assert.equal(await page.getByRole("button",{name:"Botezuri",exact:true}).getAttribute("aria-pressed"),"true");
-      assert.match(await page.locator(".rs-programme__timeline").innerText(),/Ursitoarele/i);
-      await checkNoOverflow(page,"/ selector",width);
+      await page.getByRole("button",{name:"Selectează scena Nunți"}).click();
+      assert.equal(await page.locator(".go-scene[data-active='true'] .go-scene__bottom h2").innerText(),"Nunți");
+      await page.locator(".go-tech__tabs button").filter({hasText:"Lumini"}).click();
+      assert.match(await page.locator(".go-tech__detail").innerText(),/Moving head-uri/i);
+      await page.locator(".go-cinema__playlist button").nth(1).click();
+      assert.match(await page.locator(".go-cinema__caption strong").innerText(),/Nuntă/i);
+      await checkNoOverflow(page,"/ interactive",width);
       assert.deepEqual(errors,[],`Hydration/browser error ${width}px`);
       await page.close();
     }
@@ -130,7 +135,7 @@ async function main() {
     assert.deepEqual(errors,[],"Browser errors in page flow");
     // Keep the old CI artifact path populated while changing the UI assertions.
     fs.cpSync(folder, "screenshots/crafted-atmospheres", {recursive:true});
-    console.log("PASS Regia Serii: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
+    console.log("PASS Open House V58: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
     await page.close();
   } finally {await browser.close();}
 }
