@@ -1,3 +1,10 @@
+## 2026-11-12 — V64
+
+- Branch design/v64-editorial-semantic-navigation based on V63 PR #57. Adds native accessible list labels and descriptions to each of three existing editorial chapters, plus regression test.
+- V63 commit 5cbfe8bcc6f98b978f294972685fb3e394c6ecb0: no PR-triggered workflow runs returned by commit query; V64 CI pending. PR #19 still mergeable=false; V63 PR #57 mergeable=true but CI unconfirmed.
+- No Lighthouse, LCP, UX, SEO or conversion score claimed. No main merge/deploy.
+- Backlog: CI exact-head, screen reader and keyboard QA at 360/390/430/768/1440/1920; 2-service Contact flow; real responsive image variants; deployment/rollback audit.
+
 ## 2026-11-12 — V63
 
 - Branch: design/v63-editorial-service-clarity; base V62 PR #56. New concise, service-specific copy in the existing three chapters and regression test; no new widgets or assets.

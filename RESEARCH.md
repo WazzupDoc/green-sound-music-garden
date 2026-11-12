@@ -1,3 +1,10 @@
+## 2026-11-12 — V64 semantic editorial navigation
+
+- web.dev responsive images: https://web.dev/learn/design/responsive-images — `srcset`/`sizes` can reduce transfer, but first-party image variants have not been verified; rejected inventing image paths or adding remote image transformations. No code copied.
+- MDN image loading: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading — preserve below-fold lazy loading until actual LCP/viewport measurements. No code copied.
+- MDN HTML image reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img — retain intrinsic width/height for layout stability.
+- Experiment accepted provisionally: accessible, chapter-specific list naming through existing headings/notes; no new UI, runtime package, asset or JS, pending browser/screen-reader verification. Rejected: global image priority boost without LCP evidence.
+
 ## 2026-11-12 — V63 editorial clarity and LCP restraint
 
 - web.dev LCP: https://web.dev/articles/optimize-lcp — prioritize discoverability of the measured LCP resource; do not eagerly prioritize every image. No code or assets copied.
