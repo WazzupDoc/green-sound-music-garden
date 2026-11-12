@@ -25,6 +25,21 @@ async function main() {
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
       await page.locator(".gsx[data-hydrated=true]").waitFor({timeout:30000});
       await page.waitForTimeout(160);
+      // V61: the real, enlarged brand and all six studio channels must exist on every page.
+      assert.equal(await page.locator("header .gs61-brand").count(),1);
+      assert.equal(await page.locator("header .gs61-brand__emblem img").count(),1);
+      const logoSize=await page.locator("header .gs61-brand__emblem").evaluate(el=>el.getBoundingClientRect().width);
+      assert(logoSize>=46,`Logo too small at ${width}px: ${logoSize}`);
+      assert.equal(await page.locator("header .gs61-header__link").count(),6);
+      const navDisplayed=await page.locator("header .gs61-header__nav").evaluate(el=>getComputedStyle(el).display!=="none");
+      assert.equal(navDisplayed,width>=1191,`Responsive navigation mismatch at ${width}`);
+      assert.equal(await page.locator("head link[rel='canonical']").count(),1);
+      assert.match(await page.locator("head link[rel='canonical']").getAttribute("href"),/^https:\\/\\/greensoundmusic\\.com\\/$/);
+      const jsonLd=await page.locator("head script[type='application/ld+json']").allTextContents();
+      const entities=jsonLd.map(value=>JSON.parse(value));
+      assert(entities.some(value=>value["@type"]==="LocalBusiness"),"Business entity missing");
+      assert(entities.some(value=>value["@type"]==="WebSite"),"WebSite entity missing");
+      assert(entities.some(value=>value["@type"]==="WebPage"),"WebPage entity missing");
       assert.equal(await page.locator("main h1").count(),1);
       assert.match(await page.locator(".gsx-hero h1").innerText(),/GREEN[\s\S]+SOUND/i);
       assert.equal(await page.locator(".go-2026").count(),0,"old V58 layout must not render");
@@ -47,6 +62,20 @@ async function main() {
       const aurora=await page.locator(".gsx-hero__aurora").evaluate(img=>img.complete&&img.naturalWidth>0);
       assert(aurora,"Generated stage artwork missing");
       await checkNoOverflow(page,"/",width);
+      if (width < 1191) {
+        const menuButton=page.getByRole("button",{name:"Deschide meniul"});
+        assert(await menuButton.isVisible(),"Menu control must be accessible and visible");
+        await menuButton.click();
+        const panel=page.getByRole("dialog",{name:"Meniu de navigare"});
+        await panel.waitFor({state:"visible"});
+        assert.equal(await panel.locator(".gs61-mobile-menu__link").count(),6);
+        assert(await panel.getByRole("link",{name:/Portofoliu/}).isVisible());
+        await page.keyboard.press("Escape");
+        await panel.waitFor({state:"hidden"});
+        assert.equal(await page.getByRole("button",{name:"Deschide meniul"}).getAttribute("aria-expanded"),"false");
+      } else {
+        assert(await page.locator(".gs61-header__link").first().isVisible());
+      }
       if ([390,1440].includes(width)) {
         // A screenshot tool does not scroll through a page; real browsers do.
         // Trigger native lazy loading/reveal before taking the full-page frame.
