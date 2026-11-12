@@ -1,3 +1,9 @@
+## 2026-11-12 — V67 source catalogue integrity
+
+- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set — a Set removes duplicates, so comparing editorial slugs against a Set alone can conceal duplicate slugs in the original catalogue. Consulted 2026-11-12; documentation only, no code copied or new license.
+- Applied: original fail-fast guard comparing source catalogue array length against its Set size before the existing editorial completeness check. Regression test documents the false-positive case. No new dependencies or runtime assets.
+- Experiment gate: authentic correctness (yes), user utility (prevents ambiguous service routing), performance (one small module-init comparison, unmeasured), accessibility (unchanged), SSR (pure deterministic code), cost/license (none), testing (static Vitest added; execution pending), rollback (revert V67 commit). Rejected: client-side deduplication, which hides content mistakes and can remove a service silently.
+
 ## 2026-11-12 — V66 catalogue completeness
 
 Reference: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context — descriptive links must retain meaningful destinations. Applied original zero-dependency integrity check ensuring every existing catalogue slug appears exactly once in the editorial programme, plus Vitest set-equality test. No third-party code or assets copied. Rejected: a client-side auto-generated carousel or fallback link (could hide catalogue errors and violate the V48 editorial structure). Browser/CI validation pending.
