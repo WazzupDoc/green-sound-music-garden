@@ -113,6 +113,14 @@ async function main() {
       await page.goto(base+"/"+slug,{waitUntil:"domcontentloaded"});
       assert.equal(await page.locator("main h1").count(),1,`service H1 ${slug}`);
       assert.equal(await page.locator(".rs-service-feature").count(),1,`service signature ${slug}`);
+      if (slug==="echipamente-de-sunet-si-lumini"||slug==="masina-fum-greu-cu-gheata-carbonica") {
+        assert.equal(await page.locator(".gsx-service-visual").count(),1,`visual atmosphere ${slug}`);
+        await page.locator(".gsx-service-visual").scrollIntoViewIfNeeded();
+        const media=await page.locator(".gsx-service-visual img").first().evaluate(img=>
+          img.complete && img.naturalWidth>0);
+        assert(media,`generated asset failed ${slug}`);
+        await page.screenshot({path:`${folder}/service-${slug}-1440.png`,fullPage:true,animations:"disabled"});
+      }
       await checkNoOverflow(page,"/"+slug,1440);
     }
     await page.goto(base+"/evenimente/",{waitUntil:"domcontentloaded"});
