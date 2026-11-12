@@ -160,9 +160,9 @@ export function SiteHeader() {
             exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: reduced ? 0 : .2, ease: [.2, .7, .2, 1] }}>
             <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
-              {navigation.map((entry, index) => (
+              {navigation.map((entry) => (
                 <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link">
-                  <small>0{index + 1}</small><span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
+                  <span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
                 </Link>
               ))}
               <div className="atelier-mobile-menu__actions">
