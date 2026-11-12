@@ -1,3 +1,11 @@
+# V69 — Valid Contact calendar dates (draft)
+
+- Branch `design/v69-contact-valid-calendar-date`, stacked on V68 PR #62. Query-prefilled Contact dates now require an actual Gregorian calendar day, not merely YYYY-MM-DD shape. New pure utility and Vitest leap-year/month-length regressions; existing event/service/location allowlists retained.
+- V48 homepage hero + 3 editorial chapters/8 service links + 3 real films + single CTA unchanged. No dependencies, external assets or backend claims.
+- Exact-head CI, TypeScript, SSR, six-width Chromium and real Contact handoff unverified. No main merge/deploy. Require CI, conflicts, deployment trigger review, backup tag and rollback before integration.
+
+---
+
 # V68 — Deterministic editorial service lookup (draft)
 
 - Branch `design/v68-editorial-service-lookup-map` stacked on V67 PR #61. Replaces repeated Array.find resolution with one native slug→service Map after duplicate source validation. Keeps original service object references, order 3/2/3, eight direct links and clean V48 homepage.
