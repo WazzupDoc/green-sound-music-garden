@@ -91,9 +91,9 @@ export function ProductionIndex() {
                   <span className="gs-index__chapter-line" aria-hidden="true" />
                   <span>{chapter.overline}</span>
                 </div>
-                <h3>{chapter.title}</h3>
-                <p>{chapter.note}</p>
-                <ul className="gs-index__links">
+                <h3 id={`gs-index-chapter-${chapter.index}`}>{chapter.title}</h3>
+                <p id={`gs-index-note-${chapter.index}`}>{chapter.note}</p>
+                <ul className="gs-index__links" aria-labelledby={`gs-index-chapter-${chapter.index}`} aria-describedby={`gs-index-note-${chapter.index}`}>
                   {chapter.linkedServices.map((service) => (
                     <li key={service.slug}>
                       <Link to={`/${service.slug}`} className="gs-index__service">
