@@ -1,3 +1,7 @@
+## 2026-11-12 — V67
+
+No new image, video, audio, font, icon, package or third-party code. Original TypeScript guard and Vitest regression only. Existing asset provenance and permissions unchanged.
+
 ## 2026-11-12 — V66
 
 No new images, icons, fonts, video, audio, packages or third-party code. Existing first-party imagery and Lucide remain unchanged. New TypeScript guard and test are original project code; no new license obligations.

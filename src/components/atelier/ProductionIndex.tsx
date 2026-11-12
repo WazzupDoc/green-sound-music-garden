@@ -53,7 +53,11 @@ const editorialServiceSlugs = chapters.flatMap((chapter) => chapter.serviceSlugs
 if (new Set(editorialServiceSlugs).size !== editorialServiceSlugs.length) {
   throw new Error("Editorial programme contains duplicate service links");
 }
-const catalogueSlugs = new Set(services.map((service) => service.slug));
+const catalogueSlugList = services.map((service) => service.slug);
+const catalogueSlugs = new Set(catalogueSlugList);
+if (catalogueSlugs.size !== catalogueSlugList.length) {
+  throw new Error("Service catalogue contains duplicate slugs");
+}
 if (editorialServiceSlugs.length !== catalogueSlugs.size ||
     editorialServiceSlugs.some((slug) => !catalogueSlugs.has(slug))) {
   throw new Error("Editorial programme must link to every catalogue service exactly once");
