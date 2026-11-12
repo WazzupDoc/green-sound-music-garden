@@ -23,7 +23,7 @@ async function main() {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
-      await page.locator(".go-2026[data-hydrated=\\"true\\"]").waitFor({timeout:30000});
+      await page.locator(".go-2026[data-hydrated=true]").waitFor({timeout:30000});
       await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
       assert.match(await page.locator(".go-intro h1").innerText(), /O SEARĂ/);
