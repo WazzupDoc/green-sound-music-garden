@@ -1,3 +1,5 @@
+Updated 2026-11-12, V56 draft. New keyboard focus-within visual chapter cue on existing editorial service links, CSS-only; guarded by a static Vitest test. V55 CI unverified; V53 live-stage PR #44 is a separate parallel redesign, not merged into this branch. PR #19 mergeable=false. No production merge. Scores remain unmeasured.
+
 # AGENT STATE — Green Sound Music
 
 Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last check, no exact-head CI runs returned); V53 PR #41. PR #19 remains unmergeable due to conflicts.
