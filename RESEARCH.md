@@ -1,3 +1,11 @@
+## 2026-11-12 — V63 editorial clarity and LCP restraint
+
+- web.dev LCP: https://web.dev/articles/optimize-lcp — prioritize discoverability of the measured LCP resource; do not eagerly prioritize every image. No code or assets copied.
+- web.dev Fetch Priority: https://web.dev/articles/fetch-priority — high fetch priority is selective, not a global default. No dependency/license involved.
+- MDN image loading: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading — lazy loading suits below-the-fold imagery; first-chapter position relative to viewport is not yet measured, so no premature loading override.
+- Editorial experiment accepted provisionally: concise, factual service descriptions in three existing chapters, avoiding vague marketing. Existing company catalogue is the source; no new business claims or dependencies. Tests guard against regressions. Rollback: revert V63 content/test commits.
+- Rejected: blanket fetchpriority=high on editorial photos (competes with hero); adding another CTA or feature selector (breaks V48 homepage restraint).
+
 ## 2026-11-12 — V62 touch hover persistence
 
 - MDN keyboard accessibility: https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Keyboard — native links and visible focus must survive interaction changes. Reference only, no code copied.
