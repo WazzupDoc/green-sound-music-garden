@@ -29,6 +29,30 @@ Removed from homepage rendering (not deleted from repository/other versions): Qu
 
 The fixed audio/video policy remains unchanged: **no automatically played music**, opt-in real video film and CSS-only stage effects.
 
+## Codespaces preview reliability (owner-reported blocker)
+The owner attempted `npm install --no-package-lock` and received
+`Cannot read properties of null (reading 'edgesOut')`, followed by
+`vite: not found`. Earlier `.devcontainer/devcontainer.json` still
+declared "V23" and ran npm despite CI using Bun 1.3.3.
+
+V48 adds a documented `.devcontainer/install-preview.sh` and updates
+`postCreateCommand` to bootstrap **pinned Bun 1.3.3** then
+`bun install --no-save`; `postStartCommand` launches
+`bunx vite dev --host 0.0.0.0 --port 4175`. On a **new** Codespace,
+the private forwarded port 4175 should become ready automatically.
+An already created Codespace may need **Rebuild Container** to apply
+the updated devcontainer bootstrap. These preview steps do not deploy
+`greensoundmusic.com`.
+
+## Actual creative QA refinement
+First V48 screenshot showed a conventional three-column photographic
+layout on desktop despite the intended editorial direction. The
+responsive layout was therefore revised to a **mosaic magazine spread**:
+the Music story occupies the full left depth, with the Stage and People
+chapters staggered on the right. At tablet/mobile breakpoints it flows
+to a readable linear chapter order. This better meets the user's
+explicit request to avoid cookie-cutter three-card layouts.
+
 ## Technical QA / release blockers
 - [ ] Strict TypeScript, production Vite/TanStack SSR and 25 existing unit tests.
 - [ ] Client gzip budget caps maintained; no new npm packages, WebGL or video embed.
