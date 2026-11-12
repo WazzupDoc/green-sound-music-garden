@@ -29,17 +29,21 @@ export function Breadcrumbs({ items }: { items: { name: string; to?: string }[] 
 }
 
 export function PageHero({
-  eyebrow,title,lead,image,crumbs,children,transitionName,
+  eyebrow,title,lead,image,crumbs,children,transitionName,kind="service",tone="natural",
 }: {
   eyebrow:string;title:string;lead:string;image:ImageRef;
   crumbs:{name:string;to?:string}[];children?:ReactNode;transitionName?:string;
+  kind?:"service"|"event"|"about"|"index";tone?:string;
 }) {
   return (
-    <section className="atelier-inner-hero rs-inner-hero" aria-label={eyebrow}>
+    <section className="atelier-inner-hero rs-inner-hero v60-inner-hero" aria-label={eyebrow}
+      data-v60-kind={kind} data-v60-tone={tone}>
+      <div className="v60-inner-hero__mark" aria-hidden="true">GREEN SOUND MUSIC · PRODUCTION DEPARTMENT · PITESTI</div>
+      <div className="v60-inner-hero__texture" aria-hidden="true"><img src="/creative/sonic-ribbon.svg" alt="" width={1600} height={720} loading="lazy"/></div>
       <div className="container-site rs-inner-hero__layout">
         <div className="rs-inner-hero__copy">
           <Breadcrumbs items={crumbs} />
-          <p className="rs-inner-hero__eyebrow">{eyebrow}</p>
+          <p className="rs-inner-hero__eyebrow"><span className="v60-inner-hero__dot" aria-hidden="true"/>{eyebrow}</p>
           <h1>{title}</h1>
           <p className="rs-inner-hero__lead">{lead}</p>
           <div className="rs-inner-hero__actions">{children ?? <HeroCtas />}</div>
