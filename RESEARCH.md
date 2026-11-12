@@ -1,3 +1,9 @@
+## 2026-11-12 — V68 deterministic editorial service lookup
+
+- Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map (consulted 2026-11-12). Native Map preserves insertion order and supports keyed lookup; no third-party code or asset used.
+- Applied: after the V67 source duplicate guard, construct one slug→service Map, replacing repeated Array.find lookups while retaining original service object references, chapter order, direct routes and SSR semantics. No new dependency. Bundle/performance change not measured; do not claim LCP improvement.
+- Experiment gate: authentic differentiation (unchanged, deliberately), utility (deterministic content integrity), performance (bounded native lookup, unmeasured), a11y (unchanged), SSR (deterministic), cost/license (none), tests (new identity/order regression, not yet executed), rollback (revert V68 commits). Rejected: auto-generated service cards and client-side fetching (adds UI complexity and network cost).
+
 ## 2026-11-12 — V67 source catalogue integrity
 
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set — a Set removes duplicates, so comparing editorial slugs against a Set alone can conceal duplicate slugs in the original catalogue. Consulted 2026-11-12; documentation only, no code copied or new license.
