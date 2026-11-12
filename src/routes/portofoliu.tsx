@@ -1,55 +1,34 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDownRight } from "lucide-react";
-import { PageHero, QuoteSection } from "@/components/site/blocks";
-import { PortfolioJournal, PortfolioFilmArchive } from "@/components/atelier/PortfolioJournal";
-import { business, images, videos } from "@/data/site";
+import { RegiaPhotoRail, RegiaFilmArchive, galleryFrames } from "@/components/atelier/RegiaPortfolio";
+import { QuoteSection } from "@/components/site/blocks";
+import { images, videos } from "@/data/site";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
-
-const availableFilms = new Set(Object.values(videos).map(video => video.id));
-/** Only the company's documented video IDs are accepted in shareable portfolio links. */
-function validatePortfolioSearch(search: Record<string, unknown>): { film?: string } {
-  return typeof search['film'] === "string" && availableFilms.has(search['film'])
-    ? { film: search['film'] } : {};
+const filmIds = new Set(Object.values(videos).map(item => item.id));
+const photoIds = new Set(galleryFrames.map(item => item.id));
+function validSearch(search:Record<string,unknown>):{film?:string;photo?:string} {
+  if(typeof search.photo==="string" && photoIds.has(search.photo)) return {photo:search.photo};
+  if(typeof search.film==="string" && filmIds.has(search.film)) return {film:search.film};
+  return {};
 }
-
-export const Route = createFileRoute("/portofoliu")({
-  validateSearch: validatePortfolioSearch,
-  head: () => pageHead({
-    title: "Portofoliu foto video real | Nunți, DJ, concerte și lumini — Green Sound Music",
-    description: "Explorează fotografii reale, filmări de nuntă, DJ, concerte și lumini din portofoliul Green Sound Music Pitești. Selectează proiectele și cere o ofertă.",
-    path: "/portofoliu",
-    jsonLd: [breadcrumbLd([{ name: "Acasă", path: "/" }, { name: "Portofoliu", path: "/portofoliu" }])],
+export const Route=createFileRoute("/portofoliu")({
+  validateSearch:validSearch,
+  head:()=>pageHead({
+    title:"Portofoliu Green Sound Music | Fotografii și filmări din evenimente",
+    description:"Fotografii și videoclipuri Green Sound Music din concerte, nunți, spectacole, studio, lumini și petreceri din Pitești și nu numai.",
+    path:"/portofoliu",image:images.concert,
+    jsonLd:[breadcrumbLd([{name:"Acasă",path:"/"},{name:"Portofoliu",path:"/portofoliu"}])],
   }),
-  component: Portfolio,
+  component:Portfolio,
 });
-
-function Portfolio() {
-  const { film } = Route.useSearch();
-  return (
-    <>
-      <PageHero eyebrow="THE EVENT JOURNAL / GREEN SOUND MUSIC"
-        title="Nu doar imagini frumoase. Atmosfere care au existat."
-        lead="Fotografii și filmări din evenimentele, spectacolele și producțiile Green Sound Music. Dincolo de promisiuni: vezi experiența reală."
-        image={images.concert}
-        crumbs={[{ name: "Acasă", to: "/" }, { name: "Portofoliu" }]} />
-      <nav className="journal__quicknav" aria-label="Explorează portofoliul">
-        <div className="container-site journal__quicknav-inner">
-          <span>GREEN SOUND / {business.address.city.toUpperCase()} / DIN {business.founded}</span>
-          <a href="#portfolio-photos">Fotografii <ArrowDownRight className="size-4" aria-hidden /></a>
-          <a href="#portfolio-films">Filme reale <ArrowDownRight className="size-4" aria-hidden /></a>
-        </div>
-      </nav>
-      <PortfolioJournal />
-      <div className="journal__manifesto" aria-label="Atmosfera Green Sound Music">
-        <div className="container-site">
-          <span>DIN IMAGINI ÎN AMINTIRI / GREEN SOUND MUSIC</span>
-          <p>Se aude. <em>Se vede.</em> Se simte.</p>
-        </div>
-      </div>
-      <PortfolioFilmArchive initialFilmId={film} />
-      <QuoteSection
-        title="Vrei o atmosferă asemănătoare la evenimentul tău?"
-        intro="Spune-ne tipul evenimentului, data și locul. Îți pregătim împreună o propunere de muzică, sunet, lumini sau efecte, fără rezervare automată." />
-    </>
-  );
+function Portfolio(){
+  const {film,photo}=Route.useSearch();
+  return <>
+    <section className="rs-page-intro" aria-labelledby="rs-portfolio-title">
+      <div className="container-site"><p>Portofoliu</p><h1 id="rs-portfolio-title">Nu prezentări. Evenimentele, așa cum au fost.</h1>
+      <p>Fotografii și filmări din arhiva Green Sound Music. Imaginile și videoclipurile sunt cele ale proiectului, nu fotografii de catalog.</p></div>
+    </section>
+    <RegiaPhotoRail activePhoto={photo} />
+    <RegiaFilmArchive film={film} />
+    <QuoteSection title="Ai un eveniment în pregătire?" intro="Spune-ne data și locația. Formularul doar pregătește mesajul, iar tu alegi dacă îl trimiți prin WhatsApp sau email." />
+  </>;
 }
