@@ -1,3 +1,12 @@
+# V62 — Touch hover parity for editorial service programme (draft)
+
+- Branch: `design/v62-editorial-touch-hover-parity`, stacked on V61 PR #54, not the parallel visual rebuild PR #55.
+- CSS-only @media(hover:none) neutralizes persistent photographic zoom and arrow/label displacement after taps, preserving native focus-visible outlines, Lite and reduced-motion. Adds Vitest source regression. No added homepage sections, JavaScript, assets or dependencies.
+- Research and rejected alternatives documented in RESEARCH.md; asset and agent state updated. No measured performance claim.
+- V61 exact-head workflow query returned no PR runs; V62 TypeScript, SSR, Vitest, six-width Chromium and screenshot audits unverified. PR #19 mergeable=false. Do not merge main/deploy before release gates and backup/rollback review.
+
+---
+
 # V61 — Editorial CTA regression gate reliability (draft)
 
 - Branch: `design/v61-editorial-cta-test-hardening`, stacked on V60 editorial PR #51, not parallel redesign PR #52/#53.
