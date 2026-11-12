@@ -19,7 +19,7 @@ function Events(){return <>
    <h2 id="rs-events-title">Cu ce eveniment începem?</h2>
    <div className="rs-events-index__list">
     {events.map((event,index)=><article key={event.slug} className="rs-events-index__row">
-     <BeamPhoto image={event.image} className="rs-events-index__image" />
+     <BeamPhoto image={event.image} className="rs-events-index__image" transitionName={`gs-event-${event.slug}`} />
      <div><span>{String(index+1).padStart(2,"0")} / {event.name}</span>
       <h3>{event.name}</h3><p>{event.short}</p>
       <Link to="/evenimente/$slug" params={{slug:event.slug}} viewTransition className="rs-inline-link">
