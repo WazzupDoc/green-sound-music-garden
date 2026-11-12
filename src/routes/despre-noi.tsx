@@ -26,6 +26,28 @@ function About(){return <>
    <Link to="/servicii" className="rs-inline-link">Serviciile disponibile <ArrowUpRight size={18} aria-hidden /></Link></div>
   </div>
  </section>
+ <section className="gsx-backstage" aria-labelledby="gsx-backstage-title">
+  <div className="container-site gsx-backstage__intro">
+    <span>02 / CULISE</span>
+    <h2 id="gsx-backstage-title">Înaintea aplauzelor,<br/>există <em>pregătirea.</em></h2>
+    <p>În imagini reale din activitatea Green Sound: oameni, pupitre, scenă și lumină. Atmosfera începe cu lucruri care nu se văd din mijlocul ringului.</p>
+  </div>
+  <div className="gsx-backstage__composition">
+    <figure className="gsx-backstage__photo gsx-backstage__photo--one">
+      <img src={images.scena.src} alt={images.scena.alt} width={images.scena.w} height={images.scena.h} loading="lazy" decoding="async"/>
+      <figcaption>01 / SCENA</figcaption>
+    </figure>
+    <figure className="gsx-backstage__photo gsx-backstage__photo--two">
+      <img src={images.dj.src} alt={images.dj.alt} width={images.dj.w} height={images.dj.h} loading="lazy" decoding="async"/>
+      <figcaption>02 / PUPITRUL</figcaption>
+    </figure>
+    <figure className="gsx-backstage__photo gsx-backstage__photo--three">
+      <img src={images.concert.src} alt={images.concert.alt} width={images.concert.w} height={images.concert.h} loading="lazy" decoding="async"/>
+      <figcaption>03 / PUBLICUL</figcaption>
+    </figure>
+    <div className="gsx-backstage__seal" aria-hidden="true">GREEN<br/>SOUND<br/><span>EST. 2008</span></div>
+  </div>
+ </section>
  <section className="rs-about-steps">
   <div className="container-site">
    <h2>Pregătirea, pas cu pas</h2>
