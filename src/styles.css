@@ -29,6 +29,7 @@
 @import "./styles/regia-serii-foundation.css";
 @import "./styles/regia-serii-site.css";
 @import "./styles/regia-serii-portfolio.css";
+@import "./styles/regia-serii-pages.css";
 
 @custom-variant dark (&:is(.dark *));
 
