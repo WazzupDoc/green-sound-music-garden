@@ -1,3 +1,13 @@
+# V45 — Contact direct-link SSR hydration regression (draft)
+
+- Branch: `design/crafted-atmospheres-v45-contact-hydration-gate`, stacked on V44 PR #30; no main merge or deployment.
+- V44 exact-head GitHub Actions PASS on `a0ad282c92858f1342e26dc5bcc76f62081b9e06`, run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43144989023.
+- Added `.github/scripts/verify-contact-hydration.cjs` and an explicit CI Chromium step, at 390px and 1440px, covering native direct navigation and reload of a query-prefilled Contact page, accessible form mount, date/location persistence, canonical/OG URL parity and console/React hydration errors. No actual WhatsApp/email submission occurs.
+- Existing six-width audit, SSR build, typecheck, Vitest, sitemap and gzip budgets remain mandatory; V45 CI for its final head must pass before integration.
+- Backlog: extend to all allowlisted service combinations and real production SSR/field CWV; verify hosting deployment triggers and rollback before any main merge. Search Console query volumes remain unavailable/unverified.
+
+---
+
 # V44 — Full PR quality coverage (draft)
 
 - Branch: `design/crafted-atmospheres-v44-complete-pr-ci`, stacked on V43 PR #29; no merge/deploy.
