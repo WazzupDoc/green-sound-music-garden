@@ -1,3 +1,7 @@
+## 2026-11-12 — V66 draft
+
+Branch `design/v66-editorial-catalogue-completeness` stacked on V65. Added catalogue parity fail-fast guard and unit regression, preserving three chapters and eight direct links. V65 exact-head PR workflow query returned zero runs; V66 CI, TypeScript, SSR and six-width browser audit unverified. No measured Lighthouse or SEO gains. Next: run CI, inspect six widths and Contact two-service handoff; audit deployment triggers. Main unchanged.
+
 ## 2026-11-12 — V65
 
 - Branch design/v65-editorial-service-uniqueness-guard stacked on V64. Guard against repeated service slugs across the three editorial chapters; added an eight-unique-service test. No visible UI change or dependency.

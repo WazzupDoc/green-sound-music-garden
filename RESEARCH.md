@@ -1,3 +1,7 @@
+## 2026-11-12 — V66 catalogue completeness
+
+Reference: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context — descriptive links must retain meaningful destinations. Applied original zero-dependency integrity check ensuring every existing catalogue slug appears exactly once in the editorial programme, plus Vitest set-equality test. No third-party code or assets copied. Rejected: a client-side auto-generated carousel or fallback link (could hide catalogue errors and violate the V48 editorial structure). Browser/CI validation pending.
+
 ## 2026-11-12 — V65 service-link integrity
 
 Source: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context (W3C, WCAG 2.2 SC 2.4.4). Technique: preserve descriptive individual service link text and prevent accidental duplicate destinations in the three-chapter programme. Applied: a zero-dependency build-time guard plus Vitest catalogue uniqueness regression. No source code copied; standard documentation is reference only. Rejected: adding another carousel or client-side selector, as it duplicates existing discovery and harms V48 editorial clarity. No external assets or licenses introduced.

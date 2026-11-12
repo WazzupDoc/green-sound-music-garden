@@ -1,3 +1,7 @@
+## 2026-11-12 — V66
+
+No new images, icons, fonts, video, audio, packages or third-party code. Existing first-party imagery and Lucide remain unchanged. New TypeScript guard and test are original project code; no new license obligations.
+
 ## 2026-11-12 — V65 asset ledger
 
 No new image, video, font, icon, sound, library or external asset was introduced. Existing original assets remain unchanged. Reference W3C WCAG 2.2: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context (documentation only; no code copied).
