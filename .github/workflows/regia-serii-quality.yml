@@ -1,11 +1,11 @@
-name: Regia Serii visual and functional QA
+name: Green Sound V58 Open House visual and functional QA
 on:
   push:
     branches:
-      - design/v52-regia-serii-complete-preview
+      - design/v58-open-house-from-scratch
   pull_request:
     branches:
-      - design/v51-regia-serii-foundation
+      - design/v52-regia-serii-complete-preview
   workflow_dispatch:
 permissions:
   contents: read
