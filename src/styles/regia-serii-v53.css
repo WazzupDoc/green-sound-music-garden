@@ -277,3 +277,40 @@ html[data-gs-performance="lite"] .rs-hero__beams,
 @media(hover:none){
   .rs-hero__beams{opacity:.3}
 }
+
+
+/* A photograph appears beside the service being explored, not a stack of
+   eight repeated cards. Touch users receive an inline image instead. */
+.rs-service-index__floating {
+  position:fixed;top:0;left:0;z-index:70;width:215px;height:290px;
+  background:#101820;pointer-events:none;
+  overflow:hidden;opacity:0;clip-path:inset(100% 0 0);
+  transition:opacity var(--rs-fast) var(--rs-ease),
+    clip-path var(--rs-medium) var(--rs-ease);
+  box-shadow:0 20px 50px rgba(0,0,0,.16);
+}
+.rs-service-index__floating[data-visible="true"]{
+  opacity:1;clip-path:inset(0 0 0 0)
+}
+.rs-service-index__floating img {width:100%;height:100%;object-fit:cover}
+.rs-service-index__thumb{display:none}
+.rs-service-index__group li>a{position:relative;transition:padding-left var(--rs-fast) var(--rs-ease)}
+.rs-service-index__group li>a:hover{padding-left:12px}
+@media(hover:none), (max-width:800px){
+  .rs-service-index__floating{display:none}
+  .rs-service-index__thumb{
+    display:block;width:72px;height:82px;object-fit:cover;
+    grid-column:1;grid-row:1/3
+  }
+  .rs-service-index__group li>a{
+    grid-template-columns:72px minmax(0,1fr) 22px;
+    gap:8px 15px
+  }
+  .rs-service-index__group li>a strong{grid-column:2;grid-row:1}
+  .rs-service-index__group li>a span{grid-column:2;grid-row:2}
+  .rs-service-index__group li>a svg{grid-column:3;grid-row:1}
+}
+@media(prefers-reduced-motion:reduce){
+  .rs-service-index__floating,
+  .rs-service-index__group li>a{transition:none!important}
+}
