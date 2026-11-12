@@ -45,7 +45,7 @@ export function BeamPhoto({ image, className = "", priority = false, decorative 
   }, []);
 
   const move = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "mouse" || document.documentElement.dataset.gsPerformance === "lite") return;
+    if (event.pointerType !== "mouse" || document.documentElement.dataset["gsPerformance"] === "lite") return;
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty("--beam-x", `${event.clientX - rect.left}px`);
     event.currentTarget.style.setProperty("--beam-y", `${event.clientY - rect.top}px`);
