@@ -28,6 +28,7 @@
 @import "./styles/performance-adaptive.css";
 @import "./styles/regia-serii-foundation.css";
 @import "./styles/regia-serii-site.css";
+@import "./styles/regia-serii-portfolio.css";
 
 @custom-variant dark (&:is(.dark *));
 
