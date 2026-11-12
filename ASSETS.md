@@ -1,3 +1,5 @@
+Updated V60 2026-11-12: no new assets, external libraries, font files, video or sound. Existing Lucide arrow remains. CSS-only change; no additional license obligations.
+
 Updated V59 2026-11-12: no new images, video, fonts, icon packages or external assets. Existing Green Sound first-party images and Lucide arrows retained; CSS selector-only accessibility refinement.
 
 Updated V58 2026-11-12: No new assets, fonts, icons, video, images, sounds or packages. Existing first-party media and ISC-licensed Lucide remain unchanged. CSS-only hover improvement has no third-party license obligations.
