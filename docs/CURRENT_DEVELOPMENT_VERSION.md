@@ -1,3 +1,13 @@
+# V47 — Contact crawler-visible SSR without JavaScript (draft)
+
+- Branch: `design/crafted-atmospheres-v47-contact-ssr-nojs`, stacked on V46 PR #32; development only, no main merge or deployment.
+- Verified V46 exact-head GitHub Actions **PASS** for `12d2da178b987febbecceca72f870c343858e993`, run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43158167443. Strict TypeScript, SSR build, bundle budgets, Vitest, six-width Chromium, Contact hydration, and sitemap audit jobs all passed.
+- Added a Chromium **JavaScript-disabled** Contact navigation regression to verify HTTP 200, one server-rendered H1, exactly one canonical and one OG URL, and parity on a campaign-query/fragment URL. This tests metadata as search crawlers receive it before hydration, not just client-rendered DOM.
+- Release gate: V47 exact-head CI must pass; inspect browser artifacts before integration. Do not infer production field Core Web Vitals from CI.
+- Backlog: service-selection to Contact prefill; invalid-input/error and clipboard denied flows; reduced-motion/Save-Data checks; field Search Console data when authorized. PR #19 still needs conflict resolution separately. Main backup/tag and deployment triggers remain unverified, so do not merge.
+
+---
+
 # V46 — Contact SSR six-width hydration regression (draft)
 
 - Branch: `design/crafted-atmospheres-v46-contact-six-width-hydration`, stacked on V45 PR #31. No main merge/deployment.

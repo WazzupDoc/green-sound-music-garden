@@ -41,6 +41,23 @@ const origin = "http://127.0.0.1:4175";
       assert.deepEqual(errors, [], "Reload must preserve prefill without hydration errors at " + width + "px");
       await page.close();
     }
-    console.log("PASS V46: Contact direct navigation/reload, prefill, canonical/OG and hydration at 360/390/430/768/1440/1920");
+    // V47: canonical metadata and the Contact heading must exist in SSR HTML,
+    // not only after client-side JavaScript has run. This catches crawler-visible regressions.
+    const noJs = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+    try {
+      const page = await noJs.newPage();
+      const response = await page.goto(origin + "/contact?date=2027-07-18&utm_source=seo-audit#cerere-oferta",
+        { waitUntil: "domcontentloaded", timeout: 45000 });
+      assert.equal(response?.status(), 200, "No-JS Contact SSR must respond HTTP 200");
+      assert.equal(await page.locator("main h1").count(), 1, "Contact H1 must be server rendered");
+      assert.equal(await page.locator('head link[rel="canonical"]').count(), 1, "SSR must provide exactly one canonical");
+      assert.equal(await page.locator('head meta[property="og:url"]').count(), 1, "SSR must provide exactly one OG URL");
+      assert.equal(await page.locator('head link[rel="canonical"]').getAttribute("href"),
+        "https://greensoundmusic.com/contact/", "No-JS SSR canonical must exclude tracking and fragments");
+      assert.equal(await page.locator('head meta[property="og:url"]').getAttribute("content"),
+        "https://greensoundmusic.com/contact/", "No-JS SSR Open Graph URL must match canonical");
+      await page.close();
+    } finally { await noJs.close(); }
+    console.log("PASS V47: six-width Contact hydration plus no-JS crawler-visible SSR metadata");
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
