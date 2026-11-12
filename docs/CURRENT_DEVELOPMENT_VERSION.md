@@ -1,3 +1,12 @@
+# V64 — Editorial service chapter semantics (draft)
+
+- Branch: `design/v64-editorial-semantic-navigation` stacked on V63 PR #57; homepage remains hero + 3 chapter / 8 service editorial programme + 3 real films + one CTA.
+- Existing chapter headings and factual notes now explicitly label and describe each service list using stable, unique `id`, `aria-labelledby`, and `aria-describedby` attributes. No new visible widgets, scripts, libraries or assets.
+- Added `production-index.semantic.test.ts` source-level regression; actual screen-reader, browser, TypeScript, SSR, Vitest and six-width CI checks are not yet confirmed.
+- Baseline V63 exact-head PR workflow query returned no runs. PR #19 mergeable=false. Do not merge or deploy without full gates, backup tag, verified CI/CD triggers and rollback.
+
+---
+
 # V63 — Concrete editorial service language (draft)
 
 - Branch: `design/v63-editorial-service-clarity`, stacked on V62 PR #56. No main merge/deployment.
