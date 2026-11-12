@@ -1,3 +1,11 @@
+# V67 — Source catalogue duplicate guard (draft)
+
+- Branch design/v67-catalogue-duplicate-source-guard stacked on V66 PR #60. Detects duplicate slugs in the original services catalogue before Set-based editorial completeness validation; regression test documents false-positive scenario.
+- V48 clean homepage unchanged; no new dependencies, assets, sections or network calls. V66 exact-head PR workflow lookup returned no runs; V67 CI, TypeScript, SSR and browser QA unverified.
+- No main merge/deploy until exact-head CI, mergeability, screenshot/Contact audit, backup tag, rollback and deployment-trigger review. No measured SEO or Lighthouse claims.
+
+---
+
 # V66 — Editorial catalogue completeness (draft)
 
 - Branch `design/v66-editorial-catalogue-completeness` based on V65 PR #59. Existing runtime uniqueness check now also rejects omitted catalogue services; Vitest checks full catalogue parity and per-chapter order.
