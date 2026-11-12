@@ -504,3 +504,51 @@
   animation:none!important;clip-path:none!important}
  .gsx-manifest__graphic img.gsx-manifest__ribbon{animation:none!important}
 }
+
+
+/* Homepage navigation blends with the stage; on scroll it becomes solid.
+   Inner pages preserve their established accessible header. */
+body:has(.gsx) .atelier-header:not(.atelier-header--scrolled){
+ background:linear-gradient(180deg,#030B09ED,#030B0900)!important;
+ border-bottom-color:transparent!important;
+ box-shadow:none!important;backdrop-filter:none!important
+}
+body:has(.gsx) .atelier-header:not(.atelier-header--scrolled) .atelier-header__quote{
+ background:#C9FF89!important;color:#04120A!important
+}
+/* Cinematic visual treatments on two service detail pages.
+   Generated art is clearly identified as a conceptual illustration. */
+.gsx-service-visual{position:relative;isolation:isolate;margin:clamp(36px,5vw,80px) 0 0;
+ min-height:clamp(360px,44vw,580px);display:flex;align-items:center;overflow:hidden;
+ background:#051511;color:#f2fff3}
+.gsx-service-visual>img:first-child{position:absolute;inset:0;z-index:-3;
+ width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.82) contrast(1.06)}
+.gsx-service-visual:before{content:"";position:absolute;inset:0;z-index:-2;
+ background:linear-gradient(90deg,#02100CDE 0%,#02100C9E 47%,#02100C2C 100%),
+ linear-gradient(0deg,#02100C99,transparent 50%)}
+.gsx-service-visual__copy{position:relative;z-index:2;padding:clamp(28px,6vw,84px);
+ width:min(850px,90%);display:flex;align-items:flex-start;flex-direction:column}
+.gsx-service-visual__copy>span{font-size:.8rem;font-weight:850;letter-spacing:.14em;color:#CBFF8F}
+.gsx-service-visual__copy>strong{font-family:"Space Grotesk Variable",Arial,sans-serif!important;
+ font-size:clamp(2.5rem,5.4vw,6.3rem);font-weight:800;letter-spacing:-.077em;
+ line-height:.95;margin:25px 0;text-wrap:balance}
+.gsx-service-visual__copy>p{max-width:45ch;font-size:clamp(.97rem,1.2vw,1.16rem);
+ line-height:1.6;color:#DAEADD}
+.gsx-service-visual__link{display:inline-flex;align-items:center;gap:14px;
+ margin-top:25px;border-bottom:1px solid #CBFF8F;padding:8px 0;
+ font-size:.96rem;font-weight:750}
+.gsx-service-visual__smoke{position:absolute!important;z-index:-1;
+ left:-5%!important;top:auto!important;bottom:-20%!important;
+ width:115%!important;height:90%!important;object-fit:contain!important;
+ opacity:.55;filter:blur(9px);pointer-events:none}
+.gsx-service-visual--smoke>img:first-child{filter:hue-rotate(-25deg) saturate(.75)}
+@media(max-width:620px){
+ body:has(.gsx) .gsx-console{padding-bottom:88px}
+ .gsx-service-visual{min-height:440px}
+ .gsx-service-visual:before{background:linear-gradient(0deg,#02100CE9,#02100C80 73%,#02100C30)}
+ .gsx-service-visual__copy{width:100%;padding:28px}
+ .gsx-service-visual__copy>strong{font-size:clamp(2.3rem,9vw,4rem)}
+}
+@media(prefers-reduced-motion:reduce){
+ .gsx-service-visual__smoke{filter:none}
+}
