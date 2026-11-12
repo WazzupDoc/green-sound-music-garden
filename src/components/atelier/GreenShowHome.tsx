@@ -164,6 +164,7 @@ export function GreenShowHome(){
         <div>
          <strong>Nu organizăm doar muzica.<br/>Construim atmosfera.</strong>
          <p>{current.description}</p>
+         <p className="gs61-hero__service-line">DJ &amp; MC · Trupă live · Sonorizare · Lumini · Pitești / Argeș</p>
         </div>
         <Link to="/contact" className="gsx-pill">VREAU UN SHOW <ArrowUpRight aria-hidden size={21}/></Link>
       </div>
