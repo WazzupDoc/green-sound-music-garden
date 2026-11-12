@@ -348,3 +348,26 @@ body:has(.go-2026) .atelier-header__finder-hint{color:#143629!important}
   .go-intro__heading h1{font-size:clamp(2.45rem,8.5vw,3.25rem)!important}
   .go-scene__bottom h2,.go-scene[data-active="false"] .go-scene__bottom h2{font-size:2.4rem!important}
 }
+
+/* Image-first fold: do not make the audience scroll through an empty editorial
+   introduction before seeing an actual Green Sound show. */
+@media(min-width:761px){
+ .go-intro{padding-top:104px;padding-bottom:6px}
+ .go-intro__heading{padding-top:24px;padding-bottom:27px}
+ .go-intro__heading h1{font-size:clamp(3.5rem,5.5vw,6.8rem)!important}
+ .go-scenes__rail{height:74svh;max-height:800px}
+}
+.go-scene[data-active="true"]>img{
+ transform:scale(1.12);transform-origin:center bottom;
+ object-position:center 65%;
+}
+@media(max-width:760px){
+ .go-intro{padding-top:92px;padding-bottom:8px}
+ .go-intro__heading{padding-top:29px;padding-bottom:20px}
+ .go-intro__right p{margin-bottom:6px}
+ .go-scenes__rail{height:min(69svh,700px)}
+ .go-scene[data-active="true"]>img{
+  transform:scale(1.06);transform-origin:center bottom;
+  object-position:center 70%;
+ }
+}
