@@ -22,7 +22,7 @@ export const chapters: readonly Chapter[] = [
     index: "01",
     overline: "THE SOUND",
     title: "Muzica.",
-    note: "Ceea ce ține oamenii aproape de ring.",
+    note: "DJ & MC, trupă live și înregistrări în studio — trei moduri de a construi partea muzicală.",
     image: images.dj,
     serviceSlugs: ["dj-mc", "trupa", "studio-inregistrari"],
     art: "sound",
@@ -31,7 +31,7 @@ export const chapters: readonly Chapter[] = [
     index: "02",
     overline: "THE STAGE",
     title: "Producția.",
-    note: "Tehnica ce susține un show de la primul la ultimul minut.",
+    note: "Sunet, lumini și efect de fum greu — servicii tehnice pe care le poți discuta separat.",
     image: images.scena,
     serviceSlugs: ["echipamente-de-sunet-si-lumini", "masina-fum-greu-cu-gheata-carbonica"],
     art: "stage",
@@ -40,7 +40,7 @@ export const chapters: readonly Chapter[] = [
     index: "03",
     overline: "THE PEOPLE",
     title: "Momentele.",
-    note: "Detaliile care îi aduc pe invitați în poveste.",
+    note: "Hostess, ursitoare la botez și animație pentru copii — fiecare cu rolul său la eveniment.",
     image: images.ursitoare,
     serviceSlugs: ["hostess", "ursitoare-botez", "start-veselia"],
     art: "people",
@@ -70,7 +70,7 @@ export function ProductionIndex() {
           <div className="gs-index__intro-grid">
             <h2 id="gs-index-title">Sunetul. Scena. <em>Oamenii.</em></h2>
             <div className="gs-index__intro-note">
-              <p>Nu trebuie să cunoști echipamentele sau să alegi un pachet. Găsește rapid ce te interesează, apoi discutăm cum se potrivesc toate.</p>
+              <p>Alege serviciul de care ai nevoie: DJ & MC, trupă live, sonorizare, lumini sau servicii pentru invitați. Detaliile de montaj și desfășurare le stabilim în funcție de eveniment.</p>
               <Link to="/servicii">Explorează toate serviciile <ArrowUpRight className="size-4" aria-hidden /></Link>
             </div>
           </div>

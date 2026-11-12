@@ -1,3 +1,7 @@
+## V63 — 2026-11-12
+
+No new assets, fonts, images, icons, external embeds or dependencies. Existing first-party Green Sound photography remains unchanged. No licensing assumptions added.
+
 Updated V62 2026-11-12: no new media, font, icon, sound, image or dependency. CSS-only touch behavior and Vitest test; existing first-party images and Lucide ISC license unchanged.
 
 Updated V61 2026-11-12: no new assets, dependencies, fonts, sound, images, video or icons; test-only quality hardening. Existing first-party media and Lucide licenses unchanged.
