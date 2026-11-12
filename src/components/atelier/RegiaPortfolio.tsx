@@ -22,14 +22,14 @@ const photoFilters = [
 ] as const;
 type PhotoFilter = (typeof photoFilters)[number]["id"];
 
-export function RegiaPhotoRail({ activePhoto }: { activePhoto?:string }) {
+export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }) {
   const navigate = useNavigate();
   const [filter,setFilter] = useState<PhotoFilter>("toate");
   const frames = galleryFrames.filter(frame => filter === "toate" || frame.group === filter);
   const selected = galleryFrames.find(item => item.id === activePhoto);
   const pointerX = useRef<number | null>(null);
   const change = (id?:string) => {
-    void navigate({to:"/portofoliu",search:{photo:id},replace:true,resetScroll:false});
+    void navigate({to:"/portofoliu",search:id?{photo:id}:{},replace:true,resetScroll:false});
   };
   const step = (delta:number) => {
     if(!selected)return;
@@ -112,7 +112,7 @@ const filmCategories=[
 ] as const;
 const videoList: Video[] = Object.values(videos);
 
-export function RegiaFilmArchive({film}: {film?:string}) {
+export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const [category,setCategory]=useState<string>("");
   useEffect(()=>{ if(film) setCategory(""); },[film]);
   const selectedVideos=videoList.filter(v=>!category||v.tags.includes(category));
