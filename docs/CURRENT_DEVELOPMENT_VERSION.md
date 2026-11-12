@@ -1,3 +1,12 @@
+# V63 — Concrete editorial service language (draft)
+
+- Branch: `design/v63-editorial-service-clarity`, stacked on V62 PR #56. No main merge/deployment.
+- Replaced vague chapter copy with factual DJ/MC, live band, studio, sound/light/fog, hostess/ursitoare/children's animation descriptions. Three chapters, eight real links, three films and single homepage CTA remain intact.
+- Added Vitest copy guard; no runtime dependency or asset change. Research and rejected LCP changes documented.
+- Release gates pending: exact-head CI TypeScript/SSR/unit/Chromium six widths, screenshots, Contact flow, mergeability, deployment/backup/rollback audit. PR #19 mergeable=false.
+
+---
+
 # V62 — Touch hover parity for editorial service programme (draft)
 
 - Branch: `design/v62-editorial-touch-hover-parity`, stacked on V61 PR #54, not the parallel visual rebuild PR #55.
