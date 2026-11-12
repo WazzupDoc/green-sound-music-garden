@@ -1,3 +1,14 @@
+# V42 — Canonical path normalization (draft)
+
+- Branch: `design/crafted-atmospheres-v42-canonical-path-normalization`, stacked on V41 PR #27. Development only; no production deployment.
+- Normalize relative and repeated-slash path inputs into a single same-origin canonical pathname. Continue stripping query and fragment before generating canonical/OG/Schema.org URLs.
+- Added three Vitest regressions covering relative paths, repeated leading/interior separators and campaign links; preserves existing canonical tests and all V20–V41 features.
+- Release gate: exact SHA strict TypeScript, SSR build, Vitest, gzip budgets and six-width Chromium, including Contact hydration and query prefill. Do not claim validation before GitHub Actions confirms it.
+- SEO backlog: verify SSR canonical, og:url and structured-data parity for actual Contact prefill and service pages; Search Console performance requires connected data. No search-volume or ranking claims.
+- Do not merge to main until CI, branch protections, backup tag and deployment triggers are independently verified.
+
+---
+
 # V41 — Canonical query and fragment isolation (draft)
 
 - Branch: `design/crafted-atmospheres-v41-canonical-query-safety`, stacked on V40 PR #26; **not production**.
