@@ -20,12 +20,12 @@ export function LightDesk() {
     let saved: string | null = null;
     try { saved = window.localStorage.getItem(KEY); } catch { /* storage blocked */ }
     const next = valid(saved) ? saved : "neutru";
-    document.documentElement.dataset["light"] = next;
+    document.documentElement.dataset['light'] = next;
     setActive(next);
     const sync = (event: StorageEvent) => {
       if (event.key !== KEY) return;
       const mode = valid(event.newValue) ? event.newValue : "neutru";
-      document.documentElement.dataset["light"] = mode;
+      document.documentElement.dataset['light'] = mode;
       setActive(mode);
     };
     window.addEventListener("storage", sync);
@@ -33,7 +33,7 @@ export function LightDesk() {
   }, []);
 
   const select = (next: LightMode) => {
-    document.documentElement.dataset["light"] = next;
+    document.documentElement.dataset['light'] = next;
     setActive(next);
     try { window.localStorage.setItem(KEY, next); } catch { /* current page remains usable */ }
   };
