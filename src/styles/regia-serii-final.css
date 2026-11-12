@@ -58,3 +58,15 @@
 @media(prefers-reduced-motion:reduce){
  ::view-transition-old(root),::view-transition-new(root),::view-transition-group(*){animation:none!important}
 }
+
+
+.rs-404{background:#101820;min-height:100svh;color:#F3F0E9;display:grid;grid-template-columns:1.1fr .9fr}
+.rs-404__copy{padding:clamp(150px,16vw,230px) clamp(26px,7vw,120px) clamp(60px,9vw,130px)}
+.rs-404__copy>p:first-child{font-size:1rem;font-weight:720;color:#B1DDBB}
+.rs-404 h1{font-size:clamp(2.4rem,4.3vw,4.5rem);font-weight:710;letter-spacing:-.045em;line-height:1.12;margin:26px 0;max-width:16ch}
+.rs-404__copy>p:nth-of-type(2){font-size:1.1rem;line-height:1.7;max-width:42ch;color:#D1DDD3}
+.rs-404__actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.rs-404__phone{font-size:1.08rem;display:inline-block;margin-top:34px;text-decoration:underline}
+.rs-404__image{position:relative;overflow:hidden;min-height:400px}
+.rs-404__image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(max-width:850px){.rs-404{grid-template-columns:1fr}.rs-404__copy{padding:145px 24px 58px}.rs-404__image{min-height:350px;height:350px}}
