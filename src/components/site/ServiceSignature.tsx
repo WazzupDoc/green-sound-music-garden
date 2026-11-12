@@ -60,6 +60,17 @@ export function ServiceSignature({service:s}:{service:Service}){
               <p>Modelele și cantitățile exacte: [DE COMPLETAT DE PROPRIETAR].</p>
               <SectionLink slug={s.slug}/></div>
           </div>
+          <div className="gsx-service-visual gsx-service-visual--lights">
+            <img src="/creative/v59/stage-lasers.webp" alt="" width={1120} height={630} loading="lazy" decoding="async"/>
+            <div className="gsx-service-visual__copy">
+              <span>SCENĂ / LUMINĂ / IMPACT</span>
+              <strong>VEZI LUMINA ÎNAINTE<br/>SĂ ÎNCEAPĂ SHOW-UL.</strong>
+              <p>Vizual artistic creat digital, pentru a ilustra o atmosferă scenică — nu un montaj documentat al firmei.</p>
+              <Link to="/" hash="continut" className="gsx-service-visual__link">
+                Intră în Show Control <ArrowUpRight size={20} aria-hidden/>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>;
     case "masina-fum-greu-cu-gheata-carbonica":
@@ -72,6 +83,15 @@ export function ServiceSignature({service:s}:{service:Service}){
             <div><BeamPhoto image={images.fum}/><h3>Ce confirmăm înainte</h3>
               <p>Momentul utilizării, accesul la locație, condițiile de siguranță și compatibilitatea cu spațiul.</p>
               <SectionLink slug={s.slug}/></div>
+          </div>
+          <div className="gsx-service-visual gsx-service-visual--smoke">
+            <img src="/creative/v59/live-lights.webp" alt="" width={1120} height={630} loading="lazy" decoding="async"/>
+            <img className="gsx-service-visual__smoke" src="/creative/velvet-smoke.svg" alt="" aria-hidden="true" width={1920} height={800} loading="lazy"/>
+            <div className="gsx-service-visual__copy">
+              <span>EFECT VIZUAL / PROFUNZIME</span>
+              <strong>FUMUL SCHIMBĂ<br/>TOT CADRUL.</strong>
+              <p>Ilustrație scenică digitală. Filmarea de mai sus arată separat utilizarea reală a efectului.</p>
+            </div>
           </div>
         </div>
       </section>;

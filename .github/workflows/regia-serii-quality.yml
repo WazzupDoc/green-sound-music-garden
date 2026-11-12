@@ -1,10 +1,11 @@
-name: Green Sound V58 Open House visual and functional QA
+name: Green Sound V59 Live Show Control browser QA
 on:
   push:
     branches:
-      - design/v58-open-house-from-scratch
+      - design/v59-show-control-cinematic
   pull_request:
     branches:
+      - design/v58-open-house-from-scratch
       - design/v52-regia-serii-complete-preview
   workflow_dispatch:
 permissions:

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Compoziție grafică originală cu reflectoare și scenă">
+<defs>
+ <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020C0A"/><stop offset=".48" stop-color="#06322B"/><stop offset="1" stop-color="#020507"/></linearGradient>
+ <linearGradient id="beam" x1=".5" y1="0" x2=".5" y2="1"><stop stop-color="#DBFFE6" stop-opacity=".85"/><stop offset=".26" stop-color="#1BFA83" stop-opacity=".38"/><stop offset="1" stop-color="#04EC72" stop-opacity="0"/></linearGradient>
+ <linearGradient id="amber" x1=".5" y1="0" x2=".5" y2="1"><stop stop-color="#FFF4CE" stop-opacity=".66"/><stop offset=".35" stop-color="#FFC988" stop-opacity=".32"/><stop offset="1" stop-color="#A4DF42" stop-opacity="0"/></linearGradient>
+ <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08261E"/><stop offset="1" stop-color="#010A08"/></linearGradient>
+ <radialGradient id="halo"><stop stop-color="#1AFB8A" stop-opacity=".55"/><stop offset=".48" stop-color="#0CD18F" stop-opacity=".19"/><stop offset="1" stop-color="#0A6F5B" stop-opacity="0"/></radialGradient>
+ <radialGradient id="haze"><stop stop-color="#DAFFD9" stop-opacity=".25"/><stop offset="1" stop-color="#A2C7D9" stop-opacity="0"/></radialGradient>
+ <filter id="b" x="-50%" width="200%" y="-50%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+ <filter id="grain"><feTurbulence baseFrequency=".016" numOctaves="3" seed="7"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".12"/></feComponentTransfer></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<ellipse cx="1100" cy="525" rx="940" ry="620" fill="url(#halo)"/>
+<ellipse cx="350" cy="470" rx="700" ry="510" fill="url(#haze)" opacity=".55"/>
+<g opacity=".74" filter="url(#b)">
+ <path d="M144 0 L700 1015 L1010 1000 L245 0Z" fill="url(#beam)"/>
+ <path d="M1760 0 L950 1020 L1220 1020 L1798 0Z" fill="url(#beam)"/>
+ <path d="M820 -60 L530 920 L720 940 L920 -60Z" fill="url(#amber)"/>
+ <path d="M1140 -60 L1280 940 L1460 940 L1200 -60Z" fill="url(#beam)"/>
+</g>
+<g opacity=".76">
+ <path d="M162 0 L698 1000 L814 1000 L230 0Z" fill="url(#beam)"/>
+ <path d="M1790 0 L1060 990 L1210 990 L1850 0Z" fill="url(#amber)"/>
+ <path d="M740 -10 L700 900 L845 925 L830 -10Z" fill="url(#beam)"/>
+ <path d="M1200 -10 L1100 920 L1290 950 L1260 -10Z" fill="url(#beam)"/>
+</g>
+<g stroke="#61F6A7" stroke-opacity=".22" fill="none">
+ <path d="M0 142 L1920 142 M0 195 L1920 195 M0 236 L1920 236"/>
+ <path d="M120 0 V234 M320 0 V234 M1600 0 V234 M1800 0 V234"/>
+ <path d="M88 205 L430 145 L815 193 L1300 156 L1820 200"/>
+</g>
+<g fill="#01120F">
+ <rect x="330" y="829" width="1260" height="70"/>
+ <rect x="450" y="746" width="1020" height="88"/>
+ <rect x="620" y="679" width="680" height="70"/>
+ <rect x="0" y="906" width="1920" height="174" fill="url(#floor)"/>
+</g>
+<g stroke="#27F0B0" stroke-width="4" opacity=".8">
+ <path d="M450 746 H1470 M620 679 H1300 M330 830 H1590"/>
+</g>
+<g opacity=".4" filter="url(#b)"><ellipse cx="940" cy="835" rx="520" ry="110" fill="#30FFB8"/><ellipse cx="900" cy="1046" rx="850" ry="120" fill="#20CC83"/></g>
+<path d="M0 934 Q440 896 800 966 T1920 913 L1920 1080 H0Z" fill="url(#floor)" opacity=".4"/>
+<rect width="1920" height="1080" filter="url(#grain)" opacity=".16"/>
+</svg>
