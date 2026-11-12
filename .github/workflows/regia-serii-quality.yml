@@ -2,10 +2,10 @@ name: Regia Serii visual and functional QA
 on:
   push:
     branches:
-      - design/v53-regia-serii-live-stage
+      - design/v57-poster-showcase-direction
   pull_request:
     branches:
-      - design/v52-regia-serii-complete-preview
+      - design/v53-regia-serii-live-stage
   workflow_dispatch:
 permissions:
   contents: read
