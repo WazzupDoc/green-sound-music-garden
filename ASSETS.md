@@ -1,3 +1,5 @@
+Updated V61 2026-11-12: no new assets, dependencies, fonts, sound, images, video or icons; test-only quality hardening. Existing first-party media and Lucide licenses unchanged.
+
 Updated V60 2026-11-12: no new assets, external libraries, font files, video or sound. Existing Lucide arrow remains. CSS-only change; no additional license obligations.
 
 Updated V59 2026-11-12: no new images, video, fonts, icon packages or external assets. Existing Green Sound first-party images and Lucide arrows retained; CSS selector-only accessibility refinement.

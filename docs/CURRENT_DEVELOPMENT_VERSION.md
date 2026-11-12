@@ -1,3 +1,13 @@
+# V61 — Editorial CTA regression gate reliability (draft)
+
+- Branch: `design/v61-editorial-cta-test-hardening`, stacked on V60 editorial PR #51, not parallel redesign PR #52/#53.
+- Repaired a false-negative in CTA hover CSS tests: incorrectly double-escaped regexes could not detect layout-affecting hover rules. New test scans declarations and uses mutation fixtures to prove gap/padding/margin are rejected while transform is allowed.
+- No visible UI, dependency or asset change. V48 homepage structure preserved.
+- Latest observed PR workflow success on parallel PR #52 head `ab2cdd63ff44be4a41b1c7319d9bf65e6f211aaf` (run 43235217801); this is not validation of the editorial branch. PR #53 head run 43242687196 in progress at check time. PR #19 mergeable=false.
+- Release gates: V61 exact-head CI, TypeScript, SSR, Vitest, Chromium six widths, screenshots, Contact flow and main deployment/rollback configuration unverified. Do not merge or deploy.
+
+---
+
 # V60 — Editorial CTA layout-stable hover (draft)
 
 - Branch `design/v60-editorial-cta-layout-stability` stacked on V59 editorial PR #49, not parallel cinematic homepage PR #50.
