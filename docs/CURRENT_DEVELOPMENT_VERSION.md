@@ -1,3 +1,15 @@
+# V43 — CI coverage for future development branches (draft)
+
+- Branch: `design/crafted-atmospheres-v43-ci-coverage`, stacked on V42 PR #28; draft-only, no main merge or deployment.
+- Root cause: the existing GitHub Actions workflow listed individual branches only through V38, so newer V39–V42 development branches were excluded from push triggers; PR triggers also excluded V39+ target branches. Missing workflow runs cannot be interpreted as passing CI.
+- Replace enumerated branches with `design/crafted-atmospheres-*` for both push and pull_request, preserving main as an allowed PR target. Keep source and architecture checks; include documentation changes and all `.github/scripts/**` as PR triggers.
+- Verification gate: inspect the actual V43 push and PR GitHub Actions run for the exact head SHA, then strict TypeScript, SSR build, Vitest, gzip budgets, Chromium six-width regression and 20-route audit. A missing run is a blocker.
+- Retest V39–V42 on their actual code if they are considered for integration; V43 passing does not retroactively validate those commit SHAs.
+- Backlog: investigate Contact SSR hydration with query-prefill, field errors, adaptive motion and Search Console data (only if connected). Do not invent search volumes, conversions or backend delivery.
+- Main safety: verify deployment triggers, previous main SHA, backup tag creation and rollback before any merge; no production changes in this PR.
+
+---
+
 # V42 — Canonical path normalization (draft)
 
 - Branch: `design/crafted-atmospheres-v42-canonical-path-normalization`, stacked on V41 PR #27. Development only; no production deployment.
