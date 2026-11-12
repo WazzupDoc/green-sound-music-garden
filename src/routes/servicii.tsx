@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useRef, useState, type PointerEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { services, images, type ServiceSlug } from "@/data/site";
 import { BeamPhoto } from "@/components/site/BeamPhoto";
@@ -16,6 +17,17 @@ export const Route=createFileRoute("/servicii")({
  component:Services,
 });
 function Services(){
+ const [hovered, setHovered] = useState<ServiceSlug | null>(null);
+ const previewRef = useRef<HTMLDivElement>(null);
+ const movePreview = (event: PointerEvent<HTMLAnchorElement>) => {
+  if (event.pointerType !== "mouse") return;
+  const element = previewRef.current;
+  if (!element) return;
+  const x = Math.max(12, Math.min(event.clientX + 28, window.innerWidth - 250));
+  const y = Math.max(12, Math.min(event.clientY - 155, window.innerHeight - 325));
+  element.style.transform = `translate3d(${x}px,${y}px,0)`;
+ };
+ const preview = services.find(item => item.slug === hovered);
  return <>
   <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
     lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
@@ -32,7 +44,12 @@ function Services(){
       <ul>{group.slugs.map(slug=>{
         const service=services.find(item=>item.slug===slug)!;
         return <li key={service.slug}>
-          <Link to={`/${service.slug}`} viewTransition>
+          <Link to={`/${service.slug}`} viewTransition
+            onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(service.slug); }}
+            onPointerLeave={() => setHovered(null)}
+            onPointerMove={movePreview}>
+            <img className="rs-service-index__thumb" src={service.image.src}
+              width={service.image.w} height={service.image.h} loading="lazy" alt="" />
             <strong>{service.name}</strong>
             <span>{service.short}</span>
             <ArrowUpRight size={20} aria-hidden />
@@ -41,6 +58,11 @@ function Services(){
       })}</ul>
      </div>
     ))}
+   </div>
+   <div ref={previewRef} className="rs-service-index__floating"
+     aria-hidden="true" data-visible={Boolean(preview)}>
+      {preview && <img src={preview.image.src} alt="" width={preview.image.w}
+        height={preview.image.h} decoding="async" />}
    </div>
   </section>
   <section className="rs-service-pause" aria-label="Echipamente și pregătiri">
