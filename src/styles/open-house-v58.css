@@ -303,22 +303,22 @@ body:has(.go-2026) .atelier-header__menu-btn{color:#143629!important}
     scroll-behavior:auto!important}
 }
 
-/* Purposeful display font change: Syne has a distinct voice from prior
+/* Purposeful display font change: Space Grotesk has a distinct voice from prior
    Hanken + Instrument Serif hero treatment. Available weights 400–800, OFL. */
-.go-2026 :is(h1,h2,h3) {font-family:"Syne Variable",Arial,sans-serif!important}
+.go-2026 :is(h1,h2,h3) {font-family:"Space Grotesk Variable",Arial,sans-serif!important}
 .go-intro__heading h1{font-weight:800!important;letter-spacing:-.085em!important}
 .go-intro__heading h1 i {
-  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-family:"Space Grotesk Variable",Arial,sans-serif!important;
   font-weight:500!important;font-style:normal!important;
   letter-spacing:-.084em!important;color:#39845c!important;
 }
 .go-2026 em{
-  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-family:"Space Grotesk Variable",Arial,sans-serif!important;
   font-weight:500!important;font-style:normal!important;
   letter-spacing:-.07em!important;
 }
 .go-manifest h2 span{
-  font-family:"Syne Variable",Arial,sans-serif!important;
+  font-family:"Space Grotesk Variable",Arial,sans-serif!important;
   font-weight:500!important;font-style:normal!important;
   color:#d4ffc5!important;letter-spacing:-.065em!important;
 }
@@ -330,3 +330,21 @@ body:has(.go-2026) .atelier-header__finder-btn{
   background:transparent!important;border:1px solid #a0b1a4!important;
 }
 body:has(.go-2026) .atelier-header__finder-hint{color:#143629!important}
+
+/* Final phone art direction — prevent oversized headings and CTA clipping. */
+.go-2026 .go-scene__bottom h2{
+  font-family:"Hanken Grotesk Variable",Arial,sans-serif!important;
+  font-weight:730!important;letter-spacing:-.065em!important;
+}
+.go-2026 .go-intro__heading h1{font-weight:700!important;letter-spacing:-.075em!important}
+.go-2026 .go-intro__heading h1 i{font-weight:400!important}
+@media(max-width:760px){
+  .go-intro__asterisk{display:none}
+  .go-intro__heading h1{font-size:clamp(2.75rem,8.95vw,4.9rem)!important}
+  .go-scene__bottom h2{font-size:clamp(2.15rem,8.2vw,3.25rem)!important}
+  .go-scene[data-active="false"] .go-scene__bottom h2{font-size:clamp(2.15rem,8.2vw,3.25rem)!important}
+}
+@media(max-width:400px){
+  .go-intro__heading h1{font-size:clamp(2.45rem,8.5vw,3.25rem)!important}
+  .go-scene__bottom h2,.go-scene[data-active="false"] .go-scene__bottom h2{font-size:2.4rem!important}
+}
