@@ -1,3 +1,7 @@
+## 2026-11-12 — V65 service-link integrity
+
+Source: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context (W3C, WCAG 2.2 SC 2.4.4). Technique: preserve descriptive individual service link text and prevent accidental duplicate destinations in the three-chapter programme. Applied: a zero-dependency build-time guard plus Vitest catalogue uniqueness regression. No source code copied; standard documentation is reference only. Rejected: adding another carousel or client-side selector, as it duplicates existing discovery and harms V48 editorial clarity. No external assets or licenses introduced.
+
 ## 2026-11-12 — V64 semantic editorial navigation
 
 - web.dev responsive images: https://web.dev/learn/design/responsive-images — `srcset`/`sizes` can reduce transfer, but first-party image variants have not been verified; rejected inventing image paths or adding remote image transformations. No code copied.

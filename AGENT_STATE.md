@@ -1,3 +1,9 @@
+## 2026-11-12 — V65
+
+- Branch design/v65-editorial-service-uniqueness-guard stacked on V64. Guard against repeated service slugs across the three editorial chapters; added an eight-unique-service test. No visible UI change or dependency.
+- V64 exact-head PR workflow query returned no runs; PR #58 mergeable=true (does not establish CI success). PR #19 mergeable=false. TypeScript, SSR, browser six widths and Contact flow unverified. No main merge/deployment.
+- Next: exact-head CI, browser and screen-reader audit, two-service Contact prefill, deployment-trigger review.
+
 ## 2026-11-12 — V64
 
 - Branch design/v64-editorial-semantic-navigation based on V63 PR #57. Adds native accessible list labels and descriptions to each of three existing editorial chapters, plus regression test.

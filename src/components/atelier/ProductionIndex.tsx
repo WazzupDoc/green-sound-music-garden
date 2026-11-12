@@ -49,6 +49,11 @@ export const chapters: readonly Chapter[] = [
 
 /** Resolve the editorial programme once, not on every render. Missing catalogue
  * entries are a build-time content regression, never silently omitted links. */
+const editorialServiceSlugs = chapters.flatMap((chapter) => chapter.serviceSlugs);
+if (new Set(editorialServiceSlugs).size !== editorialServiceSlugs.length) {
+  throw new Error("Editorial programme contains duplicate service links");
+}
+
 export const editorialChapters = chapters.map((chapter) => ({
   ...chapter,
   linkedServices: chapter.serviceSlugs.map((slug) => {

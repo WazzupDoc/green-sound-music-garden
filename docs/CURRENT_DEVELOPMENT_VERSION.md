@@ -1,3 +1,11 @@
+# V65 — Editorial service uniqueness guard (draft)
+
+- Branch: `design/v65-editorial-service-uniqueness-guard`, based on V64 PR #58. Existing three editorial chapters must contain exactly eight distinct service links. Runtime module initialization rejects duplicates rather than silently repeating a service.
+- Added Vitest catalogue integrity test. No new homepage section, asset, animation, dependency or third-party material.
+- V64 PR workflow runs: none returned for exact SHA; PR #58 mergeable=true, PR #19 mergeable=false. No full test or production validation claimed. Keep main untouched pending CI, browser QA, deployment trigger/rollback checks.
+
+---
+
 # V64 — Editorial service chapter semantics (draft)
 
 - Branch: `design/v64-editorial-semantic-navigation` stacked on V63 PR #57; homepage remains hero + 3 chapter / 8 service editorial programme + 3 real films + one CTA.
