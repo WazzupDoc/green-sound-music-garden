@@ -164,3 +164,16 @@ html[data-gs-performance=lite] .gs-beam-photo__light{display:none}
  .gs-beam-photo__light{display:none!important}
  .rs-button,.rs-inline-link,.rs-films__item{transition:none!important;transform:none!important}
 }
+
+
+/* Touch has no cursor: all frames are readable, the one crossing the
+   viewport center is fully illuminated, without per-frame rendering. */
+@media(hover:none) and (prefers-reduced-motion:no-preference){
+ .gs-beam-photo:not(.rs-hero__photo):before{
+  content:"";position:absolute;z-index:2;inset:0;background:#0A0F1533;
+  pointer-events:none;opacity:1;transition:opacity var(--rs-medium) var(--rs-ease)}
+ .gs-beam-photo[data-focused=true]:not(.rs-hero__photo):before{opacity:0}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-beam-photo:before{display:none!important}
+}
