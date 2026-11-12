@@ -34,7 +34,7 @@ async function main() {
       const navDisplayed=await page.locator("header .gs61-header__nav").evaluate(el=>getComputedStyle(el).display!=="none");
       assert.equal(navDisplayed,width>=1191,`Responsive navigation mismatch at ${width}`);
       assert.equal(await page.locator("head link[rel='canonical']").count(),1);
-      assert.match(await page.locator("head link[rel='canonical']").getAttribute("href"),/^https:\\/\\/greensoundmusic\\.com\\/$/);
+      assert.equal(await page.locator("head link[rel=canonical]").getAttribute("href"),"https://greensoundmusic.com/");
       const jsonLd=await page.locator("head script[type='application/ld+json']").allTextContents();
       const entities=jsonLd.map(value=>JSON.parse(value));
       assert(entities.some(value=>value["@type"]==="LocalBusiness"),"Business entity missing");
