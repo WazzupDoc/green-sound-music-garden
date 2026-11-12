@@ -50,7 +50,7 @@ async function main() {
         await page.waitForTimeout(220);
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
-      await page.locator(".gp-event__tabs").getByRole("button",{name:"Botezuri",exact:true}).click();
+      await page.locator(".gp-event__tabs button").filter({hasText:"Botezuri"}).click();
       assert.equal(await page.locator(".gp-event__tabs button[aria-pressed='true']").count(), 1);
       assert.match(await page.locator(".gp-event__stage-text h3").innerText(), /Botezuri/i);
       await page.locator(".gp-services__list").getByRole("button",{name:/DJ & MC/}).click();
