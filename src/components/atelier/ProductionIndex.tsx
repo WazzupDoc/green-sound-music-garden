@@ -17,7 +17,7 @@ type Chapter = {
  * All eight real company services are visible and clickable without a
  * selector, carousel or animation. No fake bundles, prices or availability.
  */
-const chapters: readonly Chapter[] = [
+export const editorialChapters: readonly Chapter[] = [
   {
     index: "01",
     overline: "THE SOUND",
@@ -66,7 +66,7 @@ export function ProductionIndex() {
         </header>
 
         <div className="gs-index__chapters">
-          {chapters.map((chapter) => (
+          {editorialChapters.map((chapter) => (
             <article key={chapter.index} className="gs-index__chapter" data-chapter={chapter.art}>
               <div className="gs-index__photo">
                 <img src={chapter.image.src} alt={chapter.image.alt} width={chapter.image.w}
