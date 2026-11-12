@@ -27,6 +27,8 @@ export const serializeJsonLd = (data: Record<string, unknown>) =>
 /** Builds the per-page head(): unique title/description, OG/Twitter, canonical and JSON-LD. */
 export function pageHead({ title, description, path, jsonLd = [], noindex, image = images.concert }: HeadInput) {
   const url = canonicalUrl(path);
+  // Explicit production opt-in: all Codespaces, previews and staged builds are noindex.
+  const isPreview = import.meta.env["VITE_SITE_ENV"] !== "production";
   // Use the existing first-party event image (or this page's real image);
   // never fabricate a review, campaign artwork, rating or social preview.
   const imageUrl = new URL(image.src, SITE_URL).href;
@@ -49,7 +51,7 @@ export function pageHead({ title, description, path, jsonLd = [], noindex, image
       { name: "twitter:description", content: description },
       { name: "twitter:image", content: imageUrl },
       { name: "twitter:image:alt", content: image.alt },
-      ...(noindex ? [{ name: "robots", content: "noindex, follow" }] : []),
+      ...((noindex || isPreview) ? [{ name: "robots", content: "noindex, follow" }] : []),
     ],
     links: [{ rel: "canonical", href: url }],
     scripts: jsonLd.map((data) => ({

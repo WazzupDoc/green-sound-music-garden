@@ -4,8 +4,8 @@ import { Link } from "@tanstack/react-router";
 export function Logo({ tone = "stage" }: { tone?: "stage" | "paper" }) {
   return (
     <Link to="/" className="group inline-flex shrink-0 items-center gap-3" aria-label="Green Sound Music — pagina principală">
-      <span className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-full border border-[#bbefa2]/50 bg-[#071409]">
-        <img src="/favicon.png" width={40} height={40} decoding="async" alt="" className="size-full object-contain transition-transform duration-500 group-hover:scale-110" />
+      <span className="relative grid size-10 shrink-0 place-items-center overflow-hidden ">
+        <img src="/favicon.png" width={40} height={40} decoding="async" alt="" className="size-full object-contain " />
       </span>
       <span className="flex flex-col leading-[1.03]">
         <span className={`font-display text-base font-bold tracking-tight ${tone === "paper" ? "text-paper-foreground" : "text-foreground"}`}>GREEN SOUND</span>

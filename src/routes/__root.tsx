@@ -43,6 +43,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      ...(import.meta.env["VITE_SITE_ENV"] !== "production" ? [{ name: "robots", content: "noindex, follow" }] : []),
       { name: "theme-color", content: "#0A0F15" },
       { title: "Green Sound Music — DJ, trupă, sonorizare și lumini în Pitești" },
       { name: "description", content: "Muzică, sunet, lumini și efecte pentru evenimente, din Pitești, din 2008." },
