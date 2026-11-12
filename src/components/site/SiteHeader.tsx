@@ -53,8 +53,7 @@ export function SiteHeader() {
   useEffect(() => {
     if (!open) return;
     document.body.classList.add("atelier-menu-locked");
-    // A navigation disclosure, not a fake modal: keyboard users enter at
-    // the first real link and can Tab back into the document normally.
+    // Keyboard focus stays inside the expanded menu until it is closed.
     const raf = window.requestAnimationFrame(() =>
       menuPanelRef.current?.querySelector<HTMLAnchorElement>("a")?.focus());
     const onKey = (event: KeyboardEvent) => {
@@ -62,6 +61,21 @@ export function SiteHeader() {
         event.preventDefault();
         setOpen(false);
         menuButtonRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const focusable = Array.from(menuPanelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ) ?? []).filter(element => element.getClientRects().length > 0);
+        if (!focusable.length) return;
+        const first = focusable[0]!;
+        const last = focusable[focusable.length - 1]!;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
     const onPointer = (event: PointerEvent) => {
@@ -141,10 +155,10 @@ export function SiteHeader() {
       </div>
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div key="atelier-menu" ref={menuPanelRef} id="atelier-mobile-navigation" className="atelier-mobile-menu"
+          <motion.div key="atelier-menu" ref={menuPanelRef} id="atelier-mobile-navigation" className="atelier-mobile-menu" role="dialog" aria-modal="true" aria-label="Meniu de navigare"
             initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
             exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
-            transition={{ duration: reduced ? 0 : .27, ease: [.16, 1, .3, 1] }}>
+            transition={{ duration: reduced ? 0 : .2, ease: [.2, .7, .2, 1] }}>
             <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
               {navigation.map((entry, index) => (
                 <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link">
