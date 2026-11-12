@@ -19,6 +19,7 @@
 @import "./styles/regia-serii-final.css";
 @import "./styles/open-house-v58.css";
 @import "./styles/green-show-v59.css";
+@import "./styles/immersive-v60.css";
 
 @custom-variant dark (&:is(.dark *));
 
