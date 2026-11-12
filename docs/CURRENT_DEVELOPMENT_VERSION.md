@@ -1,3 +1,13 @@
+# V54 — Editorial service integrity (draft)
+
+- Branch: `design/v54-editorial-service-integrity`, stacked on V53 PR #41; no main merge or public deployment.
+- Homepage editorial programme keeps the three asymmetric chapters, eight authentic service links, original photographs and existing single-CTA structure. Service references resolve once and now fail visibly on an unknown catalogue slug rather than silently dropping links.
+- Added Vitest integrity regression for 3 chapters, 8 unique existing service slugs and first-party imagery. No new dependencies or visual effects.
+- Baseline V53 CI is not confirmed; V54 TypeScript, SSR, unit, six-width browser and CI must pass on exact head before integration. No Lighthouse score or SEO ranking claimed.
+- Backlog: check V53 CI and visual screenshots; measure Lighthouse on staging; verify Contact SSR hydration and keyboard flows; audit authentic search-intent content and main deployment/rollback safety.
+
+---
+
 # V48 — Editorial reset / Awwwards Music & Sound inspired, NO duplicated homepage widgets (draft)
 
 - Branch: `design/crafted-atmospheres-v48-editorial-reset`, stacked on V47 PR #33; earlier drafts remain unchanged.
