@@ -10,7 +10,7 @@ export const Route=createFileRoute("/confidentialitate")({
  }),
  component:Privacy,
 });
-function Privacy(){return <main className="rs-privacy">
+function Privacy(){return <section className="rs-privacy">
  <div className="container-site">
   <p>Informare privind datele</p>
   <h1>Confidențialitate</h1>
@@ -33,4 +33,4 @@ function Privacy(){return <main className="rs-privacy">
    <p className="rs-privacy__notice">Această informare descrie funcționalitățile website-ului. Conținutul juridic trebuie verificat și completat de operator înainte de publicare.</p>
   </div>
  </div>
- </main>}
+ </section>}
