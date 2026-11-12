@@ -263,3 +263,15 @@
    transition:none!important;animation:none!important;
  }
 }
+
+/* Visible local service context, useful to visitors and crawlers, not keyword stuffing. */
+.gsx .gsx-hero__story .gs61-hero__service-line{
+  display:block;max-width:55ch;margin-top:15px;
+  font-size:clamp(.76rem,.85vw,.92rem);font-weight:710;line-height:1.6;
+  color:#C9F9AF;letter-spacing:.01em;
+}
+@media(max-width:620px){
+ .gsx .gsx-hero__story .gs61-hero__service-line{
+   font-size:.78rem;line-height:1.45;margin-top:11px;
+ }
+}
