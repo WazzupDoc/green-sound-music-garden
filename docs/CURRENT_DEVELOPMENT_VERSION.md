@@ -1,3 +1,14 @@
+# V41 — Canonical query and fragment isolation (draft)
+
+- Branch: `design/crafted-atmospheres-v41-canonical-query-safety`, stacked on V40 PR #26; **not production**.
+- `canonicalUrl()` now discards `?query` and `#fragment` before building canonical, Open Graph and Schema.org route URLs. Query-prefilled Contact links and campaign parameters must never become distinct indexed pages.
+- Added four unit regressions for `utm_source`, `#oferta`, root query and date-prefill with fragment. No new dependencies or claims about Google rankings.
+- Validation required on exact final SHA: TypeScript, SSR build, Vitest, gzip budgets, six-width Chromium browser audit and Contact hydration. V40 baseline CI status was not confirmed through the available commit workflow-run query; do not declare V41 validated until checks pass.
+- SEO next: verify canonical URL against real SSR page responses with query-prefilled Contact and `og:url`; compare Search Console data only when connected. Preserve original content and all earlier interactions.
+- `main` and live domain untouched; check deployment triggers, tag backup and rollback before any authorized merge.
+
+---
+
 # V40 — Business contact single source of truth (draft)
 
 - Branch: `design/crafted-atmospheres-v40-business-contact-consistency`, based on V39 PR #25 (CI successful: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43107697432).
