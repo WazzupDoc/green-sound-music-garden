@@ -552,3 +552,24 @@ body:has(.gsx) .atelier-header:not(.atelier-header--scrolled) .atelier-header__q
 @media(prefers-reduced-motion:reduce){
  .gsx-service-visual__smoke{filter:none}
 }
+
+
+/* The GREEN SOUND name is lit by a controlled cue, not a fake audio meter.
+   The optical sweep moves across the fill once per long show cycle. */
+@media(prefers-reduced-motion:no-preference){
+ .gsx-hero h1>span:first-child{animation:gsx-word-enter .8s cubic-bezier(.2,.7,.2,1) both}
+ .gsx-hero h1>span:nth-child(2){
+  background-image:linear-gradient(100deg,#CBFF8E 0%,#CBFF8E 43%,#FAFFF6 49%,#CBFF8E 56%,#CBFF8E 100%);
+  background-size:280% 100%;-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gsx-word-enter .9s cubic-bezier(.2,.7,.2,1) both,
+    gsx-name-light 9s ease-in-out 1.1s infinite;
+ }
+ .gsx-hero h1>small{animation:gsx-small-enter .9s ease .24s both}
+}
+@keyframes gsx-word-enter{from{opacity:0;clip-path:inset(0 0 100% 0);transform:translate3d(0,35px,0)}
+ to{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
+@keyframes gsx-small-enter{from{opacity:0;transform:translateX(-25px)}to{opacity:1;transform:translateX(0)}}
+@keyframes gsx-name-light{0%,57%{background-position:125% 0}
+ 77%,100%{background-position:-95% 0}}
+.gsx-hero[data-visible="false"] h1>span:nth-child(2){animation-play-state:paused}
