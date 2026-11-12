@@ -36,6 +36,14 @@ async function main() {
       assert(heroPhoto.loaded && heroPhoto.src.includes("/media/greensound/"),"Real hero media failed to load");
       await checkNoOverflow(page,"/",width);
       if ([390,1440].includes(width)) {
+        // A screenshot tool does not scroll through a page; real browsers do.
+        // Trigger native lazy loading/reveal before taking the full-page frame.
+        for (const selector of [".rs-programme__image",".rs-backstage__photo",".rs-films__rail"]) {
+          await page.locator(selector).first().scrollIntoViewIfNeeded();
+          await page.waitForTimeout(350);
+        }
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(220);
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
       await page.getByRole("button",{name:"Botezuri",exact:true}).click();
@@ -58,6 +66,11 @@ async function main() {
     assert.equal(await page.locator(".rs-gallery__filters button").count(),4);
     assert.equal(await page.locator(".rs-video-library__filters button").count(),5);
     assert.equal(await page.locator(".rs-video-library iframe").count(),0);
+    await page.locator(".rs-gallery__rail").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(350);
+    await page.locator(".rs-video-library__player").scrollIntoViewIfNeeded();
+    await page.waitForTimeout(350);
+    await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({path:`${folder}/portfolio-1440.png`,fullPage:true,animations:"disabled"});
     await page.locator(".rs-gallery__frame").first().click();
     await page.waitForURL(url=>url.searchParams.has("photo"));
