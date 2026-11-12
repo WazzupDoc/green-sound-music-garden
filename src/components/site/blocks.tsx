@@ -29,10 +29,10 @@ export function Breadcrumbs({ items }: { items: { name: string; to?: string }[] 
 }
 
 export function PageHero({
-  eyebrow,title,lead,image,crumbs,children,
+  eyebrow,title,lead,image,crumbs,children,transitionName,
 }: {
   eyebrow:string;title:string;lead:string;image:ImageRef;
-  crumbs:{name:string;to?:string}[];children?:ReactNode;
+  crumbs:{name:string;to?:string}[];children?:ReactNode;transitionName?:string;
 }) {
   return (
     <section className="atelier-inner-hero rs-inner-hero" aria-label={eyebrow}>
@@ -46,6 +46,7 @@ export function PageHero({
         </div>
         <div className="rs-inner-hero__image">
           <img src={image.src} alt={image.alt} width={image.w} height={image.h}
+            style={transitionName ? { viewTransitionName: transitionName } : undefined}
             fetchPriority="high" decoding="async" />
         </div>
       </div>
