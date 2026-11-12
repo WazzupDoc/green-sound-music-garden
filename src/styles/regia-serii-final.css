@@ -70,3 +70,32 @@
 .rs-404__image{position:relative;overflow:hidden;min-height:400px}
 .rs-404__image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:850px){.rs-404{grid-template-columns:1fr}.rs-404__copy{padding:145px 24px 58px}.rs-404__image{min-height:350px;height:350px}}
+
+
+/* Flat, legible navigation: no floating glass pill or ornamental counters. */
+.atelier-header{top:0!important;left:0!important;right:0!important;border:0!important;
+ border-bottom:1px solid #B8BCB940!important;border-radius:0!important;
+ background:#0A0F15!important;box-shadow:none!important;backdrop-filter:none!important;
+ -webkit-backdrop-filter:none!important}
+.atelier-header--scrolled{background:#0A0F15!important}
+.atelier-header__inner{height:77px}
+.atelier-header__link{font-size:1rem;color:#E3E9E2;opacity:1;font-weight:620}
+.atelier-header__link--active,.atelier-header__link:hover{color:#BDE2C5}
+.atelier-header__phone{font-size:1rem}
+.atelier-header__quote{font-size:1rem;min-height:48px;background:#F3F0E9;color:#0A0F15;border-radius:0}
+.atelier-header__quote:hover{background:#DCE9DF}
+.atelier-header__finder-btn{min-width:44px;min-height:44px}
+.atelier-mobile-menu{top:100%;left:0;right:0;height:calc(100dvh - 77px);
+ background:#0A0F15;border:0;border-bottom:1px solid #B8BCB950;box-shadow:none}
+.atelier-mobile-menu__link span{font-size:clamp(1.65rem,5vw,2.4rem)}
+.atelier-mobile-menu__actions>a{min-height:44px;font-size:1rem}
+.atelier-header__finder-hint{font-size:.85rem}
+.atelier-header .font-display{font-family:"Hanken Grotesk Variable",sans-serif}
+@media(max-width:1040px){.atelier-header__nav{gap:12px}.atelier-header__link{font-size:.93rem}}
+@media(max-width:780px){
+ .atelier-header__inner{height:68px}
+ .atelier-header__menu-btn{display:flex}
+ .atelier-header__nav{display:none}
+ .atelier-header__quote,.atelier-header__phone{display:none}
+ .atelier-mobile-menu{height:calc(100dvh - 68px)}
+}
