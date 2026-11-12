@@ -9,13 +9,6 @@ on:
       - main
       - design/green-sound-sillage-open-source
       - "design/crafted-atmospheres-*"
-    paths:
-      - "src/**"
-      - "package.json"
-      - "bun.lock"
-      - ".github/workflows/verify-crafted-react.yml"
-      - ".github/scripts/**"
-      - "docs/CURRENT_DEVELOPMENT_VERSION.md"
 
 # When iterative design work produces several commits, only the latest branch
 # state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.
