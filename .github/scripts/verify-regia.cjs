@@ -23,54 +23,50 @@ async function main() {
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
       await page.goto(base+"/", {waitUntil:"domcontentloaded",timeout:45000});
-      await page.locator(".gsx[data-hydrated=true]").waitFor({timeout:30000});
+      await page.locator(".v60[data-v60-hydrated=true]").waitFor({timeout:30000});
       await page.waitForTimeout(160);
       assert.equal(await page.locator("main h1").count(),1);
-      assert.match(await page.locator(".gsx-hero h1").innerText(),/GREEN[\s\S]+SOUND/i);
-      assert.equal(await page.locator(".go-2026").count(),0,"old V58 layout must not render");
-      assert.equal(await page.locator(".gsx-hero__lights span").count(),3);
-      assert.equal(await page.locator(".gsx-console__buttons button").count(),3);
-      assert.equal(await page.locator(".gsx-console__swatches button").count(),3);
-      assert.equal(await page.locator(".gsx-departments__selector > button").count(),3);
-      assert.equal(await page.locator(".gsx-event").count(),5);
-      assert.equal(await page.locator(".gsx-effects__tabs button").count(),3);
-      assert.equal(await page.locator(".gsx-hero__generated").getAttribute("src"),"/creative/v59/live-lights.webp");
-      const actualArtwork=await page.locator(".gsx-hero__generated").evaluate(img=>img.complete&&img.naturalWidth>0);
-      assert(actualArtwork,"Generated WebP lighting artwork missing");
-      assert.equal(await page.locator(".gsx-reel iframe").count(),0,"No autoplay on load");
+      assert.match(await page.locator(".v60-hero h1").innerText(),/NU ORGANIZĂM/);
+      assert.equal(await page.locator(".gsx-hero").count(),0,"V59 stage layout should be replaced");
+      assert.equal(await page.locator(".v60-hero__console-scenes button").count(),3);
+      assert.equal(await page.locator(".v60-tone button").count(),3);
+      assert.equal(await page.locator(".v60-chapters__selections > button").count(),3);
+      assert.equal(await page.locator(".v60-event-chooser__menu button").count(),5);
+      assert.equal(await page.locator(".v60-light-engine").count(),1);
+      assert.equal(await page.locator("main iframe").count(),0,"Video should only load on click");
       assert.equal(await page.locator("main form").count(),0);
       assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"),/noindex/);
-      const photo=await page.locator(".gsx-hero__photo img").evaluate(img=>({
+      const stage=await page.locator(".v60-hero__stage-photo img").evaluate(img=>({
         loaded:img.complete&&img.naturalWidth>0,src:img.getAttribute("src")
       }));
-      assert(photo.loaded&&photo.src.includes("/media/greensound/"),"Authentic hero photo missing");
-      const aurora=await page.locator(".gsx-hero__aurora").evaluate(img=>img.complete&&img.naturalWidth>0);
-      assert(aurora,"Generated stage artwork missing");
+      assert(stage.loaded && stage.src.includes("/media/greensound/"),"Real stage photograph must load");
+      const generated=await page.locator(".v60-hero__stage-art img").evaluate(img=>
+        img.complete && img.naturalWidth>0);
+      assert(generated,"Original generated atmosphere must load");
       await checkNoOverflow(page,"/",width);
       if ([390,1440].includes(width)) {
         // A screenshot tool does not scroll through a page; real browsers do.
         // Trigger native lazy loading/reveal before taking the full-page frame.
-        for (const selector of [".gsx-manifest__layout", ".gsx-departments__stage", ".gsx-effects__visual", ".gsx-events__lanes", ".gsx-reel"]) {
+        for (const selector of [".v60-intro__grid", ".v60-chapters__content", ".v60-moment", ".v60-event-chooser__main", ".v60-film__show"]) {
           await page.locator(selector).first().scrollIntoViewIfNeeded();
-          await page.waitForTimeout(250);
+          await page.waitForTimeout(200);
         }
         await page.evaluate(() => window.scrollTo(0, 0));
         await page.waitForTimeout(220);
         await page.screenshot({path:`${folder}/home-${width}.png`,fullPage:true,animations:"disabled"});
       }
-      await page.locator(".gsx-console__buttons").getByRole("button",{name:"NUNTĂ"}).click();
-      assert.equal(await page.locator(".gsx").getAttribute("data-active-scene"),"nunta");
-      await page.getByRole("button",{name:"Lumină cald"}).click();
-      assert.equal(await page.locator(".gsx").getAttribute("data-light"),"warm");
-      await page.locator(".gsx-console__fog").click();
-      assert.equal(await page.locator(".gsx").getAttribute("data-fog"),"off");
-      await page.locator("#gsx-power").fill("85");
-      assert.equal(await page.locator(".gsx").getAttribute("style"),"--gsx-power: 0.85;");
-      await page.locator(".gsx-departments__selector").getByRole("button",{name:/LIVE/}).click();
-      assert.match(await page.locator(".gsx-departments__selected").innerText(),/muzica live/i);
-      await page.locator(".gsx-effects__tabs button").nth(2).click();
-      assert.equal(await page.locator(".gsx-effects__visual > img").getAttribute("src"),"/creative/v59/sonic-waves.webp");
-      assert.match(await page.locator(".gsx-effects__content > strong").innerText(),/TRANZIȚII/i);
+      await page.locator(".v60-hero__console-scenes button").nth(1).click();
+      assert.equal(await page.locator(".v60").getAttribute("data-v60-scene"),"wedding");
+      await page.getByRole("button",{name:"Lumină caldă"}).click();
+      assert.equal(await page.locator(".v60").getAttribute("data-v60-tone"),"warm");
+      await page.locator(".v60-fog-toggle").click();
+      assert.equal(await page.locator(".v60").getAttribute("data-v60-fog"),"off");
+      await page.locator("#v60-light-intensity").fill("85");
+      assert.equal(await page.locator("#v60-light-intensity").inputValue(),"85");
+      await page.locator(".v60-chapters__selections > button").nth(1).click();
+      assert.match(await page.locator(".v60-chapters__selected").innerText(),/moving|lumini|scenă/i);
+      await page.locator(".v60-event-chooser__menu button").nth(1).click();
+      assert.match(await page.locator(".v60-event-chooser__visual strong").innerText(),/botez/i);
       await checkNoOverflow(page,"/ interactive",width);
       assert.deepEqual(errors,[],`Hydration/browser error ${width}px`);
       await page.close();
@@ -81,6 +77,7 @@ async function main() {
     page.on("pageerror",e=>errors.push(e.message));
     await page.goto(base+"/portofoliu", {waitUntil:"domcontentloaded"});
     await page.locator(".rs-gallery__frame").first().waitFor();
+    assert.equal(await page.locator(".v60-portfolio-intro").count(),1);
     assert.equal(await page.locator(".rs-gallery__frame").count(),6);
     assert.equal(await page.locator(".rs-gallery__filters button").count(),4);
     assert.equal(await page.locator(".rs-video-library__filters button").count(),5);
@@ -104,8 +101,10 @@ async function main() {
     await page.locator(".rs-photo-dialog__media").waitFor({timeout:10000});
     assert(await page.locator(".rs-photo-dialog__media").isVisible(),"Photo direct-link hydration");
     await page.goto(base+"/servicii",{waitUntil:"domcontentloaded"});
-    assert.equal(await page.locator(".rs-service-index__group").count(),3);
-    assert.equal(await page.locator(".rs-service-index__group li").count(),8);
+    assert.equal(await page.locator(".v60-services__chapter").count(),3);
+    assert.equal(await page.locator(".v60-services__item").count(),8);
+    await page.locator(".v60-services__item").first().focus();
+    assert.equal(await page.locator(".v60-services__theatre-copy h3").count(),1);
     await checkNoOverflow(page,"/servicii",1440);
     const services=["dj-mc","trupa","echipamente-de-sunet-si-lumini",
       "masina-fum-greu-cu-gheata-carbonica","studio-inregistrari","hostess","ursitoare-botez","start-veselia"];
@@ -124,7 +123,7 @@ async function main() {
       await checkNoOverflow(page,"/"+slug,1440);
     }
     await page.goto(base+"/evenimente/",{waitUntil:"domcontentloaded"});
-    assert.equal(await page.locator(".rs-events-index__row").count(),5);
+    assert.equal(await page.locator(".v60-events-index__tile").count(),5);
     const events=["nunti","botezuri","evenimente-corporate","concerte-festivaluri","petreceri-private"];
     for(const slug of events){
       await page.goto(base+"/evenimente/"+slug,{waitUntil:"domcontentloaded"});
@@ -157,7 +156,7 @@ async function main() {
     assert.deepEqual(errors,[],"Browser errors in page flow");
     // Keep the old CI artifact path populated while changing the UI assertions.
     fs.cpSync(folder, "screenshots/crafted-atmospheres", {recursive:true});
-    console.log("PASS V59 Live Show Control: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
+    console.log("PASS V60 Full Experience: six viewports, photo + film, eight services, five events, Contact, links, light control, noindex, sitemap");
     await page.close();
   } finally {await browser.close();}
 }
