@@ -95,6 +95,9 @@ describe("canonical consistency in structured data", () => {
     expect(canonicalUrl("/contact")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/contact/")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/contact///")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("contact")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("//contact//?utm_campaign=test")).toBe(SITE_URL + "/contact/");
+    expect(canonicalUrl("/servicii//dj-mc/#oferta")).toBe(SITE_URL + "/servicii/dj-mc/");
     expect(canonicalUrl("/contact/?utm_source=instagram")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/contact/#oferta")).toBe(SITE_URL + "/contact/");
     expect(canonicalUrl("/?ref=event")).toBe(SITE_URL + "/");
