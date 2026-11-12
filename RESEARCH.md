@@ -1,3 +1,9 @@
+## 2026-11-13 — V70 editorial photograph motion gate
+
+- Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion (documentation; no code copied), https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover (capability query), and https://web.dev/articles/optimize-lcp (image loading principles). Reviewed as implementation guidance; no dependency or external asset integrated. The Awwwards music/sound reference is conceptual only, not a license to copy identity: https://www.awwwards.com/websites/music-sound/ . URLs listed for verification; no measured LCP or claim of live SERP research.
+- Applied: decorative photo scale on service-chapter hover now requires `hover:hover`, `prefers-reduced-motion:no-preference`, and no `data-gs-performance=lite`. Original image/filter and focus outline remain. CSS-only, zero new JS, packages or assets; exact-head tests/browser not yet executed. Rollback: revert V70 CSS/test/docs commits.
+- Addition test: differentiation = editorial image treatment retained; utility = less involuntary movement; performance = avoids optional transform in Lite (not measured); a11y = reduced motion respected; SSR = CSS-only; license/cost = none; test = static Vitest authored, not executed. Rejected: continuous parallax, cursor-following photo distortion and autoplay, due to motion/CPU/accessibility costs.
+
 ## 2026-11-13 — V69 Contact calendar date validation
 
 - Sources consulted 2026-11-13: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date and https://www.w3.org/WAI/tutorials/images/decorative/ . The first informed strict calendar date handling; the second was reviewed for editorial photo semantics, but image alt changes were rejected without image-by-image evidence.
