@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Play, Radio, SlidersHorizontal, Sparkles, Volume2 } from "lucide-react";
-import { business, events, getService, images, videos, type EventSlug } from "@/data/site";
+import { business, events, getService, images, videos, type EventSlug, type Video } from "@/data/site";
 
 type Scene = {
   key: "concert"|"nunta"|"productie";
@@ -90,7 +90,7 @@ function StageControls({
   </div>;
 }
 
-function Reel({video,poster}:{video:typeof videos.showLumini;poster:string}){
+function Reel({video,poster}:{video:Video;poster:string}){
  const [play,setPlay]=useState(false);
  const params=new URLSearchParams({autoplay:"1",rel:"0"});
  if(video.start)params.set("start",String(video.start));
