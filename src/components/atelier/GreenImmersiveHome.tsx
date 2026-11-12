@@ -1,5 +1,5 @@
 import { useRef, useState, type CSSProperties } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowRight, ArrowUpRight, Play, SlidersHorizontal, Sparkles } from "lucide-react";
 import { images, videos, events, business, type EventSlug } from "@/data/site";
 import { StageLightEngine } from "@/components/site/StageLightEngine";
@@ -19,6 +19,7 @@ const chapters=[
 const eventSet:readonly EventSlug[]=["nunti","botezuri","concerte-festivaluri","evenimente-corporate","petreceri-private"];
 
 export function GreenImmersiveHome(){
+ const hydrated=useHydrated();
  const [selected,setSelected]=useState(0);
  const [color,setColor]=useState<"jade"|"warm"|"ice">("jade");
  const [power,setPower]=useState(75);
@@ -30,7 +31,7 @@ export function GreenImmersiveHome(){
  const selectedEvent=events.find(x=>x.slug===eventSet[eventIndex])!;
  const portalRef=useRef<HTMLDivElement>(null);
  const colorValue=color==="jade"?"#A5FFA0":color==="warm"?"#FFD39F":"#B2DDFF";
- return <div className="v60" data-v60-scene={selectedScene.theme}
+ return <div className="v60" data-v60-hydrated={hydrated?"true":"false"} data-v60-scene={selectedScene.theme}
    data-v60-tone={color} data-v60-fog={fog?"on":"off"}>
 
    <section className="v60-hero" aria-labelledby="v60-title">
