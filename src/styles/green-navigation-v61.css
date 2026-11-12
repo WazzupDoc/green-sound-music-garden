@@ -1,0 +1,265 @@
+/* GREEN SOUND MUSIC V61 — SIGNATURE SOUND-DESK NAVIGATION
+   Distinct art direction, not pill buttons or a generic top bar.
+   The real Green Sound emblem remains the logo. Animation is visual only,
+   compositor-friendly and respectful of reduced-motion.
+*/
+.gs61-header.atelier-header{
+  background:rgba(4,17,13,.97)!important;
+  border-bottom:1px solid rgba(193,255,146,.25)!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.11)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+  backdrop-filter:blur(14px)!important;
+}
+.gs61-header.atelier-header--scrolled{
+  background:rgba(3,12,10,.98)!important;
+  border-bottom-color:rgba(203,255,146,.48)!important;
+  box-shadow:0 12px 30px #0008!important;
+}
+.gs61-header:after{
+  content:"";position:absolute;inset:auto 0 0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,#B8FA784b 25%,#E9FFA16b 53%,transparent);
+  opacity:.8;
+}
+.gs61-header .atelier-header__inner{
+  height:100px;max-width:1660px;gap:clamp(10px,1.6vw,28px);
+}
+.gs61-header__nav{
+  align-items:stretch!important;gap:0!important;
+  min-height:65px;flex:1;justify-content:center;
+  border-left:1px solid #CBFFD028;border-right:1px solid #CBFFD028;
+}
+.gs61-header__link.atelier-header__link{
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  gap:6px;position:relative;isolation:isolate;
+  flex:1 1 0;min-width:0;min-height:65px;padding:9px clamp(9px,1vw,18px);
+  color:#DCE9DB!important;font-size:clamp(.76rem,.88vw,.93rem)!important;
+  font-weight:730!important;letter-spacing:-.012em;opacity:1!important;
+  border-right:1px solid #CBFFD027;transition:color .2s ease,background .2s ease;
+}
+.gs61-header__link:last-child{border-right:0}
+.gs61-header__link:before{
+  content:"";position:absolute;left:0;right:0;top:0;bottom:0;z-index:-1;
+  background:linear-gradient(135deg,#B6FF751a,#1BE18A0a 45%,transparent 80%);
+  opacity:0;transform:translateX(-9px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.gs61-header__link:hover:before,
+.gs61-header__link:focus-visible:before,
+.gs61-header__link.atelier-header__link--active:before{
+  opacity:1;transform:none;
+}
+.gs61-header__index{
+  display:block;font-family:"Space Grotesk Variable",sans-serif;
+  font-size:.68rem;font-weight:700;line-height:1;letter-spacing:.17em;
+  color:#83A38C;
+}
+.gs61-header__label{
+  display:block;position:relative;white-space:nowrap;letter-spacing:-.02em;
+}
+.gs61-header__link.atelier-header__link--active .gs61-header__index,
+.gs61-header__link:hover .gs61-header__index{color:#D2FF8C}
+.gs61-header__link.atelier-header__link--active,
+.gs61-header__link:hover{color:#FFF!important}
+.gs61-header__link:after{
+  content:"";position:absolute;bottom:0;left:0;right:100%;height:3px;
+  background:#C2FF72;transition:right .28s cubic-bezier(.2,.7,.2,1);
+}
+.gs61-header__link.atelier-header__link--active:after,
+.gs61-header__link:hover:after,
+.gs61-header__link:focus-visible:after{right:0}
+.gs61-header .atelier-header__actions{gap:clamp(6px,.8vw,14px)}
+.gs61-header__phone.atelier-header__phone{
+  font-weight:760;font-size:.9rem;color:#F2FFEA;
+  letter-spacing:-.035em;white-space:nowrap;
+}
+.gs61-header__finder.atelier-header__finder-btn{
+  color:#F0FFEA;border:1px solid #D8FFC13b;min-width:49px;min-height:52px;
+  background:#FFFFFF08;display:flex;align-items:center;justify-content:center;
+  gap:5px;transition:border-color .2s,background .2s;
+}
+.gs61-header__finder.atelier-header__finder-btn:hover,
+.gs61-header__finder.atelier-header__finder-btn:focus-visible{
+  background:#BBFF8115;border-color:#C4FF8B;
+}
+.gs61-header__finder .atelier-header__finder-hint{
+  color:#A7C9A8;font-size:.67rem;
+}
+.gs61-header__quote.atelier-header__quote{
+  position:relative;isolation:isolate;overflow:hidden;min-height:58px;
+  padding:11px 17px;min-width:159px;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;
+  background:#CEFF87;color:#071509;border:1px solid #CEFF87;
+  font-family:"Space Grotesk Variable",sans-serif;
+  font-size:.72rem;font-weight:830;letter-spacing:.06em;
+  border-radius:0!important;
+  transition:background .25s,color .25s,border-color .25s;
+}
+.gs61-header__quote.atelier-header__quote>span{
+  display:block;line-height:1.2;max-width:13ch;
+}
+.gs61-header__quote.atelier-header__quote strong{
+  display:block;font-weight:850;font-size:.96rem;letter-spacing:.003em;margin-top:3px;
+}
+.gs61-header__quote.atelier-header__quote:before{
+  content:"";position:absolute;inset:-20% auto -20% -80%;width:38%;z-index:-1;
+  transform:skewX(-22deg);background:#fff6;transition:left .48s cubic-bezier(.2,.7,.2,1);
+}
+.gs61-header__quote.atelier-header__quote:hover:before{left:135%}
+.gs61-header__quote.atelier-header__quote:hover{background:#ECFFCC;color:#06190d}
+.gs61-header__menu-btn.atelier-header__menu-btn{
+  width:55px;height:55px;border:1px solid #D5FDC256;background:#D5FF8810;
+  color:#F2FFE8;transition:background .25s,border-color .25s;
+}
+.gs61-header__menu-btn.atelier-header__menu-btn:hover{background:#CEFF8720;border-color:#CBFF91}
+/* Identity / enlarged genuine emblem with a controlled light cue. */
+.gs61-brand{display:inline-flex;align-items:center;gap:12px;
+  flex:0 0 auto;min-width:0;text-decoration:none!important;
+  color:#F5FFEF;line-height:1;outline-offset:5px;}
+.gs61-brand__emblem{position:relative;isolation:isolate;width:68px;height:68px;
+  flex:0 0 68px;display:grid;place-items:center;overflow:hidden;
+  background:radial-gradient(circle at 51% 48%,#1a3c2d,#061a11 73%);
+  border:1px solid #D0FF9566;transform:translateZ(0);
+  box-shadow:inset 0 0 21px #8aff7a17,0 0 12px #50D66D24;
+}
+.gs61-brand__emblem img{position:relative;z-index:1;width:88%;height:88%;
+  display:block;object-fit:contain;filter:drop-shadow(0 2px 6px #000c);
+  transition:transform .48s cubic-bezier(.2,.7,.2,1),filter .48s}
+.gs61-brand__halo{position:absolute;inset:4px;border:1px solid #CFFF8548;
+  border-radius:50%;transform:scale(.85);opacity:.1;z-index:0;
+  animation:gs61-logo-warmup 1.5s cubic-bezier(.2,.7,.2,1) .12s both;
+}
+@keyframes gs61-logo-warmup{
+  0%{opacity:0;transform:scale(.55)}45%{opacity:.9}100%{opacity:.38;transform:scale(1)}
+}
+.gs61-brand__flash{position:absolute;z-index:2;inset:-55% auto -55% -120%;width:36%;
+  background:linear-gradient(90deg,transparent,#E7FFC74f,#fff8,transparent);
+  transform:rotate(19deg);pointer-events:none;opacity:0;
+}
+.gs61-brand:hover .gs61-brand__flash,
+.gs61-brand:focus-visible .gs61-brand__flash{
+  animation:gs61-spotlight-scan .72s cubic-bezier(.2,.7,.2,1) 1 both;
+}
+@keyframes gs61-spotlight-scan{
+  0%{left:-110%;opacity:0}15%{opacity:.9}80%{opacity:.85}100%{left:170%;opacity:0}
+}
+.gs61-brand:hover .gs61-brand__emblem img,
+.gs61-brand:focus-visible .gs61-brand__emblem img{
+  transform:scale(1.08);filter:drop-shadow(0 0 11px #A9FF7B99);
+}
+.gs61-brand__lockup{display:flex;flex-direction:column;gap:7px;
+  min-width:0;white-space:nowrap}
+.gs61-brand__lockup>strong{
+  display:block;color:#F5FFF0;font-family:"Space Grotesk Variable",sans-serif;
+  font-weight:790;font-size:clamp(1.1rem,1.5vw,1.45rem);
+  line-height:.9;letter-spacing:-.062em;
+}
+.gs61-brand__lockup>strong span{color:#D2FFA1}
+.gs61-brand__baseline{display:flex;align-items:center;gap:14px}
+.gs61-brand__music{font-family:"Space Grotesk Variable",sans-serif;
+  font-size:.87rem;letter-spacing:.35em;font-weight:760;color:#BFF38F}
+.gs61-brand__meter{display:flex;align-items:center;justify-content:flex-start;
+  gap:3px;height:14px;width:43px}
+.gs61-brand__meter i{display:block;height:13px;width:3px;background:#CEFF8F;
+  border-radius:1px;transform-origin:50% 100%;transform:scaleY(.3);
+  animation:gs61-meter 1.8s ease-in-out 2 alternate both;
+}
+.gs61-brand__meter i:nth-child(1){--amp:.5;animation-delay:.16s}
+.gs61-brand__meter i:nth-child(2){--amp:1;animation-delay:.3s}
+.gs61-brand__meter i:nth-child(3){--amp:.67;animation-delay:.03s}
+.gs61-brand__meter i:nth-child(4){--amp:.88;animation-delay:.24s}
+.gs61-brand__meter i:nth-child(5){--amp:.45;animation-delay:.11s}
+@keyframes gs61-meter{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(var(--amp,1))}}
+.gs61-brand:hover .gs61-brand__meter i,
+.gs61-brand:focus-visible .gs61-brand__meter i{animation:gs61-meter .8s ease-in-out infinite alternate}
+.gs61-brand--paper .gs61-brand__lockup>strong{color:#153325}
+.gs61-brand--paper .gs61-brand__lockup>strong span{color:#226d3b}
+.gs61-brand--paper .gs61-brand__music{color:#1b6036}
+/* Desktop: avoid starving the stage channels; phone remains accessible on contact/footer. */
+@media(max-width:1590px){
+ .gs61-header__phone.atelier-header__phone{display:none}
+}
+@media(max-width:1360px){
+ .gs61-header__link.atelier-header__link{
+   padding-inline:clamp(8px,.75vw,14px);font-size:.82rem!important
+ }
+ .gs61-header__finder .atelier-header__finder-hint{display:none}
+ .gs61-header__quote.atelier-header__quote{min-width:155px;padding-inline:11px}
+ .gs61-brand__emblem{height:61px;width:61px;flex-basis:61px}
+ .gs61-brand__lockup>strong{font-size:1.2rem}
+}
+@media(max-width:1190px){
+ .gs61-header .atelier-header__nav{display:none!important}
+ .gs61-header__menu-btn.atelier-header__menu-btn{display:flex!important}
+ .gs61-header .atelier-header__actions{margin-left:auto}
+ .gs61-header .atelier-header__inner{height:89px}
+ .gs61-header .atelier-mobile-menu{height:calc(100dvh - 89px)}
+}
+@media(max-width:780px){
+ .gs61-header .atelier-header__inner{height:77px}
+ .gs61-header .atelier-mobile-menu{height:calc(100dvh - 77px)}
+ .gs61-brand__emblem{width:57px;height:57px;flex-basis:57px}
+ .gs61-brand__lockup>strong{font-size:1.08rem}
+ .gs61-brand__music{font-size:.72rem;letter-spacing:.27em}
+ .gs61-header__quote.atelier-header__quote{display:none!important}
+ .gs61-header__phone.atelier-header__phone{display:none!important}
+ .gs61-header__finder.atelier-header__finder-btn{display:flex!important;min-height:47px;min-width:47px}
+ .gs61-header__finder .atelier-header__finder-hint{display:none}
+ .gs61-header__menu-btn.atelier-header__menu-btn{width:47px;height:47px}
+}
+@media(max-width:430px){
+ .gs61-header .atelier-header__inner{height:70px;gap:7px}
+ .gs61-header .atelier-mobile-menu{height:calc(100dvh - 70px)}
+ .gs61-brand{gap:8px}
+ .gs61-brand__emblem{width:48px;height:48px;flex-basis:48px}
+ .gs61-brand__lockup{gap:5px}
+ .gs61-brand__lockup>strong{font-size:.95rem}
+ .gs61-brand__music{font-size:.61rem;letter-spacing:.25em}
+ .gs61-brand__meter{gap:2px;width:22px}
+ .gs61-brand__meter i{width:2px}
+ .gs61-header__finder.atelier-header__finder-btn{min-height:42px;min-width:42px}
+ .gs61-header__menu-btn.atelier-header__menu-btn{width:43px;height:43px}
+ .gs61-header .atelier-header__actions{gap:5px}
+}
+/* Mobile menu: full-height show poster, legible numbered episodes. */
+.gs61-header .atelier-mobile-menu{
+  background:#06140f!important;overflow-y:auto;
+  border-bottom:1px solid #CFFF9144!important;
+}
+.gs61-header .atelier-mobile-menu:before{
+  content:"";position:absolute;inset:0;background:
+   linear-gradient(90deg,#06140fee,#06140fa8),
+   url('/creative/sonic-ribbon.svg') center 40%/cover no-repeat;
+  opacity:.65;pointer-events:none;
+}
+.gs61-mobile-menu__body{position:relative;padding-top:clamp(22px,4vw,55px);
+  padding-bottom:70px}
+.gs61-mobile-menu__intro{
+  font-size:.78rem;font-weight:850;letter-spacing:.13em;color:#DAFFA7;
+  padding-bottom:28px;border-bottom:1px solid #CCFFA65A;
+}
+.gs61-mobile-menu__intro span{color:#B7C8B8}
+.gs61-mobile-menu__link.atelier-mobile-menu__link{
+  display:grid;grid-template-columns:35px 1fr 26px;gap:17px;
+  padding:clamp(13px,2.3vw,26px) 0;align-items:center;
+  border-bottom:1px solid #CCFFA645;
+}
+.gs61-mobile-menu__link small{font-size:.88rem;color:#C4FA8A!important}
+.gs61-mobile-menu__link span{font-family:"Space Grotesk Variable",sans-serif;
+  letter-spacing:-.065em;font-weight:750;font-size:clamp(2rem,5.8vw,3.9rem)!important}
+.gs61-mobile-menu__link svg{color:#BCFF89}
+.gs61-header .atelier-mobile-menu__actions{padding-top:35px;gap:9px}
+.gs61-header .atelier-mobile-menu__actions a{border-radius:0!important}
+.gs61-header .atelier-mobile-menu__actions a:last-child{
+  background:#CFFF89;color:#07170e;border:1px solid #CFFF89;font-weight:790;
+}
+@media(prefers-reduced-motion:reduce){
+ .gs61-brand__halo,.gs61-brand__flash,.gs61-brand__meter i{
+   animation:none!important;transition:none!important;
+ }
+ .gs61-brand__halo{opacity:.38;transform:scale(1)}
+ .gs61-brand__meter i{transform:scaleY(.55)!important}
+ .gs61-header__link:before,.gs61-header__link:after,
+ .gs61-header__quote:before,.gs61-brand__emblem img{
+   transition:none!important;animation:none!important;
+ }
+}
