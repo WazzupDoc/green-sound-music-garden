@@ -26,7 +26,9 @@ async function main() {
       await page.locator(".rs-hero[data-hydrated=\"true\"]").waitFor({timeout:30000});
       await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
-      assert.match(await page.locator(".rs-hero h1").innerText(), /Seara începe/i);
+      assert.match(await page.locator(".rs-hero h1").innerText(), /GREEN\\s+SOUND/i);
+      assert.equal(await page.locator(".rs-hero__beams > span").count(),2);
+      assert.equal(await page.locator(".rs-hero .gs-global-light__choice").count(),4);
       assert.equal(await page.locator(".rs-programme__choice").count(),5);
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator(".gs-index__chapter").count(),0);
@@ -87,6 +89,7 @@ async function main() {
     await page.goto(base+"/servicii",{waitUntil:"domcontentloaded"});
     assert.equal(await page.locator(".rs-service-index__group").count(),3);
     assert.equal(await page.locator(".rs-service-index__group li").count(),8);
+    assert.equal(await page.locator(".rs-service-index__thumb").count(),8);
     await checkNoOverflow(page,"/servicii",1440);
     const services=["dj-mc","trupa","echipamente-de-sunet-si-lumini",
       "masina-fum-greu-cu-gheata-carbonica","studio-inregistrari","hostess","ursitoare-botez","start-veselia"];
@@ -94,6 +97,12 @@ async function main() {
       await page.goto(base+"/"+slug,{waitUntil:"domcontentloaded"});
       assert.equal(await page.locator("main h1").count(),1,`service H1 ${slug}`);
       assert.equal(await page.locator(".rs-service-feature").count(),1,`service signature ${slug}`);
+      if (slug === "echipamente-de-sunet-si-lumini") {
+        assert.equal(await page.locator(".rs-stage-rig__drawing").count(),1);
+      }
+      if (slug === "masina-fum-greu-cu-gheata-carbonica") {
+        assert.equal(await page.locator(".rs-effect-smoke").count(),1);
+      }
       await checkNoOverflow(page,"/"+slug,1440);
     }
     await page.goto(base+"/evenimente/",{waitUntil:"domcontentloaded"});
