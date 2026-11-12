@@ -27,6 +27,10 @@ export function GreenPosterHome() {
   const [activeEvent, setActiveEvent] = useState<EventSlug>("nunti");
   const service = getService(activeService);
   const event = events.find(item => item.slug === activeEvent)!;
+  // Use an authentic wedding frame here instead of repeating the hero DJ photo.
+  const eventVisual = activeEvent === "nunti" && videos.nuntaRamada.poster
+    ? { src: videos.nuntaRamada.poster, alt: "Cadru din filmarea unei nunți Green Sound Music la Ramada Pitești", w: 1280, h: 720 }
+    : event.image;
   return (
     <div className="gp" data-gp-hydrated={hydrated ? "true" : "false"}>
       <section className="gp-opening" aria-labelledby="gp-title">
@@ -115,8 +119,8 @@ export function GreenPosterHome() {
           <p>Un concert nu seamănă cu o nuntă. Nici petrecerea ta nu trebuie să semene cu alta.</p>
         </div>
         <div className="gp-event__stage">
-          <img key={event.slug} src={event.image.src} alt={event.image.alt}
-            width={event.image.w} height={event.image.h} loading="lazy" decoding="async"/>
+          <img key={event.slug} src={eventVisual.src} alt={eventVisual.alt}
+            width={eventVisual.w} height={eventVisual.h} loading="lazy" decoding="async"/>
           <div className="gp-event__stage-shade" aria-hidden="true" />
           <div className="gp-event__stage-text">
             <span>EVENIMENT SELECTAT</span>
