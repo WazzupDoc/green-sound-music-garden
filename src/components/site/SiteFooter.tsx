@@ -7,18 +7,13 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="grain border-t border-border bg-ink pb-24 sm:pb-0">
-      <div className="container-site overflow-hidden py-16">
-        <p aria-hidden className="display-xl select-none whitespace-nowrap text-foreground/[0.06]">
-          Culoarea petrecerii tale
-        </p>
-      </div>
-      <div className="container-site grid gap-12 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-6">
           <Logo />
-          <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+          <p className="max-w-xs text-base leading-relaxed text-muted-foreground">
             Muzică, sunet, lumini și efecte pentru evenimente. Firmă din Pitești, activă din {business.founded}.
           </p>
-          <address className="space-y-1 text-sm not-italic text-foreground/85">
+          <address className="space-y-1 text-base not-italic text-foreground/85">
             <p>
               {business.address.street}, {business.address.city} {business.address.postalCode}, jud. {business.address.region}
             </p>
@@ -74,7 +69,7 @@ export function SiteFooter() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex rounded-full border border-border px-3 py-1.5 text-xs text-foreground/80 transition-colors hover:border-primary hover:text-primary"
+                  className="inline-flex rounded-full border border-border px-3 py-1.5 text-base text-foreground/80 transition-colors hover:border-primary hover:text-primary"
                 >
                   {s.label}
                 </a>
@@ -87,7 +82,7 @@ export function SiteFooter() {
         <LightDesk />
       </div>
       <div className="border-t border-border">
-        <div className="container-site flex flex-col gap-2 py-6 text-xs text-muted-foreground sm:flex-row sm:justify-between">
+        <div className="container-site flex flex-col gap-2 py-6 text-base text-muted-foreground sm:flex-row sm:justify-between">
           <p>© {year} Green Sound Music. Toate drepturile rezervate.</p>
           <p className="text-base text-[#F3F0E9]">{business.tagline}</p>
         </div>
