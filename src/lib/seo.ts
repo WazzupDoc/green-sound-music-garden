@@ -1,4 +1,4 @@
-import { SITE_URL, business, images, type ImageRef } from "@/data/site";
+import { SITE_URL, business, images, services, type ImageRef } from "@/data/site";
 
 /** Canonical route URL shared by metadata and Schema.org; avoid duplicate trailing slashes. */
 export const canonicalUrl = (path: string) => {
@@ -54,12 +54,49 @@ export function pageHead({ title, description, path, jsonLd = [], noindex, image
       ...((noindex || isPreview) ? [{ name: "robots", content: "noindex, follow" }] : []),
     ],
     links: [{ rel: "canonical", href: url }],
-    scripts: jsonLd.map((data) => ({
+    scripts: [...jsonLd, webPageLd({ title, description, path, image })].map((data) => ({
       type: "application/ld+json",
       children: serializeJsonLd(data),
     })),
   };
 }
+
+/** Stable entity IDs connecting page, site, and business for local discovery.
+ * The UI finder is NOT declared as a schema SearchAction: it has no crawlable URL. */
+export const webSiteLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: `${SITE_URL}/`,
+  name: business.name,
+  alternateName: "Green Sound",
+  inLanguage: "ro-RO",
+  publisher: { "@id": `${SITE_URL}/#business` },
+});
+
+export const webPageLd = ({
+  title, description, path, image = images.concert,
+}: {
+  title:string;description:string;path:string;image?:ImageRef;
+}) => {
+  const url = canonicalUrl(path);
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name:title,
+    description,
+    inLanguage:"ro-RO",
+    isPartOf:{ "@id": `${SITE_URL}/#website` },
+    about:{ "@id": `${SITE_URL}/#business` },
+    primaryImageOfPage:{
+      "@type":"ImageObject",
+      url:new URL(image.src,SITE_URL).href,
+      caption:image.alt,
+    },
+  };
+};
 
 export const localBusinessLd = () => ({
   "@context": "https://schema.org",
@@ -67,6 +104,8 @@ export const localBusinessLd = () => ({
   "@id": `${SITE_URL}/#business`,
   name: business.name,
   slogan: business.tagline,
+  image: new URL(images.concert.src, SITE_URL).href,
+  logo: `${SITE_URL}/favicon.png`,
   url: `${SITE_URL}/`,
   telephone: business.phoneHref.replace(/^tel:/, ""),
   email: business.email,
@@ -88,6 +127,23 @@ export const localBusinessLd = () => ({
     addressCountry: business.address.country,
   },
   sameAs: business.socials.map((s) => s.href),
+  // Service names and URLs are copied from our visible, verified catalogue.
+  // No invented prices, reviews, or opening hours.
+  hasOfferCatalog: {
+    "@type":"OfferCatalog",
+    name:"Serviciile Green Sound Music",
+    itemListElement: services.map((service, index) => ({
+      "@type":"ListItem",
+      position:index + 1,
+      item:{
+        "@type":"Service",
+        "@id":`${canonicalUrl("/" + service.slug)}#service`,
+        name:service.name,
+        url:canonicalUrl("/" + service.slug),
+        provider:{"@id":`${SITE_URL}/#business`},
+      },
+    })),
+  },
 });
 
 export const breadcrumbLd = (items: { name: string; path: string }[]) => ({
@@ -104,8 +160,11 @@ export const breadcrumbLd = (items: { name: string; path: string }[]) => ({
 export const serviceLd = (name: string, description: string, path: string) => ({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": `${canonicalUrl(path)}#service`,
   name,
+  serviceType:name,
   description,
+  inLanguage:"ro-RO",
   url: canonicalUrl(path),
   provider: { "@id": `${SITE_URL}/#business` },
   areaServed: { "@type": "City", name: "Pitești" },

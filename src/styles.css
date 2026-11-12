@@ -20,6 +20,7 @@
 @import "./styles/open-house-v58.css";
 @import "./styles/green-show-v59.css";
 @import "./styles/green-interiors-v60.css";
+@import "./styles/green-navigation-v61.css";
 
 @custom-variant dark (&:is(.dark *));
 

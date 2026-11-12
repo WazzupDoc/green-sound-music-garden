@@ -10,12 +10,12 @@ import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
 const navigation = [
-  { to: "/", title: "Acasă" },
-  { to: "/evenimente", title: "Evenimente" },
-  { to: "/servicii", title: "Servicii" },
-  { to: "/portofoliu", title: "Portofoliu" },
-  { to: "/studio-inregistrari", title: "Studio" },
-  { to: "/despre-noi", title: "Despre noi" },
+  { to: "/", title: "Acasă", no: "01" },
+  { to: "/evenimente", title: "Evenimente", no: "02" },
+  { to: "/servicii", title: "Servicii", no: "03" },
+  { to: "/portofoliu", title: "Portofoliu", no: "04" },
+  { to: "/studio-inregistrari", title: "Studio", no: "05" },
+  { to: "/despre-noi", title: "Despre noi", no: "06" },
 ] as const;
 
 export function SiteHeader() {
@@ -121,33 +121,34 @@ export function SiteHeader() {
   };
 
   return (
-    <header ref={headerRef} className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+    <header ref={headerRef} className={`atelier-header gs61-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
-        <nav className="atelier-header__nav" aria-label="Navigare principală">
+        <nav className="atelier-header__nav gs61-header__nav" aria-label="Navigare principală">
           {navigation.map((entry) => (
             <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
-              activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
-              {entry.title}
+              activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link gs61-header__link">
+              <span className="gs61-header__index" aria-hidden="true">{entry.no}</span>
+              <span className="gs61-header__label">{entry.title}</span>
             </Link>
           ))}
         </nav>
         <div className="atelier-header__actions">
-          <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
+          <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn gs61-header__finder"
             aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
             aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
             onClick={() => { setOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
             <Search className="size-5" aria-hidden />
             <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
           </button>
-          <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
+          <a href={business.phoneHref} className="atelier-header__phone gs61-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
             <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
           </a>
-          <Link to="/contact" className="atelier-header__quote">
-            Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
+          <Link to="/contact" className="atelier-header__quote gs61-header__quote">
+            <span>PLANIFICĂM <strong>EVENIMENTUL</strong></span> <ArrowUpRight className="size-5" aria-hidden />
           </Link>
-          <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
+          <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn gs61-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => setOpen(value => !value)}>
             {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
           </button>
@@ -159,10 +160,11 @@ export function SiteHeader() {
             initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
             exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
             transition={{ duration: reduced ? 0 : .2, ease: [.2, .7, .2, 1] }}>
-            <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
+            <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body gs61-mobile-menu__body">
+              <p className="gs61-mobile-menu__intro">GREEN SOUND MUSIC <span> / LIVE PRODUCTION · DIN 2008</span></p>
               {navigation.map((entry) => (
-                <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link">
-                  <span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
+                <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link gs61-mobile-menu__link">
+                  <small aria-hidden="true">{entry.no}</small><span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
                 </Link>
               ))}
               <div className="atelier-mobile-menu__actions">

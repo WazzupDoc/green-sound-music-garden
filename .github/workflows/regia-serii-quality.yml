@@ -1,13 +1,12 @@
-name: Green Sound V60 Complete Interior Redesign browser QA
+name: Green Sound V61 Signature Navigation and SEO QA
 on:
   push:
     branches:
-      - design/v60-complete-interior-redesign
+      - design/v61-signature-navigation-seo
   pull_request:
     branches:
+      - design/v60-complete-interior-redesign
       - design/v59-show-control-cinematic
-      - design/v58-open-house-from-scratch
-      - design/v52-regia-serii-complete-preview
   workflow_dispatch:
 permissions:
   contents: read
