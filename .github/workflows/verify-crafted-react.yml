@@ -115,6 +115,8 @@ jobs:
         run: |
           npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
           NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-crafted-browser.cjs
+      - name: Verify direct Contact SSR hydration and prefill
+        run: NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-contact-hydration.cjs
       - name: Audit every actual sitemap page, canonical, image and internal link
         run: NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/audit-public-pages.cjs
       - name: Upload responsive browser screenshots
