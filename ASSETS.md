@@ -1,3 +1,5 @@
+Updated V62 2026-11-12: no new media, font, icon, sound, image or dependency. CSS-only touch behavior and Vitest test; existing first-party images and Lucide ISC license unchanged.
+
 Updated V61 2026-11-12: no new assets, dependencies, fonts, sound, images, video or icons; test-only quality hardening. Existing first-party media and Lucide licenses unchanged.
 
 Updated V60 2026-11-12: no new assets, external libraries, font files, video or sound. Existing Lucide arrow remains. CSS-only change; no additional license obligations.

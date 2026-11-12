@@ -157,3 +157,13 @@ html[data-gs-performance=lite] .gs-index__service,
 html[data-gs-performance=lite] .gs-index__service svg,
 html[data-gs-performance=lite] .gs-index__service span,
 html[data-gs-performance=lite] .gs-index__intro-note a svg{transition:none!important;transform:none!important}
+
+/* V62: coarse/touch devices can retain :hover after tapping a link.
+ * Do not leave editorial photographs zoomed or arrows displaced on touch.
+ * Native :focus-visible outlines remain available for keyboard users. */
+@media (hover:none){
+ .gs-index__chapter:hover .gs-index__photo img{transform:none;filter:saturate(.83) contrast(1.05)}
+ .gs-index__service:hover svg{transform:none}
+ .gs-index__service:hover span{transform:none}
+ .gs-index__intro-note a:hover svg{transform:none}
+}
