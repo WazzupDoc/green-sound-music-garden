@@ -1,18 +1,33 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowUpRight } from "lucide-react";
+import { events, images } from "@/data/site";
+import { BeamPhoto } from "@/components/site/BeamPhoto";
 import { PageHero, QuoteSection } from "@/components/site/blocks";
-import { EventsSelector } from "@/components/atelier/EventsSelector";
-import { images } from "@/data/site";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 export const Route=createFileRoute("/evenimente/")({
-  head:()=>pageHead({title:"Nunți, botezuri, petreceri, concerte, corporate | Green Sound Music Pitești",
-    description:"Experiențe muzicale și producție tehnică pentru nunți, botezuri, petreceri private, evenimente corporate și concerte. Alege evenimentul tău în Pitești sau Argeș.",
-    path:"/evenimente",jsonLd:[breadcrumbLd([{name:"Acasă",path:"/"},{name:"Evenimente",path:"/evenimente"}])]}),
-  component:Events,
+ head:()=>pageHead({title:"Evenimente cu Green Sound Music | Nunți, botezuri, corporate, concerte",
+  description:"DJ, muzică live, sunet, lumini și activități pentru nunți, botezuri, petreceri private, concerte, festivaluri și evenimente corporate.",
+  path:"/evenimente",jsonLd:[breadcrumbLd([{name:"Acasă",path:"/"},{name:"Evenimente",path:"/evenimente"}])]}),
+ component:Events,
 });
 function Events(){return <>
- <PageHero eyebrow="EXPERIENȚE / EVENIMENTE" title="Nu există două evenimente cu aceeași energie."
-   lead="O nuntă, un concert sau un eveniment corporate au ritmuri diferite. Selectează experiența și descoperă muzica, luminile și soluțiile care i se potrivesc."
-   image={images.dj} crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente"}]}/>
- <EventsSelector />
- <QuoteSection title="Ai ales data. Hai să pregătim atmosfera." intro="Spune-ne tipul evenimentului și ce îți dorești. Îți propunem combinația potrivită de muzică și tehnică." />
+ <PageHero eyebrow="Evenimente" title="Fiecare seară are alt program."
+   lead="Alege ce organizezi. Îți arătăm momentele și serviciile care pot intra în desfășurător."
+   image={images.concert} crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente"}]}/>
+ <section className="rs-events-index" aria-labelledby="rs-events-title">
+  <div className="container-site">
+   <h2 id="rs-events-title">Cu ce eveniment începem?</h2>
+   <div className="rs-events-index__list">
+    {events.map((event,index)=><article key={event.slug} className="rs-events-index__row">
+     <BeamPhoto image={event.image} className="rs-events-index__image" />
+     <div><span>{String(index+1).padStart(2,"0")} / {event.name}</span>
+      <h3>{event.name}</h3><p>{event.short}</p>
+      <Link to="/evenimente/$slug" params={{slug:event.slug}} viewTransition className="rs-inline-link">
+       Vezi desfășurătorul <ArrowUpRight size={18} aria-hidden /></Link></div>
+    </article>)}
+   </div>
+  </div>
+ </section>
+ <QuoteSection title="Discutăm despre evenimentul tău"
+  intro="Spune-ne data, locația și ce îți dorești. Mesajul se pregătește pentru WhatsApp sau email, fără trimitere automată."/>
  </>}
