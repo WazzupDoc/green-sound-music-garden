@@ -14,6 +14,7 @@ export function BeamPhoto({ image, className = "", priority = false, decorative 
   const host = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [focused, setFocused] = useState(false);
   useEffect(() => {
     const element = host.current;
     if (!element || !("IntersectionObserver" in window)) {
@@ -29,8 +30,18 @@ export function BeamPhoto({ image, className = "", priority = false, decorative 
       }
     }, { threshold: 0.12, rootMargin: "20px" });
     io.observe(element);
+    // On touch the centered photo receives the light; this observer is cheap
+    // and changes state only when the centered frame changes.
+    const touch = window.matchMedia("(hover: none)");
+    let centerObserver: IntersectionObserver | undefined;
+    if (touch.matches) {
+      centerObserver = new IntersectionObserver(([entry]) => {
+        setFocused(Boolean(entry?.isIntersecting));
+      }, {rootMargin: "-32% 0px -32% 0px", threshold: 0});
+      centerObserver.observe(element);
+    }
     setReady(true);
-    return () => io.disconnect();
+    return () => {io.disconnect();centerObserver?.disconnect();};
   }, []);
 
   const move = (event: PointerEvent<HTMLDivElement>) => {
@@ -42,7 +53,7 @@ export function BeamPhoto({ image, className = "", priority = false, decorative 
 
   return (
     <div ref={host} className={`gs-beam-photo ${className}`} data-ready={ready}
-      data-visible={visible} onPointerMove={move}>
+      data-visible={visible} data-focused={focused} onPointerMove={move}>
       <img src={image.src} alt={decorative ? "" : image.alt}
         width={image.w} height={image.h} fetchPriority={priority ? "high" : undefined}
         loading={priority ? "eager" : "lazy"} decoding="async"
