@@ -1,3 +1,11 @@
+# V56 — Keyboard editorial focus parity (draft)
+
+- Branch `design/v56-editorial-keyboard-focus`, stacked on V55 PR #43, separate from parallel live-stage PR #44. Adds CSS-only chapter photo cue on native keyboard focus, respects prefers-reduced-motion and Lite; no homepage blocks or packages added.
+- New static Vitest guard checks focus-within, native link focus and motion gates. Exact-head CI, browser screenshots and performance measurements pending; no claims of Lighthouse score.
+- Backlog: validate CI and keyboard focus at six widths; inspect visual screenshots; reconcile parallel branches intentionally; verify main deployment triggers, backup tag and rollback before any integration. PR #19 conflicts unresolved.
+
+---
+
 # V55 — Eight-track editorial running order (draft)
 
 - Branch: `design/v55-editorial-service-numbering`, stacked on V54 PR #42. Homepage retains hero, 3 asymmetric editorial chapters / 8 direct service links, 3 real films and a single CTA. No new homepage widgets.
