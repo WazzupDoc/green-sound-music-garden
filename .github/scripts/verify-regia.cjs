@@ -26,7 +26,7 @@ async function main() {
       await page.locator(".rs-hero[data-hydrated=\"true\"]").waitFor({timeout:30000});
       await page.waitForTimeout(200);
       assert.equal(await page.locator("main h1").count(), 1);
-      assert.match(await page.locator(".rs-hero h1").innerText(), /GREEN\\s+SOUND/i);
+      assert.match(await page.locator(".rs-hero h1").innerText(), /GREEN\s+SOUND/i);
       assert.equal(await page.locator(".rs-hero__beams > span").count(),2);
       assert.equal(await page.locator(".rs-hero .gs-global-light__choice").count(),4);
       assert.equal(await page.locator(".rs-programme__choice").count(),5);
