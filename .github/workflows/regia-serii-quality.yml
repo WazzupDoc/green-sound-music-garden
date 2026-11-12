@@ -5,6 +5,7 @@ on:
       - design/v59-show-control-cinematic
   pull_request:
     branches:
+      - design/v58-open-house-from-scratch
       - design/v52-regia-serii-complete-preview
   workflow_dispatch:
 permissions:
