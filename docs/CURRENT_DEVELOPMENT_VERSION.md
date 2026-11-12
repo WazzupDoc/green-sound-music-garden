@@ -1,3 +1,13 @@
+# V46 — Contact SSR six-width hydration regression (draft)
+
+- Branch: `design/crafted-atmospheres-v46-contact-six-width-hydration`, stacked on V45 PR #31. No main merge/deployment.
+- V45 exact-head CI **PASS** on `88e5d4e17f0c532481d068ac282c2d9b8f5ee58a`, GitHub Actions run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43152410901.
+- Expanded the real Chromium Contact direct-link and reload regression from 390/1440 to **360, 390, 430, 768, 1440, 1920px**. All widths check query date/location persistence, absence of React hydration/browser errors, canonical/OG parity, and a single accessible form on initial load and reload.
+- No new dependencies, external services, fake submissions or changes to visible UI. Existing CI script invocation remains unchanged.
+- Release gate: require exact V46 head GitHub Actions green and inspect actual screenshots before considering merge. Prioritize next: genuine service-selection → Contact prefill and form errors, reduced motion/Save-Data; verify main deploy triggers and backup rollback before any merge. Search Console data not connected/verified.
+
+---
+
 # V45 — Contact direct-link SSR hydration regression (draft)
 
 - Branch: `design/crafted-atmospheres-v45-contact-hydration-gate`, stacked on V44 PR #30; no main merge or deployment.
