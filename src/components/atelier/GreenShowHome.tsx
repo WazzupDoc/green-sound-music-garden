@@ -153,7 +153,7 @@ export function GreenShowHome(){
     <div className="gsx-hero__lights" aria-hidden="true"><span/><span/><span/></div>
     <div className="gsx-hero__smoke" aria-hidden="true"><img src="/creative/velvet-smoke.svg" alt="" width={1920} height={800}/></div>
     <div className="gsx-hero__topline">
-      <span>GREEN SOUND MUSIC</span><span>PI<span aria-hidden>·</span>TEȘTI / DIN 2008</span>
+      <span>SUNET / LUMINĂ / EMOȚIE</span><span>PI<span aria-hidden>·</span>TEȘTI / DIN 2008</span>
       <span>MUZICĂ + SCENĂ + LUMINĂ</span>
     </div>
     <div className="gsx-hero__main">
