@@ -26,13 +26,17 @@ async function main() {
       await page.locator(".gsx[data-hydrated=true]").waitFor({timeout:30000});
       await page.waitForTimeout(160);
       assert.equal(await page.locator("main h1").count(),1);
-      assert.match(await page.locator(".gsx-hero h1").innerText(),/GREEN[\\s\\S]+SOUND/i);
+      assert.match(await page.locator(".gsx-hero h1").innerText(),/GREEN[\s\S]+SOUND/i);
       assert.equal(await page.locator(".go-2026").count(),0,"old V58 layout must not render");
       assert.equal(await page.locator(".gsx-hero__lights span").count(),3);
       assert.equal(await page.locator(".gsx-console__buttons button").count(),3);
       assert.equal(await page.locator(".gsx-console__swatches button").count(),3);
       assert.equal(await page.locator(".gsx-departments__selector > button").count(),3);
       assert.equal(await page.locator(".gsx-event").count(),5);
+      assert.equal(await page.locator(".gsx-effects__tabs button").count(),3);
+      assert.equal(await page.locator(".gsx-hero__generated").getAttribute("src"),"/creative/v59/live-lights.webp");
+      const actualArtwork=await page.locator(".gsx-hero__generated").evaluate(img=>img.complete&&img.naturalWidth>0);
+      assert(actualArtwork,"Generated WebP lighting artwork missing");
       assert.equal(await page.locator(".gsx-reel iframe").count(),0,"No autoplay on load");
       assert.equal(await page.locator("main form").count(),0);
       assert.match(await page.locator("head meta[name='robots']").first().getAttribute("content"),/noindex/);
@@ -46,7 +50,7 @@ async function main() {
       if ([390,1440].includes(width)) {
         // A screenshot tool does not scroll through a page; real browsers do.
         // Trigger native lazy loading/reveal before taking the full-page frame.
-        for (const selector of [".gsx-manifest__layout", ".gsx-departments__stage", ".gsx-events__lanes", ".gsx-reel"]) {
+        for (const selector of [".gsx-manifest__layout", ".gsx-departments__stage", ".gsx-effects__visual", ".gsx-events__lanes", ".gsx-reel"]) {
           await page.locator(selector).first().scrollIntoViewIfNeeded();
           await page.waitForTimeout(250);
         }
@@ -64,6 +68,9 @@ async function main() {
       assert.equal(await page.locator(".gsx").getAttribute("style"),"--gsx-power: 0.85;");
       await page.locator(".gsx-departments__selector").getByRole("button",{name:/LIVE/}).click();
       assert.match(await page.locator(".gsx-departments__selected").innerText(),/muzica live/i);
+      await page.locator(".gsx-effects__tabs button").nth(2).click();
+      assert.equal(await page.locator(".gsx-effects__visual > img").getAttribute("src"),"/creative/v59/sonic-waves.webp");
+      assert.match(await page.locator(".gsx-effects__content > strong").innerText(),/TRANZIȚII/i);
       await checkNoOverflow(page,"/ interactive",width);
       assert.deepEqual(errors,[],`Hydration/browser error ${width}px`);
       await page.close();
