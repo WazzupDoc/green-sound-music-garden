@@ -30,6 +30,7 @@
 @import "./styles/regia-serii-site.css";
 @import "./styles/regia-serii-portfolio.css";
 @import "./styles/regia-serii-pages.css";
+@import "./styles/regia-serii-final.css";
 
 @custom-variant dark (&:is(.dark *));
 
