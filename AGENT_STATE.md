@@ -1,3 +1,14 @@
+# V80 — Hour 01 hero implementation (2026-11-13)
+
+- Branch: `design/crafted-atmospheres-v80-stage-depth-accessibility`, stacked on PR #74 (docs) / V79 PR #73. Single zone: homepage StageHero, no duplicate hero and no new homepage sections.
+- Changed `src/styles/stage-v79.css`: physical stage-wing shadow, perspective contrast, localized footlight and mobile/Lite/reduced-motion fallbacks. Original CSS, no dependency, image or network request. Intended visible difference: architectural depth rather than another standalone glowing beam. **Not yet visually verified by browser captures**.
+- Changed `src/components/atelier/stage-v78.visual-integrity.test.ts`: repaired obsolete literal className assertion while still requiring semantic V78 class and explicit V79 class; no test removed.
+- Updated `RESEARCH.md` with Webflow and MDN guidance. `ASSETS.md` unchanged because no external assets were added.
+- Exact-head TypeScript, SSR, Vitest, gzip and Chromium 360/390/430/768/1440/1920 are **pending GitHub Actions**. Before screenshots/CI, do not claim green or Awwwards quality. Old V79 CI failed 63/64 unit tests; browser skipped.
+- Next action: inspect GitHub Actions at new SHA; fix failures, capture **real** before/after at 390 and 1440 (all six widths for regression), evaluate stage visual composition; if weak, iterate. Once hero validated, next distinct zone is navigation/mobile menu. No main merge or production publish.
+
+---
+
 # AUTONOMOUS DESIGN ENGINE — 3-SPRINT BOOTSTRAP (2026-11-13)
 
 > Planning-only initialization. Preserve the complete historical journal below. No component code, screenshot or CI approval is claimed by this update.

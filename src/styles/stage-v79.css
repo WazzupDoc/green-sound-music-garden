@@ -75,3 +75,45 @@ html[data-gs-performance="lite"] .gs-stage-v79__scanner{
 @media(prefers-reduced-motion:reduce){
   .gs-stage-v79 .gs-stage-v79__scanner{animation:none!important;opacity:0!important}
 }
+
+/* V80: cinematic stage wings, depth shadow and focused footlight.
+   Original CSS only; no assets or dependency. The wings provide the physical
+   framing missing from V79's wireframe portals without covering the headline. */
+.gs-stage-v79 .gs-stage-v79__architecture::before{
+  content:"";position:absolute;left:51%;top:7%;width:46%;height:77%;
+  pointer-events:none;opacity:.82;
+  background:
+    linear-gradient(90deg,rgba(3,7,6,.87),rgba(5,13,10,.32) 8%,transparent 24% 76%,rgba(5,13,10,.42) 93%,rgba(3,7,6,.86)),
+    linear-gradient(180deg,rgba(3,8,6,.76),transparent 18% 83%,rgba(3,8,6,.55));
+  clip-path:polygon(0 0,100% 0,100% 100%,0 100%);
+  box-shadow:inset 0 0 80px 20px rgba(0,0,0,.6);
+  transform:perspective(1000px) rotateY(-14deg);
+}
+.gs-stage-v79 .gs-stage-v79__architecture::after{
+  content:"";position:absolute;left:54%;right:1%;bottom:17%;height:14%;
+  pointer-events:none;opacity:.74;
+  background:radial-gradient(ellipse at 55% 75%,rgba(198,255,168,.28),rgba(118,193,122,.075) 36%,transparent 73%);
+  transform:perspective(800px) rotateX(65deg);
+  filter:blur(10px);
+}
+.gs-stage-v79 .gs-stage-v79__portal--front{
+  border-left-color:rgba(205,255,183,.78);
+  border-right-color:rgba(205,255,183,.24);
+  box-shadow:-13px 0 34px rgba(178,255,151,.12),inset 20px 0 45px rgba(5,12,8,.4);
+}
+.gs-stage-v79 .gs-stage-v79__portal--rear{
+  border-left-color:rgba(182,232,255,.19);
+  box-shadow:inset 15px 0 45px rgba(1,5,8,.6);
+}
+@media(max-width:900px){
+  .gs-stage-v79 .gs-stage-v79__architecture::before{left:63%;width:43%;opacity:.55}
+  .gs-stage-v79 .gs-stage-v79__architecture::after{left:62%;opacity:.45}
+}
+@media(max-width:600px){
+  .gs-stage-v79 .gs-stage-v79__architecture::before{left:73%;width:35%;opacity:.3}
+  .gs-stage-v79 .gs-stage-v79__architecture::after{display:none}
+}
+html[data-gs-performance="lite"] .gs-stage-v79__architecture::after{display:none}
+@media(prefers-reduced-motion:reduce){
+  .gs-stage-v79 .gs-stage-v79__architecture::after{display:none}
+}

@@ -27,7 +27,8 @@ describe("V78 visual stylesheet recovery", () => {
   });
 
   it("uses one readable, semantic hero with genuine photography and an active stage selector", () => {
-    expect(hero).toContain('className="crafted-hero gs-stage-v78"');
+    expect(hero).toMatch(/className="crafted-hero gs-stage-v78(?: [a-z0-9-]+)*"/);
+    expect(hero).toContain('className="crafted-hero gs-stage-v78 gs-stage-v79"');
     expect(hero).toContain('id="crafted-hero-title"');
     expect(hero).toContain("Muzica");
     expect(hero).toContain("schimbă <em>tot.</em>");

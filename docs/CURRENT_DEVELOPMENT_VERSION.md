@@ -1,3 +1,13 @@
+# V80 — Stage wings / optical depth (draft, 2026-11-13)
+
+- Branch: `design/crafted-atmospheres-v80-stage-depth-accessibility`; parent: V79 + planning PR #74.
+- CSS-only hero depth experiment in `src/styles/stage-v79.css`: perspective stage wings, asymmetric shadows and a subtle floor wash; mobile/Lite/reduced-motion fallback. Existing stage selector, Light Desk, real photos, original homepage editorial composition unchanged.
+- Fixed stale V78 visual-integrity test literal class-name expectation without deleting checks.
+- Exact-head CI and **actual browser before/after screenshots not yet confirmed**. This is a draft experiment, not approved or deployed.
+- `main` untouched. Rollback: revert the V80 CSS additions and test change; preserve prior V79 branch.
+
+---
+
 # V78 — Cinematic Stage / ACTUAL CSS loading recovery (draft, 2026-11-13)
 
 - Branch: `design/crafted-atmospheres-v78-visual-style-recovery`; based on V77 commit `93f085c98a8735dc49fe75fcafe457a3281d76bc`.
