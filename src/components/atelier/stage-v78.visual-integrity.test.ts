@@ -30,8 +30,8 @@ describe("V78 visual stylesheet recovery", () => {
     expect(hero).toMatch(/className="crafted-hero gs-stage-v78(?: [a-z0-9-]+)*"/);
     expect(hero).toContain('className="crafted-hero gs-stage-v78 gs-stage-v79"');
     expect(hero).toContain('id="crafted-hero-title"');
-    expect(hero).toContain("Muzica");
-    expect(hero).toContain("schimbă <em>tot.</em>");
+    expect(hero).toContain("Sunet.");
+    expect(hero).toContain("Lumină. <em>Emoție.</em>");
     expect(hero).not.toContain('className="gs-poster__stamp"');
     expect(hero).toContain('src={scene.src}');
     expect(hero).toContain('fetchPriority={active === "live" ? "high" : undefined}');
