@@ -80,6 +80,10 @@ async function main() {
       assert(visualState.w > width*.45 && visualState.h > 180 && visualState.alpha>.6,
         `Spectral art must be visibly large, not a tiny repeat: ${JSON.stringify(visualState)}`);
       assert.equal(visualState.animation,"none","Reduced-motion must suppress V90 vector animation");
+      const photographClip = await page.locator(".crafted-hero__image")
+        .evaluate(el => getComputedStyle(el).clipPath);
+      assert(photographClip.startsWith("polygon("),
+        "V90 must materially change real hero photography into an asymmetric editorial cut");
       if(width===390 || width===1440){
         await page.locator(".crafted-hero").screenshot({
           path:`${output}/spectrum-v90-hero-${width}.png`,animations:"disabled",
@@ -251,6 +255,10 @@ async function main() {
     const spectralRail=motionPage.locator(".gs-v90__spectrum-rail");
     const spectralName=await spectralRail.evaluate(el=>getComputedStyle(el).animationName);
     assert.match(spectralName,/gs-v90-breathe/,"Full desktop animation must really run");
+    const titleReveal = await motionPage.locator(".gs-stage-v78__line").first()
+      .evaluate(el => getComputedStyle(el).animationName);
+    assert.match(titleReveal,/gs-v90-type-reveal/,
+      "The hero title must have a real motion-enabled arrival, not only static gradient text");
     const spectrumHero=await motionPage.locator(".crafted-hero").boundingBox();
     assert(spectrumHero,"V90 hero has layout bounds");
     await motionPage.mouse.move(spectrumHero.x+spectrumHero.width*.52,spectrumHero.y+spectrumHero.height*.22);
