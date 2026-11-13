@@ -1,3 +1,10 @@
+## V83 — actual CI / screenshot checkpoint 2026-11-13
+- Source `fd604c60630f9498555145805c07b250666a8d2e`, PR #78 `design/v83-signal-ledger-editorial-services` stacked onto V82 #77: both [push CI 43409515536](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536) and [PR CI 43409522734](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409522734) **GREEN**. 70 tests/25 suites, SSR TS, 51.3 kB/52 cap CSS, six-width Chromium, all three local service photos decode, direct service links, 20 SEO page audit, Contact SSR.
+- Browser proof: [artifact 14029615502](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536/artifacts/14029615502). 1440 and 390 service captures actually show photo+overlay; added scoped engraving and pulse feedback. Limitations: initial V81 screenshot did not lazy-load all photos; comparison not identical loaded state. Physical phone test and owner aesthetic acceptance pending.
+- NEXT ROTATION: EditorialPortfolio real-film media poster, choice UX, clear click-to-play, distinguish synthetic design from original company footage. Main and production unchanged (release safety gates).
+
+---
+
 ## V83 — SIGNAL LEDGER / branded services editorial (2026-11-13)
 - Verified latest PRs V82 #77 head `81d1dee8...` (exact-head CI 43406429295 FAILED: 1 outdated production-index.photo-motion assertion; 67/68 tests passed), V81 #76 prior real CI success 43399390064. PR #19 remains conflicting. **Component rotation: services / editorial programme**; next **portfolio / real film playback**, then events/contact.
 - Baseline screenshot: [V81 artifact 14024876141](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141) contains services photographed with incomplete lazy loading in screenshot; screenshot can be misleading and is not a proper before-state for media, cannot claim same-state before/after.
