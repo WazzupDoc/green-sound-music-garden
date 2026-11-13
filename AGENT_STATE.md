@@ -1,3 +1,11 @@
+## 2026-11-13 — V87 film proof rather than text-only list
+- Last validated homepage design V86, PR #82 source cfa8a245b54b4d65caa8ad1d2fc62a9c0846e5b3: real poster/source photos, left-large/two-right service layout, original wave, 390px hero reduced from 1015px to 764px, CI green on push #43419886703 and PR #43419894739. Owner acceptance still pending.
+- Component ROTATION: HERO+SERVICE editorial V86 / real screenshots, CI green; FILMS V87 / implemented and app-source verified, see PR #83 and artifact #14033568505; NEXT: event discovery and individual service pages (photographic identity, real form links, no fake availability), then Contact/brief/FAQ, footer, accessibility, privacy and SEO.
+- V87 changes actual visible film navigation into a photographic contact sheet of 3 locally owned video posters; clicked selection stays controlled, no autoplay or fake additional project cards, keyboard focus visible, responsive to 390/1440. Browser asserts three local naturalWidth>0 and records real screenshot.
+- Candidate release still draft; do not alter main unless exact-head CI, auto-deploy config, backup Git tag, rollback and explicit publication approval when deploy automatic. No new cost/media rights.
+
+---
+
 ## 2026-11-13 — V86 significant visual overhaul, QA gates
 - Draft PR #82: https://github.com/WazzupDoc/green-sound-music-garden/pull/82, based on validated V85 SHA 4bf044079f41de251b6d8ced1c8f636f69374f12.
 - Owner feedback: V83-V85 did not meet visual expectations; actual V85 screenshot was too dark, with giant synthetic desk and three similar columns. V86 removes dead cosmetics, uses one SSR scoped stylesheet, genuine first-party stage imagery and an original branded waveform. Hero leads directly to contact rather than vague browsing.
