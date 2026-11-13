@@ -49,39 +49,36 @@ async function main() {
       assert.equal(photos.length, 3, "Three authored editorial chapter photographs");
       assert(photos.every(img => img.width > 0),
         `Broken or undownloaded service photograph at ${width}px: ${JSON.stringify(photos)}`);
-      assert.equal(await page.locator(".gs-index__signal-ledger").count(), 3,
-        "One original Green Sound channel engraving per chapter");
-      assert.equal(await page.locator(".gs-index__routing").count(), 3);
-      assert.equal(await page.locator(".gs-home-v84").count(), 1,
-        "V84 actual home design wrapper must be present in SSR output");
-      const serviceBg = await page.locator(".gs-index").evaluate(element =>
-        getComputedStyle(element).backgroundColor);
-      assert.equal(serviceBg, "rgb(7, 23, 17)",
-        "V85 production-index must be a genuinely new dark-technical visual composition");
-      assert.equal(await page.locator(".gs-production-deck-v85 svg").count(), 1,
-        "A real authored production-console illustration must render, not just light beams");
+      assert.equal(await page.locator(".gs-index__signal-ledger").count(), 0,
+        "V86 removed decorative fake signal badges, not merely CSS-hidden");
+      assert.equal(await page.locator(".gs-index__routing").count(), 0);
+      assert.equal(await page.locator(".gs-home-v86").count(), 1,
+        "Only V86 scoped homepage art direction must render");
+      assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
+        "Original Green Sound signal mark must be in the hydrated hero");
+      assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
+        "Oversized fake hardware must not render in the V86 first screen");
+      const serviceBg = await page.locator(".gs-index").evaluate(el => getComputedStyle(el).backgroundColor);
+      assert.equal(serviceBg, "rgb(11, 33, 24)",
+        "V86 page must have its own computed service background, not old CSS");
       if (width >= 1100) {
-        const chapterImages = await Promise.all(["sound", "stage", "people"].map(async part =>
-          page.locator(`.gs-index__chapter[data-chapter="${part}"] .gs-index__photo`).boundingBox()
+        const rects = await Promise.all(["sound", "stage", "people"].map(key =>
+          page.locator(`.gs-index__chapter[data-chapter="${key}"]`).boundingBox()
         ));
-        assert(chapterImages.every(Boolean) &&
-          chapterImages[0].x + 50 < chapterImages[1].x &&
-          chapterImages[1].x + 50 < chapterImages[2].x,
-          "V85 three real unequal photographic chapters must be presented side-by-side at desktop");
-        assert(chapterImages[0].height > chapterImages[1].height + 35,
-          "Three premium angled panels must be intentionally asymmetric, not three equal cards");
+        assert(rects.every(Boolean) &&
+          rects[0].x + 65 < rects[1].x &&
+          Math.abs(rects[1].x - rects[2].x) < 10 &&
+          rects[0].height > rects[1].height * 1.4,
+          "Featured chapter on left must span two editorial rows, 2 compact acts stacked on right");
         const stagePhoto = await page.locator(".gs-production-backdrop-v85").evaluate(async img => {
           img.loading = "eager";
           await img.decode().catch(() => null);
-          return { width: img.naturalWidth, height: img.naturalHeight, currentSrc: img.currentSrc };
+          return { width: img.naturalWidth, height: img.naturalHeight };
         });
-        assert(stagePhoto.width > 0 && stagePhoto.height > 0,
-          `V85 green-lit source photograph failed to decode at ${width}: ${JSON.stringify(stagePhoto)}`);
-        const desk = await page.locator(".gs-production-deck-v85").boundingBox();
-        assert(desk && desk.width > 400 && desk.height > 190,
-          "A new substantial bespoke console must be visible in the desktop hero");
+        assert(stagePhoto.width > 0 && stagePhoto.height > 0, "Real green stage photo must load in hero");
       }
-
+      assert.equal(await page.locator('.crafted-hero__actions a[href="/contact"]').count(), 1,
+        "Visible hero offer CTA should lead directly to the working Contact flow");
 
       assert.equal(await page.locator(".director-reel__choice").count(), 3);
       assert.equal(await page.locator(".crafted-finale__link").count(), 1);
@@ -95,15 +92,15 @@ async function main() {
       });
       if (width === 390 || width === 1440) {
         await page.screenshot({
-          path: `${output}/production-v85-home-${width}.png`,
+          path: `${output}/signature-v86-home-${width}.png`,
           fullPage: true, animations: "disabled"
         });
         await page.locator(".crafted-hero").screenshot({
-          path: `${output}/production-v85-hero-${width}.png`,
+          path: `${output}/signature-v86-hero-${width}.png`,
           animations: "disabled"
         });
         await page.locator(".gs-index__chapters").screenshot({
-          path: `${output}/production-v85-services-${width}.png`,
+          path: `${output}/signature-v86-services-${width}.png`,
           animations: "disabled",
         });
       }
@@ -166,27 +163,32 @@ async function main() {
       path: `${output}/stage-index-lite-390.png`, animations: "disabled",
     });
 
-    // The decorative meters only move on a genuine pointer/focus action
-    // in full-motion mode; they are neither background autoplay nor audio-driven.
+    // A real visible original waveform motion, not a fake hardware/audio meter.
     await activePage.keyboard.press("Escape");
     await activePage.locator("dialog.atelier-mobile-menu[open]")
       .waitFor({ state: "hidden", timeout: 8000 });
-    await activePage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
-    await activePage.locator(".gs-index__service").first().focus();
-    const meterMotion = await activePage.locator(".gs-index__signal-ledger-bars i").first()
-      .evaluate(element => getComputedStyle(element).animationName);
-    assert.match(meterMotion, /gs-index-meter-pulse/,
-      "Focus must reveal the opt-in channel gesture when full motion is allowed");
-    await activePage.screenshot({
-      path: `${output}/service-ledger-motion-390.png`,
-      animations: "allow",
-    });
-    await activePage.evaluate(() =>
-      document.documentElement.setAttribute("data-gs-performance", "lite"));
-    const liteMeter = await activePage.locator(".gs-index__signal-ledger-bars i").first()
-      .evaluate(element => getComputedStyle(element).animationName);
-    assert.equal(liteMeter, "none", "Lite must eliminate the channel meter animation");
+    await activePage.locator(".crafted-hero__mode").nth(1).click();
+    assert.equal(await activePage.locator(".crafted-hero").getAttribute("data-scene"), "private",
+      "Stage scene controls must still work after visual redesign");
     await activePage.close();
+
+    const motionPage = await browser.newPage({
+      viewport: {width: 1440,height:900},reducedMotion:"no-preference"
+    });
+    await motionPage.goto(base + "/", { waitUntil:"domcontentloaded" });
+    await motionPage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+    await motionPage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
+    const waveform = motionPage.locator(".gs-v86__graphic svg");
+    const realMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
+    assert.match(realMotion,/gs-v86-signal-drift/,
+      "Full-motion desktop genuinely animates the original Green Sound signal");
+    await motionPage.screenshot({path:`${output}/signature-v86-motion-1440.png`,
+      animations:"allow",fullPage:false});
+    await motionPage.evaluate(() => document.documentElement.setAttribute("data-gs-performance","lite"));
+    const liteMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
+    assert.equal(liteMotion,"none","Lite must fully disable the signature wave animation");
+    await motionPage.close();
+
 
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
@@ -208,7 +210,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V83 service photos loaded + 3 unique signal engravings + motion/Lite, V81 editorial modal browser: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V86 signature redesign visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
   } finally {
     await browser.close();
   }
