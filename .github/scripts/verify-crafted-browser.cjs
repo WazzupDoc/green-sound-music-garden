@@ -95,6 +95,16 @@ async function main() {
 
 
       assert.equal(await page.locator(".director-reel__choice").count(), 3);
+      const filmPosters = await page.locator(".director-reel__choice .gs-v87-film-thumb img")
+        .evaluateAll(async imgs => {
+          for(const img of imgs) img.loading="eager";
+          await Promise.all(imgs.map(img => img.decode().catch(() => null)));
+          return imgs.map(img=>({w:img.naturalWidth,src:img.currentSrc}));
+        });
+      assert.equal(filmPosters.length,3,"V87 has 3 authentic published video poster selections");
+      assert(filmPosters.every(p=>p.w>0 && p.src.includes("/media/greensound/")),
+        `V87 film posters must decode from actual site-owned media: ${JSON.stringify(filmPosters)}`);
+
       assert.equal(await page.locator(".crafted-finale__link").count(), 1);
       assert.equal(await page.locator("main form").count(), 0);
       assert.equal(await page.locator(".rs-programme__choice").count(), 0);
@@ -116,6 +126,10 @@ async function main() {
         await page.locator(".gs-index__chapters").screenshot({
           path: `${output}/signature-v86-services-${width}.png`,
           animations: "disabled",
+        });
+        await page.locator(".director-reel").screenshot({
+          path: `${output}/v87-film-contact-sheet-${width}.png`,
+          animations:"disabled"
         });
       }
 
@@ -224,7 +238,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V86 signature redesign visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V87 3 real video posters + V86 signature redesign visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
   } finally {
     await browser.close();
   }
