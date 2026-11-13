@@ -402,3 +402,6 @@ html[data-gs-performance=lite] .gs-contact-v92 *{
 .gs-contact-v92__quote .quote-preview__details pre{
   color:#f4ffef;white-space:pre-wrap;overflow-wrap:anywhere;
 }
+
+/* QA: readable prepared-customer attribution on the dark preview ticket. */
+.gs-contact-v92__quote .quote-preview__ticket .quote-preview__identity{color:#d8efc9!important}
