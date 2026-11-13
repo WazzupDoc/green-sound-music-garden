@@ -83,7 +83,7 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero" data-scene={active}
+    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
       data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
       data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
@@ -112,6 +112,8 @@ export function StageHero() {
           <span className="crafted-stage-lights__flare" />
         </div>
         <motion.div className="crafted-hero__pointer" style={{ background: spotlight }} aria-hidden />
+        <div className="gs-stage-v78__aperture" aria-hidden="true" />
+        <div className="gs-stage-v78__light-sweep" aria-hidden="true" />
       </div>
 
       <div className="gs-poster__marquee" aria-hidden="true">
@@ -119,25 +121,15 @@ export function StageHero() {
       </div>
       <div className="container-site crafted-hero__layout">
         <div className="crafted-hero__intro">
-          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> EST. {business.founded} / PITEȘTI / LIVE EXPERIENCES</div>
-          <div className="gs-poster__stamp" aria-hidden="true">
-            <svg viewBox="0 0 120 120" fill="none" className="gs-poster__symbol">
-              <circle cx="60" cy="60" r="55" stroke="currentColor" strokeWidth="1.25" />
-              <circle cx="60" cy="60" r="44" stroke="currentColor" strokeOpacity=".36" />
-              <path d="M20 64H33L39 39L48 83L58 25L68 97L77 47L84 67H100" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="100" cy="67" r="4" fill="currentColor"/>
-            </svg>
-            <span>GREEN SOUND<br/>SIGNAL / 2008</span>
-          </div>
-          <h1 id="crafted-hero-title" className="crafted-hero__title">
-            <span className="gs-poster__title-top">GREEN</span>
-            <span className="gs-poster__title-bottom">SOUND<span className="gs-poster__asterisk" aria-hidden="true">✳</span></span>
-            <span className="gs-poster__title-caption">Construim atmosfera. <em>Culoarea petrecerii tale.</em></span>
+          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> GREEN SOUND MUSIC / PITEȘTI / DIN {business.founded}</div>
+          <h1 id="crafted-hero-title" className="crafted-hero__title gs-stage-v78__title">
+            <span className="gs-stage-v78__line">Muzica</span>
+            <span className="gs-stage-v78__line gs-stage-v78__line--second">schimbă <em>tot.</em></span>
           </h1>
-          <p className="crafted-hero__lead">Din 2008, din Pitești: muzică, oameni și scene care prind viață. DJ & MC, trupă live, producție, sunet și lumini — într-un singur ritm.</p>
+          <p className="crafted-hero__lead">Din Pitești, din 2008. DJ & MC, trupă live, sonorizare, lumini și producție tehnică pentru evenimente care au ritmul lor.</p>
           <div className="crafted-hero__actions">
             <Link to="/evenimente" className="crafted-button crafted-button--light">
-              Descoperă experiențele <ArrowUpRight aria-hidden className="size-4" />
+              Explorează evenimentele <ArrowUpRight aria-hidden className="size-4" />
             </Link>
             <button type="button" className="crafted-text-action" onClick={() => setShowReel(true)} data-cursor-label="PLAY FILM">
               <CirclePlay aria-hidden className="size-5" /> Privește un show real
