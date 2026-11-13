@@ -1,3 +1,16 @@
+# V86 — GREEN SOUND / Signature homepage (draft, 2026-11-13)
+
+- Code branch: design/v86-signature-production-site, draft PR #82 https://github.com/WazzupDoc/green-sound-music-garden/pull/82, stacked on V85 PR #81 (validated SHA 4bf044079f41de251b6d8ced1c8f636f69374f12).
+- The owner specifically rejected generic AI-style repetition, giant vector audio mixer, dim event background and endless micro-PRs. The V86 improvement is deliberately structural: original typographic/cinematic homepage with authentic existing photographs, a branded SVG sound wave and one actionable offer CTA directly into /contact.
+- CSS architecture: replaced 2 separate home CSS style tags from V84/V85 with a SINGLE SSR-scoped home-signature-v86.css file. Old style files/ProductionDeckArt remain in Git for safe rollback, not rendered in current homepage.
+- Editorial services: first-party photo for headline Music chapter spans two grid rows, two genuinely smaller stage/people chapters stacked to its right. All 8 real service links work natively. Removed fake signal-ledger ornaments and routing bars from source JSX.
+- Hero retains 3 native scene selectors, Light Desk with Escape, modal click-to-play real film, and original photos. Mobile 390 first-screen audit revealed a bulky scene-note widget; corrected to a compact event deep link (must re-validate latest exact head).
+- Film selection remains 3 real project videos, no autoplay. Finale retains precisely one offer CTA. No new third-party images/media/scripts/dependencies/expenses.
+- Preliminary CI SUCCESS at application SHA db92e4609b265dfd1fd6058c9d0ebcef36108694: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43418750372 . Screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43418750372/artifacts/14033232086, 360/390/430/768/1440/1920. This predates mobile-height fix; final HEAD CI still required.
+- Main and production NOT modified. Before any release inspect auto-deploy triggers, create unique verified backup tag on old main, test rollback and obtain separate public-release approval if merge triggers a deployment. PR #19 conflicts remain separate.
+
+---
+
 # V85 — Original GREEN SOUND production console / premium reference rebuild (2026-11-13)
 
 - Owner supplied a specific dark green technical production website image on 2026-11-13, asking why actual app did not resemble it. V84 screenshots revealed a structurally edited but still mostly black/dim first screen; V85 is a deliberately larger visual correction anchored to that user-approved direction. **It is original interpretation, not pixel duplication.**
