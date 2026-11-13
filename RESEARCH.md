@@ -1,3 +1,8 @@
+## 2026-11-13 — V76 editorial browser regression
+
+- Source: https://playwright.dev/docs/locators — stable role/locator assertions; adapted to the actual V48 editorial components, not the retired Regia selectors. No copied code or new dependency. Rejected bypassing the failing browser step or leaving its old assertions in place.
+- Source: https://web.dev/articles/optimize-lcp — screenshots and load checks are not LCP measurements; no LCP score claimed. No new assets.
+
 ## 2026-11-13 — V75 focus-visible regression / CI
 
 - Source: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible — keyboard-intent focus cue, no code copied; CSS semantics adapted in source-level tests only.
