@@ -30,7 +30,9 @@ describe("V81 stage-index navigation contract", () => {
   });
 
   it("ships its actual stylesheet and has a keyboard-visible close button", () => {
-    expect(stylesheet).toContain('@import "./styles/navigation-v81.css";');
+    expect(stylesheet).not.toContain('@import "./styles/navigation-v81.css";');
+    expect(header).toContain('import stageIndexCss from "@/styles/navigation-v81.css?inline"');
+    expect(header).toContain("<style>{stageIndexCss}</style>");
     expect(css).toContain("dialog.atelier-mobile-menu:not([open])");
     expect(css).toContain("dialog.atelier-mobile-menu[open]");
     expect(css).toContain(".gsm-nav-index__close");
