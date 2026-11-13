@@ -6,8 +6,8 @@ const css = readFileSync(new URL("../../styles/production-index.css", import.met
 /** Check the actual CSS declaration, not an escaped textual approximation. */
 const hoverRules = (source: string) =>
   [...source.matchAll(/([^{}]+)\{([^{}]*)\}/g)]
-    .filter(([, selector]) => selector.includes(".gs-index__intro-note a:hover"))
-    .map(([, selector, declarations]) => ({ selector, declarations }));
+    .filter(([, selector]) => selector?.includes(".gs-index__intro-note a:hover") ?? false)
+    .map(([, selector, declarations]) => ({ selector: selector ?? "", declarations: declarations ?? "" }));
 
 const layoutProperties = /(?:^|;)\s*(?:gap|column-gap|row-gap|padding(?:-(?:left|right|top|bottom))?|margin(?:-(?:left|right|top|bottom))?|width|height|left|right|top|bottom)\s*:/i;
 
@@ -28,11 +28,13 @@ describe("editorial services CTA layout stability", () => {
       ".gs-index__intro-note a:hover { margin-right: 5px; }",
     ];
     for (const fixture of fixtures) {
-      expect(hoverRules(fixture)).toHaveLength(1);
-      expect(hoverRules(fixture)[0].declarations).toMatch(layoutProperties);
+      const rule = hoverRules(fixture)[0];
+      expect(rule).toBeDefined();
+      expect(rule?.declarations).toMatch(layoutProperties);
     }
-    expect(hoverRules(".gs-index__intro-note a:hover { transform: translateX(4px); }")[0].declarations)
-      .not.toMatch(layoutProperties);
+    const transformRule = hoverRules(".gs-index__intro-note a:hover { transform: translateX(4px); }")[0];
+    expect(transformRule).toBeDefined();
+    expect(transformRule?.declarations).not.toMatch(layoutProperties);
   });
 
   it("gates decorative arrow movement by motion preference and Lite", () => {
