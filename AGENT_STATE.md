@@ -1,3 +1,13 @@
+## 2026-11-13 V90 / SHOW WALL VISIBLE DIFFERENCE EXPERIMENT
+- Owner says **all former designs look identical** despite many versions: same static purple live photo, one weak wave and 2–3 green beam effects, no recognizable motion/3D. Actual V89 hero Chromium screenshot confirms visual criticism. Do not treat test/SEO/doc-only changes as redesign.
+- Current base V89 PR #86 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07` with exact-head green CI #43425095295, screenshot artifact #14037051076. V90 draft PR #88 branch `design/v90-kinetic-3d-live-show-wall` implemented NEW JSX + original scoped CSS.
+- Rotation matrix snapshot: Hero V90 — **actual visual redesign submitted, exact-head CI/screenshots not yet confirmed**, defects before: static dark image + negligible ambient effect, after: 3D montage using three real local media, kinetic lime ticker across masthead, mode selection reshuffles photographs, Light Desk tone/on-off physically changes media effect; next: audit *mobile visual feedback and image resolution*; Services V89 — done earlier, owner aesthetic approval pending; Film V87 — tested; Events V88 — tested; Contact, inner service pages, footer, privacy, SSR, perf — still audit rotation due.
+- Authored proof: `show-wall-v90.css` perspective + 3D transform keyframes + no reduced/Lite/background animation; `KineticShowWall.tsx` 3 actual source-owned photos, decorative and aria-hidden, no autoplay audio/video. On mobile only one image visible, no moving heavy 3D. Reuses scene controls and LIGHT DESK with new effect (not a dead switch).
+- AUDIT BEFORE/AFTER REQUIREMENT: capture *same 1440 and 390* old V89 browser vs V90; produce 2 frames in full motion, 1 toggled Private stage, 1 Lite; if effect invisible or lower quality, adjust, don't say 'success' because CI. Notably no logo/font/media licensing changes.
+- No merging main, no auto-publication, backup Git tag or verified rollback completed. PR #19 conflicts need separate attention.
+
+---
+
 ## V89 / 2026-11-13 — DESIGN LEVEL CORRECTION (OWNER REFERENCE)
 
 - Owner has rejected repeated small V83–V88 changes as nothing like their chosen mockup. V87 actual Chromium 1440 full-page `signature-v86-home-1440.png` shows long dark first screen, generic typography, oversized dark CTA, separated services. **Don't declare success based only on CI or version number.**
