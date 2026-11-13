@@ -1,3 +1,12 @@
+## 2026-11-13 — V92 visual evidence + functional QA follow-up
+
+- Actual same-viewport REAL Chrome BEFORE `design/v92-contact-before-audit`, run [#43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840), [artifact 14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507); V92 AFTER app-source `3c68af407d73152f4fb8775166a663944e32572e`, run [#43438638248](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248) SUCCESS, [artifact 14045801050](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248/artifacts/14045801050). Same `/contact` route at 390/1440, reduced-motion static captures, six-width regression. See `docs/V92_VISUAL_QA.md`.
+- REAL contrast/design verdict: huge sage+forest typographic opening + original sound score; lower Contact directory + bright paper quote interface objectively changes visual hierarchy. Mobile direct channels remain accessible. Preview light-on-light errors FOUND in actual screenshot; fixed no-send text, email CTA, edit link, ticket labels with explicit colors; removed redundant fixed bottom MobileActionBar **only on Contact** through route-aware hook. A second audit noticed attribution text muted on dark preview ticket; corrected and added computed-color Playwright assertion. This final change requires new exact-head CI.
+- Actual functional browser check at green app-source: submit blank invalid -> summary and `aria-invalid` -> fill real schema-valid Romanian contact/event/consent -> focus prepared-message h3 -> verify manual WhatsApp/email and no auto-send -> edit retains data. No new backend, media or costs.
+- Rotation: **NEXT single primary zone after current V92 exact-head gate: individual /servicii/$slug detail pages**, then Studio, Despre, portfolio, responsive/accessibility, SEO/SSR/security/privacy. Hero PRs remain alternate designs, not auto-merged. No main/deploy; PR #19 conflict noted.
+
+---
+
 ## 2026-11-13 — V92 Contact Production Brief / single-zone iteration
 
 - Verified **latest** source: V91 PR #89 `design/v91-service-index-editorial-rotation`, exact-head `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1`, two green CI runs #43430542206 and #43430533134. It is stacked on real Show Wall V90 PR #88; alternate Spectrum Curtain V90 PR #87 and Event Detail V89 PR #85 are separate parallel design experiments. PR #19 remains draft and conflicted. Do not merge parallel branches by assumption.
