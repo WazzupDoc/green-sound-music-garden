@@ -4,6 +4,7 @@ import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOf
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ProductionDeckArt } from "@/components/atelier/ProductionDeckArt";
 
 type StageMode = "live" | "private" | "production";
 type StageLightTone = "mint" | "gold" | "ice";
@@ -127,17 +128,24 @@ export function StageHero() {
         <div className="gs-stage-v78__light-sweep" aria-hidden="true" />
       </div>
 
+      {/* A second existing Green Sound stage photograph, cropped as editorial
+          atmosphere behind ORIGINAL illustrated engineering hardware. Decorative
+          only; never masquerades as a new event or generated footage. */}
+      <img className="gs-production-backdrop-v85" src={images.scena.src} alt=""
+        width={images.scena.w} height={images.scena.h} loading="lazy" decoding="async" />
+      <ProductionDeckArt />
+
       <div className="gs-poster__marquee" aria-hidden="true">
         <span>THE SOUND OF YOUR NIGHT</span><span className="gs-poster__marquee-icon">✳</span><span>PITEȘTI / ROMÂNIA</span>
       </div>
       <div className="container-site crafted-hero__layout">
         <div className="crafted-hero__intro">
-          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> GREEN SOUND MUSIC / PITEȘTI / DIN {business.founded}</div>
+          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> PRODUCȚIE EVENIMENTE / PITEȘTI / DIN {business.founded}</div>
           <h1 id="crafted-hero-title" className="crafted-hero__title gs-stage-v78__title">
-            <span className="gs-stage-v78__line">Muzica</span>
-            <span className="gs-stage-v78__line gs-stage-v78__line--second">schimbă <em>tot.</em></span>
+            <span className="gs-stage-v78__line">Sunet.</span>
+            <span className="gs-stage-v78__line gs-stage-v78__line--second">Lumină. <em>Emoție.</em></span>
           </h1>
-          <p className="crafted-hero__lead">Din Pitești, din 2008. DJ & MC, trupă live, sonorizare, lumini și producție tehnică pentru evenimente care au ritmul lor.</p>
+          <p className="crafted-hero__lead">DJ & MC, trupă live, sonorizare și lumini. O singură echipă pentru ritmul, atmosfera și producția evenimentului tău.</p>
           <div className="crafted-hero__actions">
             <Link to="/evenimente" className="crafted-button crafted-button--light">
               Explorează evenimentele <ArrowUpRight aria-hidden className="size-4" />

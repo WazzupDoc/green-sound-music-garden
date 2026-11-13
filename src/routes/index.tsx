@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { StageHero } from "@/components/atelier/StageHero";
 import homeNightshiftCss from "@/styles/home-nightshift-v84.css?inline";
+import homeProductionCss from "@/styles/home-production-v85.css?inline";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { localBusinessLd, pageHead } from "@/lib/seo";
@@ -28,6 +29,7 @@ function Home() {
     <div className="gs-home-v84">
       {/* Scoped, SSR-delivered: this redesign does not alter the dedicated pages. */}
       <style>{homeNightshiftCss}</style>
+      <style>{homeProductionCss}</style>
       <StageHero />
       <ProductionIndex />
       <EditorialPortfolio />
