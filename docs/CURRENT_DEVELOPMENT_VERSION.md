@@ -1,3 +1,8 @@
+# V93 — Footer Editorial Signal (draft, 2026-11-13)
+- Branch design/v93-footer-editorial-signal, based on validated V91 e8e3296, separate from concurrent V92 Contact and service-stage branches.
+- Single audited component: global SiteFooter. Added high-contrast original brand-scale type, direct Contact conversion and retained all functional footer routes, real business channels, privacy and Light Desk. No dependency or fake media.
+- New browser regression captures footer at 390/1440 and checks 360/390/430/768/1440/1920. Screenshot and exact-head CI pending; do not merge/publish. Before/after comparison pending artifact. PR #19 conflict persists. Main untouched.
+
 # V90 — THE SHOW WALL / New animated 3D visual art direction (2026-11-13)
 
 - User feedback: V89 still looked like V87–V88; same dark/purple concert photo and one green sine wave. **V90 replaces the principal ABOVE-THE-FOLD visual**, not just heading/font. Working code in branch `design/v90-kinetic-3d-live-show-wall`, draft PR #88 https://github.com/WazzupDoc/green-sound-music-garden/pull/88, stacked on exact-head validated V89 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07`.
