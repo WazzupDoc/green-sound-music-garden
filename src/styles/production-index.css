@@ -35,14 +35,14 @@
 .gs-index__chapter[data-chapter=stage] .gs-index__photo{height:clamp(220px,22.5vw,375px)}
 .gs-index__chapter[data-chapter=people] .gs-index__photo{height:clamp(220px,24vw,400px)}
 .gs-index__photo:after{content:"";position:absolute;inset:0;background:
- linear-gradient(180deg,#07160d52 0,transparent 38%,#07160dc9 100%);pointer-events:none}
-.gs-index__photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.83) contrast(1.05);
+ linear-gradient(180deg,#07160d20 0,transparent 45%,#07160d91 100%);pointer-events:none}
+.gs-index__photo img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.96) contrast(1.02) brightness(1.12);
  transform:scale(1);transition:transform .85s cubic-bezier(.16,1,.3,1),filter .55s}
 .gs-index__chapter[data-chapter=sound] .gs-index__photo img{object-position:center 34%}
 .gs-index__chapter[data-chapter=stage] .gs-index__photo img{object-position:center 26%}
 .gs-index__chapter[data-chapter=people] .gs-index__photo img{object-position:center 34%}
 /* Hover is a visual color cue for everyone; zoom is opt-in motion only. */
-.gs-index__chapter:hover .gs-index__photo img{filter:saturate(1) contrast(1.06)}
+.gs-index__chapter:hover .gs-index__photo img{filter:saturate(1.06) contrast(1.03) brightness(1.12)}
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
  html:not([data-gs-performance=lite]) .gs-index__chapter:hover .gs-index__photo img{transform:scale(1.06)}
 }
@@ -166,8 +166,11 @@ html[data-gs-performance=lite] .gs-index__intro-note a svg{transition:none!impor
  * Do not leave editorial photographs zoomed or arrows displaced on touch.
  * Native :focus-visible outlines remain available for keyboard users. */
 @media (hover:none){
- .gs-index__chapter:hover .gs-index__photo img{transform:none;filter:saturate(.83) contrast(1.05)}
+ .gs-index__chapter:hover .gs-index__photo img{transform:none;filter:saturate(.96) contrast(1.02) brightness(1.12)}
  .gs-index__service:hover svg{transform:none}
  .gs-index__service:hover span{transform:none}
  .gs-index__intro-note a:hover svg{transform:none}
 }
+
+/* V82: preserve recognisable original event photography rather than burying it
+ * under the former near-black stage overlay. No asset swaps or new media. */
