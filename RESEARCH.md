@@ -1,3 +1,12 @@
+### 2026-11-13 — V89 measured experiment result (no third-party code)
+
+- Actual V88 BEFORE run: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43423935945 ; screenshot archive https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43423935945/artifacts/14035536377
+- Actual V89 AFTER run: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233 ; screenshot archive https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233/artifacts/14035687119
+- Result: original, non-cloned event-detail typography plus useful Contact prefill. CI confirms 84 tests, six browser widths, Contact two-service selection and no autoplay; true measured gzip within budgets. Tested without external assets, dependencies or tracking. Visual audit shows more usable selection and stronger hierarchy. Mobile stitched-element screenshots show fixed bars at scroll position, so physical-device obstruction/legibility remains a separate follow-up, not a claimed perfect UX.
+- Rejected further generic concert glows, artificial time slots, a second offer form, extra CTA on homepage, stock or TikTok edits.
+
+---
+
 ## 2026-11-13 — V89 / Event detail: editorial RUN OF SHOW + real service handoff
 
 - **Professional reference #1:** https://webflow.com/blog/storytelling-websites — examples use intentional visual hierarchy, image/text pacing and narrative sequence. Original adaptation: a high-contrast run sheet with one chapter introduction and numbered stages instead of indistinguishable service cards. No code, photographs or identity copied; page used as design reference only.
