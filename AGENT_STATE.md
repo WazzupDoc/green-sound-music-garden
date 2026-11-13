@@ -1,3 +1,8 @@
+## V93 / Footer rotation — 2026-11-13
+- Source base: V91 e8e3296 (CI previously green); V92 Contact PR #91 and Service PR #90 were still in progress and are separate sibling branches, not blindly combined. PR #19 mergeable=false.
+- Footer: original enormous GREEN SOUND / MUSIC editorial typographic closure, practical direct Contact CTA, preserved existing event/service/social/privacy links, LightDesk and actual phone/email. Source: SiteFooter.tsx, footer-editorial-v93.css, footer test, browser 6 widths. No external asset, package, music, fake event or autoplay.
+- Visual QA gate: same viewport before/after 390/1440 pending screenshot comparison; no visual approval without actual artifact and review. Next rotation: navigation/mobile keyboard and inner Studio.
+
 ## 2026-11-13 V91 — /servicii editorial directory (PR #89)
 - Rotation: /servicii index only, based on V90 PR #88 branch (V90 exact-head CI not confirmed). New asymmetric alternating Music/Technology/People group composition, oversize titles, per-service index, counts, keyboard focus, mobile one-column, reduced-motion. Existing 8 direct service routes and homepage unchanged.
 - Code: src/routes/servicii.tsx, src/styles/service-index-editorial-v91.css. Source authored, no third-party assets or dependency. No proof yet of browser aesthetics, CSS computed result, 390/1440 screenshot before/after, six-width regression, TS/SSR/Vitest or exact-head CI; **do not merge/publish**.

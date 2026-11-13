@@ -1,3 +1,6 @@
+## V93 footer (2026-11-13)
+- Original CSS typography and native text only; no imported photos, video, commercial fonts, icon packages or third-party code. Existing logo, links and LightDesk remain as previously documented.
+
 ## 2026-11-13 V90 / perspective show wall provenance
 - **No new photograph or video**; purely new authored CSS and React geometric rendering. `src/components/atelier/KineticShowWall.tsx` references three **existing locally packaged** media entries from `src/data/site.ts`: `images.scena` (green stage lights), `images.dj` (people/music; an event photo, **not** purported mixer hardware), `images.concert` (concert crowd). Each references an existing `public/media/greensound/*.webp` local file. Existing owner rights/usage conditions remain unchanged.
 - The new animation is made entirely from CSS transform/opacity over original photos; artificial visual layers are explicitly graphical, not recordings or actual live sound levels. All labels STAGE / PEOPLE / LIVE are editorial chapter labels, not client names or proven results.
