@@ -1,3 +1,16 @@
+# V89 — EVENT PRODUCTION CUE SHEET / draft (2026-11-13)
+
+- Single change zone: every `/evenimente/$slug` detail page rendered by `src/components/site/EventPage.tsx`. Branch: `design/v89-event-production-run-sheet`, based on V88 PR #84 head `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7` plus a QA-script-only baseline snapshot commit. V88 exact-head Actions runs **43421933450** and **43421917849** succeeded; V89 new head must be checked separately.
+- Visual difference: production run sheet with original line-based sound signature, larger numbered typographic moments, asymmetric editorial rhythm; service recommendation list becomes a real selection interface with clear states and native keyboard support. No extra homepage widget/card or invented event content.
+- Functional improvement: selected services are serialized by their **real form labels** in a native GET form, with the whitelisted event type, to the existing `/contact` quote brief. All individual service-detail links remain. No send/booking/API/backend claim.
+- Tests: new `src/components/site/event-detail-v89.test.ts` checks real catalogue semantics and source contract. Existing 6-width Chromium script now audits `/evenimente/nunti`, captures identical before/after selectors at 390/1440, checks two service picks and verified Contact prefill on V89. Existing SSR/Contact hydration/no-JS/20-page/page 404 checks are not removed or weakened.
+- Sources and licenses: `RESEARCH.md` and `ASSETS.md`; original CSS + SVG only, no new dependencies. Scoped stylesheet is SSR rendered via `?inline`; avoid change to strict 52 kB gzip global CSS budget.
+- **Quality gate:** until exact-head TypeScript/SSR/Vitest/gzip/Chromium succeeds and actual baseline + candidate screenshots are inspected, V89 remains DRAFT and not visually approved. Never claim 100 Lighthouse without measurement.
+- **Release gate:** main/production/domain untouched. No merge unless exact-head green, conflicts checked, previous main backup-tag created + verified, rollback tested, CD/deploy effect checked, separate approval if public auto-deploy.
+- Rollback: drop V89 PR, retain V88 committed source; browser audit baseline remains independent for reproducible comparison. Rotation NEXT: dedicated Contact/Guided Event Brief, then individual service pages and Studio; global matrix in AGENT_STATE.md.
+
+---
+
 # V87 — CINEMATIC REAL FILM CONTACT SHEET (2026-11-13)
 
 - Draft PR #83: https://github.com/WazzupDoc/green-sound-music-garden/pull/83, stacked on successful V86 PR #82 exact source SHA cfa8a245b54b4d65caa8ad1d2fc62a9c0846e5b3.
