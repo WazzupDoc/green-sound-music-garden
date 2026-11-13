@@ -1,3 +1,10 @@
+# V76 — Editorial browser CI alignment (draft)
+
+- V75 exact-head [43368719076](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43368719076) FAILED in Chromium: the obsolete Regia browser script waited for `.rs-hero h1`, removed from the restored V48 editorial homepage. TypeScript, SSR, gzip, Vitest and architecture passed; separate motion CI passed.
+- V76 changes `.github/scripts/verify-crafted-browser.cjs` to audit the current editorial page at 360/390/430/768/1440/1920: 3 chapters/8 links, 3 film selectors, one finale CTA, no homepage form/autoplay, overflow, screenshots; secondary routes, Contact and sitemap. The legacy Regia script is preserved. No new packages/assets, no disabled checks.
+- V76 exact-head CI and screenshot results not yet confirmed. PR #19 conflict state and deployment/rollback gates must be checked again before any merge. Main unchanged.
+
+---
 # V75 — Editorial keyboard focus CI regression (draft)
 
 - V74 exact-head https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43362462854 **FAILED**: 3 stale assertions in `src/styles/production-index.accessibility.test.ts` expected old `:focus-within` and standalone reduced-motion declarations, whereas V59/V70 CSS uses `:has(:focus-visible)` and grouped overrides. TypeScript, SSR build and gzip budgets passed; motion workflow 43362462868 passed independently.
