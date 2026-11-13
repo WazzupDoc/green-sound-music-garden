@@ -7,6 +7,7 @@ const route = readFileSync("src/routes/contact.tsx", "utf8");
 const form = readFileSync("src/components/site/QuoteForm.tsx", "utf8");
 const css = readFileSync("src/styles/contact-production-v92.css", "utf8");
 const browser = readFileSync(".github/scripts/verify-crafted-browser.cjs", "utf8");
+const mobileBar = readFileSync("src/components/site/MobileActionBar.tsx", "utf8");
 
 describe("V92 production-brief Contact: design plus a real user-driven quote", () => {
   it("is a single canonical Contact route and keeps strictly allowlisted query data", () => {
@@ -43,6 +44,8 @@ describe("V92 production-brief Contact: design plus a real user-driven quote", (
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
     expect(css).toContain("html[data-gs-performance=lite]");
     expect(css).toContain(":focus-visible");
+    expect(css).toContain(".quote-preview__email");
+    expect(mobileBar).toContain('location.pathname === "/contact"');
   });
 
   it("focuses the prepared message on step change and does not pretend to send", () => {
