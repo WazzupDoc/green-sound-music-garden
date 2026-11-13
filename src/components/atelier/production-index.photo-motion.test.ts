@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(new URL("../../styles/production-index.css", import.meta.url), "utf8");
+const css = readFileSync("src/styles/production-index.css", "utf8");
 
 describe("V70 editorial photo motion policy", () => {
   it("gates decorative photo zoom behind pointer hover and no reduced motion", () => {
