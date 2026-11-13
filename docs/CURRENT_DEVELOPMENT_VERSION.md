@@ -1,3 +1,15 @@
+# V92 — CONTACT PRODUCTION BRIEF / PROPOSED (2026-11-13)
+
+- New draft branch `design/v92-contact-production-brief`, built on newest confirmed green V91 source `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1` (PR #89). V91 inherited validated V90 'Show Wall' PR #88. Separate V90 Spectrum Curtain PR #87 and V89 Event Detail PR #85 exist in parallel and were not blindly combined.
+- **One changed area:** `/contact` and its existing `QuoteForm` only. Original first-party visual treatment is radically different from V91: warm sage editorial opening, custom green sound-score SVG, oversized mixed sans/serif headline, 3 truthful process steps, uneven direct-contact directory, high-contrast lighter production brief on deep emerald, all mobile-adaptive.
+- **Actual user value:** phone/WhatsApp/email destinations remain real; existing whitelisted GET query event/date/location/services mapping and form schema remain unchanged. When a visitor finishes step 1, the keyboard focus moves to the prepared-message heading. Visitor still explicitly chooses send channel, nothing transmitted automatically; edit and denied clipboard fallback preserved.
+- **Code:** `src/routes/contact.tsx`, new `src/styles/contact-production-v92.css?inline`, `src/components/site/QuoteForm.tsx`, new source test `contact-production-v92.test.ts`; expanded existing browser QA with 6 widths, before/after fixed-route same-state screenshots, invalid-to-valid and preview focus test. No new JS/CSS package, photos, video, commercial media, external API, backend or spending.
+- **Baseline real screenshots:** independent QA-only branch `design/v92-contact-before-audit` CI SUCCESS [#43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840), artifact #14043468507. AFTER visuals and V92 exact-head CI pending.
+- **Release blockers:** no merge to main or production without exact-head green, real screenshot difference and accessibility proof, PR conflicts verified, CI/CD auto-deploy consequences investigated, unique verified tag backup of previous main + rollback rehearsal and separate publication approval if needed. PR #19 is draft/conflicted.
+- **NEXT:** evaluate and fix V92 screenshot and functional browser QA, then rotate to /servicii detail pages or authentic film presentation rather than repeatedly modifying hero.
+
+---
+
 # V90 — THE SHOW WALL / New animated 3D visual art direction (2026-11-13)
 
 - User feedback: V89 still looked like V87–V88; same dark/purple concert photo and one green sine wave. **V90 replaces the principal ABOVE-THE-FOLD visual**, not just heading/font. Working code in branch `design/v90-kinetic-3d-live-show-wall`, draft PR #88 https://github.com/WazzupDoc/green-sound-music-garden/pull/88, stacked on exact-head validated V89 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07`.
