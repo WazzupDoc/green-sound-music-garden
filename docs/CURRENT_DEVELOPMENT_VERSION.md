@@ -1,3 +1,10 @@
+# V75 — Editorial keyboard focus CI regression (draft)
+
+- V74 exact-head https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43362462854 **FAILED**: 3 stale assertions in `src/styles/production-index.accessibility.test.ts` expected old `:focus-within` and standalone reduced-motion declarations, whereas V59/V70 CSS uses `:has(:focus-visible)` and grouped overrides. TypeScript, SSR build and gzip budgets passed; motion workflow 43362462868 passed independently.
+- V75 changes source regression assertions only, preserving keyboard focus, no layout shift, reduced-motion and Lite behavior. No dependency, asset or homepage redesign. CI V75 and Chromium six widths still unverified. PR #19 remains conflicted; no main merge/deployment.
+- Next: verify exact-head CI; audit mobile menu focus/Escape, two-service Contact handoff and browser screenshots before any release.
+
+---
 # V74 — Fix Vitest source fixture paths (draft)
 
 - V73 exact-head PR CI [43356575133](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43356575133) **FAILED** after TypeScript stage: 8 Vitest files crashed at module evaluation with `ERR_INVALID_URL_SCHEME` from `new URL(relative, import.meta.url)` / `fileURLToPath(...)` under Vite-transformed module URLs. Separate motion CI [43356575075](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43356575075) **PASSED**, not overall green.
