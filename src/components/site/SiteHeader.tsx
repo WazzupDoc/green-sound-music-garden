@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
+import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
@@ -95,6 +96,8 @@ export function SiteHeader() {
 
   return (
     <header className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+      {/* Static, first-party CSS is present during SSR; no runtime fetch and no external script. */}
+      <style>{stageIndexCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
