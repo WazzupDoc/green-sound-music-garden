@@ -1,3 +1,8 @@
+## V94 — 2026-11-13 / navigation and mobile menu
+- Base: V93 PR #92 SHA 0893427, exact-head CI runs 43439791132/43439816063 green. V92 Contact PR #91 exact-head green SHA 2e72554; V92 service PR #90 exact-head green SHA 32f9b2c. Sibling branches not combined. PR #19 mergeable=false.
+- Selected single zone: global SiteHeader native modal. Real defect: after clicking a route the dialog close callback always returned focus to the now-inappropriate hamburger; old visual was black six-row directory with a faint stage wireframe. Implemented original green production-cue editorial nav, full-row interaction, responsive selected-route cue and conditional focus restoration (Escape/close restores; route navigation does not). Existing native dialog, Finder, keyboard shortcuts, actual six routes and Contact links preserved.
+- Browser screenshots requested V94 390/1440 open and focused state, six-width regressions; pending CI and visual inspection. No external package/media or deployment. Next: Studio route, then Despre, gallery, SEO/perf. Matrix: navigation V94 in QA; footer V93 validated CI, aesthetic pending owner; Contact V92 validated CI; services V92 validated CI; events next after Studio.
+
 ## V93 / Footer rotation — 2026-11-13
 - Source base: V91 e8e3296 (CI previously green); V92 Contact PR #91 and Service PR #90 were still in progress and are separate sibling branches, not blindly combined. PR #19 mergeable=false.
 - Footer: original enormous GREEN SOUND / MUSIC editorial typographic closure, practical direct Contact CTA, preserved existing event/service/social/privacy links, LightDesk and actual phone/email. Source: SiteFooter.tsx, footer-editorial-v93.css, footer test, browser 6 widths. No external asset, package, music, fake event or autoplay.
