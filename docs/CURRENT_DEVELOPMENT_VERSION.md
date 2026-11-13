@@ -1,3 +1,21 @@
+## V81 verification update — PASS on application source `98dacdb0686d76e3943afcb49f646b8578cf6eb5`
+
+- Exact-head CI [run #43399390064](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064) completed **SUCCESS**, with 24 Vitest suites / 68 tests passed; TypeScript strict, SSR/Vite build, 51.3 kB gzip shared CSS / 52 kB cap, 110.9 kB homepage chunk / 190 cap, 31.2 kB QuoteForm / 50 cap; 360/390/430/768/1440/1920 Chromium homepage, nav open/focus/Escape, full-motion/Lite 390, 20-page route/sitemap audit.
+- [Screenshots](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141): `stage-index-open-360/390/430/768.png + stage-index-motion-390.png + stage-index-lite-390.png` and six homepage captures. **No same-state open-menu V80 baseline**; after images visually inspected at 360/390/768, no obvious clipping/overflow, but this does not prove aesthetic preference or physical-device behavior.
+- Evidence-only docs update may create a **later SHA**; re-check exact-head checks on that last SHA before calling the PR validated. Production/main unchanged; no merge approval.
+
+# V81 — STAGE INDEX navigation / draft (2026-11-13)
+
+- Branch: `design/crafted-atmospheres-v81-stage-index-navigation`, based on V80 head `88f574590c28f28adf3cabddcdfaf12314d809cb` (PR #75); V79 PR #73 underneath. Single main zone: existing global `SiteHeader` / mobile navigation.
+- Actual code: replace div-role-only pseudo-modal with native `<dialog>` triggered by `showModal()`; Escape/cancel/close, browser focus confinement and focus-return to opener; Finder hotkeys are suppressed while any real dialog is open, without breaking Finder when menu is closed.
+- Actual new visual: original magazine-like **STAGE INDEX** featuring a serif/sans title, six large numbered asymmetric route labels, stage-rig line SVG, footline actions and accessible focus states. No new homepage section/extra homepage form/third-party asset.
+- Assets: zero external; V81 CSS is imported using Vite `?inline` in `SiteHeader.tsx` and SSR-rendered as a trusted component-scoped `<style>` (not added to the 52 kB global CSS budget); removed obsolete old menu selectors in `atelier.css` and `regia-serii-final.css`. **Initial exact-head CI failed CSS budget (52.6 kB, then 52.4 kB vs 52 cap); latest scoped-CSS fix is still awaiting its own exact-head CI and SSR/CSP verification.**
+- Tests: new static Vitest contract; updated Playwright existing six-width audit opens the native dialog at 360/390/430/768, checks `:modal`, initial/Tab focus, Escape restore, captures open-menu screenshot; extra 390 full-motion/Lite capture and computed animation check.
+- Release gate: **V81 exact-head TypeScript/SSR/Vitest/gzip/Chromium CI and screenshots pending**; source code pushed but not yet visually verified. No before/after screenshot or production image claim. The last visually confirmed baseline is V78 PR #72 / CI 43386566760. PR #19 currently mergeable=false; main and deployment untouched.
+- Next: fix any failed V81 CI without removing tests, inspect real screenshot artifacts (390/1440 and all six widths) and capture baseline-comparable shots. Then rotate to editorial service chapters or actual gallery/media broken posters, not the hero again.
+
+---
+
 # V80 — Stage wings / optical depth (draft, 2026-11-13)
 
 - Branch: `design/crafted-atmospheres-v80-stage-depth-accessibility`; parent: V79 + planning PR #74.

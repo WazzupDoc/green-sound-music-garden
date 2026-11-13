@@ -1,3 +1,15 @@
+### V81 screenshot evidence (browser output, not an external site asset)
+- [GitHub Actions artifact #14024876141](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141): real Chromium screenshots of homepage and V81 menu on 360/390/430/768 plus motion/Lite at 390; generated from branch SHA `98dacdb0686d76e3943afcb49f646b8578cf6eb5`, not AI mockups, not included in public production media. No matching before screenshot of the old modal open, so do not label this as a before/after comparison.
+
+## V81 — 2026-11-13 / Original Stage Index navigation
+
+- New images, video, audio, commercial fonts, external scripts, third-party icons, Unsplash requests: **none**.
+- `SiteHeader.tsx` two inline thin-line SVG drawings (stage portal and directional/cross glyphs) are original and self-authored, no external code, image or license obligation.
+- Existing Green Sound favicon, fonts and verified site data remain unchanged. Professional design references are **not** included as site assets.
+- Screenshots, if captured by GitHub Actions, are evidence of the actual branch, not marketing assets; screenshot links and date to be added only when verified.
+
+---
+
 ## V78 — 2026-11-13 / Screen-visible art direction
 
 - New media / fonts / icon sets / scripts from external vendors: **none**.

@@ -85,10 +85,6 @@
 .atelier-header__quote{font-size:1rem;min-height:48px;background:#F3F0E9;color:#0A0F15;border-radius:0}
 .atelier-header__quote:hover{background:#DCE9DF}
 .atelier-header__finder-btn{min-width:44px;min-height:44px}
-.atelier-mobile-menu{top:100%;left:0;right:0;height:calc(100dvh - 77px);
- background:#0A0F15;border:0;border-bottom:1px solid #B8BCB950;box-shadow:none}
-.atelier-mobile-menu__link span{font-size:clamp(1.65rem,5vw,2.4rem)}
-.atelier-mobile-menu__actions>a{min-height:44px;font-size:1rem}
 .atelier-header__finder-hint{font-size:.85rem}
 .atelier-header .font-display{font-family:"Hanken Grotesk Variable",sans-serif}
 @media(max-width:1040px){.atelier-header__nav{gap:12px}.atelier-header__link{font-size:.93rem}}
@@ -97,5 +93,4 @@
  .atelier-header__menu-btn{display:flex}
  .atelier-header__nav{display:none}
  .atelier-header__quote,.atelier-header__phone{display:none}
- .atelier-mobile-menu{height:calc(100dvh - 68px)}
 }

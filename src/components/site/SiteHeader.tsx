@@ -1,8 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
+import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
@@ -25,10 +25,8 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const finderButtonRef = useRef<HTMLButtonElement>(null);
-  const menuPanelRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLElement>(null);
+  const menuDialogRef = useRef<HTMLDialogElement>(null);
   const path = useRouterState({ select: state => state.location.pathname });
-  const reduced = useReducedMotion();
 
   useEffect(() => {
     setOpen(false);
@@ -50,46 +48,21 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Native modal dialog manages the actual top layer, inert background,
+  // Escape and keyboard focus containment. The previous role="dialog"
+  // imitation did not make page content inert.
   useEffect(() => {
-    if (!open) return;
+    const dialog = menuDialogRef.current;
+    if (!dialog) return;
+    if (!open) {
+      if (dialog.open) dialog.close();
+      return;
+    }
+    if (!dialog.open) dialog.showModal();
     document.body.classList.add("atelier-menu-locked");
-    // Keyboard focus stays inside the expanded menu until it is closed.
-    const raf = window.requestAnimationFrame(() =>
-      menuPanelRef.current?.querySelector<HTMLAnchorElement>("a")?.focus());
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setOpen(false);
-        menuButtonRef.current?.focus();
-      }
-      if (event.key === "Tab") {
-        const focusable = Array.from(menuPanelRef.current?.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-        ) ?? []).filter(element => element.getClientRects().length > 0);
-        if (!focusable.length) return;
-        const first = focusable[0]!;
-        const last = focusable[focusable.length - 1]!;
-        if (event.shiftKey && document.activeElement === first) {
-          event.preventDefault();
-          last.focus();
-        } else if (!event.shiftKey && document.activeElement === last) {
-          event.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    const onPointer = (event: PointerEvent) => {
-      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
-        setOpen(false);
-      }
-    };
-    document.addEventListener("keydown", onKey);
-    document.addEventListener("pointerdown", onPointer);
     return () => {
-      window.cancelAnimationFrame(raf);
       document.body.classList.remove("atelier-menu-locked");
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("pointerdown", onPointer);
+      if (dialog.open) dialog.close();
     };
   }, [open]);
 
@@ -101,11 +74,12 @@ export function SiteHeader() {
       const target = event.target;
       const editing = target instanceof Element &&
         Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      const hasModal = Boolean(document.querySelector('dialog[open], [role="dialog"]'));
       const slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey &&
-        !editing && !document.querySelector('[role="dialog"]');
+        !editing && !hasModal;
       // Never steal keystrokes from an existing dialog or a form.
       if (!slash && !command) return;
-      if (!finderOpen && document.querySelector('[role="dialog"]')) return;
+      if (!finderOpen && hasModal) return;
       event.preventDefault();
       setOpen(false);
       setFinderActivated(true);
@@ -121,7 +95,9 @@ export function SiteHeader() {
   };
 
   return (
-    <header ref={headerRef} className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+    <header className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+      {/* Static, first-party CSS is present during SSR; no runtime fetch and no external script. */}
+      <style>{stageIndexCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
@@ -153,29 +129,102 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div key="atelier-menu" ref={menuPanelRef} id="atelier-mobile-navigation" className="atelier-mobile-menu" role="dialog" aria-modal="true" aria-label="Meniu de navigare"
-            initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
-            transition={{ duration: reduced ? 0 : .2, ease: [.2, .7, .2, 1] }}>
-            <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
-              {navigation.map((entry) => (
-                <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link">
-                  <span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
-                </Link>
-              ))}
-              <div className="atelier-mobile-menu__actions">
-                <a href={business.phoneHref}><Phone aria-hidden className="size-5" /> Sună</a>
-                <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle aria-hidden className="size-5" /> WhatsApp
-                </a>
-                <Link to="/contact" onClick={() => setOpen(false)}>Cere ofertă</Link>
-              </div>
+      <dialog
+        ref={menuDialogRef}
+        id="atelier-mobile-navigation"
+        className="atelier-mobile-menu"
+        aria-labelledby="gsm-stage-index-title"
+        onCancel={(event) => {
+          event.preventDefault();
+          setOpen(false);
+        }}
+        onClose={() => {
+          setOpen(false);
+          menuButtonRef.current?.focus();
+        }}
+      >
+        <div className="gsm-nav-index">
+          <div className="gsm-nav-index__top">
+            <span className="gsm-nav-index__brand">GREEN SOUND / SCENE DIRECTORY</span>
+            <button
+              type="button"
+              autoFocus
+              className="gsm-nav-index__close"
+              onClick={() => setOpen(false)}
+            >
+              Închide
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                <path d="M5 5L19 19M19 5L5 19" />
+              </svg>
+            </button>
+          </div>
+
+          <div className="gsm-nav-index__stage-mark" aria-hidden="true">
+            <svg viewBox="0 0 280 320" fill="none">
+              <g stroke="currentColor" strokeWidth="1">
+                <path d="M32 34H232L264 283H4L32 34Z" />
+                <path d="M58 64H210L234 258H32L58 64Z" />
+                <path d="M32 34L58 64M232 34L210 64M4 283L32 258M264 283L234 258" />
+                <path d="M94 64L118 258M174 64L148 258" strokeDasharray="4 11" />
+                <path d="M4 283H264" />
+              </g>
+            </svg>
+          </div>
+
+          <div className="gsm-nav-index__layout">
+            <div className="gsm-nav-index__intro">
+              <p className="gsm-nav-index__eyebrow">INDEX / 01—06</p>
+              <h2 id="gsm-stage-index-title">
+                Tot ce ține
+                <em> scena vie.</em>
+              </h2>
+              <p className="gsm-nav-index__note">
+                Explorează evenimentele, producția și oamenii
+                din spatele Green Sound Music.
+              </p>
+              <span className="gsm-nav-index__axis" aria-hidden="true">← &nbsp; SOUND &nbsp; / &nbsp; LIGHT &nbsp; / &nbsp; LIVE</span>
+            </div>
+
+            <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
+              <ol className="gsm-nav-index__list">
+                {navigation.map((entry, index) => (
+                  <li key={entry.to} className="gsm-nav-index__entry">
+                    <Link
+                      to={entry.to}
+                      onClick={() => setOpen(false)}
+                      className="gsm-nav-index__link"
+                      activeOptions={{ exact: entry.to === "/" }}
+                      activeProps={{ className: "gsm-nav-index__link--active" }}
+                    >
+                      <small aria-hidden="true">{String(index + 1).padStart(2, "0")}</small>
+                      <span>{entry.title}</span>
+                      <svg viewBox="0 0 28 28" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                        <path d="M5 23L23 5M9 5H23V19" />
+                      </svg>
+                    </Link>
+                  </li>
+                ))}
+              </ol>
             </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+
+          <div className="gsm-nav-index__bottom">
+            <span className="gsm-nav-index__signature">CRAFTED ATMOSPHERES · PITEȘTI</span>
+            <div className="gsm-nav-index__actions">
+              <a href={business.phoneHref}>Sună</a>
+              <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+              <Link to="/contact" onClick={() => setOpen(false)}>
+                Cere ofertă
+                <svg viewBox="0 0 22 22" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                  <path d="M3 19L19 3M8 3H19V14" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </dialog>
       <Suspense fallback={null}>
         {finderActivated && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange}
           returnFocusRef={finderButtonRef} />}

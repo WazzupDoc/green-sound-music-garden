@@ -37,15 +37,6 @@ body{background:var(--atelier-bg);overflow-x:clip}
 .atelier-header__quote{display:inline-flex;align-items:center;gap:12px;min-height:43px;padding:9px 16px;background:#d6eaca;color:#0c1b11;font-size:.75rem;font-weight:800;white-space:nowrap;transition:background .25s,transform .25s}
 .atelier-header__quote:hover{transform:translateY(-2px);background:#a8d890}
 .atelier-header__menu-btn{display:none;align-items:center;justify-content:center;width:45px;height:45px;border:1px solid #f2f6e659;color:#f3f8ed}
-.atelier-mobile-menu{position:absolute;top:calc(100% + 6px);left:0;right:0;height:min(770px,calc(100dvh - 94px));background:#09130e;border:1px solid var(--atelier-border);overflow-y:auto;overscroll-behavior:contain;box-shadow:0 20px 65px #000b}
-.atelier-mobile-menu__body{display:grid;padding-block:28px 100px}
-.atelier-mobile-menu__link{display:flex;align-items:center;gap:15px;border-bottom:1px solid #dbeccc22;padding:14px 0;color:var(--atelier-text)}
-.atelier-mobile-menu__link small{font-size:11px;color:var(--atelier-green);min-width:23px}
-.atelier-mobile-menu__link span{font-family:var(--font-display);font-size:clamp(1.5rem,5vw,2.7rem);flex:1}
-.atelier-mobile-menu__link:hover{color:var(--atelier-green)}
-.atelier-mobile-menu__actions{display:flex;gap:8px;flex-wrap:wrap;padding-top:23px}
-.atelier-mobile-menu__actions>a{display:inline-flex;align-items:center;gap:8px;border:1px solid #dbeccc55;padding:11px 13px;font-size:13px}
-.atelier-mobile-menu__actions>a:last-child{background:#c9e9b7;color:#0b1d0f;border-color:#c9e9b7}
 /* STAGE / HERO */
 .crafted-hero{position:relative;isolation:isolate;min-height:min(920px,100svh);display:flex;align-items:flex-end;background:var(--atelier-obsidian);color:var(--atelier-text);overflow:hidden}
 .crafted-hero__canvas{position:absolute;inset:0;z-index:-1;overflow:hidden;background:#0c1a12}
