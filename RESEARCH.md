@@ -1,3 +1,9 @@
+## 2026-11-13 — V73 TypeScript strictness / release gate
+
+- Official TypeScript TSConfig `noUncheckedIndexedAccess`: https://www.typescriptlang.org/tsconfig/noUncheckedIndexedAccess.html — indexed array reads can be undefined even after a regex matches; explicitly guard year/month/day and month lookup. Applied to Contact date validator. No third-party code or dependency.
+- Official TypeScript strict null checks: https://www.typescriptlang.org/tsconfig/strictNullChecks.html — optional indexed match groups and fixture access must be checked; applied to CSS test. No new assets/licenses.
+- Rejected: non-null assertions everywhere or disabling `noUncheckedIndexedAccess`, since either hides the actual CI regression. No visual experiment added while release gate fails.
+
 ## 2026-11-13 — V71 restore homepage composition (critical regression)
 
 - First-party comparative research: V48 `src/routes/index.tsx` at `design/crafted-atmospheres-v48-editorial-reset` vs V70 same file, plus live component source `RegiaHome.tsx` (no external license). V70 had reintroduced event selector, backstage and redundant calls to action. User-approved V48 architecture is the ground truth.
