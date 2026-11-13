@@ -1,3 +1,34 @@
+# V89 — Event detail / Production Cue Sheet — 2026-11-13
+
+## Confirmed baseline and current action
+- Inspected actual latest project PRs, V88 PR #84 `design/v88-event-editorial-index`, head `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7`; exact-head push Actions 43421933450 and PR 43421917849 both SUCCESS. This is newer than V48/V78. V88 visually unapproved in owner review. PR #19 remains draft, `mergeable=false` (its older separate stack must not be merged).
+- **Single V89 zone:** dedicated `EventPage` for all five real `/evenimente/$slug` pages. Previous generic timeline and recommendation list appeared much like the rest of the site. New original editorial sequence / sound cue signature, adaptive typography and real selected-service Contact handoff. Route files, business info, images, real videos and homepage structure preserved.
+- Files: `src/components/site/EventPage.tsx`, NEW `src/styles/event-detail-v89.css`, NEW `src/components/site/event-detail-v89.test.ts`, extended `.github/scripts/verify-crafted-browser.cjs` capturing six widths + 390/1440 baseline/after, `RESEARCH.md`, `ASSETS.md`, version docs and this journal. No new dependencies, outside assets, TikTok media, email/API or extra homepage sections.
+- Real flow: `EventPage` retains original company-recommended links and creates native toggle buttons, `aria-pressed`, visible selected count, GET `/contact?event=...&services=...`. Values come strictly from existing `getService(...).formLabel` and `event.formLabel`, validated by Contact. No automatic send or booking.
+- Visual evidence: baseline-UI branch `design/v89-before-event-detail-audit` begins from V88 unchanged UI, adding only browser script and a documentation trigger; candidate `design/v89-event-production-run-sheet` uses identical scripts and viewports. Screenshot/artifact status NOT YET VERIFIED here; do not label visual approval before inspection.
+- Quality and measured scores: V88 CI SUCCESS. V89 TypeScript, SSR, Vitest, gzip, browser six widths, Contact two-service prefill and screenshot comparison PENDING until exact-head run. Lighthouse/LCP/conversion/SEO ranking UNMEASURED. No raised budgets, test disables, external media or costs.
+- Release: DO NOT merge/main/deploy. Backup Git tag and rollback ability not confirmed; public-domain/CI/CD effects need explicit verification before any future publication.
+
+## Global zone rotation — live audit matrix (not a completion claim)
+| Priority | Route/component | Observed finding | Source change / status | Functional and visual evidence | Next |
+| --- | --- | --- | --- | --- | --- |
+| P0 | Home hero + service index | Owner rejected repeated generic UI | V86, existing draft validated in CI | Six-width CI exists, owner visual acceptance pending | After all critical routes |
+| P1 | Navigation | Native modal Stage Index | V81 previously tested | CI/screenshot evidence in history | Revisit for mobile after detail flows |
+| P1 | 3 real films / portfolio | Earlier text selection lacked visible proof | V87 first-party contact sheet | Real photos + browser artifacts; no autoplay | Dedicated /portofoliu review |
+| P1 | /evenimente index | Repeated lists | V88 asymmetric programme implemented, exact-head CI green | Browser after images for index still deserve owner review | Verify event index view |
+| **P0 current** | **/evenimente/$slug** | Generic moment/service rows and no selection handoff | **V89 production run sheet + real Contact brief, draft** | **Before/after 390/1440 + six-width, service handoff CI pending** | Finish evidence and fix failures |
+| P0 next | /contact / Guided Event Brief | Functional but visual/readability/validation not yet comprehensively audited | Existing flow remains | 2-service, calendar, copy accept/refuse, SSR/no-JS | **Next single-zone iteration** |
+| P1 | /servicii + each service route | Repetition risk, conversion and authentic imagery | No V89 changes | Need six-width + route-level audit | After Contact |
+| P1 | Studio / Despre | Differentiated typography and evidence needed | No V89 changes | Screenshot/SEO | In rotation |
+| P1 | Footer / CTA / microcopy | Mobile overlap/semantic contrast risks | No V89 changes | Browser/focus | In rotation |
+| P1 | Photos/video/images | Provenance, HTTP/decode, loading and responsive ratio | No new assets | Need network/LCP | In rotation |
+| P1 | SEO/SSR/404/robots/schema/security/privacy | Continuous real checks, data never invented | No V89 data/API change | Recheck exact-head CI; manual security review later | In rotation |
+| P0 gate | DevOps/CI/deploy/rollback | Main may trigger production; backup tag/rollback not ready | Main protected by instruction | No merge | Audit before release |
+
+- **Next:** first resolve V89 CI/screenshot comparison if blocked; after its quality gate choose Contact/Guided Event Brief as the *next separate main zone*. Do not stagnate with another stage/hero design.
+
+---
+
 ## 2026-11-13 — V88 event directory / DRAFT NOT YET BROWSER VALIDATED
 - Latest source baseline V87 PR #83 b517c6e62c21b0366caf500b4f4cf5d16b42ebf8, exact-head push 43421372923 and PR 43421379048 reported successful; V87 screenshot artifact 14033568505.
 - ROTATION: HERO/SERVICES V86 validated; FILMS V87 validated; EVENTS INDEX V88 implemented (asymmetric editorial numbered programme, native detail links, no new media/deps); NEXT individual event details / Contact conversion.
