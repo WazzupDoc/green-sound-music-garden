@@ -345,6 +345,39 @@ async function main() {
       await footerPage.close();
     }
 
+    // V95: real browser proof of About at all six viewports, with decoded source media.
+    for (const aboutWidth of widths) {
+      const aboutPage = await browser.newPage({
+        viewport:{width:aboutWidth,height:900},reducedMotion:"reduce",
+      });
+      const aboutResponse=await aboutPage.goto(base+"/despre-noi",{waitUntil:"domcontentloaded"});
+      assert.equal(aboutResponse.status(),200);
+      await aboutPage.locator(".gs-about-v95__hero h1").waitFor({timeout:15000});
+      assert.equal(await aboutPage.locator("main h1").count(),1);
+      assert.equal(await aboutPage.locator(".gs-about-v95__steps li").count(),4);
+      assert.equal(await aboutPage.locator(".gs-about-v95__cta").getAttribute("href"),"/contact");
+      const aboutImages=await aboutPage.locator(".gs-about-v95 img").evaluateAll(async imgs=>{
+        for(const img of imgs) img.loading="eager";
+        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+        return imgs.map(img=>({src:img.currentSrc,width:img.naturalWidth}));
+      });
+      assert(aboutImages.length>=2 && aboutImages.every(img=>img.width>0),
+        "About photographs must decode: "+JSON.stringify(aboutImages));
+      assert.equal(await aboutPage.locator("style").evaluateAll(styles=>
+        styles.some(s=>s.textContent.includes(".gs-about-v95__hero-grid"))),true,
+        "SSR-scoped About CSS must reach the browser");
+      await noOverflow(aboutPage,"/despre-noi",aboutWidth);
+      if(aboutWidth===390||aboutWidth===1440) {
+        await aboutPage.screenshot({
+          path:`${output}/about-v95-${aboutWidth}.png`,fullPage:true,animations:"disabled",
+        });
+        const bg=await aboutPage.locator(".gs-about-v95__hero").evaluate(el=>
+          getComputedStyle(el).backgroundColor);
+        assert.equal(bg,"rgb(16, 37, 27)","About hero must have real emerald computed CSS");
+      }
+      await aboutPage.close();
+    }
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });

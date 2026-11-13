@@ -1,3 +1,9 @@
+
+## V95 / About route — 2026-11-13
+- Rotation zone: `/despre-noi` (there is NO `/studio` route; studio is a service page). V94 PR #93 SHA 2a262984 had workflow success #43448478890. PR #19 mergeable=false. Branch design/v95-about-production-notes stacked on V94; main unchanged.
+- Before: generic PageHero and three familiar content blocks. After source: dark-emerald large editorial photo/title hero, mint rail, light paper-like factual statement, numbered production process and authentic photographic contact closure. Existing factual business data, SEO, canonical, process, real images and links kept. No new dependencies or fake content.
+- Browser screenshots 390/1440 BEFORE/AFTER and six widths not yet obtained. Do not call aesthetic validated; CI exact-head pending. Next rotation: individual event detail pages, then studio service and SEO/perf.
+
 ## V94 — 2026-11-13 / navigation and mobile menu
 - Base: V93 PR #92 SHA 0893427, exact-head CI runs 43439791132/43439816063 green. V92 Contact PR #91 exact-head green SHA 2e72554; V92 service PR #90 exact-head green SHA 32f9b2c. Sibling branches not combined. PR #19 mergeable=false.
 - Selected single zone: global SiteHeader native modal. Real defect: after clicking a route the dialog close callback always returned focus to the now-inappropriate hamburger; old visual was black six-row directory with a faint stage wireframe. Implemented original green production-cue editorial nav, full-row interaction, responsive selected-route cue and conditional focus restoration (Escape/close restores; route navigation does not). Existing native dialog, Finder, keyboard shortcuts, actual six routes and Contact links preserved.

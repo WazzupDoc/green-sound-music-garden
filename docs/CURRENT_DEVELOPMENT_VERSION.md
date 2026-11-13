@@ -1,3 +1,8 @@
+
+# V95 — About production notes / DRAFT 2026-11-13
+- Base V94 navigation PR #93 exact-head SHA 2a262984, workflow #43448478890 successful. Selected real route `/despre-noi` (not a nonexistent `/studio`). Original editorial layout, dark photographic hero, cream statement, numbered production steps and practical Contact closing. No changes to homepage structure, backend, third-party packages or production.
+- Branch design/v95-about-production-notes. Source CSS SSR-inline, reduced-motion/Lite guards and semantic test. CI exact-head and real Chromium before/after still REQUIRED before visual acceptance. PR #19 remains conflicted; main untouched.
+
 # V94 — Navigation production cue / draft 2026-11-13
 - Base V93 footer branch (exact-head green), isolated branch design/v94-navigation-editorial-cue. Rebuilt full-screen native mobile menu as an editorial emerald production cue: dynamic selected route preview (desktop), full-row hover/focus, bolder asymmetrical typographic hierarchy and reduced/Lite motion guards. Functional fix: route navigation no longer forces keyboard focus back to a hamburger that may be hidden after a route change; Escape/close still returns focus. Finder and existing routes remain unchanged.
 - Real Chromium screenshot targets: v94-navigation-open-390.png, v94-navigation-open-1440.png, v94-navigation-focus-390.png, v94-navigation-focus-1440.png, plus 6-width existing regression. Before reference: stage-index-open-390.png from V93 CI artifact. New exact-head CI and visual verdict pending. No main/deploy change.

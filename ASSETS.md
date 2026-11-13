@@ -1,3 +1,7 @@
+
+## V95 About (2026-11-13)
+No new media/fonts/dependencies. Reuses existing project images `images.scena` and `images.dj` from `src/data/site.ts`; existing provenance and owner rights still require release confirmation. No stock/AI/TikTok captures added. New CSS is original project-authored code.
+
 ## V94 navigation / 2026-11-13
 - No new images, audio, fonts, videos, logos, stock, AI-generated event material, dependencies or external code. Production-cue layout, typography and interaction authored in repository CSS/React; existing brand wordmark, Lucide icons and real links reused. Source references in RESEARCH.md are inspiration only, not licensed assets.
 
