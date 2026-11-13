@@ -169,3 +169,76 @@ html[data-gs-performance=lite] .gs-home-v86 .gs-v90__spectrum *{
 @media(max-width:850px){
   .gs-home-v86 .gs-v90__spectrum *{animation:none!important}
 }
+
+/* V90 visual gate / revision 2.
+ * The first browser screenshot still looked too much like the V89 full-bleed
+ * image. Make the photographic edge an actual asymmetric composition rather
+ * than a tint applied over exactly the same rectangle.
+ */
+@media(min-width:851px){
+ .gs-home-v86 .crafted-hero__image{
+   clip-path:polygon(34% 0,100% 0,100% 100%,58% 100%)!important;
+ }
+ .gs-home-v86 .crafted-hero{
+   background:linear-gradient(113deg,#073d26 0%,#032e1e 34%,#04190f 66%,#04180e 100%);
+ }
+ .gs-home-v86 .crafted-hero__shade{
+   background:
+    linear-gradient(90deg,#031b11ba 0%,#033a259a 25%,#06341e4a 43%,transparent 61%,#020e08a8 100%),
+    linear-gradient(0deg,#011c10de 0%,transparent 18%,transparent 83%,#041b11a4 100%);
+ }
+ .gs-home-v86 .gs-v90__photographic-edge::after{
+   clip-path:polygon(33.7% 0,34.2% 0,58.4% 100%,57.8% 100%);
+   opacity:.77;background:linear-gradient(180deg,#caffbb,#42e698 56%,#c9ffc1);
+   box-shadow:0 0 20px #52fba7;
+ }
+ .gs-home-v86 .gs-v90__spectrum{
+   left:32%;width:75%;top:0;height:94%;opacity:1;
+ }
+ .gs-home-v86 .gs-v90__spectrum-rail{
+   filter:drop-shadow(0 0 9px #6dffb8b0) drop-shadow(0 0 34px #00ff768b);
+ }
+ .gs-home-v86 .gs-v90__frequency-stripe{top:24px}
+ .gs-home-v86 .scene-console{
+   background:#032014ad!important;bottom:auto;right:1%;
+   border-left:2px solid #a3ffa6!important;
+ }
+}
+@media(max-width:850px){
+ .gs-home-v86 .crafted-hero{
+   background:linear-gradient(145deg,#073e28,#041f17 45%,#02110c);
+ }
+ .gs-home-v86 .crafted-hero__image{
+   clip-path:polygon(0 0,100% 0,100% 71%,0 55%)!important;
+ }
+ .gs-home-v86 .crafted-hero__shade{
+   background:
+    linear-gradient(0deg,#01150be6 0%,#022f1ce8 30%,#043d2380 57%,#031c1283 86%,#02130894 100%),
+    linear-gradient(90deg,#07372366,transparent);
+ }
+ .gs-home-v86 .gs-v90__photographic-edge::after{
+   clip-path:polygon(0 54.7%,100% 70.8%,100% 71.2%,0 55.3%);
+   background:#9affb7;opacity:.58;
+ }
+ .gs-home-v86 .gs-v90__spectrum{
+   left:7%;width:135%;top:4%;height:41%;opacity:.96;
+ }
+}
+@media(prefers-reduced-motion:no-preference){
+ html:not([data-gs-performance=lite]) .gs-home-v86 .crafted-hero[data-stage-visible=true] .gs-stage-v78__line{
+   animation:gs-v90-type-reveal .75s cubic-bezier(.15,.73,.25,1) both;
+ }
+ html:not([data-gs-performance=lite]) .gs-home-v86 .crafted-hero[data-stage-visible=true] .gs-stage-v78__line--second{
+   animation-delay:.16s;
+ }
+}
+@keyframes gs-v90-type-reveal{
+ from{opacity:.55;transform:translate3d(0,18px,0)}
+ to{opacity:1;transform:translate3d(0,0,0)}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-home-v86 .gs-stage-v78__line{animation:none!important;transform:none!important;opacity:1!important}
+}
+html[data-gs-performance=lite] .gs-home-v86 .gs-stage-v78__line{
+ animation:none!important;transform:none!important;opacity:1!important;
+}
