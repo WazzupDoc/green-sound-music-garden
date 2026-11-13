@@ -39,6 +39,20 @@ export function EditorialPortfolio() {
   const reduced = useReducedMotion();
   const active = cuts[selected]!;
 
+  // Native buttons remain individually tabbable; arrow keys offer a faster
+  // optional film-directory interaction without trapping keyboard focus.
+  const onFilmKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const next = event.key === "ArrowDown" ? (index + 1) % cuts.length
+      : event.key === "ArrowUp" ? (index + cuts.length - 1) % cuts.length
+      : event.key === "Home" ? 0
+      : event.key === "End" ? cuts.length - 1 : null;
+    if (next === null) return;
+    event.preventDefault();
+    setSelected(next);
+    const buttons = event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>(".director-reel__choice");
+    buttons?.[next]?.focus();
+  };
+
   return (
     <section className="director-reel section" aria-labelledby="director-reel-title" id="director-reel">
       <div className="container-site">
@@ -93,9 +107,10 @@ export function EditorialPortfolio() {
           </div>
           <div className="director-reel__list" role="group" aria-label="Selectează videoclipul Green Sound">
             <span className="crafted-index">Alege un capitol</span>
+            <p id="director-reel-keyboard-hint" className="sr-only">Folosește săgețile sus și jos pentru a schimba filmul; Home și End merg la primul sau ultimul film. Apasă Tab pentru a continua navigarea.</p>
             {cuts.map((cut, index) => (
               <button key={cut.id} type="button" className="director-reel__choice"
-                aria-pressed={selected === index} aria-label={`Film 0${index + 1}: ${cut.title} — ${cut.subtitle}`}
+                aria-pressed={selected === index} aria-describedby="director-reel-keyboard-hint" onKeyDown={(event) => onFilmKeyDown(event, index)} aria-label={`Film 0${index + 1}: ${cut.title} — ${cut.subtitle}`}
                 onClick={() => setSelected(index)}>
                 <span className="director-reel__choice-no">0{index + 1}</span>
                 <span className="director-reel__choice-body">
