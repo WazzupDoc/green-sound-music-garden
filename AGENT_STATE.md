@@ -1,3 +1,12 @@
+## 2026-11-13 — V79 2.5D KINETIC STAGE / REVIEW REQUIRED
+- Component: HERO. Baseline V78 c9c936e9cdaeca28c86162e9010bebe03441054b, PR #72. Previous V79 branch existed but no implemented diff at start of this run.
+- Changed: StageHero decorative original portal architecture (two 3D-depth trusses, perspective deck, scanning heads, horizon); new stage-v79.css imported after stage-v78.css; no new dependencies or media.
+- Accessibility/performance: aria-hidden, CSS transform/opacity animation, pause on lights off, offscreen, reduced-motion, Lite; small-screen visual simplification. Browser before/after 360/390/430/768/1440/1920, SSR, exact-head CI still pending; do not claim visual approval or production readiness.
+- Rotation matrix: HERO V79 implemented / awaiting screenshot gate; NEXT navigation/mobile menu; services then films/gallery, events, Contact, Studio, About, footer, microcopy/buttons, icons, images, responsive, SEO/security.
+- Main and deployment untouched. Draft PR only.
+
+---
+
 ## 2026-11-13 — V78 USER SCREENSHOT ROOT-CAUSE / REAL STYLE RECOVERY
 
 - User verified V77 Codespaces `fix/v77-light-desk-escape-a11y` at `93f085c`. Exported screenshots show extreme circular stamp overpowering hero, missing editorial composition, empty-looking section regions, repeated inner-page styles. This is not hypothetical.

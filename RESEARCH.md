@@ -164,3 +164,9 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 - Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — CSS user preference media query; adapted by disabling only decorative stage layers and transitions. No third-party code or assets copied; documentation is a reference, not a software dependency.
 - Reference: https://web.dev/articles/optimize-lcp — prioritise visible content and avoid unnecessary render work. The existing real hero photograph is retained; no unmeasured LCP improvement claimed.
 - Experiment: CSS-only Lite + reduced-motion stage suppression, no new dependency (0 added bytes of JS). Rejected: deleting the stage photo or globally disabling all transitions, which would harm presentation and unrelated controls. Needs six-width browser QA.
+
+
+## 2026-11-13 — V79 kinetic stage architecture
+- Reference inspiration: https://www.awwwards.com/websites/music-sound/ (music/sound visual language; no source code or artwork copied); https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/perspective and https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transform-style (native CSS 3D projection). No third-party code or dependency used.
+- Original implementation: two depth-separated truss portals, perspectival stage deck, dual angular scanning fixtures; preserve real concert image; decorative DOM aria-hidden; pause animations for Lite, reduced motion, offscreen and light-off.
+- Rejected: generic blob/glow overlays and new WebGL runtime/dependency (higher complexity/performance cost). Visual comparison and browser QA still required before merge.

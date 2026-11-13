@@ -86,7 +86,7 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78" data-scene={active}
+    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
       data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
       data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
@@ -115,6 +115,14 @@ export function StageHero() {
           <span className="crafted-stage-lights__flare" />
         </div>
         <motion.div className="crafted-hero__pointer" style={{ background: spotlight }} aria-hidden />
+        <div className="gs-stage-v79__architecture" aria-hidden="true">
+          <div className="gs-stage-v79__portal gs-stage-v79__portal--rear" />
+          <div className="gs-stage-v79__portal gs-stage-v79__portal--front" />
+          <div className="gs-stage-v79__deck" />
+          <div className="gs-stage-v79__scanner gs-stage-v79__scanner--a" />
+          <div className="gs-stage-v79__scanner gs-stage-v79__scanner--b" />
+          <div className="gs-stage-v79__horizon" />
+        </div>
         <div className="gs-stage-v78__aperture" aria-hidden="true" />
         <div className="gs-stage-v78__light-sweep" aria-hidden="true" />
       </div>
