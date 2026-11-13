@@ -14,6 +14,9 @@ describe("V85 production identity from owner's actual visual reference", () => {
     expect(home).toContain("<style>{homeProductionCss}</style>");
     expect(hero).toContain('import { ProductionDeckArt } from "@/components/atelier/ProductionDeckArt"');
     expect(hero).toContain("<ProductionDeckArt />");
+    expect(hero).toContain('className="gs-production-backdrop-v85"');
+    expect(hero).toContain('src={images.scena.src} alt=""');
+    expect(css).toContain(".gs-home-v84 .gs-production-backdrop-v85");
     expect(hero).toContain("Sunet.");
     expect(hero).toContain("Lumină. <em>Emoție.</em>");
     expect(productionDeck).toContain("<svg viewBox=\"0 0 900 490\"");
