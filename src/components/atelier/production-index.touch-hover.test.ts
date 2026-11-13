@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(new URL("../../styles/production-index.css", import.meta.url), "utf8");
+const css = readFileSync("src/styles/production-index.css", "utf8");
 
 /** Coarse/touch browsers may preserve hover after activation. */
 describe("editorial touch hover parity", () => {
