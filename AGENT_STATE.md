@@ -1,3 +1,13 @@
+## 2026-11-13 — V78 USER SCREENSHOT ROOT-CAUSE / REAL STYLE RECOVERY
+
+- User verified V77 Codespaces `fix/v77-light-desk-escape-a11y` at `93f085c`. Exported screenshots show extreme circular stamp overpowering hero, missing editorial composition, empty-looking section regions, repeated inner-page styles. This is not hypothetical.
+- Audited `src/styles.css`: 15 essential authored styles, including V48 `editorial-reset.css`, editorial services, film archive, live scene, Light Desk, cursor, event-specific/recovery styles, were NEVER imported. Root-cause is build CSS entrypoint, not a lack of additional design concepts.
+- Implemented V78 on `design/crafted-atmospheres-v78-visual-style-recovery`: restored import graph + photo-first cinematic StageHero, brand-oriented two-line headline, reduced-motion/Lite-safe decorative light sweep, small stage aperture. Removed giant distracting SVG. No additional homepage sections or package/media.
+- Rotation matrix: **CSS pipeline + hero / V78: implemented, visual QA pending** | service editorial / V78 stylesheet now activated, inspect screenshot next | films / style activated, verify | navigation/mobile: pending | Contact/brief: functional tests pending | SEO/404/SSR: CI pending | performance: gzip headroom UNMEASURED.
+- Mandatory next: exact-head V78 push CI, six viewport real screenshot review, hover/focus/mobile/two-service handoff, find CSS collisions, test asset 404, audit main workflow auto deploy + backup tag ability. PR #19 reported mergeable=false at inspection. No merge/main yet.
+
+---
+
 
 ## 2026-11-13 — V77 Light Desk Escape / focus
 - Component rotation: photos V70; hero V72; CI V73–V76; **hero Light Desk keyboard V77**; NEXT navigation/mobile and actual browser focus tests.
