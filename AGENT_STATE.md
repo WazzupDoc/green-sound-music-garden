@@ -1,3 +1,9 @@
+## 2026-11-13 — V75 editorial keyboard focus regression
+
+- Verified V74 exact-head `828ca2ccd8624033b261f93179f8ae8d63dbef56`: workflow 43362462854 FAILED at Vitest (3 assertions in `production-index.accessibility.test.ts`), while strict TypeScript, SSR build and gzip budgets PASSED. Separate motion workflow 43362462868 PASSED; does not imply overall green.
+- Updated stale assertions to the current `:has(.gs-index__service:focus-visible)` keyboard focus treatment and grouped Lite/reduced-motion overrides. Retained actual checks against layout-shifting hover padding and motion, without disabling tests. New branch `fix/v75-editorial-focus-ci-regression`; exact-head CI pending.
+- Rotation: photo V70, homepage V71, hero V72, CI V73–V75; navigation/mobile Escape NEXT once CI is green. Six-width browser/Contact tests, deployment trigger and rollback remain blocked/unverified. PR #19 mergeable=false, main unchanged.
+
 ## 2026-11-13 — V74 Vitest CI blocker
 
 - Verified V73 exact-head: motion workflow #43356575075 SUCCESS; React typecheck/build workflow #43356575133 FAILURE at Vitest: 8 suites cannot evaluate fixture `new URL(..., import.meta.url)` because Vitest's transformed `import.meta.url` is not `file:`. Replaced fixture paths in 8 tests using repository-root paths; preserved all assertions and CI gates. This is not a browser or Lighthouse result.
