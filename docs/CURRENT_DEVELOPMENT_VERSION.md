@@ -1,3 +1,6 @@
+## V99 — event quote fragment keyboard focus (draft, QA pending)
+Branch: `design/v99-event-quote-anchor-a11y`, stacked on V98 PR #97. The shared QuoteSection heading now supports fragment focus and sticky-header offset with focus-visible affordance. Source commit d515fe3cc9fcad448e5a112cf4ccb0219a77a1fc (docs commits will advance HEAD). Real-browser screenshots, six-width regression, TypeScript/SSR/Vitest and exact-head CI are not confirmed. No main/deploy changes. Next: gallery and film pages after QA.
+
 ## V98 — Event-specific quote CTA (draft; QA pending)
 - Branch: `design/v98-event-quote-context` on V97 draft. Main untouched.
 - Area: individual event detail pages (`EventPage.tsx`).
