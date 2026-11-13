@@ -1,3 +1,14 @@
+# V87 — CINEMATIC REAL FILM CONTACT SHEET (2026-11-13)
+
+- Draft PR #83: https://github.com/WazzupDoc/green-sound-music-garden/pull/83, stacked on successful V86 PR #82 exact source SHA cfa8a245b54b4d65caa8ad1d2fc62a9c0846e5b3.
+- Area: EditorialPortfolio. Replaced old text-only 3-film selector with THREE photographic first-party film contact-sheet buttons. Existing published-video posters film-nunta-ramada.webp, film-show-lumini.webp, film-studio-live.webp are already stored locally in public/media/greensound, NO new third-party/AI/TikTok media.
+- All 3 native buttons retain aria-pressed, original real-video selection and manual click-to-play via VideoLite (YouTube loads only when explicitly played). Responsive filmstrip/photo index with focus-visible and opt-in transform motion, Lite/reduced gated. The 3 films, 8 services, 3 service chapters, one final homepage CTA and dedicated pages remain intact.
+- New scoped src/styles/film-contact-sheet-v87.css via SSR Vite ?inline, new source integrity Vitest, Playwright six-width photo poster decode checks and real 390/1440 film-crop screenshots. No new dependencies.
+- App source CI success: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43420893062, screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43420893062/artifacts/14033568505. The film section is now visually photo-driven, not a text list. Later documentation commits need exact-head CI confirmation.
+- Main and production untouched; verify production auto-deploy trigger, backup tag and tested rollback before any release.
+
+---
+
 # V86 — GREEN SOUND / Signature homepage (draft, 2026-11-13)
 
 - Code branch: design/v86-signature-production-site, draft PR #82 https://github.com/WazzupDoc/green-sound-music-garden/pull/82, stacked on V85 PR #81 (validated SHA 4bf044079f41de251b6d8ced1c8f636f69374f12).
