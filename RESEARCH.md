@@ -1,3 +1,12 @@
+## 2026-11-13 — V87 source-driven cinematic film selection
+- Source context: previously inspected https://webflow.com/blog/music-websites-designed-with-webflow (music company authenticity via real show imagery and clear ability to navigate work), adapted into 3 locally source-backed live-film poster selectors rather than copy of any template/code.
+- Previously inspected https://web.dev/articles/animations-guide (use CSS transform/opacity and avoid layout effects). Thumbnail selection subtly scales on hover/focus only in full motion, with Lite/reduced gates. No scroll hijacking, no new animation library, no external embeds until Play.
+- Originality: visual typography and grid CSS self-authored for Green Sound, not a cloned UI. The film titles, video metadata and 3 posters are taken from actual existing src/data/site.ts. No fabricated video duration or client.
+- TESTUL DE ADAUGARE: user benefit is visually discovering differences among the three published productions; accessibility native buttons, aria-pressed, labels, no automatic audio/video; performance 3 small local poster files only, images lazy/async; rollback PR #83. No new dependencies, attribution/license changes or invented claims.
+- Rejected: AI-generated event video previews, random stock musicians, generic equal white cards, fake award/social proof counters, automatic YouTube iframe initialization, scroll hijack.
+
+---
+
 ## 2026-11-13 — V86 sound-first, original editorial production site
 - Inspected Webflow music website case studies: https://webflow.com/blog/music-websites-designed-with-webflow . Principle: strong music-identity visuals, meaningful hierarchy, directly accessible show/video. Adapted concept of authentic show photo leading editorial navigation; copied NO assets, code, layout or text.
 - Inspected Webflow unique-website-layouts: https://webflow.com/blog/unique-website-layouts . Principle: distinct asymmetric layout can improve discovery while preserving native user controls. Adapted one original large Music production chapter spanning 2 rows + two compact right subchapters, not borrowed CSS.

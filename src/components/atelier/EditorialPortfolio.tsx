@@ -3,7 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight, Clapperboard, Headphones, RadioTower } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { VideoLite } from "@/components/site/VideoLite";
-import { videos, type Video } from "@/data/site";
+import { videos, ytThumb, type Video } from "@/data/site";
+import filmContactCss from "@/styles/film-contact-sheet-v87.css?inline";
 
 const cuts: { id: string; title: string; context: string; subtitle: string; video: Video }[] = [
   {
@@ -41,13 +42,15 @@ export function EditorialPortfolio() {
 
   return (
     <section className="director-reel section" aria-labelledby="director-reel-title" id="director-reel">
+      {/* The three source-backed film posters are a real cinematic contact sheet. */}
+      <style>{filmContactCss}</style>
       <div className="container-site">
         <div className="crafted-section-intro">
           <span className="crafted-index"><Clapperboard className="mr-2 inline size-4" aria-hidden /> 02 / FILME REALE</span>
           <div>
             <h2 id="director-reel-title" className="crafted-heading">Ai văzut serviciile. <em>Acum privește momentele.</em></h2>
             <p className="crafted-section-intro__copy">
-              Trei filmări publicate de Green Sound Music. Fără montaje inventate sau galerii de fotografii repetate.
+              Trei momente reale, trei atmosfere diferite. Alege filmarea și pornește-o când vrei.
             </p>
           </div>
         </div>
@@ -97,6 +100,11 @@ export function EditorialPortfolio() {
               <button key={cut.id} type="button" className="director-reel__choice"
                 aria-pressed={selected === index} aria-label={`Film 0${index + 1}: ${cut.title} — ${cut.subtitle}`}
                 onClick={() => setSelected(index)}>
+                <span className="gs-v87-film-thumb" aria-hidden="true">
+                  <img src={cut.video.poster ?? ytThumb(cut.video, "sd")} alt=""
+                    width={1280} height={720} loading="lazy" decoding="async" />
+                </span>
+                <span className="gs-v87-film-thumb__shade" aria-hidden="true" />
                 <span className="director-reel__choice-no">0{index + 1}</span>
                 <span className="director-reel__choice-body">
                   <span className="director-reel__choice-overline">{cut.context}</span>
