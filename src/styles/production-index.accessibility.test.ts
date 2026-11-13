@@ -1,8 +1,7 @@
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(fileURLToPath(new URL("./production-index.css", import.meta.url)), "utf8");
+const css = readFileSync("src/styles/production-index.css", "utf8");
 
 describe("editorial keyboard focus cue", () => {
   it("exposes a visual focus cue on the chapter and preserves native link focus", () => {
