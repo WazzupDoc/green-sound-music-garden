@@ -1,3 +1,10 @@
+# V74 — Fix Vitest source fixture paths (draft)
+
+- V73 exact-head PR CI [43356575133](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43356575133) **FAILED** after TypeScript stage: 8 Vitest files crashed at module evaluation with `ERR_INVALID_URL_SCHEME` from `new URL(relative, import.meta.url)` / `fileURLToPath(...)` under Vite-transformed module URLs. Separate motion CI [43356575075](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43356575075) **PASSED**, not overall green.
+- V74 replaces only those eight source-fixture reads with repo-root relative paths (`src/...`) compatible with the repository's CI working directory. No tests removed/disabled; no new dependency or visual changes. Exact-head CI, SSR and six-width browser still require confirmation. PR #19 independently mergeable=false. Main untouched.
+- Next: inspect V74 exact-head CI and fix further genuine failures; audit navigation/Escape after green CI. Do not merge or deploy without all release gates.
+
+---
 # V73 — Repair failing exact-head TypeScript CI (draft)
 
 - Based on V72 PR #66. Actual V72 PR CI run [43348988088](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43348988088) failed at strict TypeScript: TS18048/TS2532 in `src/lib/brief-date.ts` and `production-index.cta-layout.test.ts`. Parallel V19 motion workflow [43348988129](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43348988129) passed; this is NOT overall green.
