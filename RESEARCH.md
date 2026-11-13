@@ -1,3 +1,8 @@
+### V81 verified CI evidence — 2026-11-13
+- Exact application source SHA before evidence-only documentation: `98dacdb0686d76e3943afcb49f646b8578cf6eb5`; [successful six-width CI](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064), including native modal focus/Escape, actual Chromium route audit, motion vs Lite computed CSS checks. [12 real screenshots](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141); V80 baseline never captured **with menu open**, so a true before/after paired menu screenshot cannot be claimed.
+- Measured gzip on the exact source: shared CSS **51.3/52 kB** (initial attempt 52.6, then 52.4 failed); homepage JS **110.9/190 kB**; QuoteForm **31.2/50 kB**. **24 Vitest suites/68 tests passed**; strict TypeScript, SSR build, architecture and browser passed. Avoid claiming Lighthouse or real user CWV.
+- Visual inspection of actual 360/390/768 open-menu screenshots: hierarchical six-link stage index is visible without horizontal overflow or obvious clipping; 390 full-motion screenshot captures entrance in progress while reduced/Lite are static. Open menu BEFORE on V80 unavailable; treat release visual comparison as incomplete, not invented.
+
 ## 2026-11-13 — V81 / Stage Index: modal navigation as a production stage programme
 
 - **Professional reference #1:** https://webflow.com/made-in-webflow/website/fullscreen-webflow-navigation (Jonas Arleth); observed: full-viewport responsive menu and deliberate open/close staging. Adapted independently: one full-screen stage index with branded six-route numbering and practical controls, **not** its gradient, animations or cloned code. License: reference only, no assets/source reused.
