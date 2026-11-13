@@ -1,3 +1,14 @@
+# V92 — Contact Production Brief / real browser review (2026-11-13)
+
+- Draft PR #91: https://github.com/WazzupDoc/green-sound-music-garden/pull/91, branch `design/v92-contact-production-brief` stacked on V91 PR #89. Live source functionality: editorial Contact two-tone with original SVG waveform, truthful 3-stage inquiry process, direct real phone/WhatsApp/email, SSR light production-paper quote; user-controlled sending.
+- Unmodified V91 BEFORE actual Chrome SUCCESS [#43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840), [artifact #14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507). V92 app-source SUCCESS `3c68af407d73152f4fb8775166a663944e32572e` [#43438638248](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248), [artifact #14045801050](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248/artifacts/14045801050). See `docs/V92_VISUAL_QA.md` for matching 390/1440 before-after images and mobile form focus.
+- Actual regression found and repaired: inherited pale preview text/email button had low contrast on new light quote paper. Added dark-forest text + distinct colored manual channel actions and focusable prepared heading; removed fixed redundant mobile action bar **only** on Contact, keeping company channels available. Additional ticket-attribution contrast fix has a new browser assertion.
+- **Final docs/attribution-contrast code SHA now different from measured app-source SHA**. Do not declare release until new exact HEAD Actions green. All previous CSS gzip caps and original 20-page SEO/SSR tests retained.
+- Release gate: draft only; main, hosting, domain unchanged. PR #19 conflicted; no publication until current exact SHA CI/visual, conflicts, backup tag and rollback + CD/main auto-deploy permission. No user-originated TikTok media published and no external assets.
+- Next single-zone rotation: /servicii/$slug detail UX/content, Contact deep linking, authentic media, keyboard, performance.
+
+---
+
 # V92 — CONTACT PRODUCTION BRIEF / PROPOSED (2026-11-13)
 
 - New draft branch `design/v92-contact-production-brief`, built on newest confirmed green V91 source `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1` (PR #89). V91 inherited validated V90 'Show Wall' PR #88. Separate V90 Spectrum Curtain PR #87 and V89 Event Detail PR #85 exist in parallel and were not blindly combined.
