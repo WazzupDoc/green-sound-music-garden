@@ -31,6 +31,8 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const previousPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex - 1 + galleryFrames.length) % galleryFrames.length] : undefined;
   const nextPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex + 1) % galleryFrames.length] : undefined;
   const pointerX = useRef<number | null>(null);
+  const lastPhotoRef = useRef<string | null>(null);
+  if (selected) lastPhotoRef.current = selected.id;
   const change = (id?:string) => {
     void navigate({to:"/portofoliu",search:id?{photo:id}:{},replace:true,resetScroll:false});
   };
@@ -63,7 +65,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
     <section className="rs-gallery" id="portfolio-photos" aria-labelledby="rs-gallery-title">
       <div className="container-site">
         <div className="rs-gallery__top">
-          <div><p>Fotografii reale</p><h2 id="rs-gallery-title">Oameni, scenă și lumină</h2></div>
+          <div><p>Fotografii reale</p><h2 id="rs-gallery-title" tabIndex={-1}>Oameni, scenă și lumină</h2></div>
           <p>Cadre din arhiva Green Sound Music. Selectează fotografia pentru a o vedea integral.</p>
         </div>
         <div role="group" className="rs-gallery__filters" aria-label="Filtrează fotografiile">
@@ -73,6 +75,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
         <div className="rs-gallery__rail" aria-label="Fotografii Green Sound Music">
           {frames.map((frame,index)=>(
             <Link key={frame.id} to="/portofoliu" search={{photo:frame.id}}
+              data-photo-id={frame.id}
               className={`rs-gallery__frame rs-gallery__frame--${index%3}`}
               aria-label={`Deschide fotografia: ${frame.title}`}>
               <BeamPhoto image={frame.image} className="rs-gallery__media" transitionName={`gs-photo-${frame.id}`} />
@@ -83,7 +86,15 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
       </div>
 
       <Dialog open={Boolean(selected)} onOpenChange={opened=>{if(!opened)change(undefined)}}>
-        <DialogContent className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
+        <DialogContent onCloseAutoFocus={event => {
+          // Restore keyboard focus to the originating thumbnail when it is still visible.
+          // Deep-linked photos or filtered-out thumbnails fall back to the gallery heading.
+          event.preventDefault();
+          const thumbnail = Array.from(document.querySelectorAll<HTMLAnchorElement>(".rs-gallery__frame"))
+            .find(link => link.dataset.photoId === lastPhotoRef.current);
+          if (thumbnail) thumbnail.focus();
+          else document.getElementById("rs-gallery-title")?.focus();
+        }} className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
           <DialogTitle className="text-xl font-semibold text-[#F3F0E9]">{selected?.title ?? "Fotografie"}</DialogTitle>
           <DialogDescription className="text-base text-[#B8BCB9]">
             {selected?.context ?? "Arhiva Green Sound Music"}. Folosește săgețile sau glisează pentru a naviga.

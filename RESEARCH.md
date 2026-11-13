@@ -1,3 +1,6 @@
+## 2026-11-13 — V102 gallery focus
+Reference: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialog should return focus to invoking element where possible. Adapted using existing Radix onCloseAutoFocus, no external code copied or dependency added. Rejected document-wide focus handler because it may interfere with other dialogs.
+
 
 ## 2026-11-13 — V97 clipboard denied retry
 - https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — clipboard writing can reject; no guarantee of permissions or secure context. Existing manual fallback preserved.

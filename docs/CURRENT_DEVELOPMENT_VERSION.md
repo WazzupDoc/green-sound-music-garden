@@ -1,3 +1,6 @@
+## V102 — Gallery dialog focus restoration (draft, QA pending)
+Branch design/v102-gallery-focus-return based on V101. On closing lightbox, restore focus to corresponding visible photo thumbnail or gallery heading when deep-linked/filtered. Code SHA ae2a4503ce3491e74d789fd1d36d59be18375309. No new assets/dependencies. Real browser screenshots and exact-head CI not verified; no production/main changes.
+
 ## V101 — Portfolio photo announcements (draft; QA pending)
 Branch `design/v101-gallery-dialog-announcements` stacked on V100. Adds live current-photo status and descriptive navigation button labels. No visual redesign claim; screenshots, six-width Chromium, SSR/TS/Vitest/gzip and exact-head CI not yet confirmed. Main unchanged.
 

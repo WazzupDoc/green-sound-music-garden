@@ -1,3 +1,6 @@
+## V102
+No new assets, fonts, media or third-party dependencies. Existing gallery images unchanged.
+
 
 ## V95 About (2026-11-13)
 No new media/fonts/dependencies. Reuses existing project images `images.scena` and `images.dj` from `src/data/site.ts`; existing provenance and owner rights still require release confirmation. No stock/AI/TikTok captures added. New CSS is original project-authored code.
