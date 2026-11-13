@@ -1,3 +1,9 @@
+
+## 2026-11-13 — V95 About production notes
+- https://webflow.com/blog/music-websites-designed-with-webflow — inspected Trenchwerk and Toast Recording Studio examples: authenticity of production work and restrained editorial texture matter more than gimmicks. Adapted only the principle of media-led, story-specific hierarchy; no code/images/identity copied (not licensed for reuse).
+- https://webflow.com/made-in-webflow/music — reviewed music portfolio patterns; adapted category-based hierarchy and a clear service route. Rejected cloneables, third-party player, autoplay and decorative 3D because they do not add factual value to About.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — implemented reduced-motion guard. No new dependency, no external assets; original CSS authored for this project.
+
 ## 2026-11-13 V94 — navigation / original production cue
 - https://webflow.com/blog/music-websites-designed-with-webflow (checked 2026-11-13): Best Albums 2017 uses unusual navigation hierarchy, Trenchwerk expresses music through interaction. Adapted concept only: navigation should feel like a production index and respond visibly to focus, without copying layout, media or code. No Webflow code license assumed; no code copied.
 - https://www.awwwards.com/websites/music-sound/ (reference collection): expressive typography and musical editorial pacing; inspiration only, no copied identity/code/assets.
