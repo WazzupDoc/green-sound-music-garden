@@ -1,3 +1,19 @@
+## 2026-11-13 — V70 / Divide et impera: service photographs
+
+| Area | Last work | Status / next priority |
+|---|---|---|
+| Editorial service photos | V70 hover motion gate | Draft; verify reduced motion/Lite and six widths in browser |
+| Hero / first impression | V48/V50 previous work | Next visual audit: responsive hierarchy, contrast and real asset |
+| Buttons / CTAs | V60 previous work | Check one primary CTA and keyboard affordance |
+| Navigation / mobile menu | Not audited in this rotation | Keyboard, Escape, touch targets |
+| Films / real footage | V49 previous work | Check image/video load, provenance and Lite |
+| Service links / typography | V68 previous work | Check routes and mobile legibility |
+| Contact / brief | V69 previous work | Check two-service handoff, calendar, clipboard |
+| SEO / 404 / sitemap / security | Pending | Verify actual HTTP responses and canonical/JSON-LD |
+
+- Actual code: gated editorial photo hover scale by hover-capable pointer, no reduced motion, and non-Lite mode; retains filter cue and focus outline. Original CSS/Vitest only, no media or dependencies. CI and local tests not run/confirmed. PR #19 mergeable=false; V48 exact-head PR run success; V69 PR #63 mergeable=true but not proven green. No main change.
+- Next: hero typography and LCP image audit, then real Chromium QA, TypeScript/SSR tests, deployment config, release rollback and backup-tag permissions. Do not publish without approval if main auto-deploys.
+
 ## 2026-11-13 — V69 draft
 
 - Based on V68 PR #62, corrected Contact query prefill acceptance of impossible ISO-shaped dates; pure Gregorian validator plus Vitest regressions. Homepage editorial unchanged. No assets or dependencies.
