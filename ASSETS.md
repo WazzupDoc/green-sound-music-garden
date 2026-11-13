@@ -1,3 +1,12 @@
+## V86 — 2026-11-13 / asset and screenshot provenance
+- No new photograph/video/font/music was added. Hero and editorial services reuse already existing local project assets: images.concert, images.scena, images.dj, images.ursitoare from src/data/site.ts. Owner must still confirm original usage rights where relevant.
+- NEW visual: original inline SVG branded sound-signal line in StageHero.tsx, aria-hidden and purely decorative. Not a real waveform reading, AI-generated event image, or a client logo.
+- Retired from live homepage rendering: ProductionDeckArt.tsx synthetic mixer, V79 portal geometry, V83 fake signal-ledger stickers, V84 and V85 CSS layers. All remain in repository history for rollback.
+- First actual V86 CI browser screenshots artifact: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43418750372/artifacts/14033232086 (source SHA db92e4609b265dfd1fd6058c9d0ebcef36108694), at 6 real Chrome widths, also original waveform full motion and Lite. Final mobile tweak captured in newer run once verified.
+- No extracted TikTok/Instagram material, no fabricated screenshots and no unverified external stock assets integrated.
+
+---
+
 ## V85 — 2026-11-13 / actual media and abstract technical SVG
 
 - New creative illustration `src/components/atelier/ProductionDeckArt.tsx`: original 10-channel vector console, self-authored, no license obligation or external assets. **Not a real company soundboard photograph, real meter, client or stage event; purely a graphic representation of production technology.** No tracking, audio API, hardware API or embedded commercial marks.
