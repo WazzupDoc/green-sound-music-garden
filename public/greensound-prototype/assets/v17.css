@@ -1,0 +1,217 @@
+/* Green Sound Music V17 — PREMIUM EDITORIAL SYSTEM
+   Original direction, referencing luxury editorial hierarchy, not third-party source code.
+   Palette: forest, champagne, ivory, restrained electrical green. No external components. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+:root{
+ --gs-ivory:#eee9df;--gs-ink:#0a1811;--gs-champagne:#d8cfbd;
+ --gs-soft-lime:#bedf99;--gs-edge:rgba(229,246,216,.14);
+}
+body{background:#08150d;color:#f6f4ec}
+html{scroll-padding-top:115px}
+section[id],.section[id],#showreel{scroll-margin-top:118px}
+/* Floating navigation: unobtrusive, high-contrast, still six genuine pages. */
+.topbar{
+ top:12px;left:clamp(9px,1.55vw,24px);right:clamp(9px,1.55vw,24px);
+ border:1px solid rgba(218,248,207,.19);border-radius:14px;
+ background:rgba(4,15,8,.86);backdrop-filter:blur(22px) saturate(130%);
+ box-shadow:0 10px 38px rgba(0,0,0,.2);overflow:visible;
+}
+.topbar.is-scrolled{background:rgba(4,16,10,.96);box-shadow:0 12px 44px #0005}
+.topbar__inside{height:71px;width:min(1380px,calc(100% - 36px))}
+.topnav a{letter-spacing:.045em;font-size:11px;font-weight:700}
+.topnav a[aria-current=page]{color:#d7f6b3}
+.topbar__cta{background:#b2ea78;color:#0c2112;min-height:43px;padding:11px 21px;font-size:11px;box-shadow:none}
+.topbar__cta:hover{background:#d4f5ac}
+.brand img{border-color:#a8d27e85}
+.brand__wordmark{letter-spacing:.04em}
+.mobile-nav{top:82px;background:#091c10}
+/* The hero remains a stage production website, not a jewellery clone. */
+.hero--v17{background:radial-gradient(ellipse at 27% 37%,#152d1d 0%,#07150b 48%,#050b07 100%);padding-top:96px}
+.hero--v17:before{opacity:.14}
+.hero--v17 .hero-v16__shell{min-height:680px;gap:clamp(38px,4.5vw,80px);padding:34px 0 54px}
+.hero--v17 .hero-v16__topline{font-size:10px;letter-spacing:.18em;color:#b9c5b5}
+.hero--v17 .hero-v16__title{font-size:clamp(68px,6.7vw,105px);line-height:.97;letter-spacing:-.015em}
+.hero--v17 .hero-v16__title span{display:block}
+.hero--v17 .hero-v17__line--serif{margin-top:7px;white-space:nowrap}
+.hero--v17 .hero-v17__line--serif em{
+ font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;
+ font-size:1.23em;font-weight:600;line-height:.75;letter-spacing:-.045em;
+ text-transform:none;color:#c7dfad;display:inline-block;text-shadow:none;
+}
+.hero--v17 .hero__lead{color:#cad8c7;font-size:14px;line-height:1.88;max-width:450px;margin-top:36px}
+.hero--v17 .hero__buttons{gap:14px;margin-top:31px}
+.hero--v17 .hero__buttons .btn{font-size:10px;min-height:52px;border-radius:4px;letter-spacing:.09em;padding-inline:18px}
+.hero--v17 .hero__buttons .btn:not(.btn--line){background:var(--gs-ivory);color:#0b1d13}
+.hero--v17 .hero__buttons .btn:not(.btn--line):hover{background:#d2f3b1;color:#0b1d13}
+.hero--v17 .hero__buttons .btn--line{background:transparent;border-color:#b1cfad66}
+.hero--v17 .hero__buttons .btn--line:hover{border-color:#d4f3bf;background:#153523}
+.hero--v17 .hero-v16__footnote{border-top-color:#dae6cf29;color:#90a894}
+.hero--v17 .hero-v16__pictogram{color:#c9dca8}
+/* Real light photography, naturally framed, not blank neon cards. */
+.hero--v17 .hero-v16__visual{border:1px solid rgba(224,245,208,.37);border-radius:3px;box-shadow:0 28px 94px #0008,0 0 0 8px #d5facb08;height:min(69vh,630px)}
+.hero--v17 .hero-v16__visual:after{border-color:#c0e8ad13;box-shadow:inset 0 0 50px #040f073c}
+.hero--v17 .hero-v16__visual:before{background:linear-gradient(180deg,rgba(5,16,9,.59),transparent 28%,transparent 64%,rgba(2,13,6,.58))}
+.hero--v17 .hero__photo img{filter:brightness(1.05) saturate(1.11) contrast(1.03)}
+.hero--v17 .hero__beamfield{opacity:.43}
+.hero--v17 .hero__haze{opacity:.38}
+.hero--v17 .hero-v16__visual-top{top:25px}
+.hero--v17 .hero-v16__live{background:#061b0bd4;border-color:#d5f8c15c;border-radius:3px;letter-spacing:.16em}
+.hero--v17 .hero-v16__visual-caption strong{font-size:clamp(40px,4vw,61px);line-height:.92;letter-spacing:.02em;font-weight:700}
+.hero--v17 .hero-v16__visual-line{color:#def5d2}
+.hero--v17 .hero-v16__visual-bottom{border-color:rgba(223,245,204,.22);background:rgba(5,17,9,.78)}
+.hero--v17 .hero-v16__play{border-radius:3px;background:#e9eadd;color:#0b2211;border-color:#e9eadd;box-shadow:none;letter-spacing:.1em}
+.hero--v17 .hero-v16__play:hover{background:#c6eaa1;border-color:#c6eaa1;box-shadow:0 10px 30px #b6e88b22}
+.hero-v17__pointer-light{
+ position:absolute;z-index:3;inset:0;pointer-events:none;opacity:0;
+ background:radial-gradient(circle 250px at var(--stage-x,50%) var(--stage-y,50%),rgba(204,253,169,.13),transparent 70%);
+ transition:opacity .4s;
+}
+@media(hover:hover) and (pointer:fine){.hero-v16__visual[data-pointer="active"] .hero-v17__pointer-light{opacity:1}}
+.hero--v17 .hero__bottom{background:rgba(6,18,10,.97)}
+.hero--v17 .hero__bottom-inner{min-height:93px}
+.hero--v17 .mood{border-radius:4px;color:#d6e8d0;background:#101f15;border-color:rgba(212,235,201,.22)}
+.hero--v17 .mood[aria-pressed=true]{background:#cedebb;color:#082014;border-color:#cedebb}
+.hero--v17 .hero__lights{border-radius:4px;border-color:#c0d3b65b;color:#dee9d8}
+.hero--v17 .hero-v16__audiostrip span{background:linear-gradient(#eaf8e0,#83b67b)}
+/* The light section gives the homepage the deliberate rhythm of a luxury editorial. */
+.gs-services-strip{background:#ecece4;border-bottom:1px solid #d9d5c9}
+.gs-strip__item{border-color:#d5d7cd}
+.gs-strip__item:first-child{border-color:#d5d7cd}
+.gs-strip__item:hover{background:#dce8d5}
+.gs-strip__svg{color:#365d3a}
+.gs-curation{background:var(--gs-ivory);color:var(--gs-ink);padding-block:clamp(95px,9.5vw,145px)}
+.gs-curation .kicker{color:#28553b;font-size:10px;letter-spacing:.16em}
+.gs-curation .kicker:before{background:#326446;box-shadow:none}
+.gs-curation .section-heading{margin-bottom:43px;gap:50px}
+.gs-curation .section-heading h2{font-size:clamp(56px,5.5vw,82px);line-height:.99;font-weight:700;letter-spacing:-.014em;margin-top:23px}
+.gs-curation .section-heading h2 em{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;font-style:italic;letter-spacing:-.04em;color:#285a39;font-size:1.1em;white-space:normal;text-transform:none}
+.gs-curation .section-heading p{color:#46644c;font-size:14px;line-height:1.9;max-width:380px}
+.gs-curation .cards{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);grid-template-rows:repeat(2,minmax(258px,285px));gap:16px}
+.gs-curation .card{min-height:0;border-radius:4px;background:#0c2115;box-shadow:none}
+.gs-curation .card:first-child{grid-row:span 2}
+.gs-curation .card__top{top:25px;left:26px;right:26px}
+.gs-curation .card__body{padding:clamp(23px,3vw,40px)}
+.gs-curation .card h3{font-size:clamp(38px,3.4vw,57px);font-weight:700;line-height:.98;letter-spacing:.005em}
+.gs-curation .card:first-child h3{font-size:clamp(53px,5.4vw,77px)}
+.gs-curation .card:first-child .card__body{padding-bottom:48px}
+.gs-curation .card__media img{filter:brightness(.84) saturate(1.02);object-position:50% 35%}
+.gs-curation .card:hover .card__media img{filter:brightness(.93) saturate(1.05)}
+.gs-curation .card__top .icon-badge{border-radius:4px;background:rgba(8,31,14,.72);border-color:#d2f0b666;color:#d7f7b8;width:47px;height:47px}
+.gs-curation .card__tag{font-size:9px;letter-spacing:.19em}
+.gs-curation .card__body p{font-size:13px;line-height:1.8;color:#e4ecdf}
+.gs-curation .card__more{font-size:10px;letter-spacing:.18em;color:#cfeab5}
+.gs-curation .card:hover{transform:translateY(-4px);box-shadow:0 18px 55px rgba(21,40,24,.2)}
+.gs-curation .card:focus-visible{outline:2px solid #295f3b;outline-offset:4px}
+.gs-curation .stage-graphic{background:radial-gradient(ellipse at 60% 55%,#225335,#071d10 68%)}
+.gs-curation .stage-graphic__laser{opacity:.5}
+.gs-curation .stage-graphic__ring{opacity:.57}
+/* Curated video collection: rhythm and breathing room rather than more pill badges. */
+.gs-reel-section{background:radial-gradient(ellipse at 76% 30%,#15311c,#08190f 53%,#060e09);padding-block:clamp(85px,9vw,136px)}
+.gs-reel-section::before{opacity:.1}
+.gs-reel-section::after{opacity:.4}
+.gs-reel__header{margin-bottom:48px;gap:45px}
+.gs-reel__header h2{font-size:clamp(51px,5.3vw,77px);font-weight:700;letter-spacing:.004em;line-height:.99;margin-top:21px}
+.gs-reel__header h2 em{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.15em;line-height:.8;font-style:italic;font-weight:600;letter-spacing:-.03em;color:#c6e6b3;text-transform:none}
+.gs-reel__side{max-width:320px;flex:0 0 300px}
+.gs-reel__side p{color:#b3c7b5;font-size:13px}
+.gs-reel__tile{border-radius:3px;border-color:#deeec333}
+.gs-reel__tile:hover{border-color:#ccedb4}
+.gs-reel__play{background:#e9eee2;color:#112316;border-color:#e9eee2;box-shadow:0 0 0 14px #e9eee222}
+.gs-reel__tile:hover .gs-reel__play{background:#d8edc8;box-shadow:0 0 0 20px #e9eee221,0 0 0 48px #e9eee10a}
+.gs-reel__tile--small .gs-reel__play{background:#e9eee2;box-shadow:0 0 0 11px #e9eee21a}
+.gs-reel__tag{border-radius:3px;background:#06140dbe;border-color:#ecf7e34f;color:#e3f6dc}
+.gs-reel__tile .gs-reel__meta strong{font-weight:700}
+.gs-reel__tile .gs-reel__meta small{color:#ceeac7}
+.gs-reel__below{color:#9ebda1}
+.gs-reel__side a{color:#c6e6b3}
+/* Inner-page headings from concert posters, but with editorial luxury contrast. */
+.hero--sub h1 em{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.08em;font-weight:600;font-style:italic;letter-spacing:-.03em;color:#c7e1b1;text-transform:none}
+.hero--sub .hero__inside{max-width:1300px}
+.hero--sub .hero__preline{letter-spacing:.17em;color:#c2dec4}
+/* One unobtrusive arrival sequence, motion only when welcomed by user preferences. */
+@keyframes gs17-arrive{from{opacity:.75;filter:blur(2px)}to{opacity:1;filter:none}}
+main{animation:gs17-arrive .48s ease-out both}
+@media(max-width:1190px){
+ .gs-curation .section-heading h2{font-size:clamp(53px,5.3vw,76px)}
+ .hero--v17 .hero-v16__title{font-size:clamp(69px,6.25vw,87px)}
+ .hero--v17 .hero-v16__shell{gap:clamp(20px,3vw,38px)}
+ .hero--v17 .hero-v16__visual-caption strong{font-size:clamp(35px,3.7vw,50px)}
+}
+@media(max-width:980px){
+ .topbar__inside{height:67px}
+ .hero--v17{padding-top:94px}
+ .hero--v17 .hero-v16__shell{min-height:0}
+ .hero--v17 .hero-v16__title{font-size:clamp(64px,10.9vw,92px)}
+ .hero--v17 .hero-v16__visual{height:clamp(355px,47vw,440px);min-height:0}
+ .gs-curation .cards{grid-template-columns:minmax(0,1.03fr) minmax(0,.97fr)}
+ .gs-curation .card:first-child h3{font-size:clamp(44px,5vw,67px)}
+}
+@media(max-width:650px){
+ .topbar{top:7px;left:7px;right:7px;border-radius:11px}
+ .topbar__inside{height:62px;width:calc(100% - 21px)}
+ .topbar .brand img{height:37px;width:37px}
+ .topbar .brand__wordmark{font-size:17px}
+ .mobile-nav{top:75px}
+ .hero--v17{padding-top:79px}
+ .hero--v17 .hero-v16__shell{gap:0;padding-top:13px;padding-bottom:28px}
+ .hero--v17 .hero-v16__visual{height:290px;min-height:0}
+ .hero--v17 .hero-v16__content{padding-top:25px}
+ .hero--v17 .hero-v16__title{font-size:clamp(53px,13.5vw,73px);line-height:.96}
+ .hero--v17 .hero-v17__line--serif{margin-top:4px}
+ .hero--v17 .hero-v17__line--serif em{font-size:1.24em;line-height:.86;letter-spacing:-.055em}
+ .hero--v17 .hero__lead{font-size:12.5px;line-height:1.73;margin-top:24px}
+ .hero--v17 .hero__buttons{gap:8px;margin-top:24px}
+ .hero--v17 .hero__buttons .btn{font-size:8px;min-height:43px;padding:10px 11px;letter-spacing:.035em}
+ .hero--v17 .hero__buttons .btn .icon{width:13px;height:13px}
+ .hero--v17 .hero-v16__footnote{margin-top:23px}
+ .hero--v17 .hero-v16__visual-caption{bottom:91px;left:18px}
+ .hero--v17 .hero-v16__visual-caption strong{font-size:34px}
+ .hero--v17 .hero-v16__visual-top{top:14px;left:12px;right:12px}
+ .hero--v17 .hero-v16__visual-bottom{min-height:62px}
+ .hero--v17 .hero-v16__play{min-height:38px}
+ .hero--v17 .hero__bottom-inner{min-height:117px}
+ .hero--v17 .mood{border-radius:3px;padding:9px 11px}
+ .gs-curation{padding-block:78px}
+ .gs-curation .section-heading{margin-bottom:28px}
+ .gs-curation .section-heading h2{font-size:clamp(44px,11.8vw,63px);line-height:1.01}
+ .gs-curation .section-heading h2 em{font-size:1.04em}
+ .gs-curation .section-heading p{font-size:13px;margin-top:20px}
+ .gs-curation .cards{grid-template-columns:1fr;grid-template-rows:auto;gap:12px}
+ .gs-curation .card:first-child{grid-row:auto}
+ .gs-curation .card{min-height:310px}
+ .gs-curation .card:first-child{min-height:410px}
+ .gs-curation .card h3{font-size:42px}
+ .gs-curation .card:first-child h3{font-size:55px}
+ .gs-curation .card__top{left:20px;right:20px;top:20px}
+ .gs-curation .card__body{padding:24px}
+ .gs-reel__header h2{font-size:clamp(45px,10.6vw,60px);line-height:.97}
+ .gs-reel__header{margin-bottom:32px}
+ .gs-reel__tile--small .gs-reel__meta strong{font-size:29px}
+ .gs-reel__tile--large .gs-reel__meta strong{font-size:38px}
+ .hero--sub h1 em{font-size:1.02em}
+}
+@media(max-width:375px){
+ .hero--v17 .hero-v16__title{font-size:52px}
+ .hero--v17 .hero__buttons .btn{font-size:7.4px;padding-inline:8px}
+ .gs-curation .section-heading h2{font-size:41px}
+}
+@media(prefers-reduced-motion:reduce){
+ main{animation:none!important}
+ .hero-v17__pointer-light{display:none}
+ .hero--v17 .hero__photo img{animation:none!important}
+}
+
+/* QA: the footer's long word EVENIMENT. exceeded 390px viewport at V16's 78px size.
+   Fix typography at its source rather than hiding horizontal scroll on the page. */
+@media(max-width:650px){
+  .footer__top h2{font-size:clamp(49px,12.5vw,70px);line-height:.96;max-width:100%}
+}
+
+/* Real screenshot QA: preserve legibility of cards on ivory paper and
+   constrain arrow SVG to its actual icon dimensions instead of 300x150px default. */
+.gs-curation .card{color:#f6f8f1}
+.gs-curation .card h3{color:#fff}
+.gs-curation .card .card__body p{color:#e9f1e7}
+.gs-curation .card__more{display:inline-flex;align-items:center;gap:12px;color:#d7ffb9;line-height:1.3}
+.gs-curation .card__more .icon{display:block;width:17px;height:17px;min-width:17px;flex:0 0 17px;stroke:currentColor;fill:none}
+.gs-curation .card__top .icon-badge .icon{width:24px;height:24px}
