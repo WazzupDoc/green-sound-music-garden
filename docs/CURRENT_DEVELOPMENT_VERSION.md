@@ -1,3 +1,15 @@
+# V90 — SPECTRUM CURTAIN / REAL BROWSER VERIFIED APP (2026-11-13)
+
+- Visual concept and code: branch `design/v90-spectrum-curtain-hero`, draft [PR #87](https://github.com/WazzupDoc/green-sound-music-garden/pull/87), atop validated V89 homepage PR #86. Real `StageHero` hero photo is now diagonally masked with a bright emerald stage-light seam, original large musical frequency ribbon SVG with pointer response, and staggered title entrance. This is not a copy of another artist website or a fake audio-reactive show. Existing native hero modes, scene links, Light Desk, 3 editorial chapters / 8 service links, 3 real film posters and one final homepage CTA remain unchanged.
+- First V90 screenshot was judged visually insufficient; **revised** composition before acceptance, verified V89 before vs V90 after in actual Chromium.
+- Before: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 (`premium-v89-hero-390.png`, `premium-v89-hero-1440.png`).
+- After: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850/artifacts/14039850169 (`spectrum-v90-hero-390.png`, `spectrum-v90-hero-1440.png`, `spectrum-v90-active-1440.png`, Lite/off). Detailed inspection: `docs/V90_VISUAL_QA.md`.
+- Actual **application SHA** `b6d6173c8344306a0214bfedcd9f1967d88ce9fd`: CI push #43429307850 + PR #43429300542 both green. 84 tests in 30 suites, TS/SSR/gzip/six-width browser, actual full-motion/pointer animation, reduced/Lite/off, 20-page sitemap, Contact SSR/hydration. Shared CSS 51.3/52 kB gzip; entry 110.9/190, Quote 31.2/50. Not a Lighthouse/CWV measure.
+- V90 is a draft only, **no main/live domain changes**. Documentation changes after app SHA must pass their own exact-head CI. Production auto-deploy review, verified backup main tag and rollback and separate approval for publication remain outstanding.
+- NEXT: Contact UX, error states and service selection prefill, then detail services and remaining pages in the rotation.
+
+---
+
 # V90 — ORIGINAL SPECTRUM CURTAIN HERO (experimental, 2026-11-13)
 
 - Branch `design/v90-spectrum-curtain-hero` based on verified V89 PR #86 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07`. Single primary change: homepage **StageHero** art direction, not another repeat of service cards.
