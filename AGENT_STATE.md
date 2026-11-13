@@ -1,3 +1,11 @@
+## 2026-11-13 V91 — /servicii editorial directory (PR #89)
+- Rotation: /servicii index only, based on V90 PR #88 branch (V90 exact-head CI not confirmed). New asymmetric alternating Music/Technology/People group composition, oversize titles, per-service index, counts, keyboard focus, mobile one-column, reduced-motion. Existing 8 direct service routes and homepage unchanged.
+- Code: src/routes/servicii.tsx, src/styles/service-index-editorial-v91.css. Source authored, no third-party assets or dependency. No proof yet of browser aesthetics, CSS computed result, 390/1440 screenshot before/after, six-width regression, TS/SSR/Vitest or exact-head CI; **do not merge/publish**.
+- Research: Awwwards music-sound directory https://www.awwwards.com/websites/music-sound/ (editorial hierarchy only), Webflow music examples https://webflow.com/made-in-webflow/popular?search=music (asymmetric storytelling only); no copied code or visual assets. MDN prefers-reduced-motion https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion. Reject 3 equal cards, autoplay, fake media and third-party libraries.
+- Next audit: /servicii detail pages, then Contact funnel, navigation, events, gallery, footer and SEO. Validate current PR CI, same-viewport screenshots, and accessibility first.
+
+---
+
 ## 2026-11-13 V90 / SHOW WALL VISIBLE DIFFERENCE EXPERIMENT
 - Owner says **all former designs look identical** despite many versions: same static purple live photo, one weak wave and 2–3 green beam effects, no recognizable motion/3D. Actual V89 hero Chromium screenshot confirms visual criticism. Do not treat test/SEO/doc-only changes as redesign.
 - Current base V89 PR #86 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07` with exact-head green CI #43425095295, screenshot artifact #14037051076. V90 draft PR #88 branch `design/v90-kinetic-3d-live-show-wall` implemented NEW JSX + original scoped CSS.
