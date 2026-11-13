@@ -1,3 +1,12 @@
+## V81 — 2026-11-13 / Original Stage Index navigation
+
+- New images, video, audio, commercial fonts, external scripts, third-party icons, Unsplash requests: **none**.
+- `SiteHeader.tsx` two inline thin-line SVG drawings (stage portal and directional/cross glyphs) are original and self-authored, no external code, image or license obligation.
+- Existing Green Sound favicon, fonts and verified site data remain unchanged. Professional design references are **not** included as site assets.
+- Screenshots, if captured by GitHub Actions, are evidence of the actual branch, not marketing assets; screenshot links and date to be added only when verified.
+
+---
+
 ## V78 — 2026-11-13 / Screen-visible art direction
 
 - New media / fonts / icon sets / scripts from external vendors: **none**.
