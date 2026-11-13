@@ -1,3 +1,13 @@
+### V90 actual visual gate result — 2026-11-13
+
+- **Baseline:** [V89 Chromium artifact #14037051076](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076) — real static photo/near-black hero; screenshot `premium-v89-hero-1440/390.png`.
+- **First experiment rejected in part:** first V90 screenshot [CI #43428734092](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43428734092) still had the same full-bleed geometry; just emerald tint and spectral curves, **insufficient real compositional difference** per owner criteria. Revised with original diagonal photo cut, brighter emerald-left field and animated headline.
+- **Second V90:** [SUCCESS exact code #43429307850](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850), [real browser archive #14039850169](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850/artifacts/14039850169). 390/1440 same route and viewport, reduced static screenshots; separate active 1440, Lite and lights-off states prove CSS logic; true SVG pointer transform change asserted in browser. Visual scan shows distinct diagonal photo/frequency composition, readable source photography and direct Contact CTA.
+- **Performance facts:** 84/84 tests, production build and six-size browser pass, global shared CSS gzip 51.3/52 kB; no measured field LCP, INP, Lighthouse or conversion change. Stacked route-local CSS has not been consolidated; avoid another light widget/glow based on this alone.
+- **Sources:** Under The Tree and Last Paradox music-art direction links + MDN/Chrome web docs recorded in preceding V90 research; original code and independent layout, no third-party asset import.
+
+---
+
 ## 2026-11-13 — V90 / A real hero animation, not another microscopic layout tweak
 
 - **Observed defect in actual real Chromium V89 screenshot:** [baseline PR #86 screenshot artifact](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076), `premium-v89-hero-1440.png`. The center-stage photograph remained static, with large undifferentiated black/purple areas and only a barely perceptible little waveform near the bottom. The small scene-notes box interrupts photography. The owner specifically requested **different background and clearly visible animated top-of-home experience**, not more cards or tests.
