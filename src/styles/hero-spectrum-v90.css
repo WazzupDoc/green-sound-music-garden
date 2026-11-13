@@ -1,0 +1,171 @@
+/* V90 · GREEN SOUND / KINETIC SPECTRUM CURTAIN
+ * One hero-only original signature: sound lines suspended across an owned show
+ * photograph. No stock, no copied animation, no third-party script.
+ * Default state is static; 10s compositor motion is full-motion only.
+ */
+.gs-home-v86 .crafted-hero {
+  background:#052416;
+  isolation:isolate;
+}
+.gs-home-v86 .crafted-hero__image{
+  filter:saturate(1.65) contrast(1.1) brightness(1.34)!important;
+  object-position:67% 45%!important;
+}
+.gs-home-v86 .crafted-hero__shade{
+  background:
+    linear-gradient(99deg,#02160e 0%,#022819f8 16%,#063a27e5 31%,#06291abe 43%,#061f144c 68%,#010d0769 100%),
+    linear-gradient(0deg,#001108ee,transparent 26%,transparent 82%,#0112098a);
+}
+.gs-home-v86 .gs-v90__photographic-edge{
+  position:absolute;inset:0;z-index:0;pointer-events:none;isolation:isolate;
+  background:
+    linear-gradient(121deg,transparent 0 46%,#a4ffb809 48%,#98ff9a24 49%,#a0ffd700 50%,transparent 53%),
+    radial-gradient(ellipse 48% 68% at 76% 44%,#1cff563e,transparent 75%),
+    linear-gradient(106deg,transparent 0 55%,#78ffc014 69%,transparent 82%);
+  mix-blend-mode:screen;
+}
+.gs-home-v86 .gs-v90__photographic-edge::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0,transparent 17px,#ccffaf10 18px);
+  opacity:.65;
+  -webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 63%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 30%,#000 63%,#000 100%);
+}
+.gs-home-v86 .gs-v90__photographic-edge::after{
+  content:"";position:absolute;inset:0;
+  clip-path:polygon(45% 0,45.13% 0,67% 100%,66.8% 100%);
+  background:#b7ffb8;opacity:.48;
+}
+.gs-home-v86 .gs-v90__spectrum{
+  position:absolute;z-index:2;
+  left:38%;top:2%;width:68%;
+  height:clamp(440px,76%,630px);
+  pointer-events:none;
+  opacity:.95;
+  will-change:transform;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 86%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 86%,transparent);
+}
+.gs-home-v86 .gs-v90__spectrum svg{display:block;width:100%;height:100%;overflow:visible}
+.gs-home-v86 .gs-v90__spectrum-rail{
+  filter:drop-shadow(0 0 7px #87ffb083) drop-shadow(0 0 28px #00ff6260);
+}
+.gs-home-v86 .gs-v90__spectrum-pips{filter:drop-shadow(0 0 8px #afffc4)}
+.gs-home-v86 .gs-v90__spectrum-caption{
+  position:absolute;bottom:14px;right:15%;
+  color:#caffc5;opacity:.82;font-size:.55rem;
+  font-weight:800;letter-spacing:.24em;white-space:nowrap;
+  text-shadow:0 2px 12px #001006;
+}
+.gs-home-v86 .gs-v90__frequency-stripe{
+  position:absolute;z-index:5;right:5.1%;top:29px;
+  display:flex;align-items:center;gap:clamp(8px,1.5vw,22px);
+  font-size:.6rem;letter-spacing:.23em;font-weight:800;
+  color:#c2ffd1;pointer-events:none;
+}
+.gs-home-v86 .gs-v90__frequency-stripe span{
+  border-top:1px solid #a5ffaa9c;padding-top:10px;
+  text-shadow:0 1px 13px #00180b;
+}
+/* Typography is still the anchor, never a full-screen tech decoration. */
+.gs-home-v86 .crafted-hero__intro{
+  position:relative;z-index:4;
+  text-shadow:0 9px 40px #001308bf;
+}
+.gs-home-v86 .crafted-hero__title,
+.gs-home-v86 .gs-stage-v78 .crafted-hero__title{
+  filter:drop-shadow(0 8px 15px #001b09a8);
+}
+.gs-home-v86 .crafted-hero__title em{
+  background:linear-gradient(98deg,#4df0a0,#b8ff81 53%,#36f79d 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+/* Replace the old barely visible bottom waveform with a narrow, secondary staff.
+   V90's luminous architectural waveform above the photograph does the heavy lifting. */
+.gs-home-v86 .gs-v86__graphic{
+  left:40%;right:-1%;width:60%;height:100px;bottom:53px;
+  opacity:.23;transform:rotate(0);
+  filter:none;mix-blend-mode:screen;
+}
+.gs-home-v86 .gs-v86__graphic svg{filter:none}
+.gs-home-v86 .scene-console{
+  border-left:2px solid #c1ffd1!important;
+  background:#02140eb5!important;
+}
+@media(min-width:851px){
+  .gs-home-v86 .scene-console{
+    width:min(100%,228px);max-width:228px;
+    margin:0 0 62px;
+  }
+  .gs-home-v86 .scene-console__content{padding:12px 14px}
+  .gs-home-v86 .scene-console__content h2{font-size:1.13rem}
+}
+/* On small screens the real event photograph stays the visual hero; one focused
+ * static signal ribbon, not a heavy permanent full-screen FX loop. */
+@media(max-width:850px){
+  .gs-home-v86 .gs-v90__frequency-stripe{top:98px;right:21px;gap:9px;font-size:.48rem}
+  .gs-home-v86 .gs-v90__frequency-stripe span{padding-top:5px}
+  .gs-home-v86 .gs-v90__spectrum{
+    left:21%;top:7%;height:46%;width:105%;
+    opacity:.75;
+  }
+  .gs-home-v86 .crafted-hero__shade{
+    background:
+      linear-gradient(0deg,#01170e 2%,#03261ae7 25%,#052419a3 53%,#031b11ad 75%,#021a10a8 100%),
+      linear-gradient(90deg,#04291982,transparent);
+  }
+  .gs-home-v86 .gs-v86__graphic{left:10%;width:90%;height:80px;bottom:80px}
+}
+@media(max-width:640px){
+  .gs-home-v86 .crafted-hero__image{
+    filter:saturate(1.45) contrast(1.08) brightness(1.43)!important;
+  }
+  .gs-home-v86 .gs-v90__frequency-stripe{right:17px;top:89px;gap:7px;letter-spacing:.07em;font-size:.44rem}
+  .gs-home-v86 .gs-v90__frequency-stripe span{border-top-color:#bfffb680}
+  .gs-home-v86 .gs-v90__spectrum{
+    left:12%;top:8%;width:122%;height:36%;opacity:.8;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 76%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 10%,#000 76%,transparent);
+  }
+  .gs-home-v86 .gs-v90__spectrum-caption{display:none}
+  .gs-home-v86 .gs-v90__photographic-edge::after{opacity:.20}
+  .gs-home-v86 .gs-v86__graphic{bottom:76px;height:60px;opacity:.20}
+}
+/* Deliberate, extremely slow cinematic light modulation. Transform/opacity
+ * only; no backdrop blur changes, no layout shifts, no CSS filters animated. */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  html:not([data-gs-performance=lite]) .gs-home-v86 .crafted-hero[data-stage-visible=true][data-lights=on] .gs-v90__spectrum-rail{
+    animation:gs-v90-breathe 9s cubic-bezier(.45,.1,.55,.9) infinite alternate;
+    transform-origin:50% 55%;
+  }
+  html:not([data-gs-performance=lite]) .gs-home-v86 .crafted-hero[data-stage-visible=true][data-lights=on] .gs-v90__spectrum-pips{
+    animation:gs-v90-pips 6s ease-in-out infinite alternate;
+  }
+}
+@keyframes gs-v90-breathe{
+  from{transform:translate3d(-11px,7px,0) scale(.97);opacity:.6}
+  to{transform:translate3d(16px,-9px,0) scale(1.035);opacity:1}
+}
+@keyframes gs-v90-pips{from{opacity:.38}to{opacity:1}}
+/* Pause light concept if the user switches lights OFF or if the hero is out of
+ * viewport. The visual remains meaningful with no animation. */
+.gs-home-v86 .crafted-hero[data-lights=off] .gs-v90__spectrum-rail,
+.gs-home-v86 .crafted-hero[data-lights=off] .gs-v90__spectrum-pips{
+  animation:none!important;opacity:.45;
+}
+.gs-home-v86 .crafted-hero[data-stage-visible=false] .gs-v90__spectrum-rail,
+.gs-home-v86 .crafted-hero[data-stage-visible=false] .gs-v90__spectrum-pips{
+  animation-play-state:paused!important;
+}
+@media(prefers-reduced-motion:reduce){
+  .gs-home-v86 .gs-v90__spectrum *{animation:none!important;transition:none!important}
+}
+html[data-gs-performance=lite] .gs-home-v86 .gs-v90__spectrum *{
+  animation:none!important;transition:none!important;
+}
+/* Reduced data preserves the existing real photograph, but no perpetually
+ * running decorative motion. */
+@media(max-width:850px){
+  .gs-home-v86 .gs-v90__spectrum *{animation:none!important}
+}
