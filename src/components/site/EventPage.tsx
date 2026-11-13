@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { getService, type EventType } from "@/data/site";
+import { ArrowUpRight, Phone } from "lucide-react";
+import { business, getService, type EventType } from "@/data/site";
 import { FaqList, PageHero, QuoteSection } from "./blocks";
 import { VideoLite } from "./VideoLite";
 import type { eventTypeOptions } from "@/lib/quote";
@@ -9,7 +9,10 @@ export function EventPage({event}:{event:EventType}){
   return <>
     <PageHero eyebrow={`Evenimente · ${event.name}`} title={event.h1} lead={event.lead}
       image={event.image} transitionName={`gs-event-${event.slug}`}
-      crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}/>
+      crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}>
+      <a href="#oferta-titlu" className="rs-inline-link">Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
+      <a href={business.phoneHref} className="rs-inline-link"><Phone size={18} aria-hidden /> Sună Green Sound</a>
+    </PageHero>
     <section className="rs-event-timeline">
       <div className="container-site">
         <div className="rs-event-timeline__title">
