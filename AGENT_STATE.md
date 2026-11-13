@@ -1,3 +1,22 @@
+## V90 real-browser audit result (2026-11-13)
+- PR #88 `design/v90-kinetic-3d-live-show-wall` source SHA `dbd13c342a9c34c2807b6ba52e37560266d9d28f` passed full exact-head GitHub PR CI [#43430202828](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430202828): 30 suites / 83 unit tests, strict TS, SSR production build, six Chromium widths, Contact, 20 canonical pages, no JS browser errors, video opt-in and keyboard Escape. [SCREENSHOT ARTIFACT #14038991587](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430202828/artifacts/14038991587).
+- Before: old V89 single dark full-bleed concert photo, thin static line. After: V90 real-image photographed 3-plane perspective collage with each panel showing a different existing local source, moving editorial bright-lime ticker at top, 2 captured live motion states 1.35s apart, scene mode physically promotes different image, Light Desk OFF/Lite suppress motion. Mobile media switches were detected as missing in first screenshot, FIXED and verified in last CI; generic glass card obstructed photo, replaced with narrow cue label. **Functional difference and actual animated appearance now proven**, artistic quality still awaits user review.
+- Matrix: HERO V90 CI+real screenshots ✅; HOMEPAGE 3 editorial service acts/8 links ✅ prior; FILMS 3 manual-play original videos ✅ prior; EVENTS / SEO pages ✅ automated contracts; detailed pages / Contact UX / social share SEO / compositional imagery rights / responsive photography / JS hydration security / CD release audit ongoing. **NEXT**: original media source quality/asset strategy and cohesive service pages, not another identical hero.
+- V90 asset limitation: originally packaged photos are low-ish resolution and certain people/events are shown; rights, media choice and brand-fit require original owner approval, not merely technical reachability. Some photos aren't a cinematic modern DJ booth like the user's mockup; do NOT pretend redesign equals chosen generated reference.
+- Main and live untouched, release blocked pending auto-deploy review, unique verified main backup tag, tested rollback and separate publication approval when main auto-deploys.
+
+---
+
+## 2026-11-13 V90 / SHOW WALL VISIBLE DIFFERENCE EXPERIMENT
+- Owner says **all former designs look identical** despite many versions: same static purple live photo, one weak wave and 2–3 green beam effects, no recognizable motion/3D. Actual V89 hero Chromium screenshot confirms visual criticism. Do not treat test/SEO/doc-only changes as redesign.
+- Current base V89 PR #86 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07` with exact-head green CI #43425095295, screenshot artifact #14037051076. V90 draft PR #88 branch `design/v90-kinetic-3d-live-show-wall` implemented NEW JSX + original scoped CSS.
+- Rotation matrix snapshot: Hero V90 — **actual visual redesign submitted, exact-head CI/screenshots not yet confirmed**, defects before: static dark image + negligible ambient effect, after: 3D montage using three real local media, kinetic lime ticker across masthead, mode selection reshuffles photographs, Light Desk tone/on-off physically changes media effect; next: audit *mobile visual feedback and image resolution*; Services V89 — done earlier, owner aesthetic approval pending; Film V87 — tested; Events V88 — tested; Contact, inner service pages, footer, privacy, SSR, perf — still audit rotation due.
+- Authored proof: `show-wall-v90.css` perspective + 3D transform keyframes + no reduced/Lite/background animation; `KineticShowWall.tsx` 3 actual source-owned photos, decorative and aria-hidden, no autoplay audio/video. On mobile only one image visible, no moving heavy 3D. Reuses scene controls and LIGHT DESK with new effect (not a dead switch).
+- AUDIT BEFORE/AFTER REQUIREMENT: capture *same 1440 and 390* old V89 browser vs V90; produce 2 frames in full motion, 1 toggled Private stage, 1 Lite; if effect invisible or lower quality, adjust, don't say 'success' because CI. Notably no logo/font/media licensing changes.
+- No merging main, no auto-publication, backup Git tag or verified rollback completed. PR #19 conflicts need separate attention.
+
+---
+
 ## V89 / 2026-11-13 — DESIGN LEVEL CORRECTION (OWNER REFERENCE)
 
 - Owner has rejected repeated small V83–V88 changes as nothing like their chosen mockup. V87 actual Chromium 1440 full-page `signature-v86-home-1440.png` shows long dark first screen, generic typography, oversized dark CTA, separated services. **Don't declare success based only on CI or version number.**

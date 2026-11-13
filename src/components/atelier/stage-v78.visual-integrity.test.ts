@@ -16,13 +16,15 @@ describe("Legacy visual assets retained, V86 signature loads instead of retired 
   expect(read("src/styles/home-event-v89.css")).toContain(".gs-home-v86 .gs-index__chapters");
  });
  it("renders accessible semantic LCP photo, new live production typography, and scene controls",()=>{
-  expect(hero).toContain('className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86"');
+  expect(hero).toContain('className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86 gs-stage-v90"');
   expect(hero).toContain('id="crafted-hero-title"');
   expect(hero).toContain("EVENIMENTE");
   expect(hero).toContain("DE <em>NEUITAT.</em>");
   expect(hero).toContain('src={scene.src}');
   expect(hero).toContain('fetchPriority={active === "live" ? "high" : undefined}');
   expect(hero).toContain("modes.map((mode)");
+  expect(hero).toContain("<KineticShowWall active={active} />");
+  expect(hero).toContain("<style>{showWallCss}</style>");
   expect(hero).toContain('className="gs-v86__graphic"');
   expect(hero).not.toContain("<ProductionDeckArt />");
  });

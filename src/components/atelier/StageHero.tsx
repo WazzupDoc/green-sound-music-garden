@@ -4,6 +4,8 @@ import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOf
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { KineticShowWall } from "@/components/atelier/KineticShowWall";
+import showWallCss from "@/styles/show-wall-v90.css?inline";
 
 
 type StageMode = "live" | "private" | "production";
@@ -87,10 +89,17 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86" data-scene={active}
+    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86 gs-stage-v90" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
       data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
       data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
+      <style>{showWallCss}</style>
+      <div className="gs-v90-ticker" aria-hidden="true">
+        <div className="gs-v90-ticker__track">
+          <span>GREEN SOUND / PRODUCȚIE LIVE / MUZICĂ / LUMINĂ / EMOȚIE</span>
+          <span>GREEN SOUND / PRODUCȚIE LIVE / MUZICĂ / LUMINĂ / EMOȚIE</span>
+        </div>
+      </div>
       <div className="crafted-hero__canvas" onPointerMove={onMove}
         onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
         <AnimatePresence mode="wait" initial={false}>
@@ -136,11 +145,9 @@ export function StageHero() {
         </svg>
       </div>
 
-      {/* A second existing Green Sound stage photograph, cropped as editorial
-          atmosphere behind ORIGINAL illustrated engineering hardware. Decorative
-          only; never masquerades as a new event or generated footage. */}
-      <img className="gs-production-backdrop-v85" src={images.scena.src} alt=""
-        width={images.scena.w} height={images.scena.h} loading="lazy" decoding="async" />
+      {/* Active show selection changes the visual composition as well as the copy.
+          Existing project photographs — no new or invented event imagery. */}
+      <KineticShowWall active={active} />
 
 
       <div className="gs-poster__marquee" aria-hidden="true">

@@ -13,8 +13,15 @@ describe("V86 redesign removes V85's synthetic desk and preserves original show 
   expect(hero).not.toContain("<ProductionDeckArt />");
   expect(route).not.toContain("homeProductionCss");
   expect(route).toContain('homeSignatureCss from "@/styles/home-signature-v86.css?inline"');
-  expect(hero).toContain('className="gs-production-backdrop-v85"');
-  expect(hero).toContain('src={images.scena.src} alt=""');
+  // The single inset photo has been replaced with three existing Green Sound
+  // media sources inside an original perspective editorial composition.
+  expect(hero).not.toContain('className="gs-production-backdrop-v85"');
+  expect(hero).toContain("<KineticShowWall active={active} />");
+  const wall=read("src/components/atelier/KineticShowWall.tsx");
+  for(const media of ["images.scena","images.dj","images.concert"]){
+   expect(wall).toContain(media);
+  }
+  expect(wall).toContain('aria-hidden="true"');
   expect(css).toContain(".gs-home-v86 .gs-production-backdrop-v85");
  });
  it("renders one lead production act plus two side-by-side service chapters",()=>{
