@@ -1,3 +1,14 @@
+# V78 — Cinematic Stage / ACTUAL CSS loading recovery (draft, 2026-11-13)
+
+- Branch: `design/crafted-atmospheres-v78-visual-style-recovery`; based on V77 commit `93f085c98a8735dc49fe75fcafe457a3281d76bc`.
+- USER OBSERVED REGRESSION: actual Codespaces screenshots showed huge unstyled hero signal, scene info cramped, empty/unstyled page sections, and near-identical secondary pages. Original screenshot evidence was supplied by user (8 PDF exports).
+- ROOT CAUSE FOUND IN CODE: `src/styles.css` **did not import** `editorial-reset.css`, `production-index.css`, `scene-console.css`, `light-desk.css`, or `portfolio-journal.css` (nor several dedicated interaction styles). Work committed in previous V48–V77 CSS files was dormant.
+- FIX: restore 15 previously absent styles at the actual shared stylesheet entry; place editorial reset after legacy Regia rules; add `stage-v78.css` last. React Hero removes giant SVG brand stamp and shows semantic `Muzica / schimbă tot.`, real event image across full width, a native stage aperture, and a subtle transform/opacity light sweep. Original stage selector, Light Desk, real-film CTA, Contact and editorial 3-chapter / 8-service / 3-film / one-finale structure preserved.
+- Tests added: `stage-v78.visual-integrity.test.ts` validates loading order, real hero structure, reduced-motion/Lite/visibility gates. **GitHub Actions typecheck/build/gzip/unit/Chromium exact-head NOT YET CONFIRMED**. Run 360/390/430/768/1440/1920 screenshots and visual comparison before claiming approved. CSS budget 52kB gzip must not be raised.
+- No new external assets/packages/costs. `main` remains unchanged until exact-head quality verification and production deployment trigger/rollback/backup verified; the latest user message authorizes main changes but does not waive release gates.
+
+---
+
 # V77 — Light Desk keyboard Escape / focus (draft)
 
 - Based on V76 PR #70, no main merge. StageHero's native Light Desk details disclosure now closes on Escape and restores focus to summary. Added `stage-hero.light-desk-escape.test.ts` source regression test.

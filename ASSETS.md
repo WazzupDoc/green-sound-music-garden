@@ -1,3 +1,13 @@
+## V78 — 2026-11-13 / Screen-visible art direction
+
+- New media / fonts / icon sets / scripts from external vendors: **none**.
+- Reused image source: `images.concert`, `images.dj`, `images.scena` from `src/data/site.ts`; images are presented as existing Green Sound project media, not new stock or generated assets. Original ownership/source documentation should be checked before live publishing.
+- Decorative `gs-stage-v78__aperture` and `gs-stage-v78__light-sweep`: original CSS-only geometry, no attribution/license required and no new fetch. It is not an image of any event.
+- Existing user-requested earlier generated images are NOT present in the new hero integration; do not claim integration or reuse without an actual verified repository asset and provenance.
+- Styling of existing portfolio, services, Light Desk and other components is now restored to the actual CSS entrypoint; no new asset URLs.
+
+---
+
 
 ## V77 (2026-11-13)
 No assets, fonts, videos, imagery, or external libraries added. Native HTML and existing React only.

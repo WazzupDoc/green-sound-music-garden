@@ -33,6 +33,9 @@ async function main() {
       });
       assert.equal(response.status(), 200);
       await page.locator(".crafted-hero h1").waitFor({ timeout: 15000 });
+      // Wait for the React event handlers before clicking a server-rendered film control.
+      // A DOMContentLoaded-only screenshot can show the SSR UI before hydration.
+      await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({ timeout: 15000 });
       assert.equal(await page.locator("main h1").count(), 1);
       assert.equal(await page.locator(".gs-index__chapter").count(), 3);
       assert.equal(await page.locator(".gs-index__service").count(), 8);

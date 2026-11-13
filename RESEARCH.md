@@ -1,3 +1,16 @@
+## 2026-11-13 — V78 / Visual credibility, stage imagery and accessible motion
+
+- Screenshot observations (user-provided PDF exports, not third-party reference): first viewport dominated by an unstyled white circular waveform on top of a nearly invisible real stage photograph; headline falls below the fold; inner pages have large blank zones and reused layout. Reproduced by code inspection: essential CSS files missing from the **loaded** `src/styles.css` import graph. Adaptation: import existing project-original CSS; reject more cosmetic elements until prior work actually renders.
+- Webflow typography: https://webflow.com/blog/typographic-design — strong expressive headline and visual hierarchy improve immediate recognition; adaptation: two-line Romanian first-screen headline and readable service description; no source code, photo or identity copied, licensing not applicable to independently written CSS.
+- Webflow visual storytelling: https://webflow.com/blog/storytelling-websites — purposeful large imagery and constrained CTA; adaptation: foreground authentic Green Sound stage photo instead of opaque overlaid SVG and widgets. Rejected background autoplay and endless scroll/video animations.
+- MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — optional stage light sweep disabled under reduced motion and Lite; additionally pause when offscreen. No external code copied.
+- web.dev: https://web.dev/articles/optimize-lcp — keep first hero image as SSR-discoverable `<img>` with first-scene fetchPriority high; do not declare measured LCP or load additional hero assets without performance evidence.
+- New dependency/license decision: **none**. All CSS and stage effects are originally authored, no imported images/fonts/music; stock/AI imagery not used.
+- TESTUL DE ADĂUGARE: original stage aperture + one compositor transform/opacity light sweep. Differentiation: real concert image + contained framing; utility: exposes service hero instead of dominating stamp; accessibility: decorative/aria-hidden, Lite/reduced disabled; SSR: pure CSS; cost/license: zero; rollback: remove `stage-v78.css` import + restore previous Hero from V77. Browser performance/visual tests must still be confirmed.
+- Idei respinse: old oversized circle/abstract logo over real show; additional homepage widgets; animated third-party concert video; generated photos described as actual events; scroll hijack; packages added just for effects.
+
+---
+
 
 ## 2026-11-13 — V77 Light Desk keyboard interaction
 - Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details — native details/summary disclosure supports keyboard activation and a programmatic open state. No external code/assets copied; reference documentation only (license not applicable to implementation). Adaptation: Escape closes only the expanded hero Light Desk and restores focus to its summary. Rejected: new dialog/accordion dependency, keyboard trap and autoplay.
