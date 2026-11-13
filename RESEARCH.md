@@ -1,3 +1,11 @@
+## 2026-11-13 — V80 / Stage architecture, optical depth and motion safety
+
+- Webflow animation examples: https://webflow.com/blog/webpage-animation (OneTech 3D integration, LITHOSQUARE restraint): adapted the principle that motion and architecture must reinforce the composition. No design, image or source code copied.
+- Webflow motion guidance: https://help.webflow.com/hc/en-us/articles/42466201896083-Use-thoughtful-motion-and-animation : animations should not flash, should not carry essential information and need reduced-motion alternatives. Adapted by keeping new stage wings and footlight static; existing moving scanners remain gated.
+- MDN reduced motion: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion : footlight blur disabled in Lite and reduced-motion, scanners already paused. No external code copied.
+- Experiment: original CSS-only stage wings + optical floor wash, positioned on right behind the hero copy. Distinct from V79 neon portal geometry; no new image, SVG, package or font. License: original project-authored CSS. New dependency: none. Rollback: revert CSS addition; preserve V79 architecture.
+- Rejected: autoplay video, Lenis scroll hijack, expensive WebGL, a fourth decorative beam, stock event photographs, oversized headline overlays. No screenshots or performance measurements available at implementation time; visual outcome remains **unverified** until Chromium artifact review.
+
 ## 2026-11-13 — V78 / Visual credibility, stage imagery and accessible motion
 
 - Screenshot observations (user-provided PDF exports, not third-party reference): first viewport dominated by an unstyled white circular waveform on top of a nearly invisible real stage photograph; headline falls below the fold; inner pages have large blank zones and reused layout. Reproduced by code inspection: essential CSS files missing from the **loaded** `src/styles.css` import graph. Adaptation: import existing project-original CSS; reject more cosmetic elements until prior work actually renders.
