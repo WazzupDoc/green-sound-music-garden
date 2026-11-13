@@ -1,3 +1,8 @@
+
+## V97 — Contact denied clipboard retry (draft, QA pending)
+- Branch `design/v97-contact-repeat-copy-focus` stacked on V96 draft PR #95; V96 CI success run 43458490804, artifact 14054593562 (not yet visually inspected).
+- Retry of failed clipboard copy now re-focuses and selects fallback even if error state was already active.
+- CI exact-head, browser 390/1440 before/after and 6-width regression still required. No production/main changes.
 # V96 — Contact clipboard recovery / DRAFT 2026-11-13
 
 - Base: V95 branch design/v95-about-production-notes; not assuming CI status for V95.

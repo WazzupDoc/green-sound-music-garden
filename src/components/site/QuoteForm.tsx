@@ -46,6 +46,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+  const [failedCopyAttempts, setFailedCopyAttempts] = useState(0);
 
   useEffect(() => {
     if (copyStatus !== "failed") return;
@@ -53,7 +54,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     // the selectable fallback instead of leaving focus on the failed action.
     manualCopyRef.current?.focus();
     manualCopyRef.current?.select();
-  }, [copyStatus]);
+  }, [copyStatus, failedCopyAttempts]);
 
   const copyMessage = async (message: string) => {
     try {
@@ -64,6 +65,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       // Permissions and insecure contexts vary. Never claim the copy worked.
       // Render a keyboard-selectable alternative directly below the actions.
       setCopyStatus("failed");
+      // Re-select on every denied retry, even when status is already "failed".
+      setFailedCopyAttempts(attempts => attempts + 1);
     }
   };
 
