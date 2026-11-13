@@ -15,10 +15,10 @@ export const Route=createFileRoute("/servicii")({
   description:"Serviciile Green Sound Music, organizate în Muzică, Tehnică și Oameni. DJ & MC, trupă, studio, sonorizare, lumini, fum greu, hostess, ursitoare și Start Veselia.",
   path:"/servicii",jsonLd:[breadcrumbLd([{name:"Acasă",path:"/"},{name:"Servicii",path:"/servicii"}])]}),
  component:Services,
- styles: [{children:serviceIndexEditorialCss}],
 });
 function Services(){
  return <>
+  <style>{serviceIndexEditorialCss}</style>
   <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
     lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
     image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
