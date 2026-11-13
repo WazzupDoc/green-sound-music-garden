@@ -1,3 +1,10 @@
+## V87 — 2026-11-13 actual first-party published-film posters
+- Existing repository files reused as 3 poster thumbnails in EditorialPortfolio: public/media/greensound/film-nunta-ramada.webp, film-show-lumini.webp and film-studio-live.webp. All three were already referenced by real video entries in src/data/site.ts; no new external material, TikTok frame, stock/AI stand-in or third-party license introduced.
+- These posters are previews for existing filmed content, NOT a claim that a new client/festival/event was created. Video playback still only on explicit user click; Google/YouTube resources not preloaded by thumbnail selection.
+- Browser decoding from local repo paths verified at 6 viewport widths by CI app source commit 05e4dc891ebc9006ea197b2f49d7fe7913c60752, screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43420893062/artifacts/14033568505, including film contact sheet 1440/390. Screenshots are evidence, not standalone approved marketing artwork.
+
+---
+
 ## V86 — 2026-11-13 / asset and screenshot provenance
 - No new photograph/video/font/music was added. Hero and editorial services reuse already existing local project assets: images.concert, images.scena, images.dj, images.ursitoare from src/data/site.ts. Owner must still confirm original usage rights where relevant.
 - NEW visual: original inline SVG branded sound-signal line in StageHero.tsx, aria-hidden and purely decorative. Not a real waveform reading, AI-generated event image, or a client logo.
