@@ -39,6 +39,10 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   useEffect(() => {
     if (!selected) return;
     const key=(event:KeyboardEvent) => {
+      const target = event.target;
+      // Never steal arrow keys from editable controls or another dialog.
+      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
+          (target instanceof HTMLElement && (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]")))) return;
       if(event.key==="ArrowRight" || event.key==="ArrowLeft"){
         event.preventDefault();
         const pos=galleryFrames.findIndex(item=>item.id===activePhoto);
@@ -47,8 +51,10 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
         if(next)void navigate({to:"/portofoliu",search:{photo:next.id},replace:true,resetScroll:false});
       }
     };
-    document.addEventListener("keydown",key);
-    return()=>document.removeEventListener("keydown",key);
+    const dialog = document.querySelector(".rs-photo-dialog");
+    if (!dialog) return;
+    dialog.addEventListener("keydown", key as EventListener);
+    return()=>dialog.removeEventListener("keydown", key as EventListener);
   },[activePhoto,selected,navigate]);
   return (
     <section className="rs-gallery" id="portfolio-photos" aria-labelledby="rs-gallery-title">
