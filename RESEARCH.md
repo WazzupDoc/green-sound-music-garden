@@ -1,4 +1,9 @@
 
+## 2026-11-13 — V97 clipboard denied retry
+- https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — clipboard writing can reject; no guarantee of permissions or secure context. Existing manual fallback preserved.
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — predictable keyboard focus after failed action. Original React state/ref solution; no external code/assets or dependency.
+- Rejected: deprecated document.execCommand('copy') and simulated success message; both would mislead or be unreliable.
+
 ## 2026-11-13 — V95 About production notes
 - https://webflow.com/blog/music-websites-designed-with-webflow — inspected Trenchwerk and Toast Recording Studio examples: authenticity of production work and restrained editorial texture matter more than gimmicks. Adapted only the principle of media-led, story-specific hierarchy; no code/images/identity copied (not licensed for reuse).
 - https://webflow.com/made-in-webflow/music — reviewed music portfolio patterns; adapted category-based hierarchy and a clear service route. Rejected cloneables, third-party player, autoplay and decorative 3D because they do not add factual value to About.
