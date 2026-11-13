@@ -56,13 +56,23 @@ async function main() {
         "V84 actual home design wrapper must be present in SSR output");
       const serviceBg = await page.locator(".gs-index").evaluate(element =>
         getComputedStyle(element).backgroundColor);
-      assert.equal(serviceBg, "rgb(18, 29, 23)",
-        "Service section must have the new full Nightshift background (not the old beige design)");
+      assert.equal(serviceBg, "rgb(7, 23, 17)",
+        "V85 production-index must be a genuinely new dark-technical visual composition");
+      assert.equal(await page.locator(".gs-production-deck-v85 svg").count(), 1,
+        "A real authored production-console illustration must render, not just light beams");
       if (width >= 1100) {
-        const stageImage = await page.locator('.gs-index__chapter[data-chapter="stage"] .gs-index__photo').boundingBox();
-        const stageContent = await page.locator('.gs-index__chapter[data-chapter="stage"] .gs-index__chapter-body').boundingBox();
-        assert(stageImage && stageContent && stageImage.x > stageContent.x + 40,
-          "Desktop V84 service acts must alternate picture/text order, not repeat the old card grid");
+        const chapterImages = await Promise.all(["sound", "stage", "people"].map(async part =>
+          page.locator(`.gs-index__chapter[data-chapter="${part}"] .gs-index__photo`).boundingBox()
+        ));
+        assert(chapterImages.every(Boolean) &&
+          chapterImages[0].x + 50 < chapterImages[1].x &&
+          chapterImages[1].x + 50 < chapterImages[2].x,
+          "V85 three real unequal photographic chapters must be presented side-by-side at desktop");
+        assert(chapterImages[0].height > chapterImages[1].height + 35,
+          "Three premium angled panels must be intentionally asymmetric, not three equal cards");
+        const desk = await page.locator(".gs-production-deck-v85").boundingBox();
+        assert(desk && desk.width > 400 && desk.height > 190,
+          "A new substantial bespoke console must be visible in the desktop hero");
       }
 
 
@@ -78,15 +88,15 @@ async function main() {
       });
       if (width === 390 || width === 1440) {
         await page.screenshot({
-          path: `${output}/nightshift-v84-home-${width}.png`,
+          path: `${output}/production-v85-home-${width}.png`,
           fullPage: true, animations: "disabled"
         });
         await page.locator(".crafted-hero").screenshot({
-          path: `${output}/nightshift-v84-hero-${width}.png`,
+          path: `${output}/production-v85-hero-${width}.png`,
           animations: "disabled"
         });
         await page.locator(".gs-index__chapters").screenshot({
-          path: `${output}/service-ledger-${width}-static.png`,
+          path: `${output}/production-v85-services-${width}.png`,
           animations: "disabled",
         });
       }
