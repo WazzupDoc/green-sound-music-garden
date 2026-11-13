@@ -218,6 +218,55 @@ async function main() {
     await motionPage.close();
 
 
+    // V89 baseline/comparison: identical route, viewport, selectors and state
+    // on the untouched V88 app and on the V89 candidate.
+    for (const width of [360, 390, 430, 768, 1440, 1920]) {
+      const detailPage = await browser.newPage({
+        viewport: { width, height: 900 }, reducedMotion: "reduce",
+      });
+      const detailResponse = await detailPage.goto(base + "/evenimente/nunti", {
+        waitUntil: "domcontentloaded", timeout: 45000,
+      });
+      assert.equal(detailResponse.status(), 200, "Real wedding-event detail route");
+      await detailPage.locator(".rs-event-timeline li").first().waitFor({ timeout: 15000 });
+      assert.equal(await detailPage.locator("main h1").count(), 1);
+      assert.equal(await detailPage.locator(".rs-event-timeline li").count(), 5);
+      assert.equal(await detailPage.locator(".rs-event-offerings li").count(), 5);
+      await noOverflow(detailPage, "/evenimente/nunti", width);
+      if (width === 390 || width === 1440) {
+        await detailPage.locator(".rs-event-timeline").screenshot({
+          path: `${output}/event-detail-timeline-${width}.png`, animations: "disabled",
+        });
+        await detailPage.locator(".rs-event-offerings").screenshot({
+          path: `${output}/event-detail-services-${width}.png`, animations: "disabled",
+        });
+      }
+      // Test the new visitor-selected brief only when present on the V89 branch.
+      const eventBrief = detailPage.locator(".gs-event-detail-brief");
+      if (await eventBrief.count()) {
+        const toggles = eventBrief.locator('button[aria-pressed]');
+        assert.equal(await toggles.count(), 5, "Offerings preserve all five selection options");
+        await toggles.nth(0).click();
+        await toggles.nth(2).click();
+        assert.equal(await toggles.nth(0).getAttribute("aria-pressed"), "true");
+        assert.equal(await toggles.nth(2).getAttribute("aria-pressed"), "true");
+        const hidden = await eventBrief.locator('input[name="services"]').inputValue();
+        assert(hidden.includes("|"), "Two selected services are serialized in the real Contact allowlist format");
+        assert.equal(await eventBrief.locator('input[name="event"]').inputValue(), "Nuntă");
+        await Promise.all([
+          detailPage.waitForURL(/\/contact\?/),
+          eventBrief.locator('button[type="submit"]').click(),
+        ]);
+        await detailPage.locator('form[aria-label="Cerere de ofertă"]').waitFor({ timeout: 15000 });
+        for (const value of hidden.split("|")) {
+          assert(await detailPage.locator('.gs-quote__choice input[type="checkbox"]')
+            .evaluateAll((inputs, wanted) => inputs.some(input => input.value === wanted && input.checked), value),
+            `Selected service ${value} must survive navigation to Contact`);
+        }
+      }
+      await detailPage.close();
+    }
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });
