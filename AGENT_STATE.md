@@ -1,3 +1,14 @@
+## V90 FINAL REAL BROWSER CHECK — 2026-11-13
+
+- **Owner complaint triggered actual further work:** First V90 prototype was still too similar to V89; inspected its real screenshot (CI #43428734092) and **revised** photo geometry into a large visible diagonal, stronger emerald graphic area and a real title entrance animation.
+- **Actual V90 application code SHA** `b6d6173c8344306a0214bfedcd9f1967d88ce9fd` has both CI [push #43429307850](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850) and [PR #43429300542](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429300542) SUCCESS: 84/84 Vitest / 30 files, TypeScript strict, SSR/Vite, gzip budgets, Chromium at 360/390/430/768/1440/1920, pointer+title full-motion, reduced, Lite, lights-off, 20-page SEO audit, Contact hydration/no-JS.
+- **REAL before/after screenshot evidence:** V89 BEFORE https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 (premium-v89-hero-390/1440.png); V90 AFTER https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850/artifacts/14039850169 (spectrum-v90-hero-390/1440.png; active/Lite/lights-off at 1440). See `docs/V90_VISUAL_QA.md` for exact same route, size/state and honest verdict.
+- **Visual change verified:** large diagonal photographic light cut vs previous full-bleed image, brighter emerald dark brand field, 8-curve original SVG spectral motion over actual owned source photo, animated staggered headline, real cursor response; active motion works and Lite/reduced disables it. No fake photos/audio, packages, new homepage widget or site redesign claims. **Owner acceptance pending.**
+- **Gzip sizes measured:** home 110.9/190 kB, Quote 31.2/50, shared CSS 51.3/52. No field Lighthouse/LCP score claimed. This documentation addition advances branch HEAD, so exact-head CI recheck is still required.
+- **Next zone:** Contact/Guided Event Brief, then all service detail routes, Studio/Despre, footer, SEO/SSR/privacy and release gates. Branch PR #87 stays draft, main/production untouched. Parallel event detail PR #85 must not be implicitly integrated.
+
+---
+
 ## 2026-11-13 — V90 / owner feedback → TOP HERO REAL DIFFERENCE GATE
 
 - **Owner feedback verbatim in substance:** "arata la fel ca de obicei ... nu pui o animatie sus ... alt fundal mai bun". This is a rejection of minor repetitive PR changes, not a request for another description.
