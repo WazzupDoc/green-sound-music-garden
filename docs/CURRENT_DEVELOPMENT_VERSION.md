@@ -1,3 +1,19 @@
+## V89 — GREEN SOUND / LIVE EVENT PREMIUM (13.11.2026, DRAFT)
+
+- New branch `design/v89-live-event-premium-homepage`, stacked on newest exact-head **CI green V88** SHA `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7` PR #84. V89 draft PR to follow. Main and public website unchanged.
+- Owner's specific supplied reference is `image(20261113-105439).png`: cinematic emerald concert/production page with a clear event headline, short visually rich service programme, people/crowd imagery and close visual hierarchy. *Direction only*: no screenshot source or AI event photos copied or represented as real; no fake testimonials, awards, historical achievements, production metrics.
+- **Main visible difference**: StageHero text now **EVENIMENTE / DE NEUITAT.** in huge angled typographic headline; hero photo full bleed from existing Green Sound `images.concert`, warm-green gradient, original vector signal across foreground; active 3 native scene controls, Light Desk, real film click-to-play, direct /contact CTA remain functional. Existing secondary `images.scena` inset is not shown in this V89 design to avoid collage.
+- **Services**: three genuinely unequal photo-led chapters (large left / two more compact right), but vertically shortened from prior 1000+px stretches. 8 original service links, actual local images and no unnecessary fake audio meters. New heading `Muzică. Lumini. Experiență.` with concrete description. No new homepage forms/FAQ/widget sections.
+- **Films**: keeps 3 real existing company films and source-owned local poster previews, selected manually with focus/pressed state; tighter responsive cinematic section, no automatic video/audio or YouTube resource before Play.
+- **Final CTA**: still exactly one final link to real Contact; dark cinematic closing block instead of tall solid lime panel.
+- Implementation: `src/styles/home-event-v89.css?inline` scoped in homepage SSR after V86 branded styles; V89 is an **experimental visual layer** while owner compares, to be consolidated into one stylesheet after selection rather than grow cascading versions indefinitely. No new assets, package, scripts, backend or paid service.
+- Browser QA assertions now check actual heading, computed CSS, 1440px compact hero height, shorter services, 3 existing photos decoded, 8 links, 3 actual film poster files, keyboard/Escape, reduced motion/Lite, 360/390/430/768/1440/1920 screenshot captures; every page/Contact/sitemap/SEO contract retained. **No CI or screenshot claim until exact-head run actually passed.**
+- Research applied: web.dev `https://web.dev/articles/animations-guide` and `https://web.dev/articles/prefers-reduced-motion`; compositor-only transform for vector signal, opt-in full-motion, static final state for reduced/Lite. Chrome guidance: `https://developer.chrome.com/docs/modern-web-guidance/guides/ui-behaviors/motion`, preserve focus when masked imagery is decorative.
+- Stage/portfolio imagery from existing project only. Sources and rights remain documented `ASSETS.md`. No reuse of supplied TikTok clips.
+- RELEASE: don't touch `main` until production deploy config checked, backup tag unique and verified, exact-head merged CI green, rollback testable and explicit approval if merging publishes site automatically.
+
+---
+
 # V87 — CINEMATIC REAL FILM CONTACT SHEET (2026-11-13)
 
 - Draft PR #83: https://github.com/WazzupDoc/green-sound-music-garden/pull/83, stacked on successful V86 PR #82 exact source SHA cfa8a245b54b4d65caa8ad1d2fc62a9c0846e5b3.
