@@ -580,3 +580,42 @@ html[data-gs-performance=lite] .gs-home-v86 .gs-finale .crafted-finale__link{
  }
  .gs-home-v86 .scene-console__link{font-size:.72rem;min-height:42px}
 }
+
+/* V89 real screenshot review: the right glass notes panel still looked like
+   the old AI-template card and hid show photography. Convert it into a small
+   backstage cue at the photo edge; scene switching and the real event link
+   remain fully usable. Mobile keeps its existing compact deep link. */
+@media(min-width:851px){
+ .gs-home-v86 .scene-console{
+  width:min(100%,272px);max-width:272px;
+  border:0;border-left:3px solid #7dffa7;
+  background:#03160ed1;box-shadow:0 20px 36px #0005;
+  margin:0 0 82px;padding:0;align-self:end;transform:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none
+ }
+ .gs-home-v86 .scene-console__top{
+  display:none!important
+ }
+ .gs-home-v86 .scene-console__content{
+  padding:14px 17px
+ }
+ .gs-home-v86 .scene-console__content h2{
+  font-size:clamp(1.19rem,1.45vw,1.47rem);line-height:1.1;
+ }
+ .gs-home-v86 .scene-console__content p{
+  display:none
+ }
+ .gs-home-v86 .scene-console__link{margin-top:8px}
+}
+/* Mobile: preserve atmosphere, do not obscure every stage light behind a
+   near-black tint. This is still real first-party stage photography. */
+@media(max-width:640px){
+ .gs-home-v86 .crafted-hero__image{
+  filter:saturate(1.36) contrast(1.03) brightness(1.48)!important;
+  object-position:70% 44%!important
+ }
+ .gs-home-v86 .crafted-hero__shade{
+  background:linear-gradient(0deg,#020e09 0%,#020e09d5 25%,#020e099e 51%,#020e095c 78%,#020e0950 100%),
+             linear-gradient(90deg,#020e0938,transparent)
+ }
+}
