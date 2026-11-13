@@ -445,3 +445,76 @@ html[data-gs-performance=lite] .gs-v92-stage__cta,
 html[data-gs-performance=lite] .gs-v92-stage__glass{
  transition:none!important;animation:none!important;transform:none!important
 }
+
+/* The 8 services must not become a cloned inner-page template.
+   Chapter-specific blocking/visual grammar:
+     Music      — left editorial copy / right tilted real DJ or band photo.
+     Technical  — nearly panoramic technical frame with production markers.
+     People     — REVERSED composition, real people photo on left, copy right.
+   All eight retain the same functional quote/FAQ/video interfaces. */
+@media(min-width:901px){
+ .gs-v92-stage[data-chapter=technical] .gs-v92-stage__media{
+  width:65%;right:-1.5%;top:-19px;
+ }
+ .gs-v92-stage[data-chapter=technical] .gs-v92-stage__photo{
+  transform:perspective(1200px) rotateY(-2deg) rotateZ(-.7deg);
+  -webkit-clip-path:polygon(4% 0,100% 0,100% 93%,93% 100%,0 100%,0 7%);
+  clip-path:polygon(4% 0,100% 0,100% 93%,93% 100%,0 100%,0 7%);
+ }
+ .gs-v92-stage[data-chapter=technical] .gs-v92-stage__frame-code{
+  top:3%;left:22%;right:7%;
+ }
+ .gs-v92-stage[data-chapter=technical] .gs-v92-stage__copy{width:60%}
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__main{
+  justify-content:flex-end;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__copy{
+  width:min(59%,750px);margin-left:auto;
+  padding-left:clamp(10px,2vw,35px);
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__media{
+  right:auto;left:-3.2%;width:58%;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__photo{
+  transform:perspective(1250px) rotateY(5deg) rotateZ(1.7deg);
+  transform-origin:45% 45%;
+  -webkit-clip-path:polygon(0 0,92% 0,100% 10%,100% 100%,8% 100%,0 89%);
+  clip-path:polygon(0 0,92% 0,100% 10%,100% 100%,8% 100%,0 89%);
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__media:before{
+  inset:-4% -20% -5% 0;
+  background:linear-gradient(270deg,#061711 0%,#061711ed 9%,#06171185 30%,transparent 59%),
+    linear-gradient(0deg,#03120aa8,transparent 28%,transparent 83%,#04170b59);
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__media-label{
+  left:7%;right:auto;text-align:left;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__viewfinder{
+  inset:7% 18% 9% 7%;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__vertical{
+  left:-2.5%;right:auto;
+  writing-mode:vertical-lr;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__frame-code{
+  left:8%;right:19%;
+ }
+}
+/* Touch and tablet use a single readable natural-flow photographic opening;
+   the differentiated desktop composition must never create mobile overflow. */
+@media(max-width:900px){
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__copy{
+  width:70%;margin-left:0;padding-left:0;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__media{
+  left:auto;right:-5%;width:55%;
+ }
+}
+@media(max-width:680px){
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__copy{
+  width:100%;margin:0;padding-left:0;
+ }
+ .gs-v92-stage[data-chapter=people] .gs-v92-stage__media{
+  width:100%;left:auto;right:auto;
+ }
+}
