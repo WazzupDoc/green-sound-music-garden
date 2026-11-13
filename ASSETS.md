@@ -1,3 +1,22 @@
+## V90 QA snapshot provenance — 2026-11-13
+
+- Visual first-party image unchanged from original `/media/greensound/concert-public-lumini.webp`; source metadata in `src/data/site.ts`. Its background shape/color-grade changed through original CSS only.
+- Original 8-path SVG wave architecture, caption and 01/02/03 cue labels authored in `StageHero.tsx`; no new purchased, AI, TikTok, copied or copyrighted assets.
+- BEFORE screenshots, actual V89 source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 ; AFTER screenshots, actual V90 source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850/artifacts/14039850169 . These captures are QA evidence of application states, not marketing photos. First V90 prototype visually rejected in part and revised. `docs/V90_VISUAL_QA.md` records names/viewports and validations.
+
+---
+
+## V90 — 2026-11-13 / Spectrum Curtain
+
+- New third-party image/video/audio/stock/AI/TikTok/font/icon/API dependency: **none**.
+- Existing authenticated Green Sound source media: `images.concert.src` and mode-specific `images.dj.src` / `images.scena.src` from `src/data/site.ts`; no new publication rights asserted and no derived fake client/event.
+- Original illustration: `src/components/atelier/StageHero.tsx` contains self-authored SVG gradient, amplitude/frequency-style trajectories and small markers. This is not a live waveform, sound recording, or photograph; `aria-hidden` and `role=presentation`.
+- Original CSS: `src/styles/hero-spectrum-v90.css`. Color-grades the existing photo through standard compositing, adds luminous vector and a fine editorial 01/02/03 stripe. No imported commercial assets.
+- Before real browser reference: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 — baseline `premium-v89-hero-390.png` and `premium-v89-hero-1440.png`.
+- After: V90 GitHub Actions real screenshot IDs and URLs **pending** until generated; do not show artwork as proof of production.
+
+---
+
 ## 2026-11-13 — V89 imagery and art declaration
 
 - Added to website: **NO new image, font, stock, music, video, or logo**. Homepage uses only existing project media `images.concert`, `images.dj`, `images.scena`, `images.ursitoare` and the three first-party film posters registered in `src/data/site.ts`.

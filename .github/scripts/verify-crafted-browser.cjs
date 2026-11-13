@@ -65,6 +65,31 @@ async function main() {
       assert.equal(await page.locator(".gs-index__photo img").count(),3);
       assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
         "Original Green Sound signal mark must be in the hydrated hero");
+      // Real V90 hero, not an external mockup: rendered geometry, substantial
+      // viewport coverage and reduced-motion opt-out at every tested width.
+      const curtain = page.locator(".gs-v90__spectrum");
+      assert.equal(await curtain.count(), 1, "V90 spectral curtain must render");
+      assert((await curtain.locator(".gs-v90__spectrum-rail path").count()) >= 8,
+        "V90 original sound/light drawing must have real vector paths");
+      const visualState = await curtain.evaluate(el => {
+        const rect=el.getBoundingClientRect();
+        const rail=el.querySelector(".gs-v90__spectrum-rail");
+        return {w:rect.width,h:rect.height,alpha:parseFloat(getComputedStyle(el).opacity),
+          animation:rail?getComputedStyle(rail).animationName:"missing"};
+      });
+      assert(visualState.w > width*.45 && visualState.h > 180 && visualState.alpha>.6,
+        `Spectral art must be visibly large, not a tiny repeat: ${JSON.stringify(visualState)}`);
+      assert.equal(visualState.animation,"none","Reduced-motion must suppress V90 vector animation");
+      const photographClip = await page.locator(".crafted-hero__image")
+        .evaluate(el => getComputedStyle(el).clipPath);
+      assert(photographClip.startsWith("polygon("),
+        "V90 must materially change real hero photography into an asymmetric editorial cut");
+      if(width===390 || width===1440){
+        await page.locator(".crafted-hero").screenshot({
+          path:`${output}/spectrum-v90-hero-${width}.png`,animations:"disabled",
+        });
+      }
+ 
       assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
         "Oversized fake hardware must not render in the V86 first screen");
       if(width===1440){
@@ -224,6 +249,46 @@ async function main() {
     const realMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
     assert.match(realMotion,/gs-v89-signal-drift/,
       "Full-motion desktop genuinely animates the original Green Sound signal");
+
+    // Actual full-motion / cursor / Lite / lights-off proof, same real hero.
+    await motionPage.locator('.crafted-hero[data-stage-visible="true"][data-lights="on"]').waitFor();
+    const spectralRail=motionPage.locator(".gs-v90__spectrum-rail");
+    const spectralName=await spectralRail.evaluate(el=>getComputedStyle(el).animationName);
+    assert.match(spectralName,/gs-v90-breathe/,"Full desktop animation must really run");
+    const titleReveal = await motionPage.locator(".gs-stage-v78__line").first()
+      .evaluate(el => getComputedStyle(el).animationName);
+    assert.match(titleReveal,/gs-v90-type-reveal/,
+      "The hero title must have a real motion-enabled arrival, not only static gradient text");
+    const spectrumHero=await motionPage.locator(".crafted-hero").boundingBox();
+    assert(spectrumHero,"V90 hero has layout bounds");
+    await motionPage.mouse.move(spectrumHero.x+spectrumHero.width*.52,spectrumHero.y+spectrumHero.height*.22);
+    const spectralTransformBefore=await motionPage.locator(".gs-v90__spectrum")
+      .evaluate(el=>getComputedStyle(el).transform);
+    await motionPage.mouse.move(spectrumHero.x+spectrumHero.width*.93,spectrumHero.y+spectrumHero.height*.36);
+    await motionPage.waitForTimeout(150);
+    const spectralTransformAfter=await motionPage.locator(".gs-v90__spectrum")
+      .evaluate(el=>getComputedStyle(el).transform);
+    assert.notEqual(spectralTransformBefore,spectralTransformAfter,
+      "Vector curtain must genuinely follow the pointer");
+    await motionPage.locator(".crafted-hero").screenshot({
+      path:`${output}/spectrum-v90-active-1440.png`,animations:"allow",
+    });
+    await motionPage.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
+    assert.equal(await spectralRail.evaluate(el=>getComputedStyle(el).animationName),"none",
+      "Lite profile must disable V90 vector motion");
+    await motionPage.locator(".crafted-hero").screenshot({
+      path:`${output}/spectrum-v90-lite-1440.png`,animations:"disabled",
+    });
+    await motionPage.evaluate(()=>document.documentElement.removeAttribute("data-gs-performance"));
+    await motionPage.locator(".director-hero__lights").click();
+    assert.equal(await motionPage.locator(".crafted-hero").getAttribute("data-lights"),"off");
+    assert.equal(await spectralRail.evaluate(el=>getComputedStyle(el).animationName),"none",
+      "Light Desk OFF must suppress spectrum animation");
+    await motionPage.locator(".crafted-hero").screenshot({
+      path:`${output}/spectrum-v90-lights-off-1440.png`,animations:"disabled",
+    });
+    await motionPage.locator(".director-hero__lights").click();
+
     await motionPage.screenshot({path:`${output}/premium-v89-motion-1440.png`,
       animations:"allow",fullPage:false});
     await motionPage.evaluate(() => document.documentElement.setAttribute("data-gs-performance","lite"));

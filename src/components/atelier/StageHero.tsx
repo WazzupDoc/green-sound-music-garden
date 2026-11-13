@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOff, MoveUpRight, SlidersHorizontal } from "lucide-react";
-import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion, useTransform } from "motion/react";
 import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
@@ -74,10 +74,12 @@ export function StageHero() {
   const reduced = hydrated && Boolean(deviceReducedMotion);
   const pointerX = useMotionValue(50);
   const pointerY = useMotionValue(50);
+  const spectrumX = useTransform(pointerX, [0, 100], [-26, 26]);
+  const spectrumY = useTransform(pointerY, [0, 100], [-14, 14]);
   const spotlight = useMotionTemplate`radial-gradient(ellipse 33% 39% at ${pointerX}% ${pointerY}%, rgba(166,244,146,.20), transparent 80%)`;
   const scene = useMemo(() => modes.find((mode) => mode.key === active) ?? modes[0]!, [active]);
   const reel = active === "private" ? videos.nuntaRamada : videos.showLumini;
-  const onMove = (event: PointerEvent<HTMLDivElement>) => {
+  const onMove = (event: PointerEvent<HTMLElement>) => {
     // In adaptive lite mode stop updating expensive radial-gradient motion values.
     if (event.pointerType !== "mouse" || reduced ||
       document.documentElement.dataset["gsPerformance"] === "lite") return;
@@ -90,9 +92,9 @@ export function StageHero() {
     <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
       data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
-      data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
-      <div className="crafted-hero__canvas" onPointerMove={onMove}
-        onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
+      data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}
+      onPointerMove={onMove} onPointerLeave={() => { pointerX.set(50); pointerY.set(50); }}>
+      <div className="crafted-hero__canvas">
         <AnimatePresence mode="wait" initial={false}>
           <motion.img key={scene.key} src={scene.src} alt={scene.alt}
             width={active === "live" ? images.concert.w : active === "private" ? images.dj.w : images.scena.w}
@@ -134,6 +136,60 @@ export function StageHero() {
             fill="none" stroke="#ACFFA0" strokeOpacity=".12" strokeWidth="18" />
           <path d="M0 123 H600" stroke="#C5FFB4" strokeOpacity=".22" strokeDasharray="2 8"/>
         </svg>
+      </div>
+
+      {/* V90: An original typographic spectral curtain. This is a decorative
+          LIGHT interpretation of musical frequency, not a recording, visualization
+          of actual playing audio, or borrowed concert footage. The existing owned
+          Green Sound photograph stays the factual hero image. */}
+      <div className="gs-v90__photographic-edge" aria-hidden="true" />
+      <motion.div className="gs-v90__spectrum" aria-hidden="true"
+        style={{ x: spectrumX, y: spectrumY }}>
+        <svg viewBox="0 0 960 660" fill="none" role="presentation" focusable="false">
+          <defs>
+            <linearGradient id="gs-v90-emerald" x1="110" y1="200" x2="900" y2="500" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stopColor="#A5FFBC" stopOpacity=".02" />
+              <stop offset=".27" stopColor="#B5FFE2" stopOpacity=".95" />
+              <stop offset=".58" stopColor="#2CFF9B" stopOpacity=".9" />
+              <stop offset="1" stopColor="#A9FF5A" stopOpacity=".04" />
+            </linearGradient>
+            <linearGradient id="gs-v90-ion" x1="600" y1="70" x2="400" y2="610" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#CAFFD3" stopOpacity=".02" />
+              <stop offset=".52" stopColor="#7DFDCB" stopOpacity=".7" />
+              <stop offset="1" stopColor="#F5FFCA" stopOpacity=".04" />
+            </linearGradient>
+          </defs>
+          <g className="gs-v90__spectrum-rail" strokeLinecap="round">
+            <path d="M-60 440 C140 440 180 188 322 209 S548 522 658 272 S805 108 1050 60"
+              stroke="url(#gs-v90-emerald)" strokeWidth="3.2" />
+            <path d="M-70 477 C135 462 184 234 316 243 S546 540 681 301 S818 157 1060 116"
+              stroke="url(#gs-v90-emerald)" strokeWidth="1.45" opacity=".74" />
+            <path d="M-70 397 C145 420 190 144 327 178 S548 478 638 239 S790 61 1040 22"
+              stroke="url(#gs-v90-emerald)" strokeWidth="1.5" opacity=".76" />
+            <path d="M-70 517 C120 474 206 291 308 277 S562 554 707 329 S842 208 1060 165"
+              stroke="url(#gs-v90-emerald)" strokeWidth="1" opacity=".50" />
+            <path d="M-60 357 C148 399 198 117 342 144 S539 448 622 210 S774 38 1040 -30"
+              stroke="url(#gs-v90-emerald)" strokeWidth=".9" opacity=".5" />
+            <path d="M100 -80 C284 65 399 102 470 227 S560 442 685 560"
+              stroke="url(#gs-v90-ion)" strokeWidth="2.2" opacity=".55" />
+            <path d="M150 -80 C323 82 412 152 488 269 S586 466 737 600"
+              stroke="url(#gs-v90-ion)" strokeWidth=".85" opacity=".6" />
+            <path d="M215 -80 C348 108 456 163 514 292 S611 479 802 620"
+              stroke="url(#gs-v90-ion)" strokeWidth=".75" opacity=".5" />
+            <path d="M-60 438 C140 438 180 188 322 209 S548 522 658 272 S805 108 1050 60"
+              stroke="#88FFC4" strokeWidth="12" opacity=".055" />
+          </g>
+          <g className="gs-v90__spectrum-pips" fill="#D3FFB0">
+            <rect x="302" y="197" width="7" height="7" transform="rotate(45 305.5 200.5)" />
+            <rect x="646" y="287" width="5" height="5" transform="rotate(45 648.5 289.5)" />
+          </g>
+          <path d="M75 549H895" stroke="#B6FFD5" strokeOpacity=".28" strokeWidth="1" strokeDasharray="3 13"/>
+          <path d="M75 561H895" stroke="#B6FFD5" strokeOpacity=".09" strokeWidth="1"/>
+        </svg>
+        <span className="gs-v90__spectrum-caption">GREEN SOUND · SIGNAL IN MOTION</span>
+      </motion.div>
+      <div className="gs-v90__frequency-stripe" aria-hidden="true">
+        <span>01 — SOUND</span><span>02 — LIGHT</span><span>03 — LIVE</span>
       </div>
 
       {/* A second existing Green Sound stage photograph, cropped as editorial
