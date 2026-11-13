@@ -148,15 +148,15 @@ export function StageHero() {
       </div>
       <div className="container-site crafted-hero__layout">
         <div className="crafted-hero__intro">
-          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> GREEN SOUND MUSIC / PITEȘTI / DIN {business.founded}</div>
+          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> GREEN SOUND MUSIC / PRODUCȚIE EVENIMENTE / PITEȘTI</div>
           <h1 id="crafted-hero-title" className="crafted-hero__title gs-stage-v78__title">
-            <span className="gs-stage-v78__line">Dăm viață</span>
-            <span className="gs-stage-v78__line gs-stage-v78__line--second">fiecărui <em>eveniment.</em></span>
+            <span className="gs-stage-v78__line">EVENIMENTE</span>
+            <span className="gs-stage-v78__line gs-stage-v78__line--second">DE <em>NEUITAT.</em></span>
           </h1>
-          <p className="crafted-hero__lead">DJ & MC, muzică live, sonorizare și lumini. Construim atmosfera evenimentului tău — de la prima probă de sunet până la ultima piesă.</p>
+          <p className="crafted-hero__lead">DJ & MC, trupe live, sonorizare și lumini. De la evenimente private până la producții de scenă, punem tehnica și muzica în slujba atmosferei.</p>
           <div className="crafted-hero__actions">
             <Link to="/contact" className="crafted-button crafted-button--light">
-              Solicită o ofertă <ArrowUpRight aria-hidden className="size-4" />
+              Planifică evenimentul <ArrowUpRight aria-hidden className="size-4" />
             </Link>
             <button type="button" className="crafted-text-action" onClick={() => setShowReel(true)} data-cursor-label="PLAY FILM">
               <CirclePlay aria-hidden className="size-5" /> Privește un show real

@@ -1,3 +1,13 @@
+## 2026-11-13 — V89 imagery and art declaration
+
+- Added to website: **NO new image, font, stock, music, video, or logo**. Homepage uses only existing project media `images.concert`, `images.dj`, `images.scena`, `images.ursitoare` and the three first-party film posters registered in `src/data/site.ts`.
+- V89 graphics: original existing SVG signal in StageHero, presented in a more dominant but still decorative hero composition. This waveform is illustrative, **not real-time sound measurement or a captured audio signal**. All authored CSS `src/styles/home-event-v89.css`.
+- AI-generated user's reference webpage screenshot is used ONLY as visual direction, not embedded or sliced into fake Green Sound event photos. Previously uploaded TikTok clips are business context, NOT permission to place frames in public site.
+- Browser screenshot evidence must refer to exact GitHub CI artifacts with recorded source SHA, route, 1440/390 widths. They are captured actual UI screenshots, NOT marketing assets.
+- Prior rights/provenance conditions for existing photos and video posters remain; require owner approval of original media sources for production.
+
+---
+
 ## V87 — 2026-11-13 actual first-party published-film posters
 - Existing repository files reused as 3 poster thumbnails in EditorialPortfolio: public/media/greensound/film-nunta-ramada.webp, film-show-lumini.webp and film-studio-live.webp. All three were already referenced by real video entries in src/data/site.ts; no new external material, TikTok frame, stock/AI stand-in or third-party license introduced.
 - These posters are previews for existing filmed content, NOT a claim that a new client/festival/event was created. Video playback still only on explicit user click; Google/YouTube resources not preloaded by thumbnail selection.

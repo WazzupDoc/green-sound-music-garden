@@ -54,13 +54,27 @@ async function main() {
       assert.equal(await page.locator(".gs-index__routing").count(), 0);
       assert.equal(await page.locator(".gs-home-v86").count(), 1,
         "Only V86 scoped homepage art direction must render");
+      const h1Text = await page.locator(".crafted-hero h1").innerText();
+      assert.match(h1Text,/EVENIMENTE/, "New event-first headline actually renders");
+      assert.match(h1Text,/NEUITAT/, "New green oversized second line actually renders");
+      const heroHeight = (await page.locator(".crafted-hero").boundingBox())?.height ?? Infinity;
+      if(width===1440) {
+        assert(heroHeight < 790,
+          `V89 hero must be more compact than previous 900px concepts: ${heroHeight}px`);
+      }
+      assert.equal(await page.locator(".gs-index__photo img").count(),3);
       assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
         "Original Green Sound signal mark must be in the hydrated hero");
       assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
         "Oversized fake hardware must not render in the V86 first screen");
+      if(width===1440){
+        const indexHeight = (await page.locator(".gs-index").boundingBox())?.height ?? Infinity;
+        assert(indexHeight < 1120,
+          `V89 should end service chapter within approximately 1 viewport: ${indexHeight}px`);
+      }
       const serviceBg = await page.locator(".gs-index").evaluate(el => getComputedStyle(el).backgroundColor);
-      assert.equal(serviceBg, "rgb(11, 33, 24)",
-        "V86 page must have its own computed service background, not old CSS");
+      assert.equal(serviceBg, "rgb(6, 25, 17)",
+        "V89 compact event programme must be visible, not the prior V86 styling");
       if (width >= 1100) {
         const rects = await Promise.all(["sound", "stage", "people"].map(key =>
           page.locator(`.gs-index__chapter[data-chapter="${key}"]`).boundingBox()
@@ -116,15 +130,15 @@ async function main() {
       });
       if (width === 390 || width === 1440) {
         await page.screenshot({
-          path: `${output}/signature-v86-home-${width}.png`,
+          path: `${output}/premium-v89-home-${width}.png`,
           fullPage: true, animations: "disabled"
         });
         await page.locator(".crafted-hero").screenshot({
-          path: `${output}/signature-v86-hero-${width}.png`,
+          path: `${output}/premium-v89-hero-${width}.png`,
           animations: "disabled"
         });
         await page.locator(".gs-index__chapters").screenshot({
-          path: `${output}/signature-v86-services-${width}.png`,
+          path: `${output}/premium-v89-services-${width}.png`,
           animations: "disabled",
         });
         await page.locator(".director-reel").screenshot({
@@ -208,9 +222,9 @@ async function main() {
     await motionPage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
     const waveform = motionPage.locator(".gs-v86__graphic svg");
     const realMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
-    assert.match(realMotion,/gs-v86-signal-drift/,
+    assert.match(realMotion,/gs-v89-signal-drift/,
       "Full-motion desktop genuinely animates the original Green Sound signal");
-    await motionPage.screenshot({path:`${output}/signature-v86-motion-1440.png`,
+    await motionPage.screenshot({path:`${output}/premium-v89-motion-1440.png`,
       animations:"allow",fullPage:false});
     await motionPage.evaluate(() => document.documentElement.setAttribute("data-gs-performance","lite"));
     const liteMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);

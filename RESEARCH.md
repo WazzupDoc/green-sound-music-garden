@@ -1,3 +1,14 @@
+## 2026-11-13 — V89: user-led cinema/event production composition
+
+- PRIMARY reference: uploaded specific Green Sound generated homepage mockup `image(20261113-105439).png`, used for overall **hierarchy**, NOT as copied image, code, film or fictional company evidence. Aim: clear big hero, lighting + sound motif, compact production chapters and genuine project film proof; no fake metrics (`500+`, `100%`, `10+`) or copied imagery.
+- [web.dev: How to create high-performance CSS animations](https://web.dev/articles/animations-guide) (inspected 2026-11-13): transform/opacity should animate on compositor; avoid changing top/left or shadow blur in every frame. Adapted to opt-in slow transform shift of the **original inline Green Sound waveform**, disable under Lite/reduced. Rejected permanently running expensive WebGL or pointer-tracked illumination.
+- [web.dev: prefers-reduced-motion](https://web.dev/articles/prefers-reduced-motion) (inspected 2026-11-13): decorative motion off for those who request it; preserve static final scene and content. Used positive `hover:hover && prefers-reduced-motion:no-preference` guard; CSS Lite override.
+- [Chrome modern web motion](https://developer.chrome.com/docs/modern-web-guidance/guides/ui-behaviors/motion) (inspected 2026-11-13): masks/clip paths can clip focus rings, so only **non-interactive photos** use polygon masks; buttons and links keep visible focus on unmasked ancestors.
+- No source-code component lifted from Webflow/Awwwards/third-party sites; no external scripts, icon licenses or new dependency. User mockup photography was not integrated. Existing Green Sound photos still need rights confirmation by owner.
+- TESTUL DE ADĂUGARE: original differentiating design = compact bold typographic event entry, real Green Sound show, service chapters remain live; utility = clear navigation/direct offer and visible services; performance = CSS only no new media requests, CPU-only animation disabled in Lite/reduced; accessibility = SSR native links and keyboard focus; rollback = revert V89 PR. Art direction quality **subject to actual screenshot comparison and owner verdict**, not claimed automatically.
+
+---
+
 ## 2026-11-13 — V87 source-driven cinematic film selection
 - Source context: previously inspected https://webflow.com/blog/music-websites-designed-with-webflow (music company authenticity via real show imagery and clear ability to navigate work), adapted into 3 locally source-backed live-film poster selectors rather than copy of any template/code.
 - Previously inspected https://web.dev/articles/animations-guide (use CSS transform/opacity and avoid layout effects). Thumbnail selection subtly scales on hover/focus only in full motion, with Lite/reduced gates. No scroll hijacking, no new animation library, no external embeds until Play.

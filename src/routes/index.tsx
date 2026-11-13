@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { StageHero } from "@/components/atelier/StageHero";
 import homeSignatureCss from "@/styles/home-signature-v86.css?inline";
+import premiumEventCss from "@/styles/home-event-v89.css?inline";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { localBusinessLd, pageHead } from "@/lib/seo";
@@ -28,6 +29,7 @@ function Home() {
     <div className="gs-home-v86">
       {/* Scoped, SSR-delivered: this redesign does not alter the dedicated pages. */}
       <style>{homeSignatureCss}</style>
+      <style>{premiumEventCss}</style>
       <StageHero />
       <ProductionIndex />
       <EditorialPortfolio />

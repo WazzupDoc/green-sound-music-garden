@@ -86,9 +86,9 @@ export function ProductionIndex() {
             <span>01 — 08 / SERVICII</span>
           </div>
           <div className="gs-index__intro-grid">
-            <h2 id="gs-index-title">Sunetul. Scena. <em>Oamenii.</em></h2>
+            <h2 id="gs-index-title">Muzică. Lumini. <em>Experiență.</em></h2>
             <div className="gs-index__intro-note">
-              <p>Alege serviciul de care ai nevoie: DJ & MC, trupă live, sonorizare, lumini sau servicii pentru invitați. Detaliile de montaj și desfășurare le stabilim în funcție de eveniment.</p>
+              <p>DJ & MC, trupă live, sunet, lumini și momente pentru invitați. O producție construită în jurul evenimentului tău.</p>
               <Link to="/servicii">Explorează toate serviciile <ArrowUpRight className="size-4" aria-hidden /></Link>
             </div>
           </div>
