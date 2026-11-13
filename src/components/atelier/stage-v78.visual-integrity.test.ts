@@ -39,6 +39,12 @@ describe("V78 visual stylesheet recovery", () => {
     expect(hero).toContain('className="gs-stage-v78__aperture"');
   });
 
+  it("hydrates consistently before applying browser-only reduced-motion preference", () => {
+    expect(hero).toContain("const deviceReducedMotion = useReducedMotion()");
+    expect(hero).toContain("const reduced = hydrated && Boolean(deviceReducedMotion)");
+    expect(hero).toContain('data-hydrated={hydrated ? "true" : "false"}');
+  });
+
   it("keeps the new light effect decorative, pauseable and disabled in Lite and reduced motion", () => {
     expect(stage).toContain('pointer-events:none');
     expect(stage).toContain('transform:translate3d');
