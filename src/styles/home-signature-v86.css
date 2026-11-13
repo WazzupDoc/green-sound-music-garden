@@ -543,3 +543,40 @@ html[data-gs-performance=lite] .gs-home-v86 .crafted-button--light{
  from{transform:translate3d(-2.2%,0,0) scaleX(.99);opacity:.67}
  to{transform:translate3d(2.2%,0,0) scaleX(1.01);opacity:1}
 }
+
+/* V86 mobile visual audit correction: the modal-sized scene-notes card pushed
+   the hero beyond 1,000px on a 390px phone. Preserve its actual event deep link,
+   but make it a compact inline context row and remove redundant title/copy. */
+@media(max-width:640px){
+ .gs-home-v86 .scene-console{
+  display:block;width:100%;max-width:100%;
+  margin:0;padding:0;background:transparent;
+  box-shadow:none;border:0;border-top:1px solid #7ac88c51;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
+ }
+ .gs-home-v86 .scene-console__top,
+ .gs-home-v86 .scene-console__content h2,
+ .gs-home-v86 .scene-console__content p,
+ .gs-home-v86 .scene-console__bottom{
+  display:none!important;
+ }
+ .gs-home-v86 .scene-console__content{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px 18px;padding:8px 0 3px;
+ }
+ .gs-home-v86 .scene-console__eyebrow{
+  font-size:.56rem;letter-spacing:.13em;color:#b6ecaa;
+ }
+ .gs-home-v86 .scene-console__link{
+  display:inline-flex;align-items:center;
+  padding:0;min-height:43px;margin:0;
+  color:#e1f8cd;font-size:.74rem;
+  border-bottom:1px solid #b6f5a6;
+ }
+ .gs-home-v86 .crafted-hero__scroll{display:none!important}
+ .gs-home-v86 .crafted-hero__layout,
+ .gs-home-v86 .gs-stage-v78 .crafted-hero__layout{
+  padding-bottom:20px;gap:11px
+ }
+ .gs-home-v86 .crafted-hero__bottom{padding-top:8px}
+}
