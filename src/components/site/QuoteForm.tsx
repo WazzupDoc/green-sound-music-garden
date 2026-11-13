@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, CheckCircle2, ClipboardCopy, Mail, MessageCircle, PencilLine } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/site";
@@ -45,6 +45,13 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   // Never open a popup from an asynchronous schema validation callback.
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
+  const previewHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  // After a valid preparation, announce and focus the actual next stage.
+  // The user still chooses WhatsApp/email/copy; nothing sends automatically.
+  useEffect(() => {
+    if (prepared) previewHeadingRef.current?.focus();
+  }, [prepared]);
 
   const copyMessage = async (message: string) => {
     try {
@@ -107,7 +114,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <span>GREEN SOUND / CERERE PREGĂTITĂ</span>
           <span className="quote-preview__step">PASUL 02 / 02</span>
         </div>
-        <h3 id="quote-preview-title" className="quote-preview__title">
+        <h3 id="quote-preview-title" className="quote-preview__title"
+          ref={previewHeadingRef} tabIndex={-1}>
           Verifică mesajul înainte de trimitere.
         </h3>
         <p className="quote-preview__intro">

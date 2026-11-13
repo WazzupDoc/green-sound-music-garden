@@ -1,12 +1,16 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { FileText, MessageCircle, Phone } from "lucide-react";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
 /** Sticky conversion bar on phones: call, WhatsApp, quote. */
 export function MobileActionBar() {
+  const location = useLocation();
+  // The contact page already provides direct phone/WhatsApp and the full quote.
+  // The global fixed strip would conceal controls and duplicate the offer CTA.
+  if (location.pathname === "/contact") return null;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-[#0A0F15] pb-[env(safe-area-inset-bottom)] sm:hidden">
+    <div data-gs-mobile-action-bar="true" className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-[#0A0F15] pb-[env(safe-area-inset-bottom)] sm:hidden">
       <div className="grid grid-cols-3">
         <a href={business.phoneHref} className="flex flex-col items-center gap-1 py-3 text-base font-medium">
           <Phone className="size-5 text-primary" aria-hidden />

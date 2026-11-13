@@ -1,3 +1,30 @@
+## V92 — corrected FINAL app-source screenshot evidence
+
+- Verified final Contact / quote-preview UI with corrected mobile contrast: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649/artifacts/14045816881 (source SHA `9dd53301`).
+- Before comparison same route /contact, same 390/1440 viewport, reduced motion: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507 .
+- No external media, third-party code or costs introduced; images are QA real-browser captures only.
+
+---
+
+## V92 real-browser visual QA — 2026-11-13
+
+- V91 BEFORE: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507
+- V92 AFTER app-source `3c68af4`: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248/artifacts/14045801050
+- Identical route/viewport names: `contact-v92-intro-390/1440.png`, `contact-v92-brief-390/1440.png`, plus validation/preview captures for candidate. Screenshots are **QA evidence** from Playwright, not new website images or representations of a real event.
+- New external images/packages/AI/stock/TikTok: zero. Decorative `gs-contact-v92__frequency` artwork is original SVG; automatic audio, send backend, analytics and fees are absent. Latest new contrast fix needs separate CI to confirm.
+
+---
+
+## V92 — 2026-11-13 / Contact Production Brief
+
+- New external assets, photographs, audio, video, stock, AI-generated people or TikTok frames: **none**.
+- New third-party font, icon package, code or paid/external service: **none**. Existing Lucide imports remain licensed as in repository; the only new image is original inline SVG waveform/engineering score in `src/routes/contact.tsx`, decorative and hidden from accessibility tree.
+- CSS `src/styles/contact-production-v92.css` is original. No image downloaded or new tracking request. The Contact funnel only prepares WhatsApp/mailto links or copyable text, without sending automatically.
+- BEFORE real Chromium baseline: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507 (`contact-v92-intro-390/1440.png`, `contact-v92-brief-390/1440.png`).
+- AFTER proof and QA artifact: pending fresh V92 exact-head CI; do not claim or present synthetic mockups.
+
+---
+
 ## 2026-11-13 V90 / perspective show wall provenance
 - **No new photograph or video**; purely new authored CSS and React geometric rendering. `src/components/atelier/KineticShowWall.tsx` references three **existing locally packaged** media entries from `src/data/site.ts`: `images.scena` (green stage lights), `images.dj` (people/music; an event photo, **not** purported mixer hardware), `images.concert` (concert crowd). Each references an existing `public/media/greensound/*.webp` local file. Existing owner rights/usage conditions remain unchanged.
 - The new animation is made entirely from CSS transform/opacity over original photos; artificial visual layers are explicitly graphical, not recordings or actual live sound levels. All labels STAGE / PEOPLE / LIVE are editorial chapter labels, not client names or proven results.

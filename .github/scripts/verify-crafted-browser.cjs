@@ -281,6 +281,86 @@ async function main() {
     await motionPage.close();
 
 
+    // V92 Contact identical-viewport BEFORE/AFTER evidence on the same real
+    // route and reduced-motion state; V91 baseline branch has untouched UI.
+    for (const contactWidth of [360, 390, 430, 768, 1440, 1920]) {
+      const visualContact = await browser.newPage({
+        viewport: { width: contactWidth, height: 900 }, reducedMotion: "reduce",
+      });
+      const direct = await visualContact.goto(base + "/contact", {
+        waitUntil: "domcontentloaded", timeout: 45000,
+      });
+      assert.equal(direct.status(), 200, "Actual Contact route must respond 200");
+      await visualContact.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout: 15000});
+      await visualContact.locator('form[aria-label="Cerere de ofertă"] input[name="name"]').waitFor();
+      assert.equal(await visualContact.locator("main h1").count(), 1);
+      await noOverflow(visualContact, "/contact", contactWidth);
+      if(contactWidth===390 || contactWidth===1440){
+        await visualContact.locator(".director-contact-intro").screenshot({
+          path:`${output}/contact-v92-intro-${contactWidth}.png`,animations:"disabled",
+        });
+        await visualContact.locator(".director-contact-brief-flow").screenshot({
+          path:`${output}/contact-v92-brief-${contactWidth}.png`,animations:"disabled",
+        });
+        await visualContact.screenshot({
+          path:`${output}/contact-v92-viewport-${contactWidth}.png`,
+          animations:"disabled",fullPage:false,
+        });
+      }
+      await visualContact.close();
+    }
+
+    // The V92 form stays real. Validate a failure first, then a valid
+    // preview with keyboard focus and explicit manual channel selection.
+    const quotePage = await browser.newPage({
+      viewport: {width:390,height:900},reducedMotion:"reduce",
+    });
+    await quotePage.goto(base + "/contact", {waitUntil:"domcontentloaded"});
+    assert.equal(await quotePage.locator('[data-gs-mobile-action-bar="true"]').count(),0,
+      "Contact must not have duplicate fixed mobile offer bar covering form fields");
+    await quotePage.locator('form[aria-label="Cerere de ofertă"] input[name="name"]')
+      .waitFor({timeout:15000});
+    const formSubmit=quotePage.locator('form[aria-label="Cerere de ofertă"] button[type="submit"]');
+    await formSubmit.click();
+    await quotePage.locator(".gs-quote__errors").waitFor({timeout:8000});
+    assert.equal(await quotePage.locator("#q-name").getAttribute("aria-invalid"),"true");
+    await quotePage.locator(".director-contact-quote").screenshot({
+      path:`${output}/contact-v92-validation-390.png`,animations:"disabled",
+    });
+    await quotePage.locator("#q-name").fill("Client Test Green Sound");
+    await quotePage.locator("#q-phone").fill("0712345678");
+    await quotePage.locator("#q-event").selectOption("Nuntă");
+    await quotePage.locator('input[name="consent"]').check();
+    await formSubmit.click();
+    const preview = quotePage.locator("#quote-preview-title");
+    await preview.waitFor({timeout:12000});
+    await quotePage.waitForFunction(() =>
+      document.activeElement?.id === "quote-preview-title", {timeout:8000});
+    assert.match(await quotePage.locator(".quote-preview__intro").innerText(),
+      /Nimic nu a fost transmis încă/);
+    assert.equal(await quotePage.locator(".quote-preview__whatsapp").getAttribute("target"),"_blank");
+    const previewColors = await quotePage.locator(".quote-preview__email").evaluate(el=>({
+      foreground:getComputedStyle(el).color,
+      background:getComputedStyle(el).backgroundColor,
+    }));
+    assert.equal(previewColors.foreground,"rgb(246, 255, 240)",
+      "Manual email action must be readable on cream Contact preview");
+    assert.equal(previewColors.background,"rgb(13, 80, 48)");
+    assert.equal(await quotePage.locator(".quote-preview__identity")
+      .evaluate(el=>getComputedStyle(el).color),"rgb(216, 239, 201)",
+      "Quote author attribution must remain legible on the dark ticket");
+    assert.equal(await quotePage.locator(".quote-preview__intro strong")
+      .evaluate(el=>getComputedStyle(el).color),"rgb(42, 81, 54)",
+      "No-send notice must not inherit pale text on pale paper");
+
+    await quotePage.locator(".director-contact-quote").screenshot({
+      path:`${output}/contact-v92-preview-390.png`,animations:"disabled",
+    });
+    await quotePage.locator(".quote-preview__edit").click();
+    assert.equal(await quotePage.locator("#q-name").inputValue(),"Client Test Green Sound",
+      "Editing the prepared brief must preserve typed information");
+    await quotePage.close();
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });

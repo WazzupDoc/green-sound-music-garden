@@ -1,11 +1,12 @@
 import { ClientOnly, createFileRoute, useHydrated } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { business, services as serviceCatalogue } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import { eventTypeOptions } from "@/lib/quote";
 import { isValidBriefDate } from "@/lib/brief-date";
+import contactProductionCss from "@/styles/contact-production-v92.css?inline";
 
 const allowedTypes: readonly string[] = eventTypeOptions;
 type EventOption = (typeof eventTypeOptions)[number];
@@ -22,8 +23,8 @@ function parseServices(raw: unknown): string[] {
 }
 
 /**
- * All query fields are optional, so ordinary `<Link to="/contact" />`
- * calls stay valid. Only trusted allowed enum values and bounded text survive.
+ * All query fields are optional, so ordinary <Link to="/contact" /> calls
+ * stay valid. Only trusted allowed enum values and bounded text survive.
  */
 function validateBrief(search: Record<string, unknown>): BriefQuery {
   const brief: BriefQuery = {};
@@ -55,6 +56,7 @@ export const Route = createFileRoute("/contact")({
   }),
   component: Contact,
 });
+
 function Contact() {
   // On native GET navigation the dev SSR/router may initially omit validated
   // search values; the client must not render different initial markup.
@@ -68,38 +70,105 @@ function Contact() {
   const fromBrief = Boolean(event || date || location || selectedServices.length);
 
   return (
-    <>
-      <section className="director-contact-intro" aria-labelledby="director-contact-title">
-        <div className="container-site">
-          <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
-          <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
-          <p>
-            {fromBrief
-              ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
-              : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
-          </p>
+    <div className="gs-contact-v92">
+      <style>{contactProductionCss}</style>
+
+      <section className="director-contact-intro gs-contact-v92__hero"
+        aria-labelledby="director-contact-title">
+        <div className="container-site gs-contact-v92__hero-grid">
+          <div className="gs-contact-v92__headline">
+            <span className="gs-contact-v92__eyebrow">GREEN SOUND MUSIC / CONTACT & PRODUCȚIE · PITEȘTI</span>
+            <h1 id="director-contact-title">
+              <span>PLANUL</span>
+              <span>TĂU.</span>
+              <em>RITMUL NOSTRU.</em>
+            </h1>
+            <p>
+              {fromBrief
+                ? "Am păstrat selecția făcută pe site. Verifică detaliile evenimentului și pregătește mesajul pentru canalul pe care îl alegi."
+                : "O petrecere, un concert sau un eveniment de firmă? Spune-ne data, locația și ce îți dorești. Pregătim împreună muzica, sonorizarea și luminile potrivite."}
+            </p>
+            <a className="gs-contact-v92__jump" href="#contact-form-title">
+              Începe cererea <ArrowDownRight size={21} strokeWidth={1.3} aria-hidden />
+            </a>
+          </div>
+
+          <div className="gs-contact-v92__score" aria-hidden="true">
+            <div className="gs-contact-v92__score-top">
+              <span>GS / 02</span><span>SIGNAL → BRIEF</span>
+            </div>
+            <svg className="gs-contact-v92__score-art" viewBox="0 0 650 510"
+              fill="none" role="presentation" focusable="false">
+              <g className="gs-contact-v92__staff" stroke="#C6FFAE" strokeWidth="1">
+                <path d="M0 96H650M0 177H650M0 258H650M0 339H650M0 420H650"
+                  strokeOpacity=".14" strokeDasharray="4 14" />
+                <path d="M80 0V510M216 0V510M352 0V510M488 0V510M624 0V510"
+                  strokeOpacity=".08" />
+              </g>
+              <g className="gs-contact-v92__frequency" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M-80 296L36 296L78 218L112 352L153 103L197 400L242 149L289 319L329 183L374 339L416 95L460 411L500 221L536 290L580 188L620 278L725 278"
+                  stroke="#D5FFAD" strokeWidth="3.4" />
+                <path d="M-80 317L36 317L78 263L112 369L153 156L197 432L242 201L289 348L329 226L374 364L416 142L460 446L500 254L536 315L580 229L620 310L725 310"
+                  stroke="#89F4AA" strokeWidth="1.5" strokeOpacity=".65" />
+                <path d="M-80 275L36 275L78 175L112 322L153 65L197 372L242 105L289 283L329 142L374 304L416 47L460 373L500 182L536 266L580 146L620 245L725 245"
+                  stroke="#F1FFD0" strokeWidth="1.1" strokeOpacity=".37" />
+              </g>
+              <g fill="#D9FFB4">
+                <rect x="147" y="96" width="11" height="11" transform="rotate(45 152.5 101.5)" />
+                <rect x="409" y="89" width="10" height="10" transform="rotate(45 414 94)" />
+              </g>
+              <path d="M30 470H620" stroke="#D4FBBE" strokeOpacity=".35" strokeWidth="1" />
+            </svg>
+            <span className="gs-contact-v92__score-caption">FĂRĂ AUTOMATIZĂRI ASCUNSE. TU ALEGI CUM TRIMIȚI.</span>
+          </div>
+
+          <ol className="gs-contact-v92__route" aria-label="Cum funcționează cererea">
+            <li><small>01 / DETALII</small><strong>Descrii evenimentul</strong></li>
+            <li><small>02 / VERIFICARE</small><strong>Previzualizezi mesajul</strong></li>
+            <li><small>03 / TRIMITERE</small><strong>Tu alegi WhatsApp sau email</strong></li>
+          </ol>
         </div>
       </section>
-      <section className="section director-contact-brief-flow" aria-labelledby="contact-form-title">
-        <div className="container-site grid items-start gap-14 lg:grid-cols-[.72fr_1.28fr] xl:gap-24 director-contact-brief-layout">
-          <aside>
-            <span className="crafted-index">01 / CONTACT DIRECT</span>
-            <h2 className="crafted-heading mt-6">O discuție bună <em>pornește totul.</em></h2>
-            <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">Trimite detaliile evenimentului. Formularul pregătește mesajul în WhatsApp sau email; îl trimiți tu din aplicația aleasă.</p>
-            <div className="mt-12 space-y-7 border-t border-border pt-8">
-              <a href={business.phoneHref} className="group flex items-center gap-4 text-xl font-semibold"><Phone className="size-5 text-primary" aria-hidden /> {business.phoneDisplay}<ArrowUpRight className="size-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden /></a>
-              <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 text-lg"><MessageCircle className="size-5 text-primary" aria-hidden /> Scrie-ne pe WhatsApp<ArrowUpRight className="size-4 text-primary" aria-hidden /></a>
-              <a href={`mailto:${business.email}`} className="flex items-center gap-4 text-lg"><Mail className="size-5 text-primary" aria-hidden /> {business.email}</a>
-              <p className="flex gap-4 text-foreground/70"><MapPin className="size-5 shrink-0 text-primary" aria-hidden /> {business.address.street}, {business.address.city}, jud. {business.address.region}</p>
+
+      <section className="section director-contact-brief-flow gs-contact-v92__flow"
+        aria-labelledby="contact-form-title">
+        <div className="container-site gs-contact-v92__workbench">
+          <aside className="gs-contact-v92__direct" aria-label="Contact direct Green Sound Music">
+            <span className="gs-contact-v92__kicker">01 / LINIE DIRECTĂ</span>
+            <h2>Preferi să <em>vorbim direct?</em></h2>
+            <p>Spune-ne despre evenimentul tău în ritmul tău. Pentru o cerere detaliată, formularul din dreapta îți pregătește mesajul, fără să îl trimită automat.</p>
+            <div className="gs-contact-v92__channels">
+              <a href={business.phoneHref}>
+                <span className="gs-contact-v92__channel-no">01</span>
+                <span><small>SUNĂ</small><strong>{business.phoneDisplay}</strong></span>
+                <Phone size={18} strokeWidth={1.5} aria-hidden />
+              </a>
+              <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
+                <span className="gs-contact-v92__channel-no">02</span>
+                <span><small>WHATSAPP</small><strong>Scrie-ne direct</strong></span>
+                <MessageCircle size={18} strokeWidth={1.5} aria-hidden />
+              </a>
+              <a href={`mailto:${business.email}`}>
+                <span className="gs-contact-v92__channel-no">03</span>
+                <span><small>EMAIL</small><strong>{business.email}</strong></span>
+                <Mail size={18} strokeWidth={1.5} aria-hidden />
+              </a>
             </div>
+            <p className="gs-contact-v92__locality"><MapPin size={19} strokeWidth={1.5} aria-hidden />
+              {business.address.street}, {business.address.city}, jud. {business.address.region}
+            </p>
           </aside>
-          <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
-            <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
-            <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
+
+          <div className="director-contact-quote gs-contact-v92__quote">
+            <div className="gs-contact-v92__form-heading">
+              <span className="gs-contact-v92__kicker">02 / BRIEF DE EVENIMENT</span>
+              <h2 id="contact-form-title">Hai să punem <em>detaliile cap la cap.</em></h2>
+              <p>Alegi serviciile, verifici mesajul și apoi decizi unde îl trimiți. Nicio cerere nu pleacă automat de pe site.</p>
+            </div>
             <ClientOnly fallback={
-              <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
+              <div role="status" className="gs-contact-v92__fallback">
                 <p>Pregătim formularul pentru evenimentul tău…</p>
-                <p className="text-sm">Poți folosi și telefonul sau WhatsApp din zona de contact.</p>
+                <p>Între timp, poți folosi telefonul sau WhatsApp din secțiunea Contact direct.</p>
               </div>
             }>
               <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}|${selectedServices.join("|")}`}
@@ -109,6 +178,6 @@ function Contact() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

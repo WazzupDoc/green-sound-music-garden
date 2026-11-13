@@ -1,0 +1,407 @@
+/* V92 / CONTACT PRODUCTION BRIEF
+ * Original asymmetric typographic art direction, without external photos,
+ * new packages or invented event footage. Contact functions remain real.
+ */
+.gs-contact-v92{background:#071b12;color:#e9f5e8;overflow:clip}
+.gs-contact-v92__hero{
+  position:relative;isolation:isolate;color:#092316;
+  background:#dfebd5;padding:clamp(145px,12vw,185px) 0 0;
+  overflow:hidden
+}
+.gs-contact-v92__hero::before{
+  content:"";position:absolute;top:0;inset-inline:0;height:105px;
+  background:#07180f;z-index:-1
+}
+.gs-contact-v92__hero-grid{
+  position:relative;display:grid;
+  grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);
+  gap:0 clamp(20px,4vw,65px)
+}
+.gs-contact-v92__headline{
+  position:relative;z-index:3;padding:12px 0 clamp(35px,5vw,80px)
+}
+.gs-contact-v92__eyebrow,
+.gs-contact-v92__kicker{
+  display:block;font-size:clamp(.56rem,.65vw,.73rem);
+  font-weight:850;letter-spacing:.20em;line-height:1.5
+}
+.gs-contact-v92__eyebrow{color:#27683b}
+.gs-contact-v92__headline h1{
+  display:flex;flex-direction:column;align-items:flex-start;
+  margin:clamp(20px,3.3vw,46px) 0 0;
+  font-family:var(--font-display);
+  font-size:clamp(4.4rem,8.35vw,10rem);
+  line-height:.82;letter-spacing:-.088em;
+  font-weight:900;text-transform:uppercase;
+  text-wrap:balance
+}
+.gs-contact-v92__headline h1>span:last-of-type{
+  color:#177243;
+}
+.gs-contact-v92__headline h1 em{
+  display:block;margin-top:.23em;
+  font-family:var(--font-serif),Georgia,serif;
+  font-weight:500;text-transform:none;
+  letter-spacing:-.056em;line-height:.92;
+  font-size:clamp(2.7rem,4.5vw,5.85rem);
+  color:#123726
+}
+.gs-contact-v92__headline>p{
+  max-width:52ch;margin:clamp(20px,3vw,38px) 0 0;
+  font-size:clamp(1rem,1.07vw,1.2rem);line-height:1.68;
+  color:#355141
+}
+.gs-contact-v92__jump{
+  display:inline-flex;align-items:center;justify-content:space-between;
+  gap:28px;min-height:52px;margin-top:clamp(23px,3vw,40px);
+  padding:11px 0;border-bottom:2px solid #176b3c;
+  font-size:.84rem;font-weight:850;letter-spacing:.02em;
+  color:#0b4729;text-decoration:none
+}
+.gs-contact-v92__jump svg{transition:transform .24s cubic-bezier(.18,.75,.2,1)}
+.gs-contact-v92__jump:hover svg{transform:translate(3px,4px)}
+.gs-contact-v92__score{
+  position:relative;z-index:2;min-height:clamp(355px,39vw,530px);
+  align-self:start;overflow:hidden;
+  clip-path:polygon(13% 0,100% 0,100% 100%,0% 100%);
+  background:
+    repeating-linear-gradient(90deg,transparent 0 18%,#c4ffb809 18.12%),
+    linear-gradient(135deg,#083822 0%,#0c5830 47%,#052a1c 100%);
+  color:#caffb7;
+  box-shadow:inset 0 0 0 1px #b6ef9a40
+}
+.gs-contact-v92__score::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(120deg,transparent 34%,#d2ffad15 35%,transparent 36%,transparent 49%,#d3ffb915 50%,transparent 51%);
+}
+.gs-contact-v92__score-top{
+  position:relative;z-index:2;display:flex;justify-content:space-between;gap:15px;
+  padding:26px 28px 0 19%;
+  font-size:.63rem;font-weight:800;letter-spacing:.15em
+}
+.gs-contact-v92__score-art{
+  position:absolute;left:0;right:0;top:6%;
+  width:100%;height:91%;display:block;overflow:visible
+}
+.gs-contact-v92__frequency{
+  filter:drop-shadow(0 0 8px #a7ff9d6b)
+}
+.gs-contact-v92__score-caption{
+  position:absolute;z-index:2;bottom:19px;right:30px;left:19%;
+  font-size:.55rem;letter-spacing:.13em;font-weight:800;
+  line-height:1.5;text-align:right;color:#d8ffc5
+}
+.gs-contact-v92__route{
+  position:relative;z-index:3;grid-column:1/-1;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:0;padding:0;list-style:none;
+  border-top:1px solid #1a5a3866;
+  border-bottom:1px solid #1a5a3866
+}
+.gs-contact-v92__route li{
+  min-height:92px;display:flex;flex-direction:column;
+  justify-content:center;gap:8px;padding:18px clamp(16px,2.7vw,40px);
+  border-left:1px solid #1a5a3866
+}
+.gs-contact-v92__route li:first-child{border-left:0;padding-left:0}
+.gs-contact-v92__route li small{
+  color:#216c43;font-size:.63rem;font-weight:850;letter-spacing:.18em
+}
+.gs-contact-v92__route li strong{
+  color:#1a3826;font-size:clamp(.82rem,1vw,1.07rem);
+  font-weight:750;line-height:1.35
+}
+.gs-contact-v92__flow{
+  background:#061911;
+  padding:clamp(72px,7vw,118px) 0 clamp(85px,8vw,135px)
+}
+.gs-contact-v92__workbench{
+  display:grid;grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);
+  align-items:start;gap:clamp(30px,5.5vw,115px)
+}
+.gs-contact-v92__direct{
+  position:relative;padding-top:clamp(15px,3vw,55px);
+}
+.gs-contact-v92__direct::before{
+  content:"";position:absolute;left:0;top:0;width:75px;height:3px;background:#b4ed84
+}
+.gs-contact-v92__direct .gs-contact-v92__kicker{color:#afe991}
+.gs-contact-v92__direct h2{
+  margin:clamp(27px,3vw,42px) 0 0;
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,4.1vw,5.35rem);
+  font-weight:750;line-height:1.02;letter-spacing:-.075em;
+  color:#f0ffeb;max-width:11ch
+}
+.gs-contact-v92__direct h2 em{
+  display:block;color:#b9f19a;
+  font-family:var(--font-serif),Georgia,serif;
+  letter-spacing:-.045em;font-weight:500
+}
+.gs-contact-v92__direct>p:not(.gs-contact-v92__locality){
+  color:#b9cebc;font-size:clamp(.92rem,1vw,1.04rem);
+  line-height:1.7;max-width:41ch;margin:22px 0 0
+}
+.gs-contact-v92__channels{
+  margin-top:clamp(28px,4vw,55px);
+  border-top:1px solid #a5d9aa52
+}
+.gs-contact-v92__channels a{
+  min-height:90px;padding:18px 2px;
+  display:grid;grid-template-columns:32px minmax(0,1fr) 24px;
+  align-items:center;gap:14px;border-bottom:1px solid #a5d9aa52;
+  color:#effbe9;text-decoration:none
+}
+.gs-contact-v92__channels a>span:nth-child(2){min-width:0}
+.gs-contact-v92__channels a small{
+  display:block;margin-bottom:7px;font-size:.65rem;
+  letter-spacing:.19em;font-weight:850;color:#a3dda1
+}
+.gs-contact-v92__channels a strong{
+  display:block;font-size:clamp(1rem,1.45vw,1.48rem);
+  letter-spacing:-.03em;line-height:1.24;
+  font-weight:730;overflow-wrap:anywhere
+}
+.gs-contact-v92__channels a svg{
+  justify-self:end;color:#b3f7b1;
+  transition:transform .2s ease
+}
+.gs-contact-v92__channels a:hover svg{transform:translate(3px,-3px)}
+.gs-contact-v92__channel-no{
+  font-size:.71rem;letter-spacing:.11em;
+  font-weight:800;color:#9bba9d
+}
+.gs-contact-v92__locality{
+  margin-top:30px;display:flex;align-items:flex-start;gap:12px;
+  font-size:.89rem;line-height:1.6;color:#afc7b2
+}
+.gs-contact-v92__locality svg{flex:none;color:#b3f7a3}
+.gs-contact-v92 .director-contact-quote{
+  min-width:0;margin-top:-38px;padding:clamp(23px,3.1vw,48px);
+  background:#e4efdc!important;border:0!important;
+  color:#0c2819;box-shadow:22px 24px 0 #194f3380;
+  position:relative
+}
+.gs-contact-v92 .director-contact-quote::before{
+  content:"";position:absolute;left:0;top:0;
+  width:100%;height:7px;
+  background:linear-gradient(90deg,#126640 0 27%,#72d38e 27% 65%,#c9efa9 65%)
+}
+.gs-contact-v92__form-heading .gs-contact-v92__kicker{color:#166b3d}
+.gs-contact-v92__form-heading h2{
+  margin:clamp(15px,1.8vw,27px) 0 0;
+  font-family:var(--font-display);
+  font-size:clamp(2.35rem,3.45vw,4.5rem);
+  font-weight:760;line-height:1.05;letter-spacing:-.075em
+}
+.gs-contact-v92__form-heading h2 em{
+  color:#207b4b;font-family:var(--font-serif),Georgia,serif;
+  font-weight:500;letter-spacing:-.05em
+}
+.gs-contact-v92__form-heading p{
+  max-width:52ch;margin:17px 0 30px;color:#42614d;
+  font-size:.93rem;line-height:1.58
+}
+/* Existing QuoteForm stays the same behavioral form; only its Contact-page
+   presentation changes. Strong labels, real focus and validation still visible. */
+.gs-contact-v92__quote form{color:#12281a}
+.gs-contact-v92__quote form label,
+.gs-contact-v92__quote form legend{color:#213e2d!important}
+.gs-contact-v92__quote form :is(input:not([type=checkbox]),select,textarea){
+  border-radius:0!important;border:1px solid #8da68d!important;
+  min-height:48px;background:#f5faf1!important;
+  color:#112c1b!important;box-shadow:none!important
+}
+.gs-contact-v92__quote form :is(input:not([type=checkbox]),select,textarea)::placeholder{color:#567360!important}
+.gs-contact-v92__quote form :is(input:not([type=checkbox]),select,textarea):focus-visible{
+  outline:3px solid #1c8a4b!important;outline-offset:2px!important;
+  border-color:#24623b!important
+}
+.gs-contact-v92__quote form :is(input,textarea,select)[aria-invalid=true]{
+  border-color:#a62121!important;outline-color:#a62121!important
+}
+.gs-contact-v92__quote form :is([role=alert],.gs-quote__errors){color:#a31b1b!important}
+.gs-contact-v92__quote .gs-quote__intro{
+  padding:19px 0 22px;border-top:1px solid #73947780;
+  border-bottom:1px solid #73947780
+}
+.gs-contact-v92__quote .gs-quote__stephead{color:#17643b}
+.gs-contact-v92__quote .gs-quote__intro h3{
+  font-family:var(--font-display);letter-spacing:-.045em;
+  font-size:clamp(1.4rem,1.7vw,2rem);line-height:1.16
+}
+.gs-contact-v92__quote .gs-quote__intro p,
+.gs-contact-v92__quote .gs-quote__selection-meta,
+.gs-contact-v92__quote .gs-quote__suggestions p,
+.gs-contact-v92__quote .gs-quote__suggestions-note{color:#3e604c}
+.gs-contact-v92__quote .gs-quote__services{
+  border-top:1px solid #73947780;padding-top:23px
+}
+.gs-contact-v92__quote .gs-quote__choice{
+  border-radius:0!important;
+  border:1px solid #88a88a!important;
+  background:#f3f8ef!important;color:#1b412b!important;
+  padding:12px 13px;min-height:44px
+}
+.gs-contact-v92__quote .gs-quote__choice[data-checked=true]{
+  background:#c9edb5!important;border-color:#1c7c4b!important;
+  box-shadow:inset 0 0 0 1px #1c7c4b;color:#0b3d23!important
+}
+.gs-contact-v92__quote .gs-quote__choice:focus-within,
+.gs-contact-v92__quote .gs-quote__suggestion:focus-visible,
+.gs-contact-v92__quote button:focus-visible{
+  outline:3px solid #117b43!important;outline-offset:4px!important
+}
+.gs-contact-v92__quote .gs-quote__count{color:#186a40}
+.gs-contact-v92__quote .gs-quote__suggestions{
+  background:#d3e7ca;border:1px solid #a9c6a7;
+  border-radius:0;padding:18px
+}
+.gs-contact-v92__quote .gs-quote__suggestion{
+  border-radius:0;border:1px solid #93b293;background:#f5faee;
+  color:#1e3c27
+}
+.gs-contact-v92__quote form button[type=submit]{
+  border-radius:0!important;background:#126d3f!important;
+  color:#f5fff1!important;border:1px solid #126d3f;
+  font-weight:800;min-height:58px
+}
+.gs-contact-v92__quote form button[type=submit]:hover{background:#0e462e!important}
+.gs-contact-v92__quote form .text-muted-foreground{color:#47634d!important}
+.gs-contact-v92__quote form a[href="/confidentialitate"]{color:#14673e!important}
+.gs-contact-v92__quote .quote-preview{color:#0e2b1a}
+.gs-contact-v92__quote .quote-preview__ticket{
+  border:1px solid #27764d;background:#103622;color:#f4ffec
+}
+.gs-contact-v92__quote .quote-preview__notice,
+.gs-contact-v92__quote .quote-preview__intro,
+.gs-contact-v92__quote .quote-preview__copy-status{color:#385b42}
+.gs-contact-v92__quote .quote-preview__manual textarea{
+  color:#14321b!important;background:#f8fff2!important;
+  border:1px solid #2e8654
+}
+.gs-contact-v92__fallback{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:12px;min-height:250px;color:#335f41
+}
+.gs-contact-v92 a:focus-visible{outline:3px solid #c6f8a8;outline-offset:5px}
+.gs-contact-v92__hero a:focus-visible{outline-color:#146c3a}
+.gs-contact-v92__quote a:focus-visible{outline-color:#15723b}
+/* No autoplay/sound/reactive audio. One compositor-only arrival on a
+   decorative authored SVG; no motion for reduced/Lite/mobile. */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  html:not([data-gs-performance=lite]) .gs-contact-v92__frequency{
+    animation:gs-contact-v92-signal 7.5s cubic-bezier(.3,.1,.6,.9) infinite alternate;
+    transform-origin:48% 55%
+  }
+}
+@keyframes gs-contact-v92-signal{
+  from{opacity:.6;transform:translate3d(-8px,5px,0)}
+  to{opacity:1;transform:translate3d(8px,-6px,0)}
+}
+@media(max-width:940px){
+ .gs-contact-v92__hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:26px}
+ .gs-contact-v92__headline h1{font-size:clamp(3.7rem,7vw,6.4rem)}
+ .gs-contact-v92__headline h1 em{font-size:clamp(2.2rem,4.9vw,4rem)}
+ .gs-contact-v92__workbench{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:30px}
+ .gs-contact-v92 .director-contact-quote{padding:24px;box-shadow:12px 14px 0 #194f3380}
+}
+@media(max-width:760px){
+ .gs-contact-v92__hero{padding-top:130px}
+ .gs-contact-v92__hero-grid{grid-template-columns:1fr;gap:0}
+ .gs-contact-v92__headline{padding:5px 0 31px}
+ .gs-contact-v92__headline h1{font-size:clamp(3.7rem,12vw,7.2rem)}
+ .gs-contact-v92__headline h1 em{font-size:clamp(2.3rem,7vw,4.6rem)}
+ .gs-contact-v92__score{min-height:215px;max-height:295px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+ .gs-contact-v92__score-top{padding:13px 16px 0}
+ .gs-contact-v92__score-caption{left:16px;right:16px;bottom:11px;font-size:.46rem}
+ .gs-contact-v92__route{gap:0}
+ .gs-contact-v92__route li{padding:18px 8px;min-height:87px}
+ .gs-contact-v92__route li:first-child{padding-left:0}
+ .gs-contact-v92__route li strong{font-size:.76rem}
+ .gs-contact-v92__route li small{font-size:.53rem;letter-spacing:.08em}
+ .gs-contact-v92__workbench{grid-template-columns:1fr;gap:40px}
+ .gs-contact-v92__direct{padding-top:18px}
+ .gs-contact-v92__direct h2{max-width:16ch;font-size:clamp(2.7rem,8vw,4.9rem)}
+ .gs-contact-v92__channels{margin-top:24px}
+ .gs-contact-v92 .director-contact-quote{margin-top:0;box-shadow:8px 10px 0 #194f3380}
+}
+@media(max-width:430px){
+ .gs-contact-v92__hero{padding-top:116px}
+ .gs-contact-v92__headline h1{font-size:clamp(3.3rem,13.6vw,4.6rem)}
+ .gs-contact-v92__headline h1 em{font-size:clamp(2.05rem,8.8vw,3.4rem)}
+ .gs-contact-v92__score{min-height:190px;max-height:220px}
+ .gs-contact-v92__headline>p{font-size:.95rem}
+ .gs-contact-v92__route li{min-height:82px}
+ .gs-contact-v92__route li strong{font-size:.69rem}
+ .gs-contact-v92__flow{padding:57px 0 90px}
+ .gs-contact-v92__form-heading h2{font-size:2.5rem}
+ .gs-contact-v92 .director-contact-quote{padding:17px;box-shadow:6px 7px 0 #194f3380}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-contact-v92 *{animation:none!important;transition:none!important}
+}
+html[data-gs-performance=lite] .gs-contact-v92 *{
+ animation:none!important;transition:none!important
+}
+
+/* V92 visual QA / REAL browser review: the inherited dark-theme preview
+ * used pale type on new light paper. Give the manually-send preview
+ * explicit accessible contrast, including WhatsApp/email/edit alternatives. */
+.gs-contact-v92__quote .quote-preview__top,
+.gs-contact-v92__quote .quote-preview__top span,
+.gs-contact-v92__quote .quote-preview__top svg,
+.gs-contact-v92__quote .quote-preview__step{
+  color:#145b32!important;
+}
+.gs-contact-v92__quote .quote-preview__title{
+  color:#0b2b1b!important;
+}
+.gs-contact-v92__quote .quote-preview__intro,
+.gs-contact-v92__quote .quote-preview__intro strong{
+  color:#2a5136!important;
+}
+.gs-contact-v92__quote .quote-preview__ticket{
+  background:#0b3120!important;color:#f0ffe9!important;
+}
+.gs-contact-v92__quote .quote-preview__ticket :is(small,span),
+.gs-contact-v92__quote .quote-preview__ticket-top,
+.gs-contact-v92__quote .quote-preview__ticket-top span{
+  color:#d3efc9!important;
+}
+.gs-contact-v92__quote .quote-preview__event,
+.gs-contact-v92__quote .quote-preview__ticket strong{
+  color:#fcfff5!important;
+}
+.gs-contact-v92__quote .quote-preview__email{
+  background:#0d5030!important;
+  border:1px solid #0d5030!important;
+  color:#f6fff0!important;
+}
+.gs-contact-v92__quote .quote-preview__email :is(svg,span){
+  color:#f6fff0!important;
+}
+.gs-contact-v92__quote .quote-preview__whatsapp{
+  background:#c9f0b2!important;
+  color:#0b351c!important;
+}
+.gs-contact-v92__quote .quote-preview__copy{
+  background:#103f29!important;color:#f7fff4!important;
+}
+.gs-contact-v92__quote .quote-preview__edit{
+  min-height:44px;color:#105834!important;
+  border-bottom:1px solid #227e4b;
+}
+.gs-contact-v92__quote .quote-preview__edit svg{color:#105834!important}
+.gs-contact-v92__quote .quote-preview__details{
+  border:1px solid #3e7354;background:#133a25;color:#f4ffef;
+}
+.gs-contact-v92__quote .quote-preview__details summary{
+  min-height:45px;color:#f4ffef;
+}
+.gs-contact-v92__quote .quote-preview__details pre{
+  color:#f4ffef;white-space:pre-wrap;overflow-wrap:anywhere;
+}
+
+/* QA: readable prepared-customer attribution on the dark preview ticket. */
+.gs-contact-v92__quote .quote-preview__ticket .quote-preview__identity{color:#d8efc9!important}

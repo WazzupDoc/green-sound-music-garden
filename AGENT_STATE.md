@@ -1,3 +1,46 @@
+## 2026-11-13 — V92 latest validated application-source QA closure
+
+- Contact V92 latest application-source SHA `9dd53301b523382d7a24e38050a5e46a715b72ec` passed exact-head [GitHub Actions #43439489649](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649), 88/88 tests across 31 suites, strict TypeScript, SSR, sitemap/20-page route audit, Chromium six widths + real invalid-to-valid Contact preview/focus/edit, original assets and mobile action bar suppression only on /contact. Gzip measured homepage entry 111.0/190kB, QuoteForm 31.3/50kB, global CSS 51.2/52kB; these are build sizes, not Lighthouse CWV.
+- Latest real Chromium AFTER screenshot artifact [#14045816881](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649/artifacts/14045816881) includes corrected visibly legible dark preview ticket attribution, email/WhatsApp/edit actions and no overlapping fixed mobile bar. Matching untouched V91 BEFORE artifact [#14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507). Desktop & mobile same-viewport images independently reviewed. See `docs/V92_VISUAL_QA.md`.
+- V92 primary visual difference is large and deliberate, not a tiny UI change: split sage/emerald magazine-scale Contact arrival, original oscillation score, truthful request-stage index and inverted paper quote layout. Client still controls message delivery, no simulated sending or backend.
+- This journal update advances branch HEAD after the verified application-source commit, so the latest documentation SHA requires its own CI. No main/production merge. NEXT rotation remains dedicated service detail pages and authentic media/conversion audit, not another homepage hero cycle.
+
+---
+
+## 2026-11-13 — V92 visual evidence + functional QA follow-up
+
+- Actual same-viewport REAL Chrome BEFORE `design/v92-contact-before-audit`, run [#43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840), [artifact 14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507); V92 AFTER app-source `3c68af407d73152f4fb8775166a663944e32572e`, run [#43438638248](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248) SUCCESS, [artifact 14045801050](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248/artifacts/14045801050). Same `/contact` route at 390/1440, reduced-motion static captures, six-width regression. See `docs/V92_VISUAL_QA.md`.
+- REAL contrast/design verdict: huge sage+forest typographic opening + original sound score; lower Contact directory + bright paper quote interface objectively changes visual hierarchy. Mobile direct channels remain accessible. Preview light-on-light errors FOUND in actual screenshot; fixed no-send text, email CTA, edit link, ticket labels with explicit colors; removed redundant fixed bottom MobileActionBar **only on Contact** through route-aware hook. A second audit noticed attribution text muted on dark preview ticket; corrected and added computed-color Playwright assertion. This final change requires new exact-head CI.
+- Actual functional browser check at green app-source: submit blank invalid -> summary and `aria-invalid` -> fill real schema-valid Romanian contact/event/consent -> focus prepared-message h3 -> verify manual WhatsApp/email and no auto-send -> edit retains data. No new backend, media or costs.
+- Rotation: **NEXT single primary zone after current V92 exact-head gate: individual /servicii/$slug detail pages**, then Studio, Despre, portfolio, responsive/accessibility, SEO/SSR/security/privacy. Hero PRs remain alternate designs, not auto-merged. No main/deploy; PR #19 conflict noted.
+
+---
+
+## 2026-11-13 — V92 Contact Production Brief / single-zone iteration
+
+- Verified **latest** source: V91 PR #89 `design/v91-service-index-editorial-rotation`, exact-head `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1`, two green CI runs #43430542206 and #43430533134. It is stacked on real Show Wall V90 PR #88; alternate Spectrum Curtain V90 PR #87 and Event Detail V89 PR #85 are separate parallel design experiments. PR #19 remains draft and conflicted. Do not merge parallel branches by assumption.
+- Single selected zone is **Contact / Guided Event Brief**, not homepage. Actual V91 baseline Contact heading is a generic nearly-blank dark strip and a standard two-column form card; real unchanged baseline captured at 390/1440 in branch `design/v92-contact-before-audit`, CI SUCCESS #43436573840, artifact #14043468507.
+- Source changes: `src/routes/contact.tsx` original oversized sage/forest typographic opening with first-party authored technical waveform, accurate three-step route, direct contact directory and light 'paper' quote panel; new `src/styles/contact-production-v92.css` SSR `?inline`, Lite/reduced-motion guard, original slow-motion signal. `QuoteForm.tsx` now focuses the prepared-message heading after validation; user still selects WhatsApp/email/copy manually, no simulated backend and URL allowlists intact.
+- Tests/QA: new Vitest source/quote contract; six viewport (360/390/430/768/1440/1920) Chromium regression, 390/1440 identically captured intro and form section, invalid/valid flow, keyboard preview focus and edit retention. **App V92 CI and after visuals not verified yet, do not call it approved.**
+- Research: Webflow best-practice contact, original split-screen direction, MDN accessible error/focus. Zero external assets/dependencies or invented screenshots, no customer/client statistics, no TikTok content.
+- Global audit matrix:
+  | Zone | Latest intervention | Visual/functional proof | Next |
+  | --- | --- | --- | --- |
+  | Hero | V90 Show Wall PR #88, V90 Spectrum Curtain PR #87 parallel | CI green on separate histories; owner acceptance pending | Later, after other routes |
+  | Navigation | V81 native stage index | Prior CI green; mobile focus audit in rotație | Later |
+  | Home services | V89 editorial chapters | Earlier captured, 3 chapters / 8 links unchanged here | Later |
+  | Service directory | V91 PR #89 | Exact-head CI green; owner visual verdict pending | Service details after Contact |
+  | Films/portfolio | V87 real poster contact sheet | Existing 3 owned assets, click-to-play | Later |
+  | Events / details | V88 index; V89 PR #85 detail parallel | Detail source CI green, must reconcile before merge | Later |
+  | **Contact** | **V92 NEW production brief + preview focus** | **BEFORE real browser confirmed, AFTER + exact-head CI pending** | **Current quality gate** |
+  | Studio / Despre | Existing pages | Need route-by-route visual + SEO/accessibility proof | Later |
+  | Footer/buttons/microcopy | Existing | Need focus and mobile obstruction checks | Later |
+  | All assets / performance / SEO / security / 404 | Existing CI sweeps | Field CWV, rights, manual testing, privacy unknown | Rolling checks |
+  | Deploy / main / rollback | Main untouched | Backup-tag/rollback/CD effects unverified | Block any publication |
+- No attempt to merge or auto-publish. PR draft only. Next planned single zone after genuine V92 QA: detailed service route, or Contact regression fix if critical.
+
+---
+
 ## 2026-11-13 V91 — /servicii editorial directory (PR #89)
 - Rotation: /servicii index only, based on V90 PR #88 branch (V90 exact-head CI not confirmed). New asymmetric alternating Music/Technology/People group composition, oversize titles, per-service index, counts, keyboard focus, mobile one-column, reduced-motion. Existing 8 direct service routes and homepage unchanged.
 - Code: src/routes/servicii.tsx, src/styles/service-index-editorial-v91.css. Source authored, no third-party assets or dependency. No proof yet of browser aesthetics, CSS computed result, 390/1440 screenshot before/after, six-width regression, TS/SSR/Vitest or exact-head CI; **do not merge/publish**.
