@@ -52,6 +52,19 @@ async function main() {
       assert.equal(await page.locator(".gs-index__signal-ledger").count(), 3,
         "One original Green Sound channel engraving per chapter");
       assert.equal(await page.locator(".gs-index__routing").count(), 3);
+      assert.equal(await page.locator(".gs-home-v84").count(), 1,
+        "V84 actual home design wrapper must be present in SSR output");
+      const serviceBg = await page.locator(".gs-index").evaluate(element =>
+        getComputedStyle(element).backgroundColor);
+      assert.equal(serviceBg, "rgb(18, 29, 23)",
+        "Service section must have the new full Nightshift background (not the old beige design)");
+      if (width >= 1100) {
+        const stageImage = await page.locator('.gs-index__chapter[data-chapter="stage"] .gs-index__photo').boundingBox();
+        const stageContent = await page.locator('.gs-index__chapter[data-chapter="stage"] .gs-index__chapter-body').boundingBox();
+        assert(stageImage && stageContent && stageImage.x > stageContent.x + 40,
+          "Desktop V84 service acts must alternate picture/text order, not repeat the old card grid");
+      }
+
 
       assert.equal(await page.locator(".director-reel__choice").count(), 3);
       assert.equal(await page.locator(".crafted-finale__link").count(), 1);
@@ -64,6 +77,14 @@ async function main() {
         fullPage: true, animations: "disabled",
       });
       if (width === 390 || width === 1440) {
+        await page.screenshot({
+          path: `${output}/nightshift-v84-home-${width}.png`,
+          fullPage: true, animations: "disabled"
+        });
+        await page.locator(".crafted-hero").screenshot({
+          path: `${output}/nightshift-v84-hero-${width}.png`,
+          animations: "disabled"
+        });
         await page.locator(".gs-index__chapters").screenshot({
           path: `${output}/service-ledger-${width}-static.png`,
           animations: "disabled",
