@@ -1,3 +1,8 @@
+## 2026-11-13 — V73 CI gate repair
+
+- Real V72 head `66969135b31d7808e2847a24bf4e14f98c5fbca6`: typecheck/build workflow 43348988088 **FAILED** in strict TypeScript, with ten errors across date validator and CTA regression; motion workflow 43348988129 passed. These failures supersede prior "CI unconfirmed" note. PR #66 mergeable=true but NOT releasable; PR #19 mergeable=false.
+- V73 branch `fix/v73-exact-head-typescript-ci` addresses both exact errors, without disabling checks. Actual V73 workflow not yet verified. Main unchanged. Rotation matrix: photo V70, homepage route V71, hero V72, **CI release gate V73**, next mobile navigation and keyboard Escape. Release gates: CI, SSR, Vitest, browser 360/390/430/768/1440/1920, Contact handoff, deployment trigger/rollback and approval.
+
 ## 2026-11-13 — V71 / CRITICAL homepage route regression repaired
 
 - Audited actual `src/routes/index.tsx` on V70 and V48: V70 routed to `RegiaHome`, which rendered hero + event selector/timeline + backstage + three films + closing CTA, contrary to the explicit V48 clean-home requirement. This was a concrete regression hidden by earlier changes to dormant `ProductionIndex` and `editorial-reset.css`.
