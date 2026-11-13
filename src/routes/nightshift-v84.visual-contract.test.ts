@@ -9,6 +9,8 @@ describe("V86 replaces V84/V85 cascade with one scoped branded design",()=>{
  it("actually loads ONE homepage stylesheet via SSR and retains the four-section promise",()=>{
   expect(route).toContain('import homeSignatureCss from "@/styles/home-signature-v86.css?inline"');
   expect(route).toContain('<style>{homeSignatureCss}</style>');
+  expect(route).toContain('<style>{premiumEventCss}</style>');
+  expect(route).toContain('home-event-v89.css?inline');
   expect(route).toContain('className="gs-home-v86"');
   expect(route).not.toContain("homeNightshiftCss");
   expect(route).not.toContain("homeProductionCss");
