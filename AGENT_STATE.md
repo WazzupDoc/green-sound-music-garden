@@ -1,3 +1,54 @@
+# AUTONOMOUS DESIGN ENGINE — 3-SPRINT BOOTSTRAP (2026-11-13)
+
+> Planning-only initialization. Preserve the complete historical journal below. No component code, screenshot or CI approval is claimed by this update.
+
+## Confirmed baseline, not assumptions
+
+- Repository: `WazzupDoc/green-sound-music-garden`; current editorial stack latest inspected: **V79** `design/crafted-atmospheres-v79-kinetic-stage-depth`, draft **PR #73**, head `fc1957dd24a7a1dc244d49a70c301040fcb81c4b`; stacked over **V78** PR #72, exact-head `c9c936e9cdaeca28c86162e9010bebe03441054b`.
+- V79 stage geometry exists and is imported from `src/styles.css`; it is NOT yet visually approved. The prior standalone `HeroCinematic.tsx` chat proposal has **not** been integrated; maintain existing real `StageHero.tsx` instead of creating a duplicate hero.
+- **V79 CI FAILS** at exact-head: [GitHub Actions #43389905448](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43389905448). TypeScript strict check, SSR build and bundle budget passed; Vitest: **63 passed / 1 failed (64 total)**, in `src/components/atelier/stage-v78.visual-integrity.test.ts`. That source assertion requires the literal `className="crafted-hero gs-stage-v78"`, but the actual V79 class list also contains `gs-stage-v79`. Repair the brittle expectation **without disabling the semantic assertion or test**. Browser six-width, real-image and visual tests did not execute in this failed workflow. Do not claim production readiness.
+- Existing home composition is locked: **hero → 3 editorial chapters / 8 service links → 3 real films → ONE final CTA**. No new sections/forms/finder on the homepage; preserve dedicated functionality on `/contact`, `/servicii` and `/evenimente`.
+- Main/production unchanged. No merge, auto-publish, extra paid service, external API, unauthorized media, forced push or history rewrite. Confirm deployment effects, backup-tag capability, rollback and exact-head CI before any release; separate approval if main deploys production.
+
+## First three virtual hours — one component/zone per execution
+
+| Hour | One area | Visible or functional deliverable | Verification and gate |
+| --- | --- | --- | --- |
+| **01 — Hero / kinetic stage** | `src/components/atelier/StageHero.tsx`, `src/styles/stage-v79.css` | Audit screenshots and visibly refine the existing V79 stage architecture: convincing optical depth / light-cone focal point that frames rather than obscures the genuine concert photo and headline. Fix stale V78 source test as a prerequisite; no parallel `HeroCinematic` import and no extra homepage CTA. | First confirm V79 CI test failure; repair without weakening checks. Capture same-page before/after at 360/390/430/768/1440/1920. Confirm actual CSS, active motion, text contrast, touch/no-hover, Lite/Save-Data, reduced motion, browser keyboard/focus and image loading. TypeScript, SSR, Vitest, gzip, exact-head CI. **Status: not started**. |
+| **02 — Navigation + mobile menu** | Existing navigation component(s), located by source inspection at sprint start | One distinctive but practical stage-curtain navigation treatment; readable hierarchy, a genuine mobile-menu focus path, Escape to close and focus restoration. Preserve semantic links and no scroll hijacking. No extra homepage section. | Six widths; real keyboard Tab/Shift+Tab/Escape; touch target, color contrast, SSR/hydration, Lite/reduced-motion and pointer tests; source tests, build, exact-head CI, screenshot before/after. **Status: queued after Hour 01 gate**. |
+| **03 — Editorial services index** | `src/components/atelier/ProductionIndex.tsx`, `src/styles/production-index.css` | Refine the asymmetric editorial treatment across three chapters and eight **direct working links** with original typographic rhythm/linework. Do not replace it with three symmetric cards or duplicate the homepage CTA. | Audit route fidelity, focus, legibility, perceived whitespace, mobile and desktop screenshot difference; avoid CLS/jank; verify two-service → Contact handoff where relevant, SSR, SEO anchors, Vitest/build/CI. **Status: queued**. |
+
+## Quality rules for every sprint
+
+1. At start: read `AGENT_STATE.md`, `docs/CURRENT_DEVELOPMENT_VERSION.md`, latest branches/PRs/commits/CI and the **actual current source**. Work from latest relevant validated lineage, not assumed version numbers. Preserve historical journal.
+2. Find one genuine aesthetic/UX defect; research >=2 suitable current professional references (Awwwards, Webflow, Godly, FWA) plus official MDN/web.dev guidance where relevant. Record date, URL, observation, technique adapted, license if importing code, rejected variants in `RESEARCH.md`. Prefer original implementation, not copying identity/code.
+3. Only one signature experiment per component. Original SVG/CSS and existing licensed packages before dependency additions. For any new dependency record bundle impact, verified permissive license, and no-dependency alternative. Real Green Sound event content must be owner-verified; Unsplash/stock/AI is NEVER represented as Green Sound's real shows and requires verified rights/source in `ASSETS.md`.
+4. Do not equate passing CI with visual quality; compare **same viewport, same route, before and after** and inspect interactive states, computed CSS, loaded asset responses, full-motion vs Lite and reduced-motion. If the visible difference is weak/inferior, revise or mark experiment rejected.
+5. Each completion updates the **component rotation matrix** below, `RESEARCH.md`, `ASSETS.md` if applicable and `docs/CURRENT_DEVELOPMENT_VERSION.md`; report exact branch, draft PR, SHA, test results, screenshot links and known limitations. Never invent measurement or declare green/mergeable without checking.
+
+## Component rotation matrix (current snapshot)
+
+| Priority | Component / route | Most recent verified context | Current defect / risk | Next required evidence |
+| --- | --- | --- | --- | --- |
+| P0 | Hero (home) | V79 PR #73, CSS/TSX implemented | Vitest fail; no new V79 before/after screenshots; scene may be visually weak or obscure text | Hour 01: code/test fix + six-width browser images/active motion |
+| P1 | Navigation / mobile | Existing implementation (not re-audited in this bootstrap) | Focus/Escape and visual distinction unverified | Hour 02: keyboard and real mobile audit |
+| P1 | Editorial services | V48/78 `ProductionIndex` editorial programme | Active images and spacing may appear blank, especially on mobile | Hour 03: direct 8 links, 3 chapters, visual comparison |
+| P1 | Three real films / gallery | V78 restoration | Some posters reported blank; source/media loading needs inspection | Hour 04 candidate: poster + play integrity |
+| P1 | Events / service discovery | Dedicated routes exist | Visual hierarchy, search, state handoff not rechecked | Later rotation |
+| P1 | Contact / Guided Event Brief | Dedicated route exists | Two-service handoff/keyboard/validation/clipboard unverified at V79 | Later rotation |
+| P2 | Studio / Despre | Existing routes to locate | Generic repetition risk | Later rotation |
+| P2 | Footer / microcopy / CTA | Existing variants | Conversion clarity and focus states unverified | Later rotation |
+| P2 | Responsive / images / icons | Existing assets and CSS | Asset provenance and image budget require measurement | Later rotation |
+| P2 | SEO / SSR / 404 / privacy / security | V78 CI previous passing, V79 browser audit skipped | V79 exact-head HTTP audit blocked | Later rotation after CI restoration |
+
+## Current state / handoff
+
+- **This execution:** initial three-hour plan added to the existing journal on a documentation-only branch; no redesign/source modification yet. CI and screenshot claims in this section refer solely to the already inspected V79 build.
+- **Next actionable hour:** **Hour 01, Hero**. Fix V79 stale Vitest assertion, validate and iterate the actual scene instead of pasting duplicate standalone hero code; create a separate draft PR and real before/after artifacts.
+- **Important:** virtual "hours" are sequencing labels. This journal does not itself schedule background work; automated execution depends on an active, authorized scheduled task.
+
+---
+
 ## 2026-11-13 — V79 2.5D KINETIC STAGE / REVIEW REQUIRED
 - Component: HERO. Baseline V78 c9c936e9cdaeca28c86162e9010bebe03441054b, PR #72. Previous V79 branch existed but no implemented diff at start of this run.
 - Changed: StageHero decorative original portal architecture (two 3D-depth trusses, perspective deck, scanning heads, horizon); new stage-v79.css imported after stage-v78.css; no new dependencies or media.
