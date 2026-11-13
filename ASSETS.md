@@ -1,3 +1,7 @@
+## V76 — 2026-11-13
+
+No assets, fonts, images, video, or dependencies added. CI screenshots are generated from the existing original-media site and are not presented as newly sourced media.
+
 ## V75 — asset provenance
 
 No new photographs, footage, fonts, icons, logos or third-party code. This iteration changes only CSS regression assertions and project documentation. Existing first-party media references unchanged. No external licensing impact.
