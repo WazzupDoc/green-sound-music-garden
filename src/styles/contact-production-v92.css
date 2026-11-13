@@ -344,3 +344,61 @@
 html[data-gs-performance=lite] .gs-contact-v92 *{
  animation:none!important;transition:none!important
 }
+
+/* V92 visual QA / REAL browser review: the inherited dark-theme preview
+ * used pale type on new light paper. Give the manually-send preview
+ * explicit accessible contrast, including WhatsApp/email/edit alternatives. */
+.gs-contact-v92__quote .quote-preview__top,
+.gs-contact-v92__quote .quote-preview__top span,
+.gs-contact-v92__quote .quote-preview__top svg,
+.gs-contact-v92__quote .quote-preview__step{
+  color:#145b32!important;
+}
+.gs-contact-v92__quote .quote-preview__title{
+  color:#0b2b1b!important;
+}
+.gs-contact-v92__quote .quote-preview__intro,
+.gs-contact-v92__quote .quote-preview__intro strong{
+  color:#2a5136!important;
+}
+.gs-contact-v92__quote .quote-preview__ticket{
+  background:#0b3120!important;color:#f0ffe9!important;
+}
+.gs-contact-v92__quote .quote-preview__ticket :is(small,span),
+.gs-contact-v92__quote .quote-preview__ticket-top,
+.gs-contact-v92__quote .quote-preview__ticket-top span{
+  color:#d3efc9!important;
+}
+.gs-contact-v92__quote .quote-preview__event,
+.gs-contact-v92__quote .quote-preview__ticket strong{
+  color:#fcfff5!important;
+}
+.gs-contact-v92__quote .quote-preview__email{
+  background:#0d5030!important;
+  border:1px solid #0d5030!important;
+  color:#f6fff0!important;
+}
+.gs-contact-v92__quote .quote-preview__email :is(svg,span){
+  color:#f6fff0!important;
+}
+.gs-contact-v92__quote .quote-preview__whatsapp{
+  background:#c9f0b2!important;
+  color:#0b351c!important;
+}
+.gs-contact-v92__quote .quote-preview__copy{
+  background:#103f29!important;color:#f7fff4!important;
+}
+.gs-contact-v92__quote .quote-preview__edit{
+  min-height:44px;color:#105834!important;
+  border-bottom:1px solid #227e4b;
+}
+.gs-contact-v92__quote .quote-preview__edit svg{color:#105834!important}
+.gs-contact-v92__quote .quote-preview__details{
+  border:1px solid #3e7354;background:#133a25;color:#f4ffef;
+}
+.gs-contact-v92__quote .quote-preview__details summary{
+  min-height:45px;color:#f4ffef;
+}
+.gs-contact-v92__quote .quote-preview__details pre{
+  color:#f4ffef;white-space:pre-wrap;overflow-wrap:anywhere;
+}
