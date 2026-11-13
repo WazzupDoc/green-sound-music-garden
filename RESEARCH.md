@@ -1,3 +1,8 @@
+
+## 2026-11-13 — V77 Light Desk keyboard interaction
+- Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details — native details/summary disclosure supports keyboard activation and a programmatic open state. No external code/assets copied; reference documentation only (license not applicable to implementation). Adaptation: Escape closes only the expanded hero Light Desk and restores focus to its summary. Rejected: new dialog/accordion dependency, keyboard trap and autoplay.
+- Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/summary — summary remains the native focusable toggle. This is an accessibility experiment; browser verification pending.
+
 ## 2026-11-13 — V76 editorial browser regression
 
 - Source: https://playwright.dev/docs/locators — stable role/locator assertions; adapted to the actual V48 editorial components, not the retired Regia selectors. No copied code or new dependency. Rejected bypassing the failing browser step or leaving its old assertions in place.

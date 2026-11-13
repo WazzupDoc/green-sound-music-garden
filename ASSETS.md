@@ -1,3 +1,7 @@
+
+## V77 (2026-11-13)
+No assets, fonts, videos, imagery, or external libraries added. Native HTML and existing React only.
+
 ## V76 — 2026-11-13
 
 No assets, fonts, images, video, or dependencies added. CI screenshots are generated from the existing original-media site and are not presented as newly sourced media.

@@ -1,3 +1,9 @@
+
+## 2026-11-13 — V77 Light Desk Escape / focus
+- Component rotation: photos V70; hero V72; CI V73–V76; **hero Light Desk keyboard V77**; NEXT navigation/mobile and actual browser focus tests.
+- Change: keep native details/summary; Escape while open closes disclosure and restores keyboard focus to summary; no dependency, image, or layout addition. Added source-level regression test. Test execution and exact-head CI unconfirmed; must validate in Chromium at six widths before merge.
+- Base: V76 PR #70, head aa447764f1035cc93c783560e826e8754b894964; PR #19 still mergeable=false. main and production untouched.
+
 ## 2026-11-13 — V76 browser CI repair / component rotation
 
 - V75 exact-head React workflow [43368719076](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43368719076) FAILED at browser: legacy `.rs-hero h1` not found after V71 restored editorial homepage. TypeScript, SSR, gzip, Vitest and architecture steps PASSED; motion workflow 43368719061 PASSED. No full green.
