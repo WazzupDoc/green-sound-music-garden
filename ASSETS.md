@@ -1,3 +1,7 @@
+## V75 — asset provenance
+
+No new photographs, footage, fonts, icons, logos or third-party code. This iteration changes only CSS regression assertions and project documentation. Existing first-party media references unchanged. No external licensing impact.
+
 ## 2026-11-13 — V73 CI repair
 
 No new media, fonts, icons or dependencies. Existing first-party Green Sound media unchanged. Only TypeScript guard and tests.
