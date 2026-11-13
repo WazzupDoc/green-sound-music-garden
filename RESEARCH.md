@@ -1,3 +1,9 @@
+## 2026-11-13 V94 — navigation / original production cue
+- https://webflow.com/blog/music-websites-designed-with-webflow (checked 2026-11-13): Best Albums 2017 uses unusual navigation hierarchy, Trenchwerk expresses music through interaction. Adapted concept only: navigation should feel like a production index and respond visibly to focus, without copying layout, media or code. No Webflow code license assumed; no code copied.
+- https://www.awwwards.com/websites/music-sound/ (reference collection): expressive typography and musical editorial pacing; inspiration only, no copied identity/code/assets.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog (checked 2026-11-13): native modal top layer, initial focus, Escape and return-focus considerations. Existing native dialog retained, route-navigation focus issue fixed. Original CSS/TSX only, zero dependency.
+- Rejected: fake mixing console/knobs in navigation, heavy 3D scene, autoplay, external images/fonts, and duplicated homepage widgets. Test of addition: useful 6-route navigation, clear active cue, CSS-only lightweight visuals, mobile one-column, SSR-safe, no license/cost, revert isolated PR. Visual approval pending actual Chromium comparison.
+
 ## 2026-11-13 — V93 Footer
 - https://www.awwwards.com/websites/music-sound/ — reference: expressive editorial type and controlled visual cadence. Adapted original oversized Green Sound wordmark-as-type, not copied design or assets; no code license needed (original CSS).
 - https://webflow.com/made-in-webflow/popular?search=music — reference: footer as closing brand signature with direct conversion action; adapted native /contact link; no external code or asset copied.
