@@ -63,6 +63,13 @@ async function main() {
           `V89 hero must be more compact than previous 900px concepts: ${heroHeight}px`);
       }
       assert.equal(await page.locator(".gs-index__photo img").count(),3);
+      assert.equal(await page.locator(".gs-v90-ticker").count(),1,
+        "The new kinetic top-band must actually be present");
+      assert.equal(await page.locator(".gs-v90-show-wall__frame").count(),3);
+      assert.equal(await page.locator(".gs-v90-show-wall").getAttribute("data-active"),"live");
+      const tickerBg = await page.locator(".gs-v90-ticker").evaluate(el=>getComputedStyle(el).backgroundColor);
+      assert.equal(tickerBg,"rgb(198, 255, 156)",
+        "V90 masthead is an unmistakable solid-lime contrast band, not the old dark beam overlay");
       assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
         "Original Green Sound signal mark must be in the hydrated hero");
       assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
@@ -84,12 +91,17 @@ async function main() {
           Math.abs(rects[1].x - rects[2].x) < 10 &&
           rects[0].height > rects[1].height * 1.4,
           "Featured chapter on left must span two editorial rows, 2 compact acts stacked on right");
-        const stagePhoto = await page.locator(".gs-production-backdrop-v85").evaluate(async img => {
-          img.loading = "eager";
-          await img.decode().catch(() => null);
-          return { width: img.naturalWidth, height: img.naturalHeight };
+        const wallImages = await page.locator(".gs-v90-show-wall__frame img").evaluateAll(async imgs => {
+          for(const img of imgs) img.loading="eager";
+          await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+          return imgs.map(img=>({w:img.naturalWidth,h:img.naturalHeight,src:img.currentSrc}));
         });
-        assert(stagePhoto.width > 0 && stagePhoto.height > 0, "Real green stage photo must load in hero");
+        assert.equal(wallImages.length,3,"Original V90 perspective art uses 3 Green Sound media files");
+        assert(wallImages.every(img=>img.w>0 && img.h>0 && img.src.includes("/media/greensound/")),
+          `All first-party V90 photos must be decoded: ${JSON.stringify(wallImages)}`);
+        const wallRect = await page.locator(".gs-v90-show-wall").boundingBox();
+        assert(wallRect && wallRect.width>500 && wallRect.height>310,
+          "V90 photo wall must physically occupy the first screen, not exist only in hidden DOM");
       }
       assert.equal(await page.locator('.crafted-hero__actions a[href="/contact"]').count(), 1,
         "Visible hero offer CTA should lead directly to the working Contact flow");
@@ -130,15 +142,15 @@ async function main() {
       });
       if (width === 390 || width === 1440) {
         await page.screenshot({
-          path: `${output}/premium-v89-home-${width}.png`,
+          path: `${output}/show-wall-v90-home-${width}.png`,
           fullPage: true, animations: "disabled"
         });
         await page.locator(".crafted-hero").screenshot({
-          path: `${output}/premium-v89-hero-${width}.png`,
+          path: `${output}/show-wall-v90-hero-${width}.png`,
           animations: "disabled"
         });
         await page.locator(".gs-index__chapters").screenshot({
-          path: `${output}/premium-v89-services-${width}.png`,
+          path: `${output}/show-wall-v90-services-${width}.png`,
           animations: "disabled",
         });
         await page.locator(".director-reel").screenshot({
@@ -212,6 +224,9 @@ async function main() {
     await activePage.locator(".crafted-hero__mode").nth(1).click();
     assert.equal(await activePage.locator(".crafted-hero").getAttribute("data-scene"), "private",
       "Stage scene controls must still work after visual redesign");
+    assert.equal(await activePage.locator(".gs-v90-show-wall").getAttribute("data-active"),"private",
+      "Scene selection must physically change the wall, not just text");
+
     await activePage.close();
 
     const motionPage = await browser.newPage({
@@ -220,15 +235,38 @@ async function main() {
     await motionPage.goto(base + "/", { waitUntil:"domcontentloaded" });
     await motionPage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
     await motionPage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
-    const waveform = motionPage.locator(".gs-v86__graphic svg");
-    const realMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
-    assert.match(realMotion,/gs-v89-signal-drift/,
-      "Full-motion desktop genuinely animates the original Green Sound signal");
-    await motionPage.screenshot({path:`${output}/premium-v89-motion-1440.png`,
+    await motionPage.locator(".gs-v90-show-wall__frame img").evaluateAll(async imgs=>{
+      for(const img of imgs)img.loading="eager";
+      await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+    });
+    await motionPage.locator('.crafted-hero[data-stage-visible="true"][data-lights="on"]').waitFor();
+    const ticker = motionPage.locator(".gs-v90-ticker__track");
+    const lead = motionPage.locator(".gs-v90-show-wall__frame--live");
+    const tickerAnimation = await ticker.evaluate(el=>getComputedStyle(el).animationName);
+    const frameAnimation = await lead.evaluate(el=>getComputedStyle(el).animationName);
+    assert.match(tickerAnimation,/gs-v90-ticker-flow/,
+      "The top cinematic typography actually travels in full motion");
+    assert.match(frameAnimation,/gs-v90-film-float/,
+      "The 3D photo wall actually floats in full motion");
+    await motionPage.screenshot({path:`${output}/v90-live-wall-motion-start-1440.png`,
       animations:"allow",fullPage:false});
+    await motionPage.waitForTimeout(1350);
+    await motionPage.screenshot({path:`${output}/v90-live-wall-motion-next-1440.png`,
+      animations:"allow",fullPage:false});
+    await motionPage.locator(".crafted-hero__mode").nth(1).click();
+    assert.equal(await motionPage.locator(".gs-v90-show-wall").getAttribute("data-active"),"private");
+    const privateTransform = await motionPage.locator(".gs-v90-show-wall__frame--private")
+      .evaluate(el=>getComputedStyle(el).transform);
+    assert.notEqual(privateTransform,"none","Selecting Private must transform a REAL photo in 3D");
+    await motionPage.screenshot({path:`${output}/v90-private-scene-1440.png`,
+      animations:"disabled",fullPage:false});
+    await motionPage.locator(".director-hero__lights").click();
+    const lightsOff = await ticker.evaluate(el=>getComputedStyle(el).animationName);
+    assert.equal(lightsOff,"none","User's Lights OFF must stop the new stage animation");
+    await motionPage.locator(".director-hero__lights").click();
     await motionPage.evaluate(() => document.documentElement.setAttribute("data-gs-performance","lite"));
-    const liteMotion = await waveform.evaluate(el => getComputedStyle(el).animationName);
-    assert.equal(liteMotion,"none","Lite must fully disable the signature wave animation");
+    const liteMotion = await ticker.evaluate(el=>getComputedStyle(el).animationName);
+    assert.equal(liteMotion,"none","Lite must fully disable the cinematic ticker");
     await motionPage.close();
 
 
@@ -252,7 +290,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V87 3 real video posters + V86 signature redesign visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V90 3D real-image show wall, live kinetic ticker and interactive Light Desk + V87 films visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
   } finally {
     await browser.close();
   }
