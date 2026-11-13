@@ -1,3 +1,13 @@
+## V90 — verified actual moving visual and mobile scene switching (2026-11-13)
+- Source UI SHA **dbd13c342a9c34c2807b6ba52e37560266d9d28f**: exact-head [PR CI #43430202828](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430202828) **SUCCESS**, 30 suites **83 tests passed**, TypeScript strict + production SSR build, six Chromium widths, 3 original perspective photos decoded and on-screen, scene mode photos actually switch on desktop/mobile, real moving headline and 3D panels and 1.35s-spaced screenshots, Lights OFF / Lite stop animations, no overflow, Contact and 20-page SEO.
+- **Real screenshot artifact #14038991587**: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430202828/artifacts/14038991587 — `show-wall-v90-hero-1440.png`, `show-wall-v90-hero-390.png`, `v90-live-wall-motion-start-1440.png`, `v90-live-wall-motion-next-1440.png`, `v90-private-scene-390.png` etc. V89 same-route reference in artifact #14037051076. Screenshots confirm the visual is NOT the same hero: now kinetic masthead + three photographed perspective planes vs single purple stage behind heading.
+- Final visual review correction (included in CI): reduced generic floating Scene Notes overlay to compact event cue so it no longer obscures third photo, and made Private/Production mode show correct distinct actual project photo on mobile.
+- Budget measured (shared only): homepage JS 110.9/190 KB gzip; shared CSS 51.3/52 KB gzip; client quote form 31.2/50 KB gzip. **Scoped V90 CSS is inline in SSR, not represented by the shared CSS gzip figure**, and full Lighthouse/LCP/FPS is NOT measured. No claim of award-level final quality.
+- Current branch is still DRAFT PR #88 stacked onto V89, not published. Documentation-only commits after source SHA require their own exact-head CI; do not assert HEAD green until separately checked.
+- Next design rotation: media-photo quality, film portfolio interaction, native service/event/detail pages, Contact conversion and Lite/performance; measure visual difference every run.
+
+---
+
 # V90 — THE SHOW WALL / New animated 3D visual art direction (2026-11-13)
 
 - User feedback: V89 still looked like V87–V88; same dark/purple concert photo and one green sine wave. **V90 replaces the principal ABOVE-THE-FOLD visual**, not just heading/font. Working code in branch `design/v90-kinetic-3d-live-show-wall`, draft PR #88 https://github.com/WazzupDoc/green-sound-music-garden/pull/88, stacked on exact-head validated V89 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07`.
