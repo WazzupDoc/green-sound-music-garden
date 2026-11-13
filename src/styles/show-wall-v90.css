@@ -489,15 +489,34 @@
   }
   /* Preserve 3D static editorial composition for those who want no motion,
      otherwise the 3 images would stack unnaturally in one spot. */
-  @media(min-width:851px){
-    .gs-v90-show-wall__frame--live{transform:rotateY(-14deg) rotateZ(3deg) translateZ(35px)!important}
-    .gs-v90-show-wall__frame--private{transform:rotateY(11deg) rotateZ(-7deg) translateZ(95px)!important}
-    .gs-v90-show-wall__frame--production{transform:rotateY(-12deg) rotateZ(5deg) translateZ(110px)!important}
-  }
+}
+@media(prefers-reduced-motion:reduce) and (min-width:851px){
+  .gs-v90-show-wall__frame--live{transform:rotateY(-14deg) rotateZ(3deg) translateZ(35px)!important}
+  .gs-v90-show-wall__frame--private{transform:rotateY(11deg) rotateZ(-7deg) translateZ(95px)!important}
+  .gs-v90-show-wall__frame--production{transform:rotateY(-12deg) rotateZ(5deg) translateZ(110px)!important}
 }
 html[data-gs-performance=lite] .gs-v90-ticker__track,
 html[data-gs-performance=lite] .gs-v90-show-wall__frame,
 html[data-gs-performance=lite] .gs-v90-show-wall__scan{
   animation:none!important;
   transition:none!important;
+}
+
+/* Unlike earlier decoration-only versions, the existing working Light Desk
+   affects the NEW show's material, atmosphere and image treatment. Static CSS
+   is harmless for JS-disabled SSR. Tone selection changes focus, no invented
+   sound-reactive data or image source. */
+.gs-stage-v90[data-light-tone=gold] .gs-v90-ticker{background:#fce6a4;border-color:#ffe9b7}
+.gs-stage-v90[data-light-tone=gold] .gs-v90-show-wall__frame-corner,
+.gs-stage-v90[data-light-tone=gold] .gs-v90-show-wall__frame{border-color:#ffe9b7a8}
+.gs-stage-v90[data-light-tone=gold] .gs-v90-show-wall__frame img{filter:saturate(.98) sepia(.19) contrast(1.05)}
+.gs-stage-v90[data-light-tone=ice] .gs-v90-ticker{background:#b4eaff;border-color:#bceaff}
+.gs-stage-v90[data-light-tone=ice] .gs-v90-show-wall__frame-corner,
+.gs-stage-v90[data-light-tone=ice] .gs-v90-show-wall__frame{border-color:#bceaffad}
+.gs-stage-v90[data-light-tone=ice] .gs-v90-show-wall__frame img{filter:saturate(.94) hue-rotate(20deg) contrast(1.12)}
+.gs-stage-v90[data-lights=off] .gs-v90-show-wall__scan{animation:none!important;opacity:0!important}
+.gs-stage-v90[data-lights=off] .gs-v90-show-wall__frame{animation:none!important}
+.gs-stage-v90[data-lights=off] .gs-v90-ticker__track{animation:none!important}
+.gs-stage-v90 .gs-v90-show-wall__frame {
+  --gs-v90-energy:var(--gs-energy,.65);
 }
