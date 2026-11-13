@@ -16,7 +16,22 @@
 @import "./styles/regia-serii-site.css";
 @import "./styles/regia-serii-portfolio.css";
 @import "./styles/regia-serii-pages.css";
+@import "./styles/scene-console.css";
+@import "./styles/light-desk.css";
+@import "./styles/production-index.css";
+@import "./styles/portfolio-journal.css";
+@import "./styles/event-brief.css";
+@import "./styles/event-journal.css";
+@import "./styles/production-journey.css";
+@import "./styles/service-mix.css";
+@import "./styles/service-discovery.css";
+@import "./styles/soundcheck.css";
+@import "./styles/atmosphere-interlude.css";
+@import "./styles/offstage.css";
+@import "./styles/signature-cursor.css";
 @import "./styles/regia-serii-final.css";
+@import "./styles/editorial-reset.css";
+@import "./styles/stage-v78.css";
 
 @custom-variant dark (&:is(.dark *));
 
