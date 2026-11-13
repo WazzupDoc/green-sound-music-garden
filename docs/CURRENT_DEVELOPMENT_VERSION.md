@@ -1,3 +1,9 @@
+# V77 — Light Desk keyboard Escape / focus (draft)
+
+- Based on V76 PR #70, no main merge. StageHero's native Light Desk details disclosure now closes on Escape and restores focus to summary. Added `stage-hero.light-desk-escape.test.ts` source regression test.
+- Exact-head CI, Chromium interaction and six-width screenshots are **not confirmed**; do not merge or deploy. PR #19 conflicts remain. No dependencies or assets.
+
+---
 # V76 — Editorial browser CI alignment (draft)
 
 - V75 exact-head [43368719076](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43368719076) FAILED in Chromium: the obsolete Regia browser script waited for `.rs-hero h1`, removed from the restored V48 editorial homepage. TypeScript, SSR, gzip, Vitest and architecture passed; separate motion CI passed.
