@@ -316,6 +316,8 @@ async function main() {
       viewport: {width:390,height:900},reducedMotion:"reduce",
     });
     await quotePage.goto(base + "/contact", {waitUntil:"domcontentloaded"});
+    assert.equal(await quotePage.locator('[data-gs-mobile-action-bar="true"]').count(),0,
+      "Contact must not have duplicate fixed mobile offer bar covering form fields");
     await quotePage.locator('form[aria-label="Cerere de ofertă"] input[name="name"]')
       .waitFor({timeout:15000});
     const formSubmit=quotePage.locator('form[aria-label="Cerere de ofertă"] button[type="submit"]');
@@ -337,6 +339,17 @@ async function main() {
     assert.match(await quotePage.locator(".quote-preview__intro").innerText(),
       /Nimic nu a fost transmis încă/);
     assert.equal(await quotePage.locator(".quote-preview__whatsapp").getAttribute("target"),"_blank");
+    const previewColors = await quotePage.locator(".quote-preview__email").evaluate(el=>({
+      foreground:getComputedStyle(el).color,
+      background:getComputedStyle(el).backgroundColor,
+    }));
+    assert.equal(previewColors.foreground,"rgb(246, 255, 240)",
+      "Manual email action must be readable on cream Contact preview");
+    assert.equal(previewColors.background,"rgb(13, 80, 48)");
+    assert.equal(await quotePage.locator(".quote-preview__intro strong")
+      .evaluate(el=>getComputedStyle(el).color),"rgb(42, 81, 54)",
+      "No-send notice must not inherit pale text on pale paper");
+
     await quotePage.locator(".director-contact-quote").screenshot({
       path:`${output}/contact-v92-preview-390.png`,animations:"disabled",
     });
