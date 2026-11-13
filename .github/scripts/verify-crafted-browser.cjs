@@ -236,6 +236,16 @@ async function main() {
           await page.waitForFunction(()=>location.hash==="#oferta-titlu");
           await page.locator("form[aria-label='Cerere de ofertă']").waitFor();
           assert.equal(await page.locator("#oferta-titlu").count(),1);
+          const expectedService = {
+            "dj-mc":"DJ & MC",
+            "echipamente-de-sunet-si-lumini":"Sonorizare, lumini, ecrane LED",
+            "ursitoare-botez":"Ursitoare / animație copii",
+          }[slug];
+          const selections = await page.locator(".gs-quote__choice[data-checked='true']")
+            .allTextContents();
+          assert(selections.some(label=>label.includes(expectedService)),
+            `The exact service must be genuinely PRESELECTED in the working form: ${slug} ${JSON.stringify(selections)}`);
+
         }
       }
       assert.deepEqual(errors, [], `Browser errors at ${width}px`);
