@@ -31,7 +31,7 @@
 @import "./styles/editorial-reset.css";
 @import "./styles/stage-v78.css";
 @import "./styles/stage-v79.css";
-@import "./styles/navigation-v81.css";
+/* The V81 navigation stylesheet is SSR-inlined by SiteHeader, not global CSS. */
 
 @custom-variant dark (&:is(.dark *));
 
