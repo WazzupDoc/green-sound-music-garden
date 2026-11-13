@@ -2,7 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { events, getService, type ServiceSlug } from "@/data/site";
 import { pageHead, breadcrumbLd, serviceLd, faqLd } from "@/lib/seo";
-import { FaqList, PageHero, QuoteSection } from "./blocks";
+import { FaqList, QuoteSection } from "./blocks";
+import { ServiceStage } from "./ServiceStage";
 import { ServiceSignature } from "./ServiceSignature";
 import type { eventTypeOptions } from "@/lib/quote";
 
@@ -25,10 +26,10 @@ export function ServicePage({slug}:{slug:ServiceSlug}) {
   const defaultEvent:(typeof eventTypeOptions)[number]|undefined =
     slug==="studio-inregistrari"?"Studio înregistrări":slug==="ursitoare-botez"?"Botez":undefined;
   return <>
-    <PageHero eyebrow={service.eyebrow} title={service.h1} lead={service.lead}
-      image={service.image}
-      crumbs={[{name:"Acasă",to:"/"},{name:"Servicii",to:"/servicii"},{name:service.name}]}/>
-    <ServiceSignature service={service} />
+    <ServiceStage service={service} />
+    <div id="din-culise" className="scroll-mt-20">
+      <ServiceSignature service={service} />
+    </div>
     <section className="rs-service-detail" aria-labelledby="rs-service-detail-title">
       <div className="container-site">
         <div className="rs-service-detail__header">

@@ -189,6 +189,65 @@ async function main() {
           document.activeElement === document.querySelector(".atelier-header__menu-btn"));
         assert.equal(await menuButton.getAttribute("aria-expanded"), "false");
       }
+      // V92: the eight inner service pages should finally have a visual
+      // language as convincing as the homepage, not the retired generic hero.
+      // Audit three distinct service disciplines at both desktop and mobile.
+      if (width === 390 || width === 1440) {
+        for (const slug of ["dj-mc","echipamente-de-sunet-si-lumini","ursitoare-botez"]) {
+          const response = await page.goto(base + "/" + slug, { waitUntil:"domcontentloaded" });
+          assert.equal(response.status(), 200, `V92 service page ${slug} returns 200`);
+          const stage = page.locator(".gs-v92-stage");
+          await stage.waitFor({timeout:12000});
+          assert.equal(await page.locator("main h1").count(),1,
+            `V92 service ${slug} has a single semantic H1`);
+          const media = await stage.locator(".gs-v92-stage__photo img").evaluate(async img=>{
+            await img.decode().catch(()=>null);
+            return {src:img.currentSrc,w:img.naturalWidth,h:img.naturalHeight};
+          });
+          assert(media.w>0 && media.h>0,
+            `V92 authentic service image missing: ${slug} / ${JSON.stringify(media)}`);
+          const stageRect = await stage.boundingBox();
+          assert(stageRect && stageRect.width >= width-2,
+            `V92 hero should fill available viewport: ${slug} /${width}`);
+          if (width === 1440) {
+            const mediaBox = await stage.locator(".gs-v92-stage__media").boundingBox();
+            const copyBox = await stage.locator(".gs-v92-stage__copy").boundingBox();
+            assert(mediaBox && copyBox,"V92 image+copy must both have visible geometry");
+            if(slug === "ursitoare-botez") {
+              assert(mediaBox.x < copyBox.x,
+                "V92 PEOPLE service must have a visibly REVERSED visual composition");
+            } else {
+              assert(mediaBox.x > copyBox.x,
+                "V92 MUSIC and TECH must lead text left and live project imagery right");
+            }
+          }
+
+          const cta = stage.locator('a[href="#oferta-titlu"]');
+          assert.equal(await cta.isVisible(),true,
+            "V92 offer CTA must be visibly reachable, not a decorative button");
+          await noOverflow(page,"/service "+slug,width);
+          await stage.screenshot({
+            path:`${output}/v92-service-stage-${slug}-${width}.png`,
+            animations:"disabled"
+          });
+          // This is a genuine same-page anchor to an existing form whose
+          // defaultServices is prefilled with the requested service.
+          await cta.click();
+          await page.waitForFunction(()=>location.hash==="#oferta-titlu");
+          await page.locator("form[aria-label='Cerere de ofertă']").waitFor();
+          assert.equal(await page.locator("#oferta-titlu").count(),1);
+          const expectedService = {
+            "dj-mc":"DJ & MC",
+            "echipamente-de-sunet-si-lumini":"Sonorizare, lumini, ecrane LED",
+            "ursitoare-botez":"Ursitoare / animație copii",
+          }[slug];
+          const selections = await page.locator(".gs-quote__choice[data-checked='true']")
+            .allTextContents();
+          assert(selections.some(label=>label.includes(expectedService)),
+            `The exact service must be genuinely PRESELECTED in the working form: ${slug} ${JSON.stringify(selections)}`);
+
+        }
+      }
       assert.deepEqual(errors, [], `Browser errors at ${width}px`);
       await page.close();
     }
