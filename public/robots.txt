@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Canonical URLs from the 20 actual site pages.
+Sitemap: https://greensoundmusic.com/sitemap.xml

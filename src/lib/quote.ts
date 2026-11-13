@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { business } from "@/data/site";
+import { business, services as serviceCatalogue } from "@/data/site";
 
 export const eventTypeOptions = [
   "Nuntă",
@@ -17,6 +17,26 @@ export const guestOptions = ["Sub 50", "50–100", "100–200", "200–400", "Pe
 export const RO_PHONE = /^(?:\+40|0040|0)7\d{8}$/;
 export const normalizePhone = (v: string) => v.replace(/[\s.\-()]/g, "");
 
+export const ADVICE_SERVICE_LABEL = "Nu știu încă — recomandați-mi";
+export const MAX_QUOTE_SERVICES = serviceCatalogue.length;
+
+const allowedServiceLabels = new Set<string>([
+  ...serviceCatalogue.map(service => service.formLabel),
+  ADVICE_SERVICE_LABEL,
+]);
+
+/** Calendar-valid ISO date; blank is allowed because event dates may be undecided. */
+const eventDateSchema = z.string().trim().refine((value) => {
+  if (!value) return true;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const [year, month, day] = value.split("-").map(Number);
+  if (!year || !month || !day) return false;
+  const parsed = new Date(Date.UTC(year, month - 1, day));
+  return parsed.getUTCFullYear() === year &&
+    parsed.getUTCMonth() + 1 === month &&
+    parsed.getUTCDate() === day;
+}, "Introdu o dată calendaristică validă.");
+
 export const quoteSchema = z.object({
   name: z.string().trim().min(2, "Scrie-ne numele tău.").max(80, "Maximum 80 de caractere."),
   phone: z
@@ -29,10 +49,10 @@ export const quoteSchema = z.object({
     .max(120)
     .refine((v) => v === "" || z.string().email().safeParse(v).success, "Adresa de email nu pare corectă."),
   eventType: z.enum(eventTypeOptions, { errorMap: () => ({ message: "Alege tipul evenimentului." }) }),
-  date: z.string().trim().max(20).optional().default(""),
+  date: eventDateSchema.optional().default(""),
   location: z.string().trim().max(120, "Maximum 120 de caractere.").optional().default(""),
-  guests: z.string().optional().default(""),
-  services: z.array(z.string()).max(12).default([]),
+  guests: z.union([z.literal(""), z.enum(guestOptions)]).default(""),
+  services: z.array(z.string().refine((label) => allowedServiceLabels.has(label), "Serviciu necunoscut.")).max(MAX_QUOTE_SERVICES, "Poți selecta cel mult opt servicii.").refine((labels) => new Set(labels).size === labels.length, "Elimină serviciile duplicate.").refine((labels) => !(labels.includes(ADVICE_SERVICE_LABEL) && labels.length > 1), "Alege servicii concrete sau opțiunea de recomandare, nu ambele.").default([]),
   message: z.string().trim().max(1500, "Maximum 1500 de caractere.").optional().default(""),
   consent: z.literal(true, { errorMap: () => ({ message: "Avem nevoie de acordul tău pentru a te contacta." }) }),
   /** Honeypot: real users never see or fill this. */

@@ -1,0 +1,128 @@
+name: Crafted Atmospheres React — typecheck and production build
+
+on:
+  push:
+    branches:
+      - "design/crafted-atmospheres-*"
+  pull_request:
+    branches:
+      - main
+      - design/green-sound-sillage-open-source
+      - "design/crafted-atmospheres-*"
+
+# When iterative design work produces several commits, only the latest branch
+# state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.
+concurrency:
+  group: crafted-react-${{ github.event_name }}-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  react-quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Install project dependencies
+        run: bun install --no-save
+      - name: TypeScript strict check
+        run: bun run typecheck
+      - name: Production SSR / Vite build
+        run: bun run build
+      - name: Enforce client bundle-size budgets
+        run: python3 .github/scripts/check-client-budget.py
+      - name: Test existing application
+        run: bun run test
+      - name: Validate site architecture
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          r=Path('src/routes')
+          for page in ['index.tsx','servicii.tsx','evenimente.index.tsx','portofoliu.tsx','contact.tsx','despre-noi.tsx','confidentialitate.tsx']:
+              assert (r/page).is_file(), page
+          for name in ['StageHero','ServicesAtelier','EventsSelector','EditorialPortfolio','ClientMotion','QuickBrief','EventSoundcheck','PortfolioJournal','EventBriefCard','SoundCursor','AtmosphereInterlude','ProductionJourney','ServiceMix','FrequencyFinder']:
+              assert (Path('src/components/atelier')/(name+'.tsx')).is_file(), name
+          css=Path('src/styles/atelier.css').read_text()
+          assert 'prefers-reduced-motion' in css
+          assert 'crafted-stage-lights' in css
+          assert Path('src/styles/directors-cut.css').is_file()
+          assert Path('src/styles/soundcheck.css').is_file()
+          assert Path('src/styles/scene-console.css').is_file()
+          assert Path('src/styles/portfolio-journal.css').is_file()
+          assert Path('src/styles/event-brief.css').is_file()
+          assert Path('src/styles/contact-editorial.css').is_file()
+          assert Path('src/styles/quote-preview.css').is_file()
+          assert Path('src/styles/quote-guidance.css').is_file()
+          assert Path('src/lib/quote-service-guidance.ts').is_file()
+          assert Path('src/lib/quote-service-guidance.test.ts').is_file()
+          assert Path('src/styles/signature-cursor.css').is_file()
+          assert Path('src/styles/light-desk.css').is_file()
+          assert Path('src/styles/offstage.css').is_file()
+          assert Path('src/styles/atmosphere-interlude.css').is_file()
+          signal=Path('src/components/atelier/AtmosphereInterlude.tsx').read_text()
+          assert 'gs-pulse__transport' in signal and 'gs-pulse-tempo' in signal
+          assert 'IntersectionObserver' in signal and 'visibilitychange' in signal
+          assert 'gs-studio-signal' in Path('src/styles/atmosphere-interlude.css').read_text()
+          assert Path('src/styles/production-journey.css').is_file()
+          assert Path('src/styles/service-mix.css').is_file()
+          assert Path('src/styles/service-discovery.css').is_file()
+          assert Path('src/lib/service-discovery.ts').is_file()
+          assert Path('src/lib/service-discovery.test.ts').is_file()
+          assert Path('.github/scripts/audit-public-pages.cjs').is_file()
+          assert Path('src/styles/frequency-finder.css').is_file()
+          assert Path('src/styles/performance-adaptive.css').is_file()
+          assert Path('src/lib/performance.ts').is_file()
+          assert Path('.github/scripts/check-client-budget.py').is_file()
+          assert Path('public/sitemap.xml').is_file()
+          assert 'Sitemap: https://greensoundmusic.com/sitemap.xml' in Path('public/robots.txt').read_text()
+          assert (Path('src/components/site')/'StageFallback.tsx').is_file()
+          assert 'src/styles/atelier.css' in 'src/styles/atelier.css'
+          print('PASS: React modular pages, editorial CSS and accessible motion primitives')
+          PY
+      - name: Cache Playwright Chromium browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-v1.56.1-${{ runner.os }}-${{ runner.arch }}
+      - name: Install Chromium browser for visual QA
+        run: |
+          # GitHub-hosted Ubuntu runners already provide required Chromium shared
+          # libraries. --with-deps unnecessarily calls apt mirrors which may fail DNS.
+          npx --yes playwright@1.56.1 install chromium
+      - name: Serve React Vite development preview
+        run: |
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/crafted-vite.log 2>&1 &)
+          for i in $(seq 1 60); do
+            if curl --silent --fail http://127.0.0.1:4175/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --fail http://127.0.0.1:4175/ > /dev/null || (cat /tmp/crafted-vite.log && exit 1)
+      - name: Diagnose original media source accessibility
+        run: |
+          for uri in \
+            "https://green-sound-music-garden.lovable.app/__l5e/assets-v1/1abc50fa-ea8d-4ab4-9360-53942b5154c8/concert-public-lumini.webp" \
+            "https://i.ytimg.com/vi/eGLykw1G0EQ/hqdefault.jpg" \
+            "https://greensoundmusic.com/wp-json/wp/v2/media?per_page=1"; do
+            echo "SOURCE: $uri"
+            curl -sS -L -o /tmp/gs-media-response -w 'http=%{http_code} bytes=%{size_download} type=%{content_type}\n' --max-time 12 "$uri" || true
+          done
+      - name: Browser interaction and responsive screenshot audit
+        run: |
+          npm install --prefix /tmp/crafted-playwright playwright@1.56.1 --no-audit --no-fund
+          NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-crafted-browser.cjs
+      - name: Verify direct Contact SSR hydration and prefill
+        run: NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/verify-contact-hydration.cjs
+      - name: Audit every actual sitemap page, canonical, image and internal link
+        run: NODE_PATH=/tmp/crafted-playwright/node_modules node .github/scripts/audit-public-pages.cjs
+      - name: Upload responsive browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-crafted-atmospheres-browser-review
+          path: screenshots/crafted-atmospheres/
+          if-no-files-found: ignore
