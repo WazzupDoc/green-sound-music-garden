@@ -281,6 +281,35 @@ async function main() {
     await motionPage.close();
 
 
+    // V92 Contact identical-viewport BEFORE/AFTER evidence on the same real
+    // route and reduced-motion state; V91 baseline branch has untouched UI.
+    for (const contactWidth of [360, 390, 430, 768, 1440, 1920]) {
+      const visualContact = await browser.newPage({
+        viewport: { width: contactWidth, height: 900 }, reducedMotion: "reduce",
+      });
+      const direct = await visualContact.goto(base + "/contact", {
+        waitUntil: "domcontentloaded", timeout: 45000,
+      });
+      assert.equal(direct.status(), 200, "Actual Contact route must respond 200");
+      await visualContact.locator('form[aria-label="Cerere de ofertă"]').waitFor({timeout: 15000});
+      await visualContact.locator('form[aria-label="Cerere de ofertă"] input[name="name"]').waitFor();
+      assert.equal(await visualContact.locator("main h1").count(), 1);
+      await noOverflow(visualContact, "/contact", contactWidth);
+      if(contactWidth===390 || contactWidth===1440){
+        await visualContact.locator(".director-contact-intro").screenshot({
+          path:`${output}/contact-v92-intro-${contactWidth}.png`,animations:"disabled",
+        });
+        await visualContact.locator(".director-contact-brief-flow").screenshot({
+          path:`${output}/contact-v92-brief-${contactWidth}.png`,animations:"disabled",
+        });
+        await visualContact.screenshot({
+          path:`${output}/contact-v92-viewport-${contactWidth}.png`,
+          animations:"disabled",fullPage:false,
+        });
+      }
+      await visualContact.close();
+    }
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });
