@@ -66,7 +66,7 @@ export function ProductionDeckArt() {
               <rect x="7" y="6" width="43" height="14" rx="2" fill="#142d23" stroke="#395f4b" strokeWidth="1" />
               <g>
                 {Array.from({length: 5}, (_,n) => <rect key={n}
-                  x={11+n*7} y={17-(levels[ix]%5)-n*2} width="3" height={3+(n*2)} 
+                  x={11+n*7} y={17-((levels[ix] ?? 0)%5)-n*2} width="3" height={3+(n*2)} 
                   fill={n===4 ? "#f8d18a" : "#a7ff90"} opacity=".9" />)}
               </g>
               <circle cx="27" cy="34" r="7" fill="#1a332e" stroke="#a1d4b0" strokeWidth="2" />
@@ -75,9 +75,9 @@ export function ProductionDeckArt() {
               <path d="M27 52 V57" stroke="#b4e4c7" strokeWidth="1.5" strokeLinecap="round" />
               <rect x="22.5" y="75" width="8" height="55" rx="3" fill="#030c0b" stroke="#395c4a" />
               <path d="M26.5 79 V125" stroke="#8ab58f" strokeWidth="1.25" opacity=".65" />
-              <rect x="17" y={76 + faderPositions[ix]} width="19" height="11" rx="2"
+              <rect x="17" y={76 + (faderPositions[ix] ?? 30)} width="19" height="11" rx="2"
                 fill="#a0ada7" stroke="#e7f1dd" strokeWidth="1" />
-              <path d={`M19 ${80 + faderPositions[ix]} H34`} stroke="#4c5b5a" strokeWidth="1.5" />
+              <path d={`M19 ${80 + (faderPositions[ix] ?? 30)} H34`} stroke="#4c5b5a" strokeWidth="1.5" />
               <text x="26" y="146" fill="#a9d4b0" fontSize="8" textAnchor="middle" fontWeight="700">
                 {String(ix+1).padStart(2,"0")}
               </text>
