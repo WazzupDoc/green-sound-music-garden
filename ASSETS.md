@@ -1,3 +1,11 @@
+## V90 QA snapshot provenance — 2026-11-13
+
+- Visual first-party image unchanged from original `/media/greensound/concert-public-lumini.webp`; source metadata in `src/data/site.ts`. Its background shape/color-grade changed through original CSS only.
+- Original 8-path SVG wave architecture, caption and 01/02/03 cue labels authored in `StageHero.tsx`; no new purchased, AI, TikTok, copied or copyrighted assets.
+- BEFORE screenshots, actual V89 source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 ; AFTER screenshots, actual V90 source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43429307850/artifacts/14039850169 . These captures are QA evidence of application states, not marketing photos. First V90 prototype visually rejected in part and revised. `docs/V90_VISUAL_QA.md` records names/viewports and validations.
+
+---
+
 ## V90 — 2026-11-13 / Spectrum Curtain
 
 - New third-party image/video/audio/stock/AI/TikTok/font/icon/API dependency: **none**.
