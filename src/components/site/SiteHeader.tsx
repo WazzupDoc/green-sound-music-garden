@@ -20,6 +20,8 @@ const navigation = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [menuSelection, setMenuSelection] = useState(1);
+  const menuNavigatingRef = useRef(false);
   const [finderOpen, setFinderOpen] = useState(false);
   const [finderActivated, setFinderActivated] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -29,6 +31,7 @@ export function SiteHeader() {
   const path = useRouterState({ select: state => state.location.pathname });
 
   useEffect(() => {
+    menuNavigatingRef.current = true;
     setOpen(false);
     setFinderOpen(false);
   }, [path]);
@@ -59,6 +62,7 @@ export function SiteHeader() {
       return;
     }
     if (!dialog.open) dialog.showModal();
+    menuNavigatingRef.current = false;
     document.body.classList.add("atelier-menu-locked");
     return () => {
       document.body.classList.remove("atelier-menu-locked");
@@ -124,7 +128,7 @@ export function SiteHeader() {
             Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
-            aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => setOpen(value => !value)}>
+            aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
             {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
           </button>
         </div>
@@ -140,7 +144,8 @@ export function SiteHeader() {
         }}
         onClose={() => {
           setOpen(false);
-          menuButtonRef.current?.focus();
+          if (!menuNavigatingRef.current) menuButtonRef.current?.focus();
+          menuNavigatingRef.current = false;
         }}
       >
         <div className="gsm-nav-index">
@@ -174,6 +179,7 @@ export function SiteHeader() {
           <div className="gsm-nav-index__layout">
             <div className="gsm-nav-index__intro">
               <p className="gsm-nav-index__eyebrow">INDEX / 01—06</p>
+              <span className="gsm-nav-index__live-mark" aria-hidden="true">GS — PRODUCTION DIRECTORY / PITEȘTI</span>
               <h2 id="gsm-stage-index-title">
                 Tot ce ține
                 <em> scena vie.</em>
@@ -182,7 +188,12 @@ export function SiteHeader() {
                 Explorează evenimentele, producția și oamenii
                 din spatele Green Sound Music.
               </p>
-              <span className="gsm-nav-index__axis" aria-hidden="true">← &nbsp; SOUND &nbsp; / &nbsp; LIGHT &nbsp; / &nbsp; LIVE</span>
+              <div className="gsm-nav-index__cue" aria-live="off" aria-hidden="true">
+                <span className="gsm-nav-index__cue-label">ACUM EXPLOREZI / {String(menuSelection + 1).padStart(2, "0")}</span>
+                <strong>{navigation[menuSelection]?.title ?? "Acasă"}</strong>
+                <span className="gsm-nav-index__cue-rule" />
+                <small>GREEN SOUND MUSIC · EVENIMENTE / PRODUCȚIE / STUDIO</small>
+              </div>
             </div>
 
             <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
@@ -191,7 +202,9 @@ export function SiteHeader() {
                   <li key={entry.to} className="gsm-nav-index__entry">
                     <Link
                       to={entry.to}
-                      onClick={() => setOpen(false)}
+                      onPointerEnter={() => setMenuSelection(index)}
+                      onFocus={() => setMenuSelection(index)}
+                      onClick={() => { menuNavigatingRef.current = true; setOpen(false); }}
                       className="gsm-nav-index__link"
                       activeOptions={{ exact: entry.to === "/" }}
                       activeProps={{ className: "gsm-nav-index__link--active" }}
@@ -215,7 +228,7 @@ export function SiteHeader() {
               <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
-              <Link to="/contact" onClick={() => setOpen(false)}>
+              <Link to="/contact" onClick={() => { menuNavigatingRef.current = true; setOpen(false); }}>
                 Cere ofertă
                 <svg viewBox="0 0 22 22" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
                   <path d="M3 19L19 3M8 3H19V14" />
