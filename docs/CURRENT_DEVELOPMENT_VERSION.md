@@ -1,3 +1,16 @@
+# V90 — ORIGINAL SPECTRUM CURTAIN HERO (experimental, 2026-11-13)
+
+- Branch `design/v90-spectrum-curtain-hero` based on verified V89 PR #86 SHA `a0e6c3f6e0245f27e9ee0c6ef6d47f1ee75b1f07`. Single primary change: homepage **StageHero** art direction, not another repeat of service cards.
+- Owner-reported issue: no meaningful visual difference, static upper background, insufficient motion and color. Read actual baseline 1440 screenshot, not an AI mockup.
+- Actual code: source `src/components/atelier/StageHero.tsx` gains an original 8-path luminous wave curtain, photographic emerald seam, meter-like category stripe, and a working pointer interaction using the already included motion library. New `hero-spectrum-v90.css?inline` SSR-inlined *after* existing home V86/V89 CSS. Background is brighter emerald with real existing licensed-in-project Green Sound concert imagery. No new images/packages/audio/auto-play/tracking.
+- Animation: slow transform/opacity in full desktop motion only, remains visible static in reduced-motion/Lite and touch; pausing when offscreen or tab hidden via existing observer, and when Light Desk turns effects OFF. Clicking scene modes still works; original three films, service programme and one finale CTA preserved.
+- QA: new original source test, existing six-width Chromium screenshot flow extended with V90 geometry assertions and 390/1440 after shots plus interactive 1440 full-motion, Lite, lights-off and pointer checks. **Current V90 exact-head CI and real screenshot approval PENDING.**
+- Before real screenshot artifact: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 ; use same route, viewport width, reduced-motion setting for before/after. A static shot alone does not establish animation.
+- Main and real production unchanged. PR #19 currently conflicting; stacked PR #85 event detail exists in parallel, not blindly merged. Prior main backup-tag, CD auto-publication effect and rollback still unverified; no main merge without gate/approval.
+- Following zone after authentic hero visual evaluation: Contact / Guided Event Brief, or refresh services/other page system if owner feedback says this style should propagate.
+
+---
+
 ## V89 — GREEN SOUND / LIVE EVENT PREMIUM (13.11.2026, DRAFT)
 
 - New branch `design/v89-live-event-premium-homepage`, stacked on newest exact-head **CI green V88** SHA `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7` PR #84. V89 draft PR to follow. Main and public website unchanged.
