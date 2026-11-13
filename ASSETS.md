@@ -1,3 +1,9 @@
+## V83 — actual screenshot provenance (2026-11-13)
+- Original project media: all three service photos local from `public/media/greensound/`; verified by Chromium decoding and `naturalWidth > 0` at 360/390/430/768/1440/1920. No new files used for the site or TikTok videos reused.
+- CI screenshots [artifact 14029615502](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536/artifacts/14029615502) are actual Chromium captures of V83 source SHA `fd604c60630f9498555145805c07b250666a8d2e`, NOT promotional image assets. Comparisons to V81 require disclosure that V81 screenshots were missing lazy-loaded photos.
+
+---
+
 ## 2026-11-13 — V83 original decorative UI assets
 - New media files, music, video, fonts, external icons, third-party scripts: **none**.
 - New original visual: `src/styles/production-signal-v83.css` and `ProductionIndex.tsx` implement 3 custom channel engravings (CSS/HTML only; not audio-reactive, not actual mixer readings); no rights/credit needed beyond Green Sound's own code.
