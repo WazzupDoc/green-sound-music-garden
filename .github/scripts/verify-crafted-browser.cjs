@@ -79,6 +79,20 @@ async function main() {
       }
       assert.equal(await page.locator('.crafted-hero__actions a[href="/contact"]').count(), 1,
         "Visible hero offer CTA should lead directly to the working Contact flow");
+      if (width <= 640) {
+        const sceneLink=page.locator(".scene-console__link");
+        assert.equal(await sceneLink.isVisible(),true,
+          "Mobile event detail link must remain genuinely usable");
+        const bulkyCopy = await page.locator(".scene-console__content h2").isVisible();
+        assert.equal(bulkyCopy,false,
+          "Mobile scene notes must be a compact deep-link, not a duplicate block");
+        const heroBox=await page.locator(".crafted-hero").boundingBox();
+        if (width === 390) {
+          assert(heroBox && heroBox.height < 970,
+            `V86 mobile hero must not consume the first 1000px again: ${heroBox?.height}`);
+        }
+      }
+
 
       assert.equal(await page.locator(".director-reel__choice").count(), 3);
       assert.equal(await page.locator(".crafted-finale__link").count(), 1);
