@@ -4,20 +4,24 @@ import { describe, expect, it } from "vitest";
 const css = readFileSync("src/styles/production-index.css", "utf8");
 
 describe("editorial keyboard focus cue", () => {
-  it("exposes a visual focus cue on the chapter and preserves native link focus", () => {
-    expect(css).toContain(".gs-index__chapter:focus-within .gs-index__photo");
-    expect(css).toContain(".gs-index__service:focus-visible");
+  it("highlights the chapter only when a service link has visible keyboard focus", () => {
+    expect(css).toContain(".gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo");
+    expect(css).toContain(".gs-index__service:focus-visible{outline:");
+    expect(css).not.toContain(".gs-index__chapter:focus-within .gs-index__photo");
   });
-  it("avoids layout-affecting hover padding and gates the compositor cue", () => {
-    expect(css).not.toMatch(/\\.gs-index__service:hover\\s*\\{[^}]*padding-left/);
+
+  it("keeps hover cues compositor-only without layout shifts", () => {
+    expect(css).not.toMatch(/\.gs-index__service:hover\s*\{[^}]*padding-left/);
     expect(css).not.toContain("transition:padding");
-    expect(css).toContain("html:not([data-gs-performance=lite]) .gs-index__service:hover span");
+    expect(css).toContain("html:not([data-gs-performance=lite]) .gs-index__service:hover span{transform:translateX(3px)}");
     expect(css).toContain(".gs-index__service span{overflow-wrap:anywhere;transition:transform");
-    expect(css).toContain(".gs-index__service span{transition:none!important;transform:none!important}");
   });
-  it("limits focus zoom to non-reduced-motion and non-Lite experiences", () => {
+
+  it("gates decorative focus zoom and disables motion for reduced-motion and Lite", () => {
     expect(css).toContain("@media (prefers-reduced-motion:no-preference)");
-    expect(css).toContain("html:not([data-gs-performance=lite]) .gs-index__chapter:focus-within");
+    expect(css).toContain("html:not([data-gs-performance=lite]) .gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo img{transform:scale(1.025)}");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
+    expect(css).toMatch(/@media\(prefers-reduced-motion:reduce\)\s*\{[^}]*\.gs-index__service span,[^}]*\{transition:none!important;transform:none!important\}/);
+    expect(css).toMatch(/html\[data-gs-performance=lite\] \.gs-index__service span,[\s\S]*?\{transition:none!important;transform:none!important\}/);
   });
 });
