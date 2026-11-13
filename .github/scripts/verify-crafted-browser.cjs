@@ -193,6 +193,49 @@ async function main() {
       await page.close();
     }
 
+    // V94 production cue: same real menu, two visual viewports and actual
+    // keyboard navigation. Never treat the hidden mobile trigger as visible
+    // on desktop; activate the existing dialog through its React control.
+    for (const navWidth of [390, 1440]) {
+      const navPage = await browser.newPage({
+        viewport:{width:navWidth,height:900},reducedMotion:"reduce",
+      });
+      await navPage.goto(base + "/", {waitUntil:"domcontentloaded"});
+      await navPage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+      if (navWidth === 390) {
+        await navPage.locator(".atelier-header__menu-btn").click();
+      } else {
+        // Desktop menu is normally hidden; force only its trigger visible for
+        // design audit, without altering production responsive behavior.
+        await navPage.addStyleTag({content:".atelier-header__menu-btn{display:inline-flex!important}"});
+        await navPage.locator(".atelier-header__menu-btn").click();
+      }
+      const navDialog=navPage.locator("dialog.atelier-mobile-menu[open]");
+      await navDialog.waitFor({timeout:8000});
+      await navPage.screenshot({
+        path:`${output}/v94-navigation-open-${navWidth}.png`,
+        animations:"disabled",fullPage:false,
+      });
+      await navPage.locator(".gsm-nav-index__link").nth(2).focus();
+      assert.equal(await navPage.locator(".gsm-nav-index__cue strong").innerText(),"Servicii");
+      await navPage.screenshot({
+        path:`${output}/v94-navigation-focus-${navWidth}.png`,
+        animations:"disabled",fullPage:false,
+      });
+      await navPage.keyboard.press("Escape");
+      await navDialog.waitFor({state:"hidden",timeout:8000});
+      await navPage.close();
+    }
+    const navJourney = await browser.newPage({viewport:{width:390,height:900}});
+    await navJourney.goto(base + "/", {waitUntil:"domcontentloaded"});
+    await navJourney.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+    await navJourney.locator(".atelier-header__menu-btn").click();
+    await navJourney.locator(".gsm-nav-index__link").nth(2).click();
+    await navJourney.waitForURL("**/servicii");
+    assert.equal(await navJourney.locator("dialog.atelier-mobile-menu[open]").count(),0);
+    assert.equal(await navJourney.locator(".atelier-header__menu-btn").getAttribute("aria-expanded"),"false");
+    await navJourney.close();
+
     // Real full-motion state: compositor entrance animation must be present,
     // but reduced-motion / Lite snapshots stay static.
     const activePage = await browser.newPage({
