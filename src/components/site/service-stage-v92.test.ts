@@ -41,6 +41,10 @@ describe("V92 premium service stage, 8 genuine service pages",()=>{
    "html[data-gs-performance=lite]",
   ]) expect(css).toContain(token);
   expect(css).toContain("@keyframes gs-v92-light-cue");
+  expect(css).toContain(".gs-v92-stage[data-chapter=people] .gs-v92-stage__main");
+  expect(css).toContain("justify-content:flex-end");
+  expect(css).toContain(".gs-v92-stage[data-chapter=technical] .gs-v92-stage__media");
+
   expect(css).not.toMatch(/url\(https?:|font-face|@import/);
   expect(stage).toContain('stageCss from "@/styles/service-stage-v92.css?inline"');
   expect(stage).toContain("<style>{stageCss}</style>");
