@@ -18,7 +18,7 @@ describe("V90 kinetic show wall: original animated photographic art direction",(
     }
     expect(wall).toContain('data-active={active}');
     expect(wall).toContain('aria-hidden="true"');
-    expect(wall).not.toMatch(/<video\b|<iframe\\b|new AudioContext\(|navigator\.mediaDevices|autoPlay=\{true\}/);
+    expect(wall).not.toMatch(/<video\b|<iframe\b|new AudioContext\(|navigator\.mediaDevices|autoPlay=\{true\}/);
   });
   it("has an unmistakable 3D effect and a real animation visible on first screen",()=>{
     expect(css).toContain("perspective:1100px");
