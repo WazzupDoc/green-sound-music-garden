@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useHydrated } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { getService, type EventType } from "@/data/site";
 import { FaqList, PageHero, QuoteSection } from "./blocks";
@@ -14,6 +14,7 @@ import eventDetailCss from "@/styles/event-detail-v89.css?inline";
  */
 export function EventPage({ event }: { event: EventType }) {
   const [selected, setSelected] = useState<string[]>([]);
+  const hydrated = useHydrated();
   const recommended = event.recommended.map((item) => ({
     ...item,
     service: getService(item.slug),
@@ -90,6 +91,7 @@ export function EventPage({ event }: { event: EventType }) {
 
       <section
         className="rs-event-offerings gs-event-v89__offers"
+        data-hydrated={hydrated ? "true" : "false"}
         aria-labelledby="gs-event-v89-offers-title"
       >
         <div className="container-site rs-event-offerings__inside gs-event-v89__offers-layout">
