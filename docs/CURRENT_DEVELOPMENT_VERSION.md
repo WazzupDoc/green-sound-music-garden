@@ -1,3 +1,10 @@
+# V73 — Repair failing exact-head TypeScript CI (draft)
+
+- Based on V72 PR #66. Actual V72 PR CI run [43348988088](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43348988088) failed at strict TypeScript: TS18048/TS2532 in `src/lib/brief-date.ts` and `production-index.cta-layout.test.ts`. Parallel V19 motion workflow [43348988129](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43348988129) passed; this is NOT overall green.
+- Corrected indexed array access with explicit undefined guards and optional assertions, preserving Gregorian validation and CSS regression fixtures. No new dependencies, visual elements or media. V73 exact-head CI and Chromium pending; do not merge or publish. PR #19 independently mergeable=false.
+- Next: check V73 workflow result, fix any remaining errors, then six-width screenshot and two-service Contact QA. Navigation component remains next visual rotation target.
+
+---
 # V72 — Hero Lite / reduced-motion visual safety (draft)
 
 - Branch `design/v72-hero-lite-motion-safety` stacked on V71 PR #65. Existing stage image remains; decorative beams/rings/pointer and transitions are disabled for Lite and reduced-motion. No new sections, packages, external media or homepage CTA.
