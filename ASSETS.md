@@ -1,3 +1,7 @@
+## 2026-11-13 — V73 CI repair
+
+No new media, fonts, icons or dependencies. Existing first-party Green Sound media unchanged. Only TypeScript guard and tests.
+
 ## 2026-11-13 — V71
 
 No new photos, videos, icons, fonts, music, packages, external images or licenses. Restores existing V48 StageHero / ProductionIndex / EditorialPortfolio components with existing first-party media references. Ownership and provenance verification remain a release gate.
