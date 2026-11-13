@@ -1,3 +1,13 @@
+## V89 — verified QA media sources (2026-11-13)
+
+- Original event media are unchanged; new external assets/dependencies are ZERO. All new artwork is first-party authored CSS and one decorative SVG line.
+- Real browser **BEFORE** archive (V88 app, before-only QA commit): https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43423935945/artifacts/14035536377
+- Real browser **AFTER** archive (V89 app head `613eb52`): https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233/artifacts/14035687119
+- Captures: `event-detail-timeline-390.png`, `event-detail-timeline-1440.png`, `event-detail-services-390.png`, `event-detail-services-1440.png`; these are QA screenshots and are NOT stock footage, marketing materials or new photos for the site.
+- Source/screenshots/accessibility verdict and limitations in `docs/V89_VISUAL_QA.md`.
+
+---
+
 ## V89 — 2026-11-13 / Event detail production run sheet
 
 - External assets and dependencies: **none**. No new images/video/audio/fonts/icons/stock/AI/TikTok content.
