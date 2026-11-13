@@ -2,12 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { business, navEvents, navServices } from "@/data/site";
 import { Logo } from "./Logo";
 import { LightDesk } from "./LightDesk";
+import footerCss from "@/styles/footer-editorial-v93.css?inline";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="grain border-t border-border bg-ink pb-24 sm:pb-0">
-      <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="grain border-t border-border bg-ink pb-24 sm:pb-0 gs-footer-v93">
+      <style>{footerCss}</style>
+      <div className="container-site gs-footer-v93__marquee" aria-hidden="true"><span>GREEN SOUND</span><span>MUSIC <i>↗</i></span></div>
+      <div className="container-site gs-footer-v93__utility"><p>FINALUL EVENIMENTULUI NU E FINALUL POVEȘTII.</p><Link to="/contact" className="gs-footer-v93__cta">Hai să discutăm evenimentul <span aria-hidden="true">↗</span></Link></div>
+      <div className="container-site grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gs-footer-v93__directory">
         <div className="space-y-6">
           <Logo />
           <p className="max-w-xs text-base leading-relaxed text-muted-foreground">
