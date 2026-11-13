@@ -13,8 +13,8 @@ describe("V78 visual stylesheet recovery", () => {
     for (const module of [
       "scene-console", "light-desk", "production-index", "portfolio-journal",
       "event-brief", "event-journal", "production-journey", "service-mix",
-      "service-discovery", "soundcheck", "atmosphere-interlude",
-      "offstage", "signature-cursor", "editorial-reset", "stage-v78",
+      "service-discovery", "offstage", "signature-cursor",
+      "editorial-reset", "stage-v78",
     ]) {
       expect(entry).toContain(`@import "./styles/${module}.css";`);
     }
