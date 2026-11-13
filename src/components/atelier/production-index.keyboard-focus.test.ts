@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(new URL("../../styles/production-index.css", import.meta.url), "utf8");
+const css = readFileSync("src/styles/production-index.css", "utf8");
 
 describe("editorial keyboard-only chapter cue", () => {
   it("uses focus-visible for chapter photo emphasis, not generic focus-within", () => {
