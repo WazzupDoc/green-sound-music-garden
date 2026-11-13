@@ -336,3 +336,26 @@ html[data-gs-performance=lite] .gs-home-v84 .gs-production-deck-v85{
 html[data-gs-performance=lite] .gs-home-v84 .gs-index__photo{
  transition:none!important;clip-path:none!important;
 }
+
+/* Place production notes like a small stage monitor above the equipment,
+   rather than an opaque SaaS card masking the original console illustration. */
+@media(min-width:901px){
+ .gs-home-v84 .scene-console{
+  position:absolute;z-index:4;right:1.2%;top:clamp(146px,16vh,195px);
+  bottom:auto;align-self:auto;justify-self:auto;
+  margin:0;width:min(24%,272px);max-width:272px;
+  background:#061811ee;
+  border:1px solid #89be8b5a;border-top:2px solid #9df293;
+  transform:skewY(-1deg);box-shadow:0 24px 50px #0009;
+ }
+ .gs-home-v84 .scene-console__top{padding:10px 13px}
+ .gs-home-v84 .scene-console__content{padding:13px 15px}
+ .gs-home-v84 .scene-console__content h2{font-size:1.24rem}
+ .gs-home-v84 .scene-console__content p{display:none}
+ .gs-home-v84 .scene-console__link{min-height:40px}
+}
+/* Small screens retain scene selection and full event discovery, but leave
+   the long stage notes out of the first screen so content starts promptly. */
+@media(max-width:900px){
+ .gs-home-v84 .scene-console{display:none}
+}
