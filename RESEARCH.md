@@ -1,3 +1,14 @@
+## 2026-11-13 — V86 sound-first, original editorial production site
+- Inspected Webflow music website case studies: https://webflow.com/blog/music-websites-designed-with-webflow . Principle: strong music-identity visuals, meaningful hierarchy, directly accessible show/video. Adapted concept of authentic show photo leading editorial navigation; copied NO assets, code, layout or text.
+- Inspected Webflow unique-website-layouts: https://webflow.com/blog/unique-website-layouts . Principle: distinct asymmetric layout can improve discovery while preserving native user controls. Adapted one original large Music production chapter spanning 2 rows + two compact right subchapters, not borrowed CSS.
+- Inspected official web.dev animation performance guidance: https://web.dev/articles/animations-guide . Principle: animate transform and opacity; avoided layout animation and scroll hijack, gated animation by hover/no-reduced-motion/Lite. No measured FPS or Lighthouse claim.
+- Attempted Awwwards music/sound: https://www.awwwards.com/websites/music-sound/ but page timed out; not represented as research successfully inspected.
+- User's premium dark green event-production reference is a direction, not a licensable website asset. Reused existing project images from src/data/site.ts only, not TikTok social-video frames or fictional photo clients.
+- TESTUL DE ADAUGARE: differentiated original small signal graphic + genuine stage photo, structural asymmetry and direct offer CTA; zero dependencies/costs; SSR native links, Lite/reduced motion gates, rollback by reverting V86 PR. Browser screenshots and measured CI needed for acceptance.
+- Rejected: fabricated 3D physical speaker rigs pretending to be owned, repeated neon circles, fake live audio meters, widget/FAQ proliferation, AI event photography presented as authentic, autoplay, copying reference screenshots.
+
+---
+
 ## 2026-11-13 — V85 / real reference to branded digital production art direction
 
 - **Primary visual reference**: actual user-provided Green Sound premium website mockup in the current conversation, dark-emerald header and hero, concert photo + mixing/production control in foreground, image-led asymmetric service programme. Adapted as GREEN SOUND original visual system; did NOT copy embedded mockup art, fabricated achievements, images of imaginary events, text/copyrighted code or branding beyond owned identity. Older live site/look served as negative comparison.
