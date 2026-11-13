@@ -1,3 +1,15 @@
+## 2026-11-13 — V89 VERIFIED CI + REAL BEFORE/AFTER / FOLLOW-UP
+
+- Actual app head `613eb52e8275e6741e6129f4b2c39500eeb2fd0b` has exact-head SUCCESS on GitHub Actions `43424678233`, **84/84 Vitest assertions, 30 suites**, strict TypeScript, SSR/Vite, bundle budgets, six-width Chromium, actual service selection (two services) → native GET Contact → checked prefill, Contact SSR/hydration/no-JS and 20-page SEO/sitemap audit. Reviewer CI: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233
+- Measured asset budgets: home entry 110.9/190 kB gzip, QuoteForm 31.2/50 kB gzip, shared styles 51.3/52 kB gzip. These are asset sizes only, not measured LCP/Lighthouse/field performance.
+- Real unmodified V88 baseline branch `design/v89-before-event-detail-audit` run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43423935945 — SUCCESS, artifact #14035536377. V89 candidate run above — SUCCESS, artifact #14035687119. Both captured `event-detail-timeline-390/1440.png` and `event-detail-services-390/1440.png` with same route `/evenimente/nunti`, viewport and element selector, reduced-motion state.
+- Visual verdict after inspection: desktop editorial moment list now has clear left introduction + right high-contrast numbered schedule; offerings have large typographic service identities, discrete selection buttons and a real Contact brief. Mobile 390 renders the list and button states with no horizontal overflow. **Caveat:** tall element screenshots can visually contain fixed header/bottom action bar partway through the stitched section; this is a screenshot/viewport state limitation and mobile overlap/real handset QA remains backlog. Do not claim 100 Lighthouse/owner acceptance.
+- Fixed actual E2E issue: first selector pointed inside the sibling GET form, corrected to offering list; second failure clicked server-rendered buttons before React hydration, corrected via `useHydrated()` state and explicit browser wait. No tests removed; verification SUCCESS at app source head above.
+- PR draft https://github.com/WazzupDoc/green-sound-music-garden/pull/85; now no main/deploy/production changes. Next rotation main area: Contact/Guided Event Brief; retain scrutiny of mobile fixed UI, service pages, global route/SEO/accessibility & deployment gates.
+- Audit images and source links recorded in `docs/V89_VISUAL_QA.md`. This documentation commit will itself change HEAD and requires its **own exact-head CI** before any release claim.
+
+---
+
 # V89 — Event detail / Production Cue Sheet — 2026-11-13
 
 ## Confirmed baseline and current action
