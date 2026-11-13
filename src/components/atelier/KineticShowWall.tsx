@@ -45,6 +45,7 @@ export function KineticShowWall({ active }: { active: ShowScene }) {
         {pictures.map((picture, index) => (
           <figure
             className={`gs-v90-show-wall__frame gs-v90-show-wall__frame--${picture.key}`}
+            data-depth={index + 1}
             key={picture.key}
           >
             <img
