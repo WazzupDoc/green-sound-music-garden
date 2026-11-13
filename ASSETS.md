@@ -57,3 +57,6 @@ Updated 2026-11-12. No new third-party media added in V55.
 | CSS service numbering 01–08 | Original CSS written for Green Sound | Decorative editorial running order | Project-owned code; no third-party dependency |
 
 No stock photos, AI-generated people, external fonts, music or videos were added. Any future non-owner asset must have an item-level license and attribution review first.
+
+## V72 (2026-11-13)
+No new images, fonts, video, icons or dependencies. Existing Green Sound hero photography remains unchanged. Decorative light layers are original CSS and are suppressed in Lite/reduced-motion modes.
