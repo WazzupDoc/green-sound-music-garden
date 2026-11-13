@@ -6,9 +6,9 @@ Date: 2026-11-13 · Route: `/contact` · One site zone: Contact / Guided Event B
 
 | Evidence | BEFORE | AFTER |
 | --- | --- | --- |
-| App baseline | V91 `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1` (UI unchanged on baseline QA branch `design/v92-contact-before-audit`) | V92 app source `3c68af407d73152f4fb8775166a663944e32572e` plus later explicit visual-contrast fix (exact SHA CI pending) |
-| GitHub Actions | [PASS #43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840) | [PASS app-source #43438638248](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248); latest attribution fix must have new exact-head CI |
-| Browser artifact | [V91 BEFORE ZIP #14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507) | [V92 AFTER ZIP #14045801050](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248/artifacts/14045801050) |
+| App baseline | V91 `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1` (UI unchanged on baseline QA branch `design/v92-contact-before-audit`) | V92 corrected app source `9dd53301b523382d7a24e38050a5e46a715b72ec` |
+| GitHub Actions | [PASS #43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840) | [PASS corrected app-source #43439489649](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649) — 88/88 tests in 31 suites |
+| Browser artifact | [V91 BEFORE ZIP #14043468507](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507) | [V92 AFTER corrected ZIP #14045816881](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649/artifacts/14045816881) |
 
 Both archives contain the **same original named files**: `contact-v92-intro-390.png`, `contact-v92-intro-1440.png`, `contact-v92-brief-390.png`, `contact-v92-brief-1440.png`, `contact-v92-viewport-390.png`, `contact-v92-viewport-1440.png`. Chromium set `prefers-reduced-motion: reduce` and viewport width 390/1440 (height 900). Browser script also checks 360, 430, 768 and 1920 for overflow, H1, status and functional quote presence. No synthetic illustration or external screenshot presented as proof.
 
@@ -22,8 +22,8 @@ Both archives contain the **same original named files**: `contact-v92-intro-390.
 
 ## Verification status and honest limits
 
-- App source `3c68af4` CI PASS: strict TypeScript, Vite SSR build, Vitest including new source contract, actual Chromium six-width and quote interaction, network/SEO checks, gzip. Do not confuse CI passing with owner aesthetic approval.
-- CSS attribution fix + browser contrast test and this documentation advance the branch HEAD; **V92 FINAL exact-head CI pending**. The previous app-source artifact does not contain the very last attribution color.
+- Corrected app source `9dd5330` CI PASS: 88/88 Vitest in 31 suites, strict TypeScript, Vite SSR, real Chromium six-width, quote form validation/preview focus/edit, network/SEO and gzip. Real built assets: entry 111.0/190 kB gzip, QuoteForm 31.3/50 kB, shared global CSS 51.2/52 kB. These are not Lighthouse or user-acceptance scores.
+- Final attribution fix and computed-color assertions PASS in actual V92 app-source Chrome [#43439489649](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649). This documentation change advances the branch HEAD; its exact-head CI must still be checked before any integration.
 - No changes to homepage, service listings, real event media, customer data policy, external services, hosting or domain. No new client/server API, database, email sending, paid integrations, third-party images or fonts.
 - Unmeasured: Lighthouse/field LCP, owner acceptance, VoiceOver/TalkBack physical phones, real user conversions and search rankings. Avoid invented numbers or 100/100 promises.
 - V91 PR #89 is the verified base but draft; parallel PR #87 (Spectrum Curtain), #88 (Show Wall), #85 (Event Detail) have separate lineages. PR #19 remains conflicted. Main and public site untouched; release needs deployment review, verified main backup tag and rollback, plus explicit publication approval if auto-deploy.
