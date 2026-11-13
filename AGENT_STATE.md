@@ -1,3 +1,9 @@
+## V99 / event quote anchor accessibility — 2026-11-13
+- Single zone: event detail CTA to the shared QuoteSection heading. V98 added a fragment link but heading was not programmatically focusable and lacked its own scroll offset for sticky navigation.
+- Shared heading now has tabIndex=-1, scroll-mt-24 and visible focus outline. This permits fragment navigation to move keyboard focus to the heading and makes its position clearer. The same QuoteSection is used elsewhere; regression needed across all routes.
+- No external dependency, media, fabricated event, new backend or homepage changes. CI and real Chromium 390/1440 before/after not obtained; **visual and accessibility validation pending**.
+- Next: verify actual browser focus and screenshots, then portfolio/film gallery rotation. Main untouched.
+
 
 ## V97 / Contact clipboard retry — 2026-11-13
 - V96 exact-head 4aca905b94e42ca2d432253ae3bfa06c10e026d2: GitHub Actions run 43458490804 completed success; artifact 14054593562 exists, visual contents not inspected.
