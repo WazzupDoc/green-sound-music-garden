@@ -1,3 +1,13 @@
+## V92 SOURCE QA CONFIRMED — service stage 8×, three different layouts (2026-11-13)
+
+- **Actual UI SHA** `91663ecfb4cb9a0361aa48b9f8fccd81c50b1e5a`: exact-head GitHub Actions PR run [#43439345308](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439345308) **SUCCESS**; corresponding push workflow [#43439334356](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439334356) check separately. Strict TypeScript, production SSR/Vite build, **31 test files / 86 tests passed**, real Chromium six widths, 20 canonical pages/Contact/SEO, no browser errors, existing homepage flows and film selectors maintained.
+- **Real Chromium screenshot artifact** [#14046060692](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439345308/artifacts/14046060692): `v92-service-stage-dj-mc-1440.png`, `v92-service-stage-echipamente-de-sunet-si-lumini-1440.png`, `v92-service-stage-ursitoare-botez-1440.png`, and matching 390px versions. These are actual running source frames, **not a generated mockup**.
+- QA discovered initial MUSIC/TECH/PEOPLE layout was too repetitive. Source corrected and browser geometry verified: MUSIC text left/photo right; TECH panoramic right photo; PEOPLE real person photo left/text right at 1440, mobile returns to readable photo-first stack. Offer CTA navigates to `#oferta-titlu` and actual preselected `QuoteForm` checkbox verified for all three representative routes, with no automatic sending. Real first-party photo decoded, H1 unique, no overflow.
+- Measured budgets in this run: homepage JS **115.8/190 kB gzip**, shared design CSS **51.3/52 kB gzip**, quote form **31.2/50 kB gzip**. Note **V92 SSR-inline stylesheet** is NOT included in shared CSS figure; no Lighthouse/FPS/LCP score claimed. Original images may not achieve generated-reference photoreal presentation, so owner source media quality remains the limiting input.
+- Release: V92 PR #90 is draft, stacked on V91 PR #89. PR #90 mergeable to V91, but PR #89 still reports **merge conflict against V90**, and main/production are unchanged. No verified backup tag/rollback nor publication approval; do NOT merge without all release gates.
+
+---
+
 # V92 — Premium Service Stage / all 8 service-detail pages (2026-11-13, DRAFT)
 
 - **Latest validated ancestor**: V91 `design/v91-service-index-editorial-rotation` SHA `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1`, CI [push #43430533134](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430533134), [PR #43430542206](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430542206) success. **Important** V91 PR #89 reports mergeable=false against V90 due conflict, so it is NOT ready for merging.
