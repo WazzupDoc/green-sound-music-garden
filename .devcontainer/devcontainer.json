@@ -1,0 +1,16 @@
+{
+  "name": "Green Sound Music — V48 editorial preview",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "forwardPorts": [
+    4175
+  ],
+  "portsAttributes": {
+    "4175": {
+      "label": "Green Sound Music — V48 preview",
+      "onAutoForward": "openBrowser",
+      "visibility": "private"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/install-preview.sh",
+  "postStartCommand": "bash .devcontainer/start-preview.sh"
+}

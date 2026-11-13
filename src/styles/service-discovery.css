@@ -1,0 +1,61 @@
+/* V38 — Service Discovery / Contextual production pairings.
+ * No repeated hero/sidebar gallery pictures; premium editorial cross-service
+ * discovery is native-link driven and preserves 44px+ touch targets.
+ */
+.gs-service-photo-journal{padding:0 0 clamp(58px,6vw,104px)}
+.gs-service-photo-journal__heading{display:flex;align-items:end;justify-content:space-between;gap:18px 30px;flex-wrap:wrap;
+ border-top:1px solid #a8c89855;padding-top:26px;margin-bottom:24px}
+.gs-service-photo-journal__heading>span{font-size:.63rem;font-weight:800;color:#adca9e;letter-spacing:.15em}
+.gs-service-photo-journal__heading h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.2vw,3.1rem);letter-spacing:-.055em;line-height:1.05}
+.gs-service-photo-journal__heading em{font-family:var(--font-serif);font-weight:400;letter-spacing:-.02em;color:#b0d99d}
+.gs-service-photo-journal__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:15px}
+.gs-service-photo-journal__grid figure{min-width:0;overflow:hidden;background:#102017;border:1px solid #b8d3a840}
+.gs-service-photo-journal__grid img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.gs-service-photo-journal__grid figcaption{padding:14px 17px;color:#b5cdb2;font-size:.76rem;line-height:1.55}
+.gs-service-relations{background:linear-gradient(150deg,#09160e,#0e2016 70%,#09140d);color:#eaf5e5}
+.gs-service-relations__heading{display:flex;align-items:end;justify-content:space-between;gap:25px 54px;flex-wrap:wrap}
+.gs-service-relations__heading>div{max-width:700px}
+.gs-service-relations__eyebrow{font-size:.62rem;font-weight:800;letter-spacing:.17em;color:#b1e699}
+.gs-service-relations__heading h2{font-family:var(--font-display);font-size:clamp(2.5rem,5.2vw,5.8rem);
+font-weight:620;line-height:1.01;letter-spacing:-.057em;margin-top:18px;text-wrap:balance}
+.gs-service-relations__heading h2 em{font-family:var(--font-serif);font-weight:400;color:#b9dfa5;letter-spacing:-.02em}
+.gs-service-relations__heading>p{max-width:350px;color:#abc2a8;font-size:.9rem;line-height:1.7}
+.gs-service-relations__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,22px);margin-top:clamp(32px,4vw,57px)}
+.gs-service-relations__card{display:flex;flex-direction:column;min-width:0;min-height:100%;
+border:1px solid #b6d4a64b;background:#13291b;text-decoration:none;color:#eaf5e5;
+transition:border-color .22s,transform .25s,background .22s}
+.gs-service-relations__card:hover{transform:translateY(-4px);border-color:#c9edb5;background:#1c3824}
+.gs-service-relations__card:focus-visible{outline:2px solid #e7f9d6;outline-offset:4px}
+.gs-service-relations__photo{position:relative;aspect-ratio:1.28;overflow:hidden;background:#243c2a;isolation:isolate}
+.gs-service-relations__photo:after{content:"";position:absolute;inset:0;pointer-events:none;
+background:linear-gradient(180deg,#0008,transparent 30%,#001607a6)}
+.gs-service-relations__photo img{width:100%;height:100%;object-fit:cover;display:block;
+transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.gs-service-relations__card:hover img{transform:scale(1.055)}
+.gs-service-relations__number{position:absolute;z-index:1;left:18px;top:18px;font-size:.65rem;color:#f3ffe9;
+letter-spacing:.15em;font-weight:800}
+.gs-service-relations__arrow{position:absolute;z-index:1;right:18px;top:17px;color:#e3f7d8}
+.gs-service-relations__body{padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;align-items:start;flex:1}
+.gs-service-relations__body>span:first-child{font-size:.57rem;color:#acd799;font-weight:800;letter-spacing:.14em}
+.gs-service-relations__body h3{font-family:var(--font-display);font-size:clamp(1.5rem,2.5vw,2.7rem);
+font-weight:650;line-height:1.11;letter-spacing:-.04em;margin-top:15px;text-wrap:balance}
+.gs-service-relations__body p{color:#b2c9af;font-size:.85rem;line-height:1.6;margin-top:17px;max-width:400px}
+.gs-service-relations__detail{display:inline-flex;align-items:center;gap:10px;min-height:42px;margin-top:auto;padding-top:20px;
+font-size:.73rem;font-weight:800;color:#c9ebad}
+.gs-service-relations__all{display:inline-flex;align-items:center;gap:9px;border-bottom:1px solid #d3efc7;
+font-size:.78rem;min-height:52px;font-weight:800;color:#e1f7d6;margin-top:31px}
+.gs-service-relations__all:hover{color:#fff}
+.gs-service-relations__all:focus-visible{outline:2px solid #e1f7d6;outline-offset:4px}
+@media(max-width:960px){.gs-service-relations__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.gs-service-relations__grid{grid-template-columns:1fr}
+ .gs-service-relations__heading>p{font-size:.83rem}
+ .gs-service-relations__photo{aspect-ratio:1.7}
+ .gs-service-relations__body h3{font-size:clamp(1.7rem,7.1vw,2.5rem)}
+ .gs-service-relations__body{padding:20px}
+ .gs-service-relations__card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-service-relations__card,.gs-service-relations__photo img{transition:none!important;transform:none!important}
+}
+html[data-gs-performance=lite] .gs-service-relations__photo img,
+html[data-gs-performance=lite] .gs-service-relations__card{transition:none!important;transform:none!important}

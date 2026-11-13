@@ -1,0 +1,41 @@
+{
+  "origin": "Green Sound Music public video thumbnails",
+  "assets": [
+    {
+      "filename": "film-nunta-ramada.webp",
+      "youtube_video_id": "37QlXW3NlxU",
+      "source": "https://i.ytimg.com/vi/37QlXW3NlxU/maxresdefault.jpg",
+      "variant": "maxresdefault",
+      "original_dimensions": [
+        1280,
+        720
+      ],
+      "bytes": 27800,
+      "sha256": "c17d972b93e91c31498d5447bef7f9c0369c80196b5f124261af846797719131"
+    },
+    {
+      "filename": "film-show-lumini.webp",
+      "youtube_video_id": "eGLykw1G0EQ",
+      "source": "https://i.ytimg.com/vi/eGLykw1G0EQ/maxresdefault.jpg",
+      "variant": "maxresdefault",
+      "original_dimensions": [
+        1280,
+        720
+      ],
+      "bytes": 31806,
+      "sha256": "cf56a60d8bc9b15f5b740cff25cf510082a51ea5d95b7c14047b43dbc7107813"
+    },
+    {
+      "filename": "film-studio-live.webp",
+      "youtube_video_id": "nc_aWk8QPIU",
+      "source": "https://i.ytimg.com/vi/nc_aWk8QPIU/sddefault.jpg",
+      "variant": "sddefault",
+      "original_dimensions": [
+        640,
+        480
+      ],
+      "bytes": 61192,
+      "sha256": "02a61ab8308e40e813a4ce392e80f67ee19a53cd95241938d72091fae6f95199"
+    }
+  ]
+}
