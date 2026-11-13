@@ -1,4 +1,8 @@
 
+## V97 / Contact clipboard retry — 2026-11-13
+- V96 exact-head 4aca905b94e42ca2d432253ae3bfa06c10e026d2: GitHub Actions run 43458490804 completed success; artifact 14054593562 exists, visual contents not inspected.
+- Single area: Contact copy fallback, retry path. Source defect: after first denied copy, state remains `failed`, so repeated denied attempts did not retrigger focus/selection effect. V97 increments failedCopyAttempts on each denial and reselects textarea for keyboard copy. No new assets/dependencies, no automatic message transmission. CI/screenshots V97 pending. Next rotation: event detail pages. Main untouched.
+
 ## V95 / About route — 2026-11-13
 - Rotation zone: `/despre-noi` (there is NO `/studio` route; studio is a service page). V94 PR #93 SHA 2a262984 had workflow success #43448478890. PR #19 mergeable=false. Branch design/v95-about-production-notes stacked on V94; main unchanged.
 - Before: generic PageHero and three familiar content blocks. After source: dark-emerald large editorial photo/title hero, mint rail, light paper-like factual statement, numbered production process and authentic photographic contact closure. Existing factual business data, SEO, canonical, process, real images and links kept. No new dependencies or fake content.
