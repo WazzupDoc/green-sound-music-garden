@@ -136,8 +136,6 @@ export function StageHero() {
         </svg>
       </div>
 
-div>
-
       {/* A second existing Green Sound stage photograph, cropped as editorial
           atmosphere behind ORIGINAL illustrated engineering hardware. Decorative
           only; never masquerades as a new event or generated footage. */}
