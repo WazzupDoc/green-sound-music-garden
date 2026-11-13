@@ -1,3 +1,13 @@
+## 2026-11-13 — V86 significant visual overhaul, QA gates
+- Draft PR #82: https://github.com/WazzupDoc/green-sound-music-garden/pull/82, based on validated V85 SHA 4bf044079f41de251b6d8ced1c8f636f69374f12.
+- Owner feedback: V83-V85 did not meet visual expectations; actual V85 screenshot was too dark, with giant synthetic desk and three similar columns. V86 removes dead cosmetics, uses one SSR scoped stylesheet, genuine first-party stage imagery and an original branded waveform. Hero leads directly to contact rather than vague browsing.
+- Service visual hierarchy: one lead chapter on left spanning two rows, two compact right-hand subchapters, all 8 links and photos intact. Removed fake V83 sound meters/routing ornaments from runtime. No extra homepage sections.
+- Confirmed first real browser run on V86 app SHA db92e4609b265dfd1fd6058c9d0ebcef36108694: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43418750372 ; screenshots artifact #14033232086. 1440px hero shows visible stage photo + original signal; mobile 390 hero too tall: CSS and Chromium guard added in subsequent commits, pending final CI.
+- Full rotation state: HERO/SERVICES V86 substantial structural work, full screenshot review and final mobile QA PENDING; PORTFOLIO next for film poster/selection experience; NAV previous V81; inner service/event routes, Contact validation, footer, content/local SEO, performance/security yet to audit in rotation. Do not claim site finished.
+- Main/production unchanged due release gates; no verified backup tag/rollback or auto-deploy mapping. Hourly automation existing; do not duplicate it.
+
+---
+
 ## V85 — USER-PROVIDED PREMIUM REFERENCE / REBUILT FIRST SCREEN (2026-11-13)
 
 - Critical owner feedback: mockup was a dark emerald, concert-and-production-equipment first page with large but controlled headline, photographic service units and intense genuine stage lighting. Previous V83 was effectively unchanged to the owner; V84 had altered layout but 1440 screenshot still over-dark and generic. Do **not** say tiny UI changes achieved this reference.
