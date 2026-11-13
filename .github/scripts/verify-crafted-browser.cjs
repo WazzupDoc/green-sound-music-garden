@@ -70,6 +70,13 @@ async function main() {
           "V85 three real unequal photographic chapters must be presented side-by-side at desktop");
         assert(chapterImages[0].height > chapterImages[1].height + 35,
           "Three premium angled panels must be intentionally asymmetric, not three equal cards");
+        const stagePhoto = await page.locator(".gs-production-backdrop-v85").evaluate(async img => {
+          img.loading = "eager";
+          await img.decode().catch(() => null);
+          return { width: img.naturalWidth, height: img.naturalHeight, currentSrc: img.currentSrc };
+        });
+        assert(stagePhoto.width > 0 && stagePhoto.height > 0,
+          `V85 green-lit source photograph failed to decode at ${width}: ${JSON.stringify(stagePhoto)}`);
         const desk = await page.locator(".gs-production-deck-v85").boundingBox();
         assert(desk && desk.width > 400 && desk.height > 190,
           "A new substantial bespoke console must be visible in the desktop hero");
