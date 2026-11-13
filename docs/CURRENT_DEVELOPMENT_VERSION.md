@@ -1,3 +1,15 @@
+# V89 — VERIFIED APP SOURCE / DOCUMENTATION FOLLOW-UP (2026-11-13)
+
+- Draft PR #85: https://github.com/WazzupDoc/green-sound-music-garden/pull/85, branch `design/v89-event-production-run-sheet`, base V88 PR #84.
+- App source head `613eb52e8275e6741e6129f4b2c39500eeb2fd0b` — GitHub Actions **SUCCESS** https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233: TypeScript, SSR build, 84/84 Vitest (30 files), Chrome six widths, two selected real services forwarded to Contact, forms, no-JS/SSR, sitemap 20 pages, gzip within caps (entry 110.9/190, Quote 31.2/50, global CSS 51.3/52 kB gzip).
+- True visual baseline V88 unchanged UI: SUCCESS https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43423935945/artifacts/14035536377 ; V89 after: SUCCESS https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43424678233/artifacts/14035687119 . Both contain 390 and 1440 event timeline and offerings screenshots of `/evenimente/nunti`; review and original files documented in `docs/V89_VISUAL_QA.md`.
+- Visual effect: original typographic production run sheet and service selection panel, including green linework, large sequence numbers, editorial hierarchy, native dynamic selected-state GET handoff; no fabricated media/services, external dependency, autoplay or cost. The existing home layout remains exactly preserved.
+- CI blocker was real: premature interaction with SSR controls; `useHydrated` and deterministic browser gate were added and retested successfully. No checks disabled.
+- **Important:** adding this documentation creates a new commit; exact-head CI must be rechecked for final docs SHA. V89 not published or merged. PR #19 remains conflicting; owner has not approved production release, and backup-tag/rollback/CD effects remain unverified.
+- Next main zone: Contact/Guided Event Brief usability, validation and conversion; then /servicii detail, Studio, Despre, footer, SEO/SSR/privacy.
+
+---
+
 # V89 — EVENT PRODUCTION CUE SHEET / draft (2026-11-13)
 
 - Single change zone: every `/evenimente/$slug` detail page rendered by `src/components/site/EventPage.tsx`. Branch: `design/v89-event-production-run-sheet`, based on V88 PR #84 head `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7` plus a QA-script-only baseline snapshot commit. V88 exact-head Actions runs **43421933450** and **43421917849** succeeded; V89 new head must be checked separately.
