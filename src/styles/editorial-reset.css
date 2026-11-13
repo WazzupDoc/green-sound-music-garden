@@ -167,3 +167,33 @@ background:transparent;box-shadow:none;overflow:visible;backdrop-filter:none}
 @media(prefers-reduced-motion:reduce){
  .gs-poster__title-bottom{transform:none}
 }
+
+
+/* V72 / HERO PERFORMANCE CONTRACT
+ * The stage remains photographic and readable in Lite / reduced-motion modes.
+ * Decorative beams, rings and pointer gradients must not animate or composite.
+ * No JavaScript, new assets, or layout-changing transitions required.
+ */
+/* Motion gates intentionally mirror the same elements for both user preferences. */
+html[data-gs-performance="lite"] .crafted-hero__pointer,
+html[data-gs-performance="lite"] .crafted-stage-lights,
+html[data-gs-performance="lite"] .director-stage-ambient {
+  display: none !important;
+}
+html[data-gs-performance="lite"] .crafted-hero__image,
+html[data-gs-performance="lite"] .gs-poster__symbol,
+html[data-gs-performance="lite"] .gs-poster__title-bottom {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .crafted-hero__pointer,
+  .crafted-stage-lights,
+  .director-stage-ambient { display: none !important; }
+  .crafted-hero__image,
+  .gs-poster__symbol,
+  .gs-poster__title-bottom {
+    animation: none !important;
+    transition: none !important;
+  }
+}
