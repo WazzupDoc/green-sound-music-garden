@@ -1,3 +1,16 @@
+# V81 — Hour 02 STAGE INDEX navigation (2026-11-13)
+
+- Inspected latest relevant source V80 PR #75 / SHA `88f574590c28f28adf3cabddcdfaf12314d809cb`, V79 PR #73; `docs/CURRENT_DEVELOPMENT_VERSION.md`, existing SiteHeader, two legacy CSS sheets, performance Lite, V76 browser script. PR #19 remains **mergeable=false**.
+- **Single area changed:** global header/mobile navigation. Previously mobile popup was an absolute positioned `motion.div role=dialog aria-modal=true` with manual focus trap; background was not inert and full-screen stage hierarchy lacked distinctiveness. New `<dialog>` uses native showModal/close/cancel, Escape, native focus containment and focus restoration. Added full-screen **STAGE INDEX** with original SVG set piece, numbered asymmetric six-link running order, clear Contact/call/WhatsApp choices inside nav. Existing desktop header, Finder, route destinations and home composition retained.
+- Files changed: `src/components/site/SiteHeader.tsx`; new `src/styles/navigation-v81.css`; `src/styles.css` import; removal of dormant menu selectors from `src/styles/atelier.css` and `src/styles/regia-serii-final.css`; new `src/components/site/site-header-stage-index.test.ts`; `.github/scripts/verify-crafted-browser.cjs` new modal + animation / Lite checks and screenshots; `RESEARCH.md`, `ASSETS.md`, version docs, this journal.
+- Research: professional Webflow fullscreen navigation, Awwwards Neutra VDL editorial index, native MDN dialog guidance; all original implementation, no new dependency or external asset.
+- **Validation currently pending:** V81 exact-head TypeScript, SSR build, Vitest, gzip and Playwright; real browser 390 & 1440 before/after screenshots not yet available and do not claim visual approval. Browser capture code now records `stage-index-open-360/390/430/768.png`, `stage-index-motion-390.png`, `stage-index-lite-390.png` if workflow passes. Baseline V80 lacked open-menu screenshots. Motion test checks active CSS and Lite computed styles; reduced-motion fixed test browser state.
+- **Component rotation matrix:** Hero V80 implemented, visual screenshot gate pending; navigation V81 implemented draft, CI and visual gate pending; editorial services **NEXT** (3 chapters, 8 links, photo clarity); films/gallery next (actual video poster HTTP/visibility), then event and service routes, Contact Guided Event Brief, Studio, About, footer/buttons, assets/icons/responsive, SEO/SSR/404/security in rotation. No area is marked approved solely because tests exist.
+- Rollback: revert V81 branch commits, retain V80 draft; no changes to main, domain, external services, production.
+- Next iteration priority: inspect V81 exact-head GitHub Actions and screenshots, fix any genuine failure, then proceed to editorial service programme; do not add a new homepage component.
+
+---
+
 # V80 — Hour 01 hero implementation (2026-11-13)
 
 - Branch: `design/crafted-atmospheres-v80-stage-depth-accessibility`, stacked on PR #74 (docs) / V79 PR #73. Single zone: homepage StageHero, no duplicate hero and no new homepage sections.
