@@ -1,3 +1,4 @@
+import serviceIndexEditorialCss from "@/styles/service-index-editorial-v91.css?inline";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { services, images, type ServiceSlug } from "@/data/site";
@@ -14,6 +15,7 @@ export const Route=createFileRoute("/servicii")({
   description:"Serviciile Green Sound Music, organizate în Muzică, Tehnică și Oameni. DJ & MC, trupă, studio, sonorizare, lumini, fum greu, hostess, ursitoare și Start Veselia.",
   path:"/servicii",jsonLd:[breadcrumbLd([{name:"Acasă",path:"/"},{name:"Servicii",path:"/servicii"}])]}),
  component:Services,
+ styles: [{children:serviceIndexEditorialCss}],
 });
 function Services(){
  return <>
@@ -26,14 +28,14 @@ function Services(){
     {groups.map((group,index)=>(
      <div className="rs-service-index__group" key={group.name}>
       <div className="rs-service-index__group-title">
-       <span>{String(index+1).padStart(2,"0")}</span>
-       <h3>{group.name}</h3><p>{group.intro}</p>
+       <span aria-hidden="true">{String(index+1).padStart(2,"0")}</span>
+       <h3>{group.name}</h3><p>{group.intro}</p><span className="v91-service-count">{group.slugs.length} direcții de producție</span>
       </div>
       <ul>{group.slugs.map(slug=>{
         const service=services.find(item=>item.slug===slug)!;
         return <li key={service.slug}>
           <Link to={`/${service.slug}`} viewTransition>
-            <strong>{service.name}</strong>
+            <span className="v91-service-row-index" aria-hidden="true">{String(group.slugs.indexOf(slug)+1).padStart(2,"0")}</span><strong>{service.name}</strong>
             <span>{service.short}</span>
             <ArrowUpRight size={20} aria-hidden />
           </Link>
