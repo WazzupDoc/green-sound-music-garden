@@ -1,3 +1,6 @@
+### V81 screenshot evidence (browser output, not an external site asset)
+- [GitHub Actions artifact #14024876141](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141): real Chromium screenshots of homepage and V81 menu on 360/390/430/768 plus motion/Lite at 390; generated from branch SHA `98dacdb0686d76e3943afcb49f646b8578cf6eb5`, not AI mockups, not included in public production media. No matching before screenshot of the old modal open, so do not label this as a before/after comparison.
+
 ## V81 — 2026-11-13 / Original Stage Index navigation
 
 - New images, video, audio, commercial fonts, external scripts, third-party icons, Unsplash requests: **none**.
