@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import signalLedgerCss from "@/styles/production-signal-v83.css?inline";
 import { ArrowUpRight, MoveUpRight } from "lucide-react";
 import { images, services, type ServiceSlug } from "@/data/site";
 
@@ -9,7 +10,7 @@ type Chapter = {
   note: string;
   image: { src: string; alt: string; w: number; h: number };
   serviceSlugs: readonly ServiceSlug[];
-  art: string;
+  art: "sound" | "stage" | "people";
 };
 
 /**
@@ -75,9 +76,20 @@ export const editorialChapters = chapters.map((chapter) => ({
   }),
 }));
 
+
+/** A typographic, deliberately non-reactive signal engraving. These bars are
+ * visual identity, not an audio analyser; keep every service usable without JS. */
+const chapterSignalLevels = {
+  sound: [18, 45, 72, 41, 88, 64, 28, 96, 58, 79, 33, 66, 24, 51, 84, 38, 71],
+  stage: [77, 72, 66, 54, 33, 26, 19, 16, 19, 26, 33, 54, 66, 72, 77, 62, 43],
+  people: [19, 26, 43, 61, 76, 89, 81, 62, 37, 21, 28, 53, 74, 91, 58, 33, 20],
+} as const;
+
 export function ProductionIndex() {
   return (
     <section id="gs-production-index" className="gs-index" aria-labelledby="gs-index-title">
+      {/* CSS is component-scoped and SSR-included, preserving the 52kB shared-CSS cap. */}
+      <style>{signalLedgerCss}</style>
       <div className="container-site">
         <header className="gs-index__intro">
           <div className="gs-index__overline">
@@ -99,6 +111,19 @@ export function ProductionIndex() {
               <div className="gs-index__photo">
                 <img src={chapter.image.src} alt={chapter.image.alt} width={chapter.image.w}
                   height={chapter.image.h} loading="lazy" decoding="async" />
+                {/* A three-channel production engraving, not a fake live audio meter. */}
+                <div className="gs-index__signal-ledger" aria-hidden="true">
+                  <div className="gs-index__signal-ledger-head">
+                    <span>CH.{chapter.index} / GS</span>
+                    <span className="gs-index__signal-ledger-dot" />
+                  </div>
+                  <div className="gs-index__signal-ledger-bars">
+                    {chapterSignalLevels[chapter.art].map((level, i) => (
+                      <i key={i} style={{ height: `${level}%` }} />
+                    ))}
+                  </div>
+                  <span className="gs-index__signal-ledger-foot">SOUND / LIGHT / PEOPLE</span>
+                </div>
                 <span className="gs-index__photo-mark" aria-hidden="true">GS / {chapter.index}</span>
                 <span className="gs-index__photo-label" aria-hidden="true">{chapter.overline}</span>
               </div>
@@ -120,6 +145,11 @@ export function ProductionIndex() {
                     </li>
                   ))}
                 </ul>
+                <div className="gs-index__routing" aria-hidden="true">
+                  <span>GS / PRODUCTION CHANNEL {chapter.index}</span>
+                  <span className="gs-index__routing-rail"><i /></span>
+                  <span>0{chapter.linkedServices.length} TRACKS</span>
+                </div>
               </div>
             </article>
           ))}

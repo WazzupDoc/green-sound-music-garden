@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - "design/crafted-atmospheres-*"
+      - "design/v*"
   pull_request:
     branches:
       - main
       - design/green-sound-sillage-open-source
       - "design/crafted-atmospheres-*"
+      - "design/v*"
 
 # When iterative design work produces several commits, only the latest branch
 # state needs visual/browser QA; cancel stale runs in the SAME event type.\n# Keep push and PR runs separate so they don't cancel each other accidentally.

@@ -1,3 +1,18 @@
+## V83 — actual screenshot provenance (2026-11-13)
+- Original project media: all three service photos local from `public/media/greensound/`; verified by Chromium decoding and `naturalWidth > 0` at 360/390/430/768/1440/1920. No new files used for the site or TikTok videos reused.
+- CI screenshots [artifact 14029615502](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536/artifacts/14029615502) are actual Chromium captures of V83 source SHA `fd604c60630f9498555145805c07b250666a8d2e`, NOT promotional image assets. Comparisons to V81 require disclosure that V81 screenshots were missing lazy-loaded photos.
+
+---
+
+## 2026-11-13 — V83 original decorative UI assets
+- New media files, music, video, fonts, external icons, third-party scripts: **none**.
+- New original visual: `src/styles/production-signal-v83.css` and `ProductionIndex.tsx` implement 3 custom channel engravings (CSS/HTML only; not audio-reactive, not actual mixer readings); no rights/credit needed beyond Green Sound's own code.
+- Reuses exactly 3 existing local image refs (`images.dj`, `images.scena`, `images.ursitoare` from `src/data/site.ts`), with known repo assets `public/media/greensound/`. Any original licensing / image usage rights remain as documented in prior versions, unverified here.
+- Uploaded TikTok material is **context of business activity only** and is not integrated into site, images or screenshots of commercial events.
+- Browser screenshot artifacts must show images with `naturalWidth > 0`; prior screenshots may include unloaded lazy assets and are not authoritative before/after evidence. Post exact-head run ID / screenshot artifact only after verified results.
+
+---
+
 ### V81 screenshot evidence (browser output, not an external site asset)
 - [GitHub Actions artifact #14024876141](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141): real Chromium screenshots of homepage and V81 menu on 360/390/430/768 plus motion/Lite at 390; generated from branch SHA `98dacdb0686d76e3943afcb49f646b8578cf6eb5`, not AI mockups, not included in public production media. No matching before screenshot of the old modal open, so do not label this as a before/after comparison.
 
