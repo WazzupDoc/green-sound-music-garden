@@ -1,3 +1,7 @@
+# V94 — Navigation production cue / draft 2026-11-13
+- Base V93 footer branch (exact-head green), isolated branch design/v94-navigation-editorial-cue. Rebuilt full-screen native mobile menu as an editorial emerald production cue: dynamic selected route preview (desktop), full-row hover/focus, bolder asymmetrical typographic hierarchy and reduced/Lite motion guards. Functional fix: route navigation no longer forces keyboard focus back to a hamburger that may be hidden after a route change; Escape/close still returns focus. Finder and existing routes remain unchanged.
+- Real Chromium screenshot targets: v94-navigation-open-390.png, v94-navigation-open-1440.png, v94-navigation-focus-390.png, v94-navigation-focus-1440.png, plus 6-width existing regression. Before reference: stage-index-open-390.png from V93 CI artifact. New exact-head CI and visual verdict pending. No main/deploy change.
+
 # V93 — Footer Editorial Signal (draft, 2026-11-13)
 - Branch design/v93-footer-editorial-signal, based on validated V91 e8e3296, separate from concurrent V92 Contact and service-stage branches.
 - Single audited component: global SiteFooter. Added high-contrast original brand-scale type, direct Contact conversion and retained all functional footer routes, real business channels, privacy and Light Desk. No dependency or fake media.

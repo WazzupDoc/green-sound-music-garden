@@ -1,3 +1,6 @@
+## V94 navigation / 2026-11-13
+- No new images, audio, fonts, videos, logos, stock, AI-generated event material, dependencies or external code. Production-cue layout, typography and interaction authored in repository CSS/React; existing brand wordmark, Lucide icons and real links reused. Source references in RESEARCH.md are inspiration only, not licensed assets.
+
 ## V93 footer (2026-11-13)
 - Original CSS typography and native text only; no imported photos, video, commercial fonts, icon packages or third-party code. Existing logo, links and LightDesk remain as previously documented.
 
