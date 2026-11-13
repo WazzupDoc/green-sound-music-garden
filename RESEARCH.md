@@ -118,3 +118,8 @@ A continuous **01–08 running order** across three editorial chapters, implemen
 ### Measurement gaps
 
 No measured Lighthouse scores, field LCP, real Search Console query volume or verified staging browser artifacts this run. No invented rankings or performance claims.
+
+## 2026-11-13 — V72 hero stage motion gate
+- Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — CSS user preference media query; adapted by disabling only decorative stage layers and transitions. No third-party code or assets copied; documentation is a reference, not a software dependency.
+- Reference: https://web.dev/articles/optimize-lcp — prioritise visible content and avoid unnecessary render work. The existing real hero photograph is retained; no unmeasured LCP improvement claimed.
+- Experiment: CSS-only Lite + reduced-motion stage suppression, no new dependency (0 added bytes of JS). Rejected: deleting the stage photo or globally disabling all transitions, which would harm presentation and unrelated controls. Needs six-width browser QA.
