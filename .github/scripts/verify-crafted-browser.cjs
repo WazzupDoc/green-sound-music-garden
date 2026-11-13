@@ -244,6 +244,7 @@ async function main() {
       // Test the new visitor-selected brief only when present on the V89 branch.
       const eventBrief = detailPage.locator(".gs-event-detail-brief");
       if (await eventBrief.count()) {
+        await detailPage.locator('.gs-event-v89__offers[data-hydrated="true"]').waitFor({ timeout: 15000 });
         const toggles = detailPage.locator('.gs-event-v89__offer-list button[aria-pressed]');
         assert.equal(await toggles.count(), 5, "Offerings preserve all five selection options");
         await toggles.nth(0).click();
