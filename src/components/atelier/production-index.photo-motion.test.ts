@@ -10,7 +10,7 @@ describe("V70 editorial photo motion policy", () => {
     expect(css).not.toMatch(/^\.gs-index__chapter:hover \.gs-index__photo img\{transform:scale\(1\.06\)/m);
   });
   it("preserves non-motion color feedback and keyboard focus treatment", () => {
-    expect(css).toContain(".gs-index__chapter:hover .gs-index__photo img{filter:saturate(1) contrast(1.06)}");
+    expect(css).toContain(".gs-index__chapter:hover .gs-index__photo img{filter:saturate(1.06) contrast(1.03) brightness(1.12)}");
     expect(css).toContain(".gs-index__chapter:has(.gs-index__service:focus-visible) .gs-index__photo{outline:2px solid #286d3a;outline-offset:3px}");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
     expect(css).toContain("html[data-gs-performance=lite] .gs-index__photo img");
