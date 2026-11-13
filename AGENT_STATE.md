@@ -95,3 +95,8 @@ Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last che
 4. Verify true LCP element and image priority in staging before modifying eager/lazy flags.
 5. Research actual local DJ/sound/lighting search intents without invented metrics; document only verified service area.
 6. Inspect PR #19 conflict and main CI/CD deployment settings; do not merge without backup/tag and separate publication approval where needed.
+
+## 2026-11-13 — V72 / Divide et Impera: hero motion
+- Area: hero stage decoration (after V71 route restoration). Added CSS Lite/reduced-motion gate for animated beams, rings, pointer and image transitions; real hero image remains. New source-level Vitest guard. No packages or external media.
+- Rotation matrix: hero = V72 pending browser verification; photographs = V70; next = navigation/mobile menu keyboard and Escape, then CTA, films, Contact, SEO.
+- V71 PR #65 reported mergeable=true but exact-head PR workflow query returned zero runs, **not** CI success. PR #19 mergeable=false. No TypeScript/SSR/Chromium run confirmed; no main merge or deployment.
