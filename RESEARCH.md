@@ -281,3 +281,8 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 - Reference inspiration: https://www.awwwards.com/websites/music-sound/ (music/sound visual language; no source code or artwork copied); https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/perspective and https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/transform-style (native CSS 3D projection). No third-party code or dependency used.
 - Original implementation: two depth-separated truss portals, perspectival stage deck, dual angular scanning fixtures; preserve real concert image; decorative DOM aria-hidden; pause animations for Lite, reduced motion, offscreen and light-off.
 - Rejected: generic blob/glow overlays and new WebGL runtime/dependency (higher complexity/performance cost). Visual comparison and browser QA still required before merge.
+
+## 2026-11-13 — V101 portfolio accessibility
+- https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — dialog interaction/focus principles; adapted contextual accessible names for photo navigation; no code copied.
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite status announcements; adapted to photo position/title. No dependency or external media.
+- Rejected: animated counter overlay and autoplay slideshow; unnecessary motion and cognitive load.

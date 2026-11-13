@@ -171,3 +171,6 @@ No new images, fonts, video, icons or dependencies. Existing Green Sound hero ph
 
 ## V74 (2026-11-13)
 No assets, fonts, images, videos, third-party code or dependencies added. Eight fixture-reading tests changed only their local filesystem path resolution.
+
+## V101 portfolio dialog
+No new media, fonts, icons or dependencies; uses existing approved portfolio images and Lucide icons.
