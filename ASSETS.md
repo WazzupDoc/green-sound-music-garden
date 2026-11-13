@@ -1,3 +1,12 @@
+## 2026-11-13 V90 / perspective show wall provenance
+- **No new photograph or video**; purely new authored CSS and React geometric rendering. `src/components/atelier/KineticShowWall.tsx` references three **existing locally packaged** media entries from `src/data/site.ts`: `images.scena` (green stage lights), `images.dj` (people/music; an event photo, **not** purported mixer hardware), `images.concert` (concert crowd). Each references an existing `public/media/greensound/*.webp` local file. Existing owner rights/usage conditions remain unchanged.
+- The new animation is made entirely from CSS transform/opacity over original photos; artificial visual layers are explicitly graphical, not recordings or actual live sound levels. All labels STAGE / PEOPLE / LIVE are editorial chapter labels, not client names or proven results.
+- New image source files downloaded/created for site: **none**. No clip harvested from TikTok/Instagram, no stock, no AI-generated human/show passed as actual. No third-party code/font/icons added.
+- CI screenshots, when available, are actual Chromium rendering evidence (screen size and motion state), *not marketing media* or permission to publish photos. V89 before CI artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43425095295/artifacts/14037051076 ; V90 after artifact pending.
+- Brand image rights must still be confirmed before public production deployment; do not infer license from repository presence.
+
+---
+
 ## 2026-11-13 — V89 imagery and art declaration
 
 - Added to website: **NO new image, font, stock, music, video, or logo**. Homepage uses only existing project media `images.concert`, `images.dj`, `images.scena`, `images.ursitoare` and the three first-party film posters registered in `src/data/site.ts`.
