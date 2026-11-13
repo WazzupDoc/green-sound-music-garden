@@ -1,3 +1,12 @@
+# V92 VERIFIED APP CODE / DOC FOLLOW-UP — 2026-11-13
+
+- App SHA `9dd53301b523382d7a24e38050a5e46a715b72ec` EXACT-head CI SUCCESS: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649 — 88/88 tests, 31 suites, strict TypeScript, production Vite SSR, gzip caps, six-width Chromium, real Contact preview validation/focus/edit and sitemap. 111.0/190kB home JS, 31.3/50kB quote JS, 51.2/52kB shared CSS gzip, not a Lighthouse claim.
+- Unmodified V91 BEFORE: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840/artifacts/14043468507. Corrected V92 AFTER: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439489649/artifacts/14045816881. `docs/V92_VISUAL_QA.md` describes and names authentic 390/1440 screenshots.
+- First after screenshot exposed light-on-light preview text and overlapping duplicate sticky bar; both fixed in final app SHA, and computed preview colors/route-specific bar suppression tested in real browser. No media rights or added dependency. Main unchanged.
+- Documentation follow-up alters branch HEAD; separate exact-head Actions verification is required. Release blocked until PR conflict/release backup tag, auto-deploy impact, rollback rehearsal and approval if publishing. NEXT zone: dedicated /servicii/$slug pages.
+
+---
+
 # V92 — Contact Production Brief / real browser review (2026-11-13)
 
 - Draft PR #91: https://github.com/WazzupDoc/green-sound-music-garden/pull/91, branch `design/v92-contact-production-brief` stacked on V91 PR #89. Live source functionality: editorial Contact two-tone with original SVG waveform, truthful 3-stage inquiry process, direct real phone/WhatsApp/email, SSR light production-paper quote; user-controlled sending.
