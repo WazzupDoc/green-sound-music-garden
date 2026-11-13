@@ -30,6 +30,7 @@
 @import "./styles/regia-serii-final.css";
 @import "./styles/editorial-reset.css";
 @import "./styles/stage-v78.css";
+@import "./styles/stage-v79.css";
 
 @custom-variant dark (&:is(.dark *));
 
