@@ -1,3 +1,11 @@
+## 2026-11-13 — V92 service-detail stage media provenance
+- Source images: each of the eight `Service` catalogue entries in `src/data/site.ts`, using its existing `service.image` (local `public/media/greensound/*.webp` for most; some existing official Green Sound video thumbnail URLs). No newly created/downloaded/stock/AI people or false client/event footage. Preserve image.alt, original width and height. The `img` is semantic and content-bearing; decorative stage scan and camera viewfinder are authored CSS.
+- Source-backed `service.highlights` short labels from actual project data, no fabricated counts/turnover. Service source videos are handled by existing VideoLite only upon visitor action.
+- New created assets: only original TSX component and `service-stage-v92.css`; no third-party font, code, library, movie, audio or image. Image use rights still need review by owner before publishing.
+- Real V92 browser screenshots will come from Actions artifact on the exact branch HEAD after CI success, not generative mockups. Do not claim feature appears in production until merged and released.
+
+---
+
 ## 2026-11-13 V90 / perspective show wall provenance
 - **No new photograph or video**; purely new authored CSS and React geometric rendering. `src/components/atelier/KineticShowWall.tsx` references three **existing locally packaged** media entries from `src/data/site.ts`: `images.scena` (green stage lights), `images.dj` (people/music; an event photo, **not** purported mixer hardware), `images.concert` (concert crowd). Each references an existing `public/media/greensound/*.webp` local file. Existing owner rights/usage conditions remain unchanged.
 - The new animation is made entirely from CSS transform/opacity over original photos; artificial visual layers are explicitly graphical, not recordings or actual live sound levels. All labels STAGE / PEOPLE / LIVE are editorial chapter labels, not client names or proven results.
