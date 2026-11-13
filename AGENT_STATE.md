@@ -1,3 +1,8 @@
+## 2026-11-13 — V74 Vitest CI blocker
+
+- Verified V73 exact-head: motion workflow #43356575075 SUCCESS; React typecheck/build workflow #43356575133 FAILURE at Vitest: 8 suites cannot evaluate fixture `new URL(..., import.meta.url)` because Vitest's transformed `import.meta.url` is not `file:`. Replaced fixture paths in 8 tests using repository-root paths; preserved all assertions and CI gates. This is not a browser or Lighthouse result.
+- Rotation: photo V70, homepage V71, hero V72, CI V73/V74, **navigation/mobile Escape NEXT** after CI validation. V74 draft PR and CI pending. PR #19 mergeable=false; main untouched.
+
 ## 2026-11-13 — V73 CI gate repair
 
 - Real V72 head `66969135b31d7808e2847a24bf4e14f98c5fbca6`: typecheck/build workflow 43348988088 **FAILED** in strict TypeScript, with ten errors across date validator and CTA regression; motion workflow 43348988129 passed. These failures supersede prior "CI unconfirmed" note. PR #66 mergeable=true but NOT releasable; PR #19 mergeable=false.
