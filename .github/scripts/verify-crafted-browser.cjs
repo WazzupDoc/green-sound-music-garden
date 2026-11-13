@@ -53,9 +53,60 @@ async function main() {
       await film.click();
       assert.equal(await film.getAttribute("aria-pressed"), "true");
       await page.keyboard.press("Tab");
+      // V81: real native modal navigation / focus / Escape at every mobile-tablet width.
+      if (width <= 768) {
+        const menuButton = page.locator(".atelier-header__menu-btn");
+        await menuButton.click();
+        const dialog = page.locator("dialog.atelier-mobile-menu[open]");
+        await dialog.waitFor({ timeout: 8000 });
+        assert.equal(await dialog.evaluate(element => element.matches(":modal")), true,
+          "Menu must be a real top-layer modal, not a role-only overlay");
+        assert.equal(await dialog.locator(".gsm-nav-index__link").count(), 6);
+        assert.equal(await page.evaluate(() => document.activeElement?.closest("dialog") !== null), true,
+          "Initial focus must move inside the menu");
+        assert.equal(await page.locator("body").evaluate(element => element.classList.contains("atelier-menu-locked")), true);
+        await noOverflow(page, "open stage index", width);
+        await page.screenshot({
+          path: `${output}/stage-index-open-${width}.png`,
+          fullPage: false, animations: "disabled",
+        });
+        await page.keyboard.press("Tab");
+        assert.equal(await page.evaluate(() => document.activeElement?.closest("dialog") !== null), true,
+          "Tab must stay within the native modal");
+        await page.keyboard.press("Escape");
+        await dialog.waitFor({ state: "hidden", timeout: 8000 });
+        await page.waitForFunction(() =>
+          document.activeElement === document.querySelector(".atelier-header__menu-btn"));
+        assert.equal(await menuButton.getAttribute("aria-expanded"), "false");
+      }
       assert.deepEqual(errors, [], `Browser errors at ${width}px`);
       await page.close();
     }
+
+    // Real full-motion state: compositor entrance animation must be present,
+    // but reduced-motion / Lite snapshots stay static.
+    const activePage = await browser.newPage({
+      viewport: { width: 390, height: 844 }, reducedMotion: "no-preference",
+    });
+    await activePage.goto(base + "/", { waitUntil: "domcontentloaded" });
+    await activePage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+    await activePage.locator(".atelier-header__menu-btn").click();
+    await activePage.locator("dialog.atelier-mobile-menu[open]").waitFor();
+    const animationName = await activePage.locator(".gsm-nav-index__layout")
+      .evaluate(element => getComputedStyle(element).animationName);
+    assert.match(animationName, /gsm-nav-reveal/, "Full-motion menu entrance must be active");
+    await activePage.screenshot({
+      path: `${output}/stage-index-motion-390.png`, animations: "allow",
+    });
+    await activePage.evaluate(() =>
+      document.documentElement.setAttribute("data-gs-performance", "lite"));
+    const liteAnimation = await activePage.locator(".gsm-nav-index__layout")
+      .evaluate(element => getComputedStyle(element).animationName);
+    assert.equal(liteAnimation, "none", "Lite must suppress navigation animation");
+    await activePage.screenshot({
+      path: `${output}/stage-index-lite-390.png`, animations: "disabled",
+    });
+    await activePage.close();
 
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
@@ -77,7 +128,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V76 editorial browser: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V81 editorial + stage-index modal browser: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
   } finally {
     await browser.close();
   }
