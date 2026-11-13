@@ -359,3 +359,20 @@ html[data-gs-performance=lite] .gs-home-v84 .gs-index__photo{
 @media(max-width:900px){
  .gs-home-v84 .scene-console{display:none}
 }
+
+/* Authentic existing stage imagery from this project supplies the green
+   atmosphere missing in the full-bleed crowd shot.  It is editorial decoration,
+   not an invented client, concert, installation or AI-generated performance. */
+.gs-home-v84 .gs-production-backdrop-v85{
+ position:absolute;z-index:1;top:77px;right:0;
+ width:clamp(410px,46%,745px);height:clamp(315px,36vw,505px);
+ display:block;pointer-events:none;
+ object-fit:cover;object-position:center 35%;
+ filter:saturate(1.43) contrast(1.1) brightness(.84);
+ opacity:.83;
+ -webkit-mask-image:radial-gradient(ellipse 84% 88% at 77% 24%,#000 41%,transparent 100%);
+ mask-image:radial-gradient(ellipse 84% 88% at 77% 24%,#000 41%,transparent 100%);
+}
+@media(max-width:900px){
+ .gs-home-v84 .gs-production-backdrop-v85{display:none}
+}
