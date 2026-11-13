@@ -36,3 +36,89 @@ dialog.atelier-mobile-menu::backdrop{background:#000d}
 @keyframes gsm-nav-reveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){dialog.atelier-mobile-menu[open] *,dialog.atelier-mobile-menu[open] *::before,dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}}
 html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *,html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::before,html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}
+
+
+/* V94: Navigation as a production cue sheet rather than six generic links.
+   Original typography, no new media, fonts or dependencies. */
+dialog.atelier-mobile-menu[open]{background:#071d14}
+.gsm-nav-index{
+ background:linear-gradient(135deg,#071d14 0%,#082419 48%,#06140f 100%);
+}
+.gsm-nav-index::before{
+ content:"";position:absolute;pointer-events:none;inset:0;
+ background:repeating-linear-gradient(90deg,transparent 0,transparent calc(20% - 1px),#c7ffb00d calc(20% - 1px),#c7ffb00d 20%);
+}
+.gsm-nav-index__stage-mark{display:none}
+.gsm-nav-index__layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,88px)}
+.gsm-nav-index__intro h2{
+ max-width:11ch;font-size:clamp(3.3rem,6.5vw,8rem);
+ font-weight:820;letter-spacing:-.085em;line-height:.89
+}
+.gsm-nav-index__intro h2 em{
+ margin-top:.14em;color:#d2ffb0;
+ font-size:.88em;letter-spacing:-.05em
+}
+.gsm-nav-index__live-mark{
+ display:block;margin-top:22px;color:#90bfa1;
+ font-size:.62rem;font-weight:800;letter-spacing:.19em
+}
+.gsm-nav-index__cue{
+ margin-top:clamp(26px,4vh,60px);padding:22px 0 12px;
+ border-top:1px solid #c7ffb05c;
+ display:flex;flex-direction:column;align-items:flex-start;gap:12px
+}
+.gsm-nav-index__cue-label,.gsm-nav-index__cue small{
+ font-size:.62rem;font-weight:750;letter-spacing:.14em;color:#b1cdb5
+}
+.gsm-nav-index__cue strong{
+ font-family:var(--font-display);font-size:clamp(2rem,3vw,3.5rem);
+ font-weight:800;letter-spacing:-.065em;color:#d7ffb6;line-height:1
+}
+.gsm-nav-index__cue-rule{height:3px;width:72px;background:#b7f1a3}
+.gsm-nav-index__entry{border-bottom:1px solid #d8ffd247}
+.gsm-nav-index__entry:first-child{border-top:1px solid #d8ffd247}
+.gsm-nav-index__link{
+ position:relative;min-height:clamp(68px,8vh,96px);
+ grid-template-columns:36px minmax(0,1fr) 27px;
+ padding:13px clamp(10px,1.7vw,24px);overflow:hidden
+}
+.gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:clamp(10px,1.7vw,24px)}
+.gsm-nav-index__link::before{
+ content:"";position:absolute;inset:0;background:#caffab;
+ transform:scaleX(0);transform-origin:left;pointer-events:none;z-index:-1
+}
+.gsm-nav-index__link{isolation:isolate}
+.gsm-nav-index__link:hover,.gsm-nav-index__link:focus-visible{
+ color:#082b19
+}
+.gsm-nav-index__link:hover::before,.gsm-nav-index__link:focus-visible::before{transform:scaleX(1)}
+.gsm-nav-index__link:hover small,.gsm-nav-index__link:focus-visible small{color:#1a5432}
+.gsm-nav-index__link--active:not(:hover):not(:focus-visible){color:#c7ffb0}
+.gsm-nav-index__link span{font-size:clamp(2.1rem,4.3vw,5rem);letter-spacing:-.07em}
+.gsm-nav-index__link svg{opacity:1}
+.gsm-nav-index__bottom{padding-top:24px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ html:not([data-gs-performance="lite"]) .gsm-nav-index__link::before{
+  transition:transform .3s cubic-bezier(.19,.8,.25,1)
+ }
+}
+@media(max-width:850px){
+ .gsm-nav-index__layout{grid-template-columns:1fr;gap:12px;padding-block:22px}
+ .gsm-nav-index__intro h2{max-width:none;font-size:clamp(2.4rem,8vw,4.5rem)}
+ .gsm-nav-index__live-mark,.gsm-nav-index__cue,.gsm-nav-index__note{display:none}
+ .gsm-nav-index__link{min-height:clamp(57px,8vh,78px)}
+ .gsm-nav-index__link span{font-size:clamp(2rem,6.9vw,3.8rem)}
+}
+@media(max-width:500px){
+ .gsm-nav-index{padding:14px 18px 23px}
+ .gsm-nav-index__layout{padding-block:15px 20px}
+ .gsm-nav-index__intro h2{font-size:clamp(2.25rem,8vw,3.5rem);margin-top:8px}
+ .gsm-nav-index__link{min-height:58px;padding:8px 8px;grid-template-columns:27px minmax(0,1fr) 24px}
+ .gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:8px}
+ .gsm-nav-index__link span{font-size:clamp(1.85rem,7.6vw,2.9rem)}
+ .gsm-nav-index__bottom{padding-top:14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gsm-nav-index__link::before{transition:none!important}
+}
+html[data-gs-performance="lite"] .gsm-nav-index__link::before{transition:none!important}
