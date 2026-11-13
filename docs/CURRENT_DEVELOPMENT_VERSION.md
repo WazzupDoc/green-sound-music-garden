@@ -1,3 +1,9 @@
+## V81 verification update — PASS on application source `98dacdb0686d76e3943afcb49f646b8578cf6eb5`
+
+- Exact-head CI [run #43399390064](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064) completed **SUCCESS**, with 24 Vitest suites / 68 tests passed; TypeScript strict, SSR/Vite build, 51.3 kB gzip shared CSS / 52 kB cap, 110.9 kB homepage chunk / 190 cap, 31.2 kB QuoteForm / 50 cap; 360/390/430/768/1440/1920 Chromium homepage, nav open/focus/Escape, full-motion/Lite 390, 20-page route/sitemap audit.
+- [Screenshots](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064/artifacts/14024876141): `stage-index-open-360/390/430/768.png + stage-index-motion-390.png + stage-index-lite-390.png` and six homepage captures. **No same-state open-menu V80 baseline**; after images visually inspected at 360/390/768, no obvious clipping/overflow, but this does not prove aesthetic preference or physical-device behavior.
+- Evidence-only docs update may create a **later SHA**; re-check exact-head checks on that last SHA before calling the PR validated. Production/main unchanged; no merge approval.
+
 # V81 — STAGE INDEX navigation / draft (2026-11-13)
 
 - Branch: `design/crafted-atmospheres-v81-stage-index-navigation`, based on V80 head `88f574590c28f28adf3cabddcdfaf12314d809cb` (PR #75); V79 PR #73 underneath. Single main zone: existing global `SiteHeader` / mobile navigation.
