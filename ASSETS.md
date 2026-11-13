@@ -1,3 +1,7 @@
+## 2026-11-13 — V71
+
+No new photos, videos, icons, fonts, music, packages, external images or licenses. Restores existing V48 StageHero / ProductionIndex / EditorialPortfolio components with existing first-party media references. Ownership and provenance verification remain a release gate.
+
 ## 2026-11-13 — V70
 
 No new photographs, videos, fonts, sounds, icons, third-party code or dependencies. Existing first-party service images remain in place. Only CSS motion policy and original regression test were added; no new attribution or license obligations.
