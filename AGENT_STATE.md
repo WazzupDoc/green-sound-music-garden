@@ -1,3 +1,6 @@
+## V102 — Portfolio gallery focus (draft)
+Zone: photo lightbox. Source defect: URL-driven close could leave focus without an explicit thumbnail fallback. Added onCloseAutoFocus to return to visible originating thumbnail, otherwise programmatic gallery heading. Source SHA ae2a4503ce3491e74d789fd1d36d59be18375309. Browser screenshots at 390/1440, keyboard/Escape, TS/SSR/Vitest/gzip and exact-head CI pending. Next: film filters and video state. Main untouched.
+
 ## V101 — Portfolio photo announcements / 2026-11-13
 - Zone: photo lightbox. Accessible status now announces the active photo number/title; Previous/Next buttons name their actual destination photo. No new packages, assets or homepage changes. Browser before/after and exact-head CI pending. Next: gallery focus restoration and filters. Main unchanged.
 
