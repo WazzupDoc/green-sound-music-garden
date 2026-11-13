@@ -1,0 +1,90 @@
+/* V83 / GREEN SOUND — ORIGINAL CHANNEL LEDGER
+   Typographic production-console detail for the three existing editorial acts.
+   The bars are deliberately NOT a live-audio visualizer. Purely decorative,
+   unobtrusive at rest, animated only while the chapter is hovered or focused.
+   No media, new library, live audio, canvas or tracking. */
+.gs-index .gs-index__signal-ledger{
+  position:absolute;z-index:3;top:14px;right:15px;
+  width:clamp(122px,13vw,164px);height:116px;
+  display:flex;flex-direction:column;gap:11px;
+  padding:12px 13px 11px;
+  background:linear-gradient(145deg,rgba(3,17,11,.94),rgba(10,27,20,.82));
+  color:#ddf4d2;
+  border-top:1px solid rgba(213,255,185,.66);
+  border-right:1px solid rgba(213,255,185,.26);
+  border-bottom:1px solid rgba(213,255,185,.22);
+  box-shadow:-11px 14px 24px rgba(1,16,9,.26);
+  pointer-events:none;
+}
+.gs-index__signal-ledger-head{display:flex;justify-content:space-between;
+  align-items:center;gap:12px;font-size:.58rem;font-weight:800;
+  letter-spacing:.15em;font-variant-numeric:tabular-nums}
+.gs-index__signal-ledger-dot{width:5px;height:5px;border:1px solid #bfff9d;
+  transform:rotate(45deg);opacity:.85}
+.gs-index__signal-ledger-bars{height:36px;width:100%;display:flex;
+  align-items:flex-end;justify-content:space-between;gap:3px;
+  border-bottom:1px solid #9ddf9660;
+  background:repeating-linear-gradient(to top,transparent 0 8px,#dcffe615 8px 9px)}
+.gs-index__signal-ledger-bars i{display:block;min-width:2px;max-width:5px;
+  flex:1;background:#b8edaa;opacity:.92;transform-origin:bottom;
+  box-shadow:0 -1px 5px #b6ffa824}
+.gs-index__signal-ledger-bars i:nth-child(3n){background:#e2f2d0;opacity:.62}
+.gs-index__signal-ledger-foot{margin-top:auto;font-size:.5rem;font-weight:800;
+  letter-spacing:.065em;white-space:nowrap;color:#d2efc0ad}
+.gs-index__chapter[data-chapter=stage] .gs-index__signal-ledger{
+  border-top-color:#f2d9a1;color:#f2e5bf}
+.gs-index__chapter[data-chapter=stage] .gs-index__signal-ledger-bars i{
+  background:#d6ddb3}
+.gs-index__chapter[data-chapter=people] .gs-index__signal-ledger{
+  border-top-color:#a5e2cd}
+.gs-index__chapter[data-chapter=people] .gs-index__signal-ledger-bars i{
+  background:#b5ddc5}
+.gs-index__routing{display:flex;align-items:center;gap:12px;
+  padding:24px 0 0;color:#49664e;font-size:.55rem;font-weight:800;
+  letter-spacing:.09em;font-variant-numeric:tabular-nums}
+.gs-index__routing-rail{flex:1;min-width:18px;height:1px;
+  background:#74937a7a;overflow:visible;position:relative}
+.gs-index__routing-rail i{display:block;height:2px;width:22px;
+  background:#216437;transform-origin:left;transition:transform .55s ease}
+.gs-index__chapter:is(:hover,:focus-within) .gs-index__routing-rail i{
+  transform:scaleX(2.1)}
+.gs-index__chapter:is(:hover,:focus-within) .gs-index__photo{
+  box-shadow:inset 0 0 0 1px #83bf76}
+@keyframes gs-index-meter-pulse{
+  0%{transform:scaleY(.64)}
+  35%{transform:scaleY(.96)}
+  70%{transform:scaleY(.48)}
+  100%{transform:scaleY(1)}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  html:not([data-gs-performance=lite]) .gs-index__chapter:is(:hover,:focus-within)
+  .gs-index__signal-ledger-bars i{
+    animation:gs-index-meter-pulse .82s ease-in-out 2 alternate;
+  }
+  html:not([data-gs-performance=lite]) .gs-index__chapter:is(:hover,:focus-within)
+  .gs-index__signal-ledger-bars i:nth-child(3n){animation-delay:.11s}
+  html:not([data-gs-performance=lite]) .gs-index__chapter:is(:hover,:focus-within)
+  .gs-index__signal-ledger-bars i:nth-child(4n){animation-delay:.18s}
+}
+@media(max-width:780px){
+  .gs-index .gs-index__signal-ledger{top:12px;right:12px;
+    width:124px;height:104px;padding:10px 11px;gap:8px}
+  .gs-index__signal-ledger-bars{height:32px}
+  .gs-index__signal-ledger-foot{font-size:.46rem}
+  .gs-index__routing{gap:10px;padding-top:19px;font-size:.52rem}
+}
+@media(max-width:400px){
+  .gs-index .gs-index__signal-ledger{width:112px;height:100px}
+  .gs-index__signal-ledger-foot{letter-spacing:0}
+  .gs-index__routing>span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .gs-index__signal-ledger-bars i{animation:none!important}
+  .gs-index__routing-rail i{transition:none!important;transform:none!important}
+}
+html[data-gs-performance=lite] .gs-index__signal-ledger-bars i{
+  animation:none!important;
+}
+html[data-gs-performance=lite] .gs-index__routing-rail i{
+  transition:none!important;transform:none!important;
+}
