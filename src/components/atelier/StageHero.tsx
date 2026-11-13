@@ -48,6 +48,7 @@ export function StageHero() {
   const [lightPower, setLightPower] = useState(65);
   const [stageVisible, setStageVisible] = useState(true);
   const stageRef = useRef<HTMLElement>(null);
+  const lightDeskRef = useRef<HTMLDetailsElement>(null);
 
   // Never keep running stage animations while the hero is offscreen or the tab is hidden.
   useEffect(() => {
@@ -181,7 +182,12 @@ export function StageHero() {
               {lightsEnabled && !reduced ? <Lightbulb className="size-4" aria-hidden /> : <LightbulbOff className="size-4" aria-hidden />}
               {reduced ? "Mișcare redusă" : lightsEnabled ? "Lumini: ON" : "Lumini: OFF"}
             </button>
-            <details className="gs-lightboard">
+            <details ref={lightDeskRef} className="gs-lightboard" onKeyDown={(event) => {
+              if (event.key !== "Escape" || !lightDeskRef.current?.open) return;
+              event.preventDefault();
+              lightDeskRef.current.open = false;
+              lightDeskRef.current.querySelector<HTMLElement>("summary")?.focus();
+            }}>
               <summary className="gs-lightboard__summary" data-cursor-label="LIGHT DESK">
                 <SlidersHorizontal className="size-4" aria-hidden />
                 <span>LIGHT DESK</span>
