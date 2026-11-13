@@ -226,6 +226,17 @@ async function main() {
       "Stage scene controls must still work after visual redesign");
     assert.equal(await activePage.locator(".gs-v90-show-wall").getAttribute("data-active"),"private",
       "Scene selection must physically change the wall, not just text");
+    assert.equal(await activePage.locator(".gs-v90-show-wall__frame--private").isVisible(),true,
+      "Touch users must SEE the actual Private event photograph after switching modes");
+    assert.equal(await activePage.locator(".gs-v90-show-wall__frame--live").isVisible(),false,
+      "Mobile must not keep showing the first stage photo after choosing Private");
+    await activePage.screenshot({
+      path:`${output}/v90-private-scene-390.png`,animations:"disabled",fullPage:false
+    });
+    await activePage.locator(".crafted-hero__mode").nth(2).click();
+    assert.equal(await activePage.locator(".gs-v90-show-wall__frame--production").isVisible(),true,
+      "Touch users must SEE the real Production photograph");
+
 
     await activePage.close();
 
