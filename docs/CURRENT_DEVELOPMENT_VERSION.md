@@ -1,3 +1,11 @@
+# V72 — Hero Lite / reduced-motion visual safety (draft)
+
+- Branch `design/v72-hero-lite-motion-safety` stacked on V71 PR #65. Existing stage image remains; decorative beams/rings/pointer and transitions are disabled for Lite and reduced-motion. No new sections, packages, external media or homepage CTA.
+- Added `stage-hero.motion.test.ts` static regression. Exact-head CI, TypeScript, SSR, Chromium six widths and real Contact workflow not yet confirmed. PR #19 mergeable=false. Main and production unchanged.
+- Next: verify CI and six-width screenshot/keyboard checks; next component mobile navigation/Escape.
+
+---
+
 # V71 — Restore V48 homepage route (critical regression fix; draft)
 
 - Branch `design/v71-restore-v48-homepage-route`, based on V70 PR #64. Actual V70 `src/routes/index.tsx` had silently switched to `RegiaHome` and was displaying event selector, backstage and extra homepage CTAs. This violated the approved V48 editorial reset despite many improvements to dormant V48 components.
