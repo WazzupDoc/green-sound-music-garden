@@ -130,8 +130,9 @@ async function main() {
 
     // The decorative meters only move on a genuine pointer/focus action
     // in full-motion mode; they are neither background autoplay nor audio-driven.
+    await activePage.keyboard.press("Escape");
     await activePage.locator("dialog.atelier-mobile-menu[open]")
-      .evaluate(dialog => dialog.close());
+      .waitFor({ state: "hidden", timeout: 8000 });
     await activePage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
     await activePage.locator(".gs-index__service").first().focus();
     const meterMotion = await activePage.locator(".gs-index__signal-ledger-bars i").first()
