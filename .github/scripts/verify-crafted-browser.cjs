@@ -281,6 +281,27 @@ async function main() {
     await motionPage.close();
 
 
+    // V93: actual footer snapshots at identical 390/1440 viewports.
+    for (const footerWidth of [360,390,430,768,1440,1920]) {
+      const footerPage = await browser.newPage({
+        viewport:{width:footerWidth,height:900},reducedMotion:"reduce",
+      });
+      await footerPage.goto(base + "/", {waitUntil:"domcontentloaded"});
+      await footerPage.locator(".gs-footer-v93__marquee").waitFor({timeout:15000});
+      assert.equal(await footerPage.locator(".gs-footer-v93__cta").count(),1);
+      assert.equal(await footerPage.locator(".gs-footer-v93__cta").getAttribute("href"),"/contact");
+      await noOverflow(footerPage, "/", footerWidth);
+      if(footerWidth===390 || footerWidth===1440) {
+        await footerPage.locator(".gs-footer-v93").screenshot({
+          path:`${output}/footer-v93-${footerWidth}.png`,animations:"disabled",
+        });
+        const computed=await footerPage.locator(".gs-footer-v93__marquee span").first()
+          .evaluate(el=>getComputedStyle(el).fontSize);
+        assert.ok(parseFloat(computed)>45,"Footer giant type should be visibly computed");
+      }
+      await footerPage.close();
+    }
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });
