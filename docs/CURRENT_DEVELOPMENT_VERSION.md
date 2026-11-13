@@ -1,3 +1,6 @@
+## V101 — Portfolio photo announcements (draft; QA pending)
+Branch `design/v101-gallery-dialog-announcements` stacked on V100. Adds live current-photo status and descriptive navigation button labels. No visual redesign claim; screenshots, six-width Chromium, SSR/TS/Vitest/gzip and exact-head CI not yet confirmed. Main unchanged.
+
 ## V100 — Portfolio keyboard navigation scope (draft, QA pending)
 Branch design/v100-gallery-keyboard-scope stacked on V99. The photo lightbox now handles arrows only inside its dialog and respects text entry and modifier keys. Code commit 884160aabe6bce2ed00189b4cacf734a86923106. No new dependencies/media; no main/deploy change. Chromium before/after, six-width QA, TS/SSR/Vitest/gzip and exact-head Actions unverified. Next: filter and focus regression.
 
