@@ -209,6 +209,19 @@ async function main() {
           const stageRect = await stage.boundingBox();
           assert(stageRect && stageRect.width >= width-2,
             `V92 hero should fill available viewport: ${slug} /${width}`);
+          if (width === 1440) {
+            const mediaBox = await stage.locator(".gs-v92-stage__media").boundingBox();
+            const copyBox = await stage.locator(".gs-v92-stage__copy").boundingBox();
+            assert(mediaBox && copyBox,"V92 image+copy must both have visible geometry");
+            if(slug === "ursitoare-botez") {
+              assert(mediaBox.x < copyBox.x,
+                "V92 PEOPLE service must have a visibly REVERSED visual composition");
+            } else {
+              assert(mediaBox.x > copyBox.x,
+                "V92 MUSIC and TECH must lead text left and live project imagery right");
+            }
+          }
+
           const cta = stage.locator('a[href="#oferta-titlu"]');
           assert.equal(await cta.isVisible(),true,
             "V92 offer CTA must be visibly reachable, not a decorative button");
