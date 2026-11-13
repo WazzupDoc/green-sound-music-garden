@@ -1,3 +1,12 @@
+# V96 — Contact clipboard recovery / DRAFT 2026-11-13
+
+- Base: V95 branch design/v95-about-production-notes; not assuming CI status for V95.
+- Single audited area: Contact / Guided Event Brief, specifically denied/unavailable clipboard permission after the user prepares a quote.
+- Observed source defect: a fallback textarea was rendered after copy failure but focus remained on the failed Copy button; keyboard users had to find the fallback manually.
+- Implementation: src/components/site/QuoteForm.tsx adds a textarea ref and a state-driven effect to focus and select the entire fallback text after failed clipboard write. Success path unchanged. No automatic sending, new dependency, backend or tracking.
+- QA pending: Chromium deny clipboard and verify focused textarea + selection, retry/edit, 390/1440 screenshots and six-width regression, TypeScript/Vitest/SSR and exact-head CI. This is a functional accessibility improvement, NOT a visual redesign. No screenshot or green CI claimed.
+- Main/deployment unchanged. Do not merge without full CI, conflict check, backup/rollback and release consent if auto-deploy.
+
 
 # V95 — About production notes / DRAFT 2026-11-13
 - Base V94 navigation PR #93 exact-head SHA 2a262984, workflow #43448478890 successful. Selected real route `/despre-noi` (not a nonexistent `/studio`). Original editorial layout, dark photographic hero, cream statement, numbered production steps and practical Contact closing. No changes to homepage structure, backend, third-party packages or production.

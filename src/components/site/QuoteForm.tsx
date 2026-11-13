@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowUpRight, CheckCircle2, ClipboardCopy, Mail, MessageCircle, PencilLine } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, Controller, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { services } from "@/data/site";
@@ -45,6 +45,15 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   // Never open a popup from an asynchronous schema validation callback.
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
+  const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (copyStatus !== "failed") return;
+    // Clipboard permissions may be denied. Put keyboard users directly on
+    // the selectable fallback instead of leaving focus on the failed action.
+    manualCopyRef.current?.focus();
+    manualCopyRef.current?.select();
+  }, [copyStatus]);
 
   const copyMessage = async (message: string) => {
     try {
@@ -173,7 +182,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         {copyStatus === "failed" && (
           <label className="quote-preview__manual">
             Selectează și copiază manual mesajul
-            <textarea readOnly rows={6} value={message}
+            <textarea ref={manualCopyRef} readOnly rows={6} value={message}
               onFocus={event => event.currentTarget.select()}
               aria-label="Textul complet al cererii, selectabil pentru copiere manuală" />
           </label>
