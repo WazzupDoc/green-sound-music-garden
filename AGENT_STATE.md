@@ -1,3 +1,9 @@
+## 2026-11-13 — V76 browser CI repair / component rotation
+
+- V75 exact-head React workflow [43368719076](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43368719076) FAILED at browser: legacy `.rs-hero h1` not found after V71 restored editorial homepage. TypeScript, SSR, gzip, Vitest and architecture steps PASSED; motion workflow 43368719061 PASSED. No full green.
+- Replaced only the editorial CI browser entrypoint with a six-width actual-home audit (360/390/430/768/1440/1920), chapter/link/film/CTA/no-autoplay assertions, overflow/screenshots and secondary route/Contact/sitemap checks. Kept legacy Regia script intact for its separate branch. No disabling CI. Exact-head V76 CI pending.
+- Rotation: photographs V70; homepage V71; hero V72; CI V73–V76. NEXT: navigation/mobile focus/Escape, two-service Contact flow, screenshot inspection. No main change or deployment.
+
 ## 2026-11-13 — V75 editorial keyboard focus regression
 
 - Verified V74 exact-head `828ca2ccd8624033b261f93179f8ae8d63dbef56`: workflow 43362462854 FAILED at Vitest (3 assertions in `production-index.accessibility.test.ts`), while strict TypeScript, SSR build and gzip budgets PASSED. Separate motion workflow 43362462868 PASSED; does not imply overall green.
