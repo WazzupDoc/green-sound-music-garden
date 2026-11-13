@@ -1,3 +1,15 @@
+## V89 / 2026-11-13 — DESIGN LEVEL CORRECTION (OWNER REFERENCE)
+
+- Owner has rejected repeated small V83–V88 changes as nothing like their chosen mockup. V87 actual Chromium 1440 full-page `signature-v86-home-1440.png` shows long dark first screen, generic typography, oversized dark CTA, separated services. **Don't declare success based only on CI or version number.**
+- Latest checked validated ancestor V88 PR #84 branch `design/v88-event-editorial-index` SHA `1e1feb930cdb295d73ff7b4e5d4a523bd5f9b5b7`: CI green on push #43421917849 + PR #43421933450. V89 branch `design/v89-live-event-premium-homepage` created from it. V48 clean homepage contract preserved (hero, 3 chapters/8 services, 3 genuine films, 1 final CTA).
+- Component ROTATION: HOME COMPOSITION / actual structural art direction V89; PORTFOLIO source-backed film contact-sheet V87; EVENT DIRECTORY V88; NEXT after visual approval/audit: inner service details, Contact conversion, mobile/nav, footer and performance bundle consolidation.
+- V89 directly implements visual reference principles: large italic uppercase event headline, dominant existing live show photograph, sound-reactive **style-only original signal** (not fake live audio), reduced vertical dead zones, compact asymmetric photographic 3-chapter catalogue, video evidence and dark final CTA. No fabricated equipment or people, no TikTok stills, no new dependency.
+- Screenshots: first Chromium candidate obtained via GitHub artifact of app SHA prior to final screenshot correction; inspected full page 1440/390 and refined to remove oversized right-hand template box and brighten legitimate stage photo on mobile. New exact-head screenshot/artifact **pending**. Report both improvements and limitations, never claim parity with mockup if not visually confirmed.
+- Functional audit: Light Desk, scene selector, three film choices, Contact link, 8 direct service destinations, 6 viewport sizes, modal Escape/focus, SSR/SEO remain mandatory.
+- Main/prod untouched. PR #19 conflict separate; deploy/tag/rollback publication gate still blocks merge.
+
+---
+
 ## 2026-11-13 — V88 event directory / DRAFT NOT YET BROWSER VALIDATED
 - Latest source baseline V87 PR #83 b517c6e62c21b0366caf500b4f4cf5d16b42ebf8, exact-head push 43421372923 and PR 43421379048 reported successful; V87 screenshot artifact 14033568505.
 - ROTATION: HERO/SERVICES V86 validated; FILMS V87 validated; EVENTS INDEX V88 implemented (asymmetric editorial numbered programme, native detail links, no new media/deps); NEXT individual event details / Contact conversion.
