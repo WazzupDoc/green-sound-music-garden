@@ -4,7 +4,7 @@ import { ArrowDownRight, ArrowUpRight, CirclePlay, Radio, Lightbulb, LightbulbOf
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useReducedMotion } from "motion/react";
 import { business, images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ProductionDeckArt } from "@/components/atelier/ProductionDeckArt";
+
 
 type StageMode = "live" | "private" | "production";
 type StageLightTone = "mint" | "gold" | "ice";
@@ -13,7 +13,7 @@ const modes: ReadonlyArray<{
   eyebrow: string; headline: string; description: string; eventSlug: EventSlug; eventLabel: string;
 }> = [
   {
-    key: "live", label: "Live stage", number: "01", tag: "Public & emoție",
+    key: "live", label: "Live", number: "01", tag: "Public & emoție",
     src: images.concert.src, alt: images.concert.alt,
     eyebrow: "CONCERTE / FESTIVALURI",
     headline: "Un public. Un ritm. O energie comună.",
@@ -21,7 +21,7 @@ const modes: ReadonlyArray<{
     eventSlug: "concerte-festivaluri", eventLabel: "Explorează concertele",
   },
   {
-    key: "private", label: "Private party", number: "02", tag: "Momente personale",
+    key: "private", label: "Eveniment privat", number: "02", tag: "Momente personale",
     src: images.dj.src, alt: images.dj.alt,
     eyebrow: "NUNȚI / PETRECERI PRIVATE",
     headline: "Serile speciale merită o atmosferă a lor.",
@@ -29,7 +29,7 @@ const modes: ReadonlyArray<{
     eventSlug: "nunti", eventLabel: "Descoperă nunțile",
   },
   {
-    key: "production", label: "Technical show", number: "03", tag: "Lumini & scenotehnică",
+    key: "production", label: "Producție", number: "03", tag: "Lumini & scenotehnică",
     src: images.scena.src, alt: images.scena.alt,
     eyebrow: "PRODUCȚIE / EVENIMENTE CORPORATE",
     headline: "Tehnologia din spatele emoției.",
@@ -87,7 +87,7 @@ export function StageHero() {
   };
 
   return (
-    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79" data-scene={active}
+    <section aria-labelledby="crafted-hero-title" ref={stageRef} className="crafted-hero gs-stage-v78 gs-stage-v79 gs-stage-v86" data-scene={active}
       data-lights={lightsEnabled && !reduced ? "on" : "off"} data-stage-visible={stageVisible ? "true" : "false"}
       data-hydrated={hydrated ? "true" : "false"} data-light-tone={lightTone}
       data-light-power={lightPower} style={{ "--gs-energy": lightPower / 100 } as CSSProperties}>
@@ -116,39 +116,49 @@ export function StageHero() {
           <span className="crafted-stage-lights__flare" />
         </div>
         <motion.div className="crafted-hero__pointer" style={{ background: spotlight }} aria-hidden />
-        <div className="gs-stage-v79__architecture" aria-hidden="true">
-          <div className="gs-stage-v79__portal gs-stage-v79__portal--rear" />
-          <div className="gs-stage-v79__portal gs-stage-v79__portal--front" />
-          <div className="gs-stage-v79__deck" />
-          <div className="gs-stage-v79__scanner gs-stage-v79__scanner--a" />
-          <div className="gs-stage-v79__scanner gs-stage-v79__scanner--b" />
-          <div className="gs-stage-v79__horizon" />
-        </div>
-        <div className="gs-stage-v78__aperture" aria-hidden="true" />
-        <div className="gs-stage-v78__light-sweep" aria-hidden="true" />
       </div>
+
+      <div className="gs-v86__graphic" aria-hidden="true">
+        <svg viewBox="0 0 600 240" focusable="false" role="presentation">
+          <defs>
+            <linearGradient id="gs-v86-signal" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#6BE69D" stopOpacity="0" />
+              <stop offset="38%" stopColor="#D5FFB0" stopOpacity=".8" />
+              <stop offset="70%" stopColor="#6EFEB0" stopOpacity=".95" />
+              <stop offset="100%" stopColor="#6BE69D" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M0 123 C 70 123 84 123 111 123 S 145 87 160 123 S 195 153 208 123 S 229 39 245 123 S 274 182 289 123 S 319 64 335 123 S 366 155 381 123 S 421 92 440 123 S 491 122 600 123"
+            fill="none" stroke="url(#gs-v86-signal)" strokeWidth="2.5" />
+          <path d="M0 123 C 70 123 84 123 111 123 S 145 87 160 123 S 195 153 208 123 S 229 39 245 123 S 274 182 289 123 S 319 64 335 123 S 366 155 381 123 S 421 92 440 123 S 491 122 600 123"
+            fill="none" stroke="#ACFFA0" strokeOpacity=".12" strokeWidth="18" />
+          <path d="M0 123 H600" stroke="#C5FFB4" strokeOpacity=".22" strokeDasharray="2 8"/>
+        </svg>
+      </div>
+
+div>
 
       {/* A second existing Green Sound stage photograph, cropped as editorial
           atmosphere behind ORIGINAL illustrated engineering hardware. Decorative
           only; never masquerades as a new event or generated footage. */}
       <img className="gs-production-backdrop-v85" src={images.scena.src} alt=""
         width={images.scena.w} height={images.scena.h} loading="lazy" decoding="async" />
-      <ProductionDeckArt />
+
 
       <div className="gs-poster__marquee" aria-hidden="true">
         <span>THE SOUND OF YOUR NIGHT</span><span className="gs-poster__marquee-icon">✳</span><span>PITEȘTI / ROMÂNIA</span>
       </div>
       <div className="container-site crafted-hero__layout">
         <div className="crafted-hero__intro">
-          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> PRODUCȚIE EVENIMENTE / PITEȘTI / DIN {business.founded}</div>
+          <div className="crafted-hero__eyebrow"><span className="crafted-live-dot" aria-hidden /> GREEN SOUND MUSIC / PITEȘTI / DIN {business.founded}</div>
           <h1 id="crafted-hero-title" className="crafted-hero__title gs-stage-v78__title">
-            <span className="gs-stage-v78__line">Sunet.</span>
-            <span className="gs-stage-v78__line gs-stage-v78__line--second">Lumină. <em>Emoție.</em></span>
+            <span className="gs-stage-v78__line">Dăm viață</span>
+            <span className="gs-stage-v78__line gs-stage-v78__line--second">fiecărui <em>eveniment.</em></span>
           </h1>
-          <p className="crafted-hero__lead">DJ & MC, trupă live, sonorizare și lumini. O singură echipă pentru ritmul, atmosfera și producția evenimentului tău.</p>
+          <p className="crafted-hero__lead">DJ & MC, muzică live, sonorizare și lumini. Construim atmosfera evenimentului tău — de la prima probă de sunet până la ultima piesă.</p>
           <div className="crafted-hero__actions">
-            <Link to="/evenimente" className="crafted-button crafted-button--light">
-              Explorează evenimentele <ArrowUpRight aria-hidden className="size-4" />
+            <Link to="/contact" className="crafted-button crafted-button--light">
+              Solicită o ofertă <ArrowUpRight aria-hidden className="size-4" />
             </Link>
             <button type="button" className="crafted-text-action" onClick={() => setShowReel(true)} data-cursor-label="PLAY FILM">
               <CirclePlay aria-hidden className="size-5" /> Privește un show real
