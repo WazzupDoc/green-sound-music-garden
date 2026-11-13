@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
-const css = readFileSync(new URL("../../styles/editorial-reset.css", import.meta.url), "utf8");
+const css = readFileSync("src/styles/editorial-reset.css", "utf8");
 const gate = css.split("/* V72 / HERO PERFORMANCE CONTRACT")[1] ?? "";
 
 describe("hero motion safety", () => {
