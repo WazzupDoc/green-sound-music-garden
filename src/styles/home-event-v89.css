@@ -557,3 +557,26 @@ html[data-gs-performance=lite] .gs-home-v86 .crafted-button--light,
 html[data-gs-performance=lite] .gs-home-v86 .gs-finale .crafted-finale__link{
  transition:none!important;animation:none!important;transform:none!important
 }
+
+/* Keep the event-detail deep link available on touch screens; condense the
+   original scene panel instead of deleting functionality with display:none. */
+@media(max-width:850px){
+ .gs-home-v86 .scene-console{
+  display:block!important;width:100%;max-width:100%;margin:0;
+  background:#03150a99;transform:none;box-shadow:none;
+  border:0;border-top:1px solid #8fe59a6b;
+  backdrop-filter:none;-webkit-backdrop-filter:none
+ }
+ .gs-home-v86 .scene-console__top,
+ .gs-home-v86 .scene-console__content h2,
+ .gs-home-v86 .scene-console__content p,
+ .gs-home-v86 .scene-console__bottom{display:none!important}
+ .gs-home-v86 .scene-console__content{
+  padding:5px 0;display:flex;justify-content:space-between;
+  gap:12px;align-items:center;flex-wrap:wrap
+ }
+ .gs-home-v86 .scene-console__eyebrow{
+  font-size:.56rem;letter-spacing:.07em;color:#b7f8b4
+ }
+ .gs-home-v86 .scene-console__link{font-size:.72rem;min-height:42px}
+}
