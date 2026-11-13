@@ -1,3 +1,11 @@
+## V83 — confirmed application-source CI and browser evidence (2026-11-13)
+- V83 source commit `fd604c60630f9498555145805c07b250666a8d2e`: exact-head [push CI #43409515536](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536) PASS; [PR CI #43409522734](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409522734) PASS.
+- 25 Vitest files / **70 tests passed**; TypeScript strict, SSR production build, global CSS **51.3/52 kB gzip**, homepage 110.9/190 kB, quote 31.2/50 kB gzip; browser six widths + 3 loaded local chapter photos + animated focus vs Lite + Contact SSR, 20-page SEO/JSON-LD audit pass.
+- [Real browser screenshots — GitHub artifact #14029615502](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536/artifacts/14029615502), including V83 new 1440/390 service cropped screenshots and active motion state. Visual inspection: all 3 authored chapter photos now rendered and 3 distinct channel engravings visible. These are **not** new photography. Previous V81 screenshot sometimes lacked lazy photo loading; comparison is not same image-load state, so distinguish render recovery from purely aesthetic difference. Desktop image cropped via full-page screenshot due sticky header appearing in element capture, not a site bug.
+- Changes to documentation AFTER verified source may move branch HEAD. The documented source SHA remains reproducibly validated; verify new exact-head CI before claiming any later docs-only SHA is green.
+
+---
+
 # V83 — GREEN SOUND SIGNAL LEDGER / editorial services (2026-11-13, DRAFT)
 
 - Branch: `design/v83-signal-ledger-editorial-services`, stacked on V82 `81d1dee8c3ea2742f8eca14aebd5b239b224368f`. Most recent verified source baseline before this: V81 application SHA `98dacdb0686d76e3943afcb49f646b8578cf6eb5`, [success run 43399390064](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43399390064). V82 exact head CI failed (1 stale photo-motion test out of 68).
