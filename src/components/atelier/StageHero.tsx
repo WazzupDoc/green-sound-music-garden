@@ -128,6 +128,11 @@ export function StageHero() {
         <div className="gs-stage-v78__light-sweep" aria-hidden="true" />
       </div>
 
+      {/* A second existing Green Sound stage photograph, cropped as editorial
+          atmosphere behind ORIGINAL illustrated engineering hardware. Decorative
+          only; never masquerades as a new event or generated footage. */}
+      <img className="gs-production-backdrop-v85" src={images.scena.src} alt=""
+        width={images.scena.w} height={images.scena.h} loading="lazy" decoding="async" />
       <ProductionDeckArt />
 
       <div className="gs-poster__marquee" aria-hidden="true">
