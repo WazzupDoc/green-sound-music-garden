@@ -1,3 +1,11 @@
+## 2026-11-13 — V88 event directory / DRAFT NOT YET BROWSER VALIDATED
+- Latest source baseline V87 PR #83 b517c6e62c21b0366caf500b4f4cf5d16b42ebf8, exact-head push 43421372923 and PR 43421379048 reported successful; V87 screenshot artifact 14033568505.
+- ROTATION: HERO/SERVICES V86 validated; FILMS V87 validated; EVENTS INDEX V88 implemented (asymmetric editorial numbered programme, native detail links, no new media/deps); NEXT individual event details / Contact conversion.
+- V88 evidence: source diff and Vitest source contract added; browser 390/1440 BEFORE/AFTER not yet obtained; six widths, CI exact-head and actual screenshot must be checked before visual approval. Main and production untouched.
+- Global matrix pending: /evenimente index V88 code pending QA; /evenimente/$slug next; /contact and Guided Event Brief pending; /servicii and detail pages pending; Studio, Despre, footer, mobile keyboard, Lite, SSR/SEO, privacy and deploy gate pending.
+- Experiment: original event programme numbering and asymmetric photography. Rejected adding fake events, background video/autoplay, external packages and stock. No claimed visual acceptance.
+
+---
 ## 2026-11-13 — V87 film proof rather than text-only list
 - Last validated homepage design V86, PR #82 source cfa8a245b54b4d65caa8ad1d2fc62a9c0846e5b3: real poster/source photos, left-large/two-right service layout, original wave, 390px hero reduced from 1015px to 764px, CI green on push #43419886703 and PR #43419894739. Owner acceptance still pending.
 - Component ROTATION: HERO+SERVICE editorial V86 / real screenshots, CI green; FILMS V87 / implemented and app-source verified, see PR #83 and artifact #14033568505; NEXT: event discovery and individual service pages (photographic identity, real form links, no fake availability), then Contact/brief/FAQ, footer, accessibility, privacy and SEO.
