@@ -91,7 +91,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           // Deep-linked photos or filtered-out thumbnails fall back to the gallery heading.
           event.preventDefault();
           const thumbnail = Array.from(document.querySelectorAll<HTMLAnchorElement>(".rs-gallery__frame"))
-            .find(link => link.dataset.photoId === lastPhotoRef.current);
+            .find(link => link.dataset["photoId"] === lastPhotoRef.current);
           if (thumbnail) thumbnail.focus();
           else document.getElementById("rs-gallery-title")?.focus();
         }} className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
