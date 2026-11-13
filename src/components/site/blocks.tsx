@@ -136,7 +136,7 @@ export function QuoteSection({
       <div className="container-site grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <p className="eyebrow">Cere ofertă</p>
-          <h2 id="oferta-titlu" className="display-lg mt-5">{title}</h2>
+          <h2 id="oferta-titlu" tabIndex={-1} className="display-lg mt-5 scroll-mt-24 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">{title}</h2>
           <p className="lead mt-6 text-foreground/75">{intro}</p>
           <dl className="mt-10 grid gap-6 text-sm">
             <div>
