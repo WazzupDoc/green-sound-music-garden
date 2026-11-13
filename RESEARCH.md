@@ -1,3 +1,11 @@
+### 2026-11-13 — V92 verified visual experiment result
+
+- Original Webflow contact UX references retained above; no external code/media cloned. Real baseline [V91 CI #43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840), V92 visually different app-source [CI #43438638248](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43438638248). Same route + reduced-motion + 390/1440 screenshots in artifacts 14043468507 / 14045801050. Four comparisons are reproducible, not AI images; `docs/V92_VISUAL_QA.md`.
+- Outcome: visual signature is sufficiently distinct (sage typography, original broad frequency drawing, strong contrast vs old uniform black card); existing Contact/WhasApp/mailto still manual. Browser caught genuinely illegible preview light-on-light components, fixed via explicit colors and CSS. Duplicate fixed mobile CTAs hid part of form/preview; removed only for Contact route. Screen reader/keyboard preview focus and quote edit verified in real Chromium.
+- No measured Lighthouse, A/B conversion, Core Web Vitals or rankings. Further cross-device QA and final attribution label color CI required. Rejected automatic send, fabricated reply time, generic stock photo, extra home CTA.
+
+---
+
 ## 2026-11-13 — V92: Contact as a production brief, not another generic dark card
 
 - **Actual baseline:** `design/v91-service-index-editorial-rotation` exact head `e8e3296ed94bd0576c9ab99ca00cbe37fe45c9e1`, CI [#43430542206](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43430542206) SUCCESS. V92 BEFORE QA branch `design/v92-contact-before-audit` keeps unchanged V91 Contact UI; verified browser run [#43436573840](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43436573840) SUCCESS. Real 390/1440 baseline capture in artifact #14043468507. Observed conventional dark page with floating two-column form panel and an almost-empty heading area.
