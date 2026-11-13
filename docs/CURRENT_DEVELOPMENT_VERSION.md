@@ -1,3 +1,12 @@
+# V71 — Restore V48 homepage route (critical regression fix; draft)
+
+- Branch `design/v71-restore-v48-homepage-route`, based on V70 PR #64. Actual V70 `src/routes/index.tsx` had silently switched to `RegiaHome` and was displaying event selector, backstage and extra homepage CTAs. This violated the approved V48 editorial reset despite many improvements to dormant V48 components.
+- Restored V48 route composition: StageHero → ProductionIndex (3 asymmetric chapters, 8 links) → EditorialPortfolio (3 real films) → one Contact finale CTA. Dedicated event and service routes untouched.
+- Added `src/routes/editorial-home.route.test.ts` source regression. No new dependency or asset. Test execution, exact-head CI, TypeScript, SSR, six-width Chromium and Contact workflow still unconfirmed. PR #19 mergeable=false; V70 PR #64 mergeable=true but no exact-head PR workflow runs returned. No main merge/deployment.
+- Next: execute actual CI, six-width screenshot and Contact tests; inspect deployment triggers, tag/rollback permissions and publication approval before main.
+
+---
+
 # V70 — Editorial photo motion gate (draft)
 
 - Branch `design/v70-editorial-photo-motion-gate` stacked on V69 PR #63. The service photo hover zoom now requires a true hover pointer, no reduced-motion preference and no Lite mode. Static color feedback and keyboard focus outline remain. Homepage structure stays V48-clean: hero, 3 editorial chapters/8 links, 3 real films, one CTA.

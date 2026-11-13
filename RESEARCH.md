@@ -1,3 +1,10 @@
+## 2026-11-13 — V71 restore homepage composition (critical regression)
+
+- First-party comparative research: V48 `src/routes/index.tsx` at `design/crafted-atmospheres-v48-editorial-reset` vs V70 same file, plus live component source `RegiaHome.tsx` (no external license). V70 had reintroduced event selector, backstage and redundant calls to action. User-approved V48 architecture is the ground truth.
+- Reference design research: https://www.awwwards.com/websites/music-sound/ (editorial inspiration, not reusable code/assets); https://www.w3.org/WAI/WCAG22/Understanding/headings-and-labels.html (semantic heading structure); https://web.dev/articles/optimize-lcp (hero LCP guidance; no priority changes without measurement). No external source copied, no new dependency.
+- Applied: restore validated V48 route and add first-party source regression test. Experiment gate: distinct identity = asymmetric editorial service programme; utility = clear journey to services/films/Contact; performance = fewer homepage widgets expected but **not measured**; a11y = native section headings and links retained; SSR = existing components; licensing = no new assets; testing = regression authored, execution pending; rollback = revert V71 route/test/docs commits.
+- Rejected: add animated event chooser or new film carousel on homepage, because duplicates dedicated routes and contradicts V48 clean composition. Defer hero LCP/preload edits until real browser LCP audit.
+
 ## 2026-11-13 — V70 editorial photograph motion gate
 
 - Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion (documentation; no code copied), https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover (capability query), and https://web.dev/articles/optimize-lcp (image loading principles). Reviewed as implementation guidance; no dependency or external asset integrated. The Awwwards music/sound reference is conceptual only, not a license to copy identity: https://www.awwwards.com/websites/music-sound/ . URLs listed for verification; no measured LCP or claim of live SERP research.
