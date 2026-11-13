@@ -27,6 +27,9 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const [filter,setFilter] = useState<PhotoFilter>("toate");
   const frames = galleryFrames.filter(frame => filter === "toate" || frame.group === filter);
   const selected = galleryFrames.find(item => item.id === activePhoto);
+  const selectedIndex = selected ? galleryFrames.findIndex(item => item.id === selected.id) : -1;
+  const previousPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex - 1 + galleryFrames.length) % galleryFrames.length] : undefined;
+  const nextPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex + 1) % galleryFrames.length] : undefined;
   const pointerX = useRef<number | null>(null);
   const change = (id?:string) => {
     void navigate({to:"/portofoliu",search:id?{photo:id}:{},replace:true,resetScroll:false});
@@ -99,9 +102,9 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
                 alt={selected.image.alt} decoding="async" />
             </div>
             <div className="rs-photo-dialog__actions">
-              <button type="button" onClick={()=>step(-1)}><ArrowLeft size={20} aria-hidden /> Anterior</button>
-              <span>{galleryFrames.findIndex(item=>item.id===selected.id)+1} din {galleryFrames.length}</span>
-              <button type="button" onClick={()=>step(1)}>Următor <ArrowRight size={20} aria-hidden /></button>
+              <button type="button" onClick={()=>step(-1)} aria-label={`Fotografia anterioară: ${previousPhoto?.title ?? ""}`}><ArrowLeft size={20} aria-hidden /> Anterior</button>
+              <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {galleryFrames.length}: {selected.title}</span>
+              <button type="button" onClick={()=>step(1)} aria-label={`Fotografia următoare: ${nextPhoto?.title ?? ""}`}>Următor <ArrowRight size={20} aria-hidden /></button>
             </div>
           </>}
         </DialogContent>
