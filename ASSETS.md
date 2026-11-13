@@ -64,3 +64,6 @@ No stock photos, AI-generated people, external fonts, music or videos were added
 
 ## V72 (2026-11-13)
 No new images, fonts, video, icons or dependencies. Existing Green Sound hero photography remains unchanged. Decorative light layers are original CSS and are suppressed in Lite/reduced-motion modes.
+
+## V74 (2026-11-13)
+No assets, fonts, images, videos, third-party code or dependencies added. Eight fixture-reading tests changed only their local filesystem path resolution.
