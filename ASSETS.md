@@ -1,3 +1,13 @@
+## V85 — 2026-11-13 / actual media and abstract technical SVG
+
+- New creative illustration `src/components/atelier/ProductionDeckArt.tsx`: original 10-channel vector console, self-authored, no license obligation or external assets. **Not a real company soundboard photograph, real meter, client or stage event; purely a graphic representation of production technology.** No tracking, audio API, hardware API or embedded commercial marks.
+- Reused existing first-party assets in `src/data/site.ts`: `images.concert` (audience photo) and `images.scena` (green-lit stage photo); the latter is a NEW use of an already present local asset, not a new image source or fabricated event. Preserve alt/size/decoding on meaningful main photo, use empty alt/ARIA-hidden for duplicate decorative stage inset.
+- Three service chapter photos unchanged: `images.dj`, `images.scena`, `images.ursitoare`; new service shapes and existing photos require no new copyright grants from us, but owner confirms rights before live use.
+- No extracted TikTok/Instagram footage, no AI-generated pictures claiming real show/crew, no third-party icon sets, fonts, packages or licensing cost.
+- Browser evidence: before V84 [artifact #14030745424](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43412440606/artifacts/14030745424). Updated V85 actual screenshots and source SHA to be linked following final exact-head GitHub Actions confirmation; these are screenshots of the site, not creative assets to market as real event photos.
+
+---
+
 ## V83 — actual screenshot provenance (2026-11-13)
 - Original project media: all three service photos local from `public/media/greensound/`; verified by Chromium decoding and `naturalWidth > 0` at 360/390/430/768/1440/1920. No new files used for the site or TikTok videos reused.
 - CI screenshots [artifact 14029615502](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43409515536/artifacts/14029615502) are actual Chromium captures of V83 source SHA `fd604c60630f9498555145805c07b250666a8d2e`, NOT promotional image assets. Comparisons to V81 require disclosure that V81 screenshots were missing lazy-loaded photos.
