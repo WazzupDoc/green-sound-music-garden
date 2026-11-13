@@ -67,7 +67,10 @@ export function StageHero() {
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
-  const reduced = useReducedMotion();
+  // The browser may already know reduced-motion on first render, while SSR cannot.
+  // Keep the first hydration render identical to the server; apply preference after mount.
+  const deviceReducedMotion = useReducedMotion();
+  const reduced = hydrated && Boolean(deviceReducedMotion);
   const pointerX = useMotionValue(50);
   const pointerY = useMotionValue(50);
   const spotlight = useMotionTemplate`radial-gradient(ellipse 33% 39% at ${pointerX}% ${pointerY}%, rgba(166,244,146,.20), transparent 80%)`;
