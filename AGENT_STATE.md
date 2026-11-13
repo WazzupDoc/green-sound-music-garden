@@ -1,3 +1,7 @@
+## V100 — Portfolio lightbox keyboard scope / 2026-11-13
+- Zone: /portofoliu photo dialog. Source audit found document-wide ArrowLeft/ArrowRight listener active while the photo dialog was open; it could intercept keys in unrelated controls. Scoped listener to .rs-photo-dialog, excluded modified keys and editable controls. No assets, dependencies, backend or homepage changes.
+- Browser before/after 390/1440, six widths, Escape, keyboard and CI exact-head pending; do not claim visual verification. Next: photo filter / dialog return focus and real media audit. Main untouched.
+
 ## V99 / event quote anchor accessibility — 2026-11-13
 - Single zone: event detail CTA to the shared QuoteSection heading. V98 added a fragment link but heading was not programmatically focusable and lacked its own scroll offset for sticky navigation.
 - Shared heading now has tabIndex=-1, scroll-mt-24 and visible focus outline. This permits fragment navigation to move keyboard focus to the heading and makes its position clearer. The same QuoteSection is used elsewhere; regression needed across all routes.
