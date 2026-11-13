@@ -260,7 +260,7 @@ async function main() {
         await detailPage.locator('form[aria-label="Cerere de ofertă"]').waitFor({ timeout: 15000 });
         for (const value of hidden.split("|")) {
           assert(await detailPage.locator('.gs-quote__choice input[type="checkbox"]')
-            .evaluateAll((inputs, wanted) => inputs.some(input => input.value === wanted && input.checked), value),
+            .evaluateAll((inputs, wanted) => inputs.some(input => input.checked && input.closest("label")?.textContent?.includes(wanted)), value),
             `Selected service ${value} must survive navigation to Contact`);
         }
       }
