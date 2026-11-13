@@ -39,6 +39,20 @@ async function main() {
       assert.equal(await page.locator("main h1").count(), 1);
       assert.equal(await page.locator(".gs-index__chapter").count(), 3);
       assert.equal(await page.locator(".gs-index__service").count(), 8);
+      // Load the actual LOCAL event photographs before taking visual evidence.
+      // Full-page screenshots do not reliably trigger lazy images below the fold.
+      const photos = await page.locator(".gs-index__photo img").evaluateAll(async imgs => {
+        for (const img of imgs) img.loading = "eager";
+        await Promise.all(imgs.map(img => img.decode().catch(() => null)));
+        return imgs.map(img => ({ width: img.naturalWidth, src: img.currentSrc }));
+      });
+      assert.equal(photos.length, 3, "Three authored editorial chapter photographs");
+      assert(photos.every(img => img.width > 0),
+        `Broken or undownloaded service photograph at ${width}px: ${JSON.stringify(photos)}`);
+      assert.equal(await page.locator(".gs-index__signal-ledger").count(), 3,
+        "One original Green Sound channel engraving per chapter");
+      assert.equal(await page.locator(".gs-index__routing").count(), 3);
+
       assert.equal(await page.locator(".director-reel__choice").count(), 3);
       assert.equal(await page.locator(".crafted-finale__link").count(), 1);
       assert.equal(await page.locator("main form").count(), 0);
@@ -49,6 +63,13 @@ async function main() {
         path: `${output}/editorial-home-${width}.png`,
         fullPage: true, animations: "disabled",
       });
+      if (width === 390 || width === 1440) {
+        await page.locator(".gs-index__chapters").screenshot({
+          path: `${output}/service-ledger-${width}-static.png`,
+          animations: "disabled",
+        });
+      }
+
       const film = page.locator(".director-reel__choice").nth(1);
       await film.click();
       assert.equal(await film.getAttribute("aria-pressed"), "true");
@@ -106,6 +127,26 @@ async function main() {
     await activePage.screenshot({
       path: `${output}/stage-index-lite-390.png`, animations: "disabled",
     });
+
+    // The decorative meters only move on a genuine pointer/focus action
+    // in full-motion mode; they are neither background autoplay nor audio-driven.
+    await activePage.locator("dialog.atelier-mobile-menu[open]")
+      .evaluate(dialog => dialog.close());
+    await activePage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
+    await activePage.locator(".gs-index__service").first().focus();
+    const meterMotion = await activePage.locator(".gs-index__signal-ledger-bars i").first()
+      .evaluate(element => getComputedStyle(element).animationName);
+    assert.match(meterMotion, /gs-index-meter-pulse/,
+      "Focus must reveal the opt-in channel gesture when full motion is allowed");
+    await activePage.screenshot({
+      path: `${output}/service-ledger-motion-390.png`,
+      animations: "allow",
+    });
+    await activePage.evaluate(() =>
+      document.documentElement.setAttribute("data-gs-performance", "lite"));
+    const liteMeter = await activePage.locator(".gs-index__signal-ledger-bars i").first()
+      .evaluate(element => getComputedStyle(element).animationName);
+    assert.equal(liteMeter, "none", "Lite must eliminate the channel meter animation");
     await activePage.close();
 
     const page = await browser.newPage({
@@ -128,7 +169,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V81 editorial + stage-index modal browser: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V83 service photos loaded + 3 unique signal engravings + motion/Lite, V81 editorial modal browser: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
   } finally {
     await browser.close();
   }
