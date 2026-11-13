@@ -1,3 +1,10 @@
+## 2026-11-13 — V71 / CRITICAL homepage route regression repaired
+
+- Audited actual `src/routes/index.tsx` on V70 and V48: V70 routed to `RegiaHome`, which rendered hero + event selector/timeline + backstage + three films + closing CTA, contrary to the explicit V48 clean-home requirement. This was a concrete regression hidden by earlier changes to dormant `ProductionIndex` and `editorial-reset.css`.
+- V71 restores the exact V48 editorial route: `StageHero`, `ProductionIndex` (3 chapters/8 services), `EditorialPortfolio` (3 real films), one finale Contact CTA. Dedicated event discovery remains on its own routes. Added a static Vitest route composition regression. No new dependency/assets.
+- Rotation matrix: homepage composition / hero = V71 restored, **browser visual QA pending**; editorial photos = V70 CSS gate (now actually mounted); buttons/nav/films/Contact/SEO = pending. Prioritize exact-head CI, six-width screenshots, Contact 2-service handoff, and deployment configuration.
+- Baseline V70 PR #64 head `6598a345699e1f0abfaeb79e63f6b5845bfd0a1d`, mergeable=true but exact-head PR workflow lookup returned no runs. PR #19 mergeable=false; V48 PR #35 mergeable=true. V71 TypeScript, SSR, Vitest and Chromium not yet run. Main untouched. No score or performance claim.
+
 ## 2026-11-13 — V70 / Divide et impera: service photographs
 
 | Area | Last work | Status / next priority |
