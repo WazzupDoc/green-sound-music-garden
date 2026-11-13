@@ -354,7 +354,7 @@ async function main() {
       assert.equal(aboutResponse.status(),200);
       await aboutPage.locator(".gs-about-v95__hero h1").waitFor({timeout:15000});
       assert.equal(await aboutPage.locator("main h1").count(),1);
-      assert.equal(await aboutPage.locator(".gs-about-v95__steps li").count(),3);
+      assert.equal(await aboutPage.locator(".gs-about-v95__steps li").count(),4);
       assert.equal(await aboutPage.locator(".gs-about-v95__cta").getAttribute("href"),"/contact");
       const aboutImages=await aboutPage.locator(".gs-about-v95 img").evaluateAll(async imgs=>{
         for(const img of imgs) img.loading="eager";
