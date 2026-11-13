@@ -1,3 +1,10 @@
+## 2026-11-13 — V75 focus-visible regression / CI
+
+- Source: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible — keyboard-intent focus cue, no code copied; CSS semantics adapted in source-level tests only.
+- Source: https://developer.mozilla.org/en-US/docs/Web/CSS/:has — parent highlighting from focused child, no external code/assets or license required.
+- Rejected: restoring broad `:focus-within` zoom and adding a new focus animation; this would reintroduce pointer-triggered motion and degrade reduced-motion/Lite behavior.
+- CI evidence: V74 exact-head workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43362462854 failed at 3 stale CSS assertions, after strict TS/SSR/gzip passed. No dependency added; tests now assert the actual scoped focus-visible and grouped Lite/reduced-motion behavior. Browser validation remains pending.
+
 ## 2026-11-13 — V74 / Node file URLs in Vitest CI
 
 - [Node.js `fileURLToPath` API](https://nodejs.org/api/url.html#urlfileurltopathurl): expects `file:` URL; transformed module URLs may be other schemes. Technique: avoid converting transformed `import.meta.url` to filesystem path in source-reading tests.
