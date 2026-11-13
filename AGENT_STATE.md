@@ -1,3 +1,6 @@
+## V101 — Portfolio photo announcements / 2026-11-13
+- Zone: photo lightbox. Accessible status now announces the active photo number/title; Previous/Next buttons name their actual destination photo. No new packages, assets or homepage changes. Browser before/after and exact-head CI pending. Next: gallery focus restoration and filters. Main unchanged.
+
 ## V100 — Portfolio lightbox keyboard scope / 2026-11-13
 - Zone: /portofoliu photo dialog. Source audit found document-wide ArrowLeft/ArrowRight listener active while the photo dialog was open; it could intercept keys in unrelated controls. Scoped listener to .rs-photo-dialog, excluded modified keys and editable controls. No assets, dependencies, backend or homepage changes.
 - Browser before/after 390/1440, six widths, Escape, keyboard and CI exact-head pending; do not claim visual verification. Next: photo filter / dialog return focus and real media audit. Main untouched.
