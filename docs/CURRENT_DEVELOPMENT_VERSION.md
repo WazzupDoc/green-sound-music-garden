@@ -1,3 +1,12 @@
+## V98 — Event-specific quote CTA (draft; QA pending)
+- Branch: `design/v98-event-quote-context` on V97 draft. Main untouched.
+- Area: individual event detail pages (`EventPage.tsx`).
+- Defect: generic PageHero CTA navigated to /contact, losing the event-type prefill already implemented in the same page's QuoteSection.
+- Fix: event-specific hero CTA links to the existing `#oferta-titlu` section, preserving defaultEventType and form state; secondary CTA uses the verified business telephone link.
+- No new dependency, image, backend, autoplay, or fabricated events. Homepage contract untouched.
+- QA pending: test each event route, anchor and form prefill, keyboard focus, 390/1440 before-after screenshots, all six widths, SSR, TypeScript, Vitest, gzip and exact-head Actions. No CI or screenshot claim until confirmed.
+- Next: portfolio gallery and event visual layout after V98 QA.
+
 
 ## V97 — Contact denied clipboard retry (draft, QA pending)
 - Branch `design/v97-contact-repeat-copy-focus` stacked on V96 draft PR #95; V96 CI success run 43458490804, artifact 14054593562 (not yet visually inspected).
