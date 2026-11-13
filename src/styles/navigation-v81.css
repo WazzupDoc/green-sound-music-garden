@@ -1,102 +1,38 @@
-/* V81 — ORIGINAL STAGE INDEX / NAVIGATION.
- * A real top-layer HTML dialog, not a visually modal div.
- * No third-party code/assets; existing Green Sound typography.
- */
+/* V81 STAGE INDEX — original mobile navigation, native modal, zero dependencies. */
 dialog.atelier-mobile-menu:not([open]){display:none!important}
-dialog.atelier-mobile-menu[open]{
-  position:fixed!important;inset:0!important;top:0!important;left:0!important;right:0!important;
-  margin:0!important;padding:0!important;width:100vw!important;max-width:none!important;
-  height:100dvh!important;max-height:100dvh!important;box-sizing:border-box;
-  border:0!important;border-radius:0!important;overflow-x:hidden;overflow-y:auto!important;
-  overscroll-behavior:contain;background:#050505;color:#edf5e6;
-  box-shadow:none;z-index:9999
-}
-dialog.atelier-mobile-menu::backdrop{background:rgba(0,0,0,.82)}
-.gsm-nav-index{position:relative;min-height:100%;padding:clamp(18px,3.2vw,48px) clamp(20px,5.4vw,90px) 30px;
-  background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),rgba(184,232,141,.055) 25%);}
-.gsm-nav-index__top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
-  gap:24px;padding-bottom:18px;border-bottom:1px solid rgba(218,241,207,.37)}
-.gsm-nav-index__brand,.gsm-nav-index__eyebrow,.gsm-nav-index__signature,.gsm-nav-index__axis{
-  font-size:.64rem;font-weight:760;letter-spacing:.19em;line-height:1.5;text-transform:uppercase}
-.gsm-nav-index__brand{color:#ccf2b8}
-.gsm-nav-index__close{display:inline-flex;align-items:center;gap:16px;justify-content:center;
-  min-width:108px;min-height:47px;border:1px solid #bddeb0a8;padding:8px 13px;
-  font-size:.75rem;font-weight:700;color:#f5f9ed}
+dialog.atelier-mobile-menu[open]{position:fixed!important;inset:0!important;margin:0!important;padding:0!important;width:100vw!important;max-width:none!important;height:100dvh!important;max-height:100dvh!important;border:0!important;overflow:auto!important;overscroll-behavior:contain;background:#050505;color:#edf5e6;z-index:9999}
+dialog.atelier-mobile-menu::backdrop{background:#000d}
+.gsm-nav-index{position:relative;min-height:100%;padding:clamp(18px,3vw,42px) clamp(18px,5vw,75px) 28px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(25% - 1px),#b8e88d0b 25%)}
+.gsm-nav-index__top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:15px;border-bottom:1px solid #daf1cf66}
+.gsm-nav-index__brand,.gsm-nav-index__eyebrow,.gsm-nav-index__signature,.gsm-nav-index__axis{font-size:.64rem;font-weight:760;letter-spacing:.18em;line-height:1.5;text-transform:uppercase}
+.gsm-nav-index__brand,.gsm-nav-index__eyebrow{color:#cbf2b8}
+.gsm-nav-index__close{display:flex;align-items:center;gap:12px;min-height:46px;border:1px solid #bddeb0;padding:8px 13px;font-size:.76rem;font-weight:700}
 .gsm-nav-index__close:hover{background:#cbf2a7;color:#061009}
-.gsm-nav-index__stage-mark{position:absolute;right:6%;top:13%;width:min(26vw,290px);
-  color:#b4efa1;opacity:.14;transform:rotate(-11deg);pointer-events:none}
-.gsm-nav-index__stage-mark svg{width:100%;height:auto;display:block}
-.gsm-nav-index__layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.77fr) minmax(0,1.23fr);
-  align-items:start;gap:clamp(25px,7vw,120px);padding-block:clamp(28px,5vh,70px)}
-.gsm-nav-index__intro{position:sticky;top:24px;max-width:420px;padding-top:8px}
-.gsm-nav-index__eyebrow{color:#c2f39c}
-.gsm-nav-index__intro h2{margin:clamp(16px,3vw,35px) 0 0;font-family:var(--font-display);
-  font-size:clamp(2.5rem,5.4vw,6.2rem);font-weight:780;letter-spacing:-.075em;line-height:.99;text-wrap:balance}
-.gsm-nav-index__intro h2 em{display:block;margin-top:7px;font-family:var(--font-serif);font-weight:400;
-  letter-spacing:-.02em;color:#bbefa6}
-.gsm-nav-index__note{max-width:34ch;margin:26px 0 0;font-size:clamp(.85rem,1vw,1.02rem);
-  line-height:1.7;color:#c7d4c5}
-.gsm-nav-index__axis{display:block;margin-top:clamp(28px,5vh,70px);color:#a6c59d}
-.gsm-nav-index__list{list-style:none;padding:0;margin:0}
-.gsm-nav-index__entry{border-bottom:1px solid rgba(221,246,209,.26)}
-.gsm-nav-index__link{display:grid;grid-template-columns:38px minmax(0,1fr) 28px;
-  align-items:center;gap:clamp(12px,2vw,25px);min-height:72px;padding:11px 2px;color:#f0f7e8;
-  text-decoration:none}
-.gsm-nav-index__link small{font-family:var(--font-display);font-size:.66rem;letter-spacing:.13em;color:#bde5a5}
-.gsm-nav-index__link span{font-family:var(--font-display);font-size:clamp(2rem,4.3vw,4.7rem);
-  line-height:1.06;font-weight:730;letter-spacing:-.066em}
-.gsm-nav-index__link svg{justify-self:end;opacity:.55}
-.gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:clamp(0px,2.5vw,32px)}
+.gsm-nav-index__stage-mark{position:absolute;right:5%;top:14%;width:min(23vw,280px);color:#b4efa1;opacity:.14;transform:rotate(-11deg);pointer-events:none}
+.gsm-nav-index__stage-mark svg{display:block;width:100%;height:auto}
+.gsm-nav-index__layout{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.77fr) minmax(0,1.23fr);gap:clamp(28px,6vw,110px);padding-block:clamp(27px,5vh,62px)}
+.gsm-nav-index__intro{max-width:400px}
+.gsm-nav-index__intro h2{margin:20px 0 0;font-family:var(--font-display);font-size:clamp(2.5rem,5.2vw,6rem);font-weight:780;letter-spacing:-.07em;line-height:1}
+.gsm-nav-index__intro h2 em{display:block;font-family:var(--font-serif);font-weight:400;letter-spacing:-.02em;color:#bbefa6}
+.gsm-nav-index__note{max-width:34ch;margin:22px 0 0;font-size:.92rem;line-height:1.7;color:#c7d4c5}
+.gsm-nav-index__axis{display:block;margin-top:48px;color:#a6c59d}
+.gsm-nav-index__list{list-style:none;margin:0;padding:0}
+.gsm-nav-index__entry{border-bottom:1px solid #ddf6d142}
+.gsm-nav-index__link{display:grid;grid-template-columns:32px minmax(0,1fr) 26px;align-items:center;gap:clamp(12px,2vw,24px);min-height:72px;padding:11px 2px;color:#f0f7e8;text-decoration:none}
+.gsm-nav-index__link small{font-size:.66rem;letter-spacing:.13em;color:#bde5a5}
+.gsm-nav-index__link span{font-family:var(--font-display);font-size:clamp(2rem,4.2vw,4.5rem);font-weight:730;line-height:1.06;letter-spacing:-.066em}
+.gsm-nav-index__link svg{justify-self:end;opacity:.6}
+.gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:clamp(0px,2vw,28px)}
 .gsm-nav-index__link:hover,.gsm-nav-index__link--active{color:#c1f49f}
-.gsm-nav-index__link:hover svg,.gsm-nav-index__link--active svg{opacity:1}
-.gsm-nav-index__bottom{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:18px 35px;border-top:1px solid rgba(218,241,207,.37);padding-top:22px}
+.gsm-nav-index__bottom{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;border-top:1px solid #daf1cf66;padding-top:19px}
 .gsm-nav-index__signature{color:#a9bca7}
-.gsm-nav-index__actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.gsm-nav-index__actions a{display:inline-flex;align-items:center;justify-content:center;gap:15px;
-  min-height:44px;padding:10px 14px;border:1px solid rgba(221,241,211,.46);
-  font-size:.76rem;font-weight:750;text-decoration:none;color:#f2f9ed}
+.gsm-nav-index__actions{display:flex;flex-wrap:wrap;gap:8px}
+.gsm-nav-index__actions a{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:44px;padding:10px 13px;border:1px solid #ddf1d175;font-size:.76rem;font-weight:750;color:#f2f9ed}
 .gsm-nav-index__actions a:last-child{background:#bff09b;color:#061109;border-color:#bff09b}
-.gsm-nav-index__actions a:hover{border-color:#bff09b}
 .gsm-nav-index a:focus-visible,.gsm-nav-index button:focus-visible{outline:3px solid #e6ffc7;outline-offset:4px}
-@media(max-width:850px){
- .gsm-nav-index__layout{grid-template-columns:1fr;gap:16px;padding-block:27px 34px}
- .gsm-nav-index__intro{position:relative;top:auto;max-width:none}
- .gsm-nav-index__intro h2{font-size:clamp(2.3rem,7.6vw,4.2rem);margin-top:13px}
- .gsm-nav-index__intro h2 em{display:inline}
- .gsm-nav-index__note{margin-top:12px;font-size:.8rem}
- .gsm-nav-index__axis{display:none}
- .gsm-nav-index__stage-mark{top:75px;width:160px;right:-26px;opacity:.08}
- .gsm-nav-index__link{min-height:59px}
- .gsm-nav-index__link span{font-size:clamp(1.95rem,6.8vw,3.4rem)}
- .gsm-nav-index__bottom{padding-top:16px}
-}
-@media(max-width:500px){
- .gsm-nav-index{padding:15px 18px 28px}
- .gsm-nav-index__brand{max-width:170px;font-size:.52rem}
- .gsm-nav-index__close{min-width:95px;gap:10px}
- .gsm-nav-index__intro h2{font-size:clamp(2.35rem,9vw,3.5rem)}
- .gsm-nav-index__note{max-width:32ch}
- .gsm-nav-index__link{grid-template-columns:27px minmax(0,1fr) 23px;min-height:57px;padding-block:9px}
- .gsm-nav-index__link span{font-size:clamp(1.9rem,8vw,2.6rem)}
- .gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:8px}
- .gsm-nav-index__actions{width:100%}
- .gsm-nav-index__actions a{flex:1}
- .gsm-nav-index__signature{font-size:.54rem}
-}
-@media(prefers-reduced-motion:no-preference){
- html:not([data-gs-performance="lite"]) dialog.atelier-mobile-menu[open] .gsm-nav-index__layout{
-  animation:gsm-nav-reveal .38s cubic-bezier(.2,.75,.2,1) both
- }
- html:not([data-gs-performance="lite"]) .gsm-nav-index__link span,
- html:not([data-gs-performance="lite"]) .gsm-nav-index__link svg{transition:transform .24s cubic-bezier(.2,.75,.2,1),color .2s,opacity .2s}
- html:not([data-gs-performance="lite"]) .gsm-nav-index__link:hover span{transform:translateX(7px)}
-}
+@media(max-width:850px){.gsm-nav-index__layout{grid-template-columns:1fr;gap:17px;padding-block:25px 32px}.gsm-nav-index__intro h2{margin-top:13px;font-size:clamp(2.3rem,7.6vw,4rem)}.gsm-nav-index__intro h2 em{display:inline}.gsm-nav-index__note{margin-top:12px;font-size:.8rem}.gsm-nav-index__axis{display:none}.gsm-nav-index__stage-mark{top:75px;width:160px;right:-26px;opacity:.08}.gsm-nav-index__link{min-height:59px}.gsm-nav-index__link span{font-size:clamp(1.95rem,6.8vw,3.4rem)}}
+@media(max-width:500px){.gsm-nav-index{padding:15px 18px 25px}.gsm-nav-index__brand{max-width:160px;font-size:.52rem}.gsm-nav-index__intro h2{font-size:clamp(2.35rem,9vw,3.5rem)}.gsm-nav-index__link{grid-template-columns:27px minmax(0,1fr) 23px;min-height:56px;padding-block:8px}.gsm-nav-index__link span{font-size:clamp(1.9rem,8vw,2.6rem)}.gsm-nav-index__entry:nth-child(even) .gsm-nav-index__link{padding-left:8px}.gsm-nav-index__actions{width:100%}.gsm-nav-index__actions a{flex:1}}
+@media(prefers-reduced-motion:no-preference){html:not([data-gs-performance="lite"]) dialog.atelier-mobile-menu[open] .gsm-nav-index__layout{animation:gsm-nav-reveal .38s cubic-bezier(.2,.75,.2,1) both}html:not([data-gs-performance="lite"]) .gsm-nav-index__link span{transition:transform .24s ease}html:not([data-gs-performance="lite"]) .gsm-nav-index__link:hover span{transform:translateX(7px)}}
 @keyframes gsm-nav-reveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){
- dialog.atelier-mobile-menu[open] *,dialog.atelier-mobile-menu[open] *::before,
- dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}
-}
-html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *,
-html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::before,
-html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){dialog.atelier-mobile-menu[open] *,dialog.atelier-mobile-menu[open] *::before,dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}}
+html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *,html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::before,html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] *::after{animation:none!important;transition:none!important}
