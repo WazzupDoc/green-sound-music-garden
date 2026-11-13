@@ -1,3 +1,6 @@
+## V100 — Portfolio keyboard navigation scope (draft, QA pending)
+Branch design/v100-gallery-keyboard-scope stacked on V99. The photo lightbox now handles arrows only inside its dialog and respects text entry and modifier keys. Code commit 884160aabe6bce2ed00189b4cacf734a86923106. No new dependencies/media; no main/deploy change. Chromium before/after, six-width QA, TS/SSR/Vitest/gzip and exact-head Actions unverified. Next: filter and focus regression.
+
 ## V99 — event quote fragment keyboard focus (draft, QA pending)
 Branch: `design/v99-event-quote-anchor-a11y`, stacked on V98 PR #97. The shared QuoteSection heading now supports fragment focus and sticky-header offset with focus-visible affordance. Source commit d515fe3cc9fcad448e5a112cf4ccb0219a77a1fc (docs commits will advance HEAD). Real-browser screenshots, six-width regression, TypeScript/SSR/Vitest and exact-head CI are not confirmed. No main/deploy changes. Next: gallery and film pages after QA.
 
