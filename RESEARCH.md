@@ -1,3 +1,8 @@
+## 2026-11-13 — V74 / Node file URLs in Vitest CI
+
+- [Node.js `fileURLToPath` API](https://nodejs.org/api/url.html#urlfileurltopathurl): expects `file:` URL; transformed module URLs may be other schemes. Technique: avoid converting transformed `import.meta.url` to filesystem path in source-reading tests.
+- [Vitest environment guide](https://vitest.dev/guide/environment.html): test files run under a transformed module runner. Adaptation: use repository-root fixture paths with Node `readFileSync`, consistent with CI working directory; no dependency or copied code. Rejected: disabling eight tests, changing global Vitest runner, or silencing URL exceptions. Verification: exact-head CI pending.
+
 ## 2026-11-13 — V73 TypeScript strictness / release gate
 
 - Official TypeScript TSConfig `noUncheckedIndexedAccess`: https://www.typescriptlang.org/tsconfig/noUncheckedIndexedAccess.html — indexed array reads can be undefined even after a regex matches; explicitly guard year/month/day and month lookup. Applied to Contact date validator. No third-party code or dependency.
