@@ -73,11 +73,12 @@ export function SiteHeader() {
       const target = event.target;
       const editing = target instanceof Element &&
         Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      const hasModal = Boolean(document.querySelector('dialog[open], [role="dialog"]'));
       const slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey &&
-        !editing && !document.querySelector('[role="dialog"]');
+        !editing && !hasModal;
       // Never steal keystrokes from an existing dialog or a form.
       if (!slash && !command) return;
-      if (!finderOpen && document.querySelector('[role="dialog"]')) return;
+      if (!finderOpen && hasModal) return;
       event.preventDefault();
       setOpen(false);
       setFinderActivated(true);
