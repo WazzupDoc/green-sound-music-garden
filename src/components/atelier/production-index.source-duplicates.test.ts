@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 
-const source = readFileSync(new URL("./ProductionIndex.tsx", import.meta.url), "utf8");
+const source = readFileSync("src/components/atelier/ProductionIndex.tsx", "utf8");
 
 describe("editorial catalogue source integrity", () => {
   it("rejects duplicated catalogue slugs before comparing editorial coverage", () => {
