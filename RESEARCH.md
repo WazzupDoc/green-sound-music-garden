@@ -1,3 +1,16 @@
+## 2026-11-13 — V81 / Stage Index: modal navigation as a production stage programme
+
+- **Professional reference #1:** https://webflow.com/made-in-webflow/website/fullscreen-webflow-navigation (Jonas Arleth); observed: full-viewport responsive menu and deliberate open/close staging. Adapted independently: one full-screen stage index with branded six-route numbering and practical controls, **not** its gradient, animations or cloned code. License: reference only, no assets/source reused.
+- **Professional reference #2:** https://assets.awwwards.com/awards/gallery/2023/07/HOT-RIGHT-NOW-BOOK-2023.pdf (Awwwards editorial Neutra VDL coverage, p.115 / index presentation); observed: the navigation index can be a typographic information hierarchy rather than a generic card set. Adapted independently: asymmetrically offset large sans links, supporting serif phrase, disciplined scene grid. No screenshot, image, typography asset or site code copied. Source used for visual analysis only.
+- **Accessibility specification:** https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog and https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-modal. The previous V80 navigation rendered a div with role=dialog/aria-modal but did not make the background inert. V81 uses native `<dialog>.showModal()` / `close()`, native top layer and keyboard focus containment, Escape onCancel, and opener focus restoration. Fallback is direct semantic links with the menu closed; progressive enhancement without new package.
+- **Original single signature experiment:** STAGE INDEX, a visual backstage directory: six canonical routes as numbered stage cues against originally authored thin-line perspective rig SVG. Familiar labels support wayfinding. No hero/card duplication or extra home section. Mobile uses smaller type and scrollable native dialog.
+- **Performance:** no new JS library, image, media, font, remote request or custom tracking; one dedicated original CSS file. Removed dormant old mobile menu CSS rules in two existing style files. Actual gzip change, SSR and motion browser performance **unmeasured pending V81 exact-head CI**.
+- **Motion + safety:** limited compositor translateY/opacity entrance on full-motion only; CSS `prefers-reduced-motion` and `data-gs-performance=lite` disable it. Focus-visible contrast and scrollable panel. Direct e2e snapshots and Escape/focus checks added; result pending GitHub Actions.
+- **Ideas rejected:** cloning Webflow template; commercial brand photos; another homepage CTA; auto-playing stage footage; GSAP addition; cursor hijack and scroll hijack; custom ARIA focus-trap replacing a platform primitive.
+- **Rights/provenance:** typography from existing installed project packages; manual inline original SVG paths and CSS, no third-party code. No attribution/license needed for independently authored components. Existing imagery untouched.
+
+---
+
 ## 2026-11-13 — V80 / Stage architecture, optical depth and motion safety
 
 - Webflow animation examples: https://webflow.com/blog/webpage-animation (OneTech 3D integration, LITHOSQUARE restraint): adapted the principle that motion and architecture must reinforce the composition. No design, image or source code copied.
