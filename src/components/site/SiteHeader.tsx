@@ -1,182 +1,185 @@
-import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { business, navEvents, navServices } from "@/data/site";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Logo } from "./Logo";
+import { business } from "@/data/site";
+import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
-type Item = { to: string; label: string };
+// The searchable directory is requested only when opened, not on every page load.
+const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
-function Dropdown({ label, items, all }: { label: string; items: Item[]; all: Item }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    const onClick = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    document.addEventListener("mousedown", onClick);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onClick);
-    };
-  }, [open]);
-
-  return (
-    <div
-      ref={ref}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-      >
-        {label}
-        <ChevronDown className={`size-3.5 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
-      </button>
-      {open && (
-        <div className="absolute left-1/2 top-full z-50 w-[22rem] -translate-x-1/2 pt-3">
-          <div className="rounded-xl border border-border bg-popover p-2 shadow-card">
-            {items.map((it) => (
-              <Link
-                key={it.to}
-                to={it.to}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm text-popover-foreground/85 transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {it.label}
-              </Link>
-            ))}
-            <Link
-              to={all.to}
-              onClick={() => setOpen(false)}
-              className="mt-1 block rounded-lg border-t border-border px-3 py-2.5 text-sm font-semibold text-primary"
-            >
-              {all.label} →
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+const navigation = [
+  { to: "/", title: "Acasă" },
+  { to: "/evenimente", title: "Evenimente" },
+  { to: "/servicii", title: "Servicii" },
+  { to: "/portofoliu", title: "Portofoliu" },
+  { to: "/studio-inregistrari", title: "Studio" },
+  { to: "/despre-noi", title: "Despre noi" },
+] as const;
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const [finderOpen, setFinderOpen] = useState(false);
+  const [finderActivated, setFinderActivated] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const finderButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const path = useRouterState({ select: state => state.location.pathname });
+  const reduced = useReducedMotion();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    setOpen(false);
+    setFinderOpen(false);
+  }, [path]);
+
+  useEffect(() => {
+    // Avoid dispatching React state on every scroll frame; the floating header
+    // only needs to know when the 22px threshold changes.
+    let aboveThreshold = window.scrollY > 22;
+    setScrolled(aboveThreshold);
+    const onScroll = () => {
+      const next = window.scrollY > 22;
+      if (next === aboveThreshold) return;
+      aboveThreshold = next;
+      setScrolled(next);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-  }, [mobileOpen]);
+    if (!open) return;
+    document.body.classList.add("atelier-menu-locked");
+    // Keyboard focus stays inside the expanded menu until it is closed.
+    const raf = window.requestAnimationFrame(() =>
+      menuPanelRef.current?.querySelector<HTMLAnchorElement>("a")?.focus());
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+      if (event.key === "Tab") {
+        const focusable = Array.from(menuPanelRef.current?.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ) ?? []).filter(element => element.getClientRects().length > 0);
+        if (!focusable.length) return;
+        const first = focusable[0]!;
+        const last = focusable[focusable.length - 1]!;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    const onPointer = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      window.cancelAnimationFrame(raf);
+      document.body.classList.remove("atelier-menu-locked");
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.repeat) return;
+      const key = event.key.toLowerCase();
+      const command = (event.metaKey || event.ctrlKey) && key === "k" && !event.altKey;
+      const target = event.target;
+      const editing = target instanceof Element &&
+        Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      const slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey &&
+        !editing && !document.querySelector('[role="dialog"]');
+      // Never steal keystrokes from an existing dialog or a form.
+      if (!slash && !command) return;
+      if (!finderOpen && document.querySelector('[role="dialog"]')) return;
+      event.preventDefault();
+      setOpen(false);
+      setFinderActivated(true);
+      setFinderOpen(previous => !previous);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [finderOpen]);
+
+  const onFinderOpenChange = (next: boolean) => {
+    // Keep the dialog root mounted after first use; Radix owns close focus.
+    setFinderOpen(next);
+  };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
-        scrolled || mobileOpen ? "border-b border-border bg-background/90 backdrop-blur-md" : "bg-transparent"
-      }`}
-    >
-      <a
-        href="#continut"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-      >
-        Sari la conținut
-      </a>
-      <div className="container-site flex h-18 items-center justify-between gap-6 py-3">
+    <header ref={headerRef} className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+      <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
+      <div className="container-site atelier-header__inner">
         <Logo />
-
-        <nav aria-label="Navigare principală" className="hidden items-center gap-7 lg:flex">
-          <Dropdown label="Evenimente" items={navEvents} all={{ to: "/evenimente", label: "Toate evenimentele" }} />
-          <Dropdown label="Servicii" items={navServices} all={{ to: "/servicii", label: "Toate serviciile" }} />
-          <Link to="/portofoliu" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Portofoliu
-          </Link>
-          <Link to="/studio-inregistrari" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Studio
-          </Link>
-          <Link to="/despre-noi" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Despre noi
-          </Link>
+        <nav className="atelier-header__nav" aria-label="Navigare principală">
+          {navigation.map((entry) => (
+            <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
+              activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
+              {entry.title}
+            </Link>
+          ))}
         </nav>
-
-        <div className="flex items-center gap-3">
-          <a
-            href={business.phoneHref}
-            className="hidden items-center gap-2 text-sm font-semibold text-foreground xl:inline-flex"
-          >
-            <Phone className="size-4 text-primary" aria-hidden />
-            {business.phoneDisplay}
+        <div className="atelier-header__actions">
+          <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
+            aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
+            aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
+            onClick={() => { setOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
+            <Search className="size-5" aria-hidden />
+            <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
+          </button>
+          <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
+            <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
           </a>
-          <Button asChild variant="hero" className="hidden h-11 px-5 sm:inline-flex">
-            <Link to="/contact">Cere ofertă</Link>
-          </Button>
-          <button
-            type="button"
-            className="grid size-11 place-items-center rounded-full border border-border lg:hidden"
-            aria-label={mobileOpen ? "Închide meniul" : "Deschide meniul"}
-            aria-expanded={mobileOpen}
-            aria-controls="meniu-mobil"
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          <Link to="/contact" className="atelier-header__quote">
+            Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
+          <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
+            aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => setOpen(value => !value)}>
+            {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
           </button>
         </div>
       </div>
-
-      {mobileOpen && (
-        <div id="meniu-mobil" className="h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background lg:hidden">
-          <nav aria-label="Navigare mobil" className="container-site grid gap-10 py-8 pb-32">
-            <div>
-              <p className="eyebrow mb-4">Ce sărbătorești?</p>
-              <ul className="grid gap-1">
-                {navEvents.map((it) => (
-                  <li key={it.to}>
-                    <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-2 font-display text-2xl font-semibold">
-                      {it.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="eyebrow mb-4">Servicii</p>
-              <ul className="grid gap-1">
-                {navServices.map((it) => (
-                  <li key={it.to}>
-                    <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-1.5 text-lg text-foreground/85">
-                      {it.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <ul className="grid gap-1 border-t border-border pt-6">
-              {[
-                { to: "/portofoliu", label: "Portofoliu" },
-                { to: "/despre-noi", label: "Despre noi" },
-                { to: "/contact", label: "Contact" },
-              ].map((it) => (
-                <li key={it.to}>
-                  <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-1.5 text-lg text-foreground/85">
-                    {it.label}
-                  </Link>
-                </li>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div key="atelier-menu" ref={menuPanelRef} id="atelier-mobile-navigation" className="atelier-mobile-menu" role="dialog" aria-modal="true" aria-label="Meniu de navigare"
+            initial={reduced ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
+            exit={reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+            transition={{ duration: reduced ? 0 : .2, ease: [.2, .7, .2, 1] }}>
+            <nav aria-label="Meniu mobil" className="container-site atelier-mobile-menu__body">
+              {navigation.map((entry) => (
+                <Link key={entry.to} to={entry.to} onClick={() => setOpen(false)} className="atelier-mobile-menu__link">
+                  <span>{entry.title}</span><ArrowUpRight className="size-5" aria-hidden />
+                </Link>
               ))}
-            </ul>
-          </nav>
-        </div>
-      )}
+              <div className="atelier-mobile-menu__actions">
+                <a href={business.phoneHref}><Phone aria-hidden className="size-5" /> Sună</a>
+                <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle aria-hidden className="size-5" /> WhatsApp
+                </a>
+                <Link to="/contact" onClick={() => setOpen(false)}>Cere ofertă</Link>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <Suspense fallback={null}>
+        {finderActivated && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange}
+          returnFocusRef={finderButtonRef} />}
+      </Suspense>
     </header>
   );
 }

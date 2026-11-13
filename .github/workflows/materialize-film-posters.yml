@@ -1,0 +1,45 @@
+name: Save authentic Green Sound film stills in V21 draft
+
+on:
+  push:
+    branches: [design/crafted-atmospheres-v21-directors-cut]
+    paths:
+      - ".github/scripts/download_gs_film_posters.py"
+      - ".github/workflows/materialize-film-posters.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  original-film-posters:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: design/crafted-atmospheres-v21-directors-cut
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install WebP image processing
+        run: python -m pip install pillow==11.3.0
+      - name: Fetch only the three Green Sound video stills
+        run: python .github/scripts/download_gs_film_posters.py
+      - name: Push first-party WebP posters to draft branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/media/greensound/film-*.webp public/media/greensound/FILM-POSTERS.json
+          if ! git diff --cached --quiet; then
+            git commit -m "assets(v21): sharp authentic local film posters for showreel"
+            git push origin HEAD:design/crafted-atmospheres-v21-directors-cut
+          fi
+      - name: Upload images for manual review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v21-film-posters
+          path: |
+            public/media/greensound/film-*.webp
+            public/media/greensound/FILM-POSTERS.json
+          if-no-files-found: warn

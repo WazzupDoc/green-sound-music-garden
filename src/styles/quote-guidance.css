@@ -1,0 +1,66 @@
+/* V34 — GREEN SOUND / GUIDED EVENT BRIEF
+ * Original conversion interface: authentic service suggestions from data/site.ts,
+ * explicit user selection, clear limits and usable focus on touch/keyboard.
+ * Zero animation loops, images, third-party tools or extra JS dependencies.
+ */
+.gs-quote__intro{position:relative;padding:0 0 24px;border-bottom:1px solid #c4e4b13a;margin-bottom:7px}
+.gs-quote__stephead{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 14px;
+ color:#b5e8a1;font-size:.61rem;font-weight:800;letter-spacing:.14em}
+.gs-quote__intro h3{font-family:var(--font-display);font-size:clamp(2.1rem,3.5vw,3.3rem);
+ line-height:1.05;letter-spacing:-.054em;font-weight:650;margin-top:24px;text-wrap:balance}
+.gs-quote__intro h3 em{font-family:var(--font-serif);font-weight:400;color:#bde7aa;letter-spacing:-.012em}
+.gs-quote__intro>p{color:#b5c9b0;line-height:1.65;font-size:.87rem;margin-top:14px;max-width:52ch}
+.gs-quote__errors{border:1px solid #ffad9180;background:#5a211f32;color:#ffe4dc;
+ padding:14px 18px;font-size:.8rem;line-height:1.55}
+.gs-quote__selection-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+ gap:8px 15px;margin-bottom:16px;color:#b7cbb1;font-size:.75rem;line-height:1.5}
+.gs-quote__count{font-size:.63rem;font-weight:800;letter-spacing:.075em;color:#bfeba8;
+ font-variant-numeric:tabular-nums;white-space:normal}
+.gs-quote__choices{display:flex;flex-wrap:wrap;gap:9px}
+.gs-quote__choice{display:inline-flex;align-items:center;gap:8px;position:relative;
+ padding:10px 15px;min-height:46px;max-width:100%;border:1px solid #c1d9b25f;
+ background:#b2d5a10a;color:#e4efe2;cursor:pointer;font-size:.78rem;line-height:1.4;
+ transition:background .16s,border-color .16s,color .16s}
+.gs-quote__choice:hover:not([data-disabled=true]){border-color:#cbeeb2;background:#bed9af1a}
+.gs-quote__choice[data-checked=true]{background:#d5ecc8;color:#142919;border-color:#d5ecc8;font-weight:750}
+.gs-quote__choice[data-disabled=true]{opacity:.36;cursor:not-allowed}
+.gs-quote__choice:focus-within{outline:2px solid #f3ffe7;outline-offset:3px}
+.gs-quote__choice svg{flex:none}
+.gs-quote__choice-plus{font-size:1rem;color:#bdeaaa;line-height:1;flex:none}
+.gs-quote__limit{margin-top:12px;color:#cbd9b3;font-size:.74rem;line-height:1.5}
+.gs-quote__suggestions{position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid #b1cba256;background:linear-gradient(135deg,#203d29,#12251a 65%);
+ padding:clamp(17px,2.7vw,30px);margin-top:0}
+.gs-quote__suggestions:after{content:"";position:absolute;pointer-events:none;
+ right:-68px;top:-85px;width:220px;height:220px;border-radius:50%;border:1px solid #b5e39c28;
+ box-shadow:0 0 0 33px #b5e39c08,0 0 0 66px #b5e39c06}
+.gs-quote__suggestions-heading{position:relative;z-index:1}
+.gs-quote__suggestions-index{font-size:.6rem;color:#b9ed9f;font-weight:800;letter-spacing:.14em}
+.gs-quote__suggestions h4{font-family:var(--font-display);font-size:clamp(1.4rem,2.3vw,2.2rem);
+ letter-spacing:-.042em;line-height:1.1;font-weight:620;margin-top:10px;text-wrap:balance}
+.gs-quote__suggestions-heading p{color:#baceb6;font-size:.79rem;line-height:1.6;margin-top:10px;max-width:57ch}
+.gs-quote__suggestions-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:9px;margin-top:22px}
+.gs-quote__suggestion{display:flex;min-width:0;align-items:flex-start;gap:12px;min-height:92px;
+ padding:15px 12px;text-align:left;background:#08180ebd;color:#ecf3e8;
+ border:1px solid #c2ddb33d;transition:background .16s,border-color .16s}
+.gs-quote__suggestion:hover:not(:disabled){background:#1c3625;border-color:#c5e6ad}
+.gs-quote__suggestion[data-selected=true]{border-color:#b1e796;background:#31533a}
+.gs-quote__suggestion:disabled{opacity:.36;cursor:not-allowed}
+.gs-quote__suggestion:focus-visible{outline:2px solid #dff9c9;outline-offset:3px}
+.gs-quote__suggestion-icon{display:grid;place-items:center;width:28px;height:28px;flex:none;
+ font-size:1.2rem;line-height:1;background:#bddfae;color:#1b3321;font-weight:800}
+.gs-quote__suggestion-copy{display:grid;gap:6px;min-width:0}
+.gs-quote__suggestion strong{font-size:.82rem;line-height:1.4;font-weight:800;overflow-wrap:anywhere}
+.gs-quote__suggestion small{font-size:.7rem;color:#bdcdb9;line-height:1.48;overflow-wrap:anywhere}
+.gs-quote__suggestions-note{position:relative;z-index:1;margin-top:15px;color:#a8c5a5;
+ font-size:.67rem;line-height:1.55}
+@media(max-width:650px){
+ .gs-quote__suggestions-grid{grid-template-columns:1fr}
+ .gs-quote__suggestion{min-height:77px}
+ .gs-quote__intro h3{font-size:clamp(1.95rem,8.5vw,2.8rem)}
+ .gs-quote__count{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-quote__choice,.gs-quote__suggestion{transition:none}
+}
