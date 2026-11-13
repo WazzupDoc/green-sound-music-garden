@@ -346,6 +346,9 @@ async function main() {
     assert.equal(previewColors.foreground,"rgb(246, 255, 240)",
       "Manual email action must be readable on cream Contact preview");
     assert.equal(previewColors.background,"rgb(13, 80, 48)");
+    assert.equal(await quotePage.locator(".quote-preview__identity")
+      .evaluate(el=>getComputedStyle(el).color),"rgb(216, 239, 201)",
+      "Quote author attribution must remain legible on the dark ticket");
     assert.equal(await quotePage.locator(".quote-preview__intro strong")
       .evaluate(el=>getComputedStyle(el).color),"rgb(42, 81, 54)",
       "No-send notice must not inherit pale text on pale paper");
