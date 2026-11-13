@@ -1,3 +1,11 @@
+## V92 VERIFIED QA / 2026-11-13
+- V92 PR #90 branch `design/v92-service-stage-showcase` UI SHA `91663ecfb4cb9a0361aa48b9f8fccd81c50b1e5a`: [exact-HEAD PR run #43439345308](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439345308) green, 31 test suites / 86 passing tests, 6 real Chromium viewport widths, SEO 20 routes, 3 representative service-page desktop+mobile snapshots and real form preselection. [Real screenshot artifact #14046060692](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43439345308/artifacts/14046060692).
+- Visual audit found first branch build still same composition 8×. Corrected with chapter-specific **Music left text/right live photo, Technical panoramic technical image, People left people photo/right text**, verified via actual Chromium geometry and screenshot. Distinct layouts are clear; still cannot pretend existing image archive matches generated photoreal mockup. No fabricated people or metrics.
+- Interactivity conversion proven: native CTA scrolls to real `QuoteSection`, and the service actually appears selected (DJ & MC, Sonorizare/lumini/ecrane LED, Ursitoare/animație copii). No email API, database, automatic send or extra form.
+- Component matrix: homepage V90 motion + photos prior green | service index V91 green CI but PR conflict | **service detail V92 green CI and screenshots** | next rotate CONTACT offer UX/validation and EVENT DETAIL visual, then photo/video quality, footer, accessibility, privacy/technical SEO and consolidate stacked styles. Do not touch main without backup tag+rollback/deployment review and approval for live publication. Separate PR #19 conflicts persist.
+
+---
+
 ## 2026-11-13 V92 — Service detail stage / premium inner-page rotation
 
 - REAL source of user dissatisfaction: generated premium mockup combines authentic stage production equipment, photo-dominant design and varied compositions; earlier iterations repeatedly focused on homepage while **eight deeper service pages still reused the same generic PageHero**. New V92 branch `design/v92-service-stage-showcase`, draft PR #90, built on V91 PR #89 exact-head green `e8e3296...`.
