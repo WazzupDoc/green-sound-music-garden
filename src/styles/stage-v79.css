@@ -1,0 +1,77 @@
+/* V79 — original 2.5D concert portal / physical stage architecture.
+   No WebGL, assets, dependencies, canvas, layout animations or network requests. */
+.gs-stage-v79 .gs-stage-v79__architecture{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2;
+  perspective:1000px;perspective-origin:74% 52%;
+}
+.gs-stage-v79 .gs-stage-v78__aperture,
+.gs-stage-v79 .gs-stage-v78__light-sweep,
+.gs-stage-v79 .director-stage-ambient,
+.gs-stage-v79 .crafted-stage-lights{display:none!important}
+.gs-stage-v79 .gs-stage-v79__portal{
+  position:absolute;left:55%;top:8%;width:37%;height:74%;
+  border:2px solid rgba(191,255,155,.55);
+  border-top:8px solid rgba(197,255,155,.8);
+  border-bottom:5px solid rgba(197,255,155,.38);
+  box-shadow:0 0 30px rgba(144,255,116,.22),inset 0 0 30px rgba(144,255,116,.1);
+  transform:rotateY(-25deg) rotateX(7deg) translateZ(90px);
+}
+.gs-stage-v79 .gs-stage-v79__portal--rear{
+  left:61%;top:16%;width:25%;height:57%;opacity:.64;
+  border-color:rgba(176,224,255,.48);border-top-color:rgba(176,224,255,.65);
+  transform:rotateY(-25deg) rotateX(7deg) translateZ(-160px);
+}
+.gs-stage-v79 .gs-stage-v79__portal--front::before,
+.gs-stage-v79 .gs-stage-v79__portal--front::after{
+  content:"";position:absolute;top:0;bottom:0;width:12px;
+  background:repeating-linear-gradient(180deg,rgba(197,255,155,.9) 0 2px,transparent 2px 21px);
+  opacity:.5;
+}
+.gs-stage-v79 .gs-stage-v79__portal--front::before{left:-14px}
+.gs-stage-v79 .gs-stage-v79__portal--front::after{right:-14px}
+.gs-stage-v79 .gs-stage-v79__deck{
+  position:absolute;left:48%;right:-12%;bottom:-23%;height:49%;
+  transform:rotateX(69deg) rotateZ(-9deg);
+  background:repeating-linear-gradient(90deg,rgba(176,255,149,.2) 0 1px,transparent 1px 11%),
+    repeating-linear-gradient(0deg,rgba(176,255,149,.16) 0 1px,transparent 1px 13%);
+  border-top:2px solid rgba(191,255,155,.46);
+  mask-image:linear-gradient(0deg,transparent 1%,#000 70%);
+}
+.gs-stage-v79 .gs-stage-v79__scanner{
+  position:absolute;top:-19%;left:67%;width:11%;height:118%;
+  background:linear-gradient(90deg,transparent,rgba(197,255,155,.06) 18%,rgba(230,255,216,.32) 50%,transparent 100%);
+  clip-path:polygon(46% 0,54% 0,100% 100%,0 100%);
+  transform-origin:50% 0;mix-blend-mode:screen;
+  animation:gs-v79-scan-a 9s cubic-bezier(.44,0,.56,1) infinite alternate;
+}
+.gs-stage-v79 .gs-stage-v79__scanner--b{
+  left:79%;background:linear-gradient(90deg,transparent,rgba(141,212,255,.1),rgba(168,226,255,.28),transparent);
+  animation-name:gs-v79-scan-b;animation-duration:12s;
+}
+.gs-stage-v79 .gs-stage-v79__horizon{
+  position:absolute;left:49%;right:0;bottom:20%;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(198,255,159,.68),transparent);
+  box-shadow:0 0 24px 5px rgba(163,255,134,.17);
+}
+@keyframes gs-v79-scan-a{from{transform:rotate(-27deg);opacity:.14}to{transform:rotate(25deg);opacity:.75}}
+@keyframes gs-v79-scan-b{from{transform:rotate(19deg);opacity:.65}to{transform:rotate(-24deg);opacity:.13}}
+.gs-stage-v79[data-lights="off"] .gs-stage-v79__scanner,
+.gs-stage-v79[data-stage-visible="false"] .gs-stage-v79__scanner,
+html[data-gs-performance="lite"] .gs-stage-v79__scanner{
+  animation:none!important;opacity:0!important;
+}
+@media(max-width:900px){
+  .gs-stage-v79 .gs-stage-v79__architecture{opacity:.6;perspective-origin:80% 45%}
+  .gs-stage-v79 .gs-stage-v79__portal{left:62%;width:44%}
+  .gs-stage-v79 .gs-stage-v79__portal--rear{left:70%;width:28%}
+  .gs-stage-v79 .gs-stage-v79__deck{left:58%}
+}
+@media(max-width:600px){
+  .gs-stage-v79 .gs-stage-v79__architecture{opacity:.38}
+  .gs-stage-v79 .gs-stage-v79__portal{left:72%;top:13%;width:42%;height:58%}
+  .gs-stage-v79 .gs-stage-v79__portal--rear{left:78%;top:19%;width:27%;height:43%}
+  .gs-stage-v79 .gs-stage-v79__deck{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .gs-stage-v79 .gs-stage-v79__scanner{animation:none!important;opacity:0!important}
+}
