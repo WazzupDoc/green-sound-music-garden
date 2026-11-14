@@ -147,7 +147,12 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
         {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={category===item.tag}
           onClick={()=>setCategory(item.tag)}>{item.label}</button>)}
       </div>
-      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">\n        {category ? `Filtru activ: ${filmCategories.find(item => item.tag === category)?.label ?? category}. ` : "Toate filmările. "}\n        {selectedVideos.length} {selectedVideos.length === 1 ? "filmare disponibilă" : "filmări disponibile"}.\n        {chosen ? ` Filmarea afișată: ${chosen.title}. Apasă Play pentru redare.` : " Nu există filmări în această categorie."}\n      </p>\n      <div className="rs-video-library__layout">
+      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
+        {category ? `Filtru activ: ${filmCategories.find(item => item.tag === category)?.label ?? category}. ` : "Toate filmările. "}
+        {selectedVideos.length} {selectedVideos.length === 1 ? "filmare disponibilă" : "filmări disponibile"}.
+        {chosen ? ` Filmarea afișată: ${chosen.title}. Apasă Play pentru redare.` : " Nu există filmări în această categorie."}
+      </p>
+      <div className="rs-video-library__layout">
         <div className="rs-video-library__player">
           {chosen && <VideoLite key={chosen.id} video={chosen} />}
         </div>
