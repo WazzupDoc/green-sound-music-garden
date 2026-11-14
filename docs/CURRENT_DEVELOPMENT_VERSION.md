@@ -1,3 +1,6 @@
+## V111 — Mobile photo dialog gesture guard (2026-11-14, draft)
+Branch `fix/v111-portfolio-swipe-direction-guard` stacked on V110 PR #109 docs SHA e7e991b3c5e271c448914dd601e49f0b6a832eb9. Photo swipes now require horizontal movement to dominate vertical scroll; cancel/multi-touch clear tracking. Source SHA 48557148a71964b7a1d139e32734df359e1bf5e5. QA, screenshots and CI exact-head pending; no main/deploy change.
+
 2026-11-14 V109 draft: Portfolio film archive filter buttons display computed counts from existing videoList/tags (no fabricated numbers), accessible labels and tabular numerals. Source commit 4ca7f2c22347b0c33f294f52b98de63770087385. No dependencies/media/autoplay. Browser before/after, TS/SSR/Vitest, six-width and exact-head CI pending. Next: verify filters with real browser, then rotate to event detail/contact visual QA. Main untouched.
 
 ## V108 — Portfolio empty-category recovery (draft; QA pending)
