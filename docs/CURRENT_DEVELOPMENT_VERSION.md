@@ -1,3 +1,6 @@
+## V117 — Event detail editorial section navigation (2026-11-14, DRAFT)
+Branch `feat/v117-event-section-navigation`, PR #116, source SHA `2430ecc3f3a9dbf44e2b7105f7bc5a5ef1b4f4fd`, stacked on V116 PR #115. Added native accessible in-page navigation to schedule, services, conditional films and existing quote section on event detail pages; scroll offset for fixed header. No new dependency/media/homepage changes. QA NOT VERIFIED: browser before/after 390/1440, six widths, keyboard, TypeScript, SSR, Vitest, gzip and exact-head CI. No merge or deploy. Next: visual QA event detail, Contact clipboard.
+
 ## V116 — Contact conditional validation references (2026-11-14, draft)
 Branch `fix/v116-contact-conditional-error-links` stacked on V115 PR #114. `QuoteForm.tsx`: email input and services fieldset now reference error elements only when those elements exist; the permanent services guidance stays linked. No dependencies, new media, backend, homepage changes or auto-send. Source commit `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. QA PENDING: TS/SSR/Vitest, real Chromium 390/1440 before-after and six-width regression, clipboard, reduced motion, exact-head CI. Next rotation: `/evenimente` detail page visual and functional audit. Main/deployment untouched.
 

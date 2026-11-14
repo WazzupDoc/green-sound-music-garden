@@ -1,3 +1,6 @@
+## 2026-11-14 — Event detail navigation, V117
+References: https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/examples/navigation.html (native navigation landmark, no borrowed code); https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top (offset fragment destinations under fixed headers). Adapted: native fragment links, conditional film link and scroll offsets. Rejected: JS scroll hijacking and external animation packages; zero dependencies, no new assets. Visual design examples still require browser comparison before approval.
+
 
 ## 2026-11-14 — V113 filter recovery
 References: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html (live result feedback); https://www.w3.org/WAI/ARIA/apg/patterns/button/ (native accessible button semantics). Original code, no external license-dependent assets. Rejected animated badges and auto-reset filters: distracting and user-hostile. Premium editorial direction retained without new visual gimmicks.

@@ -13,7 +13,16 @@ export function EventPage({event}:{event:EventType}){
       <a href="#oferta-titlu" className="rs-inline-link">Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
       <a href={business.phoneHref} className="rs-inline-link"><Phone size={18} aria-hidden /> Sună Green Sound</a>
     </PageHero>
-    <section className="rs-event-timeline">
+    <nav aria-label="Explorează pagina evenimentului" className="border-y border-white/15 bg-[#09241c] text-white">
+      <div className="container-site flex flex-wrap items-center gap-x-7 gap-y-3 py-5">
+        <span className="mr-auto text-xs font-semibold uppercase tracking-[0.18em] text-emerald-200">În această pagină</span>
+        <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#etape-eveniment">01 / Desfășurător</a>
+        <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#servicii-eveniment">02 / Servicii</a>
+        {event.videos.length>0 && <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#filme-eveniment">03 / Filmări</a>}
+        <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#oferta-titlu">Cerere de ofertă <ArrowUpRight size={15} className="inline" aria-hidden /></a>
+      </div>
+    </nav>
+    <section id="etape-eveniment" className="rs-event-timeline scroll-mt-24">
       <div className="container-site">
         <div className="rs-event-timeline__title">
           <p>Desfășurătorul</p><h2>De la pregătiri până la finalul evenimentului</h2>
@@ -32,7 +41,7 @@ export function EventPage({event}:{event:EventType}){
         })}</ol>
       </div>
     </section>
-    <section className="rs-event-offerings">
+    <section id="servicii-eveniment" className="rs-event-offerings scroll-mt-24">
       <div className="container-site rs-event-offerings__inside">
         <div><p>Servicii potrivite</p><h2>Ce putem pregăti</h2>
           <p>Poți discuta separat despre fiecare serviciu, în funcție de spațiu și de program.</p></div>
@@ -45,7 +54,7 @@ export function EventPage({event}:{event:EventType}){
         })}</ul>
       </div>
     </section>
-    {event.videos.length>0 && <section className="rs-event-film">
+    {event.videos.length>0 && <section id="filme-eveniment" className="rs-event-film scroll-mt-24">
       <div className="container-site">
         <h2>Filmări din arhiva Green Sound</h2>
         <div>{event.videos.map(video=><VideoLite key={video.id} video={video}/>)}</div>
