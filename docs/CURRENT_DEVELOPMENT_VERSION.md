@@ -1,3 +1,6 @@
+## V107 — Portfolio category persistence (draft; QA pending)
+Branch `fix/v107-portfolio-filter-selection-persistence` over V106. Removed film-selection effect that reset active archive category to All after clicking a film. Deep links still initialize to All. Source change 06acac444447ac1cfc7888d650d87b1d531bfaf6. Browser/TS/SSR/Vitest/CI exact-head and before/after screenshots NOT verified. No main/deploy change.
+
 ## V106 — Portfolio film archive TSX repair (draft, QA pending)
 Branch `fix/v106-portfolio-film-archive-compile` stacked on V105 PR #104. Removed five literal `\n` escape tokens accidentally inserted into `RegiaPortfolio.tsx`, which included tokens outside JSX elements. No design, assets or behavior changes intended. Source commit efb736fbc2e79cba1beecd3bb4f96ae99fd62e44. TS/SSR/Vitest/Chromium and exact-head CI pending; main untouched.
 
