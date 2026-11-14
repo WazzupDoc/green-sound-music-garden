@@ -134,7 +134,8 @@ const videoList: Video[] = Object.values(videos);
 
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const [category,setCategory]=useState<string>("");
-  useEffect(()=>{ if(film) setCategory(""); },[film]);
+  // Keep the active film category while navigating between its films.
+  // Direct links still start with the complete archive (initial category is empty).
   const selectedVideos=videoList.filter(v=>!category||v.tags.includes(category));
   const chosen=selectedVideos.find(v=>v.id===film)??selectedVideos[0];
   return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
