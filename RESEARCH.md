@@ -318,3 +318,6 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 
 ## 2026-11-14 — Photo gallery filtering
 References: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html (status messages); https://www.w3.org/WAI/ARIA/apg/patterns/button/ (pressed filter buttons). Original implementation uses aria-pressed, computed counts, and polite live status. No third-party code/assets copied. Rejected animated filter badges as distracting and potentially costly.
+
+## 2026-11-14 / V114 Contact focus
+Reference for implementation review (not live-web verified this run): https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ and https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex . Applied original focus management on conditional step changes, no external code or dependency. Rejected automatic focus on each render because it would steal focus from user actions. Browser verification pending.
