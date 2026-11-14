@@ -31,7 +31,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const selectedIndex = selected ? navigationFrames.findIndex(item => item.id === selected.id) : -1;
   const previousPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex - 1 + navigationFrames.length) % navigationFrames.length] : undefined;
   const nextPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex + 1) % navigationFrames.length] : undefined;
-  const pointerX = useRef<number | null>(null);
+  const touchOrigin = useRef<{ x: number; y: number } | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
   if (selected) lastPhotoRef.current = selected.id;
   const change = (id?:string) => {
@@ -102,13 +102,25 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           </DialogDescription>
           {selected && <>
             <div className="rs-photo-dialog__media"
-              onTouchStart={event=>{pointerX.current=event.touches[0]?.clientX??null}}
+              onTouchStart={event=>{
+                const touch = event.touches.length === 1 ? event.touches[0] : undefined;
+                touchOrigin.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+              }}
+              onTouchMove={event=>{
+                if(event.touches.length !== 1) touchOrigin.current = null;
+              }}
+              onTouchCancel={()=>{touchOrigin.current = null}}
               onTouchEnd={event=>{
-                const end=event.changedTouches[0]?.clientX;
-                if(pointerX.current!==null && end!==undefined && Math.abs(end-pointerX.current)>55){
-                  step(end<pointerX.current?1:-1);
+                const origin = touchOrigin.current;
+                touchOrigin.current = null;
+                const end = event.changedTouches[0];
+                if(!origin || !end || event.touches.length !== 0) return;
+                const dx = end.clientX - origin.x;
+                const dy = end.clientY - origin.y;
+                // A vertical scroll must never change the selected photo.
+                if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4){
+                  step(dx < 0 ? 1 : -1);
                 }
-                pointerX.current=null;
               }}>
               <img src={selected.image.src} width={selected.image.w} height={selected.image.h}
                 alt={selected.image.alt} decoding="async" />
