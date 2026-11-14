@@ -1,3 +1,8 @@
+## 2026-11-14 — V124 portfolio URL and filter state
+- [MDN History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API): browser navigation can restore earlier URL states; local filter should not conceal URL-selected content. Adapted principle to existing TanStack Router state without copying external code.
+- [WAI-ARIA APG Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/): toggle state should describe the visible selection; existing aria-pressed reflects derived visible category. No code imported.
+- Rejected: resetting category in useEffect on every film change, because asynchronous router updates can race with category click; no dependencies or third-party assets.
+
 ## 2026-11-14 — V103 Contact keyboard focus
 - [WAI-ARIA APG Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): keyboard focus should move into newly presented interaction and return predictably. Adapted concept only, no external code or assets.
 - [MDN HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus): native focus used after React state commit, without dependency. No modal semantics added because quote preview is not a modal.
