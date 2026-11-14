@@ -1,3 +1,6 @@
+## 2026-11-14 — V106 source integrity
+Source review: existing V105 JSX had literal `\n` tokens in rendered markup, which are invalid TSX outside text. Fix uses only whitespace normalization; no third-party code or assets. References for later accessibility validation: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role and https://www.w3.org/WAI/ARIA/apg/ . No design copied; browser/CI validation pending.
+
 ## 2026-11-14 — V105 portfolio archive filter feedback
 - W3C ARIA status pattern https://www.w3.org/WAI/ARIA/apg/patterns/status/ : announce concise state changes without moving focus; adapted original JSX string based on existing filter/player state, no external code copied.
 - Webflow music website collection https://webflow.com/blog/music-websites-designed-with-webflow : existing editorial media discovery direction, reference only, not independently re-inspected in this run; no copied assets/design.
