@@ -1,3 +1,8 @@
+## V118 — 2026-11-14 / Event detail FAQ navigation
+- Zone: event detail section navigation. Source review found FAQ content rendered conditionally but missing from the new V117 in-page navigation. Added conditional FAQ anchor and matching scroll-offset section ID; no new assets, dependencies, backend or homepage elements.
+- Code commit: `3c63ddb121af7b0cd9cea6116b265efeebd1e42e`; base V117 `2430ecc3f3a9dbf44e2b7105f7bc5a5ef1b4f4fd`.
+- QA NOT VERIFIED: TypeScript, SSR, Vitest, gzip, six Chromium widths, before/after 390/1440 screenshots, keyboard/focus, exact-head CI. Do not merge/deploy. Next rotation: Contact clipboard failure/retry browser QA and event detail visual regression.
+
 ## V116 — 2026-11-14 / Contact validation semantics
 Area: QuoteForm email and services fieldset. Source defect: `aria-describedby` referenced conditional validation error IDs even before error nodes existed. Fixed by conditional ID references; retained persistent service guidance. Source SHA `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. No new asset/dependency. QA pending: Chromium before/after 390/1440, six widths, keyboard, TS, SSR, Vitest, gzip and exact-head CI. Visual change not claimed. Next area: event detail route composition/CTA. Main untouched.
 
