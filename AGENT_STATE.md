@@ -1,3 +1,6 @@
+## V120 — 2026-11-14
+Contact focus: corrected non-focusable fieldset match; browser validation pending. Next: real Chromium keyboard and clipboard audit.
+
 
 ## V119 — 2026-11-14 / Contact invalid-submit focus
 - Zone: Contact QuoteForm. On invalid submission, requestAnimationFrame focuses first invalid input/select/checkbox in document order; services fieldset exposes aria-invalid so the first enabled service checkbox is reachable. Source commit `667767f475bf5cb54bbb49691d79580b2e3c7b3b`.
