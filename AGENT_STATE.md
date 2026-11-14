@@ -1,3 +1,6 @@
+## V104 — Film selector announcement (2026-11-14)
+Area: homepage three-film selector. Source audit found nested live regions around the full VideoLite subtree, potentially causing verbose/duplicate screen-reader announcements on selection. Changed to one visually-hidden status describing selected film and explicit Play. PR #103, code SHA a12b56eddbe0edc969b6fe4178b724b5ca89f1a4. Visual layout unchanged; no browser screenshots/CI verified. Next rotation: portfolio film archive selection/keyboard and focus. Main untouched.
+
 ## V102 — Portfolio gallery focus (draft)
 Zone: photo lightbox. Source defect: URL-driven close could leave focus without an explicit thumbnail fallback. Added onCloseAutoFocus to return to visible originating thumbnail, otherwise programmatic gallery heading. Source SHA ae2a4503ce3491e74d789fd1d36d59be18375309. Browser screenshots at 390/1440, keyboard/Escape, TS/SSR/Vitest/gzip and exact-head CI pending. Next: film filters and video state. Main untouched.
 
