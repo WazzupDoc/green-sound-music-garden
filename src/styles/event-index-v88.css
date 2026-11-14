@@ -30,3 +30,11 @@
 }
 @media(prefers-reduced-motion:reduce){.rs-events-index .rs-events-index__image img{transition:none!important;transform:none!important}}
 @media(hover:none){.rs-events-index .rs-events-index__image img{transition:none}}
+
+/* V126 — two deliberate editorial paths: research the event or start its brief. */
+.rs-events-index .gs-event-index__actions{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-top:clamp(1.4rem,3vw,2.5rem)}
+.rs-events-index .gs-event-index__brief-link{display:inline-flex;align-items:center;justify-content:space-between;gap:1.4rem;min-height:48px;padding:.7rem 1rem;background:#123c29;color:#f4f4e9;font-size:.9rem;font-weight:750;text-decoration:none;transition:background-color .2s ease,transform .2s ease}
+.rs-events-index .gs-event-index__brief-link:hover{background:#246943;transform:translateY(-2px)}
+.rs-events-index .gs-event-index__brief-link:focus-visible{outline:3px solid #246943;outline-offset:4px}
+@media(max-width:700px){.rs-events-index .gs-event-index__actions{align-items:stretch;gap:.75rem}.rs-events-index .gs-event-index__brief-link{width:100%}}
+@media(prefers-reduced-motion:reduce){.rs-events-index .gs-event-index__brief-link{transition:none;transform:none!important}}
