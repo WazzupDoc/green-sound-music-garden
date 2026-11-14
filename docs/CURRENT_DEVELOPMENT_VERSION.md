@@ -1,3 +1,6 @@
+## V114 — Contact step keyboard focus (2026-11-14, draft)
+Branch `fix/v114-contact-step-focus`, stacked on V113 PR #112. Source SHA `f4ddfb42d5a7517aebbc3d16f5890c74893257d3`. On preparing a quote, focus moves to the new preview heading; on returning to edit, focus moves to the form heading. Both headings are programmatically focusable without changing tab order. No sending, new dependency, new asset, homepage or main change. QA PENDING: keyboard Chromium 390/1440 before/after, six widths, TS/SSR/Vitest/gzip, exact-head Actions. Next: verify step transitions and clipboard fallback, then rotate to event detail.
+
 
 ## V113 — Photo filter state and reset (2026-11-14, draft)
 Branch `fix/v113-portfolio-photo-filter-reset`, stacked on V112 PR #111. Code SHA d9091d3982711c80649a7590515616a2459da3d0. Visible category status/count and explicit reset button on /portofoliu. Browser screenshots, TypeScript, SSR, Vitest, gzip and exact-head CI not verified. No main/deploy change.
