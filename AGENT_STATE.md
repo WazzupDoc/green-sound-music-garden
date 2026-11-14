@@ -1,3 +1,6 @@
+## V117 — 2026-11-14 / event detail section navigation
+Area: EventPage only. Added visible native navigation to timeline, recommended services, conditional films and existing quote section. Source 2430ecc3f3a9dbf44e2b7105f7bc5a5ef1b4f4fd; draft PR #116. Browser screenshots, accessibility keyboard regression, TS/SSR/Vitest/gzip and exact-head CI pending. No visual success claim. Next rotation: Contact clipboard and event visual audit. Main untouched.
+
 ## V116 — 2026-11-14 / Contact validation semantics
 Area: QuoteForm email and services fieldset. Source defect: `aria-describedby` referenced conditional validation error IDs even before error nodes existed. Fixed by conditional ID references; retained persistent service guidance. Source SHA `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. No new asset/dependency. QA pending: Chromium before/after 390/1440, six widths, keyboard, TS, SSR, Vitest, gzip and exact-head CI. Visual change not claimed. Next area: event detail route composition/CTA. Main untouched.
 
