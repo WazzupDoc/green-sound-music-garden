@@ -191,3 +191,6 @@ No assets, fonts, images, videos, third-party code or dependencies added. Eight 
 
 ## V101 portfolio dialog
 No new media, fonts, icons or dependencies; uses existing approved portfolio images and Lucide icons.
+
+## V112
+No new media, fonts, icons or external dependencies. Existing galleryFrames metadata only.
