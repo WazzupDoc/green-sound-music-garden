@@ -1,0 +1,27 @@
+/* V25 — Editorial Contact, designed to sit clear of the floating navigation. */
+.director-contact-intro{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:clamp(160px,14vw,222px) 0 clamp(62px,7vw,106px);
+  color:#edf7e9;background:radial-gradient(ellipse 58% 85% at 77% 22%,#203b25,#0b180f 62%);
+  border-bottom:1px solid #c3e1b531
+}
+.director-contact-intro::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0px,transparent 118px,#b1dbad10 119px,#b1dbad10 120px);pointer-events:none;opacity:.45}
+.director-contact-intro::after{content:"";position:absolute;right:-11%;bottom:-45%;width:min(62vw,800px);aspect-ratio:1;border:1px solid #bddc9c25;border-radius:50%;box-shadow:0 0 0 65px #8ebd7e09,0 0 0 140px #9ad08a08;pointer-events:none}
+.director-contact-intro>.container-site{position:relative;z-index:1}
+.director-contact-intro .crafted-index{color:#b6e6a4}
+.director-contact-intro h1{font-family:var(--font-display);font-weight:600;letter-spacing:-.059em;line-height:1.02;font-size:clamp(3.05rem,6.3vw,7.1rem);max-width:1070px;margin-top:clamp(21px,3vw,37px);text-wrap:balance}
+.director-contact-intro h1 em{font-family:var(--font-serif);color:#bedaa9;font-weight:400;letter-spacing:-.02em;font-style:italic}
+.director-contact-intro p{margin-top:clamp(20px,2.6vw,30px);max-width:770px;color:#becfba;line-height:1.75;font-size:clamp(.95rem,1.15vw,1.14rem)}
+.director-contact-brief-flow{background:#0a120e;color:#edf5e9}
+.director-contact-brief-layout{align-items:start}
+.director-contact-quote{box-shadow:0 25px 90px #0003;min-width:0}
+.director-contact-quote .crafted-index{color:#afdc9e}
+@media(max-width:680px){
+.director-contact-intro{padding-top:141px;padding-bottom:58px}
+.director-contact-intro h1{font-size:clamp(2.75rem,11vw,4rem);line-height:1.025;margin-top:22px}
+.director-contact-intro p{font-size:.94rem;line-height:1.65;margin-top:21px}
+.director-contact-intro::after{right:-45%;bottom:-27%;width:110vw}
+.director-contact-brief-flow{padding-top:60px}
+}
+@media(max-width:380px){.director-contact-intro h1{font-size:2.65rem}}
+@media(prefers-reduced-motion:reduce){.director-contact-intro *{scroll-behavior:auto}}

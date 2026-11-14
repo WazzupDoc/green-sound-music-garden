@@ -1,0 +1,19 @@
+/* V93: original footer identity. No external asset, no runtime dependency. */
+.gs-footer-v93{position:relative;overflow:hidden;background:#06190f!important}
+.gs-footer-v93__marquee{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-top:clamp(48px,6vw,100px);padding-bottom:clamp(22px,3vw,44px);border-bottom:1px solid #a3db8d5c}
+.gs-footer-v93__marquee span{display:block;font-family:var(--font-display),Arial,sans-serif;font-size:clamp(4rem,13.7vw,15rem);font-weight:900;letter-spacing:-.095em;line-height:.79;color:#d8f5cd;white-space:nowrap}
+.gs-footer-v93__marquee span:nth-child(2){color:#a7ed8a;text-align:right}
+.gs-footer-v93__marquee i{font-family:Arial,sans-serif;font-size:.5em;font-style:normal;vertical-align:top;color:#d9f9b7}
+.gs-footer-v93__utility{display:flex;justify-content:space-between;align-items:center;gap:28px;padding-top:30px;padding-bottom:30px;border-bottom:1px solid #a3db8d5c}
+.gs-footer-v93__utility p{margin:0;font-size:.72rem;font-weight:800;letter-spacing:.17em;line-height:1.5;color:#a5c6a5}
+.gs-footer-v93__cta{display:flex;align-items:center;justify-content:space-between;gap:40px;min-height:50px;padding:12px 0;border-bottom:2px solid #a7ed8a;color:#e4ffdc;font-size:clamp(.95rem,1.35vw,1.3rem);font-weight:750;text-decoration:none}
+.gs-footer-v93__cta span{font-size:1.6em;line-height:1}
+.gs-footer-v93__cta:hover{color:#a7ed8a}
+.gs-footer-v93__cta:focus-visible{outline:3px solid #bafaa2;outline-offset:5px}
+.gs-footer-v93__directory{border-bottom:1px solid #a3db8d33}
+.gs-footer-v93__directory h2{color:#b7f1a0!important;letter-spacing:.14em}
+.gs-footer-v93__directory a:focus-visible{outline:2px solid #bafaa2;outline-offset:4px}
+@media(max-width:760px){.gs-footer-v93__marquee{padding-top:48px}.gs-footer-v93__marquee span{font-size:clamp(3.1rem,13.2vw,6.5rem)}.gs-footer-v93__utility{align-items:stretch;flex-direction:column;gap:12px}.gs-footer-v93__cta{width:100%}}
+@media(max-width:390px){.gs-footer-v93__marquee span{font-size:12.6vw}}
+@media(prefers-reduced-motion:reduce){.gs-footer-v93 *{animation:none!important;transition:none!important}}
+html[data-gs-performance=lite] .gs-footer-v93 *{animation:none!important;transition:none!important}

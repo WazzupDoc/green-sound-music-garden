@@ -13,7 +13,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
 
   return (
     <figure className={className}>
-      <div className="group relative aspect-video overflow-hidden rounded-xl bg-card">
+      <div className="group relative aspect-video overflow-hidden bg-card">
         {active ? (
           <iframe
             className="absolute inset-0 size-full"
@@ -30,19 +30,19 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             aria-label={`Redă videoclipul: ${video.title}`}
           >
             <img
-              src={`https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+              src={video.poster ?? `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
               alt=""
-              width={480}
-              height={360}
+              width={video.poster ? 1280 : 480}
+              height={video.poster ? 720 : 360}
               loading={priority ? "eager" : "lazy"}
               decoding="async"
-              className="absolute inset-0 size-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="absolute inset-0 size-full object-cover"
             />
             <span className="hero-fade absolute inset-0 opacity-80" />
-            <span className="absolute left-5 top-5 grid size-14 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:scale-110 animate-pulse-ring">
-              <Play className="ml-0.5 size-5 fill-current" aria-hidden />
+            <span className="absolute left-5 top-5 inline-flex min-h-11 items-center gap-3 border border-[#F3F0E9a8] bg-[#0A0F15e8] px-4 py-2 text-base font-semibold text-[#F3F0E9]">
+              <Play className="size-5 fill-current" aria-hidden /> Redă filmarea
             </span>
-            <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-foreground">
+            <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-[#F3F0E9]">
               {video.title}
             </span>
           </button>

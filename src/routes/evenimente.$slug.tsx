@@ -16,6 +16,7 @@ export const Route = createFileRoute("/evenimente/$slug")({
     return pageHead({
       title: event.seoTitle,
       description: event.seoDescription,
+      image: event.image,
       path,
       jsonLd: [
         breadcrumbLd([

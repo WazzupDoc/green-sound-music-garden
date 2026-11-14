@@ -1,0 +1,85 @@
+/* Regia Serii — etapa 2 / identitatea comună, fără șabloane decorative. */
+:root {
+  --gs-ink:#0A0F15; --gs-stage:#101820; --gs-chalk:#F3F0E9;
+  --gs-mineral:#B8BCB9; --gs-green:#49B768; --gs-green-on-chalk:#1F6B3A;
+  --gs-indigo:#404A98;
+  --gs-space-1:8px; --gs-space-2:16px; --gs-space-3:24px;
+  --gs-space-4:32px; --gs-space-5:48px; --gs-space-6:72px;
+  --gs-radius:4px; --gs-shadow:0 18px 48px #0003;
+  --gs-fast:200ms; --gs-medium:500ms; --gs-slow:900ms;
+  --gs-ease:cubic-bezier(.2,.7,.2,1);
+}
+body { background:var(--gs-ink);color:var(--gs-chalk);font-size:16px; }
+main :is(h2,h3,h4) em,main h1:not(#crafted-hero-title) em {
+  font-family:inherit!important;font-style:normal!important;font-weight:inherit!important;color:inherit;
+}
+button,input,textarea,select { font:inherit; }
+:where(a,button,input,textarea,select,summary):focus-visible {
+  outline:2px solid var(--gs-green);outline-offset:3px;
+}
+.surface-paper a:focus-visible,.gs-index a:focus-visible { outline-color:var(--gs-green-on-chalk); }
+/* A genuine, global tonal grade on the project's existing images.
+   Neutral intentionally leaves the original photograph unaltered. */
+html[data-light="verde"] main img:not([src*="favicon"]) {
+  filter:sepia(.08) hue-rotate(15deg) saturate(1.12);
+}
+html[data-light="cald"] main img:not([src*="favicon"]) {
+  filter:sepia(.16) saturate(1.12) brightness(1.03);
+}
+html[data-light="albastru"] main img:not([src*="favicon"]) {
+  filter:sepia(.08) hue-rotate(170deg) saturate(.84);
+}
+html[data-light="verde"] main .gs-index__photo img,
+html[data-light="verde"] main .crafted-hero__image {
+  filter:sepia(.08) hue-rotate(15deg) saturate(1.12);
+}
+html[data-light="cald"] main .gs-index__photo img,
+html[data-light="cald"] main .crafted-hero__image {
+  filter:sepia(.16) saturate(1.12) brightness(1.03);
+}
+html[data-light="albastru"] main .gs-index__photo img,
+html[data-light="albastru"] main .crafted-hero__image {
+  filter:sepia(.08) hue-rotate(170deg) saturate(.84);
+}
+html[data-light] main img:not([src*="favicon"]) {
+  transition:filter var(--gs-medium) var(--gs-ease);
+}
+html[data-light="cald"] main { --gs-ambient-tint:#d6a04608; }
+html[data-light="verde"] main { --gs-ambient-tint:#49b76808; }
+html[data-light="albastru"] main { --gs-ambient-tint:#404a980d; }
+main { background-color:var(--gs-ambient-tint,transparent); }
+.gs-global-light-wrap { border-top:1px solid #B8BCB938;padding-block:28px 44px; }
+.gs-global-light { display:flex;align-items:center;justify-content:space-between;gap:22px 35px;flex-wrap:wrap; }
+.gs-global-light__intro h2 { font-size:clamp(1.2rem,1.5vw,1.5rem);font-weight:650;letter-spacing:-.02em; }
+.gs-global-light__intro p { font-size:1rem;line-height:1.6;color:var(--gs-mineral);margin-top:7px; }
+.gs-global-light__choices { display:flex;flex-wrap:wrap;gap:8px; }
+.gs-global-light__choice { min-height:44px;padding:9px 15px;border:1px solid #B8BCB97a;
+  border-radius:var(--gs-radius);font-size:1rem;font-weight:650;color:var(--gs-chalk);
+  transition:background var(--gs-fast) var(--gs-ease),border-color var(--gs-fast) var(--gs-ease);
+}
+.gs-global-light__choice:hover { border-color:var(--gs-chalk); }
+.gs-global-light__choice[aria-pressed="true"] {
+  background:var(--gs-chalk);color:var(--gs-ink);border-color:var(--gs-chalk);
+}
+.atelier-header { background:var(--gs-ink); }
+.atelier-mobile-menu { background:var(--gs-ink); }
+.atelier-header__menu-btn,.atelier-header__finder-btn { min-width:44px;min-height:44px; }
+.director-contact-intro { background:var(--gs-stage);color:var(--gs-chalk); }
+.director-contact-intro::before,.director-contact-intro::after { display:none; }
+.director-contact-intro h1 { font-size:clamp(2.5rem,5vw,4.4rem); }
+.director-contact-intro p,.director-contact-quote :is(label,input,textarea,select),
+.quote-preview__intro,.quote-preview__notice { font-size:1rem; }
+.director-contact-quote :is(input,textarea,select) { min-height:44px; }
+.quote-preview__title em { font-family:inherit;font-style:normal; }
+.quote-preview__ticket { background:var(--gs-chalk);color:var(--gs-ink);box-shadow:var(--gs-shadow); }
+.quote-preview__ticket::after { display:none; }
+@media(max-width:639px) {
+  .gs-global-light__choices { width:100%; }
+  .gs-global-light__choice { flex:1 1 calc(50% - 8px); }
+  .atelier-mobile-menu__link { min-height:48px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-light] main img:not([src*="favicon"]),
+  .gs-global-light__choice { transition:none!important; }
+  ::view-transition-old(root),::view-transition-new(root) { animation:none!important; }
+}
