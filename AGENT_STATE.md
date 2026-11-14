@@ -1,3 +1,6 @@
+## 2026-11-14 V107 / Portfolio film filter
+Area: /portofoliu film archive. Defect (source-confirmed): selecting film after filtering resets category to All via `useEffect([film])`; visible filtered list unexpectedly expands. Fix: remove reset effect; initial deep-link category remains All. Regression gate pending: 390/1440 before-after browser, six widths, keyboard, film deep-link, reduced/Lite, TypeScript, SSR, Vitest, gzip, exact-head CI. No screenshots captured; no visual success claim. Next rotation: Contact or event detail audit.
+
 ## V106 — Portfolio film archive TSX source integrity (2026-11-14)
 Source inspection found five literal backslash-n sequences inserted into `RegiaPortfolio.tsx` by V105, including outside JSX markup. Replaced with real line breaks on separate branch, preserving the accessible film status and filter UI. Source commit efb736fbc2e79cba1beecd3bb4f96ae99fd62e44. TS/SSR/Vitest/Chromium and exact-head CI pending; no visual difference claimed. Next: validate deep-link/filter behavior, then visual portfolio composition. Main unchanged.
 
