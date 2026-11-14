@@ -155,7 +155,14 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
       </p>
       <div className="rs-video-library__layout">
         <div className="rs-video-library__player">
-          {chosen && <VideoLite key={chosen.id} video={chosen} />}
+          {chosen ? <VideoLite key={chosen.id} video={chosen} /> : (
+            <div className="border border-[#F3F0E950] bg-[#0A0F15] px-6 py-12 text-[#F3F0E9]" role="status">
+              <p className="mb-3 text-xs uppercase tracking-[0.2em] text-[#A8D8BD]">Arhiva video</p>
+              <p className="text-xl font-semibold">Nu avem încă filmări în această categorie.</p>
+              <p className="mt-3 text-sm text-[#B8BCB9]">Poți explora celelalte producții publicate.</p>
+              <button type="button" className="mt-6 min-h-11 border border-[#A8D8BD] px-5 py-2 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#A8D8BD]" onClick={() => setCategory("")}>Vezi toate filmările</button>
+            </div>
+          )}
         </div>
         <div className="rs-video-library__list" role="group" aria-label="Alege filmarea">
           {selectedVideos.map((video,index)=>(
