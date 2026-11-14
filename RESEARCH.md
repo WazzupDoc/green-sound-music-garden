@@ -1,3 +1,8 @@
+## 2026-11-14 — V111 mobile gesture guard
+- https://developer.mozilla.org/en-US/docs/Web/API/Touch_events — touchstart/touchmove/touchend/touchcancel behavior; adapted horizontal-dominance guard, multi-touch reset, cancellation cleanup. Documentation only; no code copied or dependency added.
+- https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html — preserve button-based alternative to path-based gestures; existing Previous/Next controls retained. Documentation only.
+- Rejected: intercepting all touchmove events/preventDefault (breaks scrolling), new gesture library (unnecessary bytes/license review), horizontal swipes without direction guard (accidental navigation).
+
 2026-11-14: References for archive filter feedback: https://www.w3.org/WAI/ARIA/apg/patterns/button/ (pressed state), https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label (accessible names). Adapted: native buttons with visible category counts derived from local videos; rejected: animated counters and third-party UI package (unnecessary). No external code copied.
 
 ## 2026-11-14 — V107 filter state research notes
