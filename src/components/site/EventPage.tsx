@@ -19,6 +19,7 @@ export function EventPage({event}:{event:EventType}){
         <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#etape-eveniment">01 / Desfășurător</a>
         <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#servicii-eveniment">02 / Servicii</a>
         {event.videos.length>0 && <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#filme-eveniment">03 / Filmări</a>}
+        {event.faqs.length>0 && <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#intrebari-eveniment">Întrebări frecvente</a>}
         <a className="text-sm underline-offset-8 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-300" href="#oferta-titlu">Cerere de ofertă <ArrowUpRight size={15} className="inline" aria-hidden /></a>
       </div>
     </nav>
@@ -60,7 +61,7 @@ export function EventPage({event}:{event:EventType}){
         <div>{event.videos.map(video=><VideoLite key={video.id} video={video}/>)}</div>
       </div>
     </section>}
-    {event.faqs.length>0 && <section className="rs-service-faq"><div className="container-site">
+    {event.faqs.length>0 && <section id="intrebari-eveniment" className="rs-service-faq scroll-mt-24"><div className="container-site">
       <h2>Întrebări frecvente</h2><FaqList faqs={event.faqs}/>
     </div></section>}
     <QuoteSection title={`Organizezi ${event.name.toLowerCase()}?`}
