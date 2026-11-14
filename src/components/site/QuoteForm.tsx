@@ -281,7 +281,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <FieldError id="q-guests-err" msg={errors.guests?.message} />
       </div>
 
-      <fieldset className="md:col-span-2 gs-quote__services" aria-describedby="q-services-guide q-services-err">
+      <fieldset className="md:col-span-2 gs-quote__services" aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"}>
         <legend className={labelCls}>Ce servicii te interesează?</legend>
         <div className="gs-quote__selection-meta" id="q-services-guide">
           <span>Poți alege serviciile dorite sau ne poți cere recomandări.</span>
@@ -351,7 +351,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-email" className={labelCls}>Email <span className="text-muted-foreground">(opțional)</span></label>
-        <input id="q-email" type="email" autoComplete="email" className={fieldCls} aria-invalid={!!errors.email} aria-describedby="q-email-err" {...register("email")} />
+        <input id="q-email" type="email" autoComplete="email" className={fieldCls} aria-invalid={!!errors.email} aria-describedby={errors.email ? "q-email-err" : undefined} {...register("email")} />
         <FieldError id="q-email-err" msg={errors.email?.message} />
       </div>
       <div className="md:col-span-2">

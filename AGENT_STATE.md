@@ -1,3 +1,6 @@
+## V116 — 2026-11-14 / Contact validation semantics
+Area: QuoteForm email and services fieldset. Source defect: `aria-describedby` referenced conditional validation error IDs even before error nodes existed. Fixed by conditional ID references; retained persistent service guidance. Source SHA `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. No new asset/dependency. QA pending: Chromium before/after 390/1440, six widths, keyboard, TS, SSR, Vitest, gzip and exact-head CI. Visual change not claimed. Next area: event detail route composition/CTA. Main untouched.
+
 
 ## V113 — 2026-11-14 /portofoliu photo filter
 Visible selected-category count and one-click reset, accessible live status, no new media/dependencies. Code d9091d3982711c80649a7590515616a2459da3d0. Chromium before/after, six widths, TypeScript/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next rotation: Contact funnel and event details. Main untouched.
