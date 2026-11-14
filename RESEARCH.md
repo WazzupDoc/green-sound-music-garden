@@ -1,3 +1,6 @@
+## V120 — 2026-11-14
+Reference: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector ; selector returns first matching element in document order. Original selector erroneously matched fieldset before checkbox. No external code/assets copied.
+
 
 ## 2026-11-14 — Contact invalid submission / V119
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html — errors must be identified and described; used as rationale for existing field errors plus focus recovery. No external code copied.

@@ -122,7 +122,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     requestAnimationFrame(() => {
       const form = document.getElementById(id);
       const firstInvalid = form?.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
-        '[aria-invalid="true"], .gs-quote__services[aria-invalid="true"] input:not(:disabled)'
+        'input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="true"], .gs-quote__services[aria-invalid="true"] input:not(:disabled)'
       );
       firstInvalid?.focus();
     });

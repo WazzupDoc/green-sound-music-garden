@@ -1,3 +1,6 @@
+## V120 — 2026-11-14
+V120 draft PR #119, branch fix/v120-contact-invalid-checkbox-focus; source SHA 4a408a4cf060a7858dbe632609cf9a2dd2ae4ef6. Contact invalid focus selector now targets focusable controls rather than fieldset. CI, browser screenshots, TypeScript, SSR, Vitest, gzip NOT VERIFIED. Main untouched; next: browser QA and clipboard.
+
 
 ## V119 — Contact invalid validation focus (2026-11-14, draft)
 Branch `fix/v119-contact-invalid-focus` stacked on V118 PR #117. Source commit `667767f475bf5cb54bbb49691d79580b2e3c7b3b`. Invalid submission now moves keyboard focus to first invalid field after React validation render, including services checkboxes. No backend, new media/dependencies, homepage changes or auto-send. Browser screenshots, TypeScript/SSR/Vitest/gzip and CI exact-head are NOT verified; do not merge or deploy. Next: keyboard/browser validation, clipboard failure flow, event detail visual QA.

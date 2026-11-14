@@ -1,3 +1,6 @@
+## V120 — 2026-11-14
+No assets, fonts, media, icons or dependencies added in V120.
+
 
 ## V119 / 2026-11-14
 No new images, fonts, videos, icon sets or dependencies. Contact focus behavior uses existing browser APIs and existing UI.
