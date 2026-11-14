@@ -1,3 +1,6 @@
+
+## 2026-11-14 — V113 filter recovery
+References: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html (live result feedback); https://www.w3.org/WAI/ARIA/apg/patterns/button/ (native accessible button semantics). Original code, no external license-dependent assets. Rejected animated badges and auto-reset filters: distracting and user-hostile. Premium editorial direction retained without new visual gimmicks.
 ## 2026-11-14 — V111 mobile gesture guard
 - https://developer.mozilla.org/en-US/docs/Web/API/Touch_events — touchstart/touchmove/touchend/touchcancel behavior; adapted horizontal-dominance guard, multi-touch reset, cancellation cleanup. Documentation only; no code copied or dependency added.
 - https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html — preserve button-based alternative to path-based gestures; existing Previous/Next controls retained. Documentation only.
