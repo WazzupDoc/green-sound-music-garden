@@ -1,3 +1,6 @@
+## V103 — 2026-11-14
+No new images, fonts, icons, videos, packages or third-party code. Existing site media unchanged.
+
 ## V102
 No new assets, fonts, media or third-party dependencies. Existing gallery images unchanged.
 
