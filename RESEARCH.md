@@ -1,3 +1,7 @@
+## 2026-11-14 — V104 film selector
+- W3C WAI ARIA APG status pattern: https://www.w3.org/WAI/ARIA/apg/patterns/status/ — a short status can communicate a selection change without moving focus. Applied original React markup only; no external code or dependency.
+- W3C WAI ARIA live regions: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/ — minimize unnecessary announcements and keep keyboard focus stable. Rejected announcing the entire media player subtree and autoplay. These URLs are reference documentation, not independently browsed this run.
+
 ## 2026-11-13 — V102 gallery focus
 Reference: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialog should return focus to invoking element where possible. Adapted using existing Radix onCloseAutoFocus, no external code copied or dependency added. Rejected document-wide focus handler because it may interfere with other dialogs.
 

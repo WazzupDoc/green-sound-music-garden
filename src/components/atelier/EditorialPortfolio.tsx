@@ -54,13 +54,14 @@ export function EditorialPortfolio() {
             </p>
           </div>
         </div>
+        <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">Film selectat: {active.title}. {active.subtitle}. Apasă Play pentru a porni filmarea.</p>
         <div className="director-reel__layout">
-          <div className="director-reel__display" aria-live="polite">
+          <div className="director-reel__display">
             <div className="director-reel__chrome">
               <span><span className="director-reel__record" aria-hidden /> GREEN SOUND / ARCHIVE</span>
               <span>FILM 0{selected + 1} / 03</span>
             </div>
-            <div className="gs-film-slate" aria-live="polite" aria-atomic="true">
+            <div className="gs-film-slate">
               <div className="gs-film-slate__meta">
                 <span>PRODUCTION FILE / 0{selected + 1}</span>
                 <span>REAL GREEN SOUND FOOTAGE</span>

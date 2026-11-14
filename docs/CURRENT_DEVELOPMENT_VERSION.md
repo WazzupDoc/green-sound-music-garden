@@ -1,3 +1,6 @@
+## V104 — Film selector accessible announcement (draft, QA pending)
+Branch `fix/v104-film-selection-announcement` stacked on V103 PR #102. PR #103, source SHA a12b56eddbe0edc969b6fe4178b724b5ca89f1a4. Single live status replaces nested live regions in homepage EditorialPortfolio; 3 genuine films, Play behavior and clean layout preserved. No screenshots, exact-head CI, TS/SSR/Vitest/gzip or 6-width Chromium verification yet. No main/production changes. Next: portfolio film archive audit.
+
 ## V102 — Gallery dialog focus restoration (draft, QA pending)
 Branch design/v102-gallery-focus-return based on V101. On closing lightbox, restore focus to corresponding visible photo thumbnail or gallery heading when deep-linked/filtered. Code SHA ae2a4503ce3491e74d789fd1d36d59be18375309. No new assets/dependencies. Real browser screenshots and exact-head CI not verified; no production/main changes.
 
