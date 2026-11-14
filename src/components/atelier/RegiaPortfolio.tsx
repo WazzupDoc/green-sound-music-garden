@@ -135,20 +135,17 @@ const videoList: Video[] = Object.values(videos);
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const navigate = useNavigate();
   const [category,setCategory]=useState<string>("");
-  useEffect(() => {
-    // A direct link or browser history entry must not leave the URL pointing
-    // to a film hidden by an earlier local filter selection.
-    if (film && category && !videoList.some(video => video.id === film && video.tags.includes(category))) {
-      setCategory("");
-    }
-  }, [film, category]);
   const selectCategory = (tag:string) => {
     setCategory(tag);
     const firstMatching = videoList.find(video => !tag || video.tags.includes(tag));
     // Keep the shareable URL in sync with the player shown after filtering.
     void navigate({to:"/portofoliu",search:firstMatching?{film:firstMatching.id}:{},replace:true,resetScroll:false});
   };
-  const selectedVideos=videoList.filter(v=>!category||v.tags.includes(category));
+  // URL navigation can select a film outside the previous local category.
+  // Derive a visible category instead of resetting state in an effect (which
+  // could race with a filter click before the router updates the URL).
+  const visibleCategory = film && category && !videoList.some(v=>v.id===film && v.tags.includes(category)) ? "" : category;
+  const selectedVideos=videoList.filter(v=>!visibleCategory||v.tags.includes(visibleCategory));
   const chosen=selectedVideos.find(v=>v.id===film)??selectedVideos[0];
   return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
     <div className="container-site">
@@ -157,7 +154,7 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
         <p>Filmările sunt încărcate de pe YouTube doar după ce apeși redare. Nu pornește nimic automat.</p>
       </div>
       <div role="group" className="rs-video-library__filters" aria-label="Filtrează videoclipurile">
-        {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={category===item.tag}
+        {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={visibleCategory===item.tag}
           onClick={()=>selectCategory(item.tag)}>{item.label}</button>)}
       </div>
       <div className="rs-video-library__layout">
