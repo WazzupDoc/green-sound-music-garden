@@ -1,3 +1,6 @@
+## V123 — Portfolio film filter URL coherence / 2026-11-14
+Zone: /portofoliu film archive. Prior behavior: changing a category could show a different video while the URL still pointed at the previous film; effect also reset filter to All whenever URL film changed. Now category selection synchronizes URL to the first matching film, preserves category during selection, and keeps playback click-initiated. No new media, dependencies, backend or homepage sections. Source commit ba1eaa7fc953450d419d319b8fe960e32564af6e. QA pending: TypeScript, SSR, Vitest, browser 390/1440 before-after, all six widths, keyboard/filter and exact-head CI. Next: actual browser verification of portfolio player, filter and deep links. Main untouched.
+
 ## V121 — Contact error description references / 2026-11-14
 Area: Contact validation accessibility. Four inputs referenced error element IDs even before errors were rendered. Conditional aria-describedby fixes dangling relationships without changing layout or submission. PR #121, code commit f553e7fea53114e3308b2d14ccd3bafef4432bdd. No visual redesign claimed. Browser DOM/screenshots, six-width QA, TS/SSR/Vitest/gzip and exact-head CI pending. Next rotation: film/video controls. Main untouched.
 
