@@ -1,3 +1,8 @@
+## 2026-11-14 — V103 Contact keyboard focus
+- [WAI-ARIA APG Dialog Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): keyboard focus should move into newly presented interaction and return predictably. Adapted concept only, no external code or assets.
+- [MDN HTMLElement.focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus): native focus used after React state commit, without dependency. No modal semantics added because quote preview is not a modal.
+- Rejected: adding a focus-trap or dialog package, unnecessary for an inline two-step form. Source research links recorded; no copied implementation.
+
 ## 2026-11-13 — V102 gallery focus
 Reference: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialog should return focus to invoking element where possible. Adapted using existing Radix onCloseAutoFocus, no external code copied or dependency added. Rejected document-wide focus handler because it may interfere with other dialogs.
 
