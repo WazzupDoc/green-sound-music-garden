@@ -1,3 +1,6 @@
+## V124 — Portfolio deep-link/filter reconciliation (DRAFT; QA pending)
+Branch `fix/v124-portfolio-film-deeplink-filter-reconcile`, stacked on V123 PR #123. Derives visible film category from the selected URL film so browser history/deep links cannot leave the list and player inconsistent. No new assets/dependencies; no main changes. Exact-head CI, TS/SSR/Vitest/gzip, Chromium screenshots 390/1440 and six-width QA pending.
+
 ## V123 — Portfolio film filter / draft QA pending
 Branch `fix/v123-portfolio-film-filter-url-state`, stacked on V122. Film category selection now updates the shareable URL to the matching video and no longer resets the category on every film query change. Source commit ba1eaa7fc953450d419d319b8fe960e32564af6e. Browser screenshots, six-width checks, TypeScript/SSR/Vitest/gzip and exact-head CI not yet verified. No assets, dependencies or main changes.
 
