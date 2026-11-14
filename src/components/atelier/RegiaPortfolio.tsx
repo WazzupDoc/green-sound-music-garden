@@ -27,9 +27,10 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const [filter,setFilter] = useState<PhotoFilter>("toate");
   const frames = galleryFrames.filter(frame => filter === "toate" || frame.group === filter);
   const selected = galleryFrames.find(item => item.id === activePhoto);
-  const selectedIndex = selected ? galleryFrames.findIndex(item => item.id === selected.id) : -1;
-  const previousPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex - 1 + galleryFrames.length) % galleryFrames.length] : undefined;
-  const nextPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex + 1) % galleryFrames.length] : undefined;
+  const navigationFrames = selected && frames.some(item => item.id === selected.id) ? frames : galleryFrames;
+  const selectedIndex = selected ? navigationFrames.findIndex(item => item.id === selected.id) : -1;
+  const previousPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex - 1 + navigationFrames.length) % navigationFrames.length] : undefined;
+  const nextPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex + 1) % navigationFrames.length] : undefined;
   const pointerX = useRef<number | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
   if (selected) lastPhotoRef.current = selected.id;
@@ -38,8 +39,8 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   };
   const step = (delta:number) => {
     if(!selected)return;
-    const pos=galleryFrames.findIndex(x=>x.id===selected.id);
-    change(galleryFrames[(pos+delta+galleryFrames.length)%galleryFrames.length]!.id);
+    const pos=navigationFrames.findIndex(x=>x.id===selected.id);
+    change(navigationFrames[(pos+delta+navigationFrames.length)%navigationFrames.length]!.id);
   };
   useEffect(() => {
     if (!selected) return;
@@ -50,9 +51,9 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           (target instanceof HTMLElement && (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]")))) return;
       if(event.key==="ArrowRight" || event.key==="ArrowLeft"){
         event.preventDefault();
-        const pos=galleryFrames.findIndex(item=>item.id===activePhoto);
+        const pos=navigationFrames.findIndex(item=>item.id===activePhoto);
         const delta=event.key==="ArrowRight"?1:-1;
-        const next=galleryFrames[(pos+delta+galleryFrames.length)%galleryFrames.length];
+        const next=navigationFrames[(pos+delta+navigationFrames.length)%navigationFrames.length];
         if(next)void navigate({to:"/portofoliu",search:{photo:next.id},replace:true,resetScroll:false});
       }
     };
@@ -60,7 +61,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
     if (!dialog) return;
     dialog.addEventListener("keydown", key as EventListener);
     return()=>dialog.removeEventListener("keydown", key as EventListener);
-  },[activePhoto,selected,navigate]);
+  },[activePhoto,selected,navigate,navigationFrames]);
   return (
     <section className="rs-gallery" id="portfolio-photos" aria-labelledby="rs-gallery-title">
       <div className="container-site">
@@ -114,7 +115,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
             </div>
             <div className="rs-photo-dialog__actions">
               <button type="button" onClick={()=>step(-1)} aria-label={`Fotografia anterioară: ${previousPhoto?.title ?? ""}`}><ArrowLeft size={20} aria-hidden /> Anterior</button>
-              <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {galleryFrames.length}: {selected.title}</span>
+              <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {navigationFrames.length}: {selected.title}</span>
               <button type="button" onClick={()=>step(1)} aria-label={`Fotografia următoare: ${nextPhoto?.title ?? ""}`}>Următor <ArrowRight size={20} aria-hidden /></button>
             </div>
           </>}
