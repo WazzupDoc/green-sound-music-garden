@@ -1,3 +1,6 @@
+## V108 — Portfolio empty-category recovery (draft; QA pending)
+Branch `fix/v108-portfolio-empty-category-feedback` stacked on V107. The portfolio film archive now displays a visible, accessible empty-state message and a keyboard-focusable “Vezi toate filmările” recovery button when a category has no published videos, instead of a blank player. No new dependencies, assets, autoplay, backend or homepage changes. UI source SHA 47144c99f3417c9fcb7a923826b5b3b7eea00b4a. Real Chromium before/after at 390/1440, six-width regression, TypeScript/SSR/Vitest/gzip and exact-head CI NOT verified. Main/deployment untouched. Next: validate archive category coverage and full browser audit.
+
 ## V107 — Portfolio category persistence (draft; QA pending)
 Branch `fix/v107-portfolio-filter-selection-persistence` over V106. Removed film-selection effect that reset active archive category to All after clicking a film. Deep links still initialize to All. Source change 06acac444447ac1cfc7888d650d87b1d531bfaf6. Browser/TS/SSR/Vitest/CI exact-head and before/after screenshots NOT verified. No main/deploy change.
 
