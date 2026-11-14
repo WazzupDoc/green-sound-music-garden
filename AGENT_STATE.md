@@ -371,3 +371,6 @@ Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last che
 
 ## V112 / 2026-11-14 — Portfolio photo filters
 Area: /portofoliu photo category controls. Visible counts derived from galleryFrames and screen-reader result status; source SHA 4c61bce22b763a89111dc4ff3e3228b9dc539bdc. No new assets/dependencies. QA NOT VERIFIED: Chromium before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip, CI exact-head. Next rotation: Contact funnel and event detail. Main unchanged.
+
+## 2026-11-14 V114 / Contact focus
+Area: Contact Guided Event Brief step transition. Observed source behavior: conditional form/preview replacement had no explicit focus transfer. Implemented focus to preview heading on prepare and back to form heading on edit, with `tabIndex=-1` and no new tab stops. QA pending: actual Chromium, keyboard, clipboard deny, 390/1440 screenshots, six widths, TypeScript, SSR, Vitest, gzip, exact-head CI. Next rotation: event detail. Main unchanged.
