@@ -1,3 +1,8 @@
+## 2026-11-15 — V125 category-aware gallery navigation
+- [WAI-ARIA APG Dialog Modal Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): navigation remains inside an existing accessible dialog; preserved focus return and Escape handling. No external code copied.
+- [MDN Array.prototype.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter): use the same visible collection for thumbnails and next/previous navigation, avoiding inconsistent state. Native JS; no license or package required.
+- Rejected: importing a carousel package for six existing images; unnecessary bundle cost and change in focus semantics.
+
 ## 2026-11-14 — V124 portfolio URL and filter state
 - [MDN History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API): browser navigation can restore earlier URL states; local filter should not conceal URL-selected content. Adapted principle to existing TanStack Router state without copying external code.
 - [WAI-ARIA APG Button Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/button/): toggle state should describe the visible selection; existing aria-pressed reflects derived visible category. No code imported.
