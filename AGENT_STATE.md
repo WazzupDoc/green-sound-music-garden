@@ -365,3 +365,6 @@ Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last che
 - Area: hero stage decoration (after V71 route restoration). Added CSS Lite/reduced-motion gate for animated beams, rings, pointer and image transitions; real hero image remains. New source-level Vitest guard. No packages or external media.
 - Rotation matrix: hero = V72 pending browser verification; photographs = V70; next = navigation/mobile menu keyboard and Escape, then CTA, films, Contact, SEO.
 - V71 PR #65 reported mergeable=true but exact-head PR workflow query returned zero runs, **not** CI success. PR #19 mergeable=false. No TypeScript/SSR/Chromium run confirmed; no main merge or deployment.
+
+## V112 / 2026-11-14 — Portfolio photo filters
+Area: /portofoliu photo category controls. Visible counts derived from galleryFrames and screen-reader result status; source SHA 4c61bce22b763a89111dc4ff3e3228b9dc539bdc. No new assets/dependencies. QA NOT VERIFIED: Chromium before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip, CI exact-head. Next rotation: Contact funnel and event detail. Main unchanged.

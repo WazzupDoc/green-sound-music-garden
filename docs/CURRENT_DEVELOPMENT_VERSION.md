@@ -1,3 +1,6 @@
+
+## V112 — Portfolio photo filter feedback (2026-11-14, draft)
+Branch `fix/v112-photo-filter-feedback` on V111. Photo category buttons now show actual counts and announce result counts accessibly. Source SHA 4c61bce22b763a89111dc4ff3e3228b9dc539bdc. Browser screenshots and exact-head CI not yet verified; no main/deploy changes.
 ## V111 — Mobile photo dialog gesture guard (2026-11-14, draft)
 Branch `fix/v111-portfolio-swipe-direction-guard` stacked on V110 PR #109 docs SHA e7e991b3c5e271c448914dd601e49f0b6a832eb9. Photo swipes now require horizontal movement to dominate vertical scroll; cancel/multi-touch clear tracking. Source SHA 48557148a71964b7a1d139e32734df359e1bf5e5. QA, screenshots and CI exact-head pending; no main/deploy change.
 

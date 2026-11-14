@@ -71,8 +71,10 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
         </div>
         <div role="group" className="rs-gallery__filters" aria-label="Filtrează fotografiile">
           {photoFilters.map(option=><button type="button" key={option.id}
-            aria-pressed={filter===option.id} onClick={()=>setFilter(option.id)}>{option.label}</button>)}
+            aria-pressed={filter===option.id} onClick={()=>setFilter(option.id)}
+            aria-label={`${option.label}, ${galleryFrames.filter(frame => option.id === "toate" || frame.group === option.id).length} fotografii`}>{option.label} <span aria-hidden="true" className="ml-2 text-xs tabular-nums opacity-70">{galleryFrames.filter(frame => option.id === "toate" || frame.group === option.id).length}</span></button>)}
         </div>
+        <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{`Filtru fotografii: ${photoFilters.find(option => option.id === filter)?.label}. ${frames.length} fotografii afișate.`}</p>
         <div className="rs-gallery__rail" aria-label="Fotografii Green Sound Music">
           {frames.map((frame,index)=>(
             <Link key={frame.id} to="/portofoliu" search={{photo:frame.id}}
