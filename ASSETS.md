@@ -1,3 +1,5 @@
+2026-11-14 V109: no new images, fonts, icons, videos, dependencies or third-party assets; existing local video metadata only.
+
 ## 2026-11-14 — V107
 No new assets, images, fonts, packages or third-party code. Existing media provenance unchanged; film category behavior only.
 

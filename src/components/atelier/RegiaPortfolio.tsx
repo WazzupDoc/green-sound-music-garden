@@ -145,8 +145,14 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
         <p>Filmările sunt încărcate de pe YouTube doar după ce apeși redare. Nu pornește nimic automat.</p>
       </div>
       <div role="group" className="rs-video-library__filters" aria-label="Filtrează videoclipurile">
-        {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={category===item.tag}
-          onClick={()=>setCategory(item.tag)}>{item.label}</button>)}
+        {filmCategories.map(item => {
+          const count = videoList.filter(video => !item.tag || video.tags.includes(item.tag)).length;
+          return <button type="button" key={item.label} aria-pressed={category===item.tag}
+            aria-label={`${item.label}, ${count} ${count === 1 ? "filmare" : "filmări"}`}
+            onClick={() => setCategory(item.tag)}>
+            {item.label} <span aria-hidden="true" className="ml-2 text-xs tabular-nums opacity-70">{count}</span>
+          </button>;
+        })}
       </div>
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {category ? `Filtru activ: ${filmCategories.find(item => item.tag === category)?.label ?? category}. ` : "Toate filmările. "}

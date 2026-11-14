@@ -1,3 +1,5 @@
+2026-11-14 V109 draft: Portfolio film archive filter buttons display computed counts from existing videoList/tags (no fabricated numbers), accessible labels and tabular numerals. Source commit 4ca7f2c22347b0c33f294f52b98de63770087385. No dependencies/media/autoplay. Browser before/after, TS/SSR/Vitest, six-width and exact-head CI pending. Next: verify filters with real browser, then rotate to event detail/contact visual QA. Main untouched.
+
 ## V108 — Portfolio empty-category recovery (draft; QA pending)
 Branch `fix/v108-portfolio-empty-category-feedback` stacked on V107. The portfolio film archive now displays a visible, accessible empty-state message and a keyboard-focusable “Vezi toate filmările” recovery button when a category has no published videos, instead of a blank player. No new dependencies, assets, autoplay, backend or homepage changes. UI source SHA 47144c99f3417c9fcb7a923826b5b3b7eea00b4a. Real Chromium before/after at 390/1440, six-width regression, TypeScript/SSR/Vitest/gzip and exact-head CI NOT verified. Main/deployment untouched. Next: validate archive category coverage and full browser audit.
 
