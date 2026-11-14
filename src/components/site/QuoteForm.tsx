@@ -46,6 +46,18 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+  const previewHeadingRef = useRef<HTMLHeadingElement>(null);
+  const wasPreparedRef = useRef(false);
+
+  useEffect(() => {
+    if (prepared) {
+      previewHeadingRef.current?.focus();
+      wasPreparedRef.current = true;
+    } else if (wasPreparedRef.current) {
+      document.getElementById("q-name")?.focus();
+      wasPreparedRef.current = false;
+    }
+  }, [prepared]);
   const [failedCopyAttempts, setFailedCopyAttempts] = useState(0);
 
   useEffect(() => {
@@ -119,7 +131,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <span>GREEN SOUND / CERERE PREGĂTITĂ</span>
           <span className="quote-preview__step">PASUL 02 / 02</span>
         </div>
-        <h3 id="quote-preview-title" className="quote-preview__title">
+        <h3 id="quote-preview-title" ref={previewHeadingRef} tabIndex={-1} className="quote-preview__title">
           Verifică mesajul înainte de trimitere.
         </h3>
         <p className="quote-preview__intro">

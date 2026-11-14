@@ -1,3 +1,6 @@
+## V103 — Contact preview focus / 2026-11-14
+Area: Contact quote form. Before: after preparing quote or returning to edit, keyboard focus could be lost in replaced DOM. After: programmatic focus on preview heading, then return to name field. Draft PR #120, source commit 61ce9b0796a7d56a48c95471eee31834d857ae92. Browser screenshots and exact-head QA pending. Next: film filter/video playback accessibility. Main unchanged.
+
 ## V102 — Portfolio gallery focus (draft)
 Zone: photo lightbox. Source defect: URL-driven close could leave focus without an explicit thumbnail fallback. Added onCloseAutoFocus to return to visible originating thumbnail, otherwise programmatic gallery heading. Source SHA ae2a4503ce3491e74d789fd1d36d59be18375309. Browser screenshots at 390/1440, keyboard/Escape, TS/SSR/Vitest/gzip and exact-head CI pending. Next: film filters and video state. Main untouched.
 

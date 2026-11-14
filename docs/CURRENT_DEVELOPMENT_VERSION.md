@@ -1,3 +1,6 @@
+## V103 — Contact preview focus (DRAFT; QA pending)
+Branch `design/v103-contact-preview-focus`, PR [#120](https://github.com/WazzupDoc/green-sound-music-garden/pull/120), stacked on V102. Fixes focus after preparing/editing a quote. No new assets, packages or backend. Real screenshots 390/1440, TS/SSR/Vitest and exact-head CI not yet verified. Main untouched.
+
 ## V102 — Gallery dialog focus restoration (draft, QA pending)
 Branch design/v102-gallery-focus-return based on V101. On closing lightbox, restore focus to corresponding visible photo thumbnail or gallery heading when deep-linked/filtered. Code SHA ae2a4503ce3491e74d789fd1d36d59be18375309. No new assets/dependencies. Real browser screenshots and exact-head CI not verified; no production/main changes.
 
