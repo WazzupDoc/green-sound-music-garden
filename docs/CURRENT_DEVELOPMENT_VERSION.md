@@ -1,3 +1,6 @@
+## V125 — Photo gallery category-aware lightbox (DRAFT; QA pending)
+Branch `fix/v125-portfolio-photo-filter-dialog-navigation` stacked on V124. Photo lightbox previous/next, keyboard arrows, touch swipe and counter now follow visible category. URL-linked photo outside active category stays accessible by displaying All. Source SHA `01643e6ea4d5c3e2b2e80cdbfc171bfc20905f35`. Browser screenshots and exact-head CI not verified. Main untouched.
+
 ## V124 — Portfolio deep-link/filter reconciliation (DRAFT; QA pending)
 Branch `fix/v124-portfolio-film-deeplink-filter-reconcile`, stacked on V123 PR #123. Derives visible film category from the selected URL film so browser history/deep links cannot leave the list and player inconsistent. No new assets/dependencies; no main changes. Exact-head CI, TS/SSR/Vitest/gzip, Chromium screenshots 390/1440 and six-width QA pending.
 
