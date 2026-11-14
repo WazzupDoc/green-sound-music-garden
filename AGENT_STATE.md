@@ -1,3 +1,6 @@
+## V125 — Portfolio photo lightbox respects category / 2026-11-15
+Zone: /portofoliu photo gallery. Previously arrows/swipes/keyboard navigated all six images even when category filtering displayed only two. Now navigation, count, previous/next labels and keyboard stay within visible category. Deep-linked photo outside current filter falls back to All without hiding the selected image. Source commit `01643e6ea4d5c3e2b2e80cdbfc171bfc20905f35`. No new media/packages/backend. QA pending: real Chromium before/after 390/1440, all six widths, TS/SSR/Vitest, exact-head CI. Next rotation: Events visual and CTA audit. Main untouched.
+
 ## V124 — Portfolio film deep-link reconciliation / 2026-11-14
 Zone: /portofoliu film archive. After V123, browser history/deep links can select a film outside the locally active category. Derive visibleCategory from URL film membership, keeping the player, list and aria-pressed consistent; avoid an effect that could race with filter click/router transition. Source SHA 0b5bdcaab12ee82cf79db477f590e0d24a8c7984. No media/dependencies/backend/main changes. Browser 390/1440 before-after, 6-width, TS, SSR, Vitest, CI exact-head still pending. Next: run actual browser and inspect screenshots before additional film UI changes.
 
