@@ -1,3 +1,6 @@
+
+## V113 — 2026-11-14 /portofoliu photo filter
+Visible selected-category count and one-click reset, accessible live status, no new media/dependencies. Code d9091d3982711c80649a7590515616a2459da3d0. Chromium before/after, six widths, TypeScript/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next rotation: Contact funnel and event details. Main untouched.
 ## 2026-11-14 V111 — Portfolio touch navigation (draft, QA pending)
 - Single audited area: /portofoliu photo dialog on mobile. Source defect: any >55px horizontal displacement, even during a predominantly vertical scroll, advanced the photo. Now require horizontal dominance (1.4× vertical), ignore multi-touch and clear touch state on cancel. Code SHA 48557148a71964b7a1d139e32734df359e1bf5e5. No assets, packages, backend or homepage changes.
 - Visual screenshots 390/1440 before/after, actual touch browser gestures, six widths, TS/SSR/Vitest/gzip and exact-head CI remain UNVERIFIED; no visual redesign claim. Next zone: Contact and event detail visual/function audit. Main untouched.
