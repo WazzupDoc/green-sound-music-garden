@@ -1,3 +1,6 @@
+## V106 — Portfolio film archive TSX source integrity (2026-11-14)
+Source inspection found five literal backslash-n sequences inserted into `RegiaPortfolio.tsx` by V105, including outside JSX markup. Replaced with real line breaks on separate branch, preserving the accessible film status and filter UI. Source commit efb736fbc2e79cba1beecd3bb4f96ae99fd62e44. TS/SSR/Vitest/Chromium and exact-head CI pending; no visual difference claimed. Next: validate deep-link/filter behavior, then visual portfolio composition. Main unchanged.
+
 ## V105 — /portofoliu film filter accessibility (2026-11-14)
 Source audit: category buttons updated visible list/player but offered no concise announcement to screen-reader users. Added one hidden polite status with filter, count and player; no duplicate live region wrapping YouTube. Functional code submitted; CI, screenshots and browser validation pending. Next: verify deep-link/filter keyboard behavior, then portfolio visual composition. Main unchanged.
 
