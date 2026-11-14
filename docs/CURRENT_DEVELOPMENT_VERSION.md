@@ -1,3 +1,6 @@
+## V121 — Contact conditional validation references (DRAFT, QA pending)
+Branch `fix/v121-contact-conditional-error-links`, draft PR [#121](https://github.com/WazzupDoc/green-sound-music-garden/pull/121), based on V103 PR #120. Fixes four stale `aria-describedby` references in Contact fields. Source SHA f553e7fea53114e3308b2d14ccd3bafef4432bdd; docs updates advance HEAD. No assets/packages/backend. Real Chromium 390/1440 before/after, six widths, TS/SSR/Vitest/gzip and exact-head CI not verified. No main/deploy changes. Next: film/video accessibility.
+
 ## V103 — Contact preview focus (DRAFT; QA pending)
 Branch `design/v103-contact-preview-focus`, PR [#120](https://github.com/WazzupDoc/green-sound-music-garden/pull/120), stacked on V102. Fixes focus after preparing/editing a quote. No new assets, packages or backend. Real screenshots 390/1440, TS/SSR/Vitest and exact-head CI not yet verified. Main untouched.
 
