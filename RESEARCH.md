@@ -1,4 +1,10 @@
 
+## 2026-11-14 — Contact invalid submission / V119
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html — errors must be identified and described; used as rationale for existing field errors plus focus recovery. No external code copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame — schedule focus after DOM update; original small implementation, no package or licensed asset added.
+- Rejected: scrolling page to an additional error summary or adding another form/overlay; extra UI would increase complexity and duplicate existing inline errors. Runtime/browser confirmation remains pending.
+
+
 ## 2026-11-14 — V113 filter recovery
 References: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html (live result feedback); https://www.w3.org/WAI/ARIA/apg/patterns/button/ (native accessible button semantics). Original code, no external license-dependent assets. Rejected animated badges and auto-reset filters: distracting and user-hostile. Premium editorial direction retained without new visual gimmicks.
 ## 2026-11-14 — V111 mobile gesture guard
