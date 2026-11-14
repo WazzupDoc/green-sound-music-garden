@@ -1,3 +1,8 @@
+## 2026-11-14 — V105 portfolio archive filter feedback
+- W3C ARIA status pattern https://www.w3.org/WAI/ARIA/apg/patterns/status/ : announce concise state changes without moving focus; adapted original JSX string based on existing filter/player state, no external code copied.
+- Webflow music website collection https://webflow.com/blog/music-websites-designed-with-webflow : existing editorial media discovery direction, reference only, not independently re-inspected in this run; no copied assets/design.
+- Rejected automatic player start, forced focus on category change and announcing the entire video subtree. No new dependencies, licensed assets or invented film metadata.
+
 ## 2026-11-14 — V104 film selector
 - W3C WAI ARIA APG status pattern: https://www.w3.org/WAI/ARIA/apg/patterns/status/ — a short status can communicate a selection change without moving focus. Applied original React markup only; no external code or dependency.
 - W3C WAI ARIA live regions: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/ — minimize unnecessary announcements and keep keyboard focus stable. Rejected announcing the entire media player subtree and autoplay. These URLs are reference documentation, not independently browsed this run.
