@@ -27,10 +27,11 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const [filter,setFilter] = useState<PhotoFilter>("toate");
   const frames = galleryFrames.filter(frame => filter === "toate" || frame.group === filter);
   const selected = galleryFrames.find(item => item.id === activePhoto);
-  const selectedIndex = selected ? galleryFrames.findIndex(item => item.id === selected.id) : -1;
-  const previousPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex - 1 + galleryFrames.length) % galleryFrames.length] : undefined;
-  const nextPhoto = selectedIndex >= 0 ? galleryFrames[(selectedIndex + 1) % galleryFrames.length] : undefined;
-  const pointerX = useRef<number | null>(null);
+  const navigationFrames = selected && frames.some(item => item.id === selected.id) ? frames : galleryFrames;
+  const selectedIndex = selected ? navigationFrames.findIndex(item => item.id === selected.id) : -1;
+  const previousPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex - 1 + navigationFrames.length) % navigationFrames.length] : undefined;
+  const nextPhoto = selectedIndex >= 0 ? navigationFrames[(selectedIndex + 1) % navigationFrames.length] : undefined;
+  const touchOrigin = useRef<{ x: number; y: number } | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
   if (selected) lastPhotoRef.current = selected.id;
   const change = (id?:string) => {
@@ -38,8 +39,8 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   };
   const step = (delta:number) => {
     if(!selected)return;
-    const pos=galleryFrames.findIndex(x=>x.id===selected.id);
-    change(galleryFrames[(pos+delta+galleryFrames.length)%galleryFrames.length]!.id);
+    const pos=navigationFrames.findIndex(x=>x.id===selected.id);
+    change(navigationFrames[(pos+delta+navigationFrames.length)%navigationFrames.length]!.id);
   };
   useEffect(() => {
     if (!selected) return;
@@ -50,9 +51,9 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           (target instanceof HTMLElement && (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]")))) return;
       if(event.key==="ArrowRight" || event.key==="ArrowLeft"){
         event.preventDefault();
-        const pos=galleryFrames.findIndex(item=>item.id===activePhoto);
+        const pos=navigationFrames.findIndex(item=>item.id===activePhoto);
         const delta=event.key==="ArrowRight"?1:-1;
-        const next=galleryFrames[(pos+delta+galleryFrames.length)%galleryFrames.length];
+        const next=navigationFrames[(pos+delta+navigationFrames.length)%navigationFrames.length];
         if(next)void navigate({to:"/portofoliu",search:{photo:next.id},replace:true,resetScroll:false});
       }
     };
@@ -60,7 +61,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
     if (!dialog) return;
     dialog.addEventListener("keydown", key as EventListener);
     return()=>dialog.removeEventListener("keydown", key as EventListener);
-  },[activePhoto,selected,navigate]);
+  },[activePhoto,selected,navigate,navigationFrames]);
   return (
     <section className="rs-gallery" id="portfolio-photos" aria-labelledby="rs-gallery-title">
       <div className="container-site">
@@ -101,20 +102,32 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           </DialogDescription>
           {selected && <>
             <div className="rs-photo-dialog__media"
-              onTouchStart={event=>{pointerX.current=event.touches[0]?.clientX??null}}
+              onTouchStart={event=>{
+                const touch = event.touches.length === 1 ? event.touches[0] : undefined;
+                touchOrigin.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+              }}
+              onTouchMove={event=>{
+                if(event.touches.length !== 1) touchOrigin.current = null;
+              }}
+              onTouchCancel={()=>{touchOrigin.current = null}}
               onTouchEnd={event=>{
-                const end=event.changedTouches[0]?.clientX;
-                if(pointerX.current!==null && end!==undefined && Math.abs(end-pointerX.current)>55){
-                  step(end<pointerX.current?1:-1);
+                const origin = touchOrigin.current;
+                touchOrigin.current = null;
+                const end = event.changedTouches[0];
+                if(!origin || !end || event.touches.length !== 0) return;
+                const dx = end.clientX - origin.x;
+                const dy = end.clientY - origin.y;
+                // A vertical scroll must never change the selected photo.
+                if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4){
+                  step(dx < 0 ? 1 : -1);
                 }
-                pointerX.current=null;
               }}>
               <img src={selected.image.src} width={selected.image.w} height={selected.image.h}
                 alt={selected.image.alt} decoding="async" />
             </div>
             <div className="rs-photo-dialog__actions">
               <button type="button" onClick={()=>step(-1)} aria-label={`Fotografia anterioară: ${previousPhoto?.title ?? ""}`}><ArrowLeft size={20} aria-hidden /> Anterior</button>
-              <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {galleryFrames.length}: {selected.title}</span>
+              <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {navigationFrames.length}: {selected.title}</span>
               <button type="button" onClick={()=>step(1)} aria-label={`Fotografia următoare: ${nextPhoto?.title ?? ""}`}>Următor <ArrowRight size={20} aria-hidden /></button>
             </div>
           </>}
@@ -145,8 +158,14 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
         <p>Filmările sunt încărcate de pe YouTube doar după ce apeși redare. Nu pornește nimic automat.</p>
       </div>
       <div role="group" className="rs-video-library__filters" aria-label="Filtrează videoclipurile">
-        {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={category===item.tag}
-          onClick={()=>setCategory(item.tag)}>{item.label}</button>)}
+        {filmCategories.map(item => {
+          const count = videoList.filter(video => !item.tag || video.tags.includes(item.tag)).length;
+          return <button type="button" key={item.label} aria-pressed={category===item.tag}
+            aria-label={`${item.label}, ${count} ${count === 1 ? "filmare" : "filmări"}`}
+            onClick={() => setCategory(item.tag)}>
+            {item.label} <span aria-hidden="true" className="ml-2 text-xs tabular-nums opacity-70">{count}</span>
+          </button>;
+        })}
       </div>
       <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {category ? `Filtru activ: ${filmCategories.find(item => item.tag === category)?.label ?? category}. ` : "Toate filmările. "}

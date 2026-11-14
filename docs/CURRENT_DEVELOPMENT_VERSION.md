@@ -1,3 +1,8 @@
+## V111 — Mobile photo dialog gesture guard (2026-11-14, draft)
+Branch `fix/v111-portfolio-swipe-direction-guard` stacked on V110 PR #109 docs SHA e7e991b3c5e271c448914dd601e49f0b6a832eb9. Photo swipes now require horizontal movement to dominate vertical scroll; cancel/multi-touch clear tracking. Source SHA 48557148a71964b7a1d139e32734df359e1bf5e5. QA, screenshots and CI exact-head pending; no main/deploy change.
+
+2026-11-14 V109 draft: Portfolio film archive filter buttons display computed counts from existing videoList/tags (no fabricated numbers), accessible labels and tabular numerals. Source commit 4ca7f2c22347b0c33f294f52b98de63770087385. No dependencies/media/autoplay. Browser before/after, TS/SSR/Vitest, six-width and exact-head CI pending. Next: verify filters with real browser, then rotate to event detail/contact visual QA. Main untouched.
+
 ## V108 — Portfolio empty-category recovery (draft; QA pending)
 Branch `fix/v108-portfolio-empty-category-feedback` stacked on V107. The portfolio film archive now displays a visible, accessible empty-state message and a keyboard-focusable “Vezi toate filmările” recovery button when a category has no published videos, instead of a blank player. No new dependencies, assets, autoplay, backend or homepage changes. UI source SHA 47144c99f3417c9fcb7a923826b5b3b7eea00b4a. Real Chromium before/after at 390/1440, six-width regression, TypeScript/SSR/Vitest/gzip and exact-head CI NOT verified. Main/deployment untouched. Next: validate archive category coverage and full browser audit.
 
