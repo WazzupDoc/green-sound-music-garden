@@ -197,3 +197,6 @@ No new media, fonts, icons or dependencies; uses existing approved portfolio ima
 
 ## V112
 No new media, fonts, icons or external dependencies. Existing galleryFrames metadata only.
+
+## V114 / 2026-11-14
+No new images, video, icons, fonts, third-party code, dependencies or assets. Existing brand and media untouched.

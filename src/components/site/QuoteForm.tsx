@@ -46,6 +46,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+  const previewTitleRef = useRef<HTMLHeadingElement>(null);
+  const formTitleRef = useRef<HTMLHeadingElement>(null);
+  const stepFocusRef = useRef<"preview" | "form" | null>(null);
   const [failedCopyAttempts, setFailedCopyAttempts] = useState(0);
 
   useEffect(() => {
@@ -55,6 +58,16 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     manualCopyRef.current?.focus();
     manualCopyRef.current?.select();
   }, [copyStatus, failedCopyAttempts]);
+
+  useEffect(() => {
+    if (stepFocusRef.current === "preview" && prepared) {
+      previewTitleRef.current?.focus();
+      stepFocusRef.current = null;
+    } else if (stepFocusRef.current === "form" && !prepared) {
+      formTitleRef.current?.focus();
+      stepFocusRef.current = null;
+    }
+  }, [prepared]);
 
   const copyMessage = async (message: string) => {
     try {
@@ -107,6 +120,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     // Preparing the quote is not sending it. Both destination links are opened
     // only from a deliberate tap/click to avoid popup blockers and false success.
     setCopyStatus("idle");
+    stepFocusRef.current = "preview";
     setPrepared(q);
   };
 
@@ -119,7 +133,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <span>GREEN SOUND / CERERE PREGĂTITĂ</span>
           <span className="quote-preview__step">PASUL 02 / 02</span>
         </div>
-        <h3 id="quote-preview-title" className="quote-preview__title">
+        <h3 id="quote-preview-title" ref={previewTitleRef} tabIndex={-1} className="quote-preview__title">
           Verifică mesajul înainte de trimitere.
         </h3>
         <p className="quote-preview__intro">
@@ -194,7 +208,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           În WhatsApp sau aplicația de email, verifică destinatarul și apasă „Trimite”.
           Green Sound Music nu primește mesajul până nu îl expediezi tu.
         </p>
-        <button className="quote-preview__edit" type="button" onClick={() => { setCopyStatus("idle"); setPrepared(null); }}>
+        <button className="quote-preview__edit" type="button" onClick={() => { stepFocusRef.current = "form"; setCopyStatus("idle"); setPrepared(null); }}>
           <PencilLine className="size-4" aria-hidden /> Modifică detaliile
         </button>
       </div>
@@ -208,7 +222,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <span>PASUL 01 / 02</span>
           <span>GREEN SOUND / DETALII EVENIMENT</span>
         </div>
-        <h3>Pregătește cererea pentru evenimentul tău.</h3>
+        <h3 ref={formTitleRef} tabIndex={-1}>Pregătește cererea pentru evenimentul tău.</h3>
         <p>Spune-ne câteva detalii despre eveniment. Următorul pas îți arată mesajul înainte de a-l trimite.</p>
       </div>
       {Object.keys(errors).some(key => key !== "website") && (
