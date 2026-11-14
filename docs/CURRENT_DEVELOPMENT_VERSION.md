@@ -1,3 +1,6 @@
+## V106 — Portfolio film archive TSX repair (draft, QA pending)
+Branch `fix/v106-portfolio-film-archive-compile` stacked on V105 PR #104. Removed five literal `\n` escape tokens accidentally inserted into `RegiaPortfolio.tsx`, which included tokens outside JSX elements. No design, assets or behavior changes intended. Source commit efb736fbc2e79cba1beecd3bb4f96ae99fd62e44. TS/SSR/Vitest/Chromium and exact-head CI pending; main untouched.
+
 ## V105 — Portfolio film filter feedback / draft
 Branch `fix/v105-portfolio-film-filter-feedback`, stacked on V104 PR #103. Adds one visually-hidden live status to the /portofoliu film archive announcing active filter, available film count and selected player title/Play instruction. No homepage layout, external media, dependency, autoplay or backend changes. Source commit 73c9259747157613005565db749fc5fed23ac014. Exact-head CI, real 390/1440 screenshots and 6-width regression pending. No main/deploy change. Next: film deep-link/filter interaction and visual gallery audit.
 
