@@ -240,18 +240,18 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-name" className={labelCls}>Nume *</label>
-        <input id="q-name" autoComplete="name" className={fieldCls} aria-invalid={!!errors.name} aria-describedby="q-name-err" {...register("name")} />
+        <input id="q-name" autoComplete="name" className={fieldCls} aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} {...register("name")} />
         <FieldError id="q-name-err" msg={errors.name?.message} />
       </div>
       <div>
         <label htmlFor="q-phone" className={labelCls}>Telefon *</label>
-        <input id="q-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07xx xxx xxx" className={fieldCls} aria-invalid={!!errors.phone} aria-describedby="q-phone-err" {...register("phone")} />
+        <input id="q-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07xx xxx xxx" className={fieldCls} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "q-phone-err" : undefined} {...register("phone")} />
         <FieldError id="q-phone-err" msg={errors.phone?.message} />
       </div>
 
       <div>
         <label htmlFor="q-event" className={labelCls}>Tipul evenimentului *</label>
-        <select id="q-event" className={fieldCls} aria-invalid={!!errors.eventType} aria-describedby="q-event-err" defaultValue={defaultEventType ?? ""} {...register("eventType")}>
+        <select id="q-event" className={fieldCls} aria-invalid={!!errors.eventType} aria-describedby={errors.eventType ? "q-event-err" : undefined} defaultValue={defaultEventType ?? ""} {...register("eventType")}>
           <option value="" disabled>Alege…</option>
           {eventTypeOptions.map((o) => (
             <option key={o} value={o} className="bg-popover">{o}</option>
