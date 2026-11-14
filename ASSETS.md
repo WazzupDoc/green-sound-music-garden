@@ -1,3 +1,6 @@
+## V117 — 2026-11-14
+No new media, fonts, icons or external assets. Existing lucide-react ArrowUpRight reused. No stock/AI event imagery introduced.
+
 
 ## V113
 No new media, fonts, icons, external dependencies or third-party code. Existing approved gallery metadata only.
