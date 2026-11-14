@@ -1,3 +1,6 @@
+## V105 — Portfolio film filter feedback / draft
+Branch `fix/v105-portfolio-film-filter-feedback`, stacked on V104 PR #103. Adds one visually-hidden live status to the /portofoliu film archive announcing active filter, available film count and selected player title/Play instruction. No homepage layout, external media, dependency, autoplay or backend changes. Source commit 73c9259747157613005565db749fc5fed23ac014. Exact-head CI, real 390/1440 screenshots and 6-width regression pending. No main/deploy change. Next: film deep-link/filter interaction and visual gallery audit.
+
 ## V104 — Film selector accessible announcement (draft, QA pending)
 Branch `fix/v104-film-selection-announcement` stacked on V103 PR #102. PR #103, source SHA a12b56eddbe0edc969b6fe4178b724b5ca89f1a4. Single live status replaces nested live regions in homepage EditorialPortfolio; 3 genuine films, Play behavior and clean layout preserved. No screenshots, exact-head CI, TS/SSR/Vitest/gzip or 6-width Chromium verification yet. No main/production changes. Next: portfolio film archive audit.
 
