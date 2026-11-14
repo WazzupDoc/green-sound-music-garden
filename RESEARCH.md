@@ -1,3 +1,10 @@
+## 2026-11-15 — V126 event index CTA hierarchy
+- https://www.awwwards.com/websites/music-sound/ — editorial art direction for music-oriented websites; reference category for deliberate hierarchy rather than symmetric cards. Original CSS/action markup; no copied code/assets; no license required for independently written code.
+- https://webflow.com/blog/website-navigation — reference for clear navigation and distinct visitor intents; adapted dual actions (explore details versus request a quote), without importing Webflow code/templates/assets.
+- https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html — minimum interactive target spacing/size; implemented 48px CTA height and focus outline. No copied code.
+- Rejected: adding another modal, event package configurator, auto-submitting quote or decorative animation; these add complexity without real service data. No new dependencies.
+- Visual research URLs logged; browser screenshot comparison remains unverified and is a release blocker.
+
 ## 2026-11-15 — V125 category-aware gallery navigation
 - [WAI-ARIA APG Dialog Modal Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/): navigation remains inside an existing accessible dialog; preserved focus return and Escape handling. No external code copied.
 - [MDN Array.prototype.filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter): use the same visible collection for thumbnails and next/previous navigation, avoiding inconsistent state. Native JS; no license or package required.
