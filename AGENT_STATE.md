@@ -1,3 +1,5 @@
+2026-11-14 V109 draft: Portfolio film archive filter buttons display computed counts from existing videoList/tags (no fabricated numbers), accessible labels and tabular numerals. Source commit 4ca7f2c22347b0c33f294f52b98de63770087385. No dependencies/media/autoplay. Browser before/after, TS/SSR/Vitest, six-width and exact-head CI pending. Next: verify filters with real browser, then rotate to event detail/contact visual QA. Main untouched.
+
 ## 2026-11-14 V107 / Portfolio film filter
 Area: /portofoliu film archive. Defect (source-confirmed): selecting film after filtering resets category to All via `useEffect([film])`; visible filtered list unexpectedly expands. Fix: remove reset effect; initial deep-link category remains All. Regression gate pending: 390/1440 before-after browser, six widths, keyboard, film deep-link, reduced/Lite, TypeScript, SSR, Vitest, gzip, exact-head CI. No screenshots captured; no visual success claim. Next rotation: Contact or event detail audit.
 
