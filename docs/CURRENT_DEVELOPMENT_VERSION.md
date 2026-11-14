@@ -1,3 +1,6 @@
+## V123 — Portfolio film filter / draft QA pending
+Branch `fix/v123-portfolio-film-filter-url-state`, stacked on V122. Film category selection now updates the shareable URL to the matching video and no longer resets the category on every film query change. Source commit ba1eaa7fc953450d419d319b8fe960e32564af6e. Browser screenshots, six-width checks, TypeScript/SSR/Vitest/gzip and exact-head CI not yet verified. No assets, dependencies or main changes.
+
 ## V121 — Contact conditional validation references (DRAFT, QA pending)
 Branch `fix/v121-contact-conditional-error-links`, draft PR [#121](https://github.com/WazzupDoc/green-sound-music-garden/pull/121), based on V103 PR #120. Fixes four stale `aria-describedby` references in Contact fields. Source SHA f553e7fea53114e3308b2d14ccd3bafef4432bdd; docs updates advance HEAD. No assets/packages/backend. Real Chromium 390/1440 before/after, six widths, TS/SSR/Vitest/gzip and exact-head CI not verified. No main/deploy changes. Next: film/video accessibility.
 

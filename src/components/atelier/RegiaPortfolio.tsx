@@ -133,8 +133,14 @@ const filmCategories=[
 const videoList: Video[] = Object.values(videos);
 
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
+  const navigate = useNavigate();
   const [category,setCategory]=useState<string>("");
-  useEffect(()=>{ if(film) setCategory(""); },[film]);
+  const selectCategory = (tag:string) => {
+    setCategory(tag);
+    const firstMatching = videoList.find(video => !tag || video.tags.includes(tag));
+    // Keep the shareable URL in sync with the player shown after filtering.
+    void navigate({to:"/portofoliu",search:firstMatching?{film:firstMatching.id}:{},replace:true,resetScroll:false});
+  };
   const selectedVideos=videoList.filter(v=>!category||v.tags.includes(category));
   const chosen=selectedVideos.find(v=>v.id===film)??selectedVideos[0];
   return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
@@ -145,7 +151,7 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
       </div>
       <div role="group" className="rs-video-library__filters" aria-label="Filtrează videoclipurile">
         {filmCategories.map(item=><button type="button" key={item.label} aria-pressed={category===item.tag}
-          onClick={()=>setCategory(item.tag)}>{item.label}</button>)}
+          onClick={()=>selectCategory(item.tag)}>{item.label}</button>)}
       </div>
       <div className="rs-video-library__layout">
         <div className="rs-video-library__player">
