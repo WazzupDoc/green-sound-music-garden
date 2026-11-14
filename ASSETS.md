@@ -1,3 +1,6 @@
+## V106 — 2026-11-14
+No new assets, fonts, media, packages or licenses. Existing media unchanged.
+
 ## V105 / 2026-11-14
 No new media, fonts, icons or external code. Uses existing source-backed video metadata and native screen-reader status only. Existing media rights remain subject to owner confirmation.
 
