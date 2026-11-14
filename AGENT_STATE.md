@@ -1,3 +1,6 @@
+## V105 — /portofoliu film filter accessibility (2026-11-14)
+Source audit: category buttons updated visible list/player but offered no concise announcement to screen-reader users. Added one hidden polite status with filter, count and player; no duplicate live region wrapping YouTube. Functional code submitted; CI, screenshots and browser validation pending. Next: verify deep-link/filter keyboard behavior, then portfolio visual composition. Main unchanged.
+
 ## V104 — Film selector announcement (2026-11-14)
 Area: homepage three-film selector. Source audit found nested live regions around the full VideoLite subtree, potentially causing verbose/duplicate screen-reader announcements on selection. Changed to one visually-hidden status describing selected film and explicit Play. PR #103, code SHA a12b56eddbe0edc969b6fe4178b724b5ca89f1a4. Visual layout unchanged; no browser screenshots/CI verified. Next rotation: portfolio film archive selection/keyboard and focus. Main untouched.
 
