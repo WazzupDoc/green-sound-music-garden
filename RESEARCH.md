@@ -312,3 +312,6 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — dialog interaction/focus principles; adapted contextual accessible names for photo navigation; no code copied.
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite status announcements; adapted to photo position/title. No dependency or external media.
 - Rejected: animated counter overlay and autoplay slideshow; unnecessary motion and cognitive load.
+
+## 2026-11-14 — Photo gallery filtering
+References: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html (status messages); https://www.w3.org/WAI/ARIA/apg/patterns/button/ (pressed filter buttons). Original implementation uses aria-pressed, computed counts, and polite live status. No third-party code/assets copied. Rejected animated filter badges as distracting and potentially costly.
