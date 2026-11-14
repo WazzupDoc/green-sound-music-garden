@@ -1,3 +1,7 @@
+## 2026-11-14 V111 — Portfolio touch navigation (draft, QA pending)
+- Single audited area: /portofoliu photo dialog on mobile. Source defect: any >55px horizontal displacement, even during a predominantly vertical scroll, advanced the photo. Now require horizontal dominance (1.4× vertical), ignore multi-touch and clear touch state on cancel. Code SHA 48557148a71964b7a1d139e32734df359e1bf5e5. No assets, packages, backend or homepage changes.
+- Visual screenshots 390/1440 before/after, actual touch browser gestures, six widths, TS/SSR/Vitest/gzip and exact-head CI remain UNVERIFIED; no visual redesign claim. Next zone: Contact and event detail visual/function audit. Main untouched.
+
 2026-11-14 V109 draft: Portfolio film archive filter buttons display computed counts from existing videoList/tags (no fabricated numbers), accessible labels and tabular numerals. Source commit 4ca7f2c22347b0c33f294f52b98de63770087385. No dependencies/media/autoplay. Browser before/after, TS/SSR/Vitest, six-width and exact-head CI pending. Next: verify filters with real browser, then rotate to event detail/contact visual QA. Main untouched.
 
 ## 2026-11-14 V107 / Portfolio film filter
