@@ -1,3 +1,6 @@
+## V125 — 2026-11-15
+No new photos, videos, fonts, icons, packages, or external code. Existing Green Sound images and authorization status unchanged.
+
 ## V124 — 2026-11-14
 No new images, fonts, videos, icons, dependencies or third-party code. Existing Green Sound video metadata reused; ownership/authorization unchanged.
 
