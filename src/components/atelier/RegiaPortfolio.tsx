@@ -135,6 +135,13 @@ const videoList: Video[] = Object.values(videos);
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const navigate = useNavigate();
   const [category,setCategory]=useState<string>("");
+  useEffect(() => {
+    // A direct link or browser history entry must not leave the URL pointing
+    // to a film hidden by an earlier local filter selection.
+    if (film && category && !videoList.some(video => video.id === film && video.tags.includes(category))) {
+      setCategory("");
+    }
+  }, [film, category]);
   const selectCategory = (tag:string) => {
     setCategory(tag);
     const firstMatching = videoList.find(video => !tag || video.tags.includes(tag));
