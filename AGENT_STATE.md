@@ -1,3 +1,8 @@
+
+## V119 — 2026-11-14 / Contact invalid-submit focus
+- Zone: Contact QuoteForm. On invalid submission, requestAnimationFrame focuses first invalid input/select/checkbox in document order; services fieldset exposes aria-invalid so the first enabled service checkbox is reachable. Source commit `667767f475bf5cb54bbb49691d79580b2e3c7b3b`.
+- QA PENDING: browser keyboard 390/1440 before/after, six widths, TypeScript, SSR, Vitest, gzip and exact-head CI. No screenshots obtained in this execution. No visual redesign claim. Next: Contact clipboard denied/retry and browser QA, then event page imagery. Main untouched.
+
 ## V118 — 2026-11-14 / Event detail FAQ navigation
 - Zone: event detail section navigation. Source review found FAQ content rendered conditionally but missing from the new V117 in-page navigation. Added conditional FAQ anchor and matching scroll-offset section ID; no new assets, dependencies, backend or homepage elements.
 - Code commit: `3c63ddb121af7b0cd9cea6116b265efeebd1e42e`; base V117 `2430ecc3f3a9dbf44e2b7105f7bc5a5ef1b4f4fd`.

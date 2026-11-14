@@ -116,6 +116,18 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       { shouldDirty: true, shouldTouch: true, shouldValidate: true });
   };
 
+  const focusFirstInvalidField = () => {
+    // Wait for React to expose validation state, then focus the first visible
+    // invalid control in document order. This also covers the services group.
+    requestAnimationFrame(() => {
+      const form = document.getElementById(id);
+      const firstInvalid = form?.querySelector<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>(
+        '[aria-invalid="true"], .gs-quote__services[aria-invalid="true"] input:not(:disabled)'
+      );
+      firstInvalid?.focus();
+    });
+  };
+
   const onSubmit = (q: Quote) => {
     // Preparing the quote is not sending it. Both destination links are opened
     // only from a deliberate tap/click to avoid popup blockers and false success.
@@ -216,7 +228,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   }
 
   return (
-    <form id={id} onSubmit={handleSubmit(onSubmit)} noValidate className="grid gap-5 md:grid-cols-2" aria-label="Cerere de ofertă">
+    <form id={id} onSubmit={handleSubmit(onSubmit, focusFirstInvalidField)} noValidate className="grid gap-5 md:grid-cols-2" aria-label="Cerere de ofertă">
       <div className="gs-quote__intro md:col-span-2">
         <div className="gs-quote__stephead">
           <span>PASUL 01 / 02</span>
@@ -281,7 +293,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <FieldError id="q-guests-err" msg={errors.guests?.message} />
       </div>
 
-      <fieldset className="md:col-span-2 gs-quote__services" aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"}>
+      <fieldset className="md:col-span-2 gs-quote__services" aria-invalid={!!errors.services} aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"}>
         <legend className={labelCls}>Ce servicii te interesează?</legend>
         <div className="gs-quote__selection-meta" id="q-services-guide">
           <span>Poți alege serviciile dorite sau ne poți cere recomandări.</span>

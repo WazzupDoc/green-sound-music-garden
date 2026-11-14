@@ -1,3 +1,7 @@
+
+## V119 — Contact invalid validation focus (2026-11-14, draft)
+Branch `fix/v119-contact-invalid-focus` stacked on V118 PR #117. Source commit `667767f475bf5cb54bbb49691d79580b2e3c7b3b`. Invalid submission now moves keyboard focus to first invalid field after React validation render, including services checkboxes. No backend, new media/dependencies, homepage changes or auto-send. Browser screenshots, TypeScript/SSR/Vitest/gzip and CI exact-head are NOT verified; do not merge or deploy. Next: keyboard/browser validation, clipboard failure flow, event detail visual QA.
+
 ## V116 — Contact conditional validation references (2026-11-14, draft)
 Branch `fix/v116-contact-conditional-error-links` stacked on V115 PR #114. `QuoteForm.tsx`: email input and services fieldset now reference error elements only when those elements exist; the permanent services guidance stays linked. No dependencies, new media, backend, homepage changes or auto-send. Source commit `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. QA PENDING: TS/SSR/Vitest, real Chromium 390/1440 before-after and six-width regression, clipboard, reduced motion, exact-head CI. Next rotation: `/evenimente` detail page visual and functional audit. Main/deployment untouched.
 
