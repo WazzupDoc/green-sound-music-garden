@@ -1,3 +1,6 @@
+## V116 — Contact conditional validation references (2026-11-14, draft)
+Branch `fix/v116-contact-conditional-error-links` stacked on V115 PR #114. `QuoteForm.tsx`: email input and services fieldset now reference error elements only when those elements exist; the permanent services guidance stays linked. No dependencies, new media, backend, homepage changes or auto-send. Source commit `57b84f8cda7ee93379989d8e7cf2a7b3068c5b30`. QA PENDING: TS/SSR/Vitest, real Chromium 390/1440 before-after and six-width regression, clipboard, reduced motion, exact-head CI. Next rotation: `/evenimente` detail page visual and functional audit. Main/deployment untouched.
+
 ## V114 — Contact step keyboard focus (2026-11-14, draft)
 Branch `fix/v114-contact-step-focus`, stacked on V113 PR #112. Source SHA `f4ddfb42d5a7517aebbc3d16f5890c74893257d3`. On preparing a quote, focus moves to the new preview heading; on returning to edit, focus moves to the form heading. Both headings are programmatically focusable without changing tab order. No sending, new dependency, new asset, homepage or main change. QA PENDING: keyboard Chromium 390/1440 before/after, six widths, TS/SSR/Vitest/gzip, exact-head Actions. Next: verify step transitions and clipboard fallback, then rotate to event detail.
 
