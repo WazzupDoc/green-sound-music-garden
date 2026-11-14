@@ -1,3 +1,6 @@
+
+## V113
+No new media, fonts, icons, external dependencies or third-party code. Existing approved gallery metadata only.
 ## V111 — 2026-11-14
 No new image, font, audio, video, icon, external code, or dependency. Touch interaction implemented in existing React component; existing media provenance unchanged.
 
