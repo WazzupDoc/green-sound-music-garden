@@ -1,3 +1,6 @@
+## V121 — Contact error description references / 2026-11-14
+Area: Contact validation accessibility. Four inputs referenced error element IDs even before errors were rendered. Conditional aria-describedby fixes dangling relationships without changing layout or submission. PR #121, code commit f553e7fea53114e3308b2d14ccd3bafef4432bdd. No visual redesign claimed. Browser DOM/screenshots, six-width QA, TS/SSR/Vitest/gzip and exact-head CI pending. Next rotation: film/video controls. Main untouched.
+
 ## V103 — Contact preview focus / 2026-11-14
 Area: Contact quote form. Before: after preparing quote or returning to edit, keyboard focus could be lost in replaced DOM. After: programmatic focus on preview heading, then return to name field. Draft PR #120, source commit 61ce9b0796a7d56a48c95471eee31834d857ae92. Browser screenshots and exact-head QA pending. Next: film filter/video playback accessibility. Main unchanged.
 
