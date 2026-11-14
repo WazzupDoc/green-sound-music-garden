@@ -1,3 +1,6 @@
+## V126 — Event index editorial conversion CTA / 2026-11-15
+Branch `design/v126-events-direct-brief-actions` stacked on V125. Each existing event chapter now provides a second, visually differentiated CTA that opens `/contact` with its actual event form label URL-encoded; existing event-detail link remains. CSS includes mobile full-width, focus visible and reduced-motion. No assets or dependencies. CI exact-head, TS/SSR/Vitest and browser screenshots 390/1440 plus other widths pending; no main/deploy changes.
+
 ## V125 — Photo gallery category-aware lightbox (DRAFT; QA pending)
 Branch `fix/v125-portfolio-photo-filter-dialog-navigation` stacked on V124. Photo lightbox previous/next, keyboard arrows, touch swipe and counter now follow visible category. URL-linked photo outside active category stays accessible by displaying All. Source SHA `01643e6ea4d5c3e2b2e80cdbfc171bfc20905f35`. Browser screenshots and exact-head CI not verified. Main untouched.
 
