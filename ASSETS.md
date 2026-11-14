@@ -1,3 +1,6 @@
+## V126 — 2026-11-15
+No new assets, photographs, fonts, music, logos, icons or dependencies. Existing event imagery and existing Lucide ArrowUpRight reused. CTA layout and CSS authored in project; no external code copied.
+
 ## V125 — 2026-11-15
 No new photos, videos, fonts, icons, packages, or external code. Existing Green Sound images and authorization status unchanged.
 
