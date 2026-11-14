@@ -1,3 +1,7 @@
+## 2026-11-14 — V107 filter state research notes
+- Source-level UX analysis: filter state and URL film selection are independent; resetting filter on film navigation breaks user context. Implemented without dependencies.
+- Reference for subsequent browser verification: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ (interaction guidance; not copied code), https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-pressed (toggle state). These URLs are references to review; live pages not fetched in this run. Rejected: syncing filter to every film link, because it complicates deep links and adds no demonstrated benefit.
+
 ## 2026-11-14 — V106 source integrity
 Source review: existing V105 JSX had literal `\n` tokens in rendered markup, which are invalid TSX outside text. Fix uses only whitespace normalization; no third-party code or assets. References for later accessibility validation: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role and https://www.w3.org/WAI/ARIA/apg/ . No design copied; browser/CI validation pending.
 

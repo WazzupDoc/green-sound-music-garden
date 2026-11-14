@@ -1,3 +1,6 @@
+## 2026-11-14 — V107
+No new assets, images, fonts, packages or third-party code. Existing media provenance unchanged; film category behavior only.
+
 ## V106 — 2026-11-14
 No new assets, fonts, media, packages or licenses. Existing media unchanged.
 
