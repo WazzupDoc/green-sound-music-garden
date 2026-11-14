@@ -47,7 +47,6 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
   const previewHeadingRef = useRef<HTMLHeadingElement>(null);
-  const editButtonRef = useRef<HTMLButtonElement>(null);
   const wasPreparedRef = useRef(false);
 
   useEffect(() => {
@@ -55,7 +54,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       previewHeadingRef.current?.focus();
       wasPreparedRef.current = true;
     } else if (wasPreparedRef.current) {
-      requestAnimationFrame(() => document.getElementById("q-name")?.focus());
+      document.getElementById("q-name")?.focus();
       wasPreparedRef.current = false;
     }
   }, [prepared]);
