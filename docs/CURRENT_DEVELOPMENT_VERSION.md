@@ -1,4 +1,7 @@
 
+## V113 — Photo filter state and reset (2026-11-14, draft)
+Branch `fix/v113-portfolio-photo-filter-reset`, stacked on V112 PR #111. Code SHA d9091d3982711c80649a7590515616a2459da3d0. Visible category status/count and explicit reset button on /portofoliu. Browser screenshots, TypeScript, SSR, Vitest, gzip and exact-head CI not verified. No main/deploy change.
+
 ## V112 — Portfolio photo filter feedback (2026-11-14, draft)
 Branch `fix/v112-photo-filter-feedback` on V111. Photo category buttons now show actual counts and announce result counts accessibly. Source SHA 4c61bce22b763a89111dc4ff3e3228b9dc539bdc. Browser screenshots and exact-head CI not yet verified; no main/deploy changes.
 ## V111 — Mobile photo dialog gesture guard (2026-11-14, draft)

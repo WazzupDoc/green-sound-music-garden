@@ -74,7 +74,15 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
             aria-pressed={filter===option.id} onClick={()=>setFilter(option.id)}
             aria-label={`${option.label}, ${galleryFrames.filter(frame => option.id === "toate" || frame.group === option.id).length} fotografii`}>{option.label} <span aria-hidden="true" className="ml-2 text-xs tabular-nums opacity-70">{galleryFrames.filter(frame => option.id === "toate" || frame.group === option.id).length}</span></button>)}
         </div>
-        <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">{`Filtru fotografii: ${photoFilters.find(option => option.id === filter)?.label}. ${frames.length} fotografii afișate.`}</p>
+        <div className="flex min-h-11 flex-wrap items-center justify-between gap-3 py-3 text-sm text-[#B8BCB9]">
+          <p role="status" aria-live="polite" aria-atomic="true">
+            {filter === "toate" ? "Toate fotografiile" : `Categoria ${photoFilters.find(option => option.id === filter)?.label}`}: {frames.length} {frames.length === 1 ? "fotografie" : "fotografii"}
+          </p>
+          {filter !== "toate" && <button type="button" onClick={() => setFilter("toate")}
+            className="min-h-11 border-b border-[#A8D8BD] px-2 text-[#F3F0E9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A8D8BD]">
+            Șterge filtrul
+          </button>}
+        </div>
         <div className="rs-gallery__rail" aria-label="Fotografii Green Sound Music">
           {frames.map((frame,index)=>(
             <Link key={frame.id} to="/portofoliu" search={{photo:frame.id}}
