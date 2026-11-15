@@ -1,3 +1,6 @@
+## V137 / 2026-11-15 — Portfolio touch axis guard (DRAFT)
+Area: `/portofoliu` photo dialog. Mobile swipe now requires horizontal displacement >55px and >1.5× vertical movement, avoiding accidental photo changes while scrolling. PR #137, code SHA `d4111f6e8ad3c6cf744cced7c3d6d27cd8db4022`. No new assets/dependencies. QA UNVERIFIED: Chromium before/after 390/1440, 360/430/768/1920, touch/keyboard, TypeScript, SSR, Vitest, gzip, exact-head CI. Main unchanged. Next: real-browser portfolio QA, then Contact.
+
 ## V136 / 2026-11-15 — Portfolio deep-link dialog focus origin (DRAFT)
 Area: /portofoliu photo dialog. Corrected focus-return provenance: only a clicked thumbnail establishes an origin; a photo opened from a direct URL falls back to the gallery heading on close. Preserves arrow/Home/End navigation and original-thumbnail return. Source commit `cccb5656dbdbd018a9dd211ed7d4bf33c4d91e5f`. No new dependencies, assets, backend or homepage sections. QA UNVERIFIED: real Chromium 390/1440 before-after and all six widths, keyboard focus, TypeScript, SSR, Vitest, gzip and exact-head CI. Main untouched. Next: browser QA of photo modal and film archive, then Contact flow.
 
