@@ -1,3 +1,7 @@
+
+## V130 — Footer direct brief (DRAFT; QA pending)
+Branch `design/v130-footer-direct-brief` stacked on V129 PR #129. Footer primary CTA now lands on existing SSR Contact brief heading `#contact-form-title`, with clear action wording. No backend, media, dependencies or homepage sections. No real-browser screenshots, TS/SSR/Vitest or exact-head CI verified. Main and production unchanged.
+
 ## V129 — About production score and quote funnel (DRAFT; QA pending)
 Branch `design/v129-about-production-route-brief` stacked on V128 PR #128. `/despre-noi` production list now has a connecting editorial score/rail, alternating typographic rhythm, short practical introduction and a closing Contact CTA linked directly to `#contact-form-title`. Original images retained; no homepage, dependencies, backend or production changes. CI exact-head, TypeScript/SSR/Vitest, Chromium six-width and before/after 390/1440 screenshots NOT verified. Next: browser proof, then footer.
 
