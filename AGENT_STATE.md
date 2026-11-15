@@ -1,3 +1,9 @@
+## V148 / Error fallback action integrity (2026-11-15, DRAFT)
+| Area | Source defect | Change | Browser 390/1440 | QA | Next |
+|---|---|---|---|---|---|
+| Error fallback | `onRetry` optional but button rendered unconditionally, creating an inert control when absent | Retry rendered only when callback exists; Home/phone remain available | NOT captured | Source regression assertion added; TS/SSR/Vitest/gzip/CI exact-head UNVERIFIED | Verify 404/500 browser and HTTP status, six widths |
+No assets, packages, homepage or production changes. Main untouched.
+
 ## V147 / Footer external links (2026-11-15, DRAFT)
 | Area | Defect | Change | Browser 390/1440 | QA | Next |
 |---|---|---|---|---|---|
