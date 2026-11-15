@@ -347,3 +347,6 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — dialog interaction/focus principles; adapted contextual accessible names for photo navigation; no code copied.
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite status announcements; adapted to photo position/title. No dependency or external media.
 - Rejected: animated counter overlay and autoplay slideshow; unnecessary motion and cognitive load.
+
+## 2026-11-15 — V134 keyboard navigation
+References for follow-up verification: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ (modal keyboard/focus) and https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (carousel interaction). Original implementation: Home/End jumps in existing photo dialog, no external code or dependencies copied. Rejected: custom keybinding library and autoplay, unnecessary bundle/UX cost. Source browsing and real-browser verification pending.
