@@ -1,3 +1,6 @@
+## V138 — 2026-11-15
+No new assets, external code, fonts, media or dependencies. Existing authorized gallery imagery unchanged.
+
 ## V133 / 2026-11-15
 No new assets, fonts, media or dependencies. Existing video metadata reused; provenance remains unchanged.
 

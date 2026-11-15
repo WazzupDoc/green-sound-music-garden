@@ -107,11 +107,13 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           </DialogDescription>
           {selected && <>
             <div className="rs-photo-dialog__media"
-              onTouchStart={event=>{const touch=event.touches[0];touchOrigin.current=touch?{x:touch.clientX,y:touch.clientY}:null}}
+              onTouchStart={event=>{const touch=event.touches.length===1?event.touches[0]:undefined;touchOrigin.current=touch?{x:touch.clientX,y:touch.clientY}:null}}
+              onTouchMove={event=>{if(event.touches.length!==1)touchOrigin.current=null}}
+              onTouchCancel={()=>{touchOrigin.current=null}}
               onTouchEnd={event=>{
                 const end=event.changedTouches[0];
                 const origin=touchOrigin.current;
-                if(origin && end){
+                if(origin && end && event.changedTouches.length===1 && event.touches.length===0){
                   const dx=end.clientX-origin.x;
                   const dy=end.clientY-origin.y;
                   // Vertical scrolling must not accidentally switch photographs.
