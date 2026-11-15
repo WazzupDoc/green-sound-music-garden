@@ -1,3 +1,6 @@
+## V148 / 2026-11-15 — Error fallback retry guard (DRAFT)
+Branch `fix/v148-error-retry-guard` stacked on V147. Prevents displaying an inert `Reîncearcă` button if optional `onRetry` callback is not supplied; existing recovery routes preserved. Source test updated. Browser screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI UNVERIFIED. No main/deploy.
+
 ## V147 / 2026-11-15 — Footer social navigation (DRAFT)
 Branch fix/v147-footer-social-external-cue stacked on V146. Visible arrow and screen-reader new-tab cue on footer social links. Source test added; Chromium screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI unverified. No main/deploy.
 

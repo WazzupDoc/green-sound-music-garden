@@ -1,3 +1,10 @@
+## 2026-11-15 — V148 / Error recovery control integrity
+- Source audit: `StageFallback` types `onRetry` as optional but always displayed its retry button. This is an inert-action risk on error pages without a recovery handler.
+- Guidance: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html and https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — use truthful actionable controls; guidance only, no external code copied.
+- Adapted: conditional native retry button only when `onRetry` exists; existing Home and phone paths preserved.
+- Rejected: fake retry simulation, automatic page reload, new backend, additional dependency.
+- No visual/CI measurements yet; browser screenshot and HTTP error status still unverified.
+
 ## V147 / 2026-11-15
 W3C G201 https://www.w3.org/WAI/WCAG21/Techniques/general/G201 : indicate external new-tab navigation visibly and to assistive technology. Adaptation: own arrow and Romanian accessible text, no copied code or assets. W3C G200 https://www.w3.org/WAI/WCAG21/Techniques/general/G200 : avoid unnecessary new windows. Rejected new animation and external dependencies. Browser QA pending.
 

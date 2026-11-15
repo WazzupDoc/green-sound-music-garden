@@ -14,6 +14,7 @@ describe("404 recovery navigation", () => {
 
   it("keeps the error retry separate from not-found navigation", () => {
     expect(source).toContain("missing && (");
+    expect(source).toContain("onRetry ? <button");
     expect(source).toContain("onClick={onRetry}");
     expect(source).toContain('to="/"');
   });
