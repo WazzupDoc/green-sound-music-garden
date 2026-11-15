@@ -1,3 +1,6 @@
+## V151 / 2026-11-16 — Error recovery Contact route (DRAFT)
+Branch `fix/v151-error-fallback-contact-path` stacked on V150. Render-error screen now exposes a direct Contact form link, instead of requiring Home or phone. Regression source test added. No new packages/assets/homepage/main/deployment. Chromium before/after 390/1440, six widths, TS, SSR, Vitest, gzip, CI exact-head NOT VERIFIED.
+
 ## V150 / 2026-11-16 — Neutral error heading (DRAFT)
 Branch `fix/v150-error-fallback-neutral-heading` stacked on V149. Generic render errors no longer claim a network connection was lost. Regression source assertion updated; no assets/dependencies/homepage/main/deploy. CI exact-head, TS, SSR, Vitest, gzip, 390/1440 browser before/after and six widths NOT VERIFIED.
 
