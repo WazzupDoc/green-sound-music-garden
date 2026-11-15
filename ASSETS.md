@@ -211,3 +211,6 @@ No assets, fonts, images, videos, third-party code or dependencies added. Eight 
 
 ## V101 portfolio dialog
 No new media, fonts, icons or dependencies; uses existing approved portfolio images and Lucide icons.
+
+## V134 — 2026-11-15
+No new images, fonts, video, icons, music, packages or third-party code. Existing photo archive retained.
