@@ -12,6 +12,13 @@ describe("404 recovery navigation", () => {
     expect(source).toContain('aria-label="Alte pagini utile"');
   });
 
+  it("offers a direct accessible Contact route for render failures", () => {
+    expect(source).toContain('aria-label="Contact în caz de eroare"');
+    expect(source).toContain("Contactează echipa Green Sound");
+    expect(source).toContain('to="/contact" hash="contact-form-title"');
+    expect(source).toContain("!missing && (");
+  });
+
   it("keeps the error retry separate from not-found navigation", () => {
     expect(source).toContain("missing && (");
     expect(source).toContain("Pagina nu poate fi afișată.");

@@ -1,3 +1,6 @@
+## 2026-11-16 — V151 error recovery navigation
+Design principle: an error state should expose an actionable recovery destination rather than a dead end. Original native router link to existing Contact form; no external code, image, asset or dependency used. Reference for error recovery patterns: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html ; https://www.nngroup.com/articles/error-message-guidelines/ . Alternatives rejected: fake submission, auto-send, duplicate form in fallback. Browser verification pending.
+
 ## 2026-11-16 / V150 — Error message accuracy
 - [MDN: ARIA alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role): assertive live announcements can be disruptive; rejected adding an automatic alert role to an already visible page heading.
 - [W3C WCAG 3.3.3 Error Suggestion](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html): error guidance should identify realistic recovery paths; adapted by preserving conditional retry and real Home/phone routes.

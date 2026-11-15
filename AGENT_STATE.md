@@ -1,3 +1,6 @@
+## V151 / 2026-11-16 — Render-error Contact recovery (DRAFT)
+Zone: error fallback. Added an explicit Contact form deep link only for render errors, with a named navigation landmark; Home, conditional Retry and telephone retained. Source regression guard added. No assets, dependencies or homepage changes. Real browser screenshots 390/1440, six-width QA, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: real browser/HTTP 404 and error audit; then Events interior.
+
 ## V150 / 2026-11-16 — Generic render-error heading (DRAFT)
 Area: error fallback only. A generic render exception is not necessarily a lost network connection; changed misleading heading to neutral `Pagina nu poate fi afișată.` Kept retry conditional, recovery links and existing image. Source regression test updated. Browser 390/1440 before/after, six widths, HTTP status, TS/SSR/Vitest/gzip and CI exact-head NOT VERIFIED. No homepage/main/deploy. Next: actual Chromium/HTTP audit, then Events interiors.
 
