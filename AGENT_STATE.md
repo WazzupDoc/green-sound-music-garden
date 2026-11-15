@@ -1,3 +1,6 @@
+## V138 / 2026-11-15 — Portfolio gesture cancellation (DRAFT)
+Area: photo dialog. Multi-finger and cancelled touch sequences no longer navigate photos; V137 horizontal-axis guard retained. Code SHA d41bffb16d8dff21bf9a7789402a71926c590241. QA NOT VERIFIED: browser screenshots, touch simulation, TS/SSR/Vitest/gzip/CI. Next rotation: Contact. Main unchanged.
+
 ## V137 / 2026-11-15 — Portfolio touch axis guard (DRAFT)
 Area: `/portofoliu` photo dialog. Mobile swipe now requires horizontal displacement >55px and >1.5× vertical movement, avoiding accidental photo changes while scrolling. PR #137, code SHA `d4111f6e8ad3c6cf744cced7c3d6d27cd8db4022`. No new assets/dependencies. QA UNVERIFIED: Chromium before/after 390/1440, 360/430/768/1920, touch/keyboard, TypeScript, SSR, Vitest, gzip, exact-head CI. Main unchanged. Next: real-browser portfolio QA, then Contact.
 
