@@ -1,3 +1,8 @@
+## V129 / 2026-11-15 — About / production timeline
+| Area | Priority | Observed source issue | Change | Visual evidence | QA | Next |
+|---|---|---|---|---|---|---|
+| /despre-noi | High | Uniform four-step rows; closing CTA lands atop Contact instead of brief | Asymmetric score-like production timeline, alternating editorial typography, contextual intro and form-anchor CTA | Before/after Chromium not available | TS, SSR, Vitest, six widths and CI exact-head pending | Browser screenshots 390/1440; then footer |
+
 ## V128 / 2026-11-15 — Events → Contact anchor handoff
 Area: conversion handoff from /evenimente to Contact. The event-specific CTA already prefills the allowlisted event type, but native navigation previously landed at the top of a long Contact intro; visitors still needed to locate the form. Now each action targets `#contact-form-title` on the Contact page, a stable SSR-rendered heading (not the client-only form), with scroll margin and programmatic focus support. No auto-send, no new assets/dependencies, no homepage changes. Source code commits `ba29b70e5e7b8684945597fbd44479b41331fc37`, `daee7b68a2d015cc644138aa4d1cfaea6a5dcda7`. Browser screenshots before/after 390/1440, 6-width QA, TS/SSR/Vitest, exact-head CI pending. Next: verify anchor+prefill in real Chromium; rotate Studio/Despre.
 

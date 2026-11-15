@@ -48,3 +48,20 @@
 @media(max-width:480px){.gs-about-v95__hero-grid{gap:40px}.gs-about-v95 h1{font-size:clamp(2.9rem,12vw,4.4rem)}.gs-about-v95__photo-image{height:320px}.gs-about-v95__photo figcaption span:last-child{display:none}.gs-about-v95__rail{font-size:9px;gap:7px;padding-inline:16px}.gs-about-v95__steps li{grid-template-columns:35px minmax(0,1fr);gap:16px}.gs-about-v95__step-mark{display:none}.gs-about-v95__closing-photo{height:340px}}
 @media(prefers-reduced-motion:reduce){.gs-about-v95__cta{transition:none!important;transform:none!important}}
 html[data-gs-performance=lite] .gs-about-v95__cta{transition:none;transform:none}
+
+/* V129: production cue, not another symmetric card grid. The continuous
+   score-like line visually connects the real four-step editorial process. */
+.gs-about-v95__process-intro{max-width:54ch;margin:-12px 0 34px auto;color:#385a40;font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.6}
+.gs-about-v95__steps{counter-reset:gs-production}
+.gs-about-v95__steps li{position:relative;grid-template-columns:110px minmax(0,1fr) 40px;transition:background-color .2s ease,padding-inline .2s ease}
+.gs-about-v95__steps li:nth-child(even){padding-left:clamp(12px,2.2vw,34px);background:rgba(255,255,255,.13)}
+.gs-about-v95__step-no{display:flex;align-items:center;gap:12px;font-variant-numeric:tabular-nums;font-size:clamp(1.4rem,2.4vw,2.3rem);letter-spacing:-.06em;color:#285738}
+.gs-about-v95__step-track{height:2px;flex:1;background:linear-gradient(90deg,#3d8250,#7e9b80);transform-origin:left center}
+.gs-about-v95__steps li:last-child .gs-about-v95__step-track{background:#285738}
+.gs-about-v95__steps h3{max-width:26ch}
+.gs-about-v95__steps li:nth-child(2) h3,.gs-about-v95__steps li:nth-child(4) h3{font-family:Georgia,serif;font-style:italic;font-weight:400}
+.gs-about-v95__cta:focus-visible{outline:3px solid #285738;outline-offset:5px}
+@media(max-width:800px){.gs-about-v95__process-intro{margin:0 0 28px}.gs-about-v95__steps li{grid-template-columns:78px minmax(0,1fr) 30px}}
+@media(max-width:480px){.gs-about-v95__steps li{grid-template-columns:45px minmax(0,1fr)}.gs-about-v95__step-no{font-size:1.25rem;display:block}.gs-about-v95__step-track{display:none}.gs-about-v95__steps li:nth-child(even){padding-left:12px}}
+@media(prefers-reduced-motion:reduce){.gs-about-v95__steps li{transition:none}}
+html[data-gs-performance=lite] .gs-about-v95__steps li{transition:none}

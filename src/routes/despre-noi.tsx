@@ -48,8 +48,8 @@ function About() {
       <section className="gs-about-v95__process" aria-labelledby="gs-about-process">
         <div className="container-site">
           <div className="gs-about-v95__process-heading"><p className="gs-about-v95__section-index">02 / FLUXUL DE PRODUCȚIE</p><h2 id="gs-about-process">De la primul detaliu<br /><em>la ultimul moment.</em></h2></div>
-          <ol className="gs-about-v95__steps">{process.map((step, index) => <li key={step.title}>
-            <span className="gs-about-v95__step-no">{String(index + 1).padStart(2, "0")}</span>
+          <p className="gs-about-v95__process-intro">Patru momente ale pregătirii, de la discuția inițială la coordonarea din ziua evenimentului.</p>\n          <ol className="gs-about-v95__steps">{process.map((step, index) => <li key={step.title}>
+            <span className="gs-about-v95__step-no" aria-hidden="true">{String(index + 1).padStart(2, "0")}<span className="gs-about-v95__step-track" /></span>
             <div><h3>{step.title}</h3><p>{step.text}</p></div>
             <span className="gs-about-v95__step-mark" aria-hidden="true">↗</span>
           </li>)}</ol>
@@ -57,7 +57,7 @@ function About() {
       </section>
       <section className="gs-about-v95__closing container-site" aria-labelledby="gs-about-close">
         <figure><BeamPhoto image={images.dj} className="gs-about-v95__closing-photo" /><figcaption>Din arhiva Green Sound Music</figcaption></figure>
-        <div><p className="gs-about-v95__section-index">03 / URMĂTORUL EVENIMENT</p><h2 id="gs-about-close">Spune-ne ce <em>pregătești.</em></h2><p>Data, locul și câteva detalii despre eveniment sunt suficiente pentru a începe discuția.</p><Link to="/contact" className="gs-about-v95__cta">Pregătește cererea <ArrowUpRight size={20} aria-hidden="true" /></Link></div>
+        <div><p className="gs-about-v95__section-index">03 / URMĂTORUL EVENIMENT</p><h2 id="gs-about-close">Spune-ne ce <em>pregătești.</em></h2><p>Data, locul și câteva detalii despre eveniment sunt suficiente pentru a începe discuția.</p><Link to="/contact" hash="contact-form-title" className="gs-about-v95__cta">Pregătește cererea <ArrowUpRight size={20} aria-hidden="true" /></Link></div>
       </section>
     </main>
   </>;

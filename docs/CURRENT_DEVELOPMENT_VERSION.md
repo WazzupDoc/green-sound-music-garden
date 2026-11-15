@@ -1,3 +1,6 @@
+## V129 — About production score and quote funnel (DRAFT; QA pending)
+Branch `design/v129-about-production-route-brief` stacked on V128 PR #128. `/despre-noi` production list now has a connecting editorial score/rail, alternating typographic rhythm, short practical introduction and a closing Contact CTA linked directly to `#contact-form-title`. Original images retained; no homepage, dependencies, backend or production changes. CI exact-head, TypeScript/SSR/Vitest, Chromium six-width and before/after 390/1440 screenshots NOT verified. Next: browser proof, then footer.
+
 ## V128 — Event quote CTA direct form anchor (DRAFT; QA pending)
 Branch `fix/v128-event-quote-direct-form-anchor` stacked on V127. `/evenimente` event-specific quote actions now include `#contact-form-title` so users arrive at the actual Contact form area, not the top intro. The target heading is SSR-rendered, focusable with `tabIndex=-1` and `scroll-mt-28`; ClientOnly form behavior and allowlisted event prefill are unchanged. No assets/dependencies/main changes. Chromium 390/1440 before/after, six-width, TS/SSR/Vitest and exact-head CI not yet verified.
 

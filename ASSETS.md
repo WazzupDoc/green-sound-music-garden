@@ -1,3 +1,6 @@
+## V129 — 2026-11-15
+No new external media, font, icon, library or copied design. Existing `images.scena` and `images.dj` retained unchanged. Production-score rail is original CSS geometry; no external license/attribution needed.
+
 ## V128 — 2026-11-15
 No new media, fonts, SVGs, icon packs or external code. Existing company media unchanged. Native URL fragment and existing Tailwind utility only.
 
