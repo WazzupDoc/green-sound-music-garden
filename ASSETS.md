@@ -1,3 +1,6 @@
+## V127 / 2026-11-15
+No new image, video, font, icon, asset, library or third-party code. Existing authorized event images and Lucide icons unchanged. Native CSS/React edits authored for project.
+
 ## V126 — 2026-11-15
 No new assets, photographs, fonts, music, logos, icons or dependencies. Existing event imagery and existing Lucide ArrowUpRight reused. CTA layout and CSS authored in project; no external code copied.
 
