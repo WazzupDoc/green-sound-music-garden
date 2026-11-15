@@ -1,3 +1,8 @@
+
+## V130 / 2026-11-15 — Footer conversion handoff
+| Area | Defect | Change | QA evidence | Next |
+| Footer | Global primary CTA sent visitors to top of long Contact page | Native router hash targets SSR heading `#contact-form-title`; copy now describes preparing the brief rather than implying automatic messaging | Browser before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI pending; NOT visual-validated | Footer browser verification, then portfolio video playback |
+
 ## V129 / 2026-11-15 — About / production timeline
 | Area | Priority | Observed source issue | Change | Visual evidence | QA | Next |
 |---|---|---|---|---|---|---|
