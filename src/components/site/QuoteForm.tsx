@@ -372,13 +372,16 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
 
       <div className="md:col-span-2">
-        <label className="flex items-start gap-3 text-sm text-foreground/85">
-          <input type="checkbox" className="mt-1 size-4 accent-primary" aria-invalid={!!errors.consent} aria-describedby={errors.consent ? "q-consent-err" : undefined} {...register("consent")} />
-          <span>
-            Sunt de acord ca Green Sound Music să folosească aceste date doar pentru a-mi răspunde la cerere. Detalii în{" "}
-            <Link to="/confidentialitate" className="text-primary underline underline-offset-4">politica de confidențialitate</Link>.
-          </span>
-        </label>
+        <div className="flex items-start gap-3 text-sm text-foreground/85">
+          <input id="q-consent" type="checkbox" className="mt-1 size-4 shrink-0 accent-primary" aria-invalid={!!errors.consent} aria-describedby={errors.consent ? "q-consent-err" : undefined} {...register("consent")} />
+          <div>
+            <label htmlFor="q-consent" className="cursor-pointer">
+              Sunt de acord ca Green Sound Music să folosească aceste date doar pentru a-mi răspunde la cerere.
+            </label>{" "}
+            Detalii în{" "}
+            <Link to="/confidentialitate" className="text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">politica de confidențialitate</Link>.
+          </div>
+        </div>
         <FieldError id="q-consent-err" msg={errors.consent?.message} />
       </div>
 
