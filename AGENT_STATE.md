@@ -390,3 +390,6 @@ Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last che
 - Area: hero stage decoration (after V71 route restoration). Added CSS Lite/reduced-motion gate for animated beams, rings, pointer and image transitions; real hero image remains. New source-level Vitest guard. No packages or external media.
 - Rotation matrix: hero = V72 pending browser verification; photographs = V70; next = navigation/mobile menu keyboard and Escape, then CTA, films, Contact, SEO.
 - V71 PR #65 reported mergeable=true but exact-head PR workflow query returned zero runs, **not** CI success. PR #19 mergeable=false. No TypeScript/SSR/Chromium run confirmed; no main merge or deployment.
+
+## 2026-11-15 V134 — Portfolio photo keyboard (draft, QA pending)
+Zone: /portofoliu photo dialog. Home/End now jump to first/last photo within visible filter, alongside arrows and swipe. Pending: Chromium 390/1440 before/after, 360/430/768/1920, keyboard focus, TypeScript, SSR, Vitest, gzip and exact-head CI. Next rotation: film player browser QA and filter/deep-link regression. Main untouched.
