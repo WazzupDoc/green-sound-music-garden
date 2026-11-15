@@ -1,3 +1,10 @@
+## 2026-11-15 — V127 event-index interaction (references, not copied code)
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html — focus indicators must be perceivable; adapted a photo outline to connect the active event CTA with its imagery while preserving existing link outline.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/:has — relational selector can style event image from descendant CTA focus/hover; authored project-specific CSS, no package or copied implementation.
+- https://www.awwwards.com/websites/music-sound/ — editorial inspiration only; no media, CSS, branding or layouts copied; individual site screenshots not accessible in this run.
+- https://webflow.com/made-in-webflow — broad editorial interaction reference only; no template/code/media copied.
+- Rejected: making the photo a duplicate clickable link (adds competing keyboard targets), perpetual glow, autoplay or JS animation. No dependency/license needed for native CSS.
+
 ## 2026-11-15 — V126 event index CTA hierarchy
 - https://www.awwwards.com/websites/music-sound/ — editorial art direction for music-oriented websites; reference category for deliberate hierarchy rather than symmetric cards. Original CSS/action markup; no copied code/assets; no license required for independently written code.
 - https://webflow.com/blog/website-navigation — reference for clear navigation and distinct visitor intents; adapted dual actions (explore details versus request a quote), without importing Webflow code/templates/assets.

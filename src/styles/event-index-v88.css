@@ -38,3 +38,20 @@
 .rs-events-index .gs-event-index__brief-link:focus-visible{outline:3px solid #246943;outline-offset:4px}
 @media(max-width:700px){.rs-events-index .gs-event-index__actions{align-items:stretch;gap:.75rem}.rs-events-index .gs-event-index__brief-link{width:100%}}
 @media(prefers-reduced-motion:reduce){.rs-events-index .gs-event-index__brief-link{transition:none;transform:none!important}}
+
+/* V127 — editorial row acts as one stage cue: both decisions activate the photo.
+   Focus is visibly tied to the actual image without making the image a fake link. */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ .rs-events-index .rs-events-index__row:has(.gs-event-index__brief-link:hover) .rs-events-index__image img{transform:scale(1.035)}
+}
+.rs-events-index .rs-events-index__row:has(.gs-event-index__actions a:focus-visible) .rs-events-index__image{
+ outline:3px solid #276f43;outline-offset:5px;
+}
+.rs-events-index .gs-event-index__brief-link:active{transform:translateY(0)}
+@media(max-width:700px){
+ .rs-events-index .gs-event-index__actions .rs-inline-link{justify-content:space-between;padding-inline:.25rem;min-height:48px}
+ .rs-events-index .gs-event-index__brief-link{min-height:52px}
+}
+@media(prefers-reduced-motion:reduce){
+ .rs-events-index .rs-events-index__row .rs-events-index__image img{transform:none!important}
+}

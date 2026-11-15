@@ -1,3 +1,6 @@
+## V127 — Event index contextual CTA focus / 2026-11-15 (draft)
+Branch `design/v127-event-index-contextual-cta-focus` stacked on V126. Event-specific quote action accessible label; both action focus states visually connect to event photo; hover responds to either CTA; mobile tap targets strengthened. No assets/dependencies/homepage changes. CI, browser screenshots and test suite not verified. Main untouched.
+
 ## V126 — Event index editorial conversion CTA / 2026-11-15
 Branch `design/v126-events-direct-brief-actions` stacked on V125. Each existing event chapter now provides a second, visually differentiated CTA that opens `/contact` with its actual event form label URL-encoded; existing event-detail link remains. CSS includes mobile full-width, focus visible and reduced-motion. No assets or dependencies. CI exact-head, TS/SSR/Vitest and browser screenshots 390/1440 plus other widths pending; no main/deploy changes.
 
