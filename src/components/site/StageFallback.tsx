@@ -12,7 +12,9 @@ export function StageFallback({ variant, onRetry }: { variant: "missing" | "erro
         <h1 id="rs-404-title">{missing ? "Pagina căutată nu există." : "Am pierdut legătura cu pagina."}</h1>
         <p>{missing
           ? "Adresa poate fi greșită sau pagina a fost mutată. Poți explora serviciile și evenimentele sau ne poți contacta."
-          : "Reîncearcă încărcarea. Dacă problema continuă, ne poți contacta direct."}</p>
+          : onRetry
+            ? "Poți încerca din nou încărcarea. Dacă problema continuă, ne poți contacta direct."
+            : "Pagina nu este disponibilă momentan. Poți reveni acasă sau ne poți contacta direct."}</p>
         <div className="rs-404__actions">
           {missing
             ? <Link to="/servicii" className="rs-button rs-button--chalk">Vezi serviciile <ArrowUpRight size={19} aria-hidden="true" /></Link>

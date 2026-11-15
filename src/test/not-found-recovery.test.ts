@@ -16,6 +16,8 @@ describe("404 recovery navigation", () => {
     expect(source).toContain("missing && (");
     expect(source).toContain("onRetry ? <button");
     expect(source).toContain("onClick={onRetry}");
+    expect(source).toContain('onRetry\n            ? "Poți încerca din nou încărcarea.');
+    expect(source).toContain('Pagina nu este disponibilă momentan. Poți reveni acasă');
     expect(source).toContain('to="/"');
   });
 });
