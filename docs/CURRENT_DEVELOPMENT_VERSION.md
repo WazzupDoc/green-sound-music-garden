@@ -1,3 +1,6 @@
+## V136 — Photo deep-link focus provenance (DRAFT; QA pending)
+Branch `fix/v136-portfolio-dialog-focus-origin` stacked on V135. On direct photo URL there is no originating thumbnail: closing the dialog focuses the gallery heading instead of assuming the photo thumbnail initiated it. A clicked thumbnail still receives focus on close after image navigation. Code SHA `cccb5656dbdbd018a9dd211ed7d4bf33c4d91e5f`. No assets, dependencies or main changes. TypeScript, SSR, Vitest, gzip, Chromium six widths, before/after screenshots and exact-head CI unverified. Next: real-browser keyboard/deep-link QA.
+
 ## V133 — Portfolio selected-film feedback (DRAFT; QA pending)
 Branch `design/v133-portfolio-film-selection-feedback` stacked on V132. Shows selected film title and position within active category as visible polite status; player stays click-to-play. Code SHA `741bf4cf0981d72b31c0ab24480948dbd0922af9`. TypeScript/SSR/Vitest, Chromium 390/1440 before/after and other widths, gzip and exact-head CI pending. No main/deploy change.
 
