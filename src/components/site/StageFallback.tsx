@@ -21,6 +21,11 @@ export function StageFallback({ variant, onRetry }: { variant: "missing" | "erro
             : onRetry ? <button type="button" onClick={onRetry} className="rs-button rs-button--chalk"><RotateCcw size={19} aria-hidden="true" /> Reîncearcă</button> : null}
           <Link to="/" className="rs-button rs-button--plain">Înapoi acasă</Link>
         </div>
+        {!missing && (
+          <nav aria-label="Contact în caz de eroare" className="mt-6 text-base">
+            <Link to="/contact" hash="contact-form-title" className="link-underline">Contactează echipa Green Sound <ArrowUpRight size={16} aria-hidden="true" className="inline-block" /></Link>
+          </nav>
+        )}
         {missing && (
           <nav aria-label="Alte pagini utile" className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-base">
             <Link to="/evenimente" className="link-underline">Tipuri de evenimente</Link>
