@@ -1,3 +1,6 @@
+## V147 / 2026-11-15
+W3C G201 https://www.w3.org/WAI/WCAG21/Techniques/general/G201 : indicate external new-tab navigation visibly and to assistive technology. Adaptation: own arrow and Romanian accessible text, no copied code or assets. W3C G200 https://www.w3.org/WAI/WCAG21/Techniques/general/G200 : avoid unnecessary new windows. Rejected new animation and external dependencies. Browser QA pending.
+
 ## 2026-11-15 — V146 / 404 information architecture
 - Existing Green Sound source audit: `src/components/site/StageFallback.tsx` offered a generic Contact pitch for missing routes. Adapted its own recovery information architecture, not third-party UI code.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — explicit link purposes; applied descriptive service/event/quote labels. License: guidance only, no source code copied.
