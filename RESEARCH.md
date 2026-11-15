@@ -1,3 +1,6 @@
+## 2026-11-15 — V138 touch cancellation
+References: https://developer.mozilla.org/en-US/docs/Web/API/Element/touchcancel_event and https://developer.mozilla.org/en-US/docs/Web/API/Touch_events . Adaptation: own React event guards clear swipe origin on cancelled or multi-touch interactions; no third-party code or assets, no dependency. Rejected: intercepting default touch scrolling and gesture libraries (unnecessary complexity and accessibility risk). Visual/interaction QA pending.
+
 ## 2026-11-15 — Portfolio touch gesture experiment V137
 Reference: https://developer.mozilla.org/en-US/docs/Web/API/Touch_events — touch coordinate handling and gesture tracking (documentation, no code copied). Original implementation: compare horizontal and vertical displacement before switching photo; vertical scroll remains available. Alternative rejected: swipe on absolute X displacement alone, which misfires on diagonal vertical scroll. No external code, assets or packages integrated. Browser validation pending.
 
