@@ -1,3 +1,10 @@
+## 2026-11-15 — V146 / 404 information architecture
+- Existing Green Sound source audit: `src/components/site/StageFallback.tsx` offered a generic Contact pitch for missing routes. Adapted its own recovery information architecture, not third-party UI code.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — explicit link purposes; applied descriptive service/event/quote labels. License: guidance only, no source code copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/404 — missing-route semantics must retain HTTP 404. Current component alone cannot prove SSR status; verify server response before release.
+- Rejected: adding a site-wide search field without a working index/backend; adding another homepage CTA; using generated event imagery.
+- No packages, fonts, external assets or tracking introduced. No measured conversion or performance claims. Browser screenshots and exact-head CI still pending.
+
 ## 2026-11-15 — Mobile conversion affordances (V145)
 - [WCAG 2.2 target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html): independent target dimensions and spacing matter on touch devices. Adapted: minimum 48px height in existing mobile action bar; actual hitboxes require browser confirmation.
 - [WCAG 2.2 focus visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html): keyboard location must be visually apparent. Adapted: explicit focus-visible outlines on existing three actions.
