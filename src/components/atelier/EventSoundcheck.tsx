@@ -63,6 +63,10 @@ export function EventSoundcheck() {
             <fieldset className="soundcheck__fieldset soundcheck__fieldset--services">
               <legend className="soundcheck__step"><span>02</span> CE FACE PARTE DIN ATMOSFERĂ?</legend>
               <p className="soundcheck__hint">Am pornit de la serviciile recomandate pentru {event.name.toLowerCase()}. Le poți modifica oricând.</p>
+              <button type="button" className="soundcheck__reset" onClick={() => setSelected(suggestedFor(eventSlug))}
+                disabled={selected.length === suggestedFor(eventSlug).length && suggestedFor(eventSlug).every((slug) => selected.includes(slug))}>
+                Reia selecția recomandată pentru {event.name.toLowerCase()}
+              </button>
               <div className="soundcheck__service-grid">
                 {eventServices.map((service, index) => {
                   const checked = selected.includes(service.slug);
