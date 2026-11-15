@@ -34,8 +34,8 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const nextPhoto = selectedIndex >= 0 ? frames[(selectedIndex + 1) % frames.length] : undefined;
   const pointerX = useRef<number | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
-  // Remember the thumbnail that opened the dialog, not the last image reached by navigation.
-  if (selected && lastPhotoRef.current === null) lastPhotoRef.current = selected.id;
+  // Only a user-activated thumbnail establishes a focus-return target.
+  // Direct URLs have no originating thumbnail: close returns to the gallery heading.
   const change = (id?:string) => {
     void navigate({to:"/portofoliu",search:id?{photo:id}:{},replace:true,resetScroll:false});
   };
@@ -80,6 +80,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           {frames.map((frame,index)=>(
             <Link key={frame.id} to="/portofoliu" search={{photo:frame.id}}
               data-photo-id={frame.id}
+              onClick={()=>{lastPhotoRef.current=frame.id}}
               className={`rs-gallery__frame rs-gallery__frame--${index%3}`}
               aria-label={`Deschide fotografia: ${frame.title}`}>
               <BeamPhoto image={frame.image} className="rs-gallery__media" transitionName={`gs-photo-${frame.id}`} />
