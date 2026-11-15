@@ -1,3 +1,6 @@
+## 2026-11-15 — Film archive selection feedback
+Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status updates should be programmatically determinable without focus theft. Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite live region for nonurgent status. Original adaptation: textual selection/position inside existing archive heading; no copied code or assets, no new license dependency. Rejected: animated progress indicators and auto-play on selection (unnecessary motion and user control risk). Visual browser verification pending.
+
 ## 2026-11-15 / V132 Contact error recovery
 Implementation uses existing React Hook Form `handleSubmit` invalid callback and `setFocus`, with native focus for controlled service checkboxes. No external code, assets or dependency introduced. Browser and assistive-technology verification pending; avoid claiming conformance until tested. Reference: https://react-hook-form.com/docs/useform/handlesubmit and https://react-hook-form.com/docs/useform/setfocus . Rejected: auto-scroll-only error banner (does not transfer keyboard focus).
 
