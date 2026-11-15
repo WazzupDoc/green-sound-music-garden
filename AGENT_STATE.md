@@ -1,3 +1,6 @@
+## V132 / 2026-11-15 — Contact invalid-submit focus
+Single zone: Contact validation. On invalid submit, move focus to first invalid registered field, or first enabled service checkbox for Controller-managed service group. This improves error recovery without new UI, media, dependencies or backend. Source SHA a95249a0449a0dbde157b0d8847a736a9d206235. Browser keyboard verification, six widths, TS/SSR/Vitest/gzip, screenshot and CI exact-head pending. Main untouched. Next: portfolio film player browser audit.
+
 
 ## V131 / 2026-11-15 — Contact service fieldset accessibility
 Area: Contact / Guided Event Brief. Source defect: service fieldset aria-describedby always included q-services-err although FieldError is absent before validation. Change: reference the error ID only when errors.services exists, while retaining permanent q-services-guide guidance. No layout, assets, packages, backend or homepage changes. Source commit 7283d479c3c85b27bd22d56c260caed22b308603. QA pending: browser DOM/keyboard, six widths, TypeScript/SSR/Vitest/gzip, CI exact-head and before/after screenshots. Next: portfolio film player actual browser audit. Main untouched.

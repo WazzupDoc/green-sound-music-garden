@@ -1,3 +1,6 @@
+## V132 — Contact invalid-submit focus (DRAFT; QA pending)
+Branch `fix/v132-contact-invalid-submit-focus` stacked on V131. Invalid quote submit focuses the first erroneous field; service group uses first enabled checkbox because Controller does not expose a registered ref. No auto-send or new dependencies. Source SHA a95249a0449a0dbde157b0d8847a736a9d206235. Exact-head CI, TS/SSR/Vitest, Chromium and screenshots pending. Main unchanged.
+
 
 ## V131 — Contact services aria-describedby (DRAFT, QA pending)
 Branch `fix/v131-contact-services-error-reference` stacked on V130 PR #130. Fixes dangling q-services-err ID on service fieldset until a validation error exists; permanent guidance remains associated. Source SHA `7283d479c3c85b27bd22d56c260caed22b308603`. No visual redesign claim. Real browser screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI unverified. Main/production unchanged.
