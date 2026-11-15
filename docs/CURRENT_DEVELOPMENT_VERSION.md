@@ -1,3 +1,6 @@
+## V140 — Contact optional date clarity (draft, 2026-11-15)
+Branch `fix/v140-contact-optional-date-clarity` stacked on V139. Date input now explicitly says optional, has accessible explanatory text, and uses light/dark native date-picker color scheme. Code commit `9bb9d99dafe4a53d4ebad2fcbfa520bd541fa713`. No backend, dependency, asset, homepage or production changes. Browser before/after screenshots, six-width regression, TypeScript/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: get actual browser preview/captures and check Contact form keyboard/validation.
+
 ## V139 draft PR #139 branch fix/v139-contact-consent-link-separation. Consent privacy link is no longer nested in checkbox label. QA not verified; no main/deploy.
 
 ## V138 — Portfolio cancelled/multitouch gesture guard (DRAFT)

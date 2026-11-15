@@ -1,3 +1,6 @@
+## V140 — Contact date field (2026-11-15, DRAFT)
+Area: Contact form. Observed code issue: date optional in Zod schema but label did not indicate optional; native picker forced dark color scheme in light mode. Change: explicit optional label, contextual help linked through aria-describedby (also alongside error ID), theme-aware native picker. Source SHA `9bb9d99dafe4a53d4ebad2fcbfa520bd541fa713`; screenshots before/after: unavailable (no repository network in container); TypeScript, SSR, Vitest, gzip and exact-head CI unverified. No measured visual scores. Next area: Events interior UX after Contact QA. No main/deploy.
+
 ## V139 / Contact: privacy link separated from checkbox label; keyboard targets independent. PR #139; QA screenshots/CI pending. Next: Contact keyboard verification, then Events.
 
 ## V138 / 2026-11-15 — Portfolio gesture cancellation (DRAFT)

@@ -1,3 +1,8 @@
+## 2026-11-15 — Contact date control
+- MDN `color-scheme`: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme — native form control appearance should follow actual theme; adapted as theme-specific CSS utility; no external code copied or new dependency.
+- W3C WAI form instructions: https://www.w3.org/WAI/tutorials/forms/instructions/ — explicitly describe optional fields and associate instructions; adapted through visible text and aria-describedby. No external assets/code.
+- Rejected: JS date picker dependency, custom calendar overlay (complexity, size, focus management). Screenshot comparison and runtime validation remain pending.
+
 ## 2026-11-15 V139 Contact: HTML label association uses htmlFor/id, with a separate privacy link to avoid nested interactive elements. Reference: https://html.spec.whatwg.org/multipage/forms.html#the-label-element (labelable controls; interactive descendants). No external code/assets/dependencies copied. Rejected: JS click suppression inside label, due to unnecessary complexity.
 
 ## 2026-11-15 — V138 touch cancellation
