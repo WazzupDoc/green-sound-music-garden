@@ -1,3 +1,6 @@
+## V136 / 2026-11-15 — Portfolio deep-link dialog focus origin (DRAFT)
+Area: /portofoliu photo dialog. Corrected focus-return provenance: only a clicked thumbnail establishes an origin; a photo opened from a direct URL falls back to the gallery heading on close. Preserves arrow/Home/End navigation and original-thumbnail return. Source commit `cccb5656dbdbd018a9dd211ed7d4bf33c4d91e5f`. No new dependencies, assets, backend or homepage sections. QA UNVERIFIED: real Chromium 390/1440 before-after and all six widths, keyboard focus, TypeScript, SSR, Vitest, gzip and exact-head CI. Main untouched. Next: browser QA of photo modal and film archive, then Contact flow.
+
 ## V133 / 2026-11-15 — Portfolio film selection feedback
 Area: /portofoliu film archive. Adds a visible, polite live status with the selected video title and its ordinal position in the filtered list. No autoplay, new media, dependency or backend. Code commit 741bf4cf0981d72b31c0ab24480948dbd0922af9. QA pending: Chromium before/after 390/1440 and six widths, keyboard, TypeScript, SSR, Vitest, gzip, CI exact-head. Next: film player and URL/category real-browser verification. Main untouched.
 
