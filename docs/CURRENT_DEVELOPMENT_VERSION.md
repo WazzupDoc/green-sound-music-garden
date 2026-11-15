@@ -689,3 +689,6 @@ Review PR #24 (draft); production remains unchanged.
 - Validation pending GitHub Actions for this exact V39 head: strict TypeScript, SSR build, Vitest, gzip budgets, Chromium at 360/390/430/768/1440/1920. Do not merge or deploy until verified.
 - SEO backlog: (1) confirm real service geography and original copy with owner; (2) inspect Search Console after connected and authorized; (3) test actual live SERP/social previews only after approved deployment. No claims of first-page rankings.
 - Release safety: `main` and production unchanged. Before any future `main` integration, verify CI/CD deploy triggers, create/verify rollback tag, and secure explicit production authorization if merge triggers deployment.
+
+## V134 — Portfolio photo Home/End (DRAFT; QA pending)
+Branch `fix/v134-photo-dialog-home-end-keyboard` stacked on V133. Photo dialog supports Home/End to reach first/last visible photo, with updated keyboard hint. No new dependencies or media. CI exact-head, TypeScript/SSR/Vitest/gzip and six-width Chromium before/after screenshots not verified. Do not merge or publish. Next: browser QA of photo keyboard and film deep-link.
