@@ -1,3 +1,6 @@
+## V150 / 2026-11-16 — Neutral error heading (DRAFT)
+Branch `fix/v150-error-fallback-neutral-heading` stacked on V149. Generic render errors no longer claim a network connection was lost. Regression source assertion updated; no assets/dependencies/homepage/main/deploy. CI exact-head, TS, SSR, Vitest, gzip, 390/1440 browser before/after and six widths NOT VERIFIED.
+
 ## V149 / 2026-11-15 — Error fallback copy matches real actions (DRAFT)
 Branch `fix/v149-error-recovery-copy-truthfulness` stacked on V148. When retry handler exists, guidance offers retry; otherwise offers Home/phone, avoiding impossible instructions. Source regression assertion; CI exact-head, TypeScript, SSR, Vitest, gzip, Chromium before/after 390/1440 and six widths NOT VERIFIED. No main/deploy.
 
