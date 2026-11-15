@@ -413,3 +413,6 @@ Zone: /portofoliu photo dialog. Home/End now jump to first/last photo within vis
 
 ## 2026-11-15 V135 — Portfolio dialog focus origin
 Area: /portofoliu photo modal. Defect: after Arrow/Home/End navigation, closing modal focused the last viewed thumbnail rather than the link used to open it. Fix: retain original photo id through modal session, restore that thumbnail on close (heading fallback), then clear session ref. Source-only verification; Chromium screenshots, keyboard/Escape and exact-head CI still pending. Next zone: film archive keyboard/deep-link. No main change.
+
+### 2026-11-15 V142 — Studio detail rotation
+Area: `/studio-inregistrari` preparation heading. Added a studio-specific typographic title and original static recording-signal SVG; all other service detail headings unchanged. Files: `src/components/site/ServicePage.tsx`, `src/styles.css`. Visual difference expected only in Studio heading; Chromium before/after, accessibility and performance unverified. Next rotation: footer. No main/deploy changes.
