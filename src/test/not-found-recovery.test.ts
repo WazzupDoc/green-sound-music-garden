@@ -14,6 +14,8 @@ describe("404 recovery navigation", () => {
 
   it("keeps the error retry separate from not-found navigation", () => {
     expect(source).toContain("missing && (");
+    expect(source).toContain("Pagina nu poate fi afișată.");
+    expect(source).not.toContain("Am pierdut legătura cu pagina.");
     expect(source).toContain("onRetry ? <button");
     expect(source).toContain("onClick={onRetry}");
     expect(source).toContain('onRetry\n            ? "Poți încerca din nou încărcarea.');
