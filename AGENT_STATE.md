@@ -1,3 +1,6 @@
+## V141 / Events Soundcheck (2026-11-15, draft)
+Area: `/evenimente` configurator. Users who change multiple services can now restore the event-specific recommended selection with one explicit, keyboard-accessible, 44px-minimum control. Disabled when already matching recommendations. Source commit `fa6ecf2c9c0001d0f2321b54b197d6e3f9f6412c`. Browser before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED; no visual approval. Next: browser proof and Events responsive audit; then Studio. No main/deploy.
+
 ## V140 — Contact date field (2026-11-15, DRAFT)
 Area: Contact form. Observed code issue: date optional in Zod schema but label did not indicate optional; native picker forced dark color scheme in light mode. Change: explicit optional label, contextual help linked through aria-describedby (also alongside error ID), theme-aware native picker. Source SHA `9bb9d99dafe4a53d4ebad2fcbfa520bd541fa713`; screenshots before/after: unavailable (no repository network in container); TypeScript, SSR, Vitest, gzip and exact-head CI unverified. No measured visual scores. Next area: Events interior UX after Contact QA. No main/deploy.
 
