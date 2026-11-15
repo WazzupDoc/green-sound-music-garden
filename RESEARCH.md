@@ -1,3 +1,9 @@
+
+## 2026-11-15 — Footer → Contact navigation
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page — native fragment links to a stable document ID; applied via existing TanStack router Link `hash` prop, no external code copied.
+- https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — descriptive action text; applied explicit brief-preparation wording, not a promise of automatic submission.
+- Rejected: adding a second embedded form or a new animation in footer; duplicates Contact and adds weight. No new dependency/assets; licensing N/A for original text/code.
+
 ## 2026-11-15 — V129 About editorial production score
 - [Awwwards Music & Sound](https://www.awwwards.com/websites/music-sound/): reference category for distinctive music-site editorial pacing; no external assets or code copied.
 - [Webflow portfolio inspiration](https://webflow.com/made-in-webflow/portfolio): reference for large expressive type and asymmetric section hierarchy; no code or branding copied.

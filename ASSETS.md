@@ -1,3 +1,7 @@
+
+## V130 / 2026-11-15
+No new assets, photos, fonts, icons, audio or third-party code. Existing footer visuals and first-party media unchanged.
+
 ## V129 — 2026-11-15
 No new external media, font, icon, library or copied design. Existing `images.scena` and `images.dj` retained unchanged. Production-score rail is original CSS geometry; no external license/attribution needed.
 
