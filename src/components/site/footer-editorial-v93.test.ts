@@ -6,6 +6,11 @@ describe("V93 footer editorial conversion without regression",()=>{
 it("keeps existing navigations, real channels, Light Desk and privacy",()=>{
 for(const token of ["navEvents.map","navServices.map","business.phoneHref","business.email","business.socials.map","<LightDesk />", 'to="/confidentialitate"'])expect(footer).toContain(token);
 });
+it("exposes three named footer navigation landmarks without altering their links",()=>{
+for(const label of ["Evenimente","Servicii","Green Sound"])expect(footer).toContain(`<nav aria-label="${label}">`);
+expect((footer.match(/<nav aria-label=/g)||[]).length).toBe(3);
+expect((footer.match(/<\/nav>/g)||[]).length).toBe(3);
+});
 it("adds a single meaningful contact action and server-inlined design",()=>{
 expect(footer).toContain('to="/contact" hash="contact-form-title" className="gs-footer-v93__cta"');
 expect(footer).toContain('<style>{footerCss}</style>');
