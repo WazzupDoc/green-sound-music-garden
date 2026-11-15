@@ -1,3 +1,6 @@
+## V133 — Portfolio selected-film feedback (DRAFT; QA pending)
+Branch `design/v133-portfolio-film-selection-feedback` stacked on V132. Shows selected film title and position within active category as visible polite status; player stays click-to-play. Code SHA `741bf4cf0981d72b31c0ab24480948dbd0922af9`. TypeScript/SSR/Vitest, Chromium 390/1440 before/after and other widths, gzip and exact-head CI pending. No main/deploy change.
+
 ## V132 — Contact invalid-submit focus (DRAFT; QA pending)
 Branch `fix/v132-contact-invalid-submit-focus` stacked on V131. Invalid quote submit focuses the first erroneous field; service group uses first enabled checkbox because Controller does not expose a registered ref. No auto-send or new dependencies. Source SHA a95249a0449a0dbde157b0d8847a736a9d206235. Exact-head CI, TS/SSR/Vitest, Chromium and screenshots pending. Main unchanged.
 
