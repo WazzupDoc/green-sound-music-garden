@@ -32,7 +32,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const selectedIndex = selected ? frames.findIndex(item => item.id === selected.id) : -1;
   const previousPhoto = selectedIndex >= 0 ? frames[(selectedIndex - 1 + frames.length) % frames.length] : undefined;
   const nextPhoto = selectedIndex >= 0 ? frames[(selectedIndex + 1) % frames.length] : undefined;
-  const pointerX = useRef<number | null>(null);
+  const touchOrigin = useRef<{x:number;y:number} | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
   // Only a user-activated thumbnail establishes a focus-return target.
   // Direct URLs have no originating thumbnail: close returns to the gallery heading.
@@ -107,13 +107,17 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           </DialogDescription>
           {selected && <>
             <div className="rs-photo-dialog__media"
-              onTouchStart={event=>{pointerX.current=event.touches[0]?.clientX??null}}
+              onTouchStart={event=>{const touch=event.touches[0];touchOrigin.current=touch?{x:touch.clientX,y:touch.clientY}:null}}
               onTouchEnd={event=>{
-                const end=event.changedTouches[0]?.clientX;
-                if(pointerX.current!==null && end!==undefined && Math.abs(end-pointerX.current)>55){
-                  step(end<pointerX.current?1:-1);
+                const end=event.changedTouches[0];
+                const origin=touchOrigin.current;
+                if(origin && end){
+                  const dx=end.clientX-origin.x;
+                  const dy=end.clientY-origin.y;
+                  // Vertical scrolling must not accidentally switch photographs.
+                  if(Math.abs(dx)>55 && Math.abs(dx)>Math.abs(dy)*1.5) step(dx<0?1:-1);
                 }
-                pointerX.current=null;
+                touchOrigin.current=null;
               }}>
               <img src={selected.image.src} width={selected.image.w} height={selected.image.h}
                 alt={selected.image.alt} decoding="async" />
