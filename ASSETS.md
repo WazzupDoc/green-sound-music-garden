@@ -1,3 +1,6 @@
+## V141 / 2026-11-15
+No new images, icons, fonts, audio, videos or third-party code. Native button + existing project CSS utilities only.
+
 ## 2026-11-15 V139: No new assets, media, fonts, icons or third-party code. Existing Lucide icons unchanged.
 
 ## V138 — 2026-11-15
