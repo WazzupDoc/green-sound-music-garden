@@ -1,3 +1,6 @@
+## V145 — Mobile conversion bar (DRAFT, 2026-11-15)
+Branch `fix/v145-mobile-action-bar-accessibility` stacked on V144. Mobile sticky bar now provides explicit focus-visible styles, descriptive accessible names, minimum target height and direct Contact form anchor. No homepage section, backend, package, asset or main changes. Chromium before/after 390/1440, six-width QA, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Next: verify mobile focus, fragment and bottom-bar overlap in real browser.
+
 ## V144 — Footer directory landmarks (DRAFT, 2026-11-15)
 Branch `fix/v144-footer-directory-landmarks` stacked on V143. Footer link directories now use three labelled native navigation landmarks. No visual layout changes, new dependencies or assets; test asserts landmark count and closure. CI exact-head, browser before/after and six widths unverified. Main/production unchanged. Next: Contact fragment focus and real browser QA.
 

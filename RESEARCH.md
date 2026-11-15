@@ -1,3 +1,9 @@
+## 2026-11-15 — Mobile conversion affordances (V145)
+- [WCAG 2.2 target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html): independent target dimensions and spacing matter on touch devices. Adapted: minimum 48px height in existing mobile action bar; actual hitboxes require browser confirmation.
+- [WCAG 2.2 focus visible](https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html): keyboard location must be visually apparent. Adapted: explicit focus-visible outlines on existing three actions.
+- [Awwwards music and sound](https://www.awwwards.com/websites/music-sound/) and [Webflow accessibility](https://webflow.com/accessibility): reference collections only, no code/assets/design copied. Rejected animated sticky bar: increases distraction and motion cost without improving task completion.
+- Original Tailwind utility edits only; no external license/dependency or media introduced. Sources listed for review; no measured conversion impact.
+
 ## 2026-11-15 — Event configurator reset
 - W3C WAI button pattern: https://www.w3.org/WAI/ARIA/apg/patterns/button/ — use a native button for an immediate local action, not a link or synthetic control. Adapted via `type=button`, disabled state, visible focus.
 - MDN disabled attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled — disabled native buttons cannot be activated or focused when reset is unnecessary; avoids misleading actions.
