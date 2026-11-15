@@ -1,3 +1,6 @@
+## V149 / 2026-11-15 — Error fallback truthful recovery copy (DRAFT)
+Area: error fallback only. Source mismatch: V148 hides retry without onRetry, but instructions still said to retry. Copy now distinguishes recoverable and non-retryable errors, retains Home and telephone. Source regression assertion added. Browser before/after 390/1440, six-width QA, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. No visual approval, no main/deploy. Next: real browser 404/500, then Events interior.
+
 ## V148 / Error fallback action integrity (2026-11-15, DRAFT)
 | Area | Source defect | Change | Browser 390/1440 | QA | Next |
 |---|---|---|---|---|---|
