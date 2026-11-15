@@ -1,3 +1,6 @@
+## 2026-11-15 — Portfolio touch gesture experiment V137
+Reference: https://developer.mozilla.org/en-US/docs/Web/API/Touch_events — touch coordinate handling and gesture tracking (documentation, no code copied). Original implementation: compare horizontal and vertical displacement before switching photo; vertical scroll remains available. Alternative rejected: swipe on absolute X displacement alone, which misfires on diagonal vertical scroll. No external code, assets or packages integrated. Browser validation pending.
+
 ## 2026-11-15 — Film archive selection feedback
 Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status updates should be programmatically determinable without focus theft. Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite live region for nonurgent status. Original adaptation: textual selection/position inside existing archive heading; no copied code or assets, no new license dependency. Rejected: animated progress indicators and auto-play on selection (unnecessary motion and user control risk). Visual browser verification pending.
 

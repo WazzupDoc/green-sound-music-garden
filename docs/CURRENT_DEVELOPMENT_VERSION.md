@@ -1,3 +1,6 @@
+## V137 — Photo swipe direction guard (DRAFT; QA pending)
+PR #137 branch `fix/v137-photo-swipe-axis-guard` stacked on V136. Horizontal gesture guard prevents vertical dialog scrolling from advancing photos. Code SHA `d4111f6e8ad3c6cf744cced7c3d6d27cd8db4022`. No new assets/dependencies/homepage changes. Real-browser screenshots, touch gesture QA, TS/SSR/Vitest/gzip and exact-head CI not verified. Main unchanged.
+
 ## V136 — Photo deep-link focus provenance (DRAFT; QA pending)
 Branch `fix/v136-portfolio-dialog-focus-origin` stacked on V135. On direct photo URL there is no originating thumbnail: closing the dialog focuses the gallery heading instead of assuming the photo thumbnail initiated it. A clicked thumbnail still receives focus on close after image navigation. Code SHA `cccb5656dbdbd018a9dd211ed7d4bf33c4d91e5f`. No assets, dependencies or main changes. TypeScript, SSR, Vitest, gzip, Chromium six widths, before/after screenshots and exact-head CI unverified. Next: real-browser keyboard/deep-link QA.
 
