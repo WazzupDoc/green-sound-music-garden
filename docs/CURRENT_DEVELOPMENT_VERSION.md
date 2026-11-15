@@ -1,3 +1,6 @@
+## V149 / 2026-11-15 — Error fallback copy matches real actions (DRAFT)
+Branch `fix/v149-error-recovery-copy-truthfulness` stacked on V148. When retry handler exists, guidance offers retry; otherwise offers Home/phone, avoiding impossible instructions. Source regression assertion; CI exact-head, TypeScript, SSR, Vitest, gzip, Chromium before/after 390/1440 and six widths NOT VERIFIED. No main/deploy.
+
 ## V148 / 2026-11-15 — Error fallback retry guard (DRAFT)
 Branch `fix/v148-error-retry-guard` stacked on V147. Prevents displaying an inert `Reîncearcă` button if optional `onRetry` callback is not supplied; existing recovery routes preserved. Source test updated. Browser screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI UNVERIFIED. No main/deploy.
 
