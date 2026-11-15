@@ -1,3 +1,8 @@
+## 2026-11-16 / V150 — Error message accuracy
+- [MDN: ARIA alert role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role): assertive live announcements can be disruptive; rejected adding an automatic alert role to an already visible page heading.
+- [W3C WCAG 3.3.3 Error Suggestion](https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html): error guidance should identify realistic recovery paths; adapted by preserving conditional retry and real Home/phone routes.
+- Implementation: original copy only; no third-party code/assets, license not applicable. Rejected speculative network diagnosis and extra home widgets. Browser and CI verification pending.
+
 ## 2026-11-15 — V149 / Error recovery truthful instructions
 - Audited existing `StageFallback.tsx` on V148. When `onRetry` absent, a hidden retry action conflicted with always-visible instruction to retry. Adapted conditional text, no external code or assets.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html — preserve useful, consistent recovery paths. https://www.nngroup.com/articles/error-message-guidelines/ — specific and actionable error guidance. Design research only; no code copied or dependency added.
