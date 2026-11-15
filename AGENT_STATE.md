@@ -416,3 +416,9 @@ Area: /portofoliu photo modal. Defect: after Arrow/Home/End navigation, closing 
 
 ### 2026-11-15 V142 — Studio detail rotation
 Area: `/studio-inregistrari` preparation heading. Added a studio-specific typographic title and original static recording-signal SVG; all other service detail headings unchanged. Files: `src/components/site/ServicePage.tsx`, `src/styles.css`. Visual difference expected only in Studio heading; Chromium before/after, accessibility and performance unverified. Next rotation: footer. No main/deploy changes.
+
+## 2026-11-15 V143 — Footer audit / CI blocker
+- Selected area: footer Contact conversion CTA; real code already points to /contact#contact-form-title.
+- CI V142 failure: footer-editorial-v93.test.ts stale assertion (87 passed, 1 failed), run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43727508158.
+- V143 test updated to assert destination + hash, without changing UI. Chromium before/after screenshots unavailable; no visual redesign claim. V143 CI pending; main unchanged.
+- Next rotation: Contact hash scrolling and keyboard focus in real browser, footer desktop/mobile captures.
