@@ -1,3 +1,6 @@
+## V143 — Footer Contact anchor regression (DRAFT, 2026-11-15)
+CI V142 exact-head failed (run 43727508158): 1/88 tests failed because footer test expected a bare /contact link while actual footer correctly targets hash=contact-form-title. V143 updates the test assertion to preserve deep-link-to-form behavior; no production component or homepage change. Browser screenshots and V143 CI pending. Main untouched. Next: footer visual QA and Contact hash navigation.
+
 ## V142 — Studio editorial signal (DRAFT, 2026-11-15)
 Branch `design/v142-studio-session-timeline` stacked on V141. `/studio-inregistrari` now has a dedicated recording-inspired editorial title and original static waveform SVG in its preparation header; no audio playback, assets, dependencies or homepage changes. Browser before/after 390/1440, six-width regression, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Main/production unchanged. Next: Studio visual QA, then footer audit.
 

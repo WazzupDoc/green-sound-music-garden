@@ -374,3 +374,6 @@ https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal focus should ge
 
 ### 2026-11-15 — Studio recording-signal treatment
 Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path — native SVG path allows original scalable signal graphic; no third-party code/assets. Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/clamp — fluid spacing with bounded values. Adaptation: static original SVG path and responsive CSS in Studio service heading. Rejected: audio autoplay, canvas waveform animation and new dependencies because decorative motion would add cost and distract from booking.
+
+## 2026-11-15 — V143 footer Contact test maintenance
+- Evidence: GitHub Actions V142 https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43727508158; source SiteFooter.tsx and footer-editorial-v93.test.ts. Existing Contact CTA includes hash=contact-form-title, but old test asserted direct route without hash. No external design/code was incorporated, no new license/dependency/assets. Updated test matches intentional destination; UI/browser behavior remains to be tested. Reference for fragment navigation: https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment .
