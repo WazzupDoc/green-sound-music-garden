@@ -1,3 +1,9 @@
+## V146 / 404 recovery navigation (2026-11-15, DRAFT)
+| Area | Observed defect | Change | Browser before/after | Test/CI | Next |
+|---|---|---|---|---|---|
+| Not-found recovery | Primary action redirected straight to Contact, no routes to browse offerings; sales copy obscured missing URL | Clear missing-page explanation; Services primary action; Events and direct Contact brief links, home and phone retained; error retry unchanged | NOT captured; visual approval blocked | Added Vitest source guard; execution/TS/SSR/gzip/CI exact-head NOT verified | Real-browser 390/1440 and six-width 404/500 audit, then SEO/SSR HTTP status check |
+No homepage, new media/dependencies/backend, main or production change. Branch `fix/v146-not-found-recovery-navigation` stacked on V145.
+
 ## V145 / Mobile sticky conversion (2026-11-15, DRAFT)
 | Area | Source defect | Change | Visual QA | Functional QA | Next |
 |---|---|---|---|---|---|

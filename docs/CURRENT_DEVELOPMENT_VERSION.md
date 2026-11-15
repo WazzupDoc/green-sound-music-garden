@@ -1,3 +1,6 @@
+## V146 — Not-found recovery routes (DRAFT, 2026-11-15)
+Branch `fix/v146-not-found-recovery-navigation` stacked on V145. 404 copy now identifies the missing page, with direct real links to Services, Events and Contact brief plus existing Home/phone. Error retry remains isolated. Added `src/test/not-found-recovery.test.ts`. No homepage, new dependencies, media, backend or main changes. Real Chromium before/after 390/1440 and six widths, HTTP 404/SSR status, TS, Vitest, build, gzip and exact-head CI NOT VERIFIED. Next: actual 404 browser/HTTP QA and SEO audit.
+
 ## V145 — Mobile conversion bar (DRAFT, 2026-11-15)
 Branch `fix/v145-mobile-action-bar-accessibility` stacked on V144. Mobile sticky bar now provides explicit focus-visible styles, descriptive accessible names, minimum target height and direct Contact form anchor. No homepage section, backend, package, asset or main changes. Chromium before/after 390/1440, six-width QA, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Next: verify mobile focus, fragment and bottom-bar overlap in real browser.
 
