@@ -1,4 +1,7 @@
 
+## V131 / 2026-11-15
+No new images, videos, fonts, icons, external code, dependencies or licenses; accessibility-only source change.
+
 ## V130 / 2026-11-15
 No new assets, photos, fonts, icons, audio or third-party code. Existing footer visuals and first-party media unchanged.
 

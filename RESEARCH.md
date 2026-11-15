@@ -1,4 +1,9 @@
 
+## 2026-11-15 — Contact accessibility audit (V131)
+- WAI ARIA aria-describedby: https://www.w3.org/TR/wai-aria-1.2/#aria-describedby — referenced IDs should identify existing description nodes; applied conditionally to fieldset error. No external code copied or dependency added.
+- MDN aria-describedby: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby — permanent guidance remains associated; conditional validation message only when rendered. No external assets.
+- Rejected: adding duplicate error text permanently just to satisfy the ID, as it increases noise and risks contradictory feedback.
+
 ## 2026-11-15 — Footer → Contact navigation
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page — native fragment links to a stable document ID; applied via existing TanStack router Link `hash` prop, no external code copied.
 - https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — descriptive action text; applied explicit brief-preparation wording, not a promise of automatic submission.

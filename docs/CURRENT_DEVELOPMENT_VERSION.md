@@ -1,4 +1,7 @@
 
+## V131 — Contact services aria-describedby (DRAFT, QA pending)
+Branch `fix/v131-contact-services-error-reference` stacked on V130 PR #130. Fixes dangling q-services-err ID on service fieldset until a validation error exists; permanent guidance remains associated. Source SHA `7283d479c3c85b27bd22d56c260caed22b308603`. No visual redesign claim. Real browser screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI unverified. Main/production unchanged.
+
 ## V130 — Footer direct brief (DRAFT; QA pending)
 Branch `design/v130-footer-direct-brief` stacked on V129 PR #129. Footer primary CTA now lands on existing SSR Contact brief heading `#contact-form-title`, with clear action wording. No backend, media, dependencies or homepage sections. No real-browser screenshots, TS/SSR/Vitest or exact-head CI verified. Main and production unchanged.
 

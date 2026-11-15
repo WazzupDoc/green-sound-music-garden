@@ -1,4 +1,7 @@
 
+## V131 / 2026-11-15 — Contact service fieldset accessibility
+Area: Contact / Guided Event Brief. Source defect: service fieldset aria-describedby always included q-services-err although FieldError is absent before validation. Change: reference the error ID only when errors.services exists, while retaining permanent q-services-guide guidance. No layout, assets, packages, backend or homepage changes. Source commit 7283d479c3c85b27bd22d56c260caed22b308603. QA pending: browser DOM/keyboard, six widths, TypeScript/SSR/Vitest/gzip, CI exact-head and before/after screenshots. Next: portfolio film player actual browser audit. Main untouched.
+
 ## V130 / 2026-11-15 — Footer conversion handoff
 | Area | Defect | Change | QA evidence | Next |
 | Footer | Global primary CTA sent visitors to top of long Contact page | Native router hash targets SSR heading `#contact-form-title`; copy now describes preparing the brief rather than implying automatic messaging | Browser before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI pending; NOT visual-validated | Footer browser verification, then portfolio video playback |
