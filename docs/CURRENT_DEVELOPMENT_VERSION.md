@@ -1,3 +1,6 @@
+## V147 / 2026-11-15 — Footer social navigation (DRAFT)
+Branch fix/v147-footer-social-external-cue stacked on V146. Visible arrow and screen-reader new-tab cue on footer social links. Source test added; Chromium screenshots, six widths, TS/SSR/Vitest/gzip and exact-head CI unverified. No main/deploy.
+
 ## V146 — Not-found recovery routes (DRAFT, 2026-11-15)
 Branch `fix/v146-not-found-recovery-navigation` stacked on V145. 404 copy now identifies the missing page, with direct real links to Services, Events and Contact brief plus existing Home/phone. Error retry remains isolated. Added `src/test/not-found-recovery.test.ts`. No homepage, new dependencies, media, backend or main changes. Real Chromium before/after 390/1440 and six widths, HTTP 404/SSR status, TS, Vitest, build, gzip and exact-head CI NOT VERIFIED. Next: actual 404 browser/HTTP QA and SEO audit.
 
