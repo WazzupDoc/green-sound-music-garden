@@ -7,7 +7,7 @@ it("keeps existing navigations, real channels, Light Desk and privacy",()=>{
 for(const token of ["navEvents.map","navServices.map","business.phoneHref","business.email","business.socials.map","<LightDesk />", 'to="/confidentialitate"'])expect(footer).toContain(token);
 });
 it("adds a single meaningful contact action and server-inlined design",()=>{
-expect(footer).toContain('to="/contact" className="gs-footer-v93__cta"');
+expect(footer).toContain('to="/contact" hash="contact-form-title" className="gs-footer-v93__cta"');
 expect(footer).toContain('<style>{footerCss}</style>');
 expect(footer).toContain('footer-editorial-v93.css?inline');
 expect(footer).toContain('aria-hidden="true"');
