@@ -1,3 +1,5 @@
+## 2026-11-15 V139: No new assets, media, fonts, icons or third-party code. Existing Lucide icons unchanged.
+
 ## V138 — 2026-11-15
 No new assets, external code, fonts, media or dependencies. Existing authorized gallery imagery unchanged.
 

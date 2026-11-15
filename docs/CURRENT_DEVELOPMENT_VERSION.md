@@ -1,3 +1,5 @@
+## V139 draft PR #139 branch fix/v139-contact-consent-link-separation. Consent privacy link is no longer nested in checkbox label. QA not verified; no main/deploy.
+
 ## V138 — Portfolio cancelled/multitouch gesture guard (DRAFT)
 Branch `fix/v138-photo-multitouch-cancel-guard` stacked on V137. Code commit `d41bffb16d8dff21bf9a7789402a71926c590241`. Touch cancellation and multi-finger gestures cannot advance the photo. QA and exact-head CI NOT VERIFIED; no browser before/after screenshots produced. No main/deploy changes. Next: Contact form audit.
 

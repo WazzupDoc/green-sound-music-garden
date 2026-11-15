@@ -1,3 +1,5 @@
+## 2026-11-15 V139 Contact: HTML label association uses htmlFor/id, with a separate privacy link to avoid nested interactive elements. Reference: https://html.spec.whatwg.org/multipage/forms.html#the-label-element (labelable controls; interactive descendants). No external code/assets/dependencies copied. Rejected: JS click suppression inside label, due to unnecessary complexity.
+
 ## 2026-11-15 — V138 touch cancellation
 References: https://developer.mozilla.org/en-US/docs/Web/API/Element/touchcancel_event and https://developer.mozilla.org/en-US/docs/Web/API/Touch_events . Adaptation: own React event guards clear swipe origin on cancelled or multi-touch interactions; no third-party code or assets, no dependency. Rejected: intercepting default touch scrolling and gesture libraries (unnecessary complexity and accessibility risk). Visual/interaction QA pending.
 

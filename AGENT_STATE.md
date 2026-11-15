@@ -1,3 +1,5 @@
+## V139 / Contact: privacy link separated from checkbox label; keyboard targets independent. PR #139; QA screenshots/CI pending. Next: Contact keyboard verification, then Events.
+
 ## V138 / 2026-11-15 — Portfolio gesture cancellation (DRAFT)
 Area: photo dialog. Multi-finger and cancelled touch sequences no longer navigate photos; V137 horizontal-axis guard retained. Code SHA d41bffb16d8dff21bf9a7789402a71926c590241. QA NOT VERIFIED: browser screenshots, touch simulation, TS/SSR/Vitest/gzip/CI. Next rotation: Contact. Main unchanged.
 
