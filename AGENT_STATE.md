@@ -422,3 +422,6 @@ Area: `/studio-inregistrari` preparation heading. Added a studio-specific typogr
 - CI V142 failure: footer-editorial-v93.test.ts stale assertion (87 passed, 1 failed), run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43727508158.
 - V143 test updated to assert destination + hash, without changing UI. Chromium before/after screenshots unavailable; no visual redesign claim. V143 CI pending; main unchanged.
 - Next rotation: Contact hash scrolling and keyboard focus in real browser, footer desktop/mobile captures.
+
+## 2026-11-15 V144 — Footer navigation landmarks
+Area: footer directory. Three visually unchanged columns are now named `<nav>` landmarks (Evenimente, Servicii, Green Sound) for screen-reader navigation. Regression test checks landmark count and matching closures. No dependencies, assets or main changes. CI and Chromium screenshots not yet verified. Next: Contact fragment focus and actual browser captures.

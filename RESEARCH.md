@@ -377,3 +377,6 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path — nat
 
 ## 2026-11-15 — V143 footer Contact test maintenance
 - Evidence: GitHub Actions V142 https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43727508158; source SiteFooter.tsx and footer-editorial-v93.test.ts. Existing Contact CTA includes hash=contact-form-title, but old test asserted direct route without hash. No external design/code was incorporated, no new license/dependency/assets. Updated test matches intentional destination; UI/browser behavior remains to be tested. Reference for fragment navigation: https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment .
+
+## 2026-11-15 — V144 semantic footer navigation
+Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav — semantic navigation for major link groups; https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/ — distinguish repeated navigation landmarks with labels. Adaptation: named native nav wrappers for existing footer directories, retaining headings, links and CSS. No third-party code/assets or license requirements. Rejected: extra navigation widgets or new animations as unnecessary and visually repetitive.
