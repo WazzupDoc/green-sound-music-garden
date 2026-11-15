@@ -1,3 +1,6 @@
+## V133 / 2026-11-15
+No new assets, fonts, media or dependencies. Existing video metadata reused; provenance remains unchanged.
+
 ## V132 / 2026-11-15
 No new images, fonts, audio, icons, libraries or other assets; existing Green Sound media unchanged.
 

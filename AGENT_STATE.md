@@ -1,3 +1,6 @@
+## V133 / 2026-11-15 — Portfolio film selection feedback
+Area: /portofoliu film archive. Adds a visible, polite live status with the selected video title and its ordinal position in the filtered list. No autoplay, new media, dependency or backend. Code commit 741bf4cf0981d72b31c0ab24480948dbd0922af9. QA pending: Chromium before/after 390/1440 and six widths, keyboard, TypeScript, SSR, Vitest, gzip, CI exact-head. Next: film player and URL/category real-browser verification. Main untouched.
+
 ## V132 / 2026-11-15 — Contact invalid-submit focus
 Single zone: Contact validation. On invalid submit, move focus to first invalid registered field, or first enabled service checkbox for Controller-managed service group. This improves error recovery without new UI, media, dependencies or backend. Source SHA a95249a0449a0dbde157b0d8847a736a9d206235. Browser keyboard verification, six widths, TS/SSR/Vitest/gzip, screenshot and CI exact-head pending. Main untouched. Next: portfolio film player browser audit.
 
