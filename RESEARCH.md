@@ -371,3 +371,6 @@ References for follow-up verification: https://www.w3.org/WAI/ARIA/apg/patterns/
 
 ## 2026-11-15 — V135 focus restoration
 https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal focus should generally return to invoking element. Adapted principle with original local React ref; no external code or dependency. Rejected: forcing focus to last viewed image (loses invocation context) and new focus-management package. Browser QA pending.
+
+### 2026-11-15 — Studio recording-signal treatment
+Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path — native SVG path allows original scalable signal graphic; no third-party code/assets. Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/clamp — fluid spacing with bounded values. Adaptation: static original SVG path and responsive CSS in Studio service heading. Rejected: audio autoplay, canvas waveform animation and new dependencies because decorative motion would add cost and distract from booking.

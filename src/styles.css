@@ -524,3 +524,25 @@ html.reveal-ready [data-reveal="wave"]:not([data-in]) rect {
     clip-path: none;
   }
 }
+
+
+/* Studio-only editorial signal: original SVG, no image or audio playback. */
+.rs-studio-signal {
+  display: flex;
+  align-items: center;
+  gap: clamp(.75rem, 2vw, 1.5rem);
+  max-width: 36rem;
+  margin-block-start: 1.25rem;
+  color: #86d9b0;
+  border-block: 1px solid currentColor;
+  padding-block: .75rem;
+}
+.rs-studio-signal span {
+  font: 600 .68rem/1.3 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: .16em;
+}
+.rs-studio-signal svg { width: 100%; min-width: 0; height: 3rem; }
+@media (max-width: 430px) {
+  .rs-studio-signal { gap: .6rem; }
+  .rs-studio-signal svg { height: 2.25rem; }
+}
