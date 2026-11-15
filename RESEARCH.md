@@ -1,3 +1,9 @@
+## 2026-11-15 — V129 About editorial production score
+- [Awwwards Music & Sound](https://www.awwwards.com/websites/music-sound/): reference category for distinctive music-site editorial pacing; no external assets or code copied.
+- [Webflow portfolio inspiration](https://webflow.com/made-in-webflow/portfolio): reference for large expressive type and asymmetric section hierarchy; no code or branding copied.
+- [MDN prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion): preserved static readability and disabled transitions for reduced motion.
+- Adaptation: original CSS connecting rule and alternate italic headings on existing four production steps; no JS, WebGL or new dependencies. Rejected: timeline scroll-triggered animations, generic glow, new photographs and decorative card grid (performance/identity/permissions). Source links recorded; this run did not independently measure comparative performance or license external code because none was used.
+
 ## 2026-11-15 — V128 / Native fragment navigation
 - [MDN: Fragment identifier](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment): native fragment identifiers navigate to matching document elements. Adapted to existing event CTA without custom scroll JS.
 - [MDN: scroll-margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top): account for sticky navigation when targeting Contact heading; Tailwind's existing `scroll-mt-28` utility used, no new code/dependency.
