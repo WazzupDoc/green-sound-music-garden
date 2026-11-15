@@ -1,3 +1,8 @@
+## V145 / Mobile sticky conversion (2026-11-15, DRAFT)
+| Area | Source defect | Change | Visual QA | Functional QA | Next |
+|---|---|---|---|---|---|
+| MobileActionBar | Quote action landed at top of Contact; keyboard focus had no explicit component focus style | Direct `#contact-form-title` link, focus-visible rings, 48px minimum targets, accessible labels | Real before/after 390/1440 unavailable; NOT validated | CI/TS/SSR/Vitest/keyboard not verified | Real mobile browser proof; next rotate SEO/404 |
+
 ## V141 / Events Soundcheck (2026-11-15, draft)
 Area: `/evenimente` configurator. Users who change multiple services can now restore the event-specific recommended selection with one explicit, keyboard-accessible, 44px-minimum control. Disabled when already matching recommendations. Source commit `fa6ecf2c9c0001d0f2321b54b197d6e3f9f6412c`. Browser before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED; no visual approval. Next: browser proof and Events responsive audit; then Studio. No main/deploy.
 
