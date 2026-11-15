@@ -1,3 +1,6 @@
+## 2026-11-15 / V132 Contact error recovery
+Implementation uses existing React Hook Form `handleSubmit` invalid callback and `setFocus`, with native focus for controlled service checkboxes. No external code, assets or dependency introduced. Browser and assistive-technology verification pending; avoid claiming conformance until tested. Reference: https://react-hook-form.com/docs/useform/handlesubmit and https://react-hook-form.com/docs/useform/setfocus . Rejected: auto-scroll-only error banner (does not transfer keyboard focus).
+
 
 ## 2026-11-15 — Contact accessibility audit (V131)
 - WAI ARIA aria-describedby: https://www.w3.org/TR/wai-aria-1.2/#aria-describedby — referenced IDs should identify existing description nodes; applied conditionally to fieldset error. No external code copied or dependency added.
