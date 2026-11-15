@@ -75,7 +75,7 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="inline-flex rounded-full border border-border px-3 py-1.5 text-base text-foreground/80 transition-colors hover:border-primary hover:text-primary"
                 >
-                  {s.label}
+                  {s.label} <span aria-hidden="true">↗</span><span className="sr-only"> (se deschide într-o filă nouă)</span>
                 </a>
               </li>
             ))}

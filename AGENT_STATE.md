@@ -1,3 +1,9 @@
+## V147 / Footer external links (2026-11-15, DRAFT)
+| Area | Defect | Change | Browser 390/1440 | QA | Next |
+|---|---|---|---|---|---|
+| Footer social navigation | Social links open new tabs without visual/screen-reader warning | Added visible ↗ cue and Romanian screen-reader text; retained noopener noreferrer and native anchors | NOT captured | Source regression test added; TypeScript/SSR/Vitest/gzip/CI exact-head NOT VERIFIED | Real Chromium and full-width footer review; then SEO/SSR |
+No new dependencies, media, backend or homepage changes. Main untouched. PR stacked on V146.
+
 ## V146 / 404 recovery navigation (2026-11-15, DRAFT)
 | Area | Observed defect | Change | Browser before/after | Test/CI | Next |
 |---|---|---|---|---|---|
