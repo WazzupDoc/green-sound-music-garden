@@ -1,3 +1,6 @@
+## V144 — Footer directory landmarks (DRAFT, 2026-11-15)
+Branch `fix/v144-footer-directory-landmarks` stacked on V143. Footer link directories now use three labelled native navigation landmarks. No visual layout changes, new dependencies or assets; test asserts landmark count and closure. CI exact-head, browser before/after and six widths unverified. Main/production unchanged. Next: Contact fragment focus and real browser QA.
+
 ## V143 — Footer Contact anchor regression (DRAFT, 2026-11-15)
 CI V142 exact-head failed (run 43727508158): 1/88 tests failed because footer test expected a bare /contact link while actual footer correctly targets hash=contact-form-title. V143 updates the test assertion to preserve deep-link-to-form behavior; no production component or homepage change. Browser screenshots and V143 CI pending. Main untouched. Next: footer visual QA and Contact hash navigation.
 
