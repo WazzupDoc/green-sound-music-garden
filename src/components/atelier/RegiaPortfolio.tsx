@@ -34,7 +34,8 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
   const nextPhoto = selectedIndex >= 0 ? frames[(selectedIndex + 1) % frames.length] : undefined;
   const pointerX = useRef<number | null>(null);
   const lastPhotoRef = useRef<string | null>(null);
-  if (selected) lastPhotoRef.current = selected.id;
+  // Remember the thumbnail that opened the dialog, not the last image reached by navigation.
+  if (selected && lastPhotoRef.current === null) lastPhotoRef.current = selected.id;
   const change = (id?:string) => {
     void navigate({to:"/portofoliu",search:id?{photo:id}:{},replace:true,resetScroll:false});
   };
@@ -97,6 +98,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
             .find(link => link.dataset['photoId'] === lastPhotoRef.current);
           if (thumbnail) thumbnail.focus();
           else document.getElementById("rs-gallery-title")?.focus();
+          lastPhotoRef.current = null;
         }} className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
           <DialogTitle className="text-xl font-semibold text-[#F3F0E9]">{selected?.title ?? "Fotografie"}</DialogTitle>
           <DialogDescription className="text-base text-[#B8BCB9]">
