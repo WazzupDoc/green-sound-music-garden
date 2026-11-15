@@ -1,3 +1,6 @@
+## V132 / 2026-11-15
+No new images, fonts, audio, icons, libraries or other assets; existing Green Sound media unchanged.
+
 
 ## V131 / 2026-11-15
 No new images, videos, fonts, icons, external code, dependencies or licenses; accessibility-only source change.
