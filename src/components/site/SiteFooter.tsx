@@ -33,7 +33,7 @@ export function SiteFooter() {
             </p>
           </address>
         </div>
-        <div>
+        <nav aria-label="Evenimente">
           <h2 className="eyebrow mb-5">Evenimente</h2>
           <ul className="space-y-2.5 text-sm">
             {navEvents.map((it) => (
@@ -44,8 +44,8 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Servicii">
           <h2 className="eyebrow mb-5">Servicii</h2>
           <ul className="space-y-2.5 text-sm">
             {navServices.map((it) => (
@@ -56,8 +56,8 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-        </div>
-        <div>
+        </nav>
+        <nav aria-label="Green Sound">
           <h2 className="eyebrow mb-5">Green Sound</h2>
           <ul className="space-y-2.5 text-sm">
             <li><Link to="/portofoliu" className="link-underline text-foreground/80 hover:text-foreground">Portofoliu</Link></li>
@@ -80,7 +80,7 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-        </div>
+        </nav>
       </div>
       <div className="container-site gs-global-light-wrap">
         <LightDesk />
