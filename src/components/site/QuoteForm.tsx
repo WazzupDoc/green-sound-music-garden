@@ -271,8 +271,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <FieldError id="q-event-err" msg={errors.eventType?.message} />
       </div>
       <div>
-        <label htmlFor="q-date" className={labelCls}>Data evenimentului</label>
-        <input id="q-date" type="date" className={`${fieldCls} [color-scheme:dark]`} aria-invalid={!!errors.date} aria-describedby={errors.date ? "q-date-err" : undefined} {...register("date")} />
+        <label htmlFor="q-date" className={labelCls}>Data evenimentului <span className="text-muted-foreground">(opțional)</span></label>
+        <input id="q-date" type="date" className={`${fieldCls} [color-scheme:light] dark:[color-scheme:dark]`} aria-invalid={!!errors.date} aria-describedby={errors.date ? "q-date-err q-date-help" : "q-date-help"} {...register("date")} />
+        <p id="q-date-help" className="mt-1.5 text-xs text-muted-foreground">Nu ai stabilit data? Lasă câmpul liber.</p>
         <FieldError id="q-date-err" msg={errors.date?.message} />
       </div>
 
