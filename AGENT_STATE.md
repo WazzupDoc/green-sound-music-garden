@@ -1,3 +1,6 @@
+## V150 / 2026-11-16 — Generic render-error heading (DRAFT)
+Area: error fallback only. A generic render exception is not necessarily a lost network connection; changed misleading heading to neutral `Pagina nu poate fi afișată.` Kept retry conditional, recovery links and existing image. Source regression test updated. Browser 390/1440 before/after, six widths, HTTP status, TS/SSR/Vitest/gzip and CI exact-head NOT VERIFIED. No homepage/main/deploy. Next: actual Chromium/HTTP audit, then Events interiors.
+
 ## V149 / 2026-11-15 — Error fallback truthful recovery copy (DRAFT)
 Area: error fallback only. Source mismatch: V148 hides retry without onRetry, but instructions still said to retry. Copy now distinguishes recoverable and non-retryable errors, retains Home and telephone. Source regression assertion added. Browser before/after 390/1440, six-width QA, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. No visual approval, no main/deploy. Next: real browser 404/500, then Events interior.
 

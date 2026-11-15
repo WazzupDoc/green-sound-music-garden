@@ -9,7 +9,7 @@ export function StageFallback({ variant, onRetry }: { variant: "missing" | "erro
     <section className="rs-404" aria-labelledby="rs-404-title" data-variant={variant}>
       <div className="rs-404__copy">
         <p>{missing ? "404 · Pagina nu a fost găsită" : "Pagina nu s-a încărcat"}</p>
-        <h1 id="rs-404-title">{missing ? "Pagina căutată nu există." : "Am pierdut legătura cu pagina."}</h1>
+        <h1 id="rs-404-title">{missing ? "Pagina căutată nu există." : "Pagina nu poate fi afișată."}</h1>
         <p>{missing
           ? "Adresa poate fi greșită sau pagina a fost mutată. Poți explora serviciile și evenimentele sau ne poți contacta."
           : onRetry
