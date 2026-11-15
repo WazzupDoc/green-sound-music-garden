@@ -1,3 +1,9 @@
+## 2026-11-15 — V128 / Native fragment navigation
+- [MDN: Fragment identifier](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment): native fragment identifiers navigate to matching document elements. Adapted to existing event CTA without custom scroll JS.
+- [MDN: scroll-margin-top](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top): account for sticky navigation when targeting Contact heading; Tailwind's existing `scroll-mt-28` utility used, no new code/dependency.
+- [Awwwards music/sound collection](https://www.awwwards.com/websites/music-sound/) and [Webflow music websites](https://webflow.com/made-in-webflow/music): design inspiration references only; no designs, assets or code copied, live content not inspected this run.
+- Rejected: hash pointing to ClientOnly form node (absent in SSR), custom scroll effect/timer, auto-focusing personal fields, third-party smooth-scroll package.
+
 ## 2026-11-15 — V127 event-index interaction (references, not copied code)
 - https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html — focus indicators must be perceivable; adapted a photo outline to connect the active event CTA with its imagery while preserving existing link outline.
 - https://developer.mozilla.org/en-US/docs/Web/CSS/:has — relational selector can style event image from descendant CTA focus/hover; authored project-specific CSS, no package or copied implementation.
