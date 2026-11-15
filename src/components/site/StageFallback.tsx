@@ -16,7 +16,7 @@ export function StageFallback({ variant, onRetry }: { variant: "missing" | "erro
         <div className="rs-404__actions">
           {missing
             ? <Link to="/servicii" className="rs-button rs-button--chalk">Vezi serviciile <ArrowUpRight size={19} aria-hidden="true" /></Link>
-            : <button type="button" onClick={onRetry} className="rs-button rs-button--chalk"><RotateCcw size={19} aria-hidden="true" /> Reîncearcă</button>}
+            : onRetry ? <button type="button" onClick={onRetry} className="rs-button rs-button--chalk"><RotateCcw size={19} aria-hidden="true" /> Reîncearcă</button> : null}
           <Link to="/" className="rs-button rs-button--plain">Înapoi acasă</Link>
         </div>
         {missing && (
