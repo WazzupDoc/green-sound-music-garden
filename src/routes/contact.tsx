@@ -95,7 +95,7 @@ function Contact() {
           </aside>
           <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
-            <h2 id="contact-form-title" className="font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
+            <h2 id="contact-form-title" tabIndex={-1} className="scroll-mt-28 font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
             <ClientOnly fallback={
               <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
                 <p>Pregătim formularul pentru evenimentul tău…</p>

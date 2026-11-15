@@ -1,3 +1,6 @@
+## V128 — 2026-11-15
+No new media, fonts, SVGs, icon packs or external code. Existing company media unchanged. Native URL fragment and existing Tailwind utility only.
+
 ## V127 / 2026-11-15
 No new image, video, font, icon, asset, library or third-party code. Existing authorized event images and Lucide icons unchanged. Native CSS/React edits authored for project.
 

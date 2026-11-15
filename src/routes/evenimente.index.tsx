@@ -25,7 +25,7 @@ function Events(){return <><style dangerouslySetInnerHTML={{__html:eventIndexCss
       <h3>{event.name}</h3><p>{event.short}</p>
       <div className="gs-event-index__actions"><Link to="/evenimente/$slug" params={{slug:event.slug}} viewTransition className="rs-inline-link">
        Vezi desfășurătorul <ArrowUpRight size={18} aria-hidden /></Link>
-       <a href={`/contact?event=${encodeURIComponent(event.formLabel)}`} className="gs-event-index__brief-link" aria-label={`Cere ofertă pentru ${event.name}`}>
+       <a href={`/contact?event=${encodeURIComponent(event.formLabel)}#contact-form-title`} className="gs-event-index__brief-link" aria-label={`Cere ofertă pentru ${event.name}`}>
         Cere ofertă <ArrowUpRight size={18} aria-hidden /></a></div></div>
     </article>)}
    </div>
