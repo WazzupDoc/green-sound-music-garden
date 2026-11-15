@@ -692,3 +692,6 @@ Review PR #24 (draft); production remains unchanged.
 
 ## V134 — Portfolio photo Home/End (DRAFT; QA pending)
 Branch `fix/v134-photo-dialog-home-end-keyboard` stacked on V133. Photo dialog supports Home/End to reach first/last visible photo, with updated keyboard hint. No new dependencies or media. CI exact-head, TypeScript/SSR/Vitest/gzip and six-width Chromium before/after screenshots not verified. Do not merge or publish. Next: browser QA of photo keyboard and film deep-link.
+
+## V135 — Portfolio modal origin focus (DRAFT, QA pending)
+Branch `fix/v135-photo-dialog-origin-focus` based on V134. Photo modal now preserves the opening thumbnail as the focus-return target when navigating between photos; fallback remains gallery heading. Source change committed; TypeScript/SSR/Vitest/gzip, real Chromium before/after at 390/1440 and four other widths, and exact-head CI remain unverified. Main and production unchanged. Next: film archive flow and full browser regression.

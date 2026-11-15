@@ -393,3 +393,6 @@ Updated 2026-11-12, V55 draft. Baseline V54 PR #42 (draft, mergeable at last che
 
 ## 2026-11-15 V134 — Portfolio photo keyboard (draft, QA pending)
 Zone: /portofoliu photo dialog. Home/End now jump to first/last photo within visible filter, alongside arrows and swipe. Pending: Chromium 390/1440 before/after, 360/430/768/1920, keyboard focus, TypeScript, SSR, Vitest, gzip and exact-head CI. Next rotation: film player browser QA and filter/deep-link regression. Main untouched.
+
+## 2026-11-15 V135 — Portfolio dialog focus origin
+Area: /portofoliu photo modal. Defect: after Arrow/Home/End navigation, closing modal focused the last viewed thumbnail rather than the link used to open it. Fix: retain original photo id through modal session, restore that thumbnail on close (heading fallback), then clear session ref. Source-only verification; Chromium screenshots, keyboard/Escape and exact-head CI still pending. Next zone: film archive keyboard/deep-link. No main change.

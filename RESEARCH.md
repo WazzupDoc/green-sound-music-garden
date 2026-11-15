@@ -350,3 +350,6 @@ No measured Lighthouse scores, field LCP, real Search Console query volume or ve
 
 ## 2026-11-15 — V134 keyboard navigation
 References for follow-up verification: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ (modal keyboard/focus) and https://www.w3.org/WAI/ARIA/apg/patterns/carousel/ (carousel interaction). Original implementation: Home/End jumps in existing photo dialog, no external code or dependencies copied. Rejected: custom keybinding library and autoplay, unnecessary bundle/UX cost. Source browsing and real-browser verification pending.
+
+## 2026-11-15 — V135 focus restoration
+https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal focus should generally return to invoking element. Adapted principle with original local React ref; no external code or dependency. Rejected: forcing focus to last viewed image (loses invocation context) and new focus-management package. Browser QA pending.
