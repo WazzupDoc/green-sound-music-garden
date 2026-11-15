@@ -1,3 +1,8 @@
+## 2026-11-15 — V149 / Error recovery truthful instructions
+- Audited existing `StageFallback.tsx` on V148. When `onRetry` absent, a hidden retry action conflicted with always-visible instruction to retry. Adapted conditional text, no external code or assets.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html — preserve useful, consistent recovery paths. https://www.nngroup.com/articles/error-message-guidelines/ — specific and actionable error guidance. Design research only; no code copied or dependency added.
+- Rejected automatic reload, simulated retry, additional UI cards. Visual and browser validation pending.
+
 ## 2026-11-15 — V148 / Error recovery control integrity
 - Source audit: `StageFallback` types `onRetry` as optional but always displayed its retry button. This is an inert-action risk on error pages without a recovery handler.
 - Guidance: https://www.w3.org/WAI/WCAG22/Understanding/name-role-value.html and https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — use truthful actionable controls; guidance only, no external code copied.
