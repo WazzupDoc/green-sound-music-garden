@@ -1,3 +1,6 @@
+## V142 — Studio editorial signal (DRAFT, 2026-11-15)
+Branch `design/v142-studio-session-timeline` stacked on V141. `/studio-inregistrari` now has a dedicated recording-inspired editorial title and original static waveform SVG in its preparation header; no audio playback, assets, dependencies or homepage changes. Browser before/after 390/1440, six-width regression, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Main/production unchanged. Next: Studio visual QA, then footer audit.
+
 ## V141 — Event Soundcheck restore recommendations (DRAFT, 2026-11-15)
 Branch `design/v141-event-soundcheck-reset` stacked on V140. Event configuration now offers a native touch-sized button to restore recommended services after customization; disabled when no reset needed. Source commit `fa6ecf2c9c0001d0f2321b54b197d6e3f9f6412c`. No homepage/backend/assets/dependencies changes. Chromium screenshots before/after, six widths, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Next: Events browser proof and Studio audit. Main/production unchanged.
 
