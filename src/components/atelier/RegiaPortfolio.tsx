@@ -51,11 +51,11 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
       // Never steal arrow keys from editable controls or another dialog.
       if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
           (target instanceof HTMLElement && (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]")))) return;
-      if(event.key==="ArrowRight" || event.key==="ArrowLeft"){
+      if(["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)){
         event.preventDefault();
         const pos=frames.findIndex(item=>item.id===activePhoto);
         const delta=event.key==="ArrowRight"?1:-1;
-        const next=frames[(pos+delta+frames.length)%frames.length];
+        const next = event.key === "Home" ? frames[0] : event.key === "End" ? frames[frames.length - 1] : frames[(pos+delta+frames.length)%frames.length];
         if(next)void navigate({to:"/portofoliu",search:{photo:next.id},replace:true,resetScroll:false});
       }
     };
@@ -100,7 +100,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
         }} className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
           <DialogTitle className="text-xl font-semibold text-[#F3F0E9]">{selected?.title ?? "Fotografie"}</DialogTitle>
           <DialogDescription className="text-base text-[#B8BCB9]">
-            {selected?.context ?? "Arhiva Green Sound Music"}. Folosește săgețile sau glisează pentru a naviga.
+            {selected?.context ?? "Arhiva Green Sound Music"}. Folosește săgețile, Home/End sau glisează pentru a naviga.
           </DialogDescription>
           {selected && <>
             <div className="rs-photo-dialog__media"
