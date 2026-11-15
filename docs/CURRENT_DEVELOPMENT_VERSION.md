@@ -1,3 +1,6 @@
+## V141 — Event Soundcheck restore recommendations (DRAFT, 2026-11-15)
+Branch `design/v141-event-soundcheck-reset` stacked on V140. Event configuration now offers a native touch-sized button to restore recommended services after customization; disabled when no reset needed. Source commit `fa6ecf2c9c0001d0f2321b54b197d6e3f9f6412c`. No homepage/backend/assets/dependencies changes. Chromium screenshots before/after, six widths, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED. Next: Events browser proof and Studio audit. Main/production unchanged.
+
 ## V140 — Contact optional date clarity (draft, 2026-11-15)
 Branch `fix/v140-contact-optional-date-clarity` stacked on V139. Date input now explicitly says optional, has accessible explanatory text, and uses light/dark native date-picker color scheme. Code commit `9bb9d99dafe4a53d4ebad2fcbfa520bd541fa713`. No backend, dependency, asset, homepage or production changes. Browser before/after screenshots, six-width regression, TypeScript/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: get actual browser preview/captures and check Contact form keyboard/validation.
 

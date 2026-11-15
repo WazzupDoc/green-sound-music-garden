@@ -1,3 +1,8 @@
+## 2026-11-15 — Event configurator reset
+- W3C WAI button pattern: https://www.w3.org/WAI/ARIA/apg/patterns/button/ — use a native button for an immediate local action, not a link or synthetic control. Adapted via `type=button`, disabled state, visible focus.
+- MDN disabled attribute: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled — disabled native buttons cannot be activated or focused when reset is unnecessary; avoids misleading actions.
+- Rejected: reset entire form with native `type=reset` (would not restore React-controlled recommendation state); custom toast/modal (unnecessary complexity). Original implementation; no external code or assets copied, no new dependency.
+
 ## 2026-11-15 — Contact date control
 - MDN `color-scheme`: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme — native form control appearance should follow actual theme; adapted as theme-specific CSS utility; no external code copied or new dependency.
 - W3C WAI form instructions: https://www.w3.org/WAI/tutorials/forms/instructions/ — explicitly describe optional fields and associate instructions; adapted through visible text and aria-describedby. No external assets/code.
