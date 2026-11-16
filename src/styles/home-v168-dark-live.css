@@ -196,7 +196,7 @@ html[data-gs-performance=lite] .gs168-home .gs-index__photo img{animation:none!i
 .gs168-home .gs169-production-desk__channel{display:flex;flex-direction:column;align-items:center;gap:8px}
 .gs168-home .gs169-production-desk__channel i{display:block;width:9px;height:9px;border-radius:50%;background:#9afaa8;box-shadow:0 0 10px #58ec84}
 .gs168-home .gs169-production-desk__channel b{position:relative;display:block;width:4px;height:clamp(48px,5vw,75px);background:linear-gradient(#8cdd9955,#233c30);border-radius:2px}
-.gs168-home .gs169-production-desk__channel b:after{content:"";position:absolute;left:-7px;top:calc(15% + mod(var(--gs169-channel) * 13, 60) * 1%);width:18px;height:10px;border-radius:2px;background:#e1eee3;box-shadow:0 2px 7px #000}
+.gs168-home .gs169-production-desk__channel b:after{content:"";position:absolute;left:-7px;top:36%;width:18px;height:10px;border-radius:2px;background:#e1eee3;box-shadow:0 2px 7px #000}
 .gs168-home .gs169-production-desk__channel small{width:60%;height:3px;background:#57c97788}
 .gs168-home .gs169-production-desk__footer{padding-top:12px;border-top:1px solid #a8edba45;color:#86b99a}
 .gs168-home .gs160-stage[data-lights=on] .gs169-production-desk__signal path{stroke-dasharray:110 12;animation:gs169-signal 7s linear infinite}
@@ -206,3 +206,13 @@ html[data-gs-performance=lite] .gs168-home .gs-index__photo img{animation:none!i
 @media(max-width:470px){.gs168-home .gs160-stage__editorial{margin-top:clamp(125px,34vw,175px)}}
 @media(prefers-reduced-motion:reduce){.gs168-home .gs169-production-desk__signal path{animation:none!important}}
 html[data-gs-performance=lite] .gs168-home .gs169-production-desk__signal path{animation:none!important}
+
+.gs168-home .gs169-production-desk__channel:nth-child(1) b:after{top:12%}
+.gs168-home .gs169-production-desk__channel:nth-child(2) b:after{top:34%}
+.gs168-home .gs169-production-desk__channel:nth-child(3) b:after{top:54%}
+.gs168-home .gs169-production-desk__channel:nth-child(4) b:after{top:21%}
+.gs168-home .gs169-production-desk__channel:nth-child(5) b:after{top:63%}
+.gs168-home .gs169-production-desk__channel:nth-child(6) b:after{top:39%}
+.gs168-home .gs169-production-desk__channel:nth-child(7) b:after{top:17%}
+.gs168-home .gs169-production-desk__channel:nth-child(8) b:after{top:51%}
+.gs168-home .gs169-production-desk__channel:nth-child(9) b:after{top:29%}
