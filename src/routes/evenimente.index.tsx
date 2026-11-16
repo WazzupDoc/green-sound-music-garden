@@ -19,9 +19,12 @@ export const Route = createFileRoute("/evenimente/")({
 
 /** V172: event direction console. All five dedicated routes stay reachable
  * through SSR links, even if the optional React preview never hydrates. */
+const initialEvent = events[0];
+if (!initialEvent) throw new Error("Event catalogue must not be empty");
+
 function Events() {
-  const [activeSlug, setActiveSlug] = useState(events[0].slug);
-  const activeEvent = events.find((event) => event.slug === activeSlug) ?? events[0];
+  const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
+  const activeEvent = events.find((event) => event.slug === activeSlug) ?? initialEvent;
   const selectedIndex = events.findIndex((event) => event.slug === activeEvent.slug);
 
   function onProgrammeKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -33,7 +36,9 @@ function Events() {
     else if (event.key === "End") next = count - 1;
     else return;
     event.preventDefault();
-    setActiveSlug(events[next].slug);
+    const nextEvent = events[next];
+    if (!nextEvent) return;
+    setActiveSlug(nextEvent.slug);
     event.currentTarget.closest(".gs172-programme__options")
       ?.querySelectorAll<HTMLButtonElement>(".gs172-programme__select")[next]?.focus();
   }
