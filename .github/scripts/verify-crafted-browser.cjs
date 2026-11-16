@@ -324,6 +324,29 @@ async function main() {
     await motionPage.close();
 
 
+    // V157: Contact editorial journey proof at the same real desktop/mobile widths.
+    // This is the actual rendered route, not a mockup or a static HTML fixture.
+    for (const contactWidth of [390, 1440]) {
+      const contactPage = await browser.newPage({
+        viewport: { width: contactWidth, height: 900 }, reducedMotion: "reduce",
+      });
+      const response = await contactPage.goto(base + "/contact", { waitUntil: "domcontentloaded" });
+      assert.equal(response.status(), 200);
+      await contactPage.locator(".director-contact-signal__steps").waitFor({ timeout: 15000 });
+      assert.equal(await contactPage.locator(".director-contact-signal__steps li").count(), 3);
+      const entry = contactPage.locator(".director-contact-signal__action");
+      assert.equal(await entry.getAttribute("href"), "#contact-form-title");
+      await noOverflow(contactPage, "/contact", contactWidth);
+      await contactPage.locator(".director-contact-intro").screenshot({
+        path: `${output}/v157-contact-intro-${contactWidth}.png`, animations: "disabled",
+      });
+      await entry.focus();
+      assert.equal(await entry.evaluate(el => el === document.activeElement), true);
+      await entry.click();
+      assert.equal(new URL(contactPage.url()).hash, "#contact-form-title");
+      await contactPage.close();
+    }
+
     // V93: actual footer snapshots at identical 390/1440 viewports.
     for (const footerWidth of [360,390,430,768,1440,1920]) {
       const footerPage = await browser.newPage({
@@ -332,7 +355,7 @@ async function main() {
       await footerPage.goto(base + "/", {waitUntil:"domcontentloaded"});
       await footerPage.locator(".gs-footer-v93__marquee").waitFor({timeout:15000});
       assert.equal(await footerPage.locator(".gs-footer-v93__cta").count(),1);
-      assert.equal(await footerPage.locator(".gs-footer-v93__cta").getAttribute("href"),"/contact");
+      assert.equal(await footerPage.locator(".gs-footer-v93__cta").getAttribute("href"),"/contact#contact-form-title");
       await noOverflow(footerPage, "/", footerWidth);
       if(footerWidth===390 || footerWidth===1440) {
         await footerPage.locator(".gs-footer-v93").screenshot({
