@@ -67,6 +67,9 @@ export function EventSoundcheck() {
                 disabled={selected.length === suggestedFor(eventSlug).length && suggestedFor(eventSlug).every((slug) => selected.includes(slug))}>
                 Reia selecția recomandată pentru {event.name.toLowerCase()}
               </button>
+              <button type="button" className="soundcheck__clear ml-3 inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-sm underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-40" onClick={() => setSelected([])} disabled={selected.length === 0}>
+                Golește selecția
+              </button>
               <div className="soundcheck__service-grid">
                 {eventServices.map((service, index) => {
                   const checked = selected.includes(service.slug);
