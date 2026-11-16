@@ -1,3 +1,6 @@
+## V154 / 2026-11-16 — Events action layout
+Zone: /evenimente selection controls. V153 reset/clear were inline with a fixed left margin on clear, risking awkward narrow layout. Grouped with flex-wrap and gap; no new assets/dependencies. Source regression test added. CI previous V153 exact-head failed at Vitest; V154 CI and real Chromium screenshots pending. Next: diagnose failing test and browser QA; then Contact. Main unchanged.
+
 ## V153 — 2026-11-16 / Events service selection
 Zone: /evenimente EventSoundcheck. Added native `Golește selecția` control; disabled for empty selection, retains event and date/location, does not change homepage. Code SHA 1f04106fed7c4bf4af9390d38ecf7907e8f0bedf. QA BLOCKED: no Chromium before/after 390/1440, no six-width audit, no TS/Vitest/SSR/gzip or CI exact-head confirmation. Next: browser QA and test coverage, then Contact/SEO. No main/deployment.
 

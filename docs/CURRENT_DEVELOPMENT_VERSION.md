@@ -1,3 +1,6 @@
+## V154 / 2026-11-16 — Events action layout (DRAFT)
+Branch `design/v154-events-action-layout` stacked on V153. Reset/clear service actions now use wrapping flex layout with consistent spacing instead of inline fixed margin, to improve narrow screens. Source regression test added. Previous V153 exact-head CI failed in Vitest; V154 TypeScript/SSR/Vitest/gzip/Chromium/CI exact-head and 390/1440 before-after screenshots not yet confirmed. No homepage/main/deploy changes.
+
 ## V153 / 2026-11-16 — Events clear selection (DRAFT)
 Branch `design/v153-event-selection-clear` stacked on V152. EventSoundcheck adds a visible native button to clear all selected services while preserving event and optional form fields; disabled if empty. Source commit `1f04106fed7c4bf4af9390d38ecf7907e8f0bedf`. No homepage/assets/dependencies/main/deploy changes. Real browser screenshots, six-width QA, TS/SSR/Vitest/gzip and CI exact-head NOT VERIFIED. Next: browser evidence and regression test, then Contact/SEO.
 
