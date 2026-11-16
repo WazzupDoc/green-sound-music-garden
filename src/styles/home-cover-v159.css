@@ -335,3 +335,54 @@
 html[data-gs-performance="lite"] .gs-home-v159 .gs-stage-v90 .crafted-hero__image{
  animation:none!important;transition:none!important
 }
+
+/* Browser-audited breakpoints: override earlier high-specificity desktop
+   selectors explicitly, so oversized poster title never clips on mobile. */
+@media(max-width:850px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(3.85rem,8.7vw,5.5rem)!important;
+  top:188px!important;left:20px!important;right:20px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  inset:360px 20px 175px!important;top:360px!important;bottom:175px!important
+ }
+}
+@media(max-width:640px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(2.5rem,11.15vw,4.15rem)!important;
+  top:181px!important;left:14px!important;right:14px!important;
+  line-height:.85!important;letter-spacing:-.11em!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line{
+  font-size:1em!important;line-height:.85!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line--second{
+  font-size:.92em!important;margin:.15em 0 0!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  inset:320px 12px 180px!important;top:320px!important;bottom:180px!important;
+  left:12px!important;right:12px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__image{
+  object-position:50% 63%!important;filter:saturate(1.12) contrast(1.15) brightness(.98)!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__lead{
+  top:575px!important;left:26px!important;right:26px!important;
+  margin:0!important;max-width:37ch!important;
+  font-size:.87rem!important;line-height:1.51!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__actions{
+  top:688px!important;left:26px!important;right:20px!important;
+  display:flex!important;gap:7px 14px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console{
+  bottom:128px!important;left:14px!important;right:14px!important;
+  width:auto!important;max-width:none!important;
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__bottom{
+  bottom:0!important;left:14px!important;right:14px!important;
+  min-height:108px!important
+ }
+}
