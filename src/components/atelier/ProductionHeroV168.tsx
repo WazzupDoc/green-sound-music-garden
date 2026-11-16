@@ -70,6 +70,20 @@ export function ProductionHeroV168() {
           className="gs160-stage__photo" />
         <div className="gs160-stage__veil" aria-hidden="true" />
         <div className="gs160-stage__light" aria-hidden="true" />
+        <div className="gs169-production-desk" aria-hidden="true">
+          <div className="gs169-production-desk__top"><span>GREEN SOUND / MIX CONTROL</span><span>LIVE SIGNAL</span></div>
+          <svg className="gs169-production-desk__signal" viewBox="0 0 460 96" preserveAspectRatio="none" focusable="false">
+            <path d="M0 50H20L27 38 35 64 45 17 55 78 66 42 75 53 86 23 95 69 106 43 116 51 126 9 137 83 148 40 160 54 170 30 180 64 190 48 205 50 216 19 227 74 238 42 249 52 262 27 274 69 286 47 298 52 309 13 320 81 332 41 344 55 356 32 368 63 380 47 395 50 406 22 418 72 429 42 442 53 460 50" />
+          </svg>
+          <div className="gs169-production-desk__channels">
+            {Array.from({ length: 9 }, (_, i) => (
+              <span key={i} className="gs169-production-desk__channel" style={{ "--gs169-channel": i } as CSSProperties}>
+                <i /><b /><small />
+              </span>
+            ))}
+          </div>
+          <div className="gs169-production-desk__footer"><span>CH 01—09</span><span>PRODUCTION / SOUND / LIGHT</span></div>
+        </div>
       </div>
 
       <div className="gs160-stage__content">
