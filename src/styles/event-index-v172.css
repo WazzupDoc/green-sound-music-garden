@@ -16,7 +16,7 @@
 .gs172-intro__back span{padding-inline:8px;opacity:.6}
 .gs172-intro__headline{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,.48fr);align-items:end;gap:3rem;margin-top:clamp(66px,9vw,152px)}
 .gs172-intro h1{margin:0;font-family:var(--font-display),sans-serif;font-size:clamp(3.7rem,8.5vw,10.3rem);font-weight:730;letter-spacing:-.087em;line-height:.9;text-wrap:balance}
-.gs172-intro h1 em{display:inline-block;color:#a4db73;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;letter-spacing:-.065em;white-space:nowrap}
+.gs172-intro h1 em{display:inline-block;color:#a4db73!important;-webkit-text-fill-color:#a4db73!important;font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;letter-spacing:-.065em;white-space:nowrap}
 .gs172-intro__headline>p{margin:0 0 .4rem;max-width:33ch;font-size:clamp(1rem,1.26vw,1.15rem);line-height:1.7;color:#c8d5c7}
 .gs172-intro__signal{display:flex;gap:clamp(1rem,2.3vw,2.8rem);align-items:center;margin-top:clamp(65px,8vw,135px);color:#93b88b;letter-spacing:.16em;font-weight:750;font-size:.64rem;white-space:nowrap}
 .gs172-intro__signal svg{width:100%;height:35px;flex:1;min-width:20px;stroke:#adf884;stroke-width:1.5;fill:none;overflow:visible}
