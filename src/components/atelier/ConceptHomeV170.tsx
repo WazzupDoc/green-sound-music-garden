@@ -17,7 +17,7 @@ const featured: readonly Feature[] = [
   { slug: "dj-mc", title: "DJ & MC", detail: "Muzică, energie și prezentarea momentelor importante.", src: images.dj.src, alt: images.dj.alt, icon: Headphones },
   { slug: "trupa", title: "Trupă live", detail: "Soliști, instrumentiști și show live.", src: images.scena.src, alt: images.scena.alt, icon: Mic2 },
   { slug: "echipamente-de-sunet-si-lumini", title: "Sunet, lumini & LED", detail: "Sonorizare, lumini scenice și ecrane LED.", src: images.concert.src, alt: images.concert.alt, icon: RadioTower },
-  { slug: "masina-fum-greu-cu-gheata-carbonica", title: "Fum greu", detail: "Efecte speciale pentru momente memorabile.", src: videos.showLumini.poster!, alt: "Cadru dintr-un show Green Sound Music", icon: Sparkles },
+  { slug: "masina-fum-greu-cu-gheata-carbonica", title: "Fum greu", detail: "Efecte speciale pentru momente memorabile.", src: images.fum.src, alt: images.fum.alt, icon: Sparkles },
   { slug: "studio-inregistrari", title: "Studio audio", detail: "Înregistrare, mixaj și producție muzicală.", src: videos.neatza.poster!, alt: "Cadru Green Sound Music din emisiunea Neatza", icon: AudioLines },
 ];
 const secondarySlugs: readonly ServiceSlug[] = ["hostess", "ursitoare-botez", "start-veselia"];
@@ -106,6 +106,7 @@ export function ConceptHomeV170() {
           <svg viewBox="0 0 1440 90" preserveAspectRatio="none" focusable="false">
             <path className="gs170-wave__soft" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
             <path className="gs170-wave__main" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
+            <path className="gs170-wave__pulse" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
           </svg>
         </div>
       </section>
