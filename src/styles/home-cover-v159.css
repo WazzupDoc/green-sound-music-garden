@@ -386,3 +386,14 @@ html[data-gs-performance="lite"] .gs-home-v159 .gs-stage-v90 .crafted-hero__imag
   min-height:108px!important
  }
 }
+
+/* Final mobile browser proof: do not let the old pale film-link color
+   win against the new off-white area below the real photograph. */
+@media(max-width:640px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__eyebrow{
+  color:#224832!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__link{
+  color:#11562b!important;border-bottom-color:#11562b!important
+ }
+}
