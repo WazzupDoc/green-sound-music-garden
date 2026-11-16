@@ -1,4 +1,4 @@
-## V151 / 2026-11-16 — Error recovery Contact route (DRAFT)
+## V152 / 2026-11-16 — Explicit phone action in fallback (DRAFT)\nBranch `fix/v152-error-phone-action-clarity` stacked on V151. The error/404 phone link now reads `Sună-ne: [număr]` rather than an unexplained number; actual tel href unchanged. Source regression assertion added. No assets/dependencies/homepage/main/deploy. Browser before/after, six-width regression, TS/Vitest/SSR/gzip and CI exact-head not verified. Next: real Chromium and HTTP fallback audit; Events interiors.\n\n## V151 / 2026-11-16 — Error recovery Contact route (DRAFT)
 Branch `fix/v151-error-fallback-contact-path` stacked on V150. Render-error screen now exposes a direct Contact form link, instead of requiring Home or phone. Regression source test added. No new packages/assets/homepage/main/deployment. Chromium before/after 390/1440, six widths, TS, SSR, Vitest, gzip, CI exact-head NOT VERIFIED.
 
 ## V150 / 2026-11-16 — Neutral error heading (DRAFT)

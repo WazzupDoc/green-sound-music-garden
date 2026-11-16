@@ -32,7 +32,7 @@ export function StageFallback({ variant, onRetry }: { variant: "missing" | "erro
             <Link to="/contact" hash="contact-form-title" className="link-underline">Cere o ofertă</Link>
           </nav>
         )}
-        <a href={business.phoneHref} className="rs-404__phone">{business.phoneDisplay}</a>
+        <a href={business.phoneHref} className="rs-404__phone">Sună-ne: {business.phoneDisplay}</a>
       </div>
       <div className="rs-404__image">
         <img src={images.concert.src} alt={images.concert.alt}
