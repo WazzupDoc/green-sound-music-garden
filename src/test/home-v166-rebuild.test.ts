@@ -1,47 +1,36 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-
-const source = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
-
-describe("V168 homepage editorial rebuild contract", () => {
-  const home = source("src/routes/index.tsx");
-  const hero = source("src/components/atelier/ProductionHeroV168.tsx");
-  const css = source("src/styles/home-v168-dark-live.css");
-
-  it("activates one fresh scoped stylesheet rather than accumulating home versions", () => {
-    expect(home).toContain('home-v168-dark-live.css?inline');
-    expect(home).toContain('className="gs168-home"');
-    expect(home).toContain("<ProductionHeroV168 />");
-    expect(home).not.toContain('home-direction-v160.css?inline');
-    expect(home).not.toContain("<ProductionHeroV160 />");
-  });
-
-  it("keeps exactly the four editorial homepage experiences", () => {
-    expect(home).toContain("<ProductionHeroV168 />");
-    expect(home).toContain("<ProductionIndex />");
-    expect(home).toContain("<EditorialPortfolio />");
-    expect(home).toContain('className="crafted-finale gs-finale"');
-    expect(home).not.toMatch(/QuickBrief|EventsSelector|ServicesAtelier|Soundcheck|FrequencyLab/);
-  });
-
-  it("preserves visitor-controlled events, original film and interactive light desk", () => {
-    expect(hero).toContain('images.concert');
-    expect(hero).toContain('images.dj');
-    expect(hero).toContain('images.scena');
-    expect(hero).toContain('aria-pressed={selected === item.key}');
-    expect(hero).toContain('onClick={() => setFilmOpen(true)}');
-    expect(hero).toContain('<VideoLite video={scene.video}');
-    expect(hero).toContain('<details ref={desk}');
-    expect(hero).toContain('useReducedMotion');
-  });
-
-  it("provides photo-first tablet/mobile CSS, reduced-motion and Lite fallbacks", () => {
-    expect(css).toContain("@media(max-width:900px)");
-    expect(css).toContain("@media(max-width:470px)");
-    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-    expect(css).toContain('data-gs-performance=lite');
-    expect(css).toContain('.gs168-home .gs-index__chapter');
-    expect(css).toContain('.gs168-home .director-reel');
-  });
+const source=(path:string)=>readFileSync(path,"utf8");
+const home=source("src/routes/index.tsx");
+const page=source("src/components/atelier/ConceptHomeV170.tsx");
+const css=source("src/styles/home-reference-v170.css");
+describe("V170 owner-selected concept implementation contract",()=>{
+ it("has a single owner-selected art direction without V166/V168 themes",()=>{
+   expect(home).toContain('home-reference-v170.css?inline');
+   expect(home).toContain('className="gs170-home"');
+   expect(home).toContain("<ConceptHomeV170 />");
+   expect(home).not.toMatch(/ProductionHeroV166|ProductionHeroV168/);
+ });
+ it("reconstructs visual journey hero / service cards / process / films / CTA",()=>{
+   for(const className of ["gs170-hero","gs170-services","gs170-process","gs170-films","gs170-final"]){
+     expect(page).toContain(className);
+   }
+   expect(page).toContain("featured.map((item, index)");
+   expect(page).toContain("process.map((step, index)");
+   expect(page).toContain("films.map((item, index)");
+ });
+ it("keeps real services and films, with functional film dialog",()=>{
+   expect(page).toContain("new Set(allSlugs)");
+   expect(page).toContain("services.find(item => item.slug === slug)");
+   expect(page).toContain("VideoLite video={film.video}");
+   expect(page).toContain("images.concert");
+ });
+ it("has mobile composition, CSS beams/waveform and accessibility fallbacks",()=>{
+   expect(css).toContain("@keyframes gs170-beam");
+   expect(css).toContain("@keyframes gs170-meter");
+   expect(css).toContain("@keyframes gs170-waveflow");
+   expect(css).toContain("@media(max-width:470px)");
+   expect(css).toContain("data-gs-performance=lite");
+   expect(css).toContain("prefers-reduced-motion:reduce");
+ });
 });
