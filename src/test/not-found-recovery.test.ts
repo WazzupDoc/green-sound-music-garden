@@ -1,8 +1,8 @@
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
-const source = readFileSync(fileURLToPath(new URL("../components/site/StageFallback.tsx", import.meta.url)), "utf8");
+const source = readFileSync(resolve(process.cwd(), "src/components/site/StageFallback.tsx"), "utf8");
 
 describe("404 recovery navigation", () => {
   it("offers real service, event and Contact brief routes without simulating a search", () => {
