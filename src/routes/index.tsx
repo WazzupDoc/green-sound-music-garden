@@ -1,9 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { ProductionHeroV168 } from "@/components/atelier/ProductionHeroV168";
-import homeDirectionCss from "@/styles/home-v168-dark-live.css?inline";
-import { ProductionIndex } from "@/components/atelier/ProductionIndex";
-import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
+import { createFileRoute } from "@tanstack/react-router";
+import { ConceptHomeV170 } from "@/components/atelier/ConceptHomeV170";
+import homeReferenceCss from "@/styles/home-reference-v170.css?inline";
 import { localBusinessLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -16,33 +13,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-/**
- * V48 / Editorial reset: a visitor should understand the brand, discover
- * every genuine service, see real evidence and find Contact. ONE purpose
- * per section. No overlapping event/scene/service configurators or repeated
- * quote forms on the homepage. Existing deeper catalogue, contact and
- * event pages remain live at their original canonical routes.
- */
+/** One new concept-faithful composition; no cumulative V160/V166/V168 CSS. */
 function Home() {
   return (
-    <div className="gs168-home">
-      {/* Scoped, SSR-delivered: this redesign does not alter the dedicated pages. */}
-      <style>{homeDirectionCss}</style>
-      <ProductionHeroV168 />
-      <ProductionIndex />
-      <EditorialPortfolio />
-      <section className="crafted-finale gs-finale" aria-labelledby="crafted-finale-title">
-        <div className="container-site crafted-finale__grid">
-          <span className="crafted-index">URMĂTORUL EVENIMENT / ÎNCEPE AICI</span>
-          <div>
-            <h2 id="crafted-finale-title">Sunetul tău. <em>Scena noastră.</em></h2>
-            <p>DJ & MC, trupă live, sonorizare și lumini. Povestește-ne despre eveniment și alegem împreună ce i se potrivește.</p>
-          </div>
-          <Link to="/contact" className="crafted-finale__link" aria-label="Solicită o ofertă personalizată">
-            <ArrowUpRight className="size-9" aria-hidden />
-          </Link>
-        </div>
-      </section>
+    <div className="gs170-home">
+      <style>{homeReferenceCss}</style>
+      <ConceptHomeV170 />
     </div>
   );
 }
