@@ -121,9 +121,9 @@
 .gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--live,
 .gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--private,
 .gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--production{
-  display:block;position:relative;top:auto;left:auto;right:auto;bottom:auto;
+  display:block!important;position:relative;top:auto;left:auto;right:auto;bottom:auto;
   width:100%;height:100%;margin:0;z-index:1;
-  transform:translateZ(0) rotateY(0deg)!important;
+  transform:translateZ(0) rotateY(0deg);
   box-shadow:none;border:1px solid #e0f4d45e;
   transition:filter .35s,border-color .35s;
   filter:saturate(.8) brightness(.82)
@@ -142,6 +142,7 @@
 .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=private] .gs-v90-show-wall__frame--private,
 .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=production] .gs-v90-show-wall__frame--production{
   filter:brightness(1.05) saturate(1.2);
+  transform:translateY(-6px) translateZ(16px) scale(1.035);
   border:2px solid #d5f3ad
 }
 .gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console{
