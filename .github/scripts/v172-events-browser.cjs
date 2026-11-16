@@ -24,6 +24,10 @@ fs.mkdirSync(directory,{recursive:true});
    }else{
     await page.locator('[data-hydrated="true"].gs172-programme').waitFor({timeout:15000});
     await page.locator(".gs172-programme__select").first().waitFor({timeout:12000});
+    const heroImage=await page.locator(".gs172-intro__visual img").evaluate(async img=>{await img.decode();return {w:img.naturalWidth,h:img.naturalHeight,src:img.currentSrc}});
+    assert(heroImage.w>0&&heroImage.h>0&&heroImage.src.includes("/media/greensound/"),"Authentic hero photo must decode");
+    const heroFont=await page.locator(".gs172-intro h1 em").evaluate(el=>({family:getComputedStyle(el).fontFamily,color:getComputedStyle(el).color}));
+    assert(/serif/i.test(heroFont.family),"Second headline line must use expressive serif");
     assert.equal(await page.locator(".gs172-programme__select").count(),5);
     assert.equal(await page.locator(".gs172-programme__detail").count(),5);
     const photo=await page.locator(".gs172-stage__photo img").evaluate(async img=>{await img.decode();return{src:img.currentSrc,w:img.naturalWidth,h:img.naturalHeight}});

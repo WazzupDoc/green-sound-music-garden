@@ -2,7 +2,7 @@ import { useEffect, useState, type KeyboardEvent } from "react";
 import eventIndexCss from "@/styles/event-index-v172.css?inline";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
-import { events, getService } from "@/data/site";
+import { events, getService, images } from "@/data/site";
 import { BeamPhoto } from "@/components/site/BeamPhoto";
 import { QuoteSection } from "@/components/site/blocks";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
@@ -53,6 +53,9 @@ function Events() {
     <style>{eventIndexCss}</style>
     <div className="gs172-events">
       <section className="gs172-intro" aria-labelledby="gs172-title">
+        <div className="gs172-intro__visual" aria-hidden="true">
+          <img src={images.concert.src} alt="" width={images.concert.w} height={images.concert.h} loading="eager" decoding="async" />
+        </div>
         <div className="container-site gs172-intro__inner">
           <div className="gs172-intro__topline">
             <Link to="/" className="gs172-intro__back">Green Sound Music <span aria-hidden="true">/</span> Evenimente</Link>
@@ -104,7 +107,7 @@ function Events() {
             <div className="gs172-stage" id="gs172-stage" aria-labelledby="gs172-stage-title">
               <div className="gs172-stage__frame" data-active-index={selectedIndex}>
                 <BeamPhoto key={activeEvent.slug} image={activeEvent.image}
-                  priority className="gs172-stage__photo" />
+                  className="gs172-stage__photo" />
                 <div className="gs172-stage__photo-shade" aria-hidden="true" />
                 <div className="gs172-stage__frame-top" aria-hidden="true">
                   <span>GREEN SOUND / EVENT PREVIEW</span><span>{String(selectedIndex + 1).padStart(2, "0")} / {String(events.length).padStart(2, "0")}</span>
