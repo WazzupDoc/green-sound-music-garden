@@ -1,3 +1,6 @@
+## V154 / 2026-11-16
+No new media, fonts, icons or third-party code. Native CSS layout only; existing assets unchanged.
+
 ## V141 / 2026-11-15
 No new images, icons, fonts, audio, videos or third-party code. Native button + existing project CSS utilities only.
 
