@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight, ArrowUpRight, AudioLines, CalendarDays, CirclePlay, Headphones,
@@ -44,15 +44,18 @@ const films: { label: string; eyebrow: string; video: Video }[] = [
 ];
 
 export function ConceptHomeV170() {
+  const [hydrated, setHydrated] = useState(false);
   const [lightsOn, setLightsOn] = useState(true);
   const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
   const film = filmIndex === null ? null : films[filmIndex];
+  useEffect(() => { setHydrated(true); }, []);
 
   return (
     <>
       <section className="gs170-hero" aria-labelledby="gs170-title"
-        data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}>
+        data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}
+        data-hydrated={hydrated ? "true" : "false"}>
         <div className="gs170-stage" aria-hidden="true">
           <img src={images.concert.src} alt="" width={images.concert.w}
             height={images.concert.h} className="gs170-stage__image"
