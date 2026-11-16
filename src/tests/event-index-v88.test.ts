@@ -1,47 +1,34 @@
-import { describe, expect, it } from "vitest";
+import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { events, getService } from "@/data/site";
-const route = readFileSync("src/routes/evenimente.index.tsx", "utf8");
-const css = readFileSync("src/styles/event-index-v172.css", "utf8");
-
-describe("V172 event direction console — SSR + navigation + motion contract", () => {
-  it("renders all real event choices with direct detail routes even without hydration", () => {
-    expect(events.length).toBe(5);
-    expect(new Set(events.map(event => event.slug)).size).toBe(events.length);
-    expect(route).toContain("events.map((event, index)");
-    expect(route).toContain('to="/evenimente/$slug"');
-    expect(route).toContain("params={{ slug: event.slug }}");
-    expect(route).toContain('className="gs172-programme__detail"');
-    expect(route).toContain("QuoteSection");
-  });
-  it("offers native preview buttons and explicit keyboard arrow/home/end selection", () => {
-    expect(route).toContain('aria-pressed={selected}');
-    expect(route).toContain('aria-controls="gs172-stage"');
-    expect(route).toContain('event.key === "ArrowDown"');
-    expect(route).toContain('event.key === "ArrowUp"');
-    expect(route).toContain('event.key === "Home"');
-    expect(route).toContain('event.key === "End"');
-    expect(route).toContain('aria-live="polite"');
-    expect(route).toContain("setActiveSlug");
-  });
-  it("preserves event and genuine service deep links, without simulated sends", () => {
-    for (const event of events) {
-      expect(event.formLabel).toBeTruthy();
-      for (const rec of event.recommended.slice(0,3)) expect(getService(rec.slug).name).toBeTruthy();
-    }
-    expect(route).toContain("encodeURIComponent(activeEvent.formLabel)");
-    expect(route).toContain('to={`/${service.slug}`}');
-    expect(route).not.toContain("fetch(");
-  });
-  it("keeps route-scoped SSR CSS, responsive focus and Lite/reduced-motion safeguards", () => {
-    expect(route).toContain('import eventIndexCss from "@/styles/event-index-v172.css?inline"');
-    expect(route).toContain("<style>{eventIndexCss}</style>");
-    expect(css).toContain("@media(max-width:760px)");
-    expect(css).toContain("@media(max-width:460px)");
-    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-    expect(css).toContain("data-gs-performance=lite");
-    expect(css).toContain(":focus-visible");
-    expect(css).toContain("@keyframes gs172-scene-in");
-    expect(css).not.toContain("autoplay");
-  });
+const route = readFileSync("src/routes/evenimente.index.tsx","utf8");
+const css = readFileSync("src/styles/event-show-poster-v173.css","utf8");
+describe("V173 Live Show Poster contract",()=>{
+ it("links five genuine event routes on SSR without JavaScript",()=>{
+  expect(events).toHaveLength(5);
+  expect(new Set(events.map(e=>e.slug)).size).toBe(5);
+  expect(route).toContain("events.map((event, index)");
+  expect(route).toContain('to="/evenimente/$slug"');
+  expect(route).toContain("params={{ slug: event.slug }}");
+  expect(route).toContain("QuoteSection");
+ });
+ it("controls stage and cue-sheet with keyboard and truthful CTA",()=>{
+  expect(route).toContain("aria-pressed={selected}");
+  expect(route).toContain('aria-controls="gs173-selected-programme"');
+  for(const key of ["ArrowRight","ArrowLeft","ArrowDown","ArrowUp","Home","End"]) expect(route).toContain('event.key === "'+key+'"');
+  expect(route).toContain("setActiveSlug");
+  expect(route).toContain('aria-live="polite"');
+  expect(route).toContain("encodeURIComponent(activeEvent.formLabel)");
+  for(const event of events) for(const cue of event.moments.slice(0,3)) expect(getService(cue.service).name).toBeTruthy();
+ });
+ it("uses existing real event images, adaptive motion, no new backend or autoplay",()=>{
+  for(const value of ["visualEvent.image.src","visualEvent.image.alt","width={visualEvent.image.w}","height={visualEvent.image.h}"]) expect(route).toContain(value);
+  expect(route).not.toContain("autoplay");
+  expect(route).not.toContain("fetch(");
+  expect(route).toContain("preload.decode()");
+  expect(route).toContain("setVisualEvent(activeEvent)");
+  for(const value of ["@media(max-width:780px)","@media(max-width:480px)","@media(prefers-reduced-motion:reduce)","data-gs-performance=lite",":focus-visible","@keyframes gs173-gate-open","transform:translateY"]) expect(css).toContain(value);
+  expect(route).toContain("<style>{eventPosterCss}</style>");
+  expect(css).not.toContain("@import");
+ });
 });
