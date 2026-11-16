@@ -18,16 +18,16 @@ export function EventPage({event}:{event:EventType}){
       <div className="container-site">
         <div className="rs-event-timeline__title">
           <p>Desfășurătorul</p><h2 id="desfasurator-titlu">De la pregătiri până la finalul evenimentului</h2>
-          <p>Ordinea este orientativă. Programul și serviciile se stabilesc împreună cu organizatorul.</p>
+          <p>Un parcurs în {event.moments.length} etape, de la primele pregătiri la încheiere. Ordinea este orientativă; programul și serviciile se stabilesc împreună cu organizatorul.</p>
         </div>
         <ol>{event.moments.map((moment,index)=>{
           const service=getService(moment.service);
           return <li key={moment.title}>
-            <span>{String(index+1).padStart(2,"0")}</span>
+            <span aria-label={`Etapa ${index + 1} din ${event.moments.length}`}>{String(index+1).padStart(2,"0")} <span aria-hidden="true">/ {String(event.moments.length).padStart(2,"0")}</span></span>
             <h3>{moment.title}</h3>
             <p>{moment.text}</p>
             <Link to={`/${service.slug}`} viewTransition>
-              {service.name} <ArrowUpRight size={18} aria-hidden />
+              Descoperă {service.name} <ArrowUpRight size={18} aria-hidden />
             </Link>
           </li>;
         })}</ol>
