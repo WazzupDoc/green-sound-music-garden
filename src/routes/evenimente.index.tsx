@@ -62,7 +62,7 @@ function Events() {
             <span>PRODUCȚIE DE EVENIMENTE · PITEȘTI / ARGEȘ</span>
           </div>
           <div className="gs172-intro__headline">
-            <h1 id="gs172-title">Fiecare eveniment.<br /><em>Alt ritm.</em></h1>
+            <h1 id="gs172-title">Fiecare eveniment.<br /><span className="gs172-intro__italic">Alt ritm.</span></h1>
             <p>De la muzică la lumini și momentele dintre ele. Alege tipul de eveniment și vezi cum îl putem construi împreună.</p>
           </div>
           <div className="gs172-intro__signal" aria-hidden="true">
