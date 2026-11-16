@@ -1,32 +1,28 @@
-import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-const route = readFileSync("src/routes/index.tsx","utf8");
-const css = readFileSync("src/styles/home-v168-dark-live.css","utf8");
-describe("V168 homepage uses one real independent art direction",()=>{
- it("loads a single scoped CSS file instead of concatenating 4 generations of styles",()=>{
-   expect(route).toContain('home-v168-dark-live.css?inline');
-   expect(route).toContain('<style>{homeDirectionCss}</style>');
-   expect(route).toContain('className="gs168-home"');
-   expect(route).toContain("<ProductionHeroV168 />");
-   expect(route).not.toMatch(/home-signature-v86.css|home-event-v89.css|home-redesign-v158.css|home-cover-v159.css/);
-   expect(route.match(/<style>/g)).toHaveLength(1);
-   expect(route).not.toMatch(/QuickBrief|EventsSelector|ServicesAtelier|Soundcheck|FrequencyLab/);
+import { describe, expect, it } from "vitest";
+const route=readFileSync("src/routes/index.tsx","utf8");
+const page=readFileSync("src/components/atelier/ConceptHomeV170.tsx","utf8");
+const css=readFileSync("src/styles/home-reference-v170.css","utf8");
+describe("V170 authentic event-production art direction",()=>{
+ it("imports one source-authored reference design, no stacked legacy masks",()=>{
+   expect(route).toContain("home-reference-v170.css?inline");
+   expect(route).toContain("<ConceptHomeV170 />");
+   expect(route).not.toMatch(/home-direction-v160.css|home-rebuild-v166.css|home-v168-dark-live.css/);
+   expect(css).toContain(".gs170-home .gs170-stage__console");
  });
- it("keeps all three service chapters/film archive and one closing CTA",()=>{
-   const order=["<ProductionHeroV168 />","<ProductionIndex />","<EditorialPortfolio />",'className="crafted-finale gs-finale"'];
-   const positions=order.map(x=>route.indexOf(x));
-   expect(positions.every(x=>x>=0)).toBe(true);
-   expect(positions).toEqual([...positions].sort((a,b)=>a-b));
-   expect(route.match(/<Link to="\/contact"/g)).toHaveLength(1);
-   expect(css).toContain(".gs168-home .gs-index__chapter[data-chapter=stage]");
-   expect(css).toContain(".gs168-home .director-reel");
-   expect(css).toContain(".gs168-home .gs-finale");
+ it("keeps production image, animated light beams, 5 service cards and 4 workflow steps",()=>{
+   expect(page).toContain("images.concert.src");
+   expect(page).toContain('className="gs170-stage__beams"');
+   expect(page).toContain('className="gs170-stage__console"');
+   expect(page).toContain("featured.map((item, index)");
+   expect(page).toContain("process.map((step, index)");
+   expect(css).toContain("@keyframes gs170-beam");
+   expect(css).toContain("@keyframes gs170-meter");
  });
- it("removes 3D stage clutter without hiding the real photography",()=>{
-   expect(css).toContain(".gs160-stage__photo");
-   expect(css).toContain("object-fit:cover");
-   expect(css).not.toMatch(/\.gs-v90-show-wall|\.gs-v90-ticker/);
+ it("respects reduced-motion and Lite without WebGL or forced media autoplay",()=>{
    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
    expect(css).toContain("html[data-gs-performance=lite]");
+   expect(page).not.toMatch(/autoplay|new AudioContext|WebGL/);
+   expect(page).toContain("VideoLite video={film.video}");
  });
 });
