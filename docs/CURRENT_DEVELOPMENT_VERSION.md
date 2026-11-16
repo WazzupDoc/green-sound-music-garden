@@ -1,3 +1,6 @@
+## V177 / 2026-11-16 — Event detail timeline orientation (DRAFT)
+Branch `feat/v177-event-detail-timeline-orientation` stacked on V176. Event-specific timeline now states its actual number of moments, exposes current/total step counters with accessible labels, and clarifies that service links lead to service details. Uses existing data and styles, no invented schedules, images, packages or homepage changes. CI exact-head and Chromium before/after 390/1440 pending; no visual QA or publication claim. Next: test mobile rendering and anchor focus, then rotate to Contact funnel.
+
 ## V176 / 2026-11-16 — Event detail agenda navigation (DRAFT)
 Branch `feat/v176-event-detail-agenda-navigation`, stacked on V175. Event detail hero now provides a direct visible link to its event-specific timeline. Timeline has a stable fragment ID and accessible heading relationship, with programmatic focus target. No additional media, dependencies, homepage changes or external services. TypeScript, SSR, Vitest, Chromium screenshots at 390/1440 and exact-head CI pending; this is not a visual redesign or release approval. Next: check real browser focus and anchor navigation, then deeper event-detail editorial composition.
 
