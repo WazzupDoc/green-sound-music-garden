@@ -1,3 +1,6 @@
+## V157 / 2026-11-16
+No new photographs, videos, logos, fonts, external icons, audio or third-party code. Original HTML/CSS production signal path on Contact; existing Lucide ArrowUpRight and first-party typography reused. Webflow/Awwwards references were used only for design research, not copied. No additional licenses/attribution required. Historical authorised assets unchanged.
+
 ## V155 / 2026-11-16
 No new assets, third-party code, fonts, images or licenses; first-party utility-class change only.
 
