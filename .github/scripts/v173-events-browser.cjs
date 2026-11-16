@@ -45,7 +45,11 @@ fs.mkdirSync(dir,{recursive:true});
     await page.waitForFunction(()=>document.querySelectorAll(".gs173-setlist__select")[4]?.getAttribute("aria-pressed")==="true");
     await page.keyboard.press("Home");
     await page.waitForFunction(()=>document.querySelectorAll(".gs173-setlist__select")[0]?.getAttribute("aria-pressed")==="true");
-    if([390,1440].includes(width)){await page.locator(".gs173-setlist__select").nth(2).click();await page.screenshot({path:dir+"/after-selected-"+width+".png",fullPage:false,animations:"disabled"})}
+    if([390,1440].includes(width)){await page.locator(".gs173-setlist__select").nth(2).click();
+      await page.waitForFunction(()=>document.querySelector(".gs173-photobox__caption h2")?.textContent?.includes("corporate"));
+      const decodedThird=await page.locator(".gs173-stage-image img").evaluate(async img=>{await img.decode();return img.naturalWidth});
+      assert(decodedThird>0,"Updated selected photo must be decoded");
+      await page.screenshot({path:dir+"/after-selected-"+width+".png",fullPage:false,animations:"disabled"})}
   }
   assert.deepEqual(errors,[],mode+" page errors "+width);
   console.log("PASS",mode,width);await page.close();
@@ -56,6 +60,7 @@ fs.mkdirSync(dir,{recursive:true});
   await full.locator('[data-hydrated="true"].gs173-events').waitFor();
   assert.match(await full.locator(".gs173-stage-image__gates i").first().evaluate(el=>getComputedStyle(el).animationName),/gs173-gate-open/);
   await full.locator(".gs173-setlist__select").nth(3).click();
+  await full.waitForFunction(()=>document.querySelector(".gs173-photobox__caption h2")?.textContent?.includes("Concerte"));
   await full.waitForFunction(()=>document.querySelectorAll(".gs173-setlist__select")[3]?.getAttribute("aria-pressed")==="true");
   assert.match(await full.locator(".gs173-stage-image__gates i").first().evaluate(el=>getComputedStyle(el).animationName),/gs173-gate-open/);
   await full.screenshot({path:dir+"/after-motion-1440.png",animations:"allow"});
