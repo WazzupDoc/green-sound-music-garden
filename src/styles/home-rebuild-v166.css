@@ -125,7 +125,7 @@
  .gs166-home .gs-index__intro-grid{grid-template-columns:1fr;gap:20px}
  .gs166-home .director-reel__layout{grid-template-columns:minmax(0,1.1fr) minmax(220px,.8fr)!important}
 }
-@media(max-width:767px){
+@media(max-width:900px){
  .gs166-home .gs160-stage{min-height:0}
  .gs166-home .gs160-stage__media{inset:0 0 auto;height:clamp(370px,77vw,510px)}
  .gs166-home .gs160-stage__photo{object-position:50% 38%}
