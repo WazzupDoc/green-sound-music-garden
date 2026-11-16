@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { images, videos, type ImageRef, type Video } from "@/data/site";
+import { images, videos, ytThumb, type ImageRef, type Video } from "@/data/site";
 import { BeamPhoto } from "@/components/site/BeamPhoto";
 import { VideoLite } from "@/components/site/VideoLite";
 
@@ -84,6 +84,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
               className={`rs-gallery__frame rs-gallery__frame--${index%3}`}
               aria-label={`Deschide fotografia: ${frame.title}`}>
               <BeamPhoto image={frame.image} className="rs-gallery__media" transitionName={`gs-photo-${frame.id}`} />
+              <span className="gs161-photo-counter" aria-hidden="true">{String(index+1).padStart(2,"0")} / {String(frames.length).padStart(2,"0")}</span>
               <span className="rs-gallery__label"><small>{frame.context}</small><strong>{frame.title}</strong></span>
             </Link>
           ))}
@@ -178,7 +179,11 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
             <Link key={video.id} to="/portofoliu" search={{film:video.id}}
               aria-current={chosen?.id===video.id?"true":undefined}
               className="rs-video-library__item">
-              <span>{String(index+1).padStart(2,"0")}</span>
+              <span className="gs161-film-thumb" aria-hidden="true">
+                <img src={video.poster ?? ytThumb(video, "sd")} alt="" width={1280} height={720}
+                  loading="lazy" decoding="async" />
+                <small>{String(index+1).padStart(2,"0")}</small>
+              </span>
               <strong>{video.title}</strong>
               <ArrowUpRight size={19} aria-hidden />
             </Link>
