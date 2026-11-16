@@ -1,4 +1,8 @@
 
+## 2026-11-16 — Contact query safety
+Reference: https://unicode.org/reports/tr9/ — Unicode Bidirectional Algorithm. Control characters U+202A–U+202E and U+2066–U+2069 can alter visual ordering without changing logical input. Adaptation: remove those formatting controls and ASCII/C1 controls from user-provided location URL parameter; normalize whitespace, retain existing 120-character cap and allowlist for services. No external code or dependency copied; no licensing requirement. Rejected: aggressive ASCII-only normalization because it would damage Romanian diacritics and legitimate place names. Visual aesthetic reference research deferred to next /evenimente rotation.
+
+
 ## 2026-11-16 / V169 — original signal desk (research follow-up)
 References for editorial art direction: https://pluggedliveshows.com/ (live production image hierarchy), https://www.exoape.com/ (depth and editorial visual rhythm), https://momentfactory.com/ (controlled scenic light). Technique adapted: original foreground sound-mixer schematic with owner-site photo behind; no code, image or branding copied. No external dependency or license required for original CSS/inline SVG. Rejected: AI event photos masquerading as Green Sound, auto-playing sound/video, heavy WebGL and generic full-page neon cards. Accessibility: SVG decorative aria-hidden, no pointer interception, reduced motion and Lite disable dash movement. Reference inspection needs renewed browser visual verification; URLs are direction, not proof of current content.
 

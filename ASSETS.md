@@ -1,3 +1,7 @@
+
+## V171 / 2026-11-16
+No new image, font, audio, video, code package or third-party asset. Contact query validation only.
+
 ## V170 / 2026-11-16 — Owner reference vs live site asset provenance
 Owner-selected bottom-right design image and subsequent generated high-fidelity concept are **visual reference only**. The site does NOT ship the AI-generated screenshot as a genuine concert photograph, does not display invented 500+ events/15+ years/100% metrics, and does not import other-company photography. Real assets all originate from the prior Green Sound media catalogue (`images.concert` initial stage and CTA, `images.dj`, `images.scena`, `images.fum` from Green Sound's own existing YouTube video, `videos.showLumini.poster`, `videos.neatza.poster`, and three published Green Sound video entries). A live-mixing console, animated stage beams and light/equalizer strip are **new, intentionally decorative CSS/HTML illustrations** rather than claims of photographed installed equipment. No external design source/code/art is copied; no new font file or licensing introduced. Authentic film thumbnails and dialogue preserve original titles; videos are visitor initiated.
 

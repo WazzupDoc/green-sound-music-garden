@@ -25,7 +25,7 @@ function parseServices(raw: unknown): string[] {
  * All query fields are optional, so ordinary `<Link to="/contact" />`
  * calls stay valid. Only trusted allowed enum values and bounded text survive.
  */
-function validateBrief(search: Record<string, unknown>): BriefQuery {
+export function validateBrief(search: Record<string, unknown>): BriefQuery {
   const brief: BriefQuery = {};
   const eventValue = search["event"];
   const dateValue = search["date"];
@@ -38,7 +38,7 @@ function validateBrief(search: Record<string, unknown>): BriefQuery {
     brief.date = dateValue;
   }
   if (typeof locationValue === "string" && locationValue.trim()) {
-    brief.location = locationValue.trim().slice(0, 120);
+    brief.location = locationValue.replace(/[\u0000-\u001F\u007F-\u009F\u202A-\u202E\u2066-\u2069]/g, " ").replace(/\s+/g, " ").trim().slice(0, 120);
   }
   const selectedServices = parseServices(serviceValue);
   if (selectedServices.length) brief.services = selectedServices;
