@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { ProductionHeroV166 } from "@/components/atelier/ProductionHeroV166";
-import homeDirectionCss from "@/styles/home-rebuild-v166.css?inline";
+import { ProductionHeroV168 } from "@/components/atelier/ProductionHeroV168";
+import homeDirectionCss from "@/styles/home-v168-dark-live.css?inline";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { localBusinessLd, pageHead } from "@/lib/seo";
@@ -25,18 +25,18 @@ export const Route = createFileRoute("/")({
  */
 function Home() {
   return (
-    <div className="gs166-home">
+    <div className="gs168-home">
       {/* Scoped, SSR-delivered: this redesign does not alter the dedicated pages. */}
       <style>{homeDirectionCss}</style>
-      <ProductionHeroV166 />
+      <ProductionHeroV168 />
       <ProductionIndex />
       <EditorialPortfolio />
       <section className="crafted-finale gs-finale" aria-labelledby="crafted-finale-title">
         <div className="container-site crafted-finale__grid">
           <span className="crafted-index">URMĂTORUL EVENIMENT / ÎNCEPE AICI</span>
           <div>
-            <h2 id="crafted-finale-title">Următorul eveniment <em>începe aici.</em></h2>
-            <p>Spune-ne data, locul și ce ai nevoie: DJ, muzică live, sonorizare sau lumini. Tu alegi cum trimiți cererea.</p>
+            <h2 id="crafted-finale-title">Sunetul tău. <em>Scena noastră.</em></h2>
+            <p>DJ & MC, trupă live, sonorizare și lumini. Povestește-ne despre eveniment și alegem împreună ce i se potrivește.</p>
           </div>
           <Link to="/contact" className="crafted-finale__link" aria-label="Solicită o ofertă personalizată">
             <ArrowUpRight className="size-9" aria-hidden />
