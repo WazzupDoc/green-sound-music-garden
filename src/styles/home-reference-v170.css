@@ -214,3 +214,7 @@ html[data-gs-performance=lite] .gs170-home .gs170-wave__main,
 html[data-gs-performance=lite] .gs170-home .gs170-stage__live{animation:none!important}
 html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none}
 @media(forced-colors:active){.gs170-home :is(a,button):focus-visible{outline:3px solid Highlight}}
+
+/* Dialog portals to body; styles intentionally not scoped under .gs170-home. */
+.gs170-dialog{max-height:92dvh;max-width:64rem;overflow-y:auto;border-radius:0;border:1px solid #66be6799;background:#07180f;color:#fff;padding:20px}
+.gs170-dialog__description{color:#d9e6da}
