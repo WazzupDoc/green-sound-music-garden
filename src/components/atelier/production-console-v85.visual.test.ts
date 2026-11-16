@@ -23,7 +23,7 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
    expect(page).toContain("services.some(service => !allSlugs.includes(service.slug))");
  });
  it("keeps provenance, reduced motion and no auto-playing media",()=>{
-   expect(page).toContain("existing real Green Sound");
+   expect(page).toContain("Real first-party media");
    expect(page).toContain("VideoLite video={film.video}");
    expect(css).toContain("prefers-reduced-motion:reduce");
    expect(css).not.toContain("url(https:");
