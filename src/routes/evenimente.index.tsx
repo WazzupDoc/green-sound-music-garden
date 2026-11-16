@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent } from "react";
 import eventIndexCss from "@/styles/event-index-v172.css?inline";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
@@ -28,6 +28,8 @@ const initialEvent = requireInitialEvent();
 
 function Events() {
   const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
   const activeEvent = events.find((event) => event.slug === activeSlug) ?? initialEvent;
   const selectedIndex = events.findIndex((event) => event.slug === activeEvent.slug);
 
@@ -69,7 +71,7 @@ function Events() {
           </div>
         </div>
       </section>
-      <section className="gs172-programme" aria-labelledby="gs172-programme-title">
+      <section className="gs172-programme" aria-labelledby="gs172-programme-title" data-hydrated={hydrated}>
         <div className="container-site gs172-programme__container">
           <div className="gs172-programme__heading">
             <span className="gs172-overline">01 / SELECTEAZĂ FORMATUL</span>

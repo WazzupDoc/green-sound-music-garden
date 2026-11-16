@@ -22,6 +22,7 @@ fs.mkdirSync(directory,{recursive:true});
     assert.equal(await page.locator(".rs-events-index__row").count(),5);
     await page.locator(".rs-events-index__image img").first().evaluate(async img=>{img.loading="eager";await img.decode()});
    }else{
+    await page.locator('[data-hydrated="true"].gs172-programme').waitFor({timeout:15000});
     await page.locator(".gs172-programme__select").first().waitFor({timeout:12000});
     assert.equal(await page.locator(".gs172-programme__select").count(),5);
     assert.equal(await page.locator(".gs172-programme__detail").count(),5);
@@ -38,6 +39,7 @@ fs.mkdirSync(directory,{recursive:true});
    if(!before){
      const first=page.locator(".gs172-programme__select").first();
      await first.focus();await page.keyboard.press("ArrowDown");
+     await page.waitForFunction(() => document.querySelectorAll(".gs172-programme__select")[1]?.getAttribute("aria-pressed") === "true", {timeout:7000});
      assert.equal(await page.locator(".gs172-programme__select").nth(1).getAttribute("aria-pressed"),"true","ArrowDown selects second event");
      assert.equal(await page.locator(".gs172-programme__select").nth(1).evaluate(el=>document.activeElement===el),true,"Keyboard focus moves with selection");
      const second=await page.locator(".gs172-programme__select").nth(1).innerText();
