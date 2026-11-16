@@ -266,6 +266,36 @@ async function main() {
       await contactPage.close();
     }
 
+    // V161 visual baseline and after-state: identical route, viewport, state
+    // and reduced-motion settings, with real browser-decoded source photographs.
+    for (const portfolioWidth of [390,1440]) {
+      const portfolioPage=await browser.newPage({
+        viewport:{width:portfolioWidth,height:900},reducedMotion:"reduce",
+      });
+      const response=await portfolioPage.goto(base+"/portofoliu",{waitUntil:"domcontentloaded"});
+      assert.equal(response.status(),200);
+      await portfolioPage.locator(".rs-gallery__frame").first().waitFor();
+      await portfolioPage.locator(".rs-video-library__item").first().waitFor();
+      await portfolioPage.locator(".rs-gallery__media img").evaluateAll(async imgs=>{
+        for(const img of imgs)img.loading="eager";
+        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+      });
+      await noOverflow(portfolioPage,"/portofoliu",portfolioWidth);
+      await portfolioPage.screenshot({
+        path:`${output}/portfolio-current-${portfolioWidth}.png`,
+        animations:"disabled",fullPage:true,
+      });
+      await portfolioPage.locator(".rs-gallery").screenshot({
+        path:`${output}/portfolio-photos-${portfolioWidth}.png`,
+        animations:"disabled",
+      });
+      await portfolioPage.locator(".rs-video-library").screenshot({
+        path:`${output}/portfolio-films-${portfolioWidth}.png`,
+        animations:"disabled",
+      });
+      await portfolioPage.close();
+    }
+
     // V93: actual footer snapshots at identical 390/1440 viewports.
     for (const footerWidth of [360,390,430,768,1440,1920]) {
       const footerPage = await browser.newPage({
