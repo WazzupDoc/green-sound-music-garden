@@ -23,7 +23,7 @@ export function EventPage({event}:{event:EventType}){
         <ol>{event.moments.map((moment,index)=>{
           const service=getService(moment.service);
           return <li key={moment.title}>
-            <span aria-label={`Etapa ${index + 1} din ${event.moments.length}`}>{String(index+1).padStart(2,"0")} <span aria-hidden="true">/ {String(event.moments.length).padStart(2,"0")}</span></span>
+            <span className="rs-event-timeline__counter" aria-label={`Etapa ${index + 1} din ${event.moments.length}`} role="img"><span aria-hidden="true">{String(index+1).padStart(2,"0")} / {String(event.moments.length).padStart(2,"0")}</span></span>
             <h3>{moment.title}</h3>
             <p>{moment.text}</p>
             <Link to={`/${service.slug}`} viewTransition>
