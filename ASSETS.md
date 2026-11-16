@@ -1,3 +1,6 @@
+## V158 / 2026-11-16 — Significant homepage art direction, no additional assets
+No downloaded/licensed/stock/AI images, no new third-party font, logo, music, code, video or design template. Existing project catalogue `images.concert` / `images.dj` / `images.scena` and the three previously published authorised film resources remain source media. `KineticShowWall` uses these existing pictures, but the appearance changes to a compact cinematic contact print via first-party CSS. No external code copied; Webflow/Awwwards inspiration cannot be treated as license. Source change 21 kB original CSS, SSR route-scoped rather than new global styles, no package additions. Publication provenance of all existing assets unchanged.
+
 ## V157 / 2026-11-16
 No new photographs, videos, logos, fonts, external icons, audio or third-party code. Original HTML/CSS production signal path on Contact; existing Lucide ArrowUpRight and first-party typography reused. Webflow/Awwwards references were used only for design research, not copied. No additional licenses/attribution required. Historical authorised assets unchanged.
 
