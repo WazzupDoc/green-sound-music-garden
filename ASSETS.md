@@ -1,3 +1,7 @@
+
+## V169 / 2026-11-16
+Original source-authored inline SVG waveform and CSS mixing-console faders in ProductionHeroV168.tsx/home-v168-dark-live.css. Provenance: newly authored first-party abstract decorative artwork, no external media/license or attribution requirement. The existing project hero photo is unchanged and retains its existing provenance; schematic is NOT a photograph of actual company equipment.
+
 ## 2026-11-16 / V168 provenance
 V168 adds **no external image, video, fonts, sound or JS library**. It reuses the existing project `images.concert` (hero initially), `images.dj`, `images.scena` (user-controlled mode), first-party chapter images, existing 3 film posters and VideoLite video references. Their previously documented ownership/permissions are inherited, not asserted anew. The existing brand logo stays in SiteHeader; V168 does not embed TikTok reference clips or show generated media as client work. Original authored files: `src/components/atelier/ProductionHeroV168.tsx` and `src/styles/home-v168-dark-live.css`. Awwwards/Webflow references: study only; no templates/code/visual assets copied.
 
