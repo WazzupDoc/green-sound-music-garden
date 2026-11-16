@@ -1,3 +1,6 @@
+## V155 / 2026-11-16 — Events long action label (DRAFT)
+Branch `fix/v155-events-reset-mobile-width` on V154. The long reset-recommendations button may overflow even inside a flex-wrap row. Added width constraints and text wrapping for narrow/mobile layouts; clear action constrained too. No new assets/dependencies or homepage/main/deploy changes. Screenshot before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Prior V153 Vitest failed; do not merge.
+
 ## V154 / 2026-11-16 — Events action layout (DRAFT)
 Branch `design/v154-events-action-layout` stacked on V153. Reset/clear service actions now use wrapping flex layout with consistent spacing instead of inline fixed margin, to improve narrow screens. Source regression test added. Previous V153 exact-head CI failed in Vitest; V154 TypeScript/SSR/Vitest/gzip/Chromium/CI exact-head and 390/1440 before-after screenshots not yet confirmed. No homepage/main/deploy changes.
 
