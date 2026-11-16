@@ -1,11 +1,11 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 const home=readFileSync("src/routes/index.tsx","utf8");
-const hero=readFileSync("src/components/atelier/ProductionHeroV166.tsx","utf8");
-const css=readFileSync("src/styles/home-rebuild-v166.css","utf8");
-describe("V166 replaces V158's cumulative theme without losing working conversion",()=>{
+const hero=readFileSync("src/components/atelier/ProductionHeroV168.tsx","utf8");
+const css=readFileSync("src/styles/home-v168-dark-live.css","utf8");
+describe("V168 replaces V158's cumulative theme without losing working conversion",()=>{
  it("keeps one photo, an offer CTA, an authentic click-to-play film and three controlled modes",()=>{
-   expect(home).toContain("<ProductionHeroV166 />");
+   expect(home).toContain("<ProductionHeroV168 />");
    expect(hero).toContain('className="gs160-stage__photo"');
    expect(hero).toContain('to="/contact"');
    expect(hero).toContain("setFilmOpen(true)");
