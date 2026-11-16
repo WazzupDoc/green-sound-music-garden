@@ -109,7 +109,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const chosenServices = useWatch({ control, name: "services" }) ?? [];
   const chosenEvent = useWatch({ control, name: "eventType" });
   const suggestions = quoteRecommendations(chosenEvent);
-  const atLimit = chosenServices.filter(label => label !== ADVICE_SERVICE_LABEL).length >= MAX_QUOTE_SERVICES;
+  const selectedServiceCount = chosenServices.filter(label => label !== ADVICE_SERVICE_LABEL).length;
+  const wantsAdvice = chosenServices.includes(ADVICE_SERVICE_LABEL);
+  const atLimit = selectedServiceCount >= MAX_QUOTE_SERVICES;
 
   const toggleRecommendation = (label: string) => {
     setValue("services", toggleQuoteService(chosenServices, label),
@@ -298,8 +300,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <div className="gs-quote__selection-meta" id="q-services-guide">
           <span>Poți alege serviciile dorite sau ne poți cere recomandări.</span>
           <span className="gs-quote__count" role="status" aria-live="polite">
-            {chosenServices.length === 1 && chosenServices.includes(ADVICE_SERVICE_LABEL)
-              ? "RECOMANDARE SOLICITATĂ" : `${chosenServices.length} / ${MAX_QUOTE_SERVICES} SELECTATE`}
+            {wantsAdvice
+              ? `${selectedServiceCount} / ${MAX_QUOTE_SERVICES} SERVICII · RECOMANDARE SOLICITATĂ`
+              : `${selectedServiceCount} / ${MAX_QUOTE_SERVICES} SERVICII SELECTATE`}
           </span>
         </div>
         <Controller
