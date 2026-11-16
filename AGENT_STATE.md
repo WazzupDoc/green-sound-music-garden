@@ -1,3 +1,6 @@
+## 2026-11-16 — V156 CI unblock, no visual release
+Zone: test infrastructure / not-found fallback regression. Evidence: V155 workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43813721236 (TypeScript/build/budget passed; Vitest failure `ERR_INVALID_URL_SCHEME`). Action: resolve fallback component source from repository root rather than an import.meta URL that Vitest rewrites to a non-file scheme. No visual changes; screenshot before/after not applicable to this fix. V155 Events UI still requires real Chromium 390/1440 screenshots and six-width audit before release. Next rotation: Events real browser QA, then Contact. Main unchanged.
+
 ## V155 / 2026-11-16 — Events reset label mobile width
 Zone: /evenimente. V154 flex-wrap does not guarantee a long reset button fits a 360px viewport; button now has min-w-0/max-w-full, whitespace wrapping, break-words and left-aligned text. Clear button also max-w-full. No new dependency/media/homepage/main. Browser screenshots, TS/SSR/Vitest/gzip and CI exact-head NOT VERIFIED; release blocked. Next: diagnose V153 Vitest failure and actual six-width browser QA; then Contact.
 
