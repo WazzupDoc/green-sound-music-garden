@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import portfolioDirectorCss from "@/styles/portfolio-directors-cut-v161.css?inline";
 import { RegiaPhotoRail, RegiaFilmArchive, galleryFrames } from "@/components/atelier/RegiaPortfolio";
 import { QuoteSection } from "@/components/site/blocks";
 import { images, videos } from "@/data/site";
@@ -22,13 +24,32 @@ export const Route=createFileRoute("/portofoliu")({
 });
 function Portfolio(){
   const {film,photo}=Route.useSearch();
-  return <>
-    <section className="rs-page-intro" aria-labelledby="rs-portfolio-title">
-      <div className="container-site"><p>Portofoliu</p><h1 id="rs-portfolio-title">Nu prezentări. Evenimentele, așa cum au fost.</h1>
-      <p>Fotografii și filmări din arhiva Green Sound Music. Imaginile și videoclipurile sunt cele ale proiectului, nu fotografii de catalog.</p></div>
+  return <div className="gs161-portfolio">
+    <style>{portfolioDirectorCss}</style>
+    <section className="gs161-hero" aria-labelledby="rs-portfolio-title">
+      <div className="gs161-hero__media">
+        <img src={images.concert.src} width={images.concert.w} height={images.concert.h}
+          alt={images.concert.alt} fetchPriority="high" decoding="async" />
+        <span className="gs161-hero__media-index" aria-hidden="true">GSM / REAL EVENTS ARCHIVE</span>
+      </div>
+      <div className="gs161-hero__copy">
+        <span className="gs161-hero__eyebrow">GREEN SOUND MUSIC — ARHIVA VIZUALĂ</span>
+        <h1 id="rs-portfolio-title">DINCOLO<br/>DE <em>SCENĂ.</em></h1>
+        <div className="gs161-hero__foot">
+          <p>Momente reale, văzute dinspre public, scenă și echipă. Fotografii și filme din arhiva Green Sound Music.</p>
+          <nav aria-label="Explorează portofoliul">
+            <a href="#portfolio-photos">Fotografii <ArrowDownRight className="size-4" aria-hidden /></a>
+            <a href="#portfolio-films">Filme <ArrowUpRight className="size-4" aria-hidden /></a>
+          </nav>
+        </div>
+      </div>
+      <div className="gs161-hero__footer" aria-hidden="true">
+        <span>FOTO / FILM / MUZICĂ / PRODUCȚIE</span>
+        <span>01 / THE ARCHIVE</span>
+      </div>
     </section>
     <RegiaPhotoRail activePhoto={photo} />
     <RegiaFilmArchive film={film} />
     <QuoteSection title="Ai un eveniment în pregătire?" intro="Spune-ne data și locația. Formularul doar pregătește mesajul, iar tu alegi dacă îl trimiți prin WhatsApp sau email." />
-  </>;
+  </div>;
 }
