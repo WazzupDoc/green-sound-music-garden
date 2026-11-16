@@ -227,3 +227,11 @@ html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none
 .gs170-home .gs170-process__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
 .gs170-home .gs170-films__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
 .gs170-home .gs170-final h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
+
+/* Do not keep compositor animations running when the section is offscreen or browser tab is hidden. */
+.gs170-home .gs170-hero[data-stage-visible=false] .gs170-stage__beams i,
+.gs170-home .gs170-hero[data-stage-visible=false] .gs170-stage__eq span,
+.gs170-home .gs170-hero[data-stage-visible=false] .gs170-wave__pulse,
+.gs170-home .gs170-hero[data-stage-visible=false] .gs170-stage__live{animation-play-state:paused!important}
+/* The hero has its own light controls; avoid an unrelated duplicate control in the global footer on Home only. */
+body:has(.gs170-home) .gs-global-light-wrap{display:none}
