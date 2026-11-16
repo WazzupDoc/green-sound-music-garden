@@ -11,9 +11,10 @@ describe("V86 replaces V84/V85 cascade with one scoped branded design",()=>{
   expect(route).toContain('<style>{homeSignatureCss}</style>');
   expect(route).toContain('<style>{premiumEventCss}</style>');
   expect(route).toContain('home-event-v89.css?inline');
-  expect(route).toContain('className="gs-home-v86 gs-home-v158"');
+  expect(route).toContain('className="gs-home-v86 gs-home-v158 gs-home-v159"');
   expect(route).toContain('home-redesign-v158.css?inline');
   expect(route).toContain('<style>{homeRedesignCss}</style>');
+  expect(route).toContain('<style>{homeCoverCss}</style>');
   expect(route).not.toContain("homeNightshiftCss");
   expect(route).not.toContain("homeProductionCss");
   expect(shared).not.toContain("home-signature-v86.css");
