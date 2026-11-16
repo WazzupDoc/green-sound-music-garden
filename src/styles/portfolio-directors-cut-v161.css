@@ -283,3 +283,23 @@ html[data-gs-performance=lite] .gs161-portfolio .gs161-film-thumb img{
   scroll-margin-block-start:88px;
  }
 }
+
+/* V163 — portfolio film keyboard navigation: the dark film selector must
+ * expose a visible focus target even when a film is already selected.
+ * Outline is outside the row and remains legible on both dark states. */
+.gs161-portfolio .rs-video-library__filters button:focus-visible,
+.gs161-portfolio .rs-video-library__item:focus-visible {
+ outline:3px solid #e7ffc9!important;
+ outline-offset:3px;
+ position:relative;
+ z-index:2;
+}
+.gs161-portfolio .rs-video-library__item[aria-current=true]:focus-visible {
+ background:#c7f3b626;
+}
+@media(forced-colors:active){
+ .gs161-portfolio .rs-video-library__filters button:focus-visible,
+ .gs161-portfolio .rs-video-library__item:focus-visible {
+  outline:3px solid Highlight!important;
+ }
+}
