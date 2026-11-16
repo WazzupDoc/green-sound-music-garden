@@ -1,3 +1,6 @@
+## V156 / 2026-11-16 — Fix Vitest file URL scheme (DRAFT)
+Branch `fix/v156-vitest-file-url-scheme` stacked on V155. GitHub Actions V155 run 43813721236: TypeScript, SSR build and gzip passed; Vitest failed before executing `src/test/not-found-recovery.test.ts` with `ERR_INVALID_URL_SCHEME`. Replaced `fileURLToPath(new URL(..., import.meta.url))` with `resolve(process.cwd(), "src/components/site/StageFallback.tsx")` in this source-reading test. No product UI, dependency, asset, main or deployment change. CI exact-head and Chromium screenshots pending. Next: verify new CI, investigate any further test failure, then browser QA for /evenimente and Contact.
+
 ## V155 / 2026-11-16 — Events long action label (DRAFT)
 Branch `fix/v155-events-reset-mobile-width` on V154. The long reset-recommendations button may overflow even inside a flex-wrap row. Added width constraints and text wrapping for narrow/mobile layouts; clear action constrained too. No new assets/dependencies or homepage/main/deploy changes. Screenshot before/after 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Prior V153 Vitest failed; do not merge.
 
