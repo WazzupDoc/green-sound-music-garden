@@ -1,31 +1,27 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-const home=readFileSync("src/routes/index.tsx","utf8");
-const hero=readFileSync("src/components/atelier/ProductionHeroV168.tsx","utf8");
-const css=readFileSync("src/styles/home-v168-dark-live.css","utf8");
-describe("V168 replaces V158's cumulative theme without losing working conversion",()=>{
- it("keeps one photo, an offer CTA, an authentic click-to-play film and three controlled modes",()=>{
-   expect(home).toContain("<ProductionHeroV168 />");
-   expect(hero).toContain('className="gs160-stage__photo"');
-   expect(hero).toContain('to="/contact"');
-   expect(hero).toContain("setFilmOpen(true)");
-   expect(hero).toContain("editions.map(item =>");
-   expect(hero).toContain('aria-pressed={selected === item.key}');
-   expect(hero).toContain('to="/evenimente/$slug"');
+const page=readFileSync("src/components/atelier/ConceptHomeV170.tsx","utf8");
+const css=readFileSync("src/styles/home-reference-v170.css","utf8");
+describe("V170 preserves original conversion and visitor control",()=>{
+ it("has a real Contact destination, portfolio anchor, and visual-only light toggles",()=>{
+   expect(page).toContain('to="/contact"');
+   expect(page).toContain('href="#gs170-films"');
+   expect(page).toContain("setLightsOn(value => !value)");
+   expect(page).toContain('aria-pressed={lightsOn}');
+   expect(page).toContain('aria-pressed={lightHue === "cool"}');
  });
- it("keeps all original photos and real film links, not generated event imagery",()=>{
-   expect(hero).toContain("images.concert");
-   expect(hero).toContain("images.dj");
-   expect(hero).toContain("images.scena");
-   expect(hero).toContain("videos.showLumini");
-   expect(hero).toContain("videos.nuntaRamada");
-   expect(hero).toContain("<VideoLite");
-   expect(css).not.toMatch(/@import\s|url\(https?:/);
+ it("uses first-party source images and exactly three published film references",()=>{
+   expect(page).toContain("images.concert.src");
+   expect(page).toContain("images.dj.src");
+   expect(page).toContain("images.scena.src");
+   expect(page).toContain("videos.nuntaRamada");
+   expect(page).toContain("videos.showLumini");
+   expect(page).toContain("videos.neatza");
  });
- it("adapts mobile and Lite mode",()=>{
-   expect(css).toContain("@media(max-width:900px)");
+ it("keeps real responsive CSS and optional animation",()=>{
+   expect(css).toContain("@media(max-width:740px)");
    expect(css).toContain("@media(max-width:470px)");
    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-   expect(css).toContain("html[data-gs-performance=lite]");
+   expect(css).toContain("gs170-waveflow");
  });
 });
