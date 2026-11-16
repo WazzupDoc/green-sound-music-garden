@@ -22,9 +22,11 @@ describe("V173 Live Show Poster contract",()=>{
   for(const event of events) for(const cue of event.moments.slice(0,3)) expect(getService(cue.service).name).toBeTruthy();
  });
  it("uses existing real event images, adaptive motion, no new backend or autoplay",()=>{
-  for(const value of ["activeEvent.image.src","activeEvent.image.alt","width={activeEvent.image.w}","height={activeEvent.image.h}"]) expect(route).toContain(value);
+  for(const value of ["visualEvent.image.src","visualEvent.image.alt","width={visualEvent.image.w}","height={visualEvent.image.h}"]) expect(route).toContain(value);
   expect(route).not.toContain("autoplay");
   expect(route).not.toContain("fetch(");
+  expect(route).toContain("preload.decode()");
+  expect(route).toContain("setVisualEvent(activeEvent)");
   for(const value of ["@media(max-width:780px)","@media(max-width:480px)","@media(prefers-reduced-motion:reduce)","data-gs-performance=lite",":focus-visible","@keyframes gs173-gate-open","transform:translateY"]) expect(css).toContain(value);
   expect(route).toContain("<style>{eventPosterCss}</style>");
   expect(css).not.toContain("@import");
