@@ -33,6 +33,8 @@ async function main() {
       await page.locator('.gs160-stage[data-hydrated="true"]').waitFor({timeout:15000});
       assert.equal(await page.locator("main h1").count(),1);
       assert.equal(await page.locator(".gs166-home").count(),1);
+      assert.equal(await page.locator('nav[aria-label="Contact rapid"]').count(),0,
+        "Homepage must not duplicate its quote CTAs with a mobile sticky contact bar");
       assert.equal(await page.locator(".gs160-stage__photo").count(),1,
         "One genuine full-bleed production photo, not layered fake stage cards");
       assert.equal(await page.locator(".gs-v90-show-wall").count(),0,
@@ -429,6 +431,8 @@ async function main() {
       "/despre-noi", "/confidentialitate"]) {
       const response = await page.goto(base + route, { waitUntil: "domcontentloaded" });
       assert.equal(response.status(), 200, `HTTP ${route}`);
+      if (route === "/servicii") assert.equal(await page.locator('nav[aria-label="Contact rapid"]').count(),1,
+        "Interior pages must retain the mobile quick contact navigation");
       assert.equal(await page.locator("main h1").count(), 1, `H1 ${route}`);
       await noOverflow(page, route, 390);
     }
