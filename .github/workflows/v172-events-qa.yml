@@ -1,0 +1,75 @@
+name: V172 Event Direction — Matched Browser Before After
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches: [fix/v171-contact-prefill-safety]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matched-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Dependencies
+        run: bun install --no-save
+      - name: Chromium for real screenshots
+        run: |
+          npm install --prefix /tmp/gs172-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs172-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture exact baseline V171 on the same viewport and route
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GS172_STAGE: before
+          NODE_PATH: /tmp/gs172-playwright/node_modules
+        run: |
+          cp .github/scripts/v172-events-browser.cjs /tmp/v172-events-browser.cjs
+          git checkout --detach "$BASE_SHA"
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/gs172-before.log 2>&1 & echo $! > /tmp/gs172-before.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/evenimente >/dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v172-events-browser.cjs
+          kill "$(cat /tmp/gs172-before.pid)" || true
+          sleep 2
+      - name: Verify new exact-head TypeScript, SSR, Vitest and budgets
+        env:
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          bun run typecheck
+          bun run build
+          python3 .github/scripts/check-client-budget.py
+          bun run test
+      - name: Capture new V172 visuals and real interaction states
+        env:
+          GS172_STAGE: after
+          NODE_PATH: /tmp/gs172-playwright/node_modules
+        run: |
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/gs172-after.log 2>&1 & echo $! > /tmp/gs172-after.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/evenimente >/dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v172-events-browser.cjs
+          kill "$(cat /tmp/gs172-after.pid)" || true
+      - name: Compare actual screenshot file bytes (difference is necessary, not sufficient)
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');const crypto=require('node:crypto');
+          for(const width of [390,1440]){
+            const hash=name=>crypto.createHash('sha256').update(fs.readFileSync('screenshots/v172/'+name+'-viewport-'+width+'.png')).digest('hex');
+            if(hash('before')===hash('after'))throw Error('No actual screenshot difference at '+width);
+            console.log('DIFFERENT real browser viewport captures at '+width+'px');
+          }
+          NODE
+      - name: Upload direct before/after screenshots, mobile and desktop
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v172-events-before-after-chromium
+          path: screenshots/v172/
+          if-no-files-found: warn
+          retention-days: 60
