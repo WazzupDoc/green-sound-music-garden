@@ -19,8 +19,12 @@ export const Route = createFileRoute("/evenimente/")({
 
 /** V172: event direction console. All five dedicated routes stay reachable
  * through SSR links, even if the optional React preview never hydrates. */
-const initialEvent = events[0];
-if (!initialEvent) throw new Error("Event catalogue must not be empty");
+function requireInitialEvent() {
+  const first = events[0];
+  if (!first) throw new Error("Event catalogue must not be empty");
+  return first;
+}
+const initialEvent = requireInitialEvent();
 
 function Events() {
   const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
