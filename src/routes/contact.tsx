@@ -78,6 +78,16 @@ function Contact() {
               ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
               : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
           </p>
+          <div className="director-contact-signal" aria-label="Etapele cererii de ofertă">
+            <ol className="director-contact-signal__steps">
+              <li><span>01 / INPUT</span><strong>Spui ce pregătești</strong></li>
+              <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
+              <li><span>03 / SEND</span><strong>Alegi tu trimiterea</strong></li>
+            </ol>
+            <a href="#contact-form-title" className="director-contact-signal__action">
+              Începe cererea <ArrowUpRight className="size-5" aria-hidden />
+            </a>
+          </div>
         </div>
       </section>
       <section className="section director-contact-brief-flow" aria-labelledby="contact-form-title">
