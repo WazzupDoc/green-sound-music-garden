@@ -477,6 +477,23 @@
     font-size:clamp(3.1rem,11vw,5rem)
   }
 }
+/* The V90 script retains a legacy mobile one-photo mode using !important.
+   V158 deliberately shows all three original archival frames, so the active
+   selection is indicated in the strip while the full-bleed photo changes. */
+@media(max-width:850px){
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active] .gs-v90-show-wall__frame{
+    display:block!important;position:relative!important;
+    top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+    width:100%!important;height:100%!important;
+    filter:brightness(.82) saturate(.9)
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=live] .gs-v90-show-wall__frame--live,
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=private] .gs-v90-show-wall__frame--private,
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=production] .gs-v90-show-wall__frame--production{
+    filter:brightness(1.05) saturate(1.2);
+    border:2px solid #d5f3ad
+  }
+}
 /* Motion applies only to native controls and existing photo transitions.
    No extra animation in Lite/Save-Data/low memory/reduced motion. */
 html[data-gs-performance=lite] .gs-home-v158 .gs-v90-show-wall__frame,
