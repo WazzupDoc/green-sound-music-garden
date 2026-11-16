@@ -57,6 +57,17 @@ async function main() {
       const h1Text = await page.locator(".crafted-hero h1").innerText();
       assert.match(h1Text,/EVENIMENTE/, "New event-first headline actually renders");
       assert.match(h1Text,/NEUITAT/, "New green oversized second line actually renders");
+      // V159: root overflow:clip can hide giant typography without increasing
+      // document.scrollWidth. Measure the actual text ink on each of six widths.
+      const titleInkRight = await page.locator(".crafted-hero__title").evaluate(element => {
+        return [...element.querySelectorAll(".gs-stage-v78__line")].map(line => {
+          const range = document.createRange();
+          range.selectNodeContents(line);
+          return range.getBoundingClientRect().right;
+        });
+      });
+      assert(titleInkRight.length === 2 && titleInkRight.every(right => right <= width - 3),
+        `Poster headline text clipped at ${width}px: ${titleInkRight.join(", ")}`);
       const heroHeight = (await page.locator(".crafted-hero").boundingBox())?.height ?? Infinity;
       if(width===1440) {
         assert(heroHeight >= 1010 && heroHeight <= 1220,
