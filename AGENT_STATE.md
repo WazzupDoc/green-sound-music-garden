@@ -1,3 +1,6 @@
+## V155 / 2026-11-16 — Events reset label mobile width
+Zone: /evenimente. V154 flex-wrap does not guarantee a long reset button fits a 360px viewport; button now has min-w-0/max-w-full, whitespace wrapping, break-words and left-aligned text. Clear button also max-w-full. No new dependency/media/homepage/main. Browser screenshots, TS/SSR/Vitest/gzip and CI exact-head NOT VERIFIED; release blocked. Next: diagnose V153 Vitest failure and actual six-width browser QA; then Contact.
+
 ## V154 / 2026-11-16 — Events action layout
 Zone: /evenimente selection controls. V153 reset/clear were inline with a fixed left margin on clear, risking awkward narrow layout. Grouped with flex-wrap and gap; no new assets/dependencies. Source regression test added. CI previous V153 exact-head failed at Vitest; V154 CI and real Chromium screenshots pending. Next: diagnose failing test and browser QA; then Contact. Main unchanged.
 
