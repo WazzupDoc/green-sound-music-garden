@@ -52,36 +52,38 @@ async function main() {
       assert.equal(await page.locator(".gs-index__signal-ledger").count(), 0,
         "V86 removed decorative fake signal badges, not merely CSS-hidden");
       assert.equal(await page.locator(".gs-index__routing").count(), 0);
-      assert.equal(await page.locator(".gs-home-v86").count(), 1,
-        "Only V86 scoped homepage art direction must render");
+      assert.equal(await page.locator(".gs-home-v158").count(), 1,
+        "Only one V158 editorial homepage must render, without extra sections");
       const h1Text = await page.locator(".crafted-hero h1").innerText();
       assert.match(h1Text,/EVENIMENTE/, "New event-first headline actually renders");
       assert.match(h1Text,/NEUITAT/, "New green oversized second line actually renders");
       const heroHeight = (await page.locator(".crafted-hero").boundingBox())?.height ?? Infinity;
       if(width===1440) {
-        assert(heroHeight < 790,
-          `V89 hero must be more compact than previous 900px concepts: ${heroHeight}px`);
+        assert(heroHeight >= 700 && heroHeight <= 1050,
+          `V158 cinematic hero should own the first screen without infinite scrolling: ${heroHeight}px`);
       }
+      const headlinePhoto = await page.locator(".crafted-hero__image").evaluate(el => ({loaded: el.complete && el.naturalWidth > 0, width: el.naturalWidth}));
+      assert(headlinePhoto.loaded, "V158 first-party panoramic hero must decode at every viewport");
       assert.equal(await page.locator(".gs-index__photo img").count(),3);
       assert.equal(await page.locator(".gs-v90-ticker").count(),1,
         "The new kinetic top-band must actually be present");
       assert.equal(await page.locator(".gs-v90-show-wall__frame").count(),3);
       assert.equal(await page.locator(".gs-v90-show-wall").getAttribute("data-active"),"live");
       const tickerBg = await page.locator(".gs-v90-ticker").evaluate(el=>getComputedStyle(el).backgroundColor);
-      assert.equal(tickerBg,"rgb(198, 255, 156)",
-        "V90 masthead is an unmistakable solid-lime contrast band, not the old dark beam overlay");
+      assert.equal(tickerBg,"rgb(215, 237, 184)",
+        "V158 masthead should use a restrained paper-lime signal band");
       assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
         "Original Green Sound signal mark must be in the hydrated hero");
       assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
         "Oversized fake hardware must not render in the V86 first screen");
       if(width===1440){
         const indexHeight = (await page.locator(".gs-index").boundingBox())?.height ?? Infinity;
-        assert(indexHeight < 1120,
-          `V89 should end service chapter within approximately 1 viewport: ${indexHeight}px`);
+        assert(indexHeight >= 900 && indexHeight < 2100,
+          `V158 editorial catalogue must give genuine photos and eight links meaningful space: ${indexHeight}px`);
       }
       const serviceBg = await page.locator(".gs-index").evaluate(el => getComputedStyle(el).backgroundColor);
-      assert.equal(serviceBg, "rgb(6, 25, 17)",
-        "V89 compact event programme must be visible, not the prior V86 styling");
+      assert.equal(serviceBg, "rgb(235, 234, 224)",
+        "V158 ivory magazine catalogue must genuinely replace the all-dark previous styling");
       if (width >= 1100) {
         const rects = await Promise.all(["sound", "stage", "people"].map(key =>
           page.locator(`.gs-index__chapter[data-chapter="${key}"]`).boundingBox()
@@ -100,8 +102,8 @@ async function main() {
         assert(wallImages.every(img=>img.w>0 && img.h>0 && img.src.includes("/media/greensound/")),
           `All first-party V90 photos must be decoded: ${JSON.stringify(wallImages)}`);
         const wallRect = await page.locator(".gs-v90-show-wall").boundingBox();
-        assert(wallRect && wallRect.width>500 && wallRect.height>310,
-          "V90 photo wall must physically occupy the first screen, not exist only in hidden DOM");
+        assert(wallRect && wallRect.width>=220 && wallRect.height>=80 && wallRect.height<=160,
+          "V158 photo wall must visibly become a compact original-photo contact strip");
       }
       assert.equal(await page.locator('.crafted-hero__actions a[href="/contact"]').count(), 1,
         "Visible hero offer CTA should lead directly to the working Contact flow");
@@ -271,8 +273,12 @@ async function main() {
       "Scene selection must physically change the wall, not just text");
     assert.equal(await activePage.locator(".gs-v90-show-wall__frame--private").isVisible(),true,
       "Touch users must SEE the actual Private event photograph after switching modes");
-    assert.equal(await activePage.locator(".gs-v90-show-wall__frame--live").isVisible(),false,
-      "Mobile must not keep showing the first stage photo after choosing Private");
+    assert.equal(await activePage.locator(".gs-v90-show-wall__frame--live").isVisible(),true,
+      "V158 mobile contact strip keeps all three authenticated photos in a stable film index");
+    const privateBorder = await activePage.locator(".gs-v90-show-wall__frame--private")
+      .evaluate(el=>getComputedStyle(el).borderTopWidth);
+    assert.equal(privateBorder,"2px",
+      "The active Private photograph must be visually distinguished on touch screens");
     await activePage.screenshot({
       path:`${output}/v90-private-scene-390.png`,animations:"disabled",fullPage:false
     });
@@ -301,7 +307,7 @@ async function main() {
     assert.match(tickerAnimation,/gs-v90-ticker-flow/,
       "The top cinematic typography actually travels in full motion");
     assert.match(frameAnimation,/gs-v90-film-float/,
-      "The 3D photo wall actually floats in full motion");
+      "Existing first-party frame motion remains enabled only in full-motion mode");
     await motionPage.screenshot({path:`${output}/v90-live-wall-motion-start-1440.png`,
       animations:"allow",fullPage:false});
     await motionPage.waitForTimeout(1350);
