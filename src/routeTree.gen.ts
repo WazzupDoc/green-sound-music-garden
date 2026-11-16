@@ -10,10 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ContactGreenRouteImport } from './routes/contact-green'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as DespreNoiRouteImport } from './routes/despre-noi'
 import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContactGreenRouteImport } from './routes/contact-green'
+import { Route as DespreNoiRouteImport } from './routes/despre-noi'
 import { Route as DjMcRouteImport } from './routes/dj-mc'
 import { Route as EchipamenteDeSunetSiLuminiRouteImport } from './routes/echipamente-de-sunet-si-lumini'
 import { Route as HostessRouteImport } from './routes/hostess'
@@ -32,9 +32,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactGreenRoute = ContactGreenRouteImport.update({
-  id: '/contact-green',
-  path: '/contact-green',
+const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
+  id: '/confidentialitate',
+  path: '/confidentialitate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -42,14 +42,14 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactGreenRoute = ContactGreenRouteImport.update({
+  id: '/contact-green',
+  path: '/contact-green',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DespreNoiRoute = DespreNoiRouteImport.update({
   id: '/despre-noi',
   path: '/despre-noi',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
-  id: '/confidentialitate',
-  path: '/confidentialitate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DjMcRoute = DjMcRouteImport.update({
@@ -116,11 +116,11 @@ const EvenimenteSlugRoute = EvenimenteSlugRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/contact-green': typeof ContactGreenRoute
-  '/contact': typeof ContactRoute
-  '/despre-noi': typeof DespreNoiRoute
-  '/confidentialitate': typeof ConfidentialitateRoute
   '/': typeof IndexRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
+  '/contact': typeof ContactRoute
+  '/contact-green': typeof ContactGreenRoute
+  '/despre-noi': typeof DespreNoiRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
   '/hostess': typeof HostessRoute
@@ -135,11 +135,11 @@ export interface FileRoutesByFullPath {
   '/evenimente/': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesByTo {
-  '/contact-green': typeof ContactGreenRoute
-  '/contact': typeof ContactRoute
-  '/despre-noi': typeof DespreNoiRoute
-  '/confidentialitate': typeof ConfidentialitateRoute
   '/': typeof IndexRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
+  '/contact': typeof ContactRoute
+  '/contact-green': typeof ContactGreenRoute
+  '/despre-noi': typeof DespreNoiRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
   '/hostess': typeof HostessRoute
@@ -154,12 +154,12 @@ export interface FileRoutesByTo {
   '/evenimente': typeof EvenimenteIndexRoute
 }
 export interface FileRoutesById {
-  '/contact-green': typeof ContactGreenRoute
-  '/contact': typeof ContactRoute
-  '/despre-noi': typeof DespreNoiRoute
-  '/confidentialitate': typeof ConfidentialitateRoute
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
+  '/contact': typeof ContactRoute
+  '/contact-green': typeof ContactGreenRoute
+  '/despre-noi': typeof DespreNoiRoute
   '/dj-mc': typeof DjMcRoute
   '/echipamente-de-sunet-si-lumini': typeof EchipamenteDeSunetSiLuminiRoute
   '/hostess': typeof HostessRoute
@@ -176,11 +176,11 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/contact-green'
-    | '/contact'
-    | '/despre-noi'
-    | '/confidentialitate'
     | '/'
+    | '/confidentialitate'
+    | '/contact'
+    | '/contact-green'
+    | '/despre-noi'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -195,11 +195,11 @@ export interface FileRouteTypes {
     | '/evenimente/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/contact-green'
-    | '/contact'
-    | '/despre-noi'
-    | '/confidentialitate'
     | '/'
+    | '/confidentialitate'
+    | '/contact'
+    | '/contact-green'
+    | '/despre-noi'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -213,12 +213,12 @@ export interface FileRouteTypes {
     | '/evenimente/$slug'
     | '/evenimente'
   id:
-    | '/contact-green'
-    | '/contact'
-    | '/despre-noi'
-    | '/confidentialitate'
     | '__root__'
     | '/'
+    | '/confidentialitate'
+    | '/contact'
+    | '/contact-green'
+    | '/despre-noi'
     | '/dj-mc'
     | '/echipamente-de-sunet-si-lumini'
     | '/hostess'
@@ -234,11 +234,11 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  ContactGreenRoute: typeof ContactGreenRoute
-  ContactRoute: typeof ContactRoute
-  DespreNoiRoute: typeof DespreNoiRoute
-  ConfidentialitateRoute: typeof ConfidentialitateRoute
   IndexRoute: typeof IndexRoute
+  ConfidentialitateRoute: typeof ConfidentialitateRoute
+  ContactRoute: typeof ContactRoute
+  ContactGreenRoute: typeof ContactGreenRoute
+  DespreNoiRoute: typeof DespreNoiRoute
   DjMcRoute: typeof DjMcRoute
   EchipamenteDeSunetSiLuminiRoute: typeof EchipamenteDeSunetSiLuminiRoute
   HostessRoute: typeof HostessRoute
@@ -255,25 +255,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/contact-green': {
-      id: '/contact-green'
-      path: '/contact-green'
-      fullPath: '/contact-green'
-      preLoaderRoute: typeof ContactGreenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/despre-noi': {
-      id: '/despre-noi'
-      path: '/despre-noi'
-      fullPath: '/despre-noi'
-      preLoaderRoute: typeof DespreNoiRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/confidentialitate': {
@@ -283,11 +269,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConfidentialitateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-green': {
+      id: '/contact-green'
+      path: '/contact-green'
+      fullPath: '/contact-green'
+      preLoaderRoute: typeof ContactGreenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/despre-noi': {
+      id: '/despre-noi'
+      path: '/despre-noi'
+      fullPath: '/despre-noi'
+      preLoaderRoute: typeof DespreNoiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dj-mc': {
@@ -378,11 +378,11 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  ContactGreenRoute: ContactGreenRoute,
-  ContactRoute: ContactRoute,
-  DespreNoiRoute: DespreNoiRoute,
-  ConfidentialitateRoute: ConfidentialitateRoute,
   IndexRoute: IndexRoute,
+  ConfidentialitateRoute: ConfidentialitateRoute,
+  ContactRoute: ContactRoute,
+  ContactGreenRoute: ContactGreenRoute,
+  DespreNoiRoute: DespreNoiRoute,
   DjMcRoute: DjMcRoute,
   EchipamenteDeSunetSiLuminiRoute: EchipamenteDeSunetSiLuminiRoute,
   HostessRoute: HostessRoute,
