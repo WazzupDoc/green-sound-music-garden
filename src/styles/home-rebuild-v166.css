@@ -1,0 +1,180 @@
+/* GREEN SOUND / V166 — a fresh one-file homepage art direction.
+ * This file REPLACES the V160/V165 homepage styling import; it does not stack
+ * over those iterations. Existing site-wide accessibility/performance rules remain.
+ * All photography is already present in the first-party catalogue.
+ */
+.gs166-home{--gs166-ink:#091d15;--gs166-paper:#eeeae0;--gs166-lime:#caf9a9;--gs166-muted:#48604e;background:var(--gs166-paper);color:var(--gs166-ink);overflow:clip}
+.gs166-home :is(a,button,summary,input):focus-visible{outline:3px solid #68c126;outline-offset:4px}
+/* 01 / a magazine front cover rather than dark stage / gradient overlays. */
+.gs166-home .gs160-stage{position:relative;isolation:isolate;background:var(--gs166-paper);color:#102b1c;min-height:850px;overflow:hidden}
+.gs166-home .gs160-stage__media{position:absolute;z-index:-1;inset:0 0 130px 45%;overflow:hidden;background:#193a27}
+.gs166-home .gs160-stage__photo{width:100%;height:100%;object-fit:cover;object-position:center 42%;display:block;filter:saturate(1.09) contrast(1.06)}
+.gs166-home .gs160-stage__veil{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#071c16a8,transparent 50%)}
+.gs166-home .gs160-stage__light{position:absolute;inset:0;pointer-events:none;opacity:calc(var(--gs160-intensity,.65)*.15);mix-blend-mode:screen;background:linear-gradient(118deg,transparent 31%,#d8ffc54d 48%,transparent 72%);transition:opacity .3s}
+.gs166-home .gs160-stage[data-light-tone=warm] .gs160-stage__light{background:linear-gradient(118deg,transparent 31%,#fff2cb75 48%,transparent 72%)}
+.gs166-home .gs160-stage[data-light-tone=cool] .gs160-stage__light{background:linear-gradient(118deg,transparent 31%,#b5eaff6e 48%,transparent 72%)}
+.gs166-home .gs160-stage[data-lights=off] .gs160-stage__light{opacity:0}
+.gs166-home .gs160-stage__content{max-width:1740px;min-height:850px;margin:0 auto;display:flex;flex-direction:column;position:relative;padding:clamp(109px,9vw,140px) clamp(22px,5vw,86px) 26px}
+.gs166-home .gs160-stage__masthead{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;border-top:2px solid #173e27;padding:13px 0 0;color:#163b27}
+.gs166-home .gs160-stage__company{letter-spacing:.19em;font-size:clamp(.65rem,.82vw,.82rem);font-weight:900}
+.gs166-home .gs160-stage__company b{color:#327444}
+.gs166-home .gs160-stage__territory{font-size:.58rem;line-height:1.55;letter-spacing:.13em;color:#f4fff0;text-align:right;background:#09271abd;padding:8px 10px}
+.gs166-home .gs160-stage__editorial{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(285px,.65fr);gap:clamp(18px,3vw,64px);align-items:end;position:relative;z-index:2;margin:auto 0 36px;padding-top:55px}
+.gs166-home .gs160-stage__chapter{grid-column:1/-1;font-size:clamp(.6rem,.75vw,.78rem);font-weight:900;letter-spacing:.18em;color:#24683c}
+.gs166-home .gs160-stage__editorial h1{margin:0;max-width:100%;font-family:var(--font-display);font-size:clamp(5rem,9.8vw,11.5rem);line-height:.82;letter-spacing:-.098em;font-weight:850;color:#0d321c}
+.gs166-home .gs160-stage__editorial h1 em{display:inline-block;white-space:nowrap;font-family:var(--font-serif);font-size:.96em;font-weight:400;font-style:italic;letter-spacing:-.074em;color:#297344}
+.gs166-home .gs160-stage__statement{justify-self:end;width:min(100%,345px);padding:27px 28px;background:#0a2219ee;color:#f3f8ee}
+.gs166-home .gs160-stage__statement p{font-size:clamp(.93rem,1.08vw,1.07rem);line-height:1.59;color:#e5f1e3;margin:0 0 22px}
+.gs166-home .gs160-stage__primary{display:flex;align-items:center;justify-content:space-between;gap:25px;min-height:54px;padding:13px 17px;background:var(--gs166-lime);color:#0a2716;font-size:.85rem;font-weight:850;text-decoration:none;transition:background .2s}
+.gs166-home .gs160-stage__primary:hover{background:#e7ffd4}
+.gs166-home .gs160-stage__film{display:inline-flex;align-items:center;gap:10px;min-height:42px;color:#f1f7ea;background:none;border:0;font-size:.79rem;text-decoration:underline;text-underline-offset:5px;padding:12px 0 2px;cursor:pointer}
+.gs166-home .gs160-stage__index{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.15fr);align-items:center;gap:clamp(20px,5vw,90px);background:#0b271a;color:#f3f7e9;padding:24px clamp(22px,3vw,55px);position:relative;z-index:3;margin-top:10px}
+.gs166-home .gs160-stage__description{min-height:100px}
+.gs166-home .gs160-stage__description>span{display:block;color:#c7e5be;font-size:.59rem;font-weight:820;letter-spacing:.14em}
+.gs166-home .gs160-stage__description strong{display:block;color:#f5fff0;font-size:clamp(1.55rem,2.4vw,2.8rem);font-family:var(--font-display);line-height:1.04;letter-spacing:-.055em;margin-top:7px}
+.gs166-home .gs160-stage__description p{color:#c2d5c2;line-height:1.45;font-size:.75rem;margin:8px 0}
+.gs166-home .gs160-stage__description a{display:inline-flex;gap:7px;align-items:center;font-weight:760;color:#d4ffa8;font-size:.74rem;padding:4px 0}
+.gs166-home .gs160-stage__control{display:flex;flex-direction:column;align-items:end;gap:12px}
+.gs166-home .gs160-stage__choices{width:min(100%,535px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #afc3ae68}
+.gs166-home .gs160-stage__choice{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:transparent;border:0;border-right:1px solid #afc3ae68;color:#f2f9e9;min-height:68px;cursor:pointer;transition:background .2s}
+.gs166-home .gs160-stage__choice:last-child{border-right:0}
+.gs166-home .gs160-stage__choice small{font-size:.58rem;color:#c0d5c0;font-weight:750}
+.gs166-home .gs160-stage__choice span{font-size:.86rem;font-weight:790}
+.gs166-home .gs160-stage__choice[aria-pressed=true]{background:#c9f6a9;color:#102a1b}
+.gs166-home .gs160-stage__choice[aria-pressed=true] small{color:#27513b}
+.gs166-home .gs160-stage__choice:hover:not([aria-pressed=true]){background:#d9efd020}
+.gs166-home .gs160-stage__discover{color:#c7f4b7;display:inline-flex;align-items:center;gap:8px;font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;padding:5px 0}
+.gs166-home .gs160-stage__desk{position:absolute;right:clamp(20px,5vw,86px);top:clamp(205px,15vw,255px);z-index:4}
+.gs166-home .gs160-stage__desk details{background:#082117d9;border:1px solid #e8ffda6b;max-width:255px;color:#f0f9ee}
+.gs166-home .gs160-stage__desk summary{min-height:43px;padding:9px 12px;display:flex;gap:9px;align-items:center;font-size:.63rem;letter-spacing:.12em;font-weight:850;cursor:pointer;list-style:none}
+.gs166-home .gs160-stage__desk summary::-webkit-details-marker{display:none}
+.gs166-home .gs160-stage__desk summary span{margin-left:auto}
+.gs166-home .gs160-stage__desk-panel{padding:8px 12px 15px;font-size:.76rem}
+.gs166-home .gs160-stage__desk-panel p{line-height:1.45;color:#deeadb;margin-bottom:12px}
+.gs166-home .gs160-stage__desk-panel div{display:flex;flex-wrap:wrap;gap:5px}
+.gs166-home .gs160-stage__desk-panel button{border:1px solid #e5ffd872;background:transparent;padding:7px 9px;min-height:40px;color:#f2f9e8;font-size:.72rem;cursor:pointer}
+.gs166-home .gs160-stage__desk-panel button[aria-pressed=true]{background:#d9ffbe;color:#102818}
+.gs166-home .gs160-stage__desk-panel label{display:flex;justify-content:space-between;gap:15px;margin:14px 0 8px}
+.gs166-home .gs160-stage__desk-panel input{width:100%;accent-color:#c9fca3}
+/* 02 / three distinct editorial chapters and all eight direct service links. */
+.gs166-home .gs-index{background:#f1eee5!important;color:#102c1c!important;padding:clamp(90px,9vw,155px) 0!important}
+.gs166-home .gs-index::before{display:none}
+.gs166-home .gs-index__overline{border-bottom:2px solid #183f28!important;color:#315740!important;font-size:.69rem!important;letter-spacing:.12em}
+.gs166-home .gs-index__intro-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.42fr);align-items:end;gap:clamp(25px,6vw,100px)}
+.gs166-home .gs-index__intro h2{color:#0b3120!important;font-size:clamp(4.4rem,8vw,9rem)!important;line-height:.88!important;letter-spacing:-.088em!important}
+.gs166-home .gs-index__intro h2 em{font-weight:400;color:#358152}
+.gs166-home .gs-index__intro-note p{font-size:clamp(.93rem,1.05vw,1.08rem)!important;line-height:1.62!important;color:#4b5b4a!important}
+.gs166-home .gs-index__intro-note a{color:#14522c!important;border-color:#4d7958!important}
+.gs166-home .gs-index__chapters{display:flex!important;flex-direction:column!important;gap:0!important;margin-top:40px}
+.gs166-home .gs-index__chapter,.gs166-home .gs-index__chapter[data-chapter=stage],.gs166-home .gs-index__chapter[data-chapter=people]{display:grid!important;grid-template-columns:minmax(0,1.22fr) minmax(0,.84fr)!important;gap:clamp(28px,5vw,105px)!important;align-items:center!important;margin:0!important;padding:clamp(48px,7vw,110px) 0!important;border-top:1px solid #315c3b55!important;background:transparent!important}
+.gs166-home .gs-index__chapter:last-child{border-bottom:1px solid #315c3b55!important}
+.gs166-home .gs-index__chapter[data-chapter=stage]{grid-template-columns:minmax(0,.78fr) minmax(0,1.24fr)!important;position:relative}
+.gs166-home .gs-index__chapter[data-chapter=people]{grid-template-columns:minmax(0,.68fr) minmax(0,1.3fr)!important}
+.gs166-home .gs-index__photo,.gs166-home .gs-index__chapter[data-chapter] .gs-index__photo{position:relative!important;grid-column:1;grid-row:1;width:100%!important;height:clamp(350px,42vw,630px)!important;overflow:hidden!important;background:#204230;border:0!important;box-shadow:none!important;clip-path:none!important}
+.gs166-home .gs-index__chapter[data-chapter=stage] .gs-index__photo{grid-column:2;grid-row:1;height:clamp(340px,38vw,570px)!important}
+.gs166-home .gs-index__chapter[data-chapter=people] .gs-index__photo{height:clamp(440px,49vw,690px)!important}
+.gs166-home .gs-index__photo img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 40%!important;filter:saturate(1.05) contrast(1.06)!important;transform:none!important}
+.gs166-home .gs-index__photo::after{background:linear-gradient(0deg,#0621169c,transparent 58%)!important}
+.gs166-home .gs-index__photo-label{font-size:clamp(2.6rem,6vw,7.3rem)!important;letter-spacing:-.08em!important;color:#fff!important;font-style:normal!important}
+.gs166-home .gs-index__chapter-body{grid-column:2;grid-row:1;min-width:0;padding:0!important;background:transparent!important}
+.gs166-home .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{grid-column:1;grid-row:1}
+.gs166-home .gs-index__chapter-head{color:#28603c!important;font-size:.69rem!important;font-weight:900!important}
+.gs166-home .gs-index__chapter-body h3{color:#092e1d!important;font-size:clamp(3.5rem,5.2vw,6.8rem)!important;line-height:.91!important;letter-spacing:-.074em!important;margin:28px 0 0!important;font-weight:820!important}
+.gs166-home .gs-index__chapter-body>p{color:#536454!important;font-size:clamp(.88rem,1.04vw,1rem)!important;max-width:45ch;line-height:1.55!important;min-height:0!important}
+.gs166-home .gs-index__links{border-top:1px solid #355f416b!important;margin-top:30px!important}
+.gs166-home .gs-index__service{min-height:53px!important;color:#123a23!important;border-bottom:1px solid #355f416b!important;font-size:clamp(.9rem,1.1vw,1.1rem)!important;font-weight:720!important}
+.gs166-home .gs-index__service::before{color:#36774a!important}
+.gs166-home .gs-index__service:hover{color:#2f8b47!important}
+.gs166-home .gs-index__footer{border-color:#23492c65!important;color:#496a4f!important}
+/* 03 / films as a dark listening room, with actual click-to-play footage. */
+.gs166-home .director-reel{background:#0b2118!important;color:#f4f7ee!important;padding:clamp(100px,10vw,155px) 0!important}
+.gs166-home .director-reel .crafted-index{color:#c3efa9!important}
+.gs166-home .director-reel .crafted-heading{color:#f2f8eb!important;font-size:clamp(3.8rem,6.8vw,8rem)!important;letter-spacing:-.08em!important;line-height:.92!important}
+.gs166-home .director-reel .crafted-heading em{color:#c8e9a9!important}
+.gs166-home .director-reel .crafted-section-intro__copy{color:#d2e0ce!important}
+.gs166-home .director-reel__layout{display:grid!important;grid-template-columns:minmax(0,1.45fr) minmax(270px,.55fr)!important;gap:clamp(32px,5vw,90px)!important;align-items:start!important}
+.gs166-home .director-reel__display{background:#071b14!important;border:0!important;box-shadow:none!important}
+.gs166-home .director-reel__chrome,.gs166-home .gs-film-slate{display:none!important}
+.gs166-home .director-reel__list{display:flex!important;flex-direction:column!important;min-width:0;gap:0!important}
+.gs166-home .director-reel__choice{display:grid!important;grid-template-columns:90px minmax(0,1fr) 18px!important;gap:17px!important;align-items:center!important;width:100%!important;min-height:135px!important;border:0!important;border-top:1px solid #d8eec75d!important;border-radius:0!important;background:transparent!important;padding:17px 0!important;text-align:left!important;box-shadow:none!important}
+.gs166-home .director-reel__choice:last-of-type{border-bottom:1px solid #d8eec75d!important}
+.gs166-home .director-reel__choice[aria-pressed=true]{background:#d1e6bd17!important}
+.gs166-home .director-reel__choice .gs-v87-film-thumb{display:block!important;position:relative!important;grid-column:1;grid-row:1;inset:auto!important;transform:none!important;width:90px!important;min-width:90px!important;height:78px!important;overflow:hidden!important}
+.gs166-home .director-reel__choice .gs-v87-film-thumb img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.gs166-home .director-reel__choice .gs-v87-film-thumb__shade,.gs166-home .director-reel__choice .director-reel__choice-no{display:none!important}
+.gs166-home .director-reel__choice .director-reel__choice-body{grid-column:2;grid-row:1;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:5px!important;min-width:0!important;width:100%!important;position:relative!important;inset:auto!important;transform:none!important;padding:0!important;text-align:left!important}
+.gs166-home .director-reel__choice .director-reel__choice-overline{color:#b9d8af!important;font-size:.6rem!important}
+.gs166-home .director-reel__choice .director-reel__choice-body strong{color:#f7f9f1!important;font-size:clamp(.98rem,1.2vw,1.3rem)!important;line-height:1.23!important;overflow-wrap:normal!important}
+.gs166-home .director-reel__choice .director-reel__choice-body small{display:block!important;color:#c3d7bb!important;font-size:.7rem!important}
+.gs166-home .director-reel__choice .director-reel__choice-arrow{display:block!important;grid-column:3;grid-row:1;color:#c7f5ad!important;width:18px!important}
+.gs166-home .director-reel__caption,.gs166-home .director-reel__foot p{color:#c9d8c1!important}
+.gs166-home .director-reel__all{color:#d6ffbd!important}
+/* 04 / one bold invitation, visually distinct from the other panels. */
+.gs166-home .gs-finale{background:#c8f4a7!important;color:#0a301d!important;padding:0!important;border:0!important}
+.gs166-home .gs-finale .crafted-finale__grid{min-height:clamp(390px,36vw,570px);padding-block:clamp(50px,6vw,100px);gap:clamp(25px,6vw,95px)}
+.gs166-home .gs-finale .crafted-index{color:#27633b!important}
+.gs166-home .gs-finale h2{color:#0a311c!important;font-size:clamp(4rem,7.9vw,9.6rem)!important;letter-spacing:-.09em!important;line-height:.88!important;font-weight:870!important}
+.gs166-home .gs-finale h2 em{color:#32794b!important;font-family:var(--font-serif);font-weight:400}
+.gs166-home .gs-finale p{color:#28633c!important;font-size:1.06rem}
+.gs166-home .gs-finale .crafted-finale__link{background:#0b2e1b!important;color:#e2ffc9!important;box-shadow:none!important;border:0!important}
+/* Mobile: unmistakably photo-first, paper second, concise actions third. */
+@media(max-width:1050px){
+ .gs166-home .gs160-stage__content{min-height:820px}
+ .gs166-home .gs160-stage__editorial{grid-template-columns:minmax(0,1fr) minmax(240px,.8fr)}
+ .gs166-home .gs160-stage__editorial h1{font-size:clamp(4.8rem,10vw,8.6rem)}
+ .gs166-home .gs-index__intro-grid{grid-template-columns:1fr;gap:20px}
+ .gs166-home .director-reel__layout{grid-template-columns:minmax(0,1.1fr) minmax(220px,.8fr)!important}
+}
+@media(max-width:767px){
+ .gs166-home .gs160-stage{min-height:0}
+ .gs166-home .gs160-stage__media{inset:0 0 auto;height:clamp(370px,77vw,510px)}
+ .gs166-home .gs160-stage__photo{object-position:50% 38%}
+ .gs166-home .gs160-stage__veil{background:linear-gradient(0deg,#071e13ab,transparent 65%)}
+ .gs166-home .gs160-stage__content{min-height:0;padding:105px 21px 26px}
+ .gs166-home .gs160-stage__territory{font-size:.55rem}
+ .gs166-home .gs160-stage__editorial{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin:clamp(280px,67vw,450px) 0 30px;padding:0}
+ .gs166-home .gs160-stage__editorial h1{font-size:clamp(3.9rem,11.5vw,7rem)}
+ .gs166-home .gs160-stage__statement{background:transparent;padding:0;width:100%;max-width:47ch;margin:8px 0 0;justify-self:start}
+ .gs166-home .gs160-stage__statement p{color:#3b5744;line-height:1.53;margin-bottom:13px}
+ .gs166-home .gs160-stage__film{color:#17422c}
+ .gs166-home .gs160-stage__index{grid-template-columns:1fr;gap:22px;padding:25px 19px;margin-top:0}
+ .gs166-home .gs160-stage__control{align-items:stretch}
+ .gs166-home .gs160-stage__choices{width:100%;max-width:none}
+ .gs166-home .gs160-stage__desk{top:169px;right:21px}
+ .gs166-home .gs160-stage__desk-panel{max-width:min(270px,calc(100vw - 42px))}
+ .gs166-home .gs-index__chapters{margin-top:22px}
+ .gs166-home .gs-index__chapter,.gs166-home .gs-index__chapter[data-chapter=stage],.gs166-home .gs-index__chapter[data-chapter=people]{display:flex!important;flex-direction:column!important;gap:23px!important;align-items:stretch!important;padding:40px 0!important}
+ .gs166-home .gs-index__photo,.gs166-home .gs-index__chapter[data-chapter] .gs-index__photo{height:clamp(260px,66vw,460px)!important;min-height:0!important}
+ .gs166-home .gs-index__chapter[data-chapter=stage] .gs-index__photo{order:0}
+ .gs166-home .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{order:1}
+ .gs166-home .gs-index__chapter-body{width:100%}
+ .gs166-home .gs-index__chapter-body h3{font-size:clamp(3rem,10vw,5rem)!important;margin-top:17px!important}
+ .gs166-home .gs-index__intro h2{font-size:clamp(3.5rem,11vw,6rem)!important}
+ .gs166-home .director-reel__layout{grid-template-columns:1fr!important}
+ .gs166-home .director-reel__choice{min-height:108px!important}
+ .gs166-home .gs-finale .crafted-finale__grid{min-height:0;padding-block:75px}
+}
+@media(max-width:470px){
+ .gs166-home .gs160-stage__content{padding:99px 16px 24px}
+ .gs166-home .gs160-stage__company{font-size:.56rem;letter-spacing:.1em}
+ .gs166-home .gs160-stage__territory{font-size:.47rem;letter-spacing:0}
+ .gs166-home .gs160-stage__media{height:clamp(385px,100vw,475px)}
+ .gs166-home .gs160-stage__editorial{margin-top:clamp(330px,94vw,438px)}
+ .gs166-home .gs160-stage__editorial h1{font-size:clamp(3.25rem,11.3vw,4.8rem);letter-spacing:-.09em}
+ .gs166-home .gs160-stage__chapter{font-size:.58rem}
+ .gs166-home .gs160-stage__desk{top:152px;right:16px}
+ .gs166-home .gs160-stage__primary{min-height:50px}
+ .gs166-home .gs160-stage__choice span{font-size:.75rem}
+ .gs166-home .gs160-stage__choice{min-height:61px}
+ .gs166-home .gs-index__intro h2{font-size:clamp(3.2rem,11vw,4.5rem)!important}
+ .gs166-home .gs-index__chapter-body h3{font-size:clamp(2.75rem,11.2vw,4.3rem)!important}
+ .gs166-home .director-reel .crafted-heading{font-size:clamp(3.1rem,11vw,4.6rem)!important}
+ .gs166-home .director-reel__choice{grid-template-columns:75px minmax(0,1fr) 16px!important;gap:11px!important;padding:12px 0!important}
+ .gs166-home .director-reel__choice .gs-v87-film-thumb{width:75px!important;min-width:75px!important;height:67px!important}
+ .gs166-home .gs-finale h2{font-size:clamp(3.3rem,12vw,5.3rem)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs166-home .gs160-stage__light,.gs166-home .gs160-stage__primary,.gs166-home .gs160-stage__choice{animation:none!important;transition:none!important}
+}
+html[data-gs-performance=lite] .gs166-home .gs160-stage__light,
+html[data-gs-performance=lite] .gs166-home .gs-index__photo img{animation:none!important;transition:none!important;filter:none!important}
