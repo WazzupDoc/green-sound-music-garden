@@ -55,8 +55,8 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 .gs170-home .gs170-stage__console-end{margin-top:10px;font-size:.43rem;color:#7bc58d}
 .gs170-home .gs170-hero__content{position:relative;z-index:2;padding-top:clamp(165px,16vh,210px);padding-bottom:clamp(140px,17vh,205px)}
 .gs170-home .gs170-hero__eyebrow{margin-bottom:clamp(20px,2vw,28px)}
-.gs170-home .gs170-hero h1{max-width:990px;margin:0;font-family:var(--font-serif,Georgia,serif);font-size:clamp(2.6rem,5.45vw,6.8rem);font-weight:650;line-height:1.04;letter-spacing:-.057em;text-wrap:balance;color:#f9fcf6;text-shadow:0 3px 30px #000a}
-.gs170-home .gs170-hero h1 em{font-family:var(--font-serif,Georgia,serif);font-style:italic;color:#7dfa79;white-space:nowrap;text-shadow:0 0 28px #1dff4761;font-weight:450}
+.gs170-home .gs170-hero h1{max-width:990px;margin:0;font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2.6rem,5.45vw,6.8rem);font-weight:650;line-height:1.04;letter-spacing:-.057em;text-wrap:balance;color:#f9fcf6;text-shadow:0 3px 30px #000a}
+.gs170-home .gs170-hero h1 em{font-family:var(--font-display,system-ui,sans-serif);font-style:italic;color:#7dfa79;white-space:nowrap;text-shadow:0 0 28px #1dff4761;font-weight:450}
 .gs170-home .gs170-hero__lead{max-width:560px;margin:23px 0 26px;color:#e2f1e4;font-size:clamp(.88rem,1.06vw,1.1rem);line-height:1.64}
 .gs170-home .gs170-hero__actions{display:flex;gap:13px;flex-wrap:wrap}
 .gs170-home .gs170-hero__control{display:flex;align-items:center;gap:5px;width:max-content;max-width:100%;margin-top:clamp(25px,3.8vw,55px);background:#041e137d;border:1px solid #8fff853a;padding:7px;border-radius:999px;color:#c5eac7}
@@ -74,7 +74,7 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
  radial-gradient(ellipse at 80% 10%,#16442b88,transparent 55%),#041710;color:#f5fff4}
 .gs170-home .gs170-services__grid{display:grid;grid-template-columns:minmax(175px,1.2fr) repeat(5,minmax(0,1fr));gap:clamp(8px,.9vw,15px);align-items:stretch}
 .gs170-home .gs170-services__intro{padding:4px 10px 10px 0;min-width:0}
-.gs170-home .gs170-services__intro h2{font-family:var(--font-serif,Georgia,serif);font-size:clamp(2.15rem,2.65vw,3.65rem);line-height:1.01;letter-spacing:-.057em;font-weight:500;margin:18px 0 12px}
+.gs170-home .gs170-services__intro h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2.15rem,2.65vw,3.65rem);line-height:1.01;letter-spacing:-.057em;font-weight:500;margin:18px 0 12px}
 .gs170-home .gs170-services__intro h2 em{color:#92f99a}
 .gs170-home .gs170-services__intro p{font-size:.78rem;line-height:1.5;color:#c0dac6}
 .gs170-home .gs170-service-card{position:relative;isolation:isolate;min-width:0;min-height:clamp(245px,20vw,315px);border:1px solid #4bf86b72;clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);background:#082a19;color:white;overflow:hidden;transition:transform .4s,border-color .3s,filter .3s}
@@ -94,7 +94,7 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 .gs170-home .gs170-services__extras a{display:inline-flex;gap:10px;align-items:center;font-size:.78rem;color:#dff2df;font-weight:750;min-height:40px;transition:color .2s}
 .gs170-home .gs170-services__extras a:hover{color:#73fb86}
 .gs170-home .gs170-process{display:grid;grid-template-columns:minmax(195px,.95fr) minmax(0,4.6fr);gap:clamp(20px,3vw,55px);align-items:center;padding:clamp(27px,3.4vw,50px) 0;border-bottom:1px solid #91f08b37}
-.gs170-home .gs170-process__intro h2{font-family:var(--font-serif,Georgia,serif);font-size:clamp(2rem,2.8vw,3.5rem);line-height:1.1;margin:10px 0 0;font-weight:450;letter-spacing:-.06em}
+.gs170-home .gs170-process__intro h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2rem,2.8vw,3.5rem);line-height:1.1;margin:10px 0 0;font-weight:450;letter-spacing:-.06em}
 .gs170-home .gs170-process__intro h2 em{color:#83ff87}
 .gs170-home .gs170-process__steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.5vw,25px);padding:0;margin:0;list-style:none}
 .gs170-home .gs170-process__steps li{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:11px;position:relative;min-width:0;padding:9px 0}
@@ -105,7 +105,7 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 /* Portfolio / three grounded films, explicit click opens a real video dialog */
 .gs170-home .gs170-films{padding:clamp(43px,5.2vw,86px) 0 clamp(60px,6vw,104px);background:linear-gradient(180deg,#041710,#02110c)}
 .gs170-home .gs170-films__grid{display:grid;grid-template-columns:minmax(198px,1.1fr) minmax(0,4.55fr);gap:clamp(25px,3vw,52px);align-items:start}
-.gs170-home .gs170-films__intro h2{font-family:var(--font-serif,Georgia,serif);font-size:clamp(2.1rem,3vw,4.1rem);font-weight:450;line-height:1.05;letter-spacing:-.06em;margin:14px 0}
+.gs170-home .gs170-films__intro h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2.1rem,3vw,4.1rem);font-weight:450;line-height:1.05;letter-spacing:-.06em;margin:14px 0}
 .gs170-home .gs170-films__intro h2 em{color:#8cf793}
 .gs170-home .gs170-films__intro p{max-width:32ch;font-size:.81rem;line-height:1.6;color:#bad7c2}
 .gs170-home .gs170-films__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.3vw,23px)}
@@ -125,7 +125,7 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 .gs170-home .gs170-final>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 61%;filter:brightness(.44) saturate(1.3)}
 .gs170-home .gs170-final:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#032c16e3,#042615ca,#063c1a96)}
 .gs170-home .gs170-final__inner{min-height:245px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(175px,.58fr) auto;gap:clamp(22px,4vw,80px);align-items:center;padding-block:45px}
-.gs170-home .gs170-final h2{font-family:var(--font-serif,Georgia,serif);font-size:clamp(2rem,3.5vw,5rem);line-height:1.07;letter-spacing:-.058em;font-weight:450;margin:12px 0 0}
+.gs170-home .gs170-final h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2rem,3.5vw,5rem);line-height:1.07;letter-spacing:-.058em;font-weight:450;margin:12px 0 0}
 .gs170-home .gs170-final h2 em{color:#9cff9a;font-style:italic}
 .gs170-home .gs170-final p{font-size:clamp(.81rem,1vw,1.04rem);color:#d8eadd;line-height:1.6;margin:0}
 /* Responsive is art directed, not a scaled screenshot. */
@@ -151,7 +151,7 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 @media(max-width:740px){
  .gs170-home .gs170-hero{min-height:0}
  .gs170-home .gs170-hero__content{padding-top:clamp(145px,22vw,182px);padding-bottom:150px}
- .gs170-home .gs170-stage__image{object-position:62% 20%;height:57%;filter:saturate(1.13) brightness(.75)}
+ .gs170-home .gs170-stage__image{object-position:62% 20%;height:57%;filter:saturate(1.19) brightness(.94)}
  .gs170-home .gs170-stage__shade{background:linear-gradient(0deg,#04130b 9%,#04130bee 44%,#04130bd5 75%,#04130b87),linear-gradient(90deg,#04130bcb,transparent 100%)}
  .gs170-home .gs170-stage__beams i{height:54%}
  .gs170-home .gs170-stage__console{position:absolute;right:-38px;bottom:82px;width:270px;height:145px;opacity:.52}
@@ -218,3 +218,10 @@ html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none
 /* Dialog portals to body; styles intentionally not scoped under .gs170-home. */
 .gs170-dialog{max-height:92dvh;max-width:64rem;overflow-y:auto;border-radius:0;border:1px solid #66be6799;background:#07180f;color:#fff;padding:20px}
 .gs170-dialog__description{color:#d9e6da}
+
+/* V170 typography correction from real mobile screenshot: readable roman headlines with only green accents in italic Instrument Serif. */
+.gs170-home .gs170-hero h1 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
+.gs170-home .gs170-services__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
+.gs170-home .gs170-process__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
+.gs170-home .gs170-films__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
+.gs170-home .gs170-final h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
