@@ -4,6 +4,7 @@ import { StageHero } from "@/components/atelier/StageHero";
 import homeSignatureCss from "@/styles/home-signature-v86.css?inline";
 import premiumEventCss from "@/styles/home-event-v89.css?inline";
 import homeRedesignCss from "@/styles/home-redesign-v158.css?inline";
+import homeCoverCss from "@/styles/home-cover-v159.css?inline";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { EditorialPortfolio } from "@/components/atelier/EditorialPortfolio";
 import { localBusinessLd, pageHead } from "@/lib/seo";
@@ -27,11 +28,12 @@ export const Route = createFileRoute("/")({
  */
 function Home() {
   return (
-    <div className="gs-home-v86 gs-home-v158">
+    <div className="gs-home-v86 gs-home-v158 gs-home-v159">
       {/* Scoped, SSR-delivered: this redesign does not alter the dedicated pages. */}
       <style>{homeSignatureCss}</style>
       <style>{premiumEventCss}</style>
       <style>{homeRedesignCss}</style>
+      <style>{homeCoverCss}</style>
       <StageHero />
       <ProductionIndex />
       <EditorialPortfolio />

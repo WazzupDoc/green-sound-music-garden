@@ -3,12 +3,14 @@ import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const home = readFileSync(resolve(process.cwd(), "src/routes/index.tsx"), "utf8");
+const cover = readFileSync(resolve(process.cwd(), "src/styles/home-cover-v159.css"), "utf8");
 const css = readFileSync(resolve(process.cwd(), "src/styles/home-redesign-v158.css"), "utf8");
 
 describe("V158 major home editorial redesign", () => {
   it("actually loads the new scoped CSS after previous art direction and keeps four sections", () => {
     expect(home).toContain('homeRedesignCss from "@/styles/home-redesign-v158.css?inline"');
-    expect(home).toContain('className="gs-home-v86 gs-home-v158"');
+    expect(home).toContain('className="gs-home-v86 gs-home-v158 gs-home-v159"');
+    expect(home).toContain('<style>{homeCoverCss}</style>');
     expect(home.indexOf("<style>{premiumEventCss}</style>")).toBeLessThan(
       home.indexOf("<style>{homeRedesignCss}</style>")
     );
@@ -23,6 +25,9 @@ describe("V158 major home editorial redesign", () => {
     expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__canvas");
     expect(css).toContain("width:69%!important");
     expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-index");
+    expect(cover).toContain("background:var(--gs159-paper)!important");
+    expect(cover).toContain("font-size:clamp(6rem,13vw,13.65rem)!important");
+    expect(cover).toContain(".gs-home-v159 .gs-stage-v90 .gs-v90-show-wall");
     expect(css).toContain("background:var(--gs-v158-cream)!important");
     expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-v90-show-wall__rig");
     expect(css).toContain("grid-template-columns:repeat(3,minmax(0,1fr))");

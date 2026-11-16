@@ -1,0 +1,399 @@
+/* V159 / GREEN SOUND / PRODUCTION COVER
+ * Referenced design principles: Vibration Production's poster-scale black type
+ * and Creative Spirit's typographic confidence, implemented independently.
+ * No external art, fonts, libraries or auto-playing media. All genuine project
+ * imagery and JS controls remain in original semantic StageHero component.
+ */
+.gs-home-v159{--gs159-ink:#08120e;--gs159-paper:#f0f0e9;--gs159-acid:#b7ed73}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90{
+ position:relative;min-height:1070px!important;
+ background:var(--gs159-paper)!important;color:var(--gs159-ink);
+ border:0!important;overflow:hidden
+}
+.gs-home-v159 .gs-stage-v90 .gs-v90-ticker,
+.gs-home-v159 .gs-stage-v90 .gs-v90-show-wall,
+.gs-home-v159 .gs-stage-v90 .gs-v86__graphic,
+.gs-home-v159 .gs-stage-v90 .gs-poster__marquee,
+.gs-home-v159 .gs-stage-v90 .gs-poster__social,
+.gs-home-v159 .gs-stage-v90 .crafted-stage-lights,
+.gs-home-v159 .gs-stage-v90 .director-stage-ambient,
+.gs-home-v159 .gs-stage-v90 .crafted-hero__pointer{display:none!important}
+.gs-home-v159 .gs-stage-v90::before,
+.gs-home-v159 .gs-stage-v90::after{display:none!important}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+ position:absolute!important;top:495px!important;bottom:104px!important;
+ left:clamp(24px,3.5vw,60px)!important;right:clamp(24px,3.5vw,60px)!important;
+ inset:495px clamp(24px,3.5vw,60px) 104px!important;
+ width:auto!important;height:auto!important;opacity:1!important;
+ clip-path:none!important;filter:none!important;z-index:0!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__image{
+ width:100%!important;height:100%!important;object-fit:cover;
+ object-position:50% 40%!important;
+ filter:saturate(1.08) contrast(1.09) brightness(1.09)!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__shade{
+ position:absolute!important;inset:0!important;opacity:1!important;
+ background:linear-gradient(0deg,#06130dec 0%,#06130da5 28%,transparent 76%),
+ linear-gradient(90deg,#06130d70,transparent 65%)!important;
+ pointer-events:none
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__layout,
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__layout{
+ display:block!important;position:relative!important;z-index:3!important;
+ min-height:1070px!important;max-width:none!important;
+ padding:0!important;margin:0!important;
+ width:100%!important;grid-template:none!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__intro{
+ display:contents!important;position:static!important;
+ max-width:none!important;padding:0!important;margin:0!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__eyebrow{
+ position:absolute!important;top:clamp(134px,11vw,165px)!important;
+ left:clamp(26px,5vw,84px)!important;
+ display:flex!important;align-items:center;gap:14px;
+ width:max-content!important;max-width:calc(100% - 52px)!important;
+ background:none!important;border:0!important;padding:0!important;
+ color:#273a2a!important;font-size:clamp(.59rem,.78vw,.76rem)!important;
+ letter-spacing:.21em!important;text-shadow:none!important;
+ font-weight:800!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-live-dot{background:#387a3a;box-shadow:none}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+ position:absolute!important;z-index:5!important;
+ top:clamp(183px,13vw,210px)!important;left:clamp(17px,4.25vw,75px)!important;
+ right:clamp(17px,4vw,75px)!important;
+ margin:0!important;padding:0!important;
+ font-family:var(--font-display)!important;font-weight:900!important;
+ font-style:normal!important;font-size:clamp(6rem,13vw,13.65rem)!important;
+ letter-spacing:-.102em!important;line-height:.83!important;
+ color:#0b1b11!important;text-shadow:none!important;
+ max-width:none!important;white-space:normal!important;
+ filter:none!important;text-transform:uppercase!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line{
+ display:block!important;white-space:nowrap!important;line-height:.83!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line--second{
+ display:block!important;margin:.055em 0 0!important;
+ color:#0b1b11!important;font-size:.91em!important;
+ letter-spacing:-.106em!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title em{
+ display:inline!important;font-family:var(--font-display)!important;
+ font-size:1em!important;font-weight:900!important;font-style:normal!important;
+ letter-spacing:-.12em!important;line-height:inherit!important;
+ color:#196b41!important;-webkit-text-fill-color:currentColor!important;
+ background:none!important
+}
+/* Actual copy and actionable controls sit on the original stage photo;
+   the oversized black headline is completely on paper above it. */
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__lead{
+ position:absolute!important;z-index:6;top:730px!important;
+ left:clamp(42px,7vw,114px)!important;max-width:45ch!important;
+ margin:0!important;padding:0!important;color:#f4f7ef!important;
+ text-shadow:none!important;font-size:clamp(.93rem,1.13vw,1.13rem)!important;
+ line-height:1.65!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__actions{
+ position:absolute!important;z-index:6;top:855px!important;
+ left:clamp(42px,7vw,114px)!important;
+ margin:0!important;display:flex!important;
+ align-items:center!important;flex-wrap:wrap;gap:12px 24px!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-button--light{
+ background:var(--gs159-acid)!important;border:1px solid var(--gs159-acid)!important;
+ box-shadow:none!important;color:#071c10!important;clip-path:none!important;
+ min-height:57px!important;padding:13px 18px!important;
+ font-size:.89rem!important;font-weight:900!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-button--light:is(:hover,:focus-visible){
+ background:#efffd5!important;border-color:#efffd5!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-text-action{
+ color:white!important;text-shadow:none!important;font-size:.85rem!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console{
+ position:absolute!important;z-index:6!important;
+ right:clamp(45px,6vw,90px)!important;bottom:180px!important;
+ top:auto!important;left:auto!important;
+ margin:0!important;padding:8px 0!important;width:min(23vw,320px)!important;
+ max-width:320px!important;
+ background:transparent!important;border:0!important;
+ border-top:1px solid #d6f6bf!important;box-shadow:none!important;
+ transform:none!important;backdrop-filter:none!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__top,
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__bottom{display:none!important}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__content{
+ display:block!important;padding:11px 13px!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__content h2{
+ display:block!important;font-size:clamp(1.45rem,2vw,2.1rem)!important;
+ line-height:1.03!important;margin:13px 0!important;color:#f6f6f0!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__content p{
+ display:none!important;color:#d5e0d1!important;line-height:1.42;font-size:.76rem
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__link{
+ color:#d9f3b6!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__bottom{
+ position:absolute!important;z-index:7!important;
+ bottom:18px!important;left:clamp(24px,3.5vw,60px)!important;
+ right:clamp(24px,3.5vw,60px)!important;
+ width:auto!important;margin:0!important;
+ border:0!important;border-top:1px solid #365c44!important;
+ background:var(--gs159-paper)!important;color:#112a1b!important;
+ padding:10px 0 0!important;
+ display:flex!important;justify-content:space-between!important;
+ align-items:center!important;gap:18px!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__mode{
+ color:#1b3424!important;border-bottom:2px solid transparent!important;
+ font-size:.73rem!important;min-height:45px!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__mode[aria-pressed=true]{
+ color:#045b30!important;border-bottom-color:#045b30!important
+}
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .director-hero__lights,
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-lightboard__summary,
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__scroll{
+ background:#e4e7dc!important;border-color:#506a5644!important;
+ color:#1d3e28!important
+}
+/* Act II — dark concert programme. Not three beige/dark cards. */
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-index{
+ background:#07170f!important;color:#f1f3e8!important;
+ padding:clamp(80px,8vw,140px) 0!important
+}
+.gs-home-v159 .gs-index__overline{color:#add1a9!important;border-color:#c9e8b64d!important}
+.gs-home-v159 .gs-index__intro h2,
+.gs-home-v159 .gs-index__chapter-body h3{color:#f3f5ea!important}
+.gs-home-v159 .gs-index__intro h2 em{color:#b8eb8f!important}
+.gs-home-v159 .gs-index__intro-note p,
+.gs-home-v159 .gs-index__chapter-body>p{color:#b8cbbb!important}
+.gs-home-v159 .gs-index__intro-note a{color:#c7ebaa!important}
+.gs-home-v159 .gs-index__chapter{border-top-color:#c9e8b46b!important}
+.gs-home-v159 .gs-index__chapter-head{color:#a6cba3!important}
+.gs-home-v159 .gs-index__links{border-color:#90b59680!important}
+.gs-home-v159 .gs-index__service{
+ color:#f1f6e9!important;border-bottom-color:#94b69c67!important
+}
+.gs-home-v159 .gs-index__service:hover{color:#c3f58a!important}
+.gs-home-v159 .gs-index__footer{color:#a7c1a7!important;border-color:#91b39880!important}
+/* Act III — film/programme as an off-white printed production archive. */
+.gs-home-v86.gs-home-v158.gs-home-v159 .director-reel{
+ background:#e9ebe1!important;color:#102318!important;
+ padding:clamp(96px,9vw,150px) 0!important
+}
+.gs-home-v159 .director-reel .crafted-index{color:#4b6c52!important}
+.gs-home-v159 .director-reel .crafted-heading{color:#0b2516!important}
+.gs-home-v159 .director-reel .crafted-heading em{color:#237547!important}
+.gs-home-v159 .director-reel .crafted-section-intro__copy{color:#3c5f49!important}
+.gs-home-v159 .director-reel__display{background:#0b1d12!important}
+.gs-home-v159 .director-reel__choice{background:#0f2117!important;color:#f1f8ea!important}
+/* Act IV — restrained but forceful final call, no extra section or input. */
+.gs-home-v86.gs-home-v158.gs-home-v159 .gs-finale{
+ background:#1c673c!important;color:#f3f9e9!important
+}
+.gs-home-v159 .gs-finale .crafted-index{color:#d6f4b9!important}
+.gs-home-v159 .gs-finale h2{color:#f2f8e8!important}
+.gs-home-v159 .gs-finale h2 em{color:#c1fa88!important}
+.gs-home-v159 .gs-finale p{color:#d0edd1!important}
+.gs-home-v159 .gs-finale .crafted-finale__link{
+ background:#d9ffae!important;color:#10361a!important;border-color:#d9ffae!important
+}
+@media(max-width:1100px){
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(5rem,12vw,8.8rem)!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console{width:290px!important}
+}
+@media(max-width:850px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90{
+  min-height:1160px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  top:385px!important;bottom:170px!important;
+  inset:385px 18px 170px!important;
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__layout{
+  min-height:1160px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  top:198px!important;font-size:clamp(4.15rem,11.45vw,6.4rem)!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__lead{
+  top:785px!important;left:40px!important;font-size:.93rem!important;
+  max-width:43ch!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__actions{
+  top:892px!important;left:40px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console{
+  right:35px!important;bottom:185px!important;
+  width:260px!important;max-width:260px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console__content p{display:none!important}
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__bottom{bottom:18px!important}
+}
+@media(max-width:640px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90{
+  min-height:1100px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__layout{
+  min-height:1100px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  inset:340px 12px 201px!important;
+  top:340px!important;bottom:201px!important;left:12px!important;right:12px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__eyebrow{
+  top:131px!important;left:20px!important;font-size:.47rem!important;
+  letter-spacing:.09em!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  top:184px!important;left:12px!important;right:12px!important;
+  font-size:clamp(3.15rem,12.6vw,5.6rem)!important;
+  letter-spacing:-.094em!important
+ }
+ .gs-home-v159 .gs-stage-v90 .gs-stage-v78__line--second{
+  margin:.14em 0 0!important;letter-spacing:-.11em!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__lead{
+  top:580px!important;left:27px!important;right:26px!important;
+  max-width:36ch!important;margin:0!important;font-size:.9rem!important;
+  line-height:1.55!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__actions{
+  top:740px!important;left:27px!important;right:22px!important;
+  gap:6px 14px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-button--light{
+  min-height:49px!important;font-size:.75rem!important;padding:10px 11px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-text-action{
+  font-size:.75rem!important;min-height:45px
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console{
+  position:absolute!important;left:16px!important;right:16px!important;
+  bottom:120px!important;top:auto!important;
+  width:auto!important;max-width:none!important;
+  background:transparent!important;
+  border-top:1px solid #a7ba9d70!important;
+  padding:4px 0!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console__content{
+  padding:5px!important;display:flex!important;
+  align-items:center!important;justify-content:space-between!important;
+  flex-wrap:wrap;gap:8px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__content h2,
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__content p{
+  display:none!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console__eyebrow{
+  font-size:.54rem!important;color:#213b2a!important
+ }
+ .gs-home-v159 .gs-stage-v90 .scene-console__link{color:#1b6434!important}
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__bottom{
+  bottom:0!important;left:14px!important;right:14px!important;
+  min-height:110px!important;align-items:center!important;
+  flex-wrap:wrap!important;gap:6px!important;
+  border-top:1px solid #aec3b1!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__modes{
+  width:100%!important;justify-content:space-between!important;
+  flex-wrap:nowrap!important;gap:4px!important
+ }
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__mode{
+  font-size:.64rem!important;min-height:41px!important;letter-spacing:0!important
+ }
+ .gs-home-v159 .gs-stage-v90 .director-hero__utilities{
+  width:100%;justify-content:space-between;gap:5px;flex-wrap:wrap
+ }
+ .gs-home-v159 .gs-stage-v90 .director-hero__lights,
+ .gs-home-v159 .gs-stage-v90 .gs-lightboard__summary{
+  font-size:.64rem!important;min-height:40px!important
+ }
+ .gs-home-v159 .gs-index__intro h2{font-size:clamp(2.95rem,10.7vw,4.5rem)}
+ .gs-home-v159 .director-reel .crafted-heading{font-size:clamp(2.8rem,9.5vw,4.5rem)}
+}
+/* Preserve a static true photograph in Lite, Save-Data and reduced-motion.
+   These light/photo layers never need new WebGL or scroll listeners. */
+@media(prefers-reduced-motion:reduce){
+ .gs-home-v159 .gs-stage-v90 .crafted-hero__image{
+  animation:none!important;transition:none!important
+ }
+}
+html[data-gs-performance="lite"] .gs-home-v159 .gs-stage-v90 .crafted-hero__image{
+ animation:none!important;transition:none!important
+}
+
+/* Browser-audited breakpoints: override earlier high-specificity desktop
+   selectors explicitly, so oversized poster title never clips on mobile. */
+@media(max-width:850px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(3.85rem,8.7vw,5.5rem)!important;
+  top:188px!important;left:20px!important;right:20px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  inset:360px 20px 175px!important;top:360px!important;bottom:175px!important
+ }
+}
+@media(max-width:640px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__title,
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(2.5rem,11.15vw,4.15rem)!important;
+  top:181px!important;left:14px!important;right:14px!important;
+  line-height:.85!important;letter-spacing:-.11em!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line{
+  font-size:1em!important;line-height:.85!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .gs-stage-v78__line--second{
+  font-size:.92em!important;margin:.15em 0 0!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__canvas{
+  inset:320px 12px 180px!important;top:320px!important;bottom:180px!important;
+  left:12px!important;right:12px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__image{
+  object-position:50% 63%!important;filter:saturate(1.12) contrast(1.15) brightness(.98)!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__lead{
+  top:575px!important;left:26px!important;right:26px!important;
+  margin:0!important;max-width:37ch!important;
+  font-size:.87rem!important;line-height:1.51!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__actions{
+  top:688px!important;left:26px!important;right:20px!important;
+  display:flex!important;gap:7px 14px!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console{
+  bottom:128px!important;left:14px!important;right:14px!important;
+  width:auto!important;max-width:none!important;
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .crafted-hero__bottom{
+  bottom:0!important;left:14px!important;right:14px!important;
+  min-height:108px!important
+ }
+}
+
+/* Final mobile browser proof: do not let the old pale film-link color
+   win against the new off-white area below the real photograph. */
+@media(max-width:640px){
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__eyebrow{
+  color:#224832!important
+ }
+ .gs-home-v86.gs-home-v158.gs-home-v159 .gs-stage-v90 .scene-console__link{
+  color:#11562b!important;border-bottom-color:#11562b!important
+ }
+}
