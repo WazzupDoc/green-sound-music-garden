@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -45,26 +45,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
     const next=frames[(pos+delta+frames.length)%frames.length];
     if(next)change(next.id);
   };
-  useEffect(() => {
-    if (!selected) return;
-    const key=(event:KeyboardEvent) => {
-      const target = event.target;
-      // Never steal arrow keys from editable controls or another dialog.
-      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
-          (target instanceof HTMLElement && (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]")))) return;
-      if(["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)){
-        event.preventDefault();
-        const pos=frames.findIndex(item=>item.id===activePhoto);
-        const delta=event.key==="ArrowRight"?1:-1;
-        const next = event.key === "Home" ? frames[0] : event.key === "End" ? frames[frames.length - 1] : frames[(pos+delta+frames.length)%frames.length];
-        if(next)void navigate({to:"/portofoliu",search:{photo:next.id},replace:true,resetScroll:false});
-      }
-    };
-    const dialog = document.querySelector(".rs-photo-dialog");
-    if (!dialog) return;
-    dialog.addEventListener("keydown", key as EventListener);
-    return()=>dialog.removeEventListener("keydown", key as EventListener);
-  },[activePhoto,selected,navigate,frames]);
+
   return (
     <section className="rs-gallery" id="portfolio-photos" aria-labelledby="rs-gallery-title">
       <div className="container-site">
@@ -92,7 +73,21 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
       </div>
 
       <Dialog open={Boolean(selected)} onOpenChange={opened=>{if(!opened)change(undefined)}}>
-        <DialogContent onCloseAutoFocus={event => {
+        <DialogContent onKeyDown={event => {
+          // Bind to the open dialog itself: a document-query effect can miss
+          // the mount frame when the visitor opens a deep-linked photograph.
+          if (!selected || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey ||
+              !["ArrowRight","ArrowLeft","Home","End"].includes(event.key)) return;
+          const target=event.target;
+          if(target instanceof HTMLElement &&
+             (target.isContentEditable || target.closest("input, textarea, select, [role=slider], [role=spinbutton]"))) return;
+          event.preventDefault();
+          const pos=frames.findIndex(item=>item.id===selected.id);
+          const next=event.key==="Home" ? frames[0]
+            : event.key==="End" ? frames[frames.length-1]
+            : frames[(pos+(event.key==="ArrowRight"?1:-1)+frames.length)%frames.length];
+          if(next) change(next.id);
+        }} onCloseAutoFocus={event => {
           // Restore keyboard focus to the originating thumbnail when it is still visible.
           // Deep-linked photos or filtered-out thumbnails fall back to the gallery heading.
           event.preventDefault();
