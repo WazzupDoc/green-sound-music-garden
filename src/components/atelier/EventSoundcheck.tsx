@@ -64,11 +64,11 @@ export function EventSoundcheck() {
               <legend className="soundcheck__step"><span>02</span> CE FACE PARTE DIN ATMOSFERĂ?</legend>
               <p className="soundcheck__hint">Am pornit de la serviciile recomandate pentru {event.name.toLowerCase()}. Le poți modifica oricând.</p>
               <div className="soundcheck__selection-actions mt-3 mb-5 flex flex-wrap items-center gap-3">
-                <button type="button" className="soundcheck__reset inline-flex min-h-11 items-center rounded-sm border border-current/40 px-4 py-2 text-sm font-medium underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-40" onClick={() => setSelected(suggestedFor(eventSlug))}
+                <button type="button" className="soundcheck__reset inline-flex min-h-11 min-w-0 max-w-full items-center whitespace-normal text-left break-words rounded-sm border border-current/40 px-4 py-2 text-sm font-medium underline-offset-4 transition-colors hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-40" onClick={() => setSelected(suggestedFor(eventSlug))}
                   disabled={selected.length === suggestedFor(eventSlug).length && suggestedFor(eventSlug).every((slug) => selected.includes(slug))}>
                   Reia selecția recomandată pentru {event.name.toLowerCase()}
                 </button>
-                <button type="button" className="soundcheck__clear inline-flex min-h-11 items-center rounded-sm px-3 py-2 text-sm underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-40" onClick={() => setSelected([])} disabled={selected.length === 0}>
+                <button type="button" className="soundcheck__clear inline-flex min-h-11 max-w-full items-center rounded-sm px-3 py-2 text-sm underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-default disabled:opacity-40" onClick={() => setSelected([])} disabled={selected.length === 0}>
                   Golește selecția
                 </button>
                 </div>

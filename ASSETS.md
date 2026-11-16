@@ -1,3 +1,6 @@
+## V155 / 2026-11-16
+No new assets, third-party code, fonts, images or licenses; first-party utility-class change only.
+
 ## V154 / 2026-11-16
 No new media, fonts, icons or third-party code. Native CSS layout only; existing assets unchanged.
 

@@ -1,3 +1,8 @@
+## 2026-11-16 — Events long-label mobile affordance
+- https://developer.mozilla.org/en-US/docs/Web/CSS/min-width — flex items can retain intrinsic minimum widths; `min-width:0` allows shrink.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap — wrap long content rather than force horizontal overflow.
+- Original utility-class adjustment, no external code, package or licensed asset. Rejected JS text truncation (hides useful action) and horizontal scrolling (hurts mobile keyboard usability). Real browser proof pending.
+
 ## 2026-11-16 — Events controls / responsive layout
 - https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap — native flex wrapping prevents rigid inline controls on narrow widths; adapted as first-party utility classes, no copied code or license-bearing asset.
 - https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html — target size and spacing rationale; kept existing 44px minimum-height controls.
