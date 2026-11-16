@@ -1,14 +1,14 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 const route=readFileSync("src/routes/index.tsx","utf8");
-const hero=readFileSync("src/components/atelier/ProductionHeroV166.tsx","utf8");
-const css=readFileSync("src/styles/home-rebuild-v166.css","utf8");
-describe("V166 rejects the V159 paper poster and restores authentic sound/production identity",()=>{
+const hero=readFileSync("src/components/atelier/ProductionHeroV168.tsx","utf8");
+const css=readFileSync("src/styles/home-v168-dark-live.css","utf8");
+describe("V168 rejects the V159 paper poster and restores authentic sound/production identity",()=>{
  it("does not mount V159 or its old image-card stage",()=>{
    expect(route).not.toContain("home-cover-v159.css?inline");
    expect(route).not.toContain("<StageHero />");
-   expect(route).toContain('className="gs166-home"');
-   expect(css).toContain("background:var(--gs166-paper)");
+   expect(route).toContain('className="gs168-home"');
+   expect(css).toContain("background:#08190f");
    expect(css).not.toMatch(/\.gs-home-v159|\.gs-v90-show-wall/);
  });
  it("preserves functional Light Desk with keyboard Escape and visitor-controlled film",()=>{
