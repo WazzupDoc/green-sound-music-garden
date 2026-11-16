@@ -84,7 +84,10 @@ function Contact() {
               <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
               <li><span>03 / SEND</span><strong>Alegi tu trimiterea</strong></li>
             </ol>
-            <a href="#contact-form-title" className="director-contact-signal__action">
+            <a href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
+              // Keep the native fragment navigation while moving keyboard focus to the form heading.
+              document.getElementById("contact-form-title")?.focus({ preventScroll: true });
+            }}>
               Începe cererea <ArrowUpRight className="size-5" aria-hidden />
             </a>
           </div>
