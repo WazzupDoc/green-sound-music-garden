@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   browser-preview:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'design/v168-dark-live-editorial-rebuild'
     runs-on: ubuntu-24.04
     timeout-minutes: 12
     steps:
