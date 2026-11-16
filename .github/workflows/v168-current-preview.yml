@@ -1,8 +1,7 @@
 name: V168 Real Browser Screenshot Preview
 on:
-  push:
-    branches:
-      - design/v168-dark-live-editorial-rebuild
+  pull_request:
+    types: [opened, synchronize]
   workflow_dispatch:
 jobs:
   browser-preview:
