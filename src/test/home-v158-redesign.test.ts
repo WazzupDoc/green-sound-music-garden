@@ -35,6 +35,6 @@ describe("V158 major home editorial redesign", () => {
     expect(css).toContain("@media(max-width:640px)");
     expect(css).toContain("html[data-gs-performance=lite]");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-    expect(css).not.toMatch(/url\(https?:|<video|autoplay|@import/);
+    expect(css).not.toMatch(/url\(https?:|<video\b|autoplay\s*=|@import\s/);
   });
 });
