@@ -163,6 +163,9 @@
  .gs166-home .gs160-stage__media{height:clamp(385px,100vw,475px)}
  .gs166-home .gs160-stage__editorial{margin-top:clamp(285px,76vw,360px)}
  .gs166-home .gs160-stage__editorial h1{font-size:clamp(3.25rem,11.3vw,4.8rem);letter-spacing:-.09em}
+ /* A long italic word must never force the 360–430px cover outside the viewport. */
+ .gs166-home .gs160-stage__editorial h1{overflow-wrap:anywhere;hyphens:auto;max-width:100%}
+ .gs166-home .gs160-stage__editorial h1 em{white-space:normal;overflow-wrap:anywhere}
  .gs166-home .gs160-stage__chapter{font-size:.58rem}
  .gs166-home .gs160-stage__desk{top:auto;right:auto}
  .gs166-home .gs160-stage__primary{min-height:50px}
