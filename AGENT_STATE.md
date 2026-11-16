@@ -1,3 +1,12 @@
+## V157 / 2026-11-16 — Contact editorial signal path (DRAFT)
+Selected zone: Contact hero and guided-brief entry. Observed source deficiency: V25 static radial circles repeat the generic visual language; the contact introduction has no direct jump to the real form or clear no-auto-send journey. Implemented: three first-party typography-led signal lanes with actual step descriptions and a native hash CTA, clean production-grid backdrop, 390px width CSS and focus-visible/reduced-motion support. Visual change is intentional but **NOT browser-verified**; no real screenshots available. Does not add a form or alter homepage, backend, packages, business data or media. Source test `src/test/contact-signal-path.test.ts` created; not executed. Baseline head V156 `2ee98c2f5ca8855f01220305de6176ebac44ea71`; V157 current head must be read from GitHub. Blockers: Chromium before/after at 390+1440 and 360/430/768/1920 regression, CI exact-head, focus/anchor/SSR audit. `main` unchanged.
+| Zone | Priority | Observed defect | V157 action | Before/after | Technical QA | Next |
+| --- | --- | --- | --- | --- | --- | --- |
+| /contact hero | High | Repeated circle motif; quote flow not directly linked | Editorial 3-step signal path + hash-to-form CTA | Not captured / not captured | Source assertion authored; all executed QA pending | Browser 390+1440 with keyboard and reduced motion |
+| /evenimente controls | High | V153–V155 layout unverified | Unchanged this iteration | Not captured | CI/browser baseline unresolved | Recheck previous selection controls |
+| /portofoliu | High | Authorised media quality and layout to audit | Not changed | Pending | Pending | Next rotation after Contact QA |
+| Homepage | Fixed editorial contract | Avoid repeated cards/hero changes | Untouched | Historic artifacts only | Prior validated history; V157 no change | Preserve V48 editorial contract |
+
 ## 2026-11-16 — V156 CI unblock, no visual release
 Zone: test infrastructure / not-found fallback regression. Evidence: V155 workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/43813721236 (TypeScript/build/budget passed; Vitest failure `ERR_INVALID_URL_SCHEME`). Action: resolve fallback component source from repository root rather than an import.meta URL that Vitest rewrites to a non-file scheme. No visual changes; screenshot before/after not applicable to this fix. V155 Events UI still requires real Chromium 390/1440 screenshots and six-width audit before release. Next rotation: Events real browser QA, then Contact. Main unchanged.
 
