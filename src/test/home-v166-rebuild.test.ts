@@ -4,21 +4,21 @@ import { describe, expect, it } from "vitest";
 
 const source = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
 
-describe("V166 homepage editorial rebuild contract", () => {
+describe("V168 homepage editorial rebuild contract", () => {
   const home = source("src/routes/index.tsx");
-  const hero = source("src/components/atelier/ProductionHeroV166.tsx");
-  const css = source("src/styles/home-rebuild-v166.css");
+  const hero = source("src/components/atelier/ProductionHeroV168.tsx");
+  const css = source("src/styles/home-v168-dark-live.css");
 
   it("activates one fresh scoped stylesheet rather than accumulating home versions", () => {
-    expect(home).toContain('home-rebuild-v166.css?inline');
-    expect(home).toContain('className="gs166-home"');
-    expect(home).toContain("<ProductionHeroV166 />");
+    expect(home).toContain('home-v168-dark-live.css?inline');
+    expect(home).toContain('className="gs168-home"');
+    expect(home).toContain("<ProductionHeroV168 />");
     expect(home).not.toContain('home-direction-v160.css?inline');
     expect(home).not.toContain("<ProductionHeroV160 />");
   });
 
   it("keeps exactly the four editorial homepage experiences", () => {
-    expect(home).toContain("<ProductionHeroV166 />");
+    expect(home).toContain("<ProductionHeroV168 />");
     expect(home).toContain("<ProductionIndex />");
     expect(home).toContain("<EditorialPortfolio />");
     expect(home).toContain('className="crafted-finale gs-finale"');
@@ -41,7 +41,7 @@ describe("V166 homepage editorial rebuild contract", () => {
     expect(css).toContain("@media(max-width:470px)");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
     expect(css).toContain('data-gs-performance=lite');
-    expect(css).toContain('.gs166-home .gs-index__chapter');
-    expect(css).toContain('.gs166-home .director-reel');
+    expect(css).toContain('.gs168-home .gs-index__chapter');
+    expect(css).toContain('.gs168-home .director-reel');
   });
 });

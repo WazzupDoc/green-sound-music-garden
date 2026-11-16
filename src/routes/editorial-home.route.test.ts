@@ -6,10 +6,10 @@ const home = readFileSync(resolve(process.cwd(), "src/routes/index.tsx"), "utf8"
 
 describe("V48 editorial homepage route", () => {
   it("mounts exactly the three editorial sections, then one final Contact CTA", () => {
-    expect(home).toContain("<ProductionHeroV166 />");
+    expect(home).toContain("<ProductionHeroV168 />");
     expect(home).toContain("<ProductionIndex />");
     expect(home).toContain("<EditorialPortfolio />");
-    const order = ["<ProductionHeroV166 />", "<ProductionIndex />", "<EditorialPortfolio />", 'className="crafted-finale gs-finale"'];
+    const order = ["<ProductionHeroV168 />", "<ProductionIndex />", "<EditorialPortfolio />", 'className="crafted-finale gs-finale"'];
     expect(order.map(item => home.indexOf(item))).toEqual([...order.map(item => home.indexOf(item))].sort((a, b) => a - b));
     expect(home.match(/<Link to="\/contact"/g)).toHaveLength(1);
   });
