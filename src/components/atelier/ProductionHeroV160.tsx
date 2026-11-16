@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight, CirclePlay, SlidersHorizontal } from "lucide-react";
 import { useReducedMotion } from "motion/react";
-import { business, images, videos, type EventSlug } from "@/data/site";
+import { images, videos, type EventSlug } from "@/data/site";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { VideoLite } from "@/components/site/VideoLite";
 
