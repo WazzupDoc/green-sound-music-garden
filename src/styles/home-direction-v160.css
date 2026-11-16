@@ -135,6 +135,9 @@
  .gs160-stage__editorial h1 em{white-space:nowrap}
  .gs160-stage__chapter{font-size:.58rem}
  .gs160-stage__statement{max-width:39ch;margin:0;padding:18px 0;background:transparent}
+ .gs160-stage__statement p{color:#234a34}
+ .gs160-stage__film{color:#17452d}
+ .gs160-stage__chapter{color:#225d3b}
  .gs160-stage__statement p{font-size:.92rem;line-height:1.55;margin-bottom:20px}
  .gs160-stage__index{display:flex;flex-direction:column;gap:24px;align-items:stretch;padding:20px 16px}
  .gs160-stage__description{min-height:0}
