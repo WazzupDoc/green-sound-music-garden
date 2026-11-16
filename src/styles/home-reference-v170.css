@@ -239,3 +239,12 @@ body:has(.gs170-home) .gs-global-light-wrap{display:none}
 /* Intentional signature typography from selected concept: only emphasis is italic neon serif. */
 .gs170-home .gs170-hero h1 em{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:1.08em!important;color:#82ff80!important;letter-spacing:-.025em}
 @media(max-width:740px){.gs170-home .gs170-hero h1 em{font-size:1.02em!important;line-height:1!important}}
+
+/* Directional stage glow: brighter moving-head beams and subtle green flare, aligned with selected concept. */
+.gs170-home .gs170-stage__beams i{mix-blend-mode:screen;filter:blur(5px);opacity:.54}
+.gs170-home .gs170-stage__beams:before,.gs170-home .gs170-stage__beams:after{content:"";position:absolute;pointer-events:none;top:8%;width:23%;height:22%;mix-blend-mode:screen;filter:blur(15px);background:radial-gradient(ellipse,#78ff7c72 0%,#43ff6d24 32%,transparent 72%)}
+.gs170-home .gs170-stage__beams:before{left:56%}
+.gs170-home .gs170-stage__beams:after{left:78%;top:5%;width:16%;height:19%;opacity:.6}
+.gs170-home .gs170-hero[data-hue=cool] .gs170-stage__beams:before,.gs170-home .gs170-hero[data-hue=cool] .gs170-stage__beams:after{background:radial-gradient(ellipse,#7dc7ff6c 0%,#78b7ff20 38%,transparent 70%)}
+.gs170-home .gs170-hero[data-lights=off] .gs170-stage__beams:before,.gs170-home .gs170-hero[data-lights=off] .gs170-stage__beams:after{opacity:0}
+@media(max-width:740px){.gs170-home .gs170-stage__beams:before{left:60%;width:35%}.gs170-home .gs170-stage__beams:after{display:none}}
