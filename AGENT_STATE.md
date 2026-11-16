@@ -1,4 +1,4 @@
-## V151 / 2026-11-16 — Render-error Contact recovery (DRAFT)
+## 2026-11-16 / V152 — fallback telephone affordance\nZone: 404/render error. Defect: phone number lacked an explicit call verb. Changed visible label to `Sună-ne: [număr]`, retaining the actual telephone destination. Test: source assertion added, not executed. Visual evidence: before/after 390/1440 unavailable; do not call validated. Next: browser QA, then /evenimente. Main untouched.\n\n## V151 / 2026-11-16 — Render-error Contact recovery (DRAFT)
 Zone: error fallback. Added an explicit Contact form deep link only for render errors, with a named navigation landmark; Home, conditional Retry and telephone retained. Source regression guard added. No assets, dependencies or homepage changes. Real browser screenshots 390/1440, six-width QA, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: real browser/HTTP 404 and error audit; then Events interior.
 
 ## V150 / 2026-11-16 — Generic render-error heading (DRAFT)
