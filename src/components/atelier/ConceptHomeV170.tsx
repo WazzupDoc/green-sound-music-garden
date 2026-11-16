@@ -203,9 +203,9 @@ export function ConceptHomeV170() {
       </section>
 
       <Dialog open={filmIndex !== null} onOpenChange={open => { if (!open) setFilmIndex(null); }}>
-        <DialogContent className="max-h-[92dvh] max-w-4xl overflow-y-auto rounded-none border-[#66be67]/60 bg-[#07180f] p-5 text-white">
+        <DialogContent className="gs170-dialog">
           <DialogTitle className="pr-8 font-display text-xl">{film?.label ?? "Film Green Sound Music"}</DialogTitle>
-          <DialogDescription className="text-[#d9e6da]">
+          <DialogDescription className="gs170-dialog__description">
             Film real Green Sound Music. Apasă Play pentru a porni videoclipul.
           </DialogDescription>
           {film && <VideoLite video={film.video} className="aspect-video w-full" />}
