@@ -235,3 +235,7 @@ html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none
 .gs170-home .gs170-hero[data-stage-visible=false] .gs170-stage__live{animation-play-state:paused!important}
 /* The hero has its own light controls; avoid an unrelated duplicate control in the global footer on Home only. */
 body:has(.gs170-home) .gs-global-light-wrap{display:none}
+
+/* Intentional signature typography from selected concept: only emphasis is italic neon serif. */
+.gs170-home .gs170-hero h1 em{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:1.08em!important;color:#82ff80!important;letter-spacing:-.025em}
+@media(max-width:740px){.gs170-home .gs170-hero h1 em{font-size:1.02em!important;line-height:1!important}}
