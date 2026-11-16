@@ -1,40 +1,31 @@
-import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-const read=(p:string)=>readFileSync(p,"utf8");
+import { describe, expect, it } from "vitest";
+const read=(path:string)=>readFileSync(path,"utf8");
 const route=read("src/routes/index.tsx");
-const hero=read("src/components/atelier/ProductionHeroV168.tsx");
-const css=read("src/styles/home-v168-dark-live.css");
-const index=read("src/components/atelier/ProductionIndex.tsx");
-const archived=read("src/components/atelier/ProductionDeckArt.tsx");
-
-describe("V168 maintains source-approved media while removing obsolete production hardware",()=>{
- it("keeps archived V85 artwork for rollback but does not mount old components or CSS",()=>{
-  expect(archived).toContain('<svg viewBox="0 0 900 490"');
-  expect(route).not.toContain("homeProductionCss");
-  expect(route).not.toContain('home-signature-v86.css?inline');
-  expect(route).not.toContain("<StageHero />");
-  expect(route).toContain("<ProductionHeroV168 />");
-  expect(hero).not.toContain("ProductionDeckArt");
-  expect(hero).not.toContain("KineticShowWall");
-  for(const media of ["images.scena","images.dj","images.concert"]){
-   expect(hero).toContain(media);
-  }
-  expect(hero).toContain('className="gs160-stage__photo"');
-  expect(css).not.toContain(".gs-production-backdrop-v85");
+const page=read("src/components/atelier/ConceptHomeV170.tsx");
+const css=read("src/styles/home-reference-v170.css");
+const oldArtwork=read("src/components/atelier/ProductionDeckArt.tsx");
+describe("V170 production equipment is a lightweight UI illustration",()=>{
+ it("leaves archived production artwork for rollback but does not mount it",()=>{
+   expect(oldArtwork).toContain('<svg viewBox="0 0 900 490"');
+   expect(route).toContain("<ConceptHomeV170 />");
+   expect(page).not.toContain("<ProductionDeckArt");
+   expect(page).toContain("gs170-stage__console");
+   expect(css).toContain("gs170-stage__eq");
  });
- it("renders three original editorial chapters and all direct service links",()=>{
-  expect(css).toContain(".gs168-home .gs-index__chapters");
-  expect(css).toContain(".gs168-home .gs-index__chapter[data-chapter=stage]");
-  expect(css).toContain(".gs168-home .gs-index__chapter[data-chapter=people]");
-  expect(index).toContain("chapter.linkedServices.map((service)");
-  expect(index).toContain('to={`/${service.slug}`}');
+ it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
+   expect(page).toContain('slug: "dj-mc"');
+   expect(page).toContain('slug: "trupa"');
+   expect(page).toContain('slug: "echipamente-de-sunet-si-lumini"');
+   expect(page).toContain('slug: "masina-fum-greu-cu-gheata-carbonica"');
+   expect(page).toContain('slug: "studio-inregistrari"');
+   expect(page).toContain('"hostess", "ursitoare-botez", "start-veselia"');
+   expect(page).toContain("services.some(service => !allSlugs.includes(service.slug))");
  });
- it("preserves Lite/reduced motion, source media and no automatic audio",()=>{
-  expect(css).toContain("@media(max-width:470px)");
-  expect(css).toContain("html[data-gs-performance=lite]");
-  expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-  expect(css).not.toMatch(/url\(https?:|new AudioContext|autoplay/);
-  expect(hero).toContain("Dialog");
-  expect(hero).toContain("VideoLite");
+ it("keeps provenance, reduced motion and no auto-playing media",()=>{
+   expect(page).toContain("existing real Green Sound");
+   expect(page).toContain("VideoLite video={film.video}");
+   expect(css).toContain("prefers-reduced-motion:reduce");
+   expect(css).not.toContain("url(https:");
  });
 });
