@@ -1,3 +1,6 @@
+## V173 / 2026-11-16 — Owner-source media, original animation
+No new font, media, photo, icon font, music, logo, external JS, package or analytics. Event foreground image is solely event.image from the existing Green Sound source catalogue in src/data/site.ts. The original "gate" transition panels and inline waveform graphic are purely decorative first-party CSS/SVG, not measurements or claimed deployed stage equipment. Existing lucide-react icons reused from the project's dependencies. Webflow reference pages are research only; no source code or image licensed for incorporation.
+
 ## V172 / 2026-11-16 — Event Direction Console
 Only existing `events[].image` media in `src/data/site.ts`, inherited from the owner Green Sound catalogue; no newly downloaded/imported/generated photos. The waveform path and equalizer bars are original CSS/SVG UI decoration and **not actual event sound measurements**. No new sound/video/font/logo, package, external API or license. External Webflow/Awwwards examples used for research only (no copying).
 
