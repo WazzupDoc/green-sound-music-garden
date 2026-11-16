@@ -6,12 +6,14 @@ const css=read("src/styles/home-signature-v86.css");
 const shared=read("src/styles.css");
 
 describe("V86 replaces V84/V85 cascade with one scoped branded design",()=>{
- it("actually loads ONE homepage stylesheet via SSR and retains the four-section promise",()=>{
+ it("loads the full SSR homepage art direction and retains four genuine sections",()=>{
   expect(route).toContain('import homeSignatureCss from "@/styles/home-signature-v86.css?inline"');
   expect(route).toContain('<style>{homeSignatureCss}</style>');
   expect(route).toContain('<style>{premiumEventCss}</style>');
   expect(route).toContain('home-event-v89.css?inline');
-  expect(route).toContain('className="gs-home-v86"');
+  expect(route).toContain('className="gs-home-v86 gs-home-v158"');
+  expect(route).toContain('home-redesign-v158.css?inline');
+  expect(route).toContain('<style>{homeRedesignCss}</style>');
   expect(route).not.toContain("homeNightshiftCss");
   expect(route).not.toContain("homeProductionCss");
   expect(shared).not.toContain("home-signature-v86.css");
