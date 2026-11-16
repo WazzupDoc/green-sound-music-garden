@@ -1,3 +1,6 @@
+## V178 / 2026-11-16 — Accessible event timeline counters (DRAFT)
+Branch `fix/v178-event-timeline-accessible-progress` stacked on V177. Corrects a non-interactive `<span aria-label>` (not consistently exposed as a labeled accessible object) by giving the timeline counter a single semantic image role with accessible current/total label and hiding duplicate visual digits from assistive technology. Added source regression test. No media/dependency/homepage changes. CI exact-head, browser/assistive technology verification and screenshot comparison pending. Next rotate to Contact funnel; do not merge or publish.
+
 ## V177 / 2026-11-16 — Event detail timeline orientation (DRAFT)
 Branch `feat/v177-event-detail-timeline-orientation` stacked on V176. Event-specific timeline now states its actual number of moments, exposes current/total step counters with accessible labels, and clarifies that service links lead to service details. Uses existing data and styles, no invented schedules, images, packages or homepage changes. CI exact-head and Chromium before/after 390/1440 pending; no visual QA or publication claim. Next: test mobile rendering and anchor focus, then rotate to Contact funnel.
 
