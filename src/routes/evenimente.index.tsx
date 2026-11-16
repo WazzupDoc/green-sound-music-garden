@@ -42,8 +42,12 @@ function Events() {
     let cancelled = false;
     const preload = new Image();
     preload.src = activeEvent.image.src;
-    preload.decode().catch(() => undefined).then(() => {
+    // A failed decode must not replace the last successfully displayed photo.
+    // Keep the existing scene instead of showing a broken image on poor networks.
+    preload.decode().then(() => {
       if (!cancelled) setVisualEvent(activeEvent);
+    }).catch(() => {
+      // Retain the previous verified frame; no automatic retry loop.
     });
     return () => { cancelled = true; };
   }, [activeEvent, visualEvent.slug]);
