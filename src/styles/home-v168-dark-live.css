@@ -183,3 +183,26 @@
 }
 html[data-gs-performance=lite] .gs168-home .gs160-stage__light,
 html[data-gs-performance=lite] .gs168-home .gs-index__photo img{animation:none!important;transition:none!important;transform:none!important}
+
+
+/* V169 original signal console: a deliberate foreground production detail, not
+   an unlicensed photo or a second content section. CSS + inline SVG only. */
+.gs168-home .gs169-production-desk{position:absolute;right:clamp(20px,4.5vw,82px);top:clamp(210px,27%,345px);width:clamp(330px,32vw,540px);padding:17px 20px 20px;z-index:1;pointer-events:none;transform:perspective(1200px) rotateY(-11deg) rotateX(4deg);transform-origin:right center;background:linear-gradient(145deg,#10261fe8,#020b09f7);border:1px solid #a5e8b25e;box-shadow:0 35px 85px #000a,0 0 60px #1cdb7130,inset 0 1px #dcffe73d;backdrop-filter:blur(6px)}
+.gs168-home .gs169-production-desk__top,.gs168-home .gs169-production-desk__footer{display:flex;justify-content:space-between;gap:12px;font-size:clamp(.47rem,.57vw,.66rem);letter-spacing:.14em;font-weight:800;color:#c3f7c8}
+.gs168-home .gs169-production-desk__top span:last-child{color:#8dffab}
+.gs168-home .gs169-production-desk__signal{display:block;width:100%;height:clamp(65px,7vw,115px);margin:20px 0 13px;background:repeating-linear-gradient(0deg,transparent 0 19px,#b6f4c516 20px),repeating-linear-gradient(90deg,transparent 0 39px,#b6f4c512 40px);border:1px solid #91d9a03b}
+.gs168-home .gs169-production-desk__signal path{fill:none;stroke:#a4ffba;stroke-width:2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 5px #66ff9d)}
+.gs168-home .gs169-production-desk__channels{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:clamp(8px,1vw,17px);padding:12px 2px 18px}
+.gs168-home .gs169-production-desk__channel{display:flex;flex-direction:column;align-items:center;gap:8px}
+.gs168-home .gs169-production-desk__channel i{display:block;width:9px;height:9px;border-radius:50%;background:#9afaa8;box-shadow:0 0 10px #58ec84}
+.gs168-home .gs169-production-desk__channel b{position:relative;display:block;width:4px;height:clamp(48px,5vw,75px);background:linear-gradient(#8cdd9955,#233c30);border-radius:2px}
+.gs168-home .gs169-production-desk__channel b:after{content:"";position:absolute;left:-7px;top:calc(15% + mod(var(--gs169-channel) * 13, 60) * 1%);width:18px;height:10px;border-radius:2px;background:#e1eee3;box-shadow:0 2px 7px #000}
+.gs168-home .gs169-production-desk__channel small{width:60%;height:3px;background:#57c97788}
+.gs168-home .gs169-production-desk__footer{padding-top:12px;border-top:1px solid #a8edba45;color:#86b99a}
+.gs168-home .gs160-stage[data-lights=on] .gs169-production-desk__signal path{stroke-dasharray:110 12;animation:gs169-signal 7s linear infinite}
+@keyframes gs169-signal{to{stroke-dashoffset:-244}}
+@media(max-width:1200px){.gs168-home .gs169-production-desk{width:33vw;top:25%;opacity:.92}}
+@media(max-width:900px){.gs168-home .gs169-production-desk{display:none}.gs168-home .gs160-stage__editorial{margin-top:clamp(170px,29vw,240px)}}
+@media(max-width:470px){.gs168-home .gs160-stage__editorial{margin-top:clamp(125px,34vw,175px)}}
+@media(prefers-reduced-motion:reduce){.gs168-home .gs169-production-desk__signal path{animation:none!important}}
+html[data-gs-performance=lite] .gs168-home .gs169-production-desk__signal path{animation:none!important}
