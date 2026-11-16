@@ -266,6 +266,101 @@ async function main() {
       await contactPage.close();
     }
 
+    // V161 / Real Chromium proof of the new gallery as a 6-photo atlas,
+    // the authentic video storyboard, the shareable lightbox and filters.
+    // Matching before captures: baseline V160 CI run #43839890033.
+    for (const portfolioWidth of widths) {
+      const portfolioPage=await browser.newPage({
+        viewport:{width:portfolioWidth,height:900},reducedMotion:"reduce",
+      });
+      const errors=[];
+      portfolioPage.on("pageerror", e=>errors.push(e.message));
+      const response=await portfolioPage.goto(base+"/portofoliu",{waitUntil:"domcontentloaded"});
+      assert.equal(response.status(),200);
+      await portfolioPage.locator(".rs-gallery__frame").first().waitFor();
+      await portfolioPage.locator(".rs-video-library__item").first().waitFor();
+      assert.equal(await portfolioPage.locator(".gs161-portfolio").count(),1);
+      assert.equal(await portfolioPage.locator(".gs161-hero h1").count(),1);
+      assert.equal(await portfolioPage.locator(".gs161-hero__media img").count(),1);
+      const heroImage=await portfolioPage.locator(".gs161-hero__media img").evaluate(async img=>{
+        await img.decode().catch(()=>null);
+        return {width:img.naturalWidth,src:img.currentSrc};
+      });
+      assert(heroImage.width>0 && heroImage.src.includes("/media/greensound/"),
+        "Portfolio's first screen must use actual existing project photography");
+      assert.equal(await portfolioPage.locator(".rs-gallery__frame").count(),6);
+      assert.equal(await portfolioPage.locator(".gs161-photo-counter").count(),6);
+      assert.equal(await portfolioPage.locator(".rs-video-library__item").count(),6);
+      assert.equal(await portfolioPage.locator(".gs161-film-thumb img").count(),6);
+      const galleryDisplay=await portfolioPage.locator(".rs-gallery__rail")
+        .evaluate(el=>getComputedStyle(el).display);
+      assert.equal(galleryDisplay,"grid",
+        "V161 must change the old horizontal carousel into a real image-led atlas");
+      const photos=await portfolioPage.locator(".rs-gallery__media img").evaluateAll(async imgs=>{
+        for(const img of imgs)img.loading="eager";
+        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+        return imgs.map(img=>({width:img.naturalWidth,src:img.currentSrc}));
+      });
+      assert(photos.length===6 && photos.every(img=>img.width>0 &&
+        img.src.includes("/media/greensound/")),
+        "All six original photographs must decode in Chromium");
+      const posterImages=await portfolioPage.locator(".gs161-film-thumb img").evaluateAll(async imgs=>{
+        for(const img of imgs)img.loading="eager";
+        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+        return imgs.map(img=>({width:img.naturalWidth,src:img.currentSrc}));
+      });
+      assert(posterImages.length===6 && posterImages.slice(0,3).every(img=>
+        img.width>0 && img.src.includes("/media/greensound/")),
+        "The first three real-film previews must have project-owned posters");
+      await noOverflow(portfolioPage,"/portofoliu",portfolioWidth);
+      await portfolioPage.screenshot({
+        path:`${output}/portfolio-current-${portfolioWidth}.png`,
+        animations:"disabled",fullPage:true,
+      });
+      if (portfolioWidth===390 || portfolioWidth===1440) {
+        await portfolioPage.locator(".gs161-hero").screenshot({
+          path:`${output}/portfolio-hero-${portfolioWidth}.png`,
+          animations:"disabled",
+        });
+        await portfolioPage.locator(".rs-gallery").screenshot({
+          path:`${output}/portfolio-photos-${portfolioWidth}.png`,
+          animations:"disabled",
+        });
+        await portfolioPage.locator(".rs-video-library").screenshot({
+          path:`${output}/portfolio-films-${portfolioWidth}.png`,
+          animations:"disabled",
+        });
+        // Verify new aesthetics do not break the original, accessible functionality.
+        await portfolioPage.locator(".rs-gallery__filters button").nth(2).click();
+        assert.equal(await portfolioPage.locator(".rs-gallery__frame").count(),1,
+          "Tehnică filter must show exactly the original stage photograph");
+        await portfolioPage.locator(".rs-gallery__filters button").first().click();
+        assert.equal(await portfolioPage.locator(".rs-gallery__frame").count(),6);
+        await portfolioPage.locator('.rs-gallery__frame[data-photo-id="concert"]').click();
+        const photoDialog=portfolioPage.locator(".rs-photo-dialog");
+        await photoDialog.waitFor({state:"visible",timeout:8000});
+        assert.equal(new URL(portfolioPage.url()).searchParams.get("photo"),"concert");
+        await photoDialog.focus();
+        await portfolioPage.keyboard.press("ArrowRight");
+        await portfolioPage.waitForFunction(()=>new URL(location.href).searchParams.get("photo")==="dj");
+        await portfolioPage.keyboard.press("Escape");
+        await photoDialog.waitFor({state:"hidden",timeout:8000});
+        await portfolioPage.locator(".rs-video-library__filters button").nth(3).click();
+        assert((await portfolioPage.locator(".rs-video-library__item").count())>=1,
+          "Studio film filter must preserve actual published video links");
+        await portfolioPage.locator(".rs-video-library__filters button").first().click();
+        assert.equal(await portfolioPage.locator(".rs-video-library__item").count(),6);
+        await portfolioPage.locator(".rs-video-library__item").nth(1).click();
+        await portfolioPage.waitForFunction(()=>new URL(location.href).searchParams.has("film"));
+        assert.equal(await portfolioPage.locator(".rs-video-library__item[aria-current=true]").count(),1);
+        assert.equal(await portfolioPage.locator(".rs-video-library iframe").count(),0,
+          "YouTube must never load until the visitor explicitly presses Play");
+        await noOverflow(portfolioPage,"Portfolio interactions",portfolioWidth);
+      }
+      assert.deepEqual(errors,[],`Portfolio runtime errors at ${portfolioWidth}`);
+      await portfolioPage.close();
+    }
+
     // V93: actual footer snapshots at identical 390/1440 viewports.
     for (const footerWidth of [360,390,430,768,1440,1920]) {
       const footerPage = await browser.newPage({
