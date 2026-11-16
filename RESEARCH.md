@@ -1,3 +1,8 @@
+## 2026-11-16 — Events controls / responsive layout
+- https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap — native flex wrapping prevents rigid inline controls on narrow widths; adapted as first-party utility classes, no copied code or license-bearing asset.
+- https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html — target size and spacing rationale; kept existing 44px minimum-height controls.
+- Rejected new animation library and bespoke JS viewport detection: unnecessary complexity for two native buttons. No new dependencies or media.
+
 ## 2026-11-16 — Events clear-selection action
 - https://www.w3.org/WAI/ARIA/apg/patterns/button/ — native button for state mutation, disabled when action unavailable. Original implementation, no copied code.
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button — explicit type=button prevents unintended form submit. No third-party dependency.
