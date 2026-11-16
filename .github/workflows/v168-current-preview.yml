@@ -35,12 +35,14 @@ jobs:
             const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
             fs.mkdirSync('screenshots/v168-current',{recursive:true});
             try{
-              for(const width of [390,1440]){
+              for(const width of [360,390,430,768,1440,1920]){
                 const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1,reducedMotion:'reduce'});
                 const response=await page.goto('http://127.0.0.1:4175/',{waitUntil:'domcontentloaded',timeout:45000});
                 assert.equal(response.status(),200);
                 await page.locator('.gs168-home .gs160-stage[data-hydrated="true"]').waitFor({timeout:18000});
                 await page.evaluate(async()=>{await document.fonts.ready});
+                const consoleCount=await page.locator('.gs169-production-desk').count();
+                assert.equal(consoleCount,1,'signal desk must render on the actual page');
                 const photo=await page.locator('.gs160-stage__photo').evaluate(async img=>{
                   await img.decode();return {w:img.naturalWidth,h:img.naturalHeight,src:img.currentSrc};
                 });
