@@ -1,3 +1,6 @@
+## V176 / 2026-11-16 — Event detail agenda navigation (DRAFT)
+Branch `feat/v176-event-detail-agenda-navigation`, stacked on V175. Event detail hero now provides a direct visible link to its event-specific timeline. Timeline has a stable fragment ID and accessible heading relationship, with programmatic focus target. No additional media, dependencies, homepage changes or external services. TypeScript, SSR, Vitest, Chromium screenshots at 390/1440 and exact-head CI pending; this is not a visual redesign or release approval. Next: check real browser focus and anchor navigation, then deeper event-detail editorial composition.
+
 ## V175 / 2026-11-16 — Event photo decode race regression (DRAFT)
 Branch `fix/v175-event-image-race-regression`, stacked on V174 PR #173. Extracted cancellable decode helper and added three Vitest regressions: successful decode, rejected decode and stale completion after a newer selection. No homepage/media/dependencies/main/deploy changes. Exact-head CI and real browser captures pending; do not merge or publish. Next: event detail routes and matched mobile/desktop screenshots.
 
