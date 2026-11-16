@@ -268,3 +268,18 @@ html[data-gs-performance=lite] .gs161-portfolio .gs161-film-thumb img{
 @media(max-width:470px){
  .gs161-portfolio .gs161-photo-counter{font-size:.55rem;padding:6px 8px;right:9px;top:9px}
 }
+
+/* V162 — mobile safe-area: keep the final conversion section and section
+ * jump targets above persistent navigation, without changing the global CTA.
+ * This is intentionally scoped to Portfolio pending a shared-navigation audit. */
+.gs161-portfolio #portfolio-photos,
+.gs161-portfolio #portfolio-films {scroll-margin-block-start:clamp(76px,12vh,120px)}
+@media(max-width:767px){
+ .gs161-portfolio {padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+ .gs161-portfolio #portfolio-photos,
+ .gs161-portfolio #portfolio-films {scroll-margin-block-start:88px}
+ .gs161-portfolio .rs-gallery__filters,
+ .gs161-portfolio .rs-video-library__filters {
+  scroll-margin-block-start:88px;
+ }
+}
