@@ -27,11 +27,26 @@ const initialEvent = firstEvent();
  * Only existing owner media is used; no booking, sending or price is implied. */
 function Events() {
   const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
+  // Keep the previous authentic photo on stage until the selected one is decoded.
+  // This avoids an empty black frame when switching on slow mobile networks.
+  const [visualEvent, setVisualEvent] = useState(initialEvent);
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
   const activeEvent = events.find((event) => event.slug === activeSlug) ?? initialEvent;
   const activeIndex = events.findIndex((event) => event.slug === activeEvent.slug) + 1;
   const indexText = String(activeIndex).padStart(2, "0");
+  const visualIndex = events.findIndex((event) => event.slug === visualEvent.slug) + 1;
+  const visualIndexText = String(visualIndex).padStart(2, "0");
+  useEffect(() => {
+    if (activeEvent.slug === visualEvent.slug) return;
+    let cancelled = false;
+    const preload = new Image();
+    preload.src = activeEvent.image.src;
+    preload.decode().catch(() => undefined).then(() => {
+      if (!cancelled) setVisualEvent(activeEvent);
+    });
+    return () => { cancelled = true; };
+  }, [activeEvent, visualEvent.slug]);
 
   function onSetlistKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     const count = events.length;
@@ -67,15 +82,15 @@ function Events() {
               <div className="gs173-statement__registration" aria-hidden="true"><span>GS—M / LIVE</span><span>DIN 2008</span></div>
             </div>
             <div className="gs173-live__photobox">
-              <div key={activeEvent.slug} className="gs173-stage-image">
-                <img src={activeEvent.image.src} alt={activeEvent.image.alt} width={activeEvent.image.w} height={activeEvent.image.h} loading="eager"
-                  fetchPriority={activeIndex === 1 ? "high" : undefined} decoding="async" />
+              <div key={visualEvent.slug} className="gs173-stage-image">
+                <img src={visualEvent.image.src} alt={visualEvent.image.alt} width={visualEvent.image.w} height={visualEvent.image.h} loading="eager"
+                  fetchPriority={visualIndex === 1 ? "high" : undefined} decoding="async" />
                 <div className="gs173-stage-image__gates" aria-hidden="true"><i/><i/><i/><i/></div>
               </div>
-              <div className="gs173-photobox__top" aria-hidden="true"><span>GS / EVENT FRAME</span><span>{indexText} / {String(events.length).padStart(2, "0")}</span></div>
-              <div className="gs173-photobox__stamp" aria-hidden="true"><strong>{indexText}</strong><span>SCENA SELECTATĂ</span></div>
+              <div className="gs173-photobox__top" aria-hidden="true"><span>GS / EVENT FRAME</span><span>{visualIndexText} / {String(events.length).padStart(2, "0")}</span></div>
+              <div className="gs173-photobox__stamp" aria-hidden="true"><strong>{visualIndexText}</strong><span>SCENA SELECTATĂ</span></div>
               <div className="gs173-photobox__caption">
-                <span>ACUM ÎN REGIE</span><h2>{activeEvent.name}</h2>
+                <span>ACUM ÎN REGIE</span><h2>{visualEvent.name}</h2>
                 <svg aria-hidden="true" viewBox="0 0 220 24" preserveAspectRatio="none">
                   <path d="M0 12H31L40 8L48 17L57 4L65 21L73 12H94L104 7L113 18L122 12H141L152 5L162 19L169 12H187L198 9L210 15L220 12"/>
                 </svg>
