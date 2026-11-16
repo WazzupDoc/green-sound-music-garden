@@ -19,6 +19,11 @@ describe("404 recovery navigation", () => {
     expect(source).toContain("!missing && (");
   });
 
+  it("labels the telephone as a clear call action", () => {
+    expect(source).toContain('className="rs-404__phone">Sună-ne: {business.phoneDisplay}');
+    expect(source).toContain('href={business.phoneHref}');
+  });
+
   it("keeps the error retry separate from not-found navigation", () => {
     expect(source).toContain("missing && (");
     expect(source).toContain("Pagina nu poate fi afișată.");
