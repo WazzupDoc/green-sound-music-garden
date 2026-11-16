@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowRight, ArrowUpRight, AudioLines, CalendarDays, CirclePlay, Headphones,
@@ -46,16 +46,33 @@ const films: { label: string; eyebrow: string; video: Video }[] = [
 export function ConceptHomeV170() {
   const [hydrated, setHydrated] = useState(false);
   const [lightsOn, setLightsOn] = useState(true);
+  const [stageVisible, setStageVisible] = useState(true);
+  const stageRef = useRef<HTMLElement>(null);
   const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
   const film = filmIndex === null ? null : films[filmIndex];
   useEffect(() => { setHydrated(true); }, []);
+  useEffect(() => {
+    const node = stageRef.current;
+    if (!node || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(([entry]) => {
+      setStageVisible(Boolean(entry?.isIntersecting) && !document.hidden);
+    }, { threshold: .01 });
+    observer.observe(node);
+    const onVisibility = () => {
+      const rect = node.getBoundingClientRect();
+      setStageVisible(!document.hidden && rect.bottom > 0 && rect.top < window.innerHeight);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", onVisibility); };
+  }, []);
 
   return (
     <>
-      <section className="gs170-hero" aria-labelledby="gs170-title"
+      <section className="gs170-hero" aria-labelledby="gs170-title" ref={stageRef}
         data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}
-        data-hydrated={hydrated ? "true" : "false"}>
+        data-hydrated={hydrated ? "true" : "false"}
+        data-stage-visible={stageVisible ? "true" : "false"}>
         <div className="gs170-stage" aria-hidden="true">
           <img src={images.concert.src} alt="" width={images.concert.w}
             height={images.concert.h} className="gs170-stage__image"
