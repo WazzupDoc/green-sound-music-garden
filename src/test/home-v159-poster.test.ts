@@ -1,35 +1,27 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-const route=readFileSync(resolve(process.cwd(),"src/routes/index.tsx"),"utf8");
-const poster=readFileSync(resolve(process.cwd(),"src/styles/home-cover-v159.css"),"utf8");
-const hero=readFileSync(resolve(process.cwd(),"src/components/atelier/StageHero.tsx"),"utf8");
-describe("V159 premium event-production poster cover",()=>{
- it("mounts exactly one new homepage-only design following the earlier CSS for rollback",()=>{
-   expect(route).toContain('className="gs-home-v86 gs-home-v158 gs-home-v159"');
-   expect(route).toContain('homeCoverCss from "@/styles/home-cover-v159.css?inline"');
-   expect(route.indexOf("<style>{homeRedesignCss}</style>")).toBeLessThan(route.indexOf("<style>{homeCoverCss}</style>"));
-   for(const tag of ["<StageHero />","<ProductionIndex />","<EditorialPortfolio />",'className="crafted-finale gs-finale"'])expect(route).toContain(tag);
-   expect((route.match(/<Link to="\/contact"/g)||[]).length).toBe(1);
+const route=readFileSync("src/routes/index.tsx","utf8");
+const hero=readFileSync("src/components/atelier/ProductionHeroV160.tsx","utf8");
+const css=readFileSync("src/styles/home-direction-v160.css","utf8");
+describe("V160 rejects the V159 paper poster and restores authentic sound/production identity",()=>{
+ it("does not mount V159 or its old image-card stage",()=>{
+   expect(route).not.toContain("home-cover-v159.css?inline");
+   expect(route).not.toContain("<StageHero />");
+   expect(route).toContain('className="gs160-home"');
+   expect(css).toContain("background:#07160f");
+   expect(css).not.toMatch(/\.gs-home-v159|\.gs-v90-show-wall/);
  });
- it("replaces the visible gallery collage with a single licensed-in-project photograph and oversized dark type",()=>{
-   expect(poster).toContain("background:var(--gs159-paper)!important");
-   expect(poster).toContain("font-size:clamp(6rem,13vw,13.65rem)!important");
-   expect(poster).toContain(".gs-v90-show-wall");
-   expect(poster).toContain("display:none!important");
-   expect(poster).toContain("background:#07170f!important");
-   expect(poster).toContain("background:#e9ebe1!important");
-   expect(hero).toContain('src={scene.src}');
-   expect(hero).toContain("modes.map((mode)");
-   expect(hero).toContain("setShowReel(true)");
+ it("preserves functional Light Desk with keyboard Escape and visitor-controlled film",()=>{
+   expect(hero).toContain("desk.current.open = false");
+   expect(hero).toContain('event.key !== "Escape"');
+   expect(hero).toContain('id="gs160-power"');
+   expect(hero).toContain("setLightOn(v => !v)");
+   expect(hero).toContain("DialogContent");
+   expect(hero).toContain("filmOpen && <VideoLite");
  });
- it("preserves mobile, accessibility, Lite and reduced motion without external media",()=>{
-   expect(poster).toContain("@media(max-width:640px)");
-   expect(poster).toContain("@media(max-width:850px)");
-   expect(poster).toContain("@media(prefers-reduced-motion:reduce)");
-   expect(poster).toContain('html[data-gs-performance="lite"]');
-   expect(poster).not.toMatch(/url\(https?:|@import\s/);
-   expect(hero).toContain('aria-pressed={mode.key === active}');
+ it("supports preference-driven low-motion and eye-safe quiet surfaces",()=>{
+   expect(css).toContain(".gs160-stage[data-lights=off]");
+   expect(css).toContain("html[data-gs-performance=lite]");
    expect(hero).toContain('data-hydrated={hydrated ? "true" : "false"}');
  });
 });
