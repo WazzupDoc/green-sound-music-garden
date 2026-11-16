@@ -1,3 +1,5 @@
+## V172 / 2026-11-16 — Event Direction Console
+Only existing `events[].image` media in `src/data/site.ts`, inherited from the owner Green Sound catalogue; no newly downloaded/imported/generated photos. The waveform path and equalizer bars are original CSS/SVG UI decoration and **not actual event sound measurements**. No new sound/video/font/logo, package, external API or license. External Webflow/Awwwards examples used for research only (no copying).
 
 ## V171 / 2026-11-16
 No new image, font, audio, video, code package or third-party asset. Contact query validation only.
