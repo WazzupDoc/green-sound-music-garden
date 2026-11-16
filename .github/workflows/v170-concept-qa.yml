@@ -1,0 +1,116 @@
+name: V170 Green Production Concept — CI and Real Chromium
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - design/v168-dark-live-editorial-rebuild
+  workflow_dispatch:
+jobs:
+  v170-reference-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: design/v170-reference-green-production-experience
+      - uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: TypeScript
+        run: bun run typecheck
+      - name: SSR / production build
+        run: bun run build
+      - name: Existing and new tests
+        run: bun run test
+      - name: Install Chromium
+        run: |
+          npm install --prefix /tmp/gs-v170-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v170-playwright/node_modules/.bin/playwright install chromium
+      - name: Start actual V170 Vite server
+        run: |
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v170-server.log 2>&1 &)
+          for i in $(seq 1 60); do
+            if curl -sf http://127.0.0.1:4175/ > /dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/gs-v170-server.log
+          exit 1
+      - name: Six-width real-browser visual and interaction audit
+        run: |
+          NODE_PATH=/tmp/gs-v170-playwright/node_modules node <<'NODE'
+          const assert=require("node:assert/strict");
+          const fs=require("node:fs");
+          const {chromium}=require("playwright");
+          const base="http://127.0.0.1:4175";
+          const dir="screenshots/gs-v170";
+          const widths=[360,390,430,768,1440,1920];
+          fs.mkdirSync(dir,{recursive:true});
+          (async()=>{
+            const browser=await chromium.launch({headless:true,args:["--no-sandbox","--disable-dev-shm-usage"]});
+            try{
+              for(const width of widths){
+                const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1,reducedMotion:"reduce"});
+                const errors=[];
+                page.on("pageerror",e=>errors.push(e.message));
+                const response=await page.goto(base+"/",{waitUntil:"domcontentloaded",timeout:45000});
+                assert.equal(response.status(),200,"Real homepage SSR");
+                await page.locator('.gs170-home .gs170-hero[data-hydrated="true"] h1').waitFor({timeout:15000});
+                await page.evaluate(async()=>{await document.fonts.ready;});
+                assert.equal(await page.locator("main h1").count(),1);
+                assert.match(await page.locator("h1").first().innerText(),/evenimente memorabile/);
+                assert.equal(await page.locator(".gs170-service-card").count(),5);
+                assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
+                assert.equal(await page.locator(".gs170-process__steps li").count(),4);
+                assert.equal(await page.locator(".gs170-film-card").count(),3);
+                assert.equal(await page.locator('video[autoplay]').count(),0);
+                const img=await page.locator(".gs170-stage__image").evaluate(async el=>{
+                  await el.decode();return {w:el.naturalWidth,h:el.naturalHeight,src:el.currentSrc};
+                });
+                assert(img.w>0&&img.h>0&&img.src.includes("/media/greensound/"),"Use authentic hero photo");
+                const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
+                assert(overflow.scroll<=overflow.client+2,"Horizontal overflow at "+width+": "+JSON.stringify(overflow));
+                const reduced=await page.locator(".gs170-stage__beams i").first().evaluate(el=>getComputedStyle(el).animationName);
+                assert.equal(reduced,"none","Reduced-motion disables beams");
+                await page.screenshot({path:dir+"/full-"+width+".png",fullPage:true,animations:"disabled"});
+                if(width===390||width===1440){
+                  await page.locator(".gs170-hero").screenshot({path:dir+"/hero-"+width+".png",animations:"disabled"});
+                  await page.locator(".gs170-services").screenshot({path:dir+"/services-"+width+".png",animations:"disabled"});
+                  await page.locator(".gs170-films").screenshot({path:dir+"/films-"+width+".png",animations:"disabled"});
+                }
+                await page.getByRole("button",{name:"Efect ON"}).click();
+                assert.equal(await page.locator(".gs170-hero").getAttribute("data-lights"),"off");
+                await page.getByRole("button",{name:"Efect OFF"}).click();
+                await page.getByRole("button",{name:"Rece"}).click();
+                assert.equal(await page.locator(".gs170-hero").getAttribute("data-hue"),"cool");
+                await page.locator(".gs170-film-card").first().click();
+                await page.getByRole("dialog").waitFor({timeout:9000});
+                assert.equal(await page.getByRole("dialog").locator("iframe").count(),0,"Do not load film before user Play");
+                await page.keyboard.press("Escape");
+                await page.getByRole("dialog").waitFor({state:"hidden",timeout:9000});
+                assert.deepEqual(errors,[],"Runtime errors at "+width);
+                console.log("PASS V170 "+width+"px",img);
+                await page.close();
+              }
+              const motion=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});
+              await motion.goto(base+"/",{waitUntil:"domcontentloaded"});
+              await motion.locator(".gs170-stage__beams i").first().waitFor();
+              const animation=await motion.locator(".gs170-stage__beams i").first().evaluate(el=>getComputedStyle(el).animationName);
+              assert.match(animation,/gs170-beam/,"Motion-enabled browser must animate stage lights");
+              await motion.screenshot({path:dir+"/motion-desktop-1440.png",animations:"allow"});
+              await motion.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
+              const lite=await motion.locator(".gs170-stage__beams i").first().evaluate(el=>getComputedStyle(el).animationName);
+              assert.equal(lite,"none","Lite must disable moving-head animation");
+              await motion.screenshot({path:dir+"/lite-desktop-1440.png",animations:"disabled"});
+              console.log("PASS V170 motion and Lite");
+              await motion.close();
+            }finally{await browser.close();}
+          })().catch(err=>{console.error(err);process.exitCode=1});
+          NODE
+      - name: Upload real preview screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v170-real-reference
+          path: screenshots/gs-v170/
+          if-no-files-found: warn
+          retention-days: 60

@@ -1,21 +1,19 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-
-const home = readFileSync(resolve(process.cwd(), "src/routes/index.tsx"), "utf8");
-
-describe("V48 editorial homepage route", () => {
-  it("mounts exactly the three editorial sections, then one final Contact CTA", () => {
-    expect(home).toContain("<ProductionHeroV168 />");
-    expect(home).toContain("<ProductionIndex />");
-    expect(home).toContain("<EditorialPortfolio />");
-    const order = ["<ProductionHeroV168 />", "<ProductionIndex />", "<EditorialPortfolio />", 'className="crafted-finale gs-finale"'];
-    expect(order.map(item => home.indexOf(item))).toEqual([...order.map(item => home.indexOf(item))].sort((a, b) => a - b));
-    expect(home.match(/<Link to="\/contact"/g)).toHaveLength(1);
+const route = readFileSync("src/routes/index.tsx", "utf8");
+const page = readFileSync("src/components/atelier/ConceptHomeV170.tsx", "utf8");
+describe("V170 concept reference homepage route", () => {
+  it("mounts exactly one full homepage composition with route-scoped CSS", () => {
+    expect(route).toContain("<ConceptHomeV170 />");
+    expect(route).toContain('home-reference-v170.css?inline');
+    expect(route).toContain('className="gs170-home"');
+    expect(route.match(/<style>/g)).toHaveLength(1);
   });
-
-  it("never mounts the legacy multi-section event configurator on the homepage", () => {
-    expect(home).not.toMatch(/RegiaHome|rs-programme|rs-backstage|rs-films|rs-hero/);
-    expect(home).not.toMatch(/QuickBrief|EventsSelector|ServicesAtelier|Soundcheck|FrequencyLab/);
+  it("keeps the four real sections in reference order and two functional quote actions", () => {
+    const order = ['className="gs170-hero"', 'className="gs170-services"', 'className="gs170-films"', 'className="gs170-final"'];
+    const indices = order.map(value => page.indexOf(value));
+    expect(indices.every(index => index >= 0)).toBe(true);
+    expect(indices).toEqual([...indices].sort((a, b) => a - b));
+    expect(page.match(/to="\/contact"/g)?.length).toBe(2);
   });
 });

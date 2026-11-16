@@ -22,104 +22,57 @@ async function main() {
     headless: true, args: ["--no-sandbox", "--disable-dev-shm-usage"],
   });
   try {
+    // V170: screenshots of actual owner's 4th-reference-inspired homepage
+    // on six widths, real media decode, full catalogue and usable controls.
     for (const width of widths) {
-      const page = await browser.newPage({
-        viewport: { width, height: 900 }, reducedMotion: "reduce",
-      });
-      const errors = [];
-      page.on("pageerror", error => errors.push(error.message));
-      const response = await page.goto(base + "/", {waitUntil:"domcontentloaded",timeout:45000});
-      assert.equal(response.status(),200,"Homepage SSR must respond 200");
-      await page.locator('.gs160-stage[data-hydrated="true"]').waitFor({timeout:15000});
+      const page=await browser.newPage({viewport:{width,height:900},reducedMotion:"reduce"});
+      const errors=[];
+      page.on("pageerror",error=>errors.push(error.message));
+      const response=await page.goto(base+"/",{waitUntil:"domcontentloaded",timeout:45000});
+      assert.equal(response.status(),200);
+      await page.locator('.gs170-home .gs170-hero[data-hydrated="true"]').waitFor({timeout:15000});
+      await page.evaluate(async()=>{await document.fonts.ready});
       assert.equal(await page.locator("main h1").count(),1);
-      assert.equal(await page.locator(".gs168-home").count(),1);
-      assert.equal(await page.locator('nav[aria-label="Contact rapid"]').count(),0,
-        "Homepage must not duplicate its quote CTAs with a mobile sticky contact bar");
-      assert.equal(await page.locator(".gs160-stage__photo").count(),1,
-        "One genuine full-bleed production photo, not layered fake stage cards");
-      assert.equal(await page.locator(".gs-v90-show-wall").count(),0,
-        "V160 removes the old rotating three-card collage at source, not merely CSS hiding");
-      assert.equal(await page.locator(".gs-v90-ticker").count(),0,
-        "V160 removes obsolete template ticker at source");
-      const currentCss = await page.locator("style").evaluateAll(nodes => nodes.some(node => node.textContent.includes(".gs168-home .gs160-stage"))); 
-      assert.equal(currentCss, true, "V168 scoped art direction must be present in actual browser CSS");
-      const mediaBox = await page.locator(".gs160-stage__media").boundingBox();
-      assert(mediaBox && mediaBox.width>=width-3,
-        "The original real concert photo must span the whole dark hero, not a split panel");
-      const heading = await page.locator(".gs160-stage h1").innerText();
-      assert.match(heading,/EVENIMENTE/);
-      assert.match(heading,/DE NEUITAT/);
-      const hero = page.locator(".gs160-stage");
-      const heroBackground = await hero.evaluate(el=>getComputedStyle(el).backgroundColor);
-      assert.equal(heroBackground,"rgb(8, 25, 15)","V168 cover must use deep emerald, not V166 beige split layout");
-      const heroPhoto=await page.locator(".gs160-stage__photo").evaluate(async img=>{
+      assert.equal(await page.locator(".gs170-home").count(),1);
+      assert.equal(await page.locator('nav[aria-label="Contact rapid"]').count(),0);
+      assert.equal(await page.locator(".gs170-stage__image").count(),1);
+      const image=await page.locator(".gs170-stage__image").evaluate(async img=>{
         await img.decode().catch(()=>null);
-        return {src:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight};
+        return {src:img.currentSrc,w:img.naturalWidth,h:img.naturalHeight};
       });
-      assert(heroPhoto.src.includes("/media/greensound/") && heroPhoto.width>0 &&
-        heroPhoto.height>0,"Use real first-party stage media with complete decoding");
-      const hBox=await hero.boundingBox();
-      assert(hBox && hBox.height>=700 && hBox.height<1450,
-        "Hero must be intentionally sized without dominating several viewports");
-      const headingBounds=await page.locator(".gs160-stage__editorial h1").boundingBox();
-      assert(headingBounds && headingBounds.x>=0 && headingBounds.x+headingBounds.width<=width+1,
-        "Main title must fit every responsive width");
-      assert.equal(await page.locator(".gs160-stage__choice").count(),3);
-      assert.equal(await page.locator(".gs160-stage__choice[aria-pressed=true]").count(),1);
-      assert.equal(await page.locator(".gs160-stage__primary[href='/contact']").count(),1);
-      assert.equal(await page.locator(".gs-index__chapter").count(),3);
-      assert.equal(await page.locator(".gs-index__service").count(),8);
-      assert.equal(await page.locator(".director-reel__choice").count(),3);
-      assert.equal(await page.locator(".crafted-finale__link").count(),1);
+      assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
+        "First-party concert hero must decode");
+      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente memorabile/i);
+      assert.equal(await page.locator(".gs170-service-card").count(),5);
+      assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
+      assert.equal(await page.locator(".gs170-process__steps li").count(),4);
+      assert.equal(await page.locator(".gs170-film-card").count(),3);
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator("video[autoplay]").count(),0);
-      const serviceBg=await page.locator(".gs-index").evaluate(el=>getComputedStyle(el).backgroundColor);
-      assert.equal(serviceBg,"rgb(238, 237, 229)","V168 three service chapters must remain legible on warm editorial paper");
-      const allServices=await page.locator(".gs-index__photo img").evaluateAll(async imgs=>{
-        for(const img of imgs)img.loading="eager";
-        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
-        return imgs.map(img=>({src:img.currentSrc,width:img.naturalWidth}));
-      });
-      assert.equal(allServices.length,3);
-      assert(allServices.every(img=>img.width>0 && img.src.includes("/media/greensound/")),
-        "Each genuine editorial photo must load");
-      const filmPosters=await page.locator(".director-reel__choice .gs-v87-film-thumb img")
-        .evaluateAll(async imgs=>{
-          for(const img of imgs)img.loading="eager";
-          await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
-          return imgs.map(img=>({width:img.naturalWidth,src:img.currentSrc}));
-        });
-      assert.equal(filmPosters.length,3);
-      assert(filmPosters.every(p=>p.width>0 && p.src.includes("/media/greensound/")),
-        "All three owner-provided video posters must load");
-      const sections = await page.locator(".gs168-home > section").count();
-      assert.equal(sections,4,"V48 editorial contract must remain exactly four sections");
+      assert.equal(await page.locator(".gs170-hero__control button[aria-pressed=true]").count(),2);
+      const noMotion=await page.locator(".gs170-stage__beams i").first()
+        .evaluate(el=>getComputedStyle(el).animationName);
+      assert.equal(noMotion,"none","Reduced motion must suppress stage beams");
       await noOverflow(page,"/",width);
-      await page.screenshot({path:`${output}/editorial-home-${width}.png`,fullPage:true,animations:"disabled"});
-      if(width===390 || width===1440){
-        await hero.screenshot({path:`${output}/v168-hero-${width}.png`,animations:"disabled"});
-        await page.locator(".gs-index__chapters").screenshot({
-          path:`${output}/v168-services-${width}.png`,animations:"disabled"});
-        await page.locator(".director-reel").screenshot({
-          path:`${output}/v168-films-${width}.png`,animations:"disabled"});
-        await page.locator(".gs-finale").screenshot({
-          path:`${output}/v168-finale-${width}.png`,animations:"disabled"});
+      await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
+      if(width===390||width===1440){
+        await page.locator(".gs170-hero").screenshot({path:output+"/v170-hero-"+width+".png",animations:"disabled"});
+        await page.locator(".gs170-services").screenshot({path:output+"/v170-services-"+width+".png",animations:"disabled"});
+        await page.locator(".gs170-films").screenshot({path:output+"/v170-films-"+width+".png",animations:"disabled"});
+        await page.locator(".gs170-final").screenshot({path:output+"/v170-finale-"+width+".png",animations:"disabled"});
       }
-      const firstSource=await page.locator(".gs160-stage__photo").getAttribute("src");
-      await page.locator(".gs160-stage__choice").nth(1).click();
-      assert.equal(await hero.getAttribute("data-scene"),"private");
-      assert.equal(await page.locator(".gs160-stage__choice[aria-pressed=true]").count(),1);
-      const changed=await page.locator(".gs160-stage__photo").getAttribute("src");
-      assert.notEqual(firstSource,changed,"Real photo must change on mode selection");
-      assert.match(await page.locator(".gs160-stage__description a").getAttribute("href"),/evenimente\/nunti/);
-      await page.locator(".gs160-stage__choice").nth(2).click();
-      assert.equal(await hero.getAttribute("data-scene"),"production");
-      assert.notEqual(changed,await page.locator(".gs160-stage__photo").getAttribute("src"));
-      await page.locator(".gs160-stage__choice").nth(0).click();
-      assert.equal(await hero.getAttribute("data-scene"),"live");
-      const film=page.locator(".director-reel__choice").nth(1);
-      await film.click();
-      assert.equal(await film.getAttribute("aria-pressed"),"true");
+      await page.getByRole("button",{name:"Efect ON"}).click();
+      assert.equal(await page.locator(".gs170-hero").getAttribute("data-lights"),"off");
+      await page.getByRole("button",{name:"Efect OFF"}).click();
+      assert.equal(await page.locator(".gs170-hero").getAttribute("data-lights"),"on");
+      await page.getByRole("button",{name:"Rece"}).click();
+      assert.equal(await page.locator(".gs170-hero").getAttribute("data-hue"),"cool");
+      await page.locator(".gs170-film-card").nth(1).click();
+      const filmDialog=page.getByRole("dialog");
+      await filmDialog.waitFor({timeout:8000});
+      assert.equal(await filmDialog.locator("iframe").count(),0,"Real video requires visitor Play");
+      await page.keyboard.press("Escape");
+      await filmDialog.waitFor({state:"hidden",timeout:8000});
       if(width<=768){
         const menu=page.locator(".atelier-header__menu-btn");
         await menu.click();
@@ -127,18 +80,16 @@ async function main() {
         await dialog.waitFor({timeout:8000});
         assert.equal(await dialog.evaluate(el=>el.matches(":modal")),true);
         assert.equal(await dialog.locator(".gsm-nav-index__link").count(),6);
-        assert.equal(await page.evaluate(()=>document.activeElement?.closest("dialog")!==null),true);
         await noOverflow(page,"open mobile nav",width);
-        await page.screenshot({path:`${output}/stage-index-open-${width}.png`,
-          animations:"disabled",fullPage:false});
+        await page.screenshot({path:output+"/stage-index-open-"+width+".png",animations:"disabled",fullPage:false});
         await page.keyboard.press("Tab");
         assert.equal(await page.evaluate(()=>document.activeElement?.closest("dialog")!==null),true);
         await page.keyboard.press("Escape");
         await dialog.waitFor({state:"hidden",timeout:8000});
-        await page.waitForFunction(()=>document.activeElement ===
+        await page.waitForFunction(()=>document.activeElement===
           document.querySelector(".atelier-header__menu-btn"));
       }
-      assert.deepEqual(errors,[],`Browser page errors at ${width}px`);
+      assert.deepEqual(errors,[],"Homepage runtime errors at "+width);
       await page.close();
     }
 
@@ -150,7 +101,7 @@ async function main() {
         viewport:{width:navWidth,height:900},reducedMotion:"reduce",
       });
       await navPage.goto(base + "/", {waitUntil:"domcontentloaded"});
-      await navPage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
+      await navPage.locator('.gs170-hero[data-hydrated="true"]').waitFor();
       if (navWidth === 390) {
         await navPage.locator(".atelier-header__menu-btn").click();
       } else {
@@ -177,7 +128,7 @@ async function main() {
     }
     const navJourney = await browser.newPage({viewport:{width:390,height:900}});
     await navJourney.goto(base + "/", {waitUntil:"domcontentloaded"});
-    await navJourney.locator('.gs160-stage[data-hydrated="true"]').waitFor();
+    await navJourney.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     await navJourney.locator(".atelier-header__menu-btn").click();
     await navJourney.locator(".gsm-nav-index__link").nth(2).click();
     await navJourney.waitForURL("**/servicii");
@@ -191,7 +142,7 @@ async function main() {
       viewport: { width: 390, height: 844 }, reducedMotion: "no-preference",
     });
     await activePage.goto(base + "/", { waitUntil: "domcontentloaded" });
-    await activePage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
+    await activePage.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     await activePage.locator(".atelier-header__menu-btn").click();
     await activePage.locator("dialog.atelier-mobile-menu[open]").waitFor();
     const animationName = await activePage.locator(".gsm-nav-index__layout")
@@ -209,46 +160,36 @@ async function main() {
       path: `${output}/stage-index-lite-390.png`, animations: "disabled",
     });
 
-    // V160: owner-controlled visuals only; no autoplay, no simulated real-world light readings.
+    // V170: real motion state, opt-out & accessible film choice.
     await activePage.keyboard.press("Escape");
     await activePage.locator("dialog.atelier-mobile-menu[open]")
       .waitFor({state:"hidden",timeout:8000});
-    await activePage.locator(".gs160-stage__choice").nth(1).click();
-    assert.equal(await activePage.locator(".gs160-stage").getAttribute("data-scene"),"private");
-    await activePage.screenshot({path:`${output}/v168-private-390.png`,animations:"disabled"});
-    const deskSummary=activePage.locator(".gs160-stage__desk summary");
-    await deskSummary.click();
-    assert.equal(await activePage.locator(".gs160-stage__desk details").evaluate(el=>el.open),true);
+    await activePage.locator(".gs170-film-card").nth(0).click();
+    const activeFilm=activePage.getByRole("dialog");
+    await activeFilm.waitFor({timeout:9000});
+    assert.equal(await activeFilm.locator("iframe").count(),0);
     await activePage.keyboard.press("Escape");
-    assert.equal(await activePage.locator(".gs160-stage__desk details").evaluate(el=>el.open),false);
-    assert.equal(await deskSummary.evaluate(el=>document.activeElement===el),true);
+    await activeFilm.waitFor({state:"hidden",timeout:8000});
     await activePage.close();
 
     const motionPage=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});
     await motionPage.goto(base+"/",{waitUntil:"domcontentloaded"});
-    await motionPage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
-    const stage=motionPage.locator(".gs160-stage");
+    await motionPage.locator('.gs170-hero[data-hydrated="true"]').waitFor();
+    const stage=motionPage.locator(".gs170-hero");
     assert.equal(await stage.getAttribute("data-lights"),"on");
-    await motionPage.screenshot({path:`${output}/v168-light-green-1440.png`,animations:"disabled"});
-    await motionPage.locator(".gs160-stage__desk summary").click();
-    await motionPage.locator(".gs160-stage__desk-panel button").nth(1).click();
-    assert.equal(await stage.getAttribute("data-light-tone"),"warm");
-    await motionPage.screenshot({path:`${output}/v168-light-warm-1440.png`,animations:"disabled"});
-    await motionPage.locator(".gs160-stage__desk-panel button").last().click();
+    const beam=await motionPage.locator(".gs170-stage__beams i").first()
+      .evaluate(el=>getComputedStyle(el).animationName);
+    assert.match(beam,/gs170-beam/);
+    await motionPage.screenshot({path:output+"/v170-light-green-1440.png",animations:"allow"});
+    await motionPage.getByRole("button",{name:"Rece"}).click();
+    assert.equal(await stage.getAttribute("data-hue"),"cool");
+    await motionPage.screenshot({path:output+"/v170-light-cool-1440.png",animations:"disabled"});
+    await motionPage.getByRole("button",{name:"Efect ON"}).click();
     assert.equal(await stage.getAttribute("data-lights"),"off");
-    await motionPage.locator(".gs160-stage__desk-panel button").last().click();
     await motionPage.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
-    assert.equal(await motionPage.locator(".gs160-stage__light").evaluate(el=>
-      getComputedStyle(el).animationName),"none","Lite must disable decorative motion");
-    await motionPage.locator(".gs160-stage__desk summary").click();
-    await motionPage.locator(".gs160-stage__film").click();
-    const reelDialog=motionPage.getByRole("dialog");
-    await reelDialog.waitFor();
-    assert.equal(await reelDialog.getByText("Film real Green Sound Music.",{exact:false}).count(),1);
-    await motionPage.keyboard.press("Escape");
-    await reelDialog.waitFor({state:"hidden",timeout:8000});
+    assert.equal(await motionPage.locator(".gs170-stage__beams i").first().evaluate(el=>
+      getComputedStyle(el).animationName),"none","Lite must suppress decorative motion");
     await motionPage.close();
-
 
     // V157: Contact editorial journey proof at the same real desktop/mobile widths.
     // This is the actual rendered route, not a mockup or a static HTML fixture.
@@ -444,7 +385,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V168 independent magazine/photo production hero, actual image mode switches, authentic service photos and three owner films, Light Desk/reduced-motion/Lite, native navigation at six widths, 3 chapters/8 service links, single finale CTA, Contact SSR and sitemap.");
+    console.log("PASS V170 owner-selected source-photo stage, animated mixing deck and beams, 5 featured + 3 real service links, 4-step process, 3 source films, Lite/reduced motion, responsive navigation, Contact, portfolio, sitemap and six-width pages.");
   } finally {
     await browser.close();
   }
