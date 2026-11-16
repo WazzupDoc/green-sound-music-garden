@@ -25,7 +25,7 @@ function parseServices(raw: unknown): string[] {
  * All query fields are optional, so ordinary `<Link to="/contact" />`
  * calls stay valid. Only trusted allowed enum values and bounded text survive.
  */
-function validateBrief(search: Record<string, unknown>): BriefQuery {
+export function validateBrief(search: Record<string, unknown>): BriefQuery {
   const brief: BriefQuery = {};
   const eventValue = search["event"];
   const dateValue = search["date"];
