@@ -28,185 +28,110 @@ async function main() {
       });
       const errors = [];
       page.on("pageerror", error => errors.push(error.message));
-      const response = await page.goto(base + "/", {
-        waitUntil: "domcontentloaded", timeout: 45000,
+      const response = await page.goto(base + "/", {waitUntil:"domcontentloaded",timeout:45000});
+      assert.equal(response.status(),200,"Homepage SSR must respond 200");
+      await page.locator('.gs160-stage[data-hydrated="true"]').waitFor({timeout:15000});
+      assert.equal(await page.locator("main h1").count(),1);
+      assert.equal(await page.locator(".gs160-home").count(),1);
+      assert.equal(await page.locator(".gs160-stage__photo").count(),1,
+        "One genuine full-bleed production photo, not layered fake stage cards");
+      assert.equal(await page.locator(".gs-v90-show-wall").count(),0,
+        "V160 removes the old rotating three-card collage at source, not merely CSS hiding");
+      assert.equal(await page.locator(".gs-v90-ticker").count(),0,
+        "V160 removes obsolete template ticker at source");
+      const heading = await page.locator(".gs160-stage h1").innerText();
+      assert.match(heading,/Trăiește/);
+      assert.match(heading,/sunetul/);
+      const hero = page.locator(".gs160-stage");
+      const heroBackground = await hero.evaluate(el=>getComputedStyle(el).backgroundColor);
+      assert.equal(heroBackground,"rgb(7, 22, 15)","Real dark-emerald hero, not V159 paper poster");
+      const heroPhoto=await page.locator(".gs160-stage__photo").evaluate(async img=>{
+        await img.decode().catch(()=>null);
+        return {src:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight};
       });
-      assert.equal(response.status(), 200);
-      await page.locator(".crafted-hero h1").waitFor({ timeout: 15000 });
-      // Wait for the React event handlers before clicking a server-rendered film control.
-      // A DOMContentLoaded-only screenshot can show the SSR UI before hydration.
-      await page.locator('.crafted-hero[data-hydrated="true"]').waitFor({ timeout: 15000 });
-      assert.equal(await page.locator("main h1").count(), 1);
-      assert.equal(await page.locator(".gs-index__chapter").count(), 3);
-      assert.equal(await page.locator(".gs-index__service").count(), 8);
-      // Load the actual LOCAL event photographs before taking visual evidence.
-      // Full-page screenshots do not reliably trigger lazy images below the fold.
-      const photos = await page.locator(".gs-index__photo img").evaluateAll(async imgs => {
-        for (const img of imgs) img.loading = "eager";
-        await Promise.all(imgs.map(img => img.decode().catch(() => null)));
-        return imgs.map(img => ({ width: img.naturalWidth, src: img.currentSrc }));
+      assert(heroPhoto.src.includes("/media/greensound/") && heroPhoto.width>0 &&
+        heroPhoto.height>0,"Use real first-party stage media with complete decoding");
+      const hBox=await hero.boundingBox();
+      assert(hBox && hBox.height>=700 && hBox.height<1450,
+        "Hero must be intentionally sized without dominating several viewports");
+      const headingBounds=await page.locator(".gs160-stage__editorial h1").boundingBox();
+      assert(headingBounds && headingBounds.x>=0 && headingBounds.x+headingBounds.width<=width+1,
+        "Main title must fit every responsive width");
+      assert.equal(await page.locator(".gs160-stage__choice").count(),3);
+      assert.equal(await page.locator(".gs160-stage__choice[aria-pressed=true]").count(),1);
+      assert.equal(await page.locator(".gs160-stage__primary[href='/contact']").count(),1);
+      assert.equal(await page.locator(".gs-index__chapter").count(),3);
+      assert.equal(await page.locator(".gs-index__service").count(),8);
+      assert.equal(await page.locator(".director-reel__choice").count(),3);
+      assert.equal(await page.locator(".crafted-finale__link").count(),1);
+      assert.equal(await page.locator("main form").count(),0);
+      assert.equal(await page.locator("video[autoplay]").count(),0);
+      const serviceBg=await page.locator(".gs-index").evaluate(el=>getComputedStyle(el).backgroundColor);
+      assert.equal(serviceBg,"rgb(14, 41, 28)","The real dark catalogue must not be 3 generic cards on beige");
+      const allServices=await page.locator(".gs-index__photo img").evaluateAll(async imgs=>{
+        for(const img of imgs)img.loading="eager";
+        await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
+        return imgs.map(img=>({src:img.currentSrc,width:img.naturalWidth}));
       });
-      assert.equal(photos.length, 3, "Three authored editorial chapter photographs");
-      assert(photos.every(img => img.width > 0),
-        `Broken or undownloaded service photograph at ${width}px: ${JSON.stringify(photos)}`);
-      assert.equal(await page.locator(".gs-index__signal-ledger").count(), 0,
-        "V86 removed decorative fake signal badges, not merely CSS-hidden");
-      assert.equal(await page.locator(".gs-index__routing").count(), 0);
-      assert.equal(await page.locator(".gs-home-v159").count(), 1,
-        "V159 poster cover must be mounted on the actual SSR homepage");
-      const h1Text = await page.locator(".crafted-hero h1").innerText();
-      assert.match(h1Text,/EVENIMENTE/, "New event-first headline actually renders");
-      assert.match(h1Text,/NEUITAT/, "New green oversized second line actually renders");
-      // V159: root overflow:clip can hide giant typography without increasing
-      // document.scrollWidth. Measure the actual text ink on each of six widths.
-      const titleInkRight = await page.locator(".crafted-hero__title").evaluate(element => {
-        return [...element.querySelectorAll(".gs-stage-v78__line")].map(line => {
-          const range = document.createRange();
-          range.selectNodeContents(line);
-          return range.getBoundingClientRect().right;
-        });
-      });
-      assert(titleInkRight.length === 2 && titleInkRight.every(right => right <= width - 3),
-        `Poster headline text clipped at ${width}px: ${titleInkRight.join(", ")}`);
-      const heroHeight = (await page.locator(".crafted-hero").boundingBox())?.height ?? Infinity;
-      if(width===1440) {
-        assert(heroHeight >= 1010 && heroHeight <= 1220,
-          `V159 poster photograph must have substantial cinematic depth: ${heroHeight}px`);
-      }
-      const headlinePhoto = await page.locator(".crafted-hero__image").evaluate(el => ({loaded: el.complete && el.naturalWidth > 0, width: el.naturalWidth}));
-      assert(headlinePhoto.loaded, "V158 first-party panoramic hero must decode at every viewport");
-      assert.equal(await page.locator(".gs-index__photo img").count(),3);
-      assert.equal(await page.locator(".gs-v90-ticker").count(),1,
-        "The new kinetic top-band must actually be present");
-      assert.equal(await page.locator(".gs-v90-show-wall__frame").count(),3);
-      assert.equal(await page.locator(".gs-v90-show-wall").getAttribute("data-active"),"live");
-      const tickerBg = await page.locator(".gs-v90-ticker").evaluate(el=>getComputedStyle(el).backgroundColor);
-      assert.equal(await page.locator(".gs-v90-ticker").isVisible(), false,
-        "V159 removes the old moving neon ticker from the poster composition");
-      assert.equal(await page.locator(".gs-v90-show-wall").isVisible(), false,
-        "V159 drops the previous collage rather than recycling it as the main visual");
-      const posterBg = await page.locator(".crafted-hero").evaluate(el=>getComputedStyle(el).backgroundColor);
-      assert.equal(posterBg,"rgb(240, 240, 233)", "Poster cover must truly be paper-white, not old green");
-      assert.equal(await page.locator(".gs-v86__graphic svg").count(), 1,
-        "Original Green Sound signal mark must be in the hydrated hero");
-      assert.equal(await page.locator(".gs-production-deck-v85").count(), 0,
-        "Oversized fake hardware must not render in the V86 first screen");
-      if(width===1440){
-        const indexHeight = (await page.locator(".gs-index").boundingBox())?.height ?? Infinity;
-        assert(indexHeight >= 900 && indexHeight < 2100,
-          `V158 editorial catalogue must give genuine photos and eight links meaningful space: ${indexHeight}px`);
-      }
-      const serviceBg = await page.locator(".gs-index").evaluate(el => getComputedStyle(el).backgroundColor);
-      assert.equal(serviceBg, "rgb(7, 23, 15)",
-        "V159 switches service programme to a dark concert edition after the paper-white poster");
-      if (width >= 1100) {
-        const rects = await Promise.all(["sound", "stage", "people"].map(key =>
-          page.locator(`.gs-index__chapter[data-chapter="${key}"]`).boundingBox()
-        ));
-        assert(rects.every(Boolean) &&
-          rects[0].x + 65 < rects[1].x &&
-          Math.abs(rects[1].x - rects[2].x) < 10 &&
-          rects[0].height > rects[1].height * 1.4,
-          "Featured chapter on left must span two editorial rows, 2 compact acts stacked on right");
-        const wallImages = await page.locator(".gs-v90-show-wall__frame img").evaluateAll(async imgs => {
-          for(const img of imgs) img.loading="eager";
+      assert.equal(allServices.length,3);
+      assert(allServices.every(img=>img.width>0 && img.src.includes("/media/greensound/")),
+        "Each genuine editorial photo must load");
+      const filmPosters=await page.locator(".director-reel__choice .gs-v87-film-thumb img")
+        .evaluateAll(async imgs=>{
+          for(const img of imgs)img.loading="eager";
           await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
-          return imgs.map(img=>({w:img.naturalWidth,h:img.naturalHeight,src:img.currentSrc}));
+          return imgs.map(img=>({width:img.naturalWidth,src:img.currentSrc}));
         });
-        assert.equal(wallImages.length,3,"Original V90 perspective art uses 3 Green Sound media files");
-        assert(wallImages.every(img=>img.w>0 && img.h>0 && img.src.includes("/media/greensound/")),
-          `All first-party V90 photos must be decoded: ${JSON.stringify(wallImages)}`);
-        const wallRect = await page.locator(".gs-v90-show-wall").boundingBox();
-        assert.equal(wallRect,null,
-          "V159 intentionally removes old floating photo frames from the visible first screen");
-      }
-      assert.equal(await page.locator('.crafted-hero__actions a[href="/contact"]').count(), 1,
-        "Visible hero offer CTA should lead directly to the working Contact flow");
-      if (width <= 640) {
-        const sceneLink=page.locator(".scene-console__link");
-        assert.equal(await sceneLink.isVisible(),true,
-          "Mobile event detail link must remain genuinely usable");
-        const bulkyCopy = await page.locator(".scene-console__content h2").isVisible();
-        assert.equal(bulkyCopy,false,
-          "Mobile scene notes must be a compact deep-link, not a duplicate block");
-        const heroBox=await page.locator(".crafted-hero").boundingBox();
-        if (width === 390) {
-          assert(heroBox && heroBox.height >= 1020 && heroBox.height <= 1230,
-            `V159 mobile poster must fit within the intended cinematic chapter: ${heroBox?.height}`);
-        }
-      }
-
-
-      assert.equal(await page.locator(".director-reel__choice").count(), 3);
-      const filmPosters = await page.locator(".director-reel__choice .gs-v87-film-thumb img")
-        .evaluateAll(async imgs => {
-          for(const img of imgs) img.loading="eager";
-          await Promise.all(imgs.map(img => img.decode().catch(() => null)));
-          return imgs.map(img=>({w:img.naturalWidth,src:img.currentSrc}));
-        });
-      assert.equal(filmPosters.length,3,"V87 has 3 authentic published video poster selections");
-      assert(filmPosters.every(p=>p.w>0 && p.src.includes("/media/greensound/")),
-        `V87 film posters must decode from actual site-owned media: ${JSON.stringify(filmPosters)}`);
-
-      assert.equal(await page.locator(".crafted-finale__link").count(), 1);
-      assert.equal(await page.locator("main form").count(), 0);
-      assert.equal(await page.locator(".rs-programme__choice").count(), 0);
-      assert.equal(await page.locator("video[autoplay]").count(), 0);
-      await noOverflow(page, "/", width);
-      await page.screenshot({
-        path: `${output}/editorial-home-${width}.png`,
-        fullPage: true, animations: "disabled",
-      });
-      if (width === 390 || width === 1440) {
-        await page.screenshot({
-          path: `${output}/show-wall-v90-home-${width}.png`,
-          fullPage: true, animations: "disabled"
-        });
-        await page.locator(".crafted-hero").screenshot({
-          path: `${output}/show-wall-v90-hero-${width}.png`,
-          animations: "disabled"
-        });
+      assert.equal(filmPosters.length,3);
+      assert(filmPosters.every(p=>p.width>0 && p.src.includes("/media/greensound/")),
+        "All three owner-provided video posters must load");
+      const sections = await page.locator(".gs160-home > section").count();
+      assert.equal(sections,4,"V48 editorial contract must remain exactly four sections");
+      await noOverflow(page,"/",width);
+      await page.screenshot({path:`${output}/editorial-home-${width}.png`,fullPage:true,animations:"disabled"});
+      if(width===390 || width===1440){
+        await hero.screenshot({path:`${output}/v160-hero-${width}.png`,animations:"disabled"});
         await page.locator(".gs-index__chapters").screenshot({
-          path: `${output}/show-wall-v90-services-${width}.png`,
-          animations: "disabled",
-        });
+          path:`${output}/v160-services-${width}.png`,animations:"disabled"});
         await page.locator(".director-reel").screenshot({
-          path: `${output}/v87-film-contact-sheet-${width}.png`,
-          animations:"disabled"
-        });
+          path:`${output}/v160-films-${width}.png`,animations:"disabled"});
+        await page.locator(".gs-finale").screenshot({
+          path:`${output}/v160-finale-${width}.png`,animations:"disabled"});
       }
-
-      const film = page.locator(".director-reel__choice").nth(1);
+      const firstSource=await page.locator(".gs160-stage__photo").getAttribute("src");
+      await page.locator(".gs160-stage__choice").nth(1).click();
+      assert.equal(await hero.getAttribute("data-scene"),"private");
+      assert.equal(await page.locator(".gs160-stage__choice[aria-pressed=true]").count(),1);
+      const changed=await page.locator(".gs160-stage__photo").getAttribute("src");
+      assert.notEqual(firstSource,changed,"Real photo must change on mode selection");
+      assert.match(await page.locator(".gs160-stage__description a").getAttribute("href"),/evenimente\/nunti/);
+      await page.locator(".gs160-stage__choice").nth(2).click();
+      assert.equal(await hero.getAttribute("data-scene"),"production");
+      assert.notEqual(changed,await page.locator(".gs160-stage__photo").getAttribute("src"));
+      await page.locator(".gs160-stage__choice").nth(0).click();
+      assert.equal(await hero.getAttribute("data-scene"),"live");
+      const film=page.locator(".director-reel__choice").nth(1);
       await film.click();
-      assert.equal(await film.getAttribute("aria-pressed"), "true");
-      await page.keyboard.press("Tab");
-      // V81: real native modal navigation / focus / Escape at every mobile-tablet width.
-      if (width <= 768) {
-        const menuButton = page.locator(".atelier-header__menu-btn");
-        await menuButton.click();
-        const dialog = page.locator("dialog.atelier-mobile-menu[open]");
-        await dialog.waitFor({ timeout: 8000 });
-        assert.equal(await dialog.evaluate(element => element.matches(":modal")), true,
-          "Menu must be a real top-layer modal, not a role-only overlay");
-        assert.equal(await dialog.locator(".gsm-nav-index__link").count(), 6);
-        assert.equal(await page.evaluate(() => document.activeElement?.closest("dialog") !== null), true,
-          "Initial focus must move inside the menu");
-        assert.equal(await page.locator("body").evaluate(element => element.classList.contains("atelier-menu-locked")), true);
-        await noOverflow(page, "open stage index", width);
-        await page.screenshot({
-          path: `${output}/stage-index-open-${width}.png`,
-          fullPage: false, animations: "disabled",
-        });
+      assert.equal(await film.getAttribute("aria-pressed"),"true");
+      if(width<=768){
+        const menu=page.locator(".atelier-header__menu-btn");
+        await menu.click();
+        const dialog=page.locator("dialog.atelier-mobile-menu[open]");
+        await dialog.waitFor({timeout:8000});
+        assert.equal(await dialog.evaluate(el=>el.matches(":modal")),true);
+        assert.equal(await dialog.locator(".gsm-nav-index__link").count(),6);
+        assert.equal(await page.evaluate(()=>document.activeElement?.closest("dialog")!==null),true);
+        await noOverflow(page,"open mobile nav",width);
+        await page.screenshot({path:`${output}/stage-index-open-${width}.png`,
+          animations:"disabled",fullPage:false});
         await page.keyboard.press("Tab");
-        assert.equal(await page.evaluate(() => document.activeElement?.closest("dialog") !== null), true,
-          "Tab must stay within the native modal");
+        assert.equal(await page.evaluate(()=>document.activeElement?.closest("dialog")!==null),true);
         await page.keyboard.press("Escape");
-        await dialog.waitFor({ state: "hidden", timeout: 8000 });
-        await page.waitForFunction(() =>
-          document.activeElement === document.querySelector(".atelier-header__menu-btn"));
-        assert.equal(await menuButton.getAttribute("aria-expanded"), "false");
+        await dialog.waitFor({state:"hidden",timeout:8000});
+        await page.waitForFunction(()=>document.activeElement ===
+          document.querySelector(".atelier-header__menu-btn"));
       }
-      assert.deepEqual(errors, [], `Browser errors at ${width}px`);
+      assert.deepEqual(errors,[],`Browser page errors at ${width}px`);
       await page.close();
     }
 
@@ -218,7 +143,7 @@ async function main() {
         viewport:{width:navWidth,height:900},reducedMotion:"reduce",
       });
       await navPage.goto(base + "/", {waitUntil:"domcontentloaded"});
-      await navPage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+      await navPage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
       if (navWidth === 390) {
         await navPage.locator(".atelier-header__menu-btn").click();
       } else {
@@ -245,7 +170,7 @@ async function main() {
     }
     const navJourney = await browser.newPage({viewport:{width:390,height:900}});
     await navJourney.goto(base + "/", {waitUntil:"domcontentloaded"});
-    await navJourney.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+    await navJourney.locator('.gs160-stage[data-hydrated="true"]').waitFor();
     await navJourney.locator(".atelier-header__menu-btn").click();
     await navJourney.locator(".gsm-nav-index__link").nth(2).click();
     await navJourney.waitForURL("**/servicii");
@@ -259,7 +184,7 @@ async function main() {
       viewport: { width: 390, height: 844 }, reducedMotion: "no-preference",
     });
     await activePage.goto(base + "/", { waitUntil: "domcontentloaded" });
-    await activePage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
+    await activePage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
     await activePage.locator(".atelier-header__menu-btn").click();
     await activePage.locator("dialog.atelier-mobile-menu[open]").waitFor();
     const animationName = await activePage.locator(".gsm-nav-index__layout")
@@ -277,62 +202,44 @@ async function main() {
       path: `${output}/stage-index-lite-390.png`, animations: "disabled",
     });
 
-    // A real visible original waveform motion, not a fake hardware/audio meter.
+    // V160: owner-controlled visuals only; no autoplay, no simulated real-world light readings.
     await activePage.keyboard.press("Escape");
     await activePage.locator("dialog.atelier-mobile-menu[open]")
-      .waitFor({ state: "hidden", timeout: 8000 });
-    await activePage.locator(".crafted-hero__mode").nth(1).click();
-    assert.equal(await activePage.locator(".crafted-hero").getAttribute("data-scene"), "private",
-      "Stage scene controls must still work after visual redesign");
-    assert.equal(await activePage.locator(".gs-v90-show-wall").getAttribute("data-active"),"private",
-      "Scene selection must physically change the wall, not just text");
-    assert.equal(await activePage.locator(".gs-v90-show-wall").isVisible(),false,
-      "V159 no longer shows the old collage on mobile");
-    assert.equal(await activePage.locator(".scene-console__link").isVisible(),true,
-      "Changing scenes must preserve the genuine related event deep-link");
-    await activePage.screenshot({
-      path:`${output}/v90-private-scene-390.png`,animations:"disabled",fullPage:false
-    });
-    await activePage.locator(".crafted-hero__mode").nth(2).click();
-    assert.equal(await activePage.locator(".crafted-hero").getAttribute("data-scene"),"production",
-      "Touch users can still switch to the original Production photograph");
-
-
+      .waitFor({state:"hidden",timeout:8000});
+    await activePage.locator(".gs160-stage__choice").nth(1).click();
+    assert.equal(await activePage.locator(".gs160-stage").getAttribute("data-scene"),"private");
+    await activePage.screenshot({path:`${output}/v160-private-390.png`,animations:"disabled"});
+    const deskSummary=activePage.locator(".gs160-stage__desk summary");
+    await deskSummary.click();
+    assert.equal(await activePage.locator(".gs160-stage__desk details").evaluate(el=>el.open),true);
+    await activePage.keyboard.press("Escape");
+    assert.equal(await activePage.locator(".gs160-stage__desk details").evaluate(el=>el.open),false);
+    assert.equal(await deskSummary.evaluate(el=>document.activeElement===el),true);
     await activePage.close();
 
-    const motionPage = await browser.newPage({
-      viewport: {width: 1440,height:900},reducedMotion:"no-preference"
-    });
-    await motionPage.goto(base + "/", { waitUntil:"domcontentloaded" });
-    await motionPage.locator('.crafted-hero[data-hydrated="true"]').waitFor();
-    await motionPage.evaluate(() => document.documentElement.removeAttribute("data-gs-performance"));
-    await motionPage.locator(".gs-v90-show-wall__frame img").evaluateAll(async imgs=>{
-      for(const img of imgs)img.loading="eager";
-      await Promise.all(imgs.map(img=>img.decode().catch(()=>null)));
-    });
-    await motionPage.locator('.crafted-hero[data-stage-visible="true"][data-lights="on"]').waitFor();
-    assert.equal(await motionPage.locator(".gs-v90-ticker").isVisible(),false,
-      "V159 no longer relies on old perpetual neon-ticker motion");
-    const photo = motionPage.locator(".crafted-hero__image").last();
-    const initialPhoto = await photo.getAttribute("src");
-    await motionPage.screenshot({path:`${output}/v159-poster-live-1440.png`,
-      animations:"disabled",fullPage:false});
-    await motionPage.locator(".crafted-hero__mode").nth(1).click();
-    assert.equal(await motionPage.locator(".crafted-hero").getAttribute("data-scene"),"private");
-    await motionPage.waitForTimeout(950);
-    const nextPhoto = await motionPage.locator(".crafted-hero__image").last().getAttribute("src");
-    assert.notEqual(initialPhoto,nextPhoto,
-      "A new stage mode must replace the visible actual event photograph");
-    await motionPage.screenshot({path:`${output}/v159-poster-private-1440.png`,
-      animations:"disabled",fullPage:false});
-    await motionPage.locator(".director-hero__lights").click();
-    assert.equal(await motionPage.locator(".crafted-hero").getAttribute("data-lights"),"off",
-      "Light Desk off control must remain connected after poster redesign");
-    await motionPage.locator(".director-hero__lights").click();
-    await motionPage.evaluate(() => document.documentElement.setAttribute("data-gs-performance","lite"));
-    assert.equal(await motionPage.locator(".crafted-hero__image").last().evaluate(el=>
-      getComputedStyle(el).animationName),"none",
-      "Lite profile must not animate the large real hero photograph");
+    const motionPage=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});
+    await motionPage.goto(base+"/",{waitUntil:"domcontentloaded"});
+    await motionPage.locator('.gs160-stage[data-hydrated="true"]').waitFor();
+    const stage=motionPage.locator(".gs160-stage");
+    assert.equal(await stage.getAttribute("data-lights"),"on");
+    await motionPage.screenshot({path:`${output}/v160-light-green-1440.png`,animations:"disabled"});
+    await motionPage.locator(".gs160-stage__desk summary").click();
+    await motionPage.locator(".gs160-stage__desk-panel button").nth(1).click();
+    assert.equal(await stage.getAttribute("data-light-tone"),"warm");
+    await motionPage.screenshot({path:`${output}/v160-light-warm-1440.png`,animations:"disabled"});
+    await motionPage.locator(".gs160-stage__desk-panel button").last().click();
+    assert.equal(await stage.getAttribute("data-lights"),"off");
+    await motionPage.locator(".gs160-stage__desk-panel button").last().click();
+    await motionPage.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
+    assert.equal(await motionPage.locator(".gs160-stage__light").evaluate(el=>
+      getComputedStyle(el).animationName),"none","Lite must disable decorative motion");
+    await motionPage.locator(".gs160-stage__desk summary").click();
+    await motionPage.locator(".gs160-stage__film").click();
+    const reelDialog=motionPage.getByRole("dialog");
+    await reelDialog.waitFor();
+    assert.equal(await reelDialog.getByText("Film real Green Sound Music.",{exact:false}).count(),1);
+    await motionPage.keyboard.press("Escape");
+    await reelDialog.waitFor({state:"hidden",timeout:8000});
     await motionPage.close();
 
 
@@ -433,7 +340,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V90 3D real-image show wall, live kinetic ticker and interactive Light Desk + V87 films visually distinct, all 3 authentic editorial photos loaded, original waveform motion/Lite, native nav: six widths, 3 chapters/8 links, 3 real film choices, single finale CTA, no autoplay, secondary routes, Contact, sitemap");
+    console.log("PASS V160 original cinematic production hero, actual image mode switches, authentic service photos and three owner films, Light Desk/reduced-motion/Lite, native navigation at six widths, 3 chapters/8 service links, single finale CTA, Contact SSR and sitemap.");
   } finally {
     await browser.close();
   }

@@ -1,42 +1,32 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
-const read=(p:string)=>readFileSync(p,"utf8");
-const route=read("src/routes/index.tsx");
-const css=read("src/styles/home-signature-v86.css");
-const shared=read("src/styles.css");
-
-describe("V86 replaces V84/V85 cascade with one scoped branded design",()=>{
- it("loads the full SSR homepage art direction and retains four genuine sections",()=>{
-  expect(route).toContain('import homeSignatureCss from "@/styles/home-signature-v86.css?inline"');
-  expect(route).toContain('<style>{homeSignatureCss}</style>');
-  expect(route).toContain('<style>{premiumEventCss}</style>');
-  expect(route).toContain('home-event-v89.css?inline');
-  expect(route).toContain('className="gs-home-v86 gs-home-v158 gs-home-v159"');
-  expect(route).toContain('home-redesign-v158.css?inline');
-  expect(route).toContain('<style>{homeRedesignCss}</style>');
-  expect(route).toContain('<style>{homeCoverCss}</style>');
-  expect(route).not.toContain("homeNightshiftCss");
-  expect(route).not.toContain("homeProductionCss");
-  expect(shared).not.toContain("home-signature-v86.css");
-  for (const section of ["<StageHero />","<ProductionIndex />","<EditorialPortfolio />",'className="crafted-finale gs-finale"']){
-   expect(route).toContain(section);
-  }
-  expect(route.match(/<Link to="\/contact"/g)).toHaveLength(1);
+const route = readFileSync("src/routes/index.tsx","utf8");
+const css = readFileSync("src/styles/home-direction-v160.css","utf8");
+describe("V160 homepage uses one real independent art direction",()=>{
+ it("loads a single scoped CSS file instead of concatenating 4 generations of styles",()=>{
+   expect(route).toContain('home-direction-v160.css?inline');
+   expect(route).toContain('<style>{homeDirectionCss}</style>');
+   expect(route).toContain('className="gs160-home"');
+   expect(route).toContain("<ProductionHeroV160 />");
+   expect(route).not.toMatch(/home-signature-v86.css|home-event-v89.css|home-redesign-v158.css|home-cover-v159.css/);
+   expect(route.match(/<style>/g)).toHaveLength(1);
+   expect(route).not.toMatch(/QuickBrief|EventsSelector|ServicesAtelier|Soundcheck|FrequencyLab/);
  });
- it("replaces repetitive three cards with asymmetric photo editorial and a clear final CTA",()=>{
-  expect(css).toContain(".gs-home-v86 .gs-index__chapters");
-  expect(css).toContain(".gs-index__chapter[data-chapter=sound]");
-  expect(css).toContain("grid-row:1/span2");
-  expect(css).toContain(".gs-index__chapter[data-chapter=people]");
-  expect(css).toContain(".gs-home-v86 .gs-finale");
-  expect(css).toContain("background:#bcf1a0");
+ it("keeps all three service chapters/film archive and one closing CTA",()=>{
+   const order=["<ProductionHeroV160 />","<ProductionIndex />","<EditorialPortfolio />",'className="crafted-finale gs-finale"'];
+   const positions=order.map(x=>route.indexOf(x));
+   expect(positions.every(x=>x>=0)).toBe(true);
+   expect(positions).toEqual([...positions].sort((a,b)=>a-b));
+   expect(route.match(/<Link to="\/contact"/g)).toHaveLength(1);
+   expect(css).toContain(".gs160-home .gs-index__chapter[data-chapter=stage]");
+   expect(css).toContain(".gs160-home .director-reel");
+   expect(css).toContain(".gs160-home .gs-finale");
  });
- it("safely preserves mobile, user motion preferences and real media",()=>{
-  expect(css).toContain(".gs-home-v86 .crafted-hero__image");
-  expect(css).toContain(".gs-home-v86 .scene-console");
-  expect(css).toContain(".gs-home-v86 .director-reel");
-  expect(css).toContain("@media(max-width:640px)");
-  expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-  expect(css).toContain("html[data-gs-performance=lite]");
+ it("removes 3D stage clutter without hiding the real photography",()=>{
+   expect(css).toContain(".gs160-stage__photo");
+   expect(css).toContain("object-fit:cover");
+   expect(css).not.toMatch(/\.gs-v90-show-wall|\.gs-v90-ticker/);
+   expect(css).toContain("@media(prefers-reduced-motion:reduce)");
+   expect(css).toContain("html[data-gs-performance=lite]");
  });
 });

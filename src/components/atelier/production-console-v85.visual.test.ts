@@ -2,40 +2,39 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 const read=(p:string)=>readFileSync(p,"utf8");
 const route=read("src/routes/index.tsx");
-const hero=read("src/components/atelier/StageHero.tsx");
-const css=read("src/styles/home-signature-v86.css");
+const hero=read("src/components/atelier/ProductionHeroV160.tsx");
+const css=read("src/styles/home-direction-v160.css");
 const index=read("src/components/atelier/ProductionIndex.tsx");
 const archived=read("src/components/atelier/ProductionDeckArt.tsx");
 
-describe("V86 redesign removes V85's synthetic desk and preserves original show media",()=>{
- it("keeps V85 artwork available for rollback but does not render it in the current page",()=>{
+describe("V160 maintains source-approved media while removing obsolete production hardware",()=>{
+ it("keeps archived V85 artwork for rollback but does not mount old components or CSS",()=>{
   expect(archived).toContain('<svg viewBox="0 0 900 490"');
-  expect(hero).not.toContain("<ProductionDeckArt />");
   expect(route).not.toContain("homeProductionCss");
-  expect(route).toContain('homeSignatureCss from "@/styles/home-signature-v86.css?inline"');
-  // The single inset photo has been replaced with three existing Green Sound
-  // media sources inside an original perspective editorial composition.
-  expect(hero).not.toContain('className="gs-production-backdrop-v85"');
-  expect(hero).toContain("<KineticShowWall active={active} />");
-  const wall=read("src/components/atelier/KineticShowWall.tsx");
+  expect(route).not.toContain('home-signature-v86.css?inline');
+  expect(route).not.toContain("<StageHero />");
+  expect(route).toContain("<ProductionHeroV160 />");
+  expect(hero).not.toContain("ProductionDeckArt");
+  expect(hero).not.toContain("KineticShowWall");
   for(const media of ["images.scena","images.dj","images.concert"]){
-   expect(wall).toContain(media);
+   expect(hero).toContain(media);
   }
-  expect(wall).toContain('aria-hidden="true"');
-  expect(css).toContain(".gs-home-v86 .gs-production-backdrop-v85");
+  expect(hero).toContain('className="gs160-stage__photo"');
+  expect(css).not.toContain(".gs-production-backdrop-v85");
  });
- it("renders one lead production act plus two side-by-side service chapters",()=>{
-  expect(css).toContain("grid-template-columns:minmax(0,1.08fr) minmax(0,1fr)");
-  expect(css).toContain("grid-row:1/span2");
-  expect(css).toContain(".gs-index__chapter[data-chapter=stage]");
-  expect(css).toContain(".gs-index__chapter[data-chapter=people]");
+ it("renders three original editorial chapters and all direct service links",()=>{
+  expect(css).toContain(".gs160-home .gs-index__chapters");
+  expect(css).toContain(".gs160-home .gs-index__chapter[data-chapter=stage]");
+  expect(css).toContain(".gs160-home .gs-index__chapter[data-chapter=people]");
   expect(index).toContain("chapter.linkedServices.map((service)");
   expect(index).toContain('to={`/${service.slug}`}');
  });
- it("maintains Lite/reduced-motion safeguards without outside images",()=>{
-  expect(css).toContain("@media(max-width:640px)");
+ it("preserves Lite/reduced motion, source media and no automatic audio",()=>{
+  expect(css).toContain("@media(max-width:470px)");
   expect(css).toContain("html[data-gs-performance=lite]");
   expect(css).toContain("@media(prefers-reduced-motion:reduce)");
   expect(css).not.toMatch(/url\(https?:|new AudioContext|autoplay/);
+  expect(hero).toContain("Dialog");
+  expect(hero).toContain("VideoLite");
  });
 });

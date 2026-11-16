@@ -1,45 +1,31 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
-
-const home = readFileSync(resolve(process.cwd(), "src/routes/index.tsx"), "utf8");
-const cover = readFileSync(resolve(process.cwd(), "src/styles/home-cover-v159.css"), "utf8");
-const css = readFileSync(resolve(process.cwd(), "src/styles/home-redesign-v158.css"), "utf8");
-
-describe("V158 major home editorial redesign", () => {
-  it("actually loads the new scoped CSS after previous art direction and keeps four sections", () => {
-    expect(home).toContain('homeRedesignCss from "@/styles/home-redesign-v158.css?inline"');
-    expect(home).toContain('className="gs-home-v86 gs-home-v158 gs-home-v159"');
-    expect(home).toContain('<style>{homeCoverCss}</style>');
-    expect(home.indexOf("<style>{premiumEventCss}</style>")).toBeLessThan(
-      home.indexOf("<style>{homeRedesignCss}</style>")
-    );
-    const sections = ["<StageHero />", "<ProductionIndex />", "<EditorialPortfolio />", 'className="crafted-finale gs-finale"'];
-    const offsets = sections.map(item => home.indexOf(item));
-    expect(offsets.every(x => x >= 0)).toBe(true);
-    expect(offsets).toEqual([...offsets].sort((a,b) => a-b));
-    expect((home.match(/<Link to="\/contact"/g) ?? []).length).toBe(1);
-  });
-
-  it("contains the cinematic single-photograph treatment and warm-ivory editorial magazine", () => {
-    expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__canvas");
-    expect(css).toContain("width:69%!important");
-    expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-index");
-    expect(cover).toContain("background:var(--gs159-paper)!important");
-    expect(cover).toContain("font-size:clamp(6rem,13vw,13.65rem)!important");
-    expect(cover).toContain(".gs-home-v159 .gs-stage-v90 .gs-v90-show-wall");
-    expect(css).toContain("background:var(--gs-v158-cream)!important");
-    expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-v90-show-wall__rig");
-    expect(css).toContain("grid-template-columns:repeat(3,minmax(0,1fr))");
-    expect(css).toContain(".gs-home-v86.gs-home-v158 .gs-finale");
-    expect(css).toContain("background:#bde7a8!important");
-  });
-
-  it("retains interactive services, films and Lite/reduced-motion support without new assets", () => {
-    expect(css).toContain("@media(max-width:850px)");
-    expect(css).toContain("@media(max-width:640px)");
-    expect(css).toContain("html[data-gs-performance=lite]");
-    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
-    expect(css).not.toMatch(/url\(https?:|<video\b|autoplay\s*=|@import\s/);
-  });
+const home=readFileSync("src/routes/index.tsx","utf8");
+const hero=readFileSync("src/components/atelier/ProductionHeroV160.tsx","utf8");
+const css=readFileSync("src/styles/home-direction-v160.css","utf8");
+describe("V160 replaces V158's cumulative theme without losing working conversion",()=>{
+ it("keeps one photo, an offer CTA, an authentic click-to-play film and three controlled modes",()=>{
+   expect(home).toContain("<ProductionHeroV160 />");
+   expect(hero).toContain('className="gs160-stage__photo"');
+   expect(hero).toContain('to="/contact"');
+   expect(hero).toContain("setFilmOpen(true)");
+   expect(hero).toContain("editions.map(item =>");
+   expect(hero).toContain('aria-pressed={selected === item.key}');
+   expect(hero).toContain('to="/evenimente/$slug"');
+ });
+ it("keeps all original photos and real film links, not generated event imagery",()=>{
+   expect(hero).toContain("images.concert");
+   expect(hero).toContain("images.dj");
+   expect(hero).toContain("images.scena");
+   expect(hero).toContain("videos.showLumini");
+   expect(hero).toContain("videos.nuntaRamada");
+   expect(hero).toContain("<VideoLite");
+   expect(css).not.toMatch(/@import\s|url\(https?:/);
+ });
+ it("adapts mobile and Lite mode",()=>{
+   expect(css).toContain("@media(max-width:760px)");
+   expect(css).toContain("@media(max-width:470px)");
+   expect(css).toContain("@media(prefers-reduced-motion:reduce)");
+   expect(css).toContain("html[data-gs-performance=lite]");
+ });
 });
