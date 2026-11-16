@@ -11,12 +11,13 @@ export function EventPage({event}:{event:EventType}){
       image={event.image} transitionName={`gs-event-${event.slug}`}
       crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}>
       <a href="#oferta-titlu" className="rs-inline-link">Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
+      <a href="#desfasurator-eveniment" className="rs-inline-link">Vezi desfășurătorul <ArrowUpRight size={18} aria-hidden /></a>
       <a href={business.phoneHref} className="rs-inline-link"><Phone size={18} aria-hidden /> Sună Green Sound</a>
     </PageHero>
-    <section className="rs-event-timeline">
+    <section id="desfasurator-eveniment" className="rs-event-timeline" aria-labelledby="desfasurator-titlu" tabIndex={-1}>
       <div className="container-site">
         <div className="rs-event-timeline__title">
-          <p>Desfășurătorul</p><h2>De la pregătiri până la finalul evenimentului</h2>
+          <p>Desfășurătorul</p><h2 id="desfasurator-titlu">De la pregătiri până la finalul evenimentului</h2>
           <p>Ordinea este orientativă. Programul și serviciile se stabilesc împreună cu organizatorul.</p>
         </div>
         <ol>{event.moments.map((moment,index)=>{
