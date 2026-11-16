@@ -259,3 +259,12 @@
 html[data-gs-performance=lite] .gs161-portfolio .rs-gallery__media img,
 html[data-gs-performance=lite] .gs161-portfolio .gs161-film-thumb img{
  animation:none!important;transition:none!important;transform:none!important}
+
+/* An actual photographic contact sheet needs a quiet index, not a badge. */
+.gs161-portfolio .gs161-photo-counter{position:absolute;top:clamp(12px,2vw,27px);
+ right:clamp(12px,2vw,27px);z-index:3;color:#f3fbec;
+ background:#06190b8a;padding:7px 11px;border-top:1px solid #dcf0cf8a;
+ font-size:.63rem;font-weight:850;letter-spacing:.16em;pointer-events:none}
+@media(max-width:470px){
+ .gs161-portfolio .gs161-photo-counter{font-size:.55rem;padding:6px 8px;right:9px;top:9px}
+}
