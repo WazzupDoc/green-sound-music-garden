@@ -24,7 +24,7 @@ jobs:
       - name: Install Chromium and Playwright
         run: |
           npm install --prefix /tmp/gs-v168-playwright playwright@1.56.1 --no-audit --no-fund
-          /tmp/gs-v168-playwright/node_modules/.bin/playwright install --with-deps chromium
+          /tmp/gs-v168-playwright/node_modules/.bin/playwright install chromium
       - name: Capture exactly rendered desktop/mobile pages and validate image
         run: |
           NODE_PATH=/tmp/gs-v168-playwright/node_modules node <<'NODE'
