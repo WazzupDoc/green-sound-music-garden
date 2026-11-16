@@ -1,3 +1,8 @@
+## 2026-11-16 — Events clear-selection action
+- https://www.w3.org/WAI/ARIA/apg/patterns/button/ — native button for state mutation, disabled when action unavailable. Original implementation, no copied code.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button — explicit type=button prevents unintended form submit. No third-party dependency.
+- Rejected: custom modal confirmation (unnecessary for reversible selection), extra JS package (no benefit). Premium visual references not verified this run; defer visual redesign until browser captures available.
+
 ## 2026-11-16 / V152 — call affordance\n- https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — link purpose should be identifiable from its text/context; adapted as explicit `Sună-ne` label for existing tel link.\n- https://www.nngroup.com/articles/recognition-and-recall/ — visible action labels reduce reliance on interpreting an unlabelled number; principle only, no external code/assets copied.\n- Rejected: new phone widget, auto-call, new dependency. No new licensed assets. Browser verification pending.\n\n## 2026-11-16 — V151 error recovery navigation
 Design principle: an error state should expose an actionable recovery destination rather than a dead end. Original native router link to existing Contact form; no external code, image, asset or dependency used. Reference for error recovery patterns: https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html ; https://www.nngroup.com/articles/error-message-guidelines/ . Alternatives rejected: fake submission, auto-send, duplicate form in fallback. Browser verification pending.
 
