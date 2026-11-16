@@ -5,6 +5,7 @@ import { events, getService } from "@/data/site";
 import { QuoteSection } from "@/components/site/blocks";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import eventPosterCss from "@/styles/event-show-poster-v173.css?inline";
+import { preloadEventFrame } from "@/lib/preload-event-frame";
 
 export const Route = createFileRoute("/evenimente/")({
   head: () => pageHead({
@@ -39,17 +40,7 @@ function Events() {
   const visualIndexText = String(visualIndex).padStart(2, "0");
   useEffect(() => {
     if (activeEvent.slug === visualEvent.slug) return;
-    let cancelled = false;
-    const preload = new Image();
-    preload.src = activeEvent.image.src;
-    // A failed decode must not replace the last successfully displayed photo.
-    // Keep the existing scene instead of showing a broken image on poor networks.
-    preload.decode().then(() => {
-      if (!cancelled) setVisualEvent(activeEvent);
-    }).catch(() => {
-      // Retain the previous verified frame; no automatic retry loop.
-    });
-    return () => { cancelled = true; };
+    return preloadEventFrame(activeEvent.image.src, () => setVisualEvent(activeEvent));
   }, [activeEvent, visualEvent.slug]);
 
   function onSetlistKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
