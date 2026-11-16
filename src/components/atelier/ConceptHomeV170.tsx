@@ -119,7 +119,7 @@ export function ConceptHomeV170() {
             {featured.map((item, index) => {
               const Icon = item.icon;
               return (
-                <Link to={"/" + item.slug} className="gs170-service-card" key={item.slug}>
+                <Link to={`/${item.slug}`} className="gs170-service-card" key={item.slug}>
                   <img src={item.src} alt={item.alt} width={400} height={320} loading="lazy" decoding="async" />
                   <span className="gs170-service-card__veil" aria-hidden="true" />
                   <span className="gs170-service-card__number">0{index + 1}</span>
@@ -137,7 +137,7 @@ export function ConceptHomeV170() {
             <span>ALTE MOMENTE SPECIALE</span>
             <nav aria-label="Alte servicii Green Sound Music">
               {secondary.map(item => (
-                <Link key={item.slug} to={"/" + item.slug}>{item.name} <ArrowUpRight size={16} aria-hidden /></Link>
+                <Link key={item.slug} to={`/${item.slug}`}>{item.name} <ArrowUpRight size={16} aria-hidden /></Link>
               ))}
             </nav>
           </div>
