@@ -54,7 +54,7 @@ jobs:
                 page.on("pageerror",e=>errors.push(e.message));
                 const response=await page.goto(base+"/",{waitUntil:"domcontentloaded",timeout:45000});
                 assert.equal(response.status(),200,"Real homepage SSR");
-                await page.locator(".gs170-home .gs170-hero h1").waitFor({timeout:15000});
+                await page.locator('.gs170-home .gs170-hero[data-hydrated="true"] h1').waitFor({timeout:15000});
                 await page.evaluate(async()=>{await document.fonts.ready;});
                 assert.equal(await page.locator("main h1").count(),1);
                 assert.match(await page.locator("h1").first().innerText(),/evenimente memorabile/);
