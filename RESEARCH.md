@@ -1,3 +1,8 @@
+### 2026-11-17 — V205 focus after React commit
+- https://react.dev/reference/react/useLayoutEffect — layout effect runs after DOM placement and before browser repaint; adapted to focus the newly mounted poster Play button after Stop. No external code copied, no dependency.
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame — frame callback scheduling does not establish React commit order; rejected as focus synchronization strategy.
+- No new asset, external license, package or network request. Browser validation remains outstanding.
+
 ### 2026-11-17 — Film player consent / stop control (V204)
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — native iframe lifecycle; unmounting the embedded document is a dependency-free way to stop an embedded player. Adapted: stop action removes the iframe rather than introducing YouTube IFrame API.
 - https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html — user control for moving/playing media. Adapted: explicit Stop button, keyboard accessible, clear focus return.
