@@ -137,7 +137,7 @@
   color:#e4ebdf;
 }
 .gs161-portfolio .rs-video-library__item:last-child {border-bottom:1px solid #abc8a33e}
-.gs161-portfolio .rs-video-library__item[aria-current=true] {
+.gs161-portfolio .rs-video-library__item[data-current="true"] {
   background:#b8e19b12;box-shadow:inset 3px 0 #caf4b0;
 }
 .gs161-portfolio .rs-video-library__item:is(:hover,:focus-visible) {
@@ -174,7 +174,7 @@
   line-height:1.45;max-width:34ch;
   overflow-wrap:anywhere;
 }
-.gs161-portfolio .rs-video-library__item[aria-current=true] .gs191-film__track-copy strong {color:#d5f7b6}
+.gs161-portfolio .rs-video-library__item[data-current="true"] .gs191-film__track-copy strong {color:#d5f7b6}
 .gs161-portfolio .rs-video-library__item>svg {justify-self:end}
 .gs161-portfolio .gs191-film__endnote {
   display:flex;justify-content:space-between;gap:20px;
