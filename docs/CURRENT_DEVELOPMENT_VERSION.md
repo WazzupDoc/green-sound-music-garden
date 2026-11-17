@@ -1,3 +1,7 @@
+### V204 / 2026-11-17 — Portfolio film player stop (DRAFT)
+- Branch `feat/v204-film-player-stop-control`, stacked on V203 PR #202. Shared VideoLite now exposes an explicit accessible Stop control while a user-initiated YouTube iframe plays. Stop unmounts the iframe and restores keyboard focus to the poster Play button. No new packages, no autoplay before click, no homepage additions, no main/deploy changes.
+- Added source regression `src/components/site/video-lite-v204.test.ts`. Exact-head CI, browser 390/1440 matched screenshots, 6-width visual and keyboard QA **PENDING**; this is not a validated release.
+
 ### V203 / 2026-11-17 — Contact discard private quote (DRAFT)
 - Branch `feat/v203-contact-discard-private-brief`, stacked on V202 PR #201. A distinct action on the prepared quote lets visitors discard the draft and clear retained form values instead of merely returning to edit. No automatic send, no new package, homepage unchanged. Source regression added; TypeScript/SSR/Vitest and Chromium matched screenshots **PENDING**.
 
