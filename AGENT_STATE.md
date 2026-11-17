@@ -1,3 +1,6 @@
+## V181 / 2026-11-17 — Contact preview advice semantics (DRAFT)
+Zone: Contact preview only. Separate the optional advice request from the real selected services in the preview ticket; previously it appeared as a service, contradicting V180 counter. Existing `ADVICE_SERVICE_LABEL` used; no new asset/dependency or automatic sending. Source changed, browser matched screenshots, unit/SSR/TypeScript and CI exact-head not yet verified. Next: preview keyboard/edit and clipboard denial browser audit. No main/deploy.
+
 ## V180 / 2026-11-17 — Contact selection counter, DRAFT
 Zone: Contact / Guided Event Brief. Corrected a misleading count when a visitor requests advice alongside services: the advisory choice is not one of the eight services, so the visible count now reports selected services separately and explicitly states that advice is requested. Source regression guard added. No media, dependencies, homepage or automatic sending. Browser 390/1440 before/after, TypeScript, SSR, Vitest and exact-head CI remain pending. Next: verify Contact preview/edit and denied clipboard in Chromium; then rotate to other interior routes. Main and deployment unchanged.
 
