@@ -88,7 +88,7 @@ async function capture(page,label){
       await page.waitForFunction(() => {
         const pressed = Array.from(document.querySelectorAll(".rs-video-library__filters button"))
           .some(button => button.textContent?.includes("Studio") && button.getAttribute("aria-pressed") === "true");
-        const chosen = document.querySelectorAll(".rs-video-library__item[data-current="true"]").length;
+        const chosen = document.querySelectorAll(".rs-video-library__item[data-current=true]").length;
         return pressed && chosen === 1;
       }, undefined, {timeout:12000});
       assert.equal(await page.locator("iframe").count(),0);
