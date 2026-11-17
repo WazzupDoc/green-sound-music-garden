@@ -1,0 +1,190 @@
+/* V201 / Green Sound Music — 13 owner-approved AI illustrations.
+ * 1 locally hosted 1120x320 AVIF atlas, 160px per cell, no template or third-party requests.
+ * Original labels are native HTML. This artwork illustrates categories; it does not depict
+ * real clients, actual event footage, or actual Green Sound employees.
+ */
+.gs201-events .gs198-cue,
+.gs201-services .gs198-cue {
+  width: 95px;
+  height: 95px;
+  aspect-ratio: 1;
+  border: 1px solid #d9bc82a8;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #071b12;
+  color: #cbe5b5;
+  box-shadow: 0 7px 20px #010b074f, inset 0 0 0 1px #f3d79c22;
+  transform: translateZ(0);
+  position: relative;
+  isolation: isolate;
+}
+.gs201-cue__art {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  background-image: url("/media/gs-category-illustrations-v201.avif");
+  background-repeat: no-repeat;
+  background-size: 700% 200%;
+  image-rendering: auto;
+}
+.gs201-cue__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: .62;
+  box-shadow: inset 1px 1px 0 #fbe5b955, inset -1px -1px 0 #e0b97f20;
+  background: linear-gradient(130deg,#fff4d91f 0%,transparent 35%,transparent 72%,#030e093b 100%);
+}
+.gs201-cue .gs198-cue__drawing {
+  position: absolute;
+  width: 72%;
+  height: 72%;
+  left: 14%;
+  top: 14%;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.gs201-events .gs173-setlist__item {
+  min-height: 265px;
+}
+.gs201-events .gs173-setlist__select {
+  min-height: 216px;
+  gap: 7px;
+  padding-block: 15px 11px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.gs201-events .gs173-setlist__name {
+  font-size: clamp(1.12rem,1.55vw,1.48rem);
+  font-weight: 760;
+  letter-spacing: -.048em;
+  color: #e9e9dd;
+}
+.gs201-events .gs173-setlist__item[data-active=true] .gs201-cue {
+  border-color: #e3bf78;
+  box-shadow: 0 10px 29px #050d08a3, 0 0 0 2px #d3ad5940, inset 0 0 0 1px #fde0a830;
+}
+.gs201-services .rs-service-index__group li a {
+  grid-template-columns: 2.2rem 84px minmax(0,1fr) auto;
+  gap: 0 clamp(14px,1.6vw,26px);
+  min-height: 132px;
+  padding-block: 18px;
+}
+.gs201-services .rs-service-index__group li a > .gs201-cue {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  width: 82px;
+  height: 82px;
+  border-color: #bda46e85;
+}
+.gs201-services .rs-service-index__group li a strong {
+  grid-column: 3;
+  align-self: end;
+  font-weight: 660;
+}
+.gs201-services .rs-service-index__group li a span:not(.v91-service-row-index):not(.gs198-cue):not(.gs201-cue__art):not(.gs201-cue__shine) {
+  grid-column: 3;
+}
+.gs201-services .rs-service-index__group li a > svg:last-child {
+  grid-column: 4;
+}
+.gs201-services .rs-service-index__group li a:hover > .gs201-cue,
+.gs201-services .rs-service-index__group li a:focus-visible > .gs201-cue {
+  border-color: #f1ce8c;
+  background: #071b12;
+}
+@media (max-width:780px) {
+  .gs201-events .gs173-setlist__item { min-height: 242px; }
+  .gs201-events .gs173-setlist__select { min-height: 190px; }
+  .gs201-events .gs198-cue { width: 82px; height: 82px; }
+}
+@media (max-width:480px) {
+  .gs201-services .rs-service-index__group li a {
+    grid-template-columns: 1.3rem 62px minmax(0,1fr) 20px;
+    gap: 0 10px;
+    min-height: 118px;
+    padding-inline: 2px;
+  }
+  .gs201-services .rs-service-index__group li a > .gs201-cue {
+    width: 61px;
+    height: 61px;
+  }
+  .gs201-services .rs-service-index__group li a strong {
+    font-size: 1.18rem;
+    overflow-wrap: anywhere;
+  }
+}
+/* Interaction keeps the existing click selection logic, adding an original
+ * brief photographic-illustration cue (never an animated event photo).
+ * All animation is short and strictly opt-in.
+ */
+@keyframes gs201-art-tap {
+  0% { transform: scale(.91) rotate(-5deg); }
+  50% { transform: scale(1.13) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+@keyframes gs201-party-confetti {
+  0% { opacity: 0; transform: translate3d(-22px,16px,0) rotate(-20deg) scale(.5); }
+  54% { opacity: 1; transform: translate3d(12px,-14px,0) rotate(13deg) scale(1.14); }
+  100% { opacity: .65; transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+@keyframes gs201-glint {
+  0% { transform: translateX(-190%) skewX(-25deg); opacity: 0; }
+  35% { opacity: .9; }
+  100% { transform: translateX(250%) skewX(-25deg); opacity: 0; }
+}
+@keyframes gs201-light-sweep {
+  0% { opacity: .15; transform: translateX(-24px) rotate(-8deg); }
+  60% { opacity: .95; transform: translateX(16px) rotate(7deg); }
+  100% { opacity: .1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-gs-performance="lite"]) .gs201-events .gs173-setlist__select[data-unused] .gs201-cue {transition: none;}
+  html:not([data-gs-performance="lite"]) .gs201-events .gs173-setlist__select:is(:hover,:focus-visible) .gs201-cue,
+  html:not([data-gs-performance="lite"]) .gs201-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs201-cue {
+    transform: translateY(-4px);
+    box-shadow: 0 13px 31px #010b07ad, 0 0 0 1px #eac78480;
+  }
+  html:not([data-gs-performance="lite"]) .gs201-cue[data-play="true"] .gs201-cue__art {
+    animation: gs201-art-tap 610ms cubic-bezier(.14,.8,.16,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs201-cue[data-play="true"][data-kind="petreceri-private"] .gs201-cue__shine {
+    animation: gs201-party-confetti 740ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs201-cue[data-play="true"][data-kind="nunti"] .gs201-cue__shine,
+  html:not([data-gs-performance="lite"]) .gs201-cue[data-play="true"][data-kind="botezuri"] .gs201-cue__shine {
+    animation: gs201-glint 680ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs201-cue[data-play="true"][data-kind="concerte-festivaluri"] .gs201-cue__shine {
+    animation: gs201-light-sweep 760ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs201-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs201-cue__art {
+    transform: scale(1.1) rotate(-2deg);
+    transition: transform 510ms cubic-bezier(.19,.85,.21,1);
+  }
+  html:not([data-gs-performance="lite"]) .gs201-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs201-cue[data-kind="dj-mc"] .gs201-cue__art {
+    transform: scale(1.16) rotate(4deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs201-cue, .gs201-cue *, .gs201-cue::before, .gs201-cue::after {
+    animation: none !important; transition: none !important; transform: none !important;
+  }
+}
+html[data-gs-performance="lite"] .gs201-cue,
+html[data-gs-performance="lite"] .gs201-cue * {
+  animation: none !important; transition: none !important; transform: none !important;
+}
+/* Data Saver uses the existing original lightweight SVG cues, no AVIF is fetched
+ * for this component when this rule matches before paint. */
+html[data-gs-performance="lite"] .gs201-cue__art { background-image: none; }
+html[data-gs-performance="lite"] .gs201-cue .gs198-cue__drawing { opacity: 1; z-index: 1; }
+@media (prefers-reduced-data: reduce) {
+  .gs201-cue__art { background-image: none; }
+  .gs201-cue .gs198-cue__drawing { opacity: 1; z-index: 1; }
+}
