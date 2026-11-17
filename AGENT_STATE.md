@@ -1,3 +1,8 @@
+### V202 / 2026-11-17 — Navigation / focus continuity
+- Latest base: V201 PR #200 source `14feaa41c591ea992f48e110a258c4d51d673b15` (not necessarily CI-validated). V202 branch `fix/v202-menu-desktop-focus-handoff`, stacked on V201.
+- P1: mobile dialog closes on desktop resize but previously restored focus to a hidden mobile menu button. Now handoff to active visible desktop navigation link, with first-link fallback. Escape and ordinary close still return to mobile opener. Native dialog only; no new dependencies or homepage edits.
+- Source test `v202-menu-focus.test.ts` added. CI exact-head, matched 390→1440 real browser focus/screenshot and six-width regression **NOT VERIFIED**. Do not merge or deploy. Next: Contact clipboard denial and prefill QA.
+
 ### V201 decoder QA clarification — 2026-11-17
 - An investigation of the WebP verification revealed the direct `Image().decode()` assertion was executed on an `about:blank` page, so the relative `/media/...` URL did **not** resolve to the local Vite site. The original AVIF decoder failure had the same test-origin bug; it is **not evidence that AVIF lacks Chromium support**. Corrected QA now navigates to `http://127.0.0.1:4175/evenimente` before decoding. Selected WebP asset remains preferred for conservative browser compatibility; no claim of AVIF incompatibility.
 - Actual screenshot evidence from the V201 partial workflow shows all 13 drawn icons visibly in the page, even though later test assertions failed. Need final exact-head, same-origin decode pass before release.

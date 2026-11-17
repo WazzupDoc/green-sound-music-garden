@@ -1,3 +1,7 @@
+### V202 / 2026-11-17 — mobile→desktop menu focus handoff (DRAFT)
+- Branch `fix/v202-menu-desktop-focus-handoff`, stacked on V201 PR #200. Fix in `SiteHeader.tsx`: on crossing 1024px with open modal, restore keyboard focus to visible active desktop nav link rather than now-hidden mobile opener. Preserve Escape/ordinary close behaviour.
+- Added source regression test `v202-menu-focus.test.ts`; no dependency, homepage, photo or main changes. CI exact-head and real browser screenshots **PENDING**. PR and SHA in GitHub branch history.
+
 ### V201 decoder QA clarification — 2026-11-17
 - An investigation of the WebP verification revealed the direct `Image().decode()` assertion was executed on an `about:blank` page, so the relative `/media/...` URL did **not** resolve to the local Vite site. The original AVIF decoder failure had the same test-origin bug; it is **not evidence that AVIF lacks Chromium support**. Corrected QA now navigates to `http://127.0.0.1:4175/evenimente` before decoding. Selected WebP asset remains preferred for conservative browser compatibility; no claim of AVIF incompatibility.
 - Actual screenshot evidence from the V201 partial workflow shows all 13 drawn icons visibly in the page, even though later test assertions failed. Need final exact-head, same-origin decode pass before release.
