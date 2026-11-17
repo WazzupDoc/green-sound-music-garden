@@ -1,3 +1,6 @@
+### V201 actual Chromium uncovered image-format defect; switched from AVIF to WebP
+The first real browser run passed six viewport structure checks but proved the AVIF atlas could not decode (`EncodingError`); do not describe AVIF as successful. Final intended `gs-category-illustrations-v201.webp` is **45,888 bytes**, no CDN, same 13 distinct original graphics, with original file removed. This is important user-visible correctness and should be validated via exact-head `v201-category-art-visual.yml` / decoded `Image()`, not only CSS computed styles. Prior full QA before WebP source change: 50 suites / 138 tests, global CSS gzip 49.7KB under 52KB cap. Final-head WebP QA and screenshot artifacts pending at documentation update.
+
 ## V201 / 2026-11-17 — owner-approved generated category illustrations / draft PR #200
 - Primary zone: event/service category selection and visual identity. User rejected V198 simple line icons and requested using the two rich icon concept images generated in this conversation.
 - V201 `design/v201-illustrated-category-art` stacked on V200 `fc8d9601ba94d26fbb8cafd929b1518e355296db` (V200 itself had pre-existing global CSS gzip budget failure; do NOT call that SHA validated). Draft https://github.com/WazzupDoc/green-sound-music-garden/pull/200 . Do not touch main/production.
