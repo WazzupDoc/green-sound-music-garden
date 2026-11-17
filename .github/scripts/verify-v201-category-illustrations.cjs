@@ -71,8 +71,15 @@ async function overflow(page,where){
     await overflow(page,"services "+width);
     await page.locator(".rs-service-index").screenshot({path:out+"/after-services-section-"+width+".png",animations:"disabled"});
     const dj=page.locator(".rs-service-index li a").filter({has:page.locator('.gs201-cue[data-kind="dj-mc"]')}).first();
-    await page.evaluate(()=>document.documentElement.removeAttribute("data-gs-performance"));
+    await page.emulateMedia({reducedMotion:"no-preference"});
+    await page.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","full"));
     await dj.hover();
+    await page.waitForFunction(() => {
+      const item=document.querySelector('.rs-service-index .gs201-cue[data-kind="dj-mc"] .gs201-cue__art');
+      if(!item) return false;
+      const matrix=getComputedStyle(item).transform;
+      return matrix !== "none" && matrix !== "matrix(1, 0, 0, 1, 0, 0)";
+    },null,{timeout:3000});
     const hoverTransform=await dj.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).transform);
     assert.notEqual(hoverTransform,"none","DJ artwork reacts to hover in full-motion");
     await dj.screenshot({path:out+"/after-dj-hover-"+width+".png",animations:"allow"});
@@ -97,7 +104,7 @@ async function overflow(page,where){
   const motion=await browser.newPage({viewport:{width:390,height:900},deviceScaleFactor:1,reducedMotion:"no-preference"});
   await motion.goto("http://127.0.0.1:4175/evenimente",{waitUntil:"domcontentloaded"});
   await ready(motion);
-  await motion.evaluate(()=>document.documentElement.removeAttribute("data-gs-performance"));
+  await motion.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","full"));
   const btn=motion.locator(".gs173-setlist__select").nth(4);
   assert.equal(await btn.locator(".gs201-cue__art").evaluate(e=>getComputedStyle(e).animationName),"none");
   await btn.click();
