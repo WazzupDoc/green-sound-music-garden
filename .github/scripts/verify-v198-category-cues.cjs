@@ -38,6 +38,7 @@ async function selectParty(page) {
     const errors=[];page.on("pageerror",e=>errors.push(e.message));
     const resp=await page.goto("http://127.0.0.1:"+port+"/evenimente",{waitUntil:"domcontentloaded",timeout:60000});
     assert.equal(resp.status(),200);
+    await page.locator(".gs173-events[data-hydrated=true]").waitFor({timeout:20000});
     await page.locator(".gs173-setlist__select").first().waitFor();
     await selectParty(page);
     await stabilize(page);
@@ -75,6 +76,7 @@ async function selectParty(page) {
   for(const width of [390,1440]){
     const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1,reducedMotion:"no-preference"});
     await page.goto("http://127.0.0.1:4175/evenimente",{waitUntil:"domcontentloaded"});
+    await page.locator(".gs173-events[data-hydrated=true]").waitFor({timeout:20000});
     const party=page.locator(".gs173-setlist__select").nth(4);
     const initial=await party.locator(".gs198-cue__confetti > *").first().evaluate(n=>getComputedStyle(n).animationName);
     assert.equal(initial,"none","never animate before interaction");
