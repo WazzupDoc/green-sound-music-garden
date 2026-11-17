@@ -274,3 +274,7 @@ No assets, dependencies, fonts, icons, music, photography or videos added. Exist
 
 ## V188 / 2026-11-17
 No new media, icons, fonts or packages. Service photos remain the existing project catalogue assets; their pre-existing provenance is unchanged. New layout CSS is original.
+
+
+## V189 / 2026-11-17 — navigation
+No new images, audio, video, SVG assets, font packages, third-party code or runtime dependencies. The five level bars are original local HTML/CSS decoration, not live audio data. Existing brand logo remains unchanged. Research sources are inspiration/documentation only, not redistributable assets.

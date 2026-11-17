@@ -611,3 +611,18 @@ Area: footer directory. Three visually unchanged columns are now named `<nav>` l
 | Home / services | High visual | Five narrow equal-height photo tiles look generic | CSS Grid asymmetric editorial scale and image pacing, no new services | Browser before/after 390/1440, six widths, SSR and exact-head CI pending | Inspect real screenshots; then rotate to mobile navigation |
 
 No merge or deploy authorized. This is a design candidate until real Chromium validation.
+
+
+## V189 — 2026-11-17 / NAVIGATION LIVE SETLIST (DRAFT)
+| Area | Priority | Source defect | Implemented | QA evidence | Next |
+|---|---|---|---|---|---|
+| Header + mobile full-screen dialog | High visual / medium UX | Six links have repetitive row presentation; narrow menu lacks active destination cue; arrow navigation absent | `navigation-v189.css` and `SiteHeader.tsx`: muted emerald editorial setlist; original five-bar sound-channel motif on selection; contrasting italic second/fifth labels; active-route cue visible on mobile; Arrow keys/Home/End navigation, Tab/Escape and native dialog preserved | Source patch; browser before/after 390/1440, 6 widths, Lite and exact-head CI pending | Real-browser screenshot and keyboard QA; then portfolio/gallery audit |
+| QA baseline | Blocking | V188 CI 44033276330 fails 4 test files: two `new URL(..., import.meta.url)` incompatible with Bun Vitest, two stale assertions after legitimate Contact/event code changes | Fixed only test source-path resolution and updated assertions to actual Contact handoff + cancellable image decode helper. No test disabled | Re-run pending | Inspect exact-head CI and patch any genuine failures |
+
+User-visible design is not certified without Chromium evidence. No main push/deployment, no new assets/packages.
+
+### V189 browser-validated UI checkpoint (2026-11-17)
+- UI SHA `f482e5a67f6f56b50b28e380330e0b31aedeac51` verified through full QA workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682149 : TypeScript, SSR/Vite build, asset budgets, Vitest 46 files/125 tests, browser interactions six viewports, Contact SSR and sitemap checks PASSED.
+- Before/after same route `/`, same 390/1440 viewport, native menu open, `Servicii` preview focused; real Playwright `chromium` workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037 PASS. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037/artifacts/14306981193 contains 12 source PNGs (before/after 390/1440, after 360/390/430/768/1440/1920, motion and Lite at 390).
+- QA-detected mismatch fixed: preview cue had described `Servicii` while `Acasă` stayed highlighted; `data-preview` now aligns visual emphasis to the focused destination without changing canonical page links.
+- Remaining: visual owner review, accessibility screen-reader manual check, production approval and exact-head QA after any documentation-only commit. No main changes. Next rotation portfolio/video gallery.

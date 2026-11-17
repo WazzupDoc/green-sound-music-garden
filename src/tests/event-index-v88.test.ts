@@ -25,7 +25,11 @@ describe("V173 Live Show Poster contract",()=>{
   for(const value of ["visualEvent.image.src","visualEvent.image.alt","width={visualEvent.image.w}","height={visualEvent.image.h}"]) expect(route).toContain(value);
   expect(route).not.toContain("autoplay");
   expect(route).not.toContain("fetch(");
-  expect(route).toContain("preload.decode()");
+  expect(route).toContain('import { preloadEventFrame } from "@/lib/preload-event-frame"');
+  expect(route).toContain("preloadEventFrame(activeEvent.image.src");
+  const decoder = readFileSync("src/lib/preload-event-frame.ts", "utf8");
+  expect(decoder).toContain("image.decode()");
+  expect(decoder).toContain("if (!cancelled) onReady()");
   expect(route).toContain("setVisualEvent(activeEvent)");
   for(const value of ["@media(max-width:780px)","@media(max-width:480px)","@media(prefers-reduced-motion:reduce)","data-gs-performance=lite",":focus-visible","@keyframes gs173-gate-open","transform:translateY"]) expect(css).toContain(value);
   expect(route).toContain("<style>{eventPosterCss}</style>");
