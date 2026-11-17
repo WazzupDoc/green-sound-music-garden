@@ -46,6 +46,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [prepared, setPrepared] = useState<Quote | null>(null);
   const [copyStatus, setCopyStatus] = useState<"idle" | "pending" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+  // Ignore clipboard results from a preview that the visitor has already left.
+  const copyGenerationRef = useRef(0);
+  const copyPendingRef = useRef(false);
   const previewHeadingRef = useRef<HTMLHeadingElement>(null);
   const wasPreparedRef = useRef(false);
 
@@ -69,18 +72,24 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   }, [copyStatus, failedCopyAttempts]);
 
   const copyMessage = async (message: string) => {
-    if (copyStatus === "pending") return;
+    if (copyPendingRef.current) return;
+    copyPendingRef.current = true;
+    const generation = ++copyGenerationRef.current;
     setCopyStatus("pending");
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard not available");
       await navigator.clipboard.writeText(message);
+      if (generation !== copyGenerationRef.current) return;
       setCopyStatus("success");
     } catch {
+      if (generation !== copyGenerationRef.current) return;
       // Permissions and insecure contexts vary. Never claim the copy worked.
       // Render a keyboard-selectable alternative directly below the actions.
       setCopyStatus("failed");
       // Re-select on every denied retry, even when status is already "failed".
       setFailedCopyAttempts(attempts => attempts + 1);
+    } finally {
+      if (generation === copyGenerationRef.current) copyPendingRef.current = false;
     }
   };
 
@@ -135,6 +144,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const onSubmit = (q: Quote) => {
     // Preparing the quote is not sending it. Both destination links are opened
     // only from a deliberate tap/click to avoid popup blockers and false success.
+    ++copyGenerationRef.current;
+    copyPendingRef.current = false;
     setCopyStatus("idle");
     setPrepared(q);
   };
@@ -231,7 +242,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           În WhatsApp sau aplicația de email, verifică destinatarul și apasă „Trimite”.
           Green Sound Music nu primește mesajul până nu îl expediezi tu.
         </p>
-        <button className="quote-preview__edit" type="button" onClick={() => { setCopyStatus("idle"); setPrepared(null); }}>
+        <button className="quote-preview__edit" type="button" onClick={() => { ++copyGenerationRef.current; copyPendingRef.current = false; setCopyStatus("idle"); setPrepared(null); }}>
           <PencilLine className="size-4" aria-hidden /> Modifică detaliile
         </button>
       </div>
