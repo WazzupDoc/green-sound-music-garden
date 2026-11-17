@@ -7,6 +7,6 @@ describe("event timeline accessible counters", () => {
   it("provides one readable current/total label", () => {
     expect(source).toContain('role="img"');
     expect(source).toContain('aria-label={`Etapa ${index + 1} din ${event.moments.length}`}');
-    expect(source).toContain('<span aria-hidden="true">{String(index+1).padStart(2,"0")} / {String(event.moments.length).padStart(2,"0")}</span>');
+    expect(source).toContain('<span aria-hidden="true">{String(index+1).padStart(2,"0")}</span><small aria-hidden="true">/{String(event.moments.length).padStart(2,"0")}</small>');
   });
 });

@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { EventPage } from "@/components/site/EventPage";
 import { getEvent } from "@/data/site";
+import eventRundownCss from "@/styles/event-rundown-v197.css?inline";
 import { breadcrumbLd, faqLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/evenimente/$slug")({
@@ -34,5 +35,5 @@ export const Route = createFileRoute("/evenimente/$slug")({
 function Page() {
   const { slug } = Route.useLoaderData();
   const event = getEvent(slug)!;
-  return <EventPage event={event} />;
+  return <div className="gs197-event-page"><style>{eventRundownCss}</style><EventPage event={event} /></div>;
 }

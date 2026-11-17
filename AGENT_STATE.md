@@ -1,3 +1,20 @@
+## V197 / 2026-11-17 — Rotating full-site component audit (draft PR #196)
+Latest planned area: event detail timeline /evenimente/$slug. Real source change: route-scoped SSR CSS, asymmetric intro + oversized editorial sequence, legible service CTA; no added cards or fake stats. Evidence gate: Chromium matched 390/1440 and six-width QA workflow `v197-event-rundown-visual.yml`; exact-head results must be checked. First run had a test fixture mismatch and focus-timing assertion which were revised without removing quality gates. No main/deploy.
+
+| Zone | Priority / defect | Status / evidence | Next |
+| --- | --- | --- | --- |
+| Event detail rundown | P1 grid too utilitarian | V197 source changed; final screenshots/CI pending | Verify visual and keyboard |
+| Event index | P2 discovery complexity | V173 existing; no V197 changes | Retest selection |
+| Contact / Guided Brief | P1 preview clipboard and prefill | V195 source, Chromium regression pending | **NEXT primary** |
+| Studio detail | P1 V194 visual acceptance unverified | V194 draft; no V197 change | Visual QA |
+| Portfolio | P2 film navigation | V191 actual captures, owner approval pending | Keyboard/player |
+| Services | P2 internal CTA and imagery | Existing pages retained | Service mix audit |
+| Homepage | P1 prior generic feedback | Contract hero + 3 chapters/8 links + 3 real films + 1 CTA unchanged | Owner review |
+| About/footer/privacy | P2 content and typography | Pending detailed audit | After Contact |
+| SSR/SEO/404/security | P1 if regressions | Inherited existing tests, final exact-head pending | Technical rotation |
+
+No new assets, packages, external services, fictitious business facts, measurement scores, main changes or deployment. Documentation: RESEARCH.md / ASSETS.md / CURRENT_DEVELOPMENT_VERSION.md should describe this branch and final screenshot artifact.
+
 ## V195 — 2026-11-17 / Contact review audit
 Matrix: Contact preview — P1 missing visible reply phone/email/guest estimate despite collection; now shown in existing review ticket, source changed, QA/screenshot pending. Studio V194 — P1 browser QA pending. Event details — next rotation. Homepage unchanged. Source `b5c5acf23898d9bcfce2e42b4ec314ee31917c34`; no main/deploy. No performance or accessibility scores claimed.
 

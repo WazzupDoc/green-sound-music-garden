@@ -1,0 +1,52 @@
+name: V197 Event Rundown — matched real Chromium screenshots
+on:
+  push:
+    branches: [design/v197-event-rundown-editorial]
+permissions:
+  contents: read
+concurrency:
+  group: v197-event-rundown-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  matched-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Make immutable V196 baseline
+        run: git worktree add --detach /tmp/gs-v196-events-base c9a25fabad1ef8041d31d5bea0348c9da4f0b495
+      - name: Install same lockfile for both revisions
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v196-events-base && bun install --no-save)
+      - name: Install pinned Chromium (QA tooling only)
+        run: |
+          npm install --prefix /tmp/gs-v197-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v197-playwright/node_modules/.bin/playwright install chromium
+      - name: Start before / after on separate local ports
+        run: |
+          (cd /tmp/gs-v196-events-base && bunx vite dev --host 127.0.0.1 --port 4176 --strictPort > /tmp/gs196.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/gs197.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 70); do
+              if curl -sf "http://127.0.0.1:${port}/evenimente/nunti" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs196.log /tmp/gs197.log; exit 1; fi
+          done
+      - name: Capture matched viewport and section, test all six widths
+        run: NODE_PATH=/tmp/gs-v197-playwright/node_modules node .github/scripts/verify-v197-event-rundown.cjs
+      - name: Upload real before / after captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v197-event-rundown-before-after
+          path: screenshots/gs-v197-events/
+          if-no-files-found: warn
+          retention-days: 60
