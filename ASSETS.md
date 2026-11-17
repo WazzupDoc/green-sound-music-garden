@@ -1,3 +1,6 @@
+## V185 / 2026-11-17
+No new assets, fonts, libraries, external code or imagery. Existing Green Sound media unchanged; no licensing changes.
+
 ## V173 / 2026-11-16 — Owner-source media, original animation
 No new font, media, photo, icon font, music, logo, external JS, package or analytics. Event foreground image is solely event.image from the existing Green Sound source catalogue in src/data/site.ts. The original "gate" transition panels and inline waveform graphic are purely decorative first-party CSS/SVG, not measurements or claimed deployed stage equipment. Existing lucide-react icons reused from the project's dependencies. Webflow reference pages are research only; no source code or image licensed for incorporation.
 
