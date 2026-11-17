@@ -1,3 +1,6 @@
+## V183 / 2026-11-17 — Contact clipboard stale completion guard (DRAFT)
+Branch `fix/v183-contact-clipboard-stale-result-guard` stacked on V182. Clipboard async completions from an abandoned preview are ignored using a generation token; a synchronous pending guard also blocks duplicate clicks before React renders. No new dependencies, assets, APIs, auto-send, homepage, main or deploy changes. QA pending: TypeScript, Vitest, SSR, Chromium 390/1440 and exact-head CI. Next rotation: /evenimente detail visual/browser audit.
+
 ## V182 / 2026-11-17 — Contact clipboard pending feedback (DRAFT)
 PR https://github.com/WazzupDoc/green-sound-music-garden/pull/181; branch `fix/v182-contact-clipboard-pending-state`, stacked on V181. `QuoteForm.tsx` shows pending copy state, prevents repeated copy clicks while clipboard API resolves, and keeps explicit no-auto-send messaging. No new dependencies, media, homepage or production changes. TypeScript, Vitest, SSR, exact-head CI and matched real Chromium 390/1440 screenshots NOT YET VERIFIED. Next: clipboard success/denial and focus regression QA, then /evenimente audit.
 
