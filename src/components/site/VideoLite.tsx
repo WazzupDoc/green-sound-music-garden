@@ -34,6 +34,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             className="absolute inset-0 size-full"
             src={`https://www.youtube-nocookie.com/embed/${video.id}?${params}`}
             title={video.title}
+            referrerPolicy="no-referrer"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
