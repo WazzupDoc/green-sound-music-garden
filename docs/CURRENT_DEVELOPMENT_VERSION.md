@@ -1,3 +1,10 @@
+
+### V189 browser-validated UI checkpoint (2026-11-17)
+- UI SHA `f482e5a67f6f56b50b28e380330e0b31aedeac51` verified through full QA workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682149 : TypeScript, SSR/Vite build, asset budgets, Vitest 46 files/125 tests, browser interactions six viewports, Contact SSR and sitemap checks PASSED.
+- Before/after same route `/`, same 390/1440 viewport, native menu open, `Servicii` preview focused; real Playwright `chromium` workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037 PASS. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037/artifacts/14306981193 contains 12 source PNGs (before/after 390/1440, after 360/390/430/768/1440/1920, motion and Lite at 390).
+- QA-detected mismatch fixed: preview cue had described `Servicii` while `Acasă` stayed highlighted; `data-preview` now aligns visual emphasis to the focused destination without changing canonical page links.
+- Remaining: visual owner review, accessibility screen-reader manual check, production approval and exact-head QA after any documentation-only commit. No main changes. Next rotation portfolio/video gallery.
+
 ## V189 / 2026-11-17 — Live Setlist navigation + QA repairs (DRAFT)
 Branch `design/v189-navigation-setlist`, stacked on V188 draft PR #187. Primary zone: menu/header. Modified `src/components/site/SiteHeader.tsx`, introduced SSR-inlined `src/styles/navigation-v189.css`, and added `site-header-v189.test.ts`. Mobile nav has active channel cue, stagger-free sound-bar decoration (animation only in hover-capable full-motion), native dialog Escape/Tab, arrow/Home/End link navigation and clear close. Six canonical routes, Finder, Contact and homepage architecture retained. Incidental CI unblock: repair two broken Bun Vitest file URL tests and align two stale assertions with real Contact and event decode helper; no disabled tests. No new dependencies/media. Chromium matched screenshots, six-width QA, TypeScript/SSR/full CI exact-head pending; no merge or main/deployment. Next rotation: portfolio gallery + film states, only after browser QA.
 
