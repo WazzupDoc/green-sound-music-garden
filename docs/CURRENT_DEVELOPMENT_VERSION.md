@@ -1,3 +1,7 @@
+## V196 / 2026-11-17 — Event quote anchor keyboard focus (DRAFT)
+- Branch `fix/v196-event-quote-keyboard-focus`, stacked on V195 PR #194. The hero's primary in-page quote link now transfers keyboard focus to the already focusable `#oferta-titlu` heading before native hash navigation, matching the two other event hero jump links. No homepage, assets, packages, forms, auto-send or main changes. Source SHA `e055d4816bfae3c984809112231459d8bfad7353`.
+- QA: source change confirmed; Chromium before/after, keyboard focus and six-width regression, exact-head CI still require verification. No visual redesign claimed. Next rotation: Event interior composition and actual screenshot review.
+
 ## V195 / 2026-11-17 — Contact review ticket (DRAFT)
 - Branch `fix/v195-contact-preview-contact-facts`, based on V194 PR #193. Contact preview now displays the actual phone, optional email and guest estimate before opening an external sending app. Values already entered by the visitor; no new collection, sending, API or dependencies. Source commit `b5c5acf23898d9bcfce2e42b4ec314ee31917c34`.
 - **QA NOT VERIFIED:** matched real Chromium 390/1440 before-after, 360/430/768/1920 regression, form/clipboard/reduced-motion, TypeScript, SSR, Vitest, gzip, CI exact-head. No main/deploy. Next: real browser validation and event detail rotation.
