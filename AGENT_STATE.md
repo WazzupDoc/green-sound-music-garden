@@ -1,3 +1,6 @@
+### V210 / 2026-11-18 — Film poster error fallback (DRAFT)
+- Rotation: portfolio video image resilience. A configured first-party poster could fail to load and leave a browser broken-image glyph over the play surface. `VideoLite` now tracks the failed poster URL and renders the existing local dark surface; when a different poster URL arrives, it is attempted normally. Existing consent-gated playback, focus handoff, captions and homepage sections unchanged. Source regression updated. TypeScript, Vitest, SSR, exact-head CI and matched real Chromium 390/1440 screenshots **NOT VERIFIED**; main untouched. Next: event detail CTA/focus and real-browser QA.
+
 ### V209 / 2026-11-18 — Film keyboard focus on Play (DRAFT)
 - Rotation: portfolio/video keyboard accessibility. Play unmounted the focused button and mounted an iframe plus Stop without moving focus; added a layout-effect handoff to the visible Stop button. Existing Stop→Play focus restoration preserved. Source regression added. Exact-head CI and matched Chromium screenshots pending; main unchanged. Next: event detail CTA and browser QA.
 
