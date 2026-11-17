@@ -52,15 +52,19 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
-            <img
-              src={video.poster ?? `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
-              alt=""
-              width={video.poster ? 1280 : 480}
-              height={video.poster ? 720 : 360}
-              loading={priority ? "eager" : "lazy"}
-              decoding="async"
-              className="absolute inset-0 size-full object-cover"
-            />
+            {video.poster ? (
+              <img
+                src={video.poster}
+                alt=""
+                width={1280}
+                height={720}
+                loading={priority ? "eager" : "lazy"}
+                decoding="async"
+                className="absolute inset-0 size-full object-cover"
+              />
+            ) : (
+              <span aria-hidden="true" className="absolute inset-0 bg-[#0A0F15]" />
+            )}
             <span className="hero-fade absolute inset-0 opacity-80" />
             <span className="absolute left-5 top-5 inline-flex min-h-11 items-center gap-3 border border-[#F3F0E9a8] bg-[#0A0F15e8] px-4 py-2 text-base font-semibold text-[#F3F0E9]">
               <Play className="size-5 fill-current" aria-hidden /> Redă filmarea
