@@ -1,3 +1,8 @@
+### V200 / 2026-11-17 — Mobile menu viewport recovery (unverified)
+- Zone: navigation/mobile menu. On narrow→desktop viewport transitions an open native modal dialog could remain active and block the desktop nav. SiteHeader now listens for the desktop media-query transition and closes the dialog through existing state, restoring background interaction. No dependency, media or homepage changes.
+- Evidence pending: Chromium 390→1440 resize, keyboard/Escape/focus, Lite/reduced-motion, six-width screenshots, TypeScript, SSR, Vitest and CI exact-head. No visual QA claimed. Next: service discovery and portfolio.
+- References to review: https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia ; https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog . Original adaptation, no third-party code copied.
+
 ### V199 / 2026-11-17 — Contact handoff audit (DRAFT PR #198)
 - **Primary zone:** /contact Guided Event Brief. Problem: visitors arriving from /evenimente or /servicii had no concise confirmation of the exact preselected service choices above the long form; the introductory sentence alone was generic.
 - **Implemented:** visible contextual handoff strip using the existing allowlisted validated route search fields (event/date/location/services). Semantic list for services; responsive wrap; clear no-auto-send text. No new query reflection, API, packages, media, or homepage changes.
