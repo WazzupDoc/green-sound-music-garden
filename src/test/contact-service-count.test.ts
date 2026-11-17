@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 
-const source = readFileSync(new URL("../components/site/QuoteForm.tsx", import.meta.url), "utf8");
+const source = readFileSync("src/components/site/QuoteForm.tsx", "utf8");
 
 describe("Contact service selection summary", () => {
   it("excludes the advice request from the count and the eight-service limit", () => {
