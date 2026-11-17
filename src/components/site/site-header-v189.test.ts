@@ -21,6 +21,7 @@ describe("V189 live-setlist navigation contract", () => {
     expect(header).toContain('className="gsm189-mobile-current" aria-hidden="true"');
     expect(header).toContain('className="gsm189-channel" aria-hidden="true"');
     expect(header).toContain("navigation[menuSelection]?.note");
+    expect(header).toContain('data-preview={index === menuSelection ? "true" : "false"}');
     expect(css).toContain(".gsm189-mobile-current");
     expect(css).toContain(".gsm189-channel");
     expect(css).toContain("@media (max-width:500px)");
