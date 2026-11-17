@@ -1,3 +1,8 @@
+### 2026-11-17 — V203 Contact privacy / user control
+- https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — review and correction before finalization; adapted an explicit discard choice for unsent quote previews, without claiming WCAG conformance from this alone.
+- https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — clipboard operations can fail; preserved existing manual-copy fallback and invalidated pending clipboard responses on discard.
+- Rejected a new state-management dependency and any server-side draft storage; existing React Hook Form `reset` is sufficient and avoids additional personal-data persistence. No external code/assets copied.
+
 ### 2026-11-17 / V202 navigation focus
 - [MDN HTMLDialogElement.close](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) and [MDN matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia): native dialog close and media-query breakpoint. Adapted native event/focus flow, no copied source or dependency. Rejected a timeout-based focus fix as nondeterministic. CSS-driven desktop link focus follows actual dialog close.
 
