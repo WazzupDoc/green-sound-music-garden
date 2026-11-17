@@ -1,3 +1,6 @@
+## V181 / 2026-11-17 — Contact preview service/advice separation (DRAFT)
+Branch `fix/v181-contact-preview-advice-separation` stacked on V180 PR #179. Preview ticket lists only actual services and shows advice as a distinct explicit request, matching the V180 8-service counter. No homepage, media, dependencies, backend or sending changes. TypeScript/SSR/Vitest/Chromium 390/1440 before-after/CI exact-head pending; do not merge. Next: Contact edit/clipboard QA.
+
 ## V180 / 2026-11-17 — Contact service selection clarity (DRAFT)
 Branch `fix/v180-contact-service-count-clarity`, stacked on V179 PR #178. QuoteForm now excludes the optional advice choice from its visible 8-service counter, while showing an explicit recommendation-request indicator when selected. One focused source test added; no new dependencies or assets. Exact-head CI, TypeScript, SSR, Vitest and matched 390/1440 Chromium captures pending. No main/deploy. Next: Contact preview, edit and clipboard error QA.
 
