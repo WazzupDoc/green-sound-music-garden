@@ -1,0 +1,52 @@
+name: V201 — real illustrated category before-after / browser QA
+on:
+  push:
+    branches: [design/v201-illustrated-category-art]
+permissions:
+  contents: read
+concurrency:
+  group: gs-v201-art-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  real-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 28
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Preserve exact preceding V200 revision
+        run: git worktree add --detach /tmp/gs-v200-art-baseline fc8d9601ba94d26fbb8cafd929b1518e355296db
+      - name: Install dependencies from existing project lockfiles
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v200-art-baseline && bun install --no-save)
+      - name: Pinned real Chromium for QA only
+        run: |
+          npm install --prefix /tmp/gs-v201-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v201-playwright/node_modules/.bin/playwright install chromium
+      - name: Start V200 and V201 locally, never production
+        run: |
+          (cd /tmp/gs-v200-art-baseline && bunx vite dev --host 127.0.0.1 --port 4176 --strictPort > /tmp/v200.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v201.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 65); do
+              if curl --silent --fail "http://127.0.0.1:${port}/evenimente" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/v200.log /tmp/v201.log; exit 1; fi
+          done
+      - name: Actual same-state mobile and desktop screenshots / all six widths / AVIF decode
+        run: NODE_PATH=/tmp/gs-v201-playwright/node_modules node .github/scripts/verify-v201-category-illustrations.cjs
+      - name: Upload real Chromium captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v201-real-illustrations-before-after
+          path: screenshots/gs-v201-illustrated-categories/
+          if-no-files-found: warn
+          retention-days: 60
