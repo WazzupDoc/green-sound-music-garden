@@ -38,8 +38,8 @@ function Portfolio(){
         <div className="gs161-hero__foot">
           <p>Momente reale, văzute dinspre public, scenă și echipă. Fotografii și filme din arhiva Green Sound Music.</p>
           <nav aria-label="Explorează portofoliul">
-            <a href="#portfolio-photos">Fotografii <ArrowDownRight className="size-4" aria-hidden /></a>
-            <a href="#portfolio-films">Filme <ArrowUpRight className="size-4" aria-hidden /></a>
+            <a href="#portfolio-photos" onClick={() => document.getElementById("rs-gallery-title")?.focus()}>Fotografii <ArrowDownRight className="size-4" aria-hidden /></a>
+            <a href="#portfolio-films" onClick={() => document.getElementById("rs-video-library-title")?.focus()}>Filme <ArrowUpRight className="size-4" aria-hidden /></a>
           </nav>
         </div>
       </div>
