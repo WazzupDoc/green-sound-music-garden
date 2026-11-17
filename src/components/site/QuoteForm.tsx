@@ -182,6 +182,20 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
               <span>{prepared.location || "De stabilit"}</span>
             </div>
           </div>
+          <div className="quote-preview__facts" aria-label="Date de contact și dimensiunea evenimentului">
+            <div>
+              <small>TELEFON PENTRU RĂSPUNS</small>
+              <span>{prepared.phone}</span>
+            </div>
+            <div>
+              <small>EMAIL</small>
+              <span>{prepared.email || "Nespecificat"}</span>
+            </div>
+            <div>
+              <small>INVITAȚI</small>
+              <span>{prepared.guests || "Nespecificat"}</span>
+            </div>
+          </div>
           {prepared.services.some(service => service !== ADVICE_SERVICE_LABEL) && (
             <div className="quote-preview__services">
               <small>SERVICII SELECTATE</small>

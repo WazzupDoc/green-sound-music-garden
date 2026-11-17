@@ -1,3 +1,8 @@
+## 2026-11-17 — V195 Contact review clarity
+- https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — reviewing user-entered data before final submission is a useful error-prevention pattern; here the website only prepares an external message and does not send.
+- https://webflow.com/blog/form-design — general form clarity and review principles, inspiration only; no code, template, imagery or branding copied, no reuse license inferred.
+- Original implementation reuses the existing `quote-preview__facts` design, no new dependency/assets or license cost. Rejected a new multi-step wizard, auto-send and exposing details elsewhere; keep all review data within the existing preview. Browser QA pending.
+
 ## 2026-11-17 — GitHub Actions branch-filter coverage
 Source: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchesbranches-ignore . Observation: branch filters control whether workflow runs; excluded `fix/v*` and `feat/v*` heads received no push CI, despite existing `design/v*` coverage. Adaptation: extend existing native YAML filters, no code copied, no package/license impact. Rejected: creating another workflow or disabling quality gates; both add duplication or weaken coverage. CI result remains pending.
 

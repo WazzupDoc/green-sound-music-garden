@@ -1,3 +1,6 @@
+## V195 — 2026-11-17 / Contact review audit
+Matrix: Contact preview — P1 missing visible reply phone/email/guest estimate despite collection; now shown in existing review ticket, source changed, QA/screenshot pending. Studio V194 — P1 browser QA pending. Event details — next rotation. Homepage unchanged. Source `b5c5acf23898d9bcfce2e42b4ec314ee31917c34`; no main/deploy. No performance or accessibility scores claimed.
+
 ## V190 / 2026-11-17 — Portfolio section focus (DRAFT)
 Area: `/portofoliu` hero shortcuts. Native hash navigation previously scrolled to photos/films but did not transfer keyboard focus; both links now focus their existing destination headings. Film heading receives `tabIndex={-1}`. No new packages, media, autoplay, backend or main changes. Source SHA `62988c36ef9ca984e91ddec9dea2bffcef9949bc`. Visual change: none; browser screenshots, keyboard testing, six widths and exact-head CI pending. Rotation next: portfolio film filtering/player interaction and visual archive composition.
 
