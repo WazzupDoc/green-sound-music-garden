@@ -33,13 +33,13 @@ export function ServicePage({slug}:{slug:ServiceSlug}) {
       <div className="container-site">
         <div className="rs-service-detail__header">
           <p>Mai multe despre serviciu</p>
-          <h2 id="rs-service-detail-title">{slug === "studio-inregistrari" ? "Din idee, în înregistrare" : "Cum se pregătește"}</h2>
+          <h2 id="rs-service-detail-title">{slug === "studio-inregistrari" ? "De la pregătire la sesiunea de studio" : "Cum se pregătește"}</h2>
           {slug === "studio-inregistrari" && <div className="rs-studio-signal" aria-hidden="true">
             <span>INPUT</span>
             <svg viewBox="0 0 320 48" preserveAspectRatio="none" focusable="false">
               <path d="M0 24H22L29 18L36 30L44 9L53 39L62 19L70 25H94L102 14L110 34L119 5L128 43L138 17L147 24H172L182 12L191 35L201 8L211 40L221 24H246L255 18L264 30L273 15L282 33L292 24H320" fill="none" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" />
             </svg>
-            <span>REC</span>
+            <span>OUTPUT</span>
           </div>}
         </div>
         <div className="rs-service-detail__stories">
