@@ -1,3 +1,6 @@
+## V184 / 2026-11-17 — Event detail focus rotation (DRAFT)
+Zone: `/evenimente/$slug` timeline navigation. Defect from source inspection: clicking the hero fragment link scrolls to the timeline but leaves keyboard focus on the hero link. Implemented focus handoff to existing `tabIndex=-1` timeline section while retaining native hash navigation for no-JS. Source-only evidence; no screenshots, browser QA, TypeScript, Vitest, SSR or exact-head CI confirmed. Audit matrix: event detail keyboard navigation — source fixed, QA pending; visual composition — pending; Contact clipboard V183 — QA pending; homepage — unchanged; service pages, SEO, performance, footer — future rotation. Next: event detail visual audit and six-width screenshots. Main unchanged.
+
 ## V183 / 2026-11-17 — Contact clipboard async lifecycle (DRAFT)
 Area: Contact preview. Defect: clipboard permission prompt may resolve after visitor chooses Edit and later re-enters preview, overwriting the new state; rapid repeat clicks before React render could also issue duplicate writes. Fix: generation-token invalidation and synchronous pending ref. Evidence: source commit only; CI, browser and screenshots pending. No main/deploy. Next: /evenimente detail design/browser audit.
 
