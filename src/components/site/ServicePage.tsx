@@ -45,7 +45,7 @@ export function ServicePage({slug}:{slug:ServiceSlug}) {
         <div className="rs-service-detail__stories">
           {service.sections.map((section,index)=>(
             <article key={section.title}>
-              <span>{String(index+1).padStart(2,"0")}</span>
+              <span>{slug === "studio-inregistrari" ? `ETAPA ${String(index+1).padStart(2,"0")} / ${String(service.sections.length).padStart(2,"0")}` : String(index+1).padStart(2,"0")}</span>
               <div><h3>{section.title}</h3>
                 {section.paragraphs.map(paragraph=><p key={paragraph}>{paragraph}</p>)}
                 {section.list && <ul>{section.list.map(text=><li key={text}>{text}</li>)}</ul>}
