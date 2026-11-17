@@ -1,5 +1,6 @@
 import serviceIndexEditorialCss from "@/styles/service-index-editorial-v91.css?inline";
 import categorySignalCss from "@/styles/category-signature-v198.css?inline";
+import illustratedCategoryCss from "@/styles/category-illustrated-v201.css?inline";
 import { CategorySignal } from "@/components/site/CategorySignal";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
@@ -20,11 +21,11 @@ export const Route=createFileRoute("/servicii")({
 });
 function Services(){
  return <>
-  <style>{serviceIndexEditorialCss + "\n" + categorySignalCss}</style>
+  <style>{serviceIndexEditorialCss + "\n" + categorySignalCss}</style><style>{illustratedCategoryCss}</style>
   <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
     lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
     image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
-  <section className="rs-service-index gs198-services" aria-labelledby="rs-services-title">
+  <section className="rs-service-index gs198-services gs201-services" aria-labelledby="rs-services-title">
    <div className="container-site">
     <div className="rs-service-index__lead"><p>Oferta Green Sound Music</p><h2 id="rs-services-title">Ce putem pregăti</h2></div>
     {groups.map((group,index)=>(

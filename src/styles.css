@@ -29,8 +29,9 @@
 @import "./styles/signature-cursor.css";
 @import "./styles/regia-serii-final.css";
 @import "./styles/editorial-reset.css";
-@import "./styles/stage-v78.css";
-@import "./styles/stage-v79.css";
+/* V78/V79 prototype-only stage rules kept in their original files for historical
+ * branches; the active homepage route uses ConceptHomeV170 and SSR-inline CSS.
+ * Do not bundle unused stage experiments globally on every route. */
 /* The V81 navigation stylesheet is SSR-inlined by SiteHeader, not global CSS. */
 
 @custom-variant dark (&:is(.dark *));

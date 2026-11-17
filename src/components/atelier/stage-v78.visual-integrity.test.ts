@@ -8,9 +8,17 @@ const signature=read("src/styles/home-signature-v86.css");
 
 describe("Legacy visual assets retained, V86 signature loads instead of retired decorative geometry",()=>{
  it("keeps correctly loaded active site styles and scoped homepage CSS",()=>{
-  for(const p of ["scene-console","light-desk","production-index","portfolio-journal","editorial-reset","stage-v78"]){
+  for(const p of ["scene-console","light-desk","production-index","portfolio-journal","editorial-reset"]){
    expect(base).toContain(`@import "./styles/${p}.css";`);
   }
+  // V78/V79 source and reference behaviour remain testable, but the V170
+  // production homepage no longer includes either prototype stylesheet globally.
+  expect(base).not.toContain('@import "./styles/stage-v78.css";');
+  expect(base).not.toContain('@import "./styles/stage-v79.css";');
+  expect(read("src/styles/stage-v79.css")).toContain(".gs-stage-v79");
+  const activeHome=read("src/routes/index.tsx");
+  expect(activeHome).toContain("<ConceptHomeV170 />");
+  expect(activeHome).toContain("home-reference-v170.css?inline");
   expect(signature).toContain(".gs-home-v86 .crafted-hero");
   expect(signature).toContain(".gs-home-v86 .gs-index__chapters");
   expect(read("src/styles/home-event-v89.css")).toContain(".gs-home-v86 .gs-index__chapters");
