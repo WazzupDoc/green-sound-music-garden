@@ -629,3 +629,11 @@ User-visible design is not certified without Chromium evidence. No main push/dep
 - Before/after same route `/`, same 390/1440 viewport, native menu open, `Servicii` preview focused; real Playwright `chromium` workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037 PASS. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037/artifacts/14306981193 contains 12 source PNGs (before/after 390/1440, after 360/390/430/768/1440/1920, motion and Lite at 390).
 - QA-detected mismatch fixed: preview cue had described `Servicii` while `Acasă` stayed highlighted; `data-preview` now aligns visual emphasis to the focused destination without changing canonical page links.
 - Remaining: visual owner review, accessibility screen-reader manual check, production approval and exact-head QA after any documentation-only commit. No main changes. Next rotation portfolio/video gallery.
+
+## V191 / 2026-11-17 — /portofoliu film archive
+| Zone | Issue | Code change | QA evidence | Next |
+|---|---|---|---|---|
+| Portofoliu / films | Previous film list read as a generic column; selected link incorrectly styled by [aria-current=true] instead of router value page | New cinematic media frame, selected video slate, photo-backed native link playlist, keyboard arrows/Home/End, query persistence; selected visual state uses data-current while ARIA remains page | Matched Chromium 390/1440 and six-width workflow added; status to verify on exact HEAD | Studio interior page |
+| Portofoliu / photos | Existing 6 original photos + category lightbox | Unchanged and retained | Existing regression CI remains active | Later rotation |
+| Main / production | Stacked PRs, PR #19 conflicts | No merge or deploy | Await CI, owner approval, backup tag, rollback/CD audit | No publication |
+Visual audit: First V191 desktop screenshot was too empty above the film; tightened heading and section spacing. Browser filter diagnostics revealed aria-current=page and incorrect previous CSS selection highlight. Fixed both component and selectors without hiding the problem. No new media or packages.
