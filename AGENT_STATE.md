@@ -611,3 +611,12 @@ Area: footer directory. Three visually unchanged columns are now named `<nav>` l
 | Home / services | High visual | Five narrow equal-height photo tiles look generic | CSS Grid asymmetric editorial scale and image pacing, no new services | Browser before/after 390/1440, six widths, SSR and exact-head CI pending | Inspect real screenshots; then rotate to mobile navigation |
 
 No merge or deploy authorized. This is a design candidate until real Chromium validation.
+
+
+## V189 — 2026-11-17 / NAVIGATION LIVE SETLIST (DRAFT)
+| Area | Priority | Source defect | Implemented | QA evidence | Next |
+|---|---|---|---|---|---|
+| Header + mobile full-screen dialog | High visual / medium UX | Six links have repetitive row presentation; narrow menu lacks active destination cue; arrow navigation absent | `navigation-v189.css` and `SiteHeader.tsx`: muted emerald editorial setlist; original five-bar sound-channel motif on selection; contrasting italic second/fifth labels; active-route cue visible on mobile; Arrow keys/Home/End navigation, Tab/Escape and native dialog preserved | Source patch; browser before/after 390/1440, 6 widths, Lite and exact-head CI pending | Real-browser screenshot and keyboard QA; then portfolio/gallery audit |
+| QA baseline | Blocking | V188 CI 44033276330 fails 4 test files: two `new URL(..., import.meta.url)` incompatible with Bun Vitest, two stale assertions after legitimate Contact/event code changes | Fixed only test source-path resolution and updated assertions to actual Contact handoff + cancellable image decode helper. No test disabled | Re-run pending | Inspect exact-head CI and patch any genuine failures |
+
+User-visible design is not certified without Chromium evidence. No main push/deployment, no new assets/packages.
