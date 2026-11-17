@@ -7,6 +7,7 @@ describe("V204 explicit film stop control", () => {
   it("does not mount a third-party iframe before visitor consent", () => {
     expect(source).toContain("{active ? (");
     expect(source).toContain("youtube-nocookie.com/embed/");
+    expect(source).toContain('referrerPolicy="no-referrer"');
     expect(source).toContain("onClick={() => setActive(true)}");
   });
   it("unmounts the playing iframe and restores focus to the play button", () => {
