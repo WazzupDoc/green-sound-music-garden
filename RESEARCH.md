@@ -1,3 +1,8 @@
+## 2026-11-17 — V184 event detail focus navigation
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — native fragment links retained for no-JS navigation; no external code copied.
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — focus({preventScroll:true}) used for keyboard focus handoff to existing `tabIndex=-1` section. No dependency or licensing issue; original implementation.
+- Rejected: replacing the anchor with a button (would break native fragment navigation and no-JS fallback); adding scroll animation (unnecessary motion). Browser validation pending.
+
 ## 2026-11-17 — V183 clipboard async lifecycle
 - https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — asynchronous writeText may reject on permission/security; no delivery is implied.
 - https://react.dev/reference/react/useRef — mutable refs track in-flight work synchronously without rendering; used for pending guard and invalidation token.
