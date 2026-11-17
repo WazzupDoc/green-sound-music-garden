@@ -1,3 +1,8 @@
+## 2026-11-17 — V183 clipboard async lifecycle
+- https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — asynchronous writeText may reject on permission/security; no delivery is implied.
+- https://react.dev/reference/react/useRef — mutable refs track in-flight work synchronously without rendering; used for pending guard and invalidation token.
+- Original React code only; no copied design/code/assets, new dependencies or licensing impact. Rejected timers and automatic retry (could generate unwanted permission prompts), and introducing a state-management package. Browser behavior and CI remain unverified.
+
 ## 2026-11-17 — V181 Contact preview semantics
 References: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html (clear labels), https://webflow.com/made-in-webflow/website/the-symphony (editorial hierarchy as inspiration only; no assets/code copied). Adapted an existing ticket hierarchy to distinguish advisory request from selected paid-service categories. Rejected adding a second interactive preview control or importing UI libraries: no utility, extra complexity. Original code only; no new license or asset.
 
