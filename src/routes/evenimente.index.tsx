@@ -5,6 +5,7 @@ import { events, getService } from "@/data/site";
 import { QuoteSection } from "@/components/site/blocks";
 import { CategorySignal } from "@/components/site/CategorySignal";
 import categorySignalCss from "@/styles/category-signature-v198.css?inline";
+import illustratedCategoryCss from "@/styles/category-illustrated-v201.css?inline";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import eventPosterCss from "@/styles/event-show-poster-v173.css?inline";
 import { preloadEventFrame } from "@/lib/preload-event-frame";
@@ -65,8 +66,8 @@ function Events() {
   }
 
   return <>
-    <style>{eventPosterCss}</style><style>{categorySignalCss}</style>
-    <div className="gs173-events gs198-events" data-hydrated={hydrated}>
+    <style>{eventPosterCss}</style><style>{categorySignalCss}</style><style>{illustratedCategoryCss}</style>
+    <div className="gs173-events gs198-events gs201-events" data-hydrated={hydrated}>
       <section className="gs173-live" aria-labelledby="gs173-title">
         <div className="container-site gs173-live__container">
           <div className="gs173-topline">
@@ -99,7 +100,7 @@ function Events() {
           </div>
           <div className="gs173-setlist__header" id="gs173-setlist-title">
             <span>01 / SETLIST DE EVENIMENTE</span>
-            <p>Alege scena. Imaginea și momentele se schimbă după selecție.</p>
+            <p>Alege scena. Ilustrațiile reprezintă categoriile; fotografia reală și momentele se schimbă după selecție.</p>
           </div>
           <ol className="gs173-setlist" aria-label="Alege tipul de eveniment">
             {events.map((event, index) => {
