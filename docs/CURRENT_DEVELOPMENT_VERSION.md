@@ -1,3 +1,6 @@
+## V186 / 2026-11-17 — Contact handoff wording (DRAFT)
+Branch `fix/v186-contact-send-clarity` stacked on V185. The Contact journey step formerly labelled `SEND` now explicitly describes opening the external app and user-confirmed sending, consistent with the actual client-only quote handoff. No automatic send, new service, package, asset, homepage change or deployment. Source commit `4b357375a40d7853d3ca61e36593dcf5ea8c291e`. Exact-head CI, TypeScript, SSR, Vitest, real browser screenshots and keyboard/clipboard checks UNVERIFIED. Not merge-ready. Next: Contact clipboard and event-detail QA.
+
 ## V185 / 2026-11-17 — Event detail service shortcut (DRAFT)
 Branch `feat/v185-event-service-shortcut` stacked on V184. Event hero adds a native fragment shortcut to the existing recommended-services section, with keyboard focus handoff and event-specific heading. No new services, media, packages, homepage sections or auto-send. Source commit `1ecdc269b6aecf0f9b582a2878c18ff65a942ca9`. TypeScript, SSR, Vitest, six-width Chromium matched before/after, reduced-motion/Lite and exact-head CI remain UNVERIFIED. Do not merge or publish. Next: real-browser event-detail screenshot/keyboard QA and Contact clipboard regressions.
 
