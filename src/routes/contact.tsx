@@ -108,6 +108,24 @@ function Contact() {
           </aside>
           <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
+            {fromBrief && (
+              <div className="mb-7 mt-5 border-l-2 border-primary bg-primary/[0.06] px-4 py-4" aria-label="Selecția preluată din paginile de evenimente și servicii">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Selecția ta a fost preluată</p>
+                <p className="mt-2 text-sm leading-relaxed text-foreground/85">
+                  {event ? <span className="font-semibold">{event}</span> : "Cerere personalizată"}
+                  {date ? <span> · {date}</span> : null}
+                  {location ? <span> · {location}</span> : null}
+                </p>
+                {selectedServices.length > 0 && (
+                  <ul className="mt-3 flex flex-wrap gap-2" aria-label="Servicii preselectate">
+                    {selectedServices.map(service => (
+                      <li key={service} className="border border-primary/30 px-2.5 py-1 text-xs text-foreground">{service}</li>
+                    ))}
+                  </ul>
+                )}
+                <p className="mt-3 text-xs leading-relaxed text-muted-foreground">Poți schimba orice alegere în formular. Nu am trimis nimic automat.</p>
+              </div>
+            )}
             <h2 id="contact-form-title" tabIndex={-1} className="scroll-mt-28 font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
             <ClientOnly fallback={
               <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
