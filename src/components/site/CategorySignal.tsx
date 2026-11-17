@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { EventSlug, ServiceSlug } from "@/data/site";
 
 /** First-party vector cues: decorative representations of the real service catalogue,
@@ -77,12 +77,39 @@ const artwork: Record<CategoryCueKind, ReactNode> = {
   </>,
 };
 
+/** User-approved generated illustrations (2026-11-17).
+ * 7 × 2 first-party optimized AVIF cells at 160 × 160 pixels,
+ * ordered to match `public/media/gs-category-illustrations-v201.avif`.
+ * All imagery is decorative; real HTML labels remain outside the artwork.
+ */
+const illustratedCells: Record<CategoryCueKind, number> = {
+  nunti: 0,
+  botezuri: 1,
+  "evenimente-corporate": 2,
+  "concerte-festivaluri": 3,
+  "petreceri-private": 4,
+  "dj-mc": 5,
+  trupa: 6,
+  "echipamente-de-sunet-si-lumini": 7,
+  "masina-fum-greu-cu-gheata-carbonica": 8,
+  "studio-inregistrari": 9,
+  hostess: 10,
+  "ursitoare-botez": 11,
+  "start-veselia": 12,
+};
+
 export function CategorySignal({ kind, play = false, className = "" }: {
   kind: CategoryCueKind;
   play?: boolean;
   className?: string;
 }) {
-  return <span className={`gs198-cue ${className}`} data-kind={kind} data-play={play ? "true" : "false"} aria-hidden="true">
+  const index = illustratedCells[kind];
+  const position: CSSProperties = {
+    backgroundPosition: `${(index % 7) / 6 * 100}% ${index >= 7 ? 100 : 0}%`,
+  };
+  return <span className={`gs198-cue gs201-cue ${className}`} data-kind={kind} data-play={play ? "true" : "false"} aria-hidden="true">
+    <span className="gs201-cue__art" style={position} />
+    <span className="gs201-cue__shine" />
     <svg viewBox="0 0 96 96" className="gs198-cue__drawing" fill="none"
       stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
       {artwork[kind]}
