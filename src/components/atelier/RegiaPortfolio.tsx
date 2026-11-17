@@ -209,7 +209,8 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
           </div>
           {selectedVideos.map((video,index)=>(
             <Link key={video.id} to="/portofoliu" search={{film:video.id}}
-              aria-current={chosen?.id===video.id?"true":undefined}
+              aria-current={chosen?.id===video.id?"page":undefined}
+              data-current={chosen?.id===video.id?"true":undefined}
               className="rs-video-library__item">
               <span className="gs161-film-thumb" aria-hidden="true">
                 <img src={video.poster ?? ytThumb(video, "sd")} alt="" width={1280} height={720}
