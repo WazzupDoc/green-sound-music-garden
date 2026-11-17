@@ -65,6 +65,11 @@ async function capture(page,label){
       assert.equal(await filmLinks.nth(1).evaluate(el=>el===document.activeElement),true);
       await page.keyboard.press("Enter");
       await page.waitForFunction(()=>new URL(location.href).searchParams.has("film"));
+      // Router navigation and React hydration update the DOM asynchronously.
+      await page.waitForFunction(() => {
+        const selected = document.querySelector(".rs-video-library__player")?.getAttribute("data-selected-film");
+        return selected === new URL(location.href).searchParams.get("film");
+      }, {timeout: 12000});
       const picked=await page.locator(".rs-video-library__player").getAttribute("data-selected-film");
       assert.equal(picked,new URL(page.url()).searchParams.get("film"),"Shareable URL and selected player match");
       assert.equal(await page.locator("iframe").count(),0,"Film selection must not autoplay");
