@@ -1,3 +1,6 @@
+## V184 / 2026-11-17 — Event timeline keyboard focus handoff (DRAFT)
+Branch `fix/v184-event-timeline-focus-handoff` stacked on V183. The native "Vezi desfășurătorul" fragment link now focuses its already-focusable timeline target on activation, aligning keyboard focus with visual navigation; normal href remains functional without JS. No packages, images, homepage, auto-send or deployment. TypeScript, SSR, Vitest, six-width Chromium before/after and exact-head CI pending. Next: event detail visual composition and Contact regression QA.
+
 ## V183 / 2026-11-17 — Contact clipboard stale completion guard (DRAFT)
 Branch `fix/v183-contact-clipboard-stale-result-guard` stacked on V182. Clipboard async completions from an abandoned preview are ignored using a generation token; a synchronous pending guard also blocks duplicate clicks before React renders. No new dependencies, assets, APIs, auto-send, homepage, main or deploy changes. QA pending: TypeScript, Vitest, SSR, Chromium 390/1440 and exact-head CI. Next rotation: /evenimente detail visual/browser audit.
 
