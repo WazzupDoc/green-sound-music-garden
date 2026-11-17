@@ -1,3 +1,6 @@
+## V185 / 2026-11-17 — Event detail service shortcut (DRAFT)
+Branch `feat/v185-event-service-shortcut` stacked on V184. Event hero adds a native fragment shortcut to the existing recommended-services section, with keyboard focus handoff and event-specific heading. No new services, media, packages, homepage sections or auto-send. Source commit `1ecdc269b6aecf0f9b582a2878c18ff65a942ca9`. TypeScript, SSR, Vitest, six-width Chromium matched before/after, reduced-motion/Lite and exact-head CI remain UNVERIFIED. Do not merge or publish. Next: real-browser event-detail screenshot/keyboard QA and Contact clipboard regressions.
+
 ## V184 / 2026-11-17 — Event timeline keyboard focus handoff (DRAFT)
 Branch `fix/v184-event-timeline-focus-handoff` stacked on V183. The native "Vezi desfășurătorul" fragment link now focuses its already-focusable timeline target on activation, aligning keyboard focus with visual navigation; normal href remains functional without JS. No packages, images, homepage, auto-send or deployment. TypeScript, SSR, Vitest, six-width Chromium before/after and exact-head CI pending. Next: event detail visual composition and Contact regression QA.
 
