@@ -1,3 +1,6 @@
+### V209 / 2026-11-18 — Film play focus continuity (DRAFT)
+- Branch `fix/v209-film-play-focus-continuity` stacked on V208 PR #207. Shared VideoLite focuses the accessible Stop button after explicit Play activates the iframe; Stop still restores focus to Play. Source regression extended. No new dependency, third-party asset or homepage change. Exact-head CI / Chromium screenshots pending; main untouched.
+
 ### V208 / 2026-11-18 — Third-party thumbnail privacy (DRAFT)
 - Branch `fix/v208-local-film-poster-fallback` stacked on V207 PR #206. VideoLite no longer loads `i.ytimg.com` fallback thumbnails before user activation; configured poster remains, missing poster uses dark CSS surface. Added regression assertion. No new dependency, main unchanged. CI exact-head, network audit and matched 390/1440 Chromium screenshots PENDING.
 
