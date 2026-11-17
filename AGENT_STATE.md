@@ -620,3 +620,9 @@ No merge or deploy authorized. This is a design candidate until real Chromium va
 | QA baseline | Blocking | V188 CI 44033276330 fails 4 test files: two `new URL(..., import.meta.url)` incompatible with Bun Vitest, two stale assertions after legitimate Contact/event code changes | Fixed only test source-path resolution and updated assertions to actual Contact handoff + cancellable image decode helper. No test disabled | Re-run pending | Inspect exact-head CI and patch any genuine failures |
 
 User-visible design is not certified without Chromium evidence. No main push/deployment, no new assets/packages.
+
+### V189 browser-validated UI checkpoint (2026-11-17)
+- UI SHA `f482e5a67f6f56b50b28e380330e0b31aedeac51` verified through full QA workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682149 : TypeScript, SSR/Vite build, asset budgets, Vitest 46 files/125 tests, browser interactions six viewports, Contact SSR and sitemap checks PASSED.
+- Before/after same route `/`, same 390/1440 viewport, native menu open, `Servicii` preview focused; real Playwright `chromium` workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037 PASS. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037/artifacts/14306981193 contains 12 source PNGs (before/after 390/1440, after 360/390/430/768/1440/1920, motion and Lite at 390).
+- QA-detected mismatch fixed: preview cue had described `Servicii` while `Acasă` stayed highlighted; `data-preview` now aligns visual emphasis to the focused destination without changing canonical page links.
+- Remaining: visual owner review, accessibility screen-reader manual check, production approval and exact-head QA after any documentation-only commit. No main changes. Next rotation portfolio/video gallery.
