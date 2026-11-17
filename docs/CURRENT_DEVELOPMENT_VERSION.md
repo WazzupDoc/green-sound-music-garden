@@ -1,3 +1,6 @@
+### V207 / 2026-11-17 — Consented film referrer privacy (DRAFT)
+- Branch `fix/v207-film-referrer-privacy` stacked on V206 PR #205. Shared VideoLite iframe now sets `referrerPolicy="no-referrer"` so consented YouTube playback does not transmit the originating page URL in the Referer header. Regression assertion added. No new dependency or visual redesign. Exact-head CI, browser QA and matched screenshots NOT VERIFIED; main unchanged.
+
 ### V206 / 2026-11-17 — Event film disclosure (DRAFT)
 - Branch `feat/v206-event-film-consent-clarity` stacked on V205 PR #204. Event detail film region now explains that playback is user-initiated, loads YouTube, and offers Stop. Accessible region label and source regression. Exact-head CI and real matched Chromium captures pending; do not merge or deploy.
 
