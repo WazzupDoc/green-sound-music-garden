@@ -1,3 +1,8 @@
+### 2026-11-17 — Film player consent / stop control (V204)
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — native iframe lifecycle; unmounting the embedded document is a dependency-free way to stop an embedded player. Adapted: stop action removes the iframe rather than introducing YouTube IFrame API.
+- https://www.w3.org/WAI/WCAG22/Understanding/pause-stop-hide.html — user control for moving/playing media. Adapted: explicit Stop button, keyboard accessible, clear focus return.
+- Rejected: YouTube IFrame API (extra JS, network and privacy surface), custom autoplay overlay, third-party player controls. No copied code or new assets; only original component implementation.
+
 ### 2026-11-17 — V203 Contact privacy / user control
 - https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — review and correction before finalization; adapted an explicit discard choice for unsent quote previews, without claiming WCAG conformance from this alone.
 - https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — clipboard operations can fail; preserved existing manual-copy fallback and invalidated pending clipboard responses on discard.

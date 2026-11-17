@@ -1,5 +1,5 @@
-import { Play } from "lucide-react";
-import { useState } from "react";
+import { Play, Square } from "lucide-react";
+import { useRef, useState } from "react";
 import type { Video } from "@/data/site";
 
 /**
@@ -8,6 +8,12 @@ import type { Video } from "@/data/site";
  */
 export function VideoLite({ video, className = "", priority = false }: { video: Video; className?: string; priority?: boolean }) {
   const [active, setActive] = useState(false);
+  const playButtonRef = useRef<HTMLButtonElement>(null);
+  const stopPlayback = () => {
+    // Unmounting the iframe stops both audio and network playback immediately.
+    setActive(false);
+    requestAnimationFrame(() => playButtonRef.current?.focus());
+  };
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (video.start) params.set("start", String(video.start));
 
@@ -15,6 +21,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
     <figure className={className}>
       <div className="group relative aspect-video overflow-hidden bg-card">
         {active ? (
+          <>
           <iframe
             className="absolute inset-0 size-full"
             src={`https://www.youtube-nocookie.com/embed/${video.id}?${params}`}
@@ -22,9 +29,16 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
+          <button type="button" onClick={stopPlayback}
+            className="absolute right-3 top-3 z-10 inline-flex min-h-11 items-center gap-2 border border-white/60 bg-[#0A0F15] px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            aria-label={`Oprește filmarea: ${video.title}`}>
+            <Square className="size-4 fill-current" aria-hidden /> Oprește
+          </button>
+          </>
         ) : (
           <button
             type="button"
+            ref={playButtonRef}
             onClick={() => setActive(true)}
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}

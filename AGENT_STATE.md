@@ -1,3 +1,8 @@
+### V204 / 2026-11-17 — Portfolio film playback controls (draft)
+- Rotation: Portfolio / film player. Problem: consent-loaded YouTube iframe previously had no first-party Stop action; visitor had to change film or leave page to silence playback.
+- Implemented: visible 44px+ Stop button unmounts iframe immediately and returns focus to original Play button on next animation frame. Native keyboard controls, no package, no autoplay before explicit Play; unchanged homepage and original films.
+- Source regression: src/components/site/video-lite-v204.test.ts. Browser 390/1440 matched screenshots, 6 widths, exact-head CI, screen-reader and playback smoke **PENDING**; no claim of QA pass. Next: film controls browser validation, then event-detail UX.
+
 ### V203 / 2026-11-17 — Contact / privacy discard
 - Added explicit discard control on prepared quote preview. Clears React preview and RHF retained personal fields (including query-prefilled details), consent and services; invalidates outstanding clipboard completion. Source regression test added. No backend, external services or new dependencies. **Exact-head CI and matched browser screenshots not yet verified.** Next zone: portfolio / film controls.
 
