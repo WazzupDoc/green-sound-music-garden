@@ -1,3 +1,10 @@
+## V201 / 2026-11-17 — Use generated artwork on actual Events and Services pages (DRAFT PR #200)
+- **Latest branch:** `design/v201-illustrated-category-art`, base `design/v200-mobile-menu-viewport-recovery` V200 SHA `fc8d9601ba94d26fbb8cafd929b1518e355296db`. PR https://github.com/WazzupDoc/green-sound-music-garden/pull/200. Owner explicitly requested `Acum folosește-le` for two ImageGen icon boards.
+- **Actual changes:** one local 29,919-byte AVIF atlas with 13 independent picture cells, used in `CategorySignal.tsx` on existing `/evenimente` and `/servicii` links, with native HTML captions; accessible and mobile-first; existing original category click/keyboard behaviour preserved. Route-scoped CSS, no homepage additions, no new photo claims, apps, APIs or external assets.
+- **Performance defect inherited:** V200 already failing shared CSS gzip hard cap 52KB, despite TypeScript/SSR build. V201 removes unused legacy V78/V79 CSS imports from global styles and updates legacy test to assert active V170 architecture (no test removed, no cap raised). Retains actual old CSS files in repo/history. **Full CI pending** for V201 final HEAD; do not claim validation before jobs complete.
+- **Screenshot gate:** `v201-category-art-visual.yml` compares exactly same selected Petreceri at 390/1440 before V200 vs after V201, six after resolutions 360/390/430/768/1440/1920, local AVIF HTTP/decoded 1120×320, animation on deliberate click, reduced-motion, Lite static, keyboard and no-JS. Upload artifact `gs-v201-real-illustrations-before-after`; inspect real images before greenlighting.
+- **Non-goals:** production main, DNS, publication, costs, third-party photos/real people, fake send or additional homepage sections. Review main deployment and rollback only if later authorized. Next primary area: Contact multi-service prefill/clipboard experience.
+
 ### V200 / 2026-11-17 — Navigation viewport recovery (draft, QA pending)
 - Branch `design/v200-mobile-menu-viewport-recovery` based on V199. An open mobile native dialog now closes when viewport enters desktop layout (1024px breakpoint). CI and matched screenshots pending; no main merge/deployment.
 
