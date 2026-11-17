@@ -1,3 +1,9 @@
+## 2026-11-17 — V197 event rundown / original editorial pattern
+- Source 1: https://www.nk.studio/work/awwwards-conf-amsterdam — /nk Studio Awwwards Amsterdam case study, verified 2026-11-17. Observation: a strong event atmosphere need not make the programme harder to explore. Adaptation: a clear authentic production sequence with direct per-moment service links, not WebGL. Their design/images/code **not licensed for reuse** and none copied. Rejected dramatic full-stage effects and hijacked scrolling.
+- Source 2: https://contra.com/p/gNlWUWb6-editorial-webflow-portfolio-for-sirnik-studio — verified 2026-11-17. Case study discusses editorial hierarchy, oversized type, space and asymmetric rhythm. Adaptation: static original CSS two-column editorial structure and inherited Hanken Grotesk/Instrument Serif. Inspiration only, no reusable code license provided; no proprietary code/assets copied. Rejected equal cards and visual glow.
+- Technical source: https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — accessed 2026-11-17. CSS-only, reduced-motion/Lite static; keyboard focus and no-JS links preserved. No additional dependency or package-size cost.
+- Addition gate: recognizable Green Sound production metaphor, real event moment content, useful CTA, SSR-inline, zero new runtime JS/assets/tracking. Performance and aesthetic verdict **pending** final CI/screenshots; no Lighthouse claim.
+
 ## 2026-11-17 — V195 Contact review clarity
 - https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — reviewing user-entered data before final submission is a useful error-prevention pattern; here the website only prepares an external message and does not send.
 - https://webflow.com/blog/form-design — general form clarity and review principles, inspiration only; no code, template, imagery or branding copied, no reuse license inferred.
