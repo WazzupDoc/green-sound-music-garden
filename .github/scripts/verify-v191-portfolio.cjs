@@ -75,7 +75,13 @@ async function capture(page,label){
       assert.equal(await page.locator("iframe").count(),0,"Film selection must not autoplay");
       const categories=page.locator('.rs-video-library__filters button');
       await categories.filter({hasText:"Studio"}).click();
-      await page.waitForTimeout(120);
+      // URL filter + React selection are asynchronous; inspect the settled UI.
+      await page.waitForFunction(() => {
+        const pressed = Array.from(document.querySelectorAll(".rs-video-library__filters button"))
+          .some(button => button.textContent?.includes("Studio") && button.getAttribute("aria-pressed") === "true");
+        const chosen = document.querySelectorAll(".rs-video-library__item[aria-current=true]").length;
+        return pressed && chosen === 1;
+      }, undefined, {timeout:12000});
       assert.equal(await page.locator("iframe").count(),0);
       const selected=await page.locator('.rs-video-library__item[aria-current=true]').count();
       assert.equal(selected,1,"One current film after filter");
