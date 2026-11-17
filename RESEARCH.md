@@ -1,3 +1,6 @@
+## 2026-11-17 — GitHub Actions branch-filter coverage
+Source: https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchesbranches-ignore . Observation: branch filters control whether workflow runs; excluded `fix/v*` and `feat/v*` heads received no push CI, despite existing `design/v*` coverage. Adaptation: extend existing native YAML filters, no code copied, no package/license impact. Rejected: creating another workflow or disabling quality gates; both add duplication or weaken coverage. CI result remains pending.
+
 ## 2026-11-17 — Contact copy audit V186
 - Existing Contact source was inspected on V185; step label `SEND` risked implying an action not performed by the website. Adaptation: explicit external-app handoff and visitor confirmation, without dependencies or external design assets.
 - Reference for follow-up: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html (clear instructions); https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html (consistent user help). These URLs are research pointers; pages were not fetched in this execution, so no claim of verified findings.
