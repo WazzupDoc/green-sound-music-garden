@@ -38,7 +38,8 @@ describe("V161 original portfolio hero and gallery with V191 route-scoped film e
     expect(component).toContain('video.poster ?? ytThumb(video, "sd")');
     expect(component).toContain('className="gs161-film-thumb"');
     expect(component).toContain('<VideoLite key={chosen.id} video={chosen} />');
-    expect(component).toContain('aria-current={chosen?.id===video.id?"true":undefined}');
+    expect(component).toContain('aria-current={chosen?.id===video.id?"page":undefined}');
+    expect(component).toContain('data-current={chosen?.id===video.id?"true":undefined}');
     expect(route).toContain('filmIds.has(search["film"])');
     expect(css).not.toMatch(/url\(https?:|@import\s/);
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
