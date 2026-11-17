@@ -221,7 +221,7 @@ export function SiteHeader() {
             <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
               <ol className="gsm-nav-index__list" onKeyDown={onMenuKeyDown}>
                 {navigation.map((entry, index) => (
-                  <li key={entry.to} className="gsm-nav-index__entry">
+                  <li key={entry.to} className="gsm-nav-index__entry" data-preview={index === menuSelection ? "true" : "false"}>
                     <Link
                       to={entry.to}
                       onPointerEnter={() => setMenuSelection(index)}
