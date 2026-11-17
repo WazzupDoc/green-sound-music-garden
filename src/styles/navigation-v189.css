@@ -123,3 +123,15 @@ html[data-gs-performance="lite"] .gsm189-channel i,
 html[data-gs-performance="lite"] .atelier-header__nav .atelier-header__link::after {
   animation:none!important;transition:none!important;
 }
+
+/* QA refinement: the visual cue must follow keyboard/pointer preview, not
+   misleadingly keep the home route highlighted while describing Services. */
+.gsm-nav-index__entry[data-preview="false"] .gsm-nav-index__link--active:not(:hover):not(:focus-visible) {
+  background:transparent;color:#c6dfa9;
+}
+.gsm-nav-index__entry[data-preview="false"] .gsm-nav-index__link--active::after {transform:scaleY(0)}
+.gsm-nav-index__entry[data-preview="true"] .gsm-nav-index__link:not(:hover):not(:focus-visible) {
+  background:#cef0af1a;color:#edffe1;
+}
+.gsm-nav-index__entry[data-preview="true"] .gsm-nav-index__link::after {transform:scaleY(1)}
+.gsm-nav-index__entry[data-preview="true"] .gsm189-channel i {background:#ddfbb7}
