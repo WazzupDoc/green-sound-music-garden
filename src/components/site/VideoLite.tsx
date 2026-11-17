@@ -8,6 +8,7 @@ import type { Video } from "@/data/site";
  */
 export function VideoLite({ video, className = "", priority = false }: { video: Video; className?: string; priority?: boolean }) {
   const [active, setActive] = useState(false);
+  const [failedPoster, setFailedPoster] = useState<string | null>(null);
   const playButtonRef = useRef<HTMLButtonElement>(null);
   const stopButtonRef = useRef<HTMLButtonElement>(null);
   const restoreFocusRef = useRef(false);
@@ -57,9 +58,10 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
-            {video.poster ? (
+            {video.poster && failedPoster !== video.poster ? (
               <img
                 src={video.poster}
+                onError={() => setFailedPoster(video.poster ?? null)}
                 alt=""
                 width={1280}
                 height={720}
