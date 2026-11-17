@@ -31,7 +31,7 @@ const initialEvent = firstEvent();
 function Events() {
   const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
   const [cueRevision, setCueRevision] = useState(0);
-  // A re-selection deliberately replays one short cue; no timers, autoplay or audio.
+  // A re-selection deliberately replays one short cue on a user action only.
   // Keep the previous authentic photo on stage until the selected one is decoded.
   // This avoids an empty black frame when switching on slow mobile networks.
   const [visualEvent, setVisualEvent] = useState(initialEvent);
@@ -65,7 +65,7 @@ function Events() {
   }
 
   return <>
-    <style>{eventPosterCss + "\n" + categorySignalCss}</style>
+    <style>{eventPosterCss}</style><style>{categorySignalCss}</style>
     <div className="gs173-events gs198-events" data-hydrated={hydrated}>
       <section className="gs173-live" aria-labelledby="gs173-title">
         <div className="container-site gs173-live__container">
