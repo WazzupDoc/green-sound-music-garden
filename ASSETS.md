@@ -270,3 +270,7 @@ No new images, fonts, video, icons, music, packages or third-party code. Existin
 
 ## V135 — 2026-11-15
 No assets, dependencies, fonts, icons, music, photography or videos added. Existing authorized gallery reused.
+
+
+## V188 / 2026-11-17
+No new media, icons, fonts or packages. Service photos remain the existing project catalogue assets; their pre-existing provenance is unchanged. New layout CSS is original.
