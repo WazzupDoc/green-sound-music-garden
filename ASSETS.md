@@ -1,3 +1,6 @@
+## V195 / 2026-11-17
+No new images, fonts, icons, audio, external scripts or dependencies. Contact preview uses only user-entered values and existing CSS. No third-party license introduced.
+
 ## V185 / 2026-11-17
 No new assets, fonts, libraries, external code or imagery. Existing Green Sound media unchanged; no licensing changes.
 
