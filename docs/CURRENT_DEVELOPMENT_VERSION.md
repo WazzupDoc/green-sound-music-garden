@@ -1,3 +1,6 @@
+### V205 / 2026-11-17 — Portfolio stop focus after commit (DRAFT)
+- Branch `fix/v205-film-stop-focus-after-commit`, stacked on V204 PR #203. Replaces rAF focus scheduling with React layout effect guarded by an explicit stop flag; avoids focusing a poster button before it exists. Regression updated. CI exact-head and matched Chromium before/after **PENDING**. No main/deploy.
+
 ### V204 / 2026-11-17 — Portfolio film player stop (DRAFT)
 - Branch `feat/v204-film-player-stop-control`, stacked on V203 PR #202. Shared VideoLite now exposes an explicit accessible Stop control while a user-initiated YouTube iframe plays. Stop unmounts the iframe and restores keyboard focus to the poster Play button. No new packages, no autoplay before click, no homepage additions, no main/deploy changes.
 - Added source regression `src/components/site/video-lite-v204.test.ts`. Exact-head CI, browser 390/1440 matched screenshots, 6-width visual and keyboard QA **PENDING**; this is not a validated release.
