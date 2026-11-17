@@ -1,3 +1,9 @@
+## V194 / 2026-11-17 — Studio editorial console (DRAFT, unverified)
+- PR #193 https://github.com/WazzupDoc/green-sound-music-garden/pull/193 ; branch `design/v194-studio-editorial-console`; source UI SHA `ef0a9ba1420aa9f75a4c24c75030598290c39c4d`.
+- Studio-only visual change: asymmetric heading/signal console and process index with dark emerald contrast, mobile single-column fallback. Files: `src/components/site/ServicePage.tsx`, `src/styles/studio-editorial-v194.css`. No dependencies/assets/media; homepage untouched.
+- **NOT VERIFIED:** screenshots before/after 390/1440, six widths, CSS computed, TypeScript, SSR, Vitest, gzip and CI exact-head. Do not merge. PR currently reports mergeable=false; stacked base is unvalidated V193. No main/deploy.
+- Next: obtain actual Chromium artifacts and fix regressions before visual acceptance; next component Contact UX.
+
 
 ### V191 verified UI checkpoint / 2026-11-17
 - Source/UI commit 8a5d826848736f2e91c766297ca97ba22d85cb12 passed full exact-head QA: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041711279 (TypeScript, Vite/SSR, 47 suites/129 Vitest tests, client gzip budgets, six-width browser checks, Contact hydration and sitemap).

@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import "@/styles/studio-editorial-v194.css";
 import { ArrowUpRight } from "lucide-react";
 import { events, getService, type ServiceSlug } from "@/data/site";
 import { pageHead, breadcrumbLd, serviceLd, faqLd } from "@/lib/seo";
@@ -29,7 +30,7 @@ export function ServicePage({slug}:{slug:ServiceSlug}) {
       image={service.image}
       crumbs={[{name:"Acasă",to:"/"},{name:"Servicii",to:"/servicii"},{name:service.name}]}/>
     <ServiceSignature service={service} />
-    <section className="rs-service-detail" aria-labelledby="rs-service-detail-title">
+    <section className={slug === "studio-inregistrari" ? "rs-service-detail rs-studio-editorial" : "rs-service-detail"} aria-labelledby="rs-service-detail-title">
       <div className="container-site">
         <div className="rs-service-detail__header">
           <p>Mai multe despre serviciu</p>
