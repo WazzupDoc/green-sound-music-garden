@@ -1,3 +1,7 @@
+### V201 decoder QA clarification — 2026-11-17
+- An investigation of the WebP verification revealed the direct `Image().decode()` assertion was executed on an `about:blank` page, so the relative `/media/...` URL did **not** resolve to the local Vite site. The original AVIF decoder failure had the same test-origin bug; it is **not evidence that AVIF lacks Chromium support**. Corrected QA now navigates to `http://127.0.0.1:4175/evenimente` before decoding. Selected WebP asset remains preferred for conservative browser compatibility; no claim of AVIF incompatibility.
+- Actual screenshot evidence from the V201 partial workflow shows all 13 drawn icons visibly in the page, even though later test assertions failed. Need final exact-head, same-origin decode pass before release.
+
 ### V201 codec and quality gate update — 2026-11-17
 - Source boards user approved in chat now integrated into **one 45,888-byte `public/media/gs-category-illustrations-v201.webp`** (13 distinct cropped artwork cells / 1120×320 px), instead of the initial 29,919-byte AVIF. Real Chromium found AVIF decode error; removed that file and changed all CSS/test/QA expectations to WebP. Never claim AVIF screenshot success.
 - Route-specific UI art and existing native event/service links remain unchanged; full-motion only on explicit action; reduced-motion and Lite static. V200 shared CSS overflow fixed by removing unused V78/V79 prototype imports while preserving the files and active homepage V170 integrity test.
