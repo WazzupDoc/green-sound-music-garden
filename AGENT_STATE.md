@@ -1,3 +1,6 @@
+### V207 / 2026-11-17 — Third-party video privacy (DRAFT)
+- Rotation: embedded film privacy. Added `referrerPolicy="no-referrer"` to the click-loaded YouTube iframe, protecting page URLs on third-party requests; existing consent, Stop and focus restoration remain. Source assertion updated. This is NOT a visual redesign. No real browser before/after captures or exact-head CI yet. Next: event-detail CTA/focus and real Chromium screenshot verification. Main unchanged.
+
 ### V206 / 2026-11-17 — Event film privacy / playback clarity (DRAFT)
 - Rotation: event detail films. Visible privacy explanation now precedes video players: third-party YouTube loads only on Play and Stop is available. Region has labelled heading. No extra homepage sections, media or packages. Source regression added. Chromium 390/1440 before/after, six-width QA, exact-head TypeScript/Vitest/SSR/CI **NOT VERIFIED**. Next: event detail CTA/focus browser QA. Main unchanged.
 
