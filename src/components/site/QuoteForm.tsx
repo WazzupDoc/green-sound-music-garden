@@ -169,11 +169,16 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
               <span>{prepared.location || "De stabilit"}</span>
             </div>
           </div>
-          {prepared.services.length > 0 && (
+          {prepared.services.some(service => service !== ADVICE_SERVICE_LABEL) && (
             <div className="quote-preview__services">
               <small>SERVICII SELECTATE</small>
-              <div>{prepared.services.map((service) => <span key={service}>{service}</span>)}</div>
+              <div>{prepared.services.filter(service => service !== ADVICE_SERVICE_LABEL).map(service => <span key={service}>{service}</span>)}</div>
             </div>
+          )}
+          {prepared.services.includes(ADVICE_SERVICE_LABEL) && (
+            <p className="quote-preview__identity">
+              <strong>Recomandare solicitată:</strong> dorești și ajutor în alegerea serviciilor.
+            </p>
           )}
           <p className="quote-preview__identity">Solicitat de {prepared.name}</p>
         </div>
