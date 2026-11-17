@@ -1,3 +1,6 @@
+### V206 / 2026-11-17 — Event film privacy / playback clarity (DRAFT)
+- Rotation: event detail films. Visible privacy explanation now precedes video players: third-party YouTube loads only on Play and Stop is available. Region has labelled heading. No extra homepage sections, media or packages. Source regression added. Chromium 390/1440 before/after, six-width QA, exact-head TypeScript/Vitest/SSR/CI **NOT VERIFIED**. Next: event detail CTA/focus browser QA. Main unchanged.
+
 ### V205 / 2026-11-17 — Portfolio stop focus reliability (draft)
 - Zone: portfolio film controls. V204 scheduled focus with requestAnimationFrame after setState, which does not guarantee that React has committed the replacement poster button. V205 uses a pending-focus ref and useLayoutEffect after the active→inactive commit; no focus on initial mount. Updated source regression. Browser screenshots and CI exact-head pending; main unchanged. Next: event detail UX.
 
