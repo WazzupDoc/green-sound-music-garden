@@ -1,3 +1,6 @@
+### V206 / 2026-11-17 — Event film disclosure (DRAFT)
+- Branch `feat/v206-event-film-consent-clarity` stacked on V205 PR #204. Event detail film region now explains that playback is user-initiated, loads YouTube, and offers Stop. Accessible region label and source regression. Exact-head CI and real matched Chromium captures pending; do not merge or deploy.
+
 ### V205 / 2026-11-17 — Portfolio stop focus after commit (DRAFT)
 - Branch `fix/v205-film-stop-focus-after-commit`, stacked on V204 PR #203. Replaces rAF focus scheduling with React layout effect guarded by an explicit stop flag; avoids focusing a poster button before it exists. Regression updated. CI exact-head and matched Chromium before/after **PENDING**. No main/deploy.
 
