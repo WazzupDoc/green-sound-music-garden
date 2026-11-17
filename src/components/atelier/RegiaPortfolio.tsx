@@ -158,7 +158,7 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
   return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
     <div className="container-site">
       <div className="rs-video-library__top">
-        <div><p>Filmări publicate</p><h2 id="rs-video-library-title">Vezi și ascultă producțiile</h2><p role="status" aria-live="polite" aria-atomic="true">{chosen ? `Selectat: ${chosen.title} · ${selectedVideos.findIndex(video => video.id === chosen.id) + 1} din ${selectedVideos.length}` : "Nicio filmare în această categorie"}</p></div>
+        <div><p>Filmări publicate</p><h2 id="rs-video-library-title" tabIndex={-1}>Vezi și ascultă producțiile</h2><p role="status" aria-live="polite" aria-atomic="true">{chosen ? `Selectat: ${chosen.title} · ${selectedVideos.findIndex(video => video.id === chosen.id) + 1} din ${selectedVideos.length}` : "Nicio filmare în această categorie"}</p></div>
         <p>Filmările sunt încărcate de pe YouTube doar după ce apeși redare. Nu pornește nimic automat.</p>
       </div>
       <div role="group" className="rs-video-library__filters" aria-label="Filtrează videoclipurile">
