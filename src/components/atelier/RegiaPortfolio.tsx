@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useHydrated } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { images, videos, ytThumb, type ImageRef, type Video } from "@/data/site";
@@ -142,6 +142,7 @@ const videoList: Video[] = Object.values(videos);
 
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const navigate = useNavigate();
+  const hydrated = useHydrated();
   const [category,setCategory]=useState<string>("");
   const selectCategory = (tag:string) => {
     setCategory(tag);
@@ -171,7 +172,8 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
     event.preventDefault();
     links[next]?.focus();
   };
-  return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
+  return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title"
+    data-hydrated={hydrated ? "true" : "false"}>
     <div className="container-site">
       <div className="gs191-film__folio" aria-hidden="true"><span>GREEN SOUND MUSIC / ARHIVĂ VIZUALĂ</span><span>02 — FILM / PLAYLIST</span></div>
       <div className="rs-video-library__top">
