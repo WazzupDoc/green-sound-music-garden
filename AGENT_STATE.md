@@ -1,3 +1,6 @@
+## V183 / 2026-11-17 — Contact clipboard async lifecycle (DRAFT)
+Area: Contact preview. Defect: clipboard permission prompt may resolve after visitor chooses Edit and later re-enters preview, overwriting the new state; rapid repeat clicks before React render could also issue duplicate writes. Fix: generation-token invalidation and synchronous pending ref. Evidence: source commit only; CI, browser and screenshots pending. No main/deploy. Next: /evenimente detail design/browser audit.
+
 ## V181 / 2026-11-17 — Contact preview advice semantics (DRAFT)
 Zone: Contact preview only. Separate the optional advice request from the real selected services in the preview ticket; previously it appeared as a service, contradicting V180 counter. Existing `ADVICE_SERVICE_LABEL` used; no new asset/dependency or automatic sending. Source changed, browser matched screenshots, unit/SSR/TypeScript and CI exact-head not yet verified. Next: preview keyboard/edit and clipboard denial browser audit. No main/deploy.
 
