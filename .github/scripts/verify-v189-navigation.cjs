@@ -60,6 +60,8 @@ async function commonFocus(page, dialog, label) {
       await before.page.close();
       const after = await openMenu(browser, "http://127.0.0.1:4175/", width);
       await commonFocus(after.page, after.dialog, "after-v189-" + width);
+      assert.equal(await after.dialog.locator('[data-preview="true"]').count(), 1);
+      assert.equal(await after.dialog.locator('[data-preview="true"] .gsm-nav-index__link').innerText().then(s => s.includes("Servicii")), true);
       const bars = after.dialog.locator(".gsm189-channel");
       assert.equal(await bars.count(), 6, "V189 must show a signal meter per real route");
       if (width === 390) {
