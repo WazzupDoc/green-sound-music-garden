@@ -42,7 +42,7 @@ async function overflow(page,where){
         assert.equal(await page.locator(".gs201-events .gs201-cue__art").count(),5);
         const selected=page.locator(".gs173-setlist__item").nth(4).locator(".gs201-cue");
         const bgi=await selected.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).backgroundImage);
-        assert.match(bgi,/gs-category-illustrations-v201\.avif/);
+        assert(bgi.includes("gs-category-illustrations-v201.avif"),"the real atlas must be rendered");
         assert.equal(await selected.getAttribute("data-play"),"true");
         const animation=await selected.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).animationName);
         assert.equal(animation,"none","reduce motion must not animate illustration");
@@ -51,7 +51,7 @@ async function overflow(page,where){
         assert.equal(await page.locator(".gs173-setlist__item").nth(3).getAttribute("data-active"),"true");
         assert.equal(await page.locator(".gs173-setlist__select").nth(3).evaluate(el=>document.activeElement===el),true);
         await page.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
-        assert.match(await selected.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).backgroundImage),/gs-category-illustrations-v201\\.avif/);
+        assert((await selected.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).backgroundImage)).includes("gs-category-illustrations-v201.avif"),"Lite keeps the generated image");
         assert.equal(await selected.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).animationName),"none","Lite artwork remains beautiful but static");
       }
       assert.deepEqual(errors,[],"JS errors "+phase+" "+width);
@@ -77,7 +77,7 @@ async function overflow(page,where){
     assert.notEqual(hoverTransform,"none","DJ artwork reacts to hover in full-motion");
     await dj.screenshot({path:out+"/after-dj-hover-"+width+".png",animations:"allow"});
     await page.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
-    assert.match(await dj.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).backgroundImage),/gs-category-illustrations-v201\\.avif/);
+    assert((await dj.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).backgroundImage)).includes("gs-category-illustrations-v201.avif"),"services Lite keeps the generated image");
     assert.equal(await dj.locator(".gs201-cue__art").evaluate(el=>getComputedStyle(el).animationName),"none");
     await page.close();
   }
