@@ -1,3 +1,7 @@
+### 2026-11-17 — V207 embedded media privacy
+- MDN `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#referrerpolicy`: native iframe `referrerpolicy` supports `no-referrer` to omit the Referer header. Adapted as one HTML attribute in existing click-to-load YouTube iframe; no external code or new dependency.
+- MDN `https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy`: browser-native privacy policy, rather than JavaScript interception. Rejected new video libraries and automatic third-party embedding due to bundle cost and consent regression. Runtime verification pending.
+
 ### 2026-11-17 — V206 event film consent disclosure
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — iframe embeds third-party content; contextual notice before activation helps informed interaction. Adapted original Romanian copy, not external code.
 - https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear instructions for interactive elements; applied explanatory text and labelled film region. This does not assert WCAG compliance.
