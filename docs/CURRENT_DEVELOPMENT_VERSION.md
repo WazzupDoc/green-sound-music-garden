@@ -1,3 +1,6 @@
+### V210 / 2026-11-18 — Broken film poster fallback (DRAFT)
+- Branch `fix/v210-film-poster-load-fallback` stacked on V209 PR #208. Configured first-party posters now gracefully fall back to the local dark play surface on image load error, instead of displaying a broken image. Source assertion updated. No dependency, new media or homepage section. CI exact-head and Chromium screenshots pending; do not merge or publish.
+
 ### V209 / 2026-11-18 — Film play focus continuity (DRAFT)
 - Branch `fix/v209-film-play-focus-continuity` stacked on V208 PR #207. Shared VideoLite focuses the accessible Stop button after explicit Play activates the iframe; Stop still restores focus to Play. Source regression extended. No new dependency, third-party asset or homepage change. Exact-head CI / Chromium screenshots pending; main untouched.
 
