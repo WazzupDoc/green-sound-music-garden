@@ -1,3 +1,7 @@
+## V195 / 2026-11-17 — Contact review ticket (DRAFT)
+- Branch `fix/v195-contact-preview-contact-facts`, based on V194 PR #193. Contact preview now displays the actual phone, optional email and guest estimate before opening an external sending app. Values already entered by the visitor; no new collection, sending, API or dependencies. Source commit `b5c5acf23898d9bcfce2e42b4ec314ee31917c34`.
+- **QA NOT VERIFIED:** matched real Chromium 390/1440 before-after, 360/430/768/1920 regression, form/clipboard/reduced-motion, TypeScript, SSR, Vitest, gzip, CI exact-head. No main/deploy. Next: real browser validation and event detail rotation.
+
 ## V194 / 2026-11-17 — Studio editorial console (DRAFT, unverified)
 - PR #193 https://github.com/WazzupDoc/green-sound-music-garden/pull/193 ; branch `design/v194-studio-editorial-console`; source UI SHA `ef0a9ba1420aa9f75a4c24c75030598290c39c4d`.
 - Studio-only visual change: asymmetric heading/signal console and process index with dark emerald contrast, mobile single-column fallback. Files: `src/components/site/ServicePage.tsx`, `src/styles/studio-editorial-v194.css`. No dependencies/assets/media; homepage untouched.
