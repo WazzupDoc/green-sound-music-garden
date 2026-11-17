@@ -14,6 +14,8 @@ describe("V191 film cinema registry", () => {
     expect(portfolio).toContain('onClick={()=>selectCategory(item.tag)}');
     expect(portfolio).toContain('<VideoLite key={chosen.id} video={chosen} />');
     expect(portfolio).toContain('data-selected-film={chosen?.id ?? ""}');
+    expect(portfolio).toContain('data-current={chosen?.id===video.id?"true":undefined}');
+    expect(portfolio).toContain('aria-current={chosen?.id===video.id?"page":undefined}');
     expect(portfolio).not.toContain('<video autoPlay');
     expect(route).toContain('filmIds.has(search["film"])');
   });
