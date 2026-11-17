@@ -13,7 +13,9 @@ async function openPortfolio(browser, port, width, reducedMotion="reduce"){
   page.on("pageerror",error=>errors.push(error.message));
   const response=await page.goto("http://127.0.0.1:"+port+"/portofoliu",{waitUntil:"domcontentloaded",timeout:50000});
   assert.equal(response.status(),200,"Portfolio HTTP 200 at "+port);
-  await page.locator('#portfolio-films[data-hydrated="true"]').waitFor({timeout:25000});
+  // V190 baseline has no hydration marker; V191 candidate adds one for interaction QA.
+  if (port === 4175) await page.locator('#portfolio-films[data-hydrated="true"]').waitFor({timeout:25000});
+  else await page.locator("#portfolio-films").waitFor({timeout:25000});
   await page.evaluate(async()=>{await document.fonts.ready});
   assert.equal(await page.locator("main h1").count(),1);
   const film=page.locator("#portfolio-films");
