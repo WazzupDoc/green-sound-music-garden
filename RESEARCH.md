@@ -1,3 +1,8 @@
+## 2026-11-17 — Contact copy audit V186
+- Existing Contact source was inspected on V185; step label `SEND` risked implying an action not performed by the website. Adaptation: explicit external-app handoff and visitor confirmation, without dependencies or external design assets.
+- Reference for follow-up: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html (clear instructions); https://www.w3.org/WAI/WCAG22/Understanding/consistent-help.html (consistent user help). These URLs are research pointers; pages were not fetched in this execution, so no claim of verified findings.
+- Rejected: fake success state or automatic-send language; this would misrepresent the actual integration. No third-party code or media integrated.
+
 ## 2026-11-17 — V185 event-service navigation
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — retained real fragment navigation for no-JS and browser history; original implementation, no code copied.
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — focus({preventScroll:true}) keeps keyboard focus at the destination; original implementation.

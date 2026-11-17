@@ -82,7 +82,7 @@ function Contact() {
             <ol className="director-contact-signal__steps">
               <li><span>01 / INPUT</span><strong>Spui ce pregătești</strong></li>
               <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
-              <li><span>03 / SEND</span><strong>Alegi tu trimiterea</strong></li>
+              <li><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></li>
             </ol>
             <a href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
               // Keep the native fragment navigation while moving keyboard focus to the form heading.
