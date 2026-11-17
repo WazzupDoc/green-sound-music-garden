@@ -40,7 +40,7 @@ jobs:
             done
             if [ "$ready" -ne 1 ]; then cat /tmp/v200.log /tmp/v201.log; exit 1; fi
           done
-      - name: Actual same-state mobile and desktop screenshots / all six widths / AVIF decode
+      - name: Actual same-state mobile and desktop screenshots / all six widths / WebP decode
         run: NODE_PATH=/tmp/gs-v201-playwright/node_modules node .github/scripts/verify-v201-category-illustrations.cjs
       - name: Upload real Chromium captures
         if: always()
