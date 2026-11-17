@@ -88,12 +88,13 @@ async function capture(page,label){
       await page.waitForFunction(() => {
         const pressed = Array.from(document.querySelectorAll(".rs-video-library__filters button"))
           .some(button => button.textContent?.includes("Studio") && button.getAttribute("aria-pressed") === "true");
-        const chosen = document.querySelectorAll(".rs-video-library__item[aria-current=true]").length;
+        const chosen = document.querySelectorAll(".rs-video-library__item[data-current="true"]").length;
         return pressed && chosen === 1;
       }, undefined, {timeout:12000});
       assert.equal(await page.locator("iframe").count(),0);
-      const selected=await page.locator('.rs-video-library__item[aria-current=true]').count();
+      const selected=await page.locator('.rs-video-library__item[data-current="true"]').count();
       assert.equal(selected,1,"One current film after filter");
+      assert.equal(await page.locator('.rs-video-library__item[data-current="true"]').getAttribute("aria-current"),"page","Selected film must expose native current-page semantics");
       const noMotion=await page.locator(".gs191-film__track-copy").first().evaluate(el=>getComputedStyle(el).animationName);
       assert.equal(noMotion,"none");
       assert.deepEqual(errors,[],"Unexpected JS errors "+width);
