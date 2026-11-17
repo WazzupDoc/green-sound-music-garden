@@ -1,3 +1,6 @@
+### V208 / 2026-11-18 — Video poster third-party request guard (DRAFT)
+- Rotation: embedded video privacy. Existing fallback thumbnail fetched `i.ytimg.com` before user pressed Play, contradicting click-to-load privacy claim. Replaced external fallback with local dark poster surface, retaining any configured first-party poster, Play label, accessible title and video controls. Added source regression. This is a privacy fix with a visual fallback change, not a verified redesign. Exact-head CI and real Chromium matched 390/1440 screenshots pending; main unchanged. Next rotation: event detail CTA/focus.
+
 ### V207 / 2026-11-17 — Third-party video privacy (DRAFT)
 - Rotation: embedded film privacy. Added `referrerPolicy="no-referrer"` to the click-loaded YouTube iframe, protecting page URLs on third-party requests; existing consent, Stop and focus restoration remain. Source assertion updated. This is NOT a visual redesign. No real browser before/after captures or exact-head CI yet. Next: event-detail CTA/focus and real Chromium screenshot verification. Main unchanged.
 
