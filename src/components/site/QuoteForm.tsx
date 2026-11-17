@@ -97,6 +97,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     register,
     handleSubmit,
     setFocus,
+    reset,
     control,
     setValue,
     formState: { errors, isSubmitting },
@@ -258,6 +259,22 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         </p>
         <button className="quote-preview__edit" type="button" onClick={() => { ++copyGenerationRef.current; copyPendingRef.current = false; setCopyStatus("idle"); setPrepared(null); }}>
           <PencilLine className="size-4" aria-hidden /> Modifică detaliile
+        </button>
+        <button className="quote-preview__discard" type="button" onClick={() => {
+          // Explicit privacy action: remove the visitor's details from React
+          // state and RHF's retained form values, including URL-prefilled data.
+          // Do not reset to the original defaults (which may contain a brief).
+          ++copyGenerationRef.current;
+          copyPendingRef.current = false;
+          setCopyStatus("idle");
+          reset({
+            name: "", phone: "", email: "", eventType: undefined,
+            date: "", location: "", guests: "", services: [],
+            message: "", consent: undefined as unknown as true, website: "",
+          });
+          setPrepared(null);
+        }}>
+          Renunță și șterge datele din formular
         </button>
       </div>
     );

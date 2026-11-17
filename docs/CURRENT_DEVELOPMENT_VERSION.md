@@ -1,3 +1,6 @@
+### V203 / 2026-11-17 — Contact discard private quote (DRAFT)
+- Branch `feat/v203-contact-discard-private-brief`, stacked on V202 PR #201. A distinct action on the prepared quote lets visitors discard the draft and clear retained form values instead of merely returning to edit. No automatic send, no new package, homepage unchanged. Source regression added; TypeScript/SSR/Vitest and Chromium matched screenshots **PENDING**.
+
 ### V202 / 2026-11-17 — mobile→desktop menu focus handoff (DRAFT)
 - Branch `fix/v202-menu-desktop-focus-handoff`, stacked on V201 PR #200. Fix in `SiteHeader.tsx`: on crossing 1024px with open modal, restore keyboard focus to visible active desktop nav link rather than now-hidden mobile opener. Preserve Escape/ordinary close behaviour.
 - Added source regression test `v202-menu-focus.test.ts`; no dependency, homepage, photo or main changes. CI exact-head and real browser screenshots **PENDING**. PR and SHA in GitHub branch history.
