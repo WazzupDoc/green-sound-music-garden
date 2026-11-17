@@ -1,3 +1,25 @@
+### V198 verified source checkpoint / 2026-11-17
+- UI/test SHA `501026b89e2b813de97fd127e5912340b020dcbf`: full CI pass https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087716295 ; real matched Chromium pass https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087711567 ; PNG artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087711567/artifacts/14329958280. Actual before/after inspected 390+1440, 6-width regression, event click/keyboard, DJ hover, Lite/reduce/no-JS all pass.
+- Remaining: owner design approval, physical device screen-reader review, deployment/CD inspection and backup/rollback before any permitted main integration. PR #19 remains conflicting and unrelated.
+- **Next rotation /contact**: multi-service prefill, preview/edit, clipboard accepted/denied, mobile focus, real message handoff without auto-send; then footer/SEO. Do not loop back to hero.
+
+## V198 / 2026-11-17 — Category discovery / original animated signals (PR #197 DRAFT)
+**Primary intervention area:** /evenimente selectable setlist and related /servicii discovery rows. Base validated V197 UI SHA `45749fb6391f7ea92d9021f72fc3208094536554`. Branch `design/v198-category-signature-cues`; PR https://github.com/WazzupDoc/green-sound-music-garden/pull/197. 5 event + 8 service first-party vector motifs; click/keyboard selection replays distinct finite animation, service hover/focus plays genre-specific cue; SSR native links and existing photo + Contact remain. No homepage change.
+**Files:** `src/components/site/CategorySignal.tsx`, `src/styles/category-signature-v198.css`, `src/routes/evenimente.index.tsx`, `src/routes/servicii.tsx`, `src/components/site/category-signal-v198.test.tsx`, `.github/scripts/verify-v198-category-cues.cjs`, `.github/workflows/v198-category-cues-visual.yml`.
+**Proof gate:** real Chromium same /evenimente selected Petreceri at 390/1440 before V197/after V198; six-width regression; animated full-motion frames on click + DJ hovered at /servicii; Lite/reduced-motion, keyboard, no-JS, decoded real imagery. Full exact-head TS, SSR, Vitest, gzip, sitemap/contact CI. Screenshots/CI **PENDING** until confirmed. No scores invented.
+
+| Component / page | Issue / severity | Progress and evidence | Next |
+| --- | --- | --- | --- |
+| /evenimente category selection | P1 generic unthemed selection reaction | V198 distinct SVG cues + replay click/keyboard, actual screenshot pending | QA first |
+| /servicii category directory incl DJ | P1 list generic, few symbols | V198 unique service SVG + DJ record hover/focus, screenshot pending | QA first |
+| /evenimente/$slug | P1 utilitarian rundown | V197 validated editorial timeline, screenshots available | Follow-up event type and Contact |
+| /contact guided brief | P1 prefill/clipboard denial QA | V195 draft inherited, not claimed verified | **NEXT PRIMARY ZONE** |
+| /portfolio | P2 accessible film archive | V191 prior validated UI SHA | Later rotation |
+| /studio | P1 visual acceptance | V194 draft, screenshots pending | Later rotation |
+| Homepage | P1 owner design approval, clean contract | Untouched, 3 chapters/8 services, 3 genuine films, single CTA | Owner acceptance |
+| About/footer/privacy | P2 aesthetic/accuracy | No new change | After Contact |
+| SSR/SEO/404/security | P1 if regressions | Existing full QA pending exact V198 HEAD | Complete before release |
+
 ## V197 / 2026-11-17 — Rotating full-site component audit (draft PR #196)
 Latest planned area: event detail timeline /evenimente/$slug. Real source change: route-scoped SSR CSS, asymmetric intro + oversized editorial sequence, legible service CTA; no added cards or fake stats. Evidence gate: Chromium matched 390/1440 and six-width QA workflow `v197-event-rundown-visual.yml`; exact-head results must be checked. First run had a test fixture mismatch and focus-timing assertion which were revised without removing quality gates. No main/deploy.
 

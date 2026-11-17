@@ -1,0 +1,277 @@
+/* V198 — Green Sound Signature Cues / original first-party vector microinteractions.
+ * One shared visual language across event selection and service discovery.
+ * No video/audio playback, timers, external effects or new dependencies. */
+.gs198-cue {
+  display: inline-grid;
+  width: 76px;
+  height: 76px;
+  place-items: center;
+  flex: none;
+  color: #b7ff87;
+  background: #183626;
+  border: 1px solid #567960;
+  border-radius: 3px 17px 3px 17px;
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+}
+.gs198-cue__drawing {
+  width: 88%;
+  height: 88%;
+  overflow: visible;
+  display: block;
+  position: relative;
+  transform-origin: center;
+}
+.gs198-cue__confetti > *, .gs198-cue__rings, .gs198-cue__twinkle,
+.gs198-cue__cradle, .gs198-cue__beam, .gs198-cue__faders,
+.gs198-cue__record, .gs198-cue__needle, .gs198-cue__strings,
+.gs198-cue__sound, .gs198-cue__smoke, .gs198-cue__wave,
+.gs198-cue__rec, .gs198-cue__welcome, .gs198-cue__stars,
+.gs198-cue__ribbon, .gs198-cue__party-core {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.gs198-events .gs173-setlist__item {
+  min-height: 234px;
+  isolation: isolate;
+}
+.gs198-events .gs173-setlist__select {
+  min-height: 186px;
+  gap: 10px;
+  padding-block: 15px 12px;
+  justify-content: space-between;
+}
+.gs198-events .gs173-setlist__name {
+  min-height: 2.3em;
+  display: block;
+  font-size: clamp(1.04rem, 1.45vw, 1.45rem);
+  line-height: 1.12;
+  font-weight: 740;
+  letter-spacing: -.04em;
+}
+.gs198-events .gs173-setlist__beat {
+  display: none;
+}
+.gs198-events .gs173-setlist__item[data-active=true] {
+  background: #1a3d28;
+}
+.gs198-events .gs173-setlist__item[data-active=true] .gs198-cue {
+  color: #e0ffc7;
+  background: #244d32;
+  border-color: #b7ff87;
+}
+.gs198-events .gs173-setlist__item:has(.gs173-setlist__select:focus-visible) {
+  z-index: 2;
+}
+.gs198-events .gs173-setlist__route {
+  border-top: 1px solid #386047;
+  margin-inline: clamp(13px, 1.5vw, 23px);
+  padding: 8px 0 14px;
+  min-height: 48px;
+  transition: color 170ms ease;
+}
+.gs198-services .rs-service-index__group li a {
+  grid-template-columns: 2.2rem 64px minmax(0,1fr) auto;
+  gap: 0 1rem;
+  padding-block: clamp(1.1rem, 2vw, 1.55rem);
+  min-height: 110px;
+}
+.gs198-services .rs-service-index__group li a > .v91-service-row-index {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.gs198-services .rs-service-index__group li a > .gs198-cue {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 61px;
+  height: 61px;
+  align-self: center;
+  color: #c5ffad;
+  border-color: #6c8c71;
+}
+.gs198-services .rs-service-index__group li a > strong {
+  grid-column: 3;
+  grid-row: 1;
+}
+.gs198-services .rs-service-index__group li a > span:not(.v91-service-row-index):not(.gs198-cue) {
+  grid-column: 3;
+  grid-row: 2;
+  max-width: 50ch;
+}
+.gs198-services .rs-service-index__group li a > svg:last-child {
+  grid-column: 4;
+  grid-row: 1 / span 2;
+}
+.gs198-services .rs-service-index__group li a:hover .gs198-cue,
+.gs198-services .rs-service-index__group li a:focus-visible .gs198-cue {
+  border-color: #b7ff87;
+  background: #22533a;
+}
+@media (max-width: 780px) {
+  .gs198-events .gs173-setlist {
+    grid-auto-columns: clamp(175px, 42vw, 220px);
+  }
+  .gs198-events .gs173-setlist__select {
+    min-height: 171px;
+    padding-block: 14px 10px;
+  }
+  .gs198-events .gs173-setlist__item { min-height: 221px; }
+  .gs198-events .gs198-cue { width: 70px; height: 70px; }
+}
+@media (max-width: 480px) {
+  .gs198-services .rs-service-index__group li a {
+    grid-template-columns: 1.3rem 49px minmax(0,1fr) 20px;
+    column-gap: 9px;
+    min-height: 100px;
+    padding-inline: 4px;
+  }
+  .gs198-services .rs-service-index__group li a > .gs198-cue { width: 48px; height: 48px; }
+  .gs198-services .rs-service-index__group li a > strong { font-size: 1.14rem; }
+  .gs198-services .rs-service-index__group li a > span:not(.v91-service-row-index):not(.gs198-cue) {
+    font-size: .78rem;
+    line-height: 1.5;
+  }
+}
+/* Only visible feedback to explicit hover/focus/selection; never autoplay.
+ * All motion is transform/opacity with finite duration, compositor friendly. */
+@keyframes gs198-party-burst {
+  0% { transform: translate(0, 7px) scale(.35) rotate(-14deg); opacity: .15; }
+  55% { transform: translate(-7px, -8px) scale(1.35) rotate(12deg); opacity: 1; }
+  100% { transform: translate(0, 0) scale(1) rotate(0); opacity: .85; }
+}
+@keyframes gs198-party-burst-alt {
+  0% { transform: translate(0, 5px) scale(.35) rotate(12deg); opacity: .2; }
+  60% { transform: translate(9px, -6px) scale(1.25) rotate(-24deg); opacity: 1; }
+  100% { transform: none; opacity: .85; }
+}
+@keyframes gs198-party-pop {
+  0% { transform: scale(.85) rotate(-12deg); }
+  60% { transform: scale(1.12) rotate(8deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes gs198-record-turn {
+  from { transform: rotate(0); }
+  to { transform: rotate(110deg); }
+}
+@keyframes gs198-needle-cue {
+  0% { transform: rotate(-22deg); }
+  75% { transform: rotate(3deg); }
+  100% { transform: rotate(0); }
+}
+@keyframes gs198-beam-sweep-left {
+  0% { transform: rotate(-20deg) scaleY(.7); opacity: .35; }
+  65% { transform: rotate(9deg) scaleY(1.14); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes gs198-beam-sweep-right {
+  0% { transform: rotate(23deg) scaleY(.7); opacity: .3; }
+  65% { transform: rotate(-12deg) scaleY(1.18); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes gs198-ring-clink {
+  0% { transform: scale(.75) rotate(-9deg); }
+  55% { transform: scale(1.16) rotate(6deg); }
+  100% { transform: none; }
+}
+@keyframes gs198-cradle-rock {
+  0% { transform: rotate(-9deg); }
+  50% { transform: rotate(7deg); }
+  100% { transform: rotate(0); }
+}
+@keyframes gs198-faders-mix {
+  0% { transform: translateY(10px); opacity: .4; }
+  50% { transform: translateY(-7px); opacity: 1; }
+  100% { transform: none; }
+}
+@keyframes gs198-wave-signal {
+  0% { transform: scaleY(.45); }
+  45% { transform: scaleY(1.22); }
+  100% { transform: scaleY(1); }
+}
+@keyframes gs198-sound-pulse {
+  0% { transform: scale(.74); opacity: .25; }
+  70% { transform: scale(1.18); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes gs198-star-spark {
+  0% { transform: scale(.6) rotate(-12deg); opacity: .3; }
+  70% { transform: scale(1.22) rotate(12deg); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@keyframes gs198-ribbon-sway {
+  0% { transform: skewX(-9deg) translateY(4px); }
+  65% { transform: skewX(5deg) translateY(-3px); }
+  100% { transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-gs-performance="lite"]) .gs198-events .gs173-setlist__select .gs198-cue,
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a .gs198-cue {
+    transition: border-color 180ms ease, background-color 180ms ease, transform 220ms cubic-bezier(.18,.8,.2,1);
+  }
+  html:not([data-gs-performance="lite"]) .gs198-events .gs173-setlist__select:is(:hover,:focus-visible) .gs198-cue,
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue {
+    transform: translateY(-5px) rotate(-3deg);
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="petreceri-private"] .gs198-cue__party-core {
+    animation: gs198-party-pop 560ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"] .gs198-cue__confetti > :nth-child(odd) {
+    animation: gs198-party-burst 740ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"] .gs198-cue__confetti > :nth-child(even) {
+    animation: gs198-party-burst-alt 780ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="nunti"] .gs198-cue__rings {
+    animation: gs198-ring-clink 620ms cubic-bezier(.16,.9,.2,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="botezuri"] .gs198-cue__cradle {
+    animation: gs198-cradle-rock 760ms ease-in-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="evenimente-corporate"] .gs198-cue__faders {
+    animation: gs198-faders-mix 640ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="concerte-festivaluri"] .gs198-cue__beam--left {
+    animation: gs198-beam-sweep-left 700ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-cue[data-play="true"][data-kind="concerte-festivaluri"] .gs198-cue__beam--right {
+    animation: gs198-beam-sweep-right 700ms cubic-bezier(.2,.8,.2,1) both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue[data-kind="dj-mc"] .gs198-cue__record {
+    animation: gs198-record-turn 740ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue[data-kind="dj-mc"] .gs198-cue__needle {
+    animation: gs198-needle-cue 740ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__strings,
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__wave {
+    animation: gs198-wave-signal 570ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__sound,
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__smoke {
+    animation: gs198-sound-pulse 670ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__stars,
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__welcome {
+    animation: gs198-star-spark 650ms ease-out both;
+  }
+  html:not([data-gs-performance="lite"]) .gs198-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs198-cue__ribbon {
+    animation: gs198-ribbon-sway 650ms ease-out both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs198-events .gs198-cue *, .gs198-services .gs198-cue *,
+  .gs198-events .gs198-cue, .gs198-services .gs198-cue {
+    animation: none !important; transition: none !important; transform: none !important;
+  }
+}
+html[data-gs-performance="lite"] .gs198-events .gs198-cue *,
+html[data-gs-performance="lite"] .gs198-services .gs198-cue *,
+html[data-gs-performance="lite"] .gs198-events .gs198-cue,
+html[data-gs-performance="lite"] .gs198-services .gs198-cue {
+  animation: none !important; transition: none !important; transform: none !important;
+}
+@media (forced-colors: active) {
+  .gs198-cue { border: 1px solid CanvasText; color: CanvasText; background: Canvas; }
+  .gs198-events .gs173-setlist__item[data-active=true] .gs198-cue { border: 2px solid Highlight; color: Highlight; }
+}

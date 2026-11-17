@@ -1,4 +1,6 @@
 import serviceIndexEditorialCss from "@/styles/service-index-editorial-v91.css?inline";
+import categorySignalCss from "@/styles/category-signature-v198.css?inline";
+import { CategorySignal } from "@/components/site/CategorySignal";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { services, images, type ServiceSlug } from "@/data/site";
@@ -18,11 +20,11 @@ export const Route=createFileRoute("/servicii")({
 });
 function Services(){
  return <>
-  <style>{serviceIndexEditorialCss}</style>
+  <style>{serviceIndexEditorialCss + "\n" + categorySignalCss}</style>
   <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
     lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
     image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
-  <section className="rs-service-index" aria-labelledby="rs-services-title">
+  <section className="rs-service-index gs198-services" aria-labelledby="rs-services-title">
    <div className="container-site">
     <div className="rs-service-index__lead"><p>Oferta Green Sound Music</p><h2 id="rs-services-title">Ce putem pregăti</h2></div>
     {groups.map((group,index)=>(
@@ -35,7 +37,9 @@ function Services(){
         const service=services.find(item=>item.slug===slug)!;
         return <li key={service.slug}>
           <Link to={`/${service.slug}`} viewTransition>
-            <span className="v91-service-row-index" aria-hidden="true">{String(group.slugs.indexOf(slug)+1).padStart(2,"0")}</span><strong>{service.name}</strong>
+            <span className="v91-service-row-index" aria-hidden="true">{String(group.slugs.indexOf(slug)+1).padStart(2,"0")}</span>
+            <CategorySignal kind={service.slug} />
+            <strong>{service.name}</strong>
             <span>{service.short}</span>
             <ArrowUpRight size={20} aria-hidden />
           </Link>
