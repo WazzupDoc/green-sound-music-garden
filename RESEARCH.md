@@ -1,3 +1,6 @@
+### 2026-11-17 / V202 navigation focus
+- [MDN HTMLDialogElement.close](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) and [MDN matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia): native dialog close and media-query breakpoint. Adapted native event/focus flow, no copied source or dependency. Rejected a timeout-based focus fix as nondeterministic. CSS-driven desktop link focus follows actual dialog close.
+
 ### V201 decoder QA clarification — 2026-11-17
 - An investigation of the WebP verification revealed the direct `Image().decode()` assertion was executed on an `about:blank` page, so the relative `/media/...` URL did **not** resolve to the local Vite site. The original AVIF decoder failure had the same test-origin bug; it is **not evidence that AVIF lacks Chromium support**. Corrected QA now navigates to `http://127.0.0.1:4175/evenimente` before decoding. Selected WebP asset remains preferred for conservative browser compatibility; no claim of AVIF incompatibility.
 - Actual screenshot evidence from the V201 partial workflow shows all 13 drawn icons visibly in the page, even though later test assertions failed. Need final exact-head, same-origin decode pass before release.
