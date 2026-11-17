@@ -1,3 +1,6 @@
+### V200 / 2026-11-17 — Navigation viewport recovery (draft, QA pending)
+- Branch `design/v200-mobile-menu-viewport-recovery` based on V199. An open mobile native dialog now closes when viewport enters desktop layout (1024px breakpoint). CI and matched screenshots pending; no main merge/deployment.
+
 ### V198 real Chromium & QA checkpoint — 2026-11-17
 - UI/test source SHA `501026b89e2b813de97fd127e5912340b020dcbf`.
 - **PASS** full TypeScript/SSR/Vitest/gzip/architecture/responsive browser/Contact hydration/sitemap workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087716295 at UI SHA, after resolving existing V173 CSS inline contract and waiting for React hydration in the visual test.
