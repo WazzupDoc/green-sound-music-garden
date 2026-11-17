@@ -1,3 +1,6 @@
+### V209 / 2026-11-18 — Film keyboard focus on Play (DRAFT)
+- Rotation: portfolio/video keyboard accessibility. Play unmounted the focused button and mounted an iframe plus Stop without moving focus; added a layout-effect handoff to the visible Stop button. Existing Stop→Play focus restoration preserved. Source regression added. Exact-head CI and matched Chromium screenshots pending; main unchanged. Next: event detail CTA and browser QA.
+
 ### V208 / 2026-11-18 — Video poster third-party request guard (DRAFT)
 - Rotation: embedded video privacy. Existing fallback thumbnail fetched `i.ytimg.com` before user pressed Play, contradicting click-to-load privacy claim. Replaced external fallback with local dark poster surface, retaining any configured first-party poster, Play label, accessible title and video controls. Added source regression. This is a privacy fix with a visual fallback change, not a verified redesign. Exact-head CI and real Chromium matched 390/1440 screenshots pending; main unchanged. Next rotation: event detail CTA/focus.
 

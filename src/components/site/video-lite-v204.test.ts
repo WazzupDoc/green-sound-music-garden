@@ -25,6 +25,11 @@ describe("V204 explicit film stop control", () => {
     expect(source).toContain("ref={playButtonRef}");
     expect(source).toContain("Oprește filmarea:");
   });
+  it("moves focus to the visible stop button after play mounts the iframe", () => {
+    expect(source).toContain("const stopButtonRef = useRef<HTMLButtonElement>(null)");
+    expect(source).toContain("if (active) stopButtonRef.current?.focus()");
+    expect(source).toContain("ref={stopButtonRef}");
+  });
   it("preserves descriptive title, native buttons and no automatic playback before click", () => {
     expect(source).toContain("title={video.title}");
     expect(source).toContain('type="button"');
