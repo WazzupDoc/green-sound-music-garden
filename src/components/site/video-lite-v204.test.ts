@@ -7,7 +7,9 @@ describe("V204 explicit film stop control", () => {
   it("does not mount a third-party iframe before visitor consent", () => {
     expect(source).toContain("{active ? (");
     expect(source).toContain("youtube-nocookie.com/embed/");
-    expect(source).toContain("{video.poster ? (");
+    expect(source).toContain("{video.poster && failedPoster !== video.poster ? (");
+    expect(source).toContain("onError={() => setFailedPoster(video.poster ?? null)}");
+    expect(source).toContain("failedPoster !== video.poster");
     expect(source).toContain("src={video.poster}");
     expect(source).not.toContain("i.ytimg.com");
     expect(source).toContain('referrerPolicy="no-referrer"');

@@ -1,3 +1,6 @@
+### 2026-11-18 — V210 film poster resilience
+- References: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event (image resource load errors); https://web.dev/learn/design/responsive-images (robust image presentation). Applied: React `img onError` only to switch to an existing first-party CSS fallback; no copied code/assets and no new dependencies. Rejected: remote YouTube thumbnails (privacy request before consent), arbitrary stock images (provenance), and adding an image library (unnecessary bytes). Visual comparison and network verification pending.
+
 ### 2026-11-18 — V208 third-party thumbnails
 - MDN https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img — image `src` triggers a network request when rendered. Adapted: only use an explicitly configured poster URL, otherwise local CSS fallback. No third-party source code, license or new dependency.
 - MDN https://developer.mozilla.org/en-US/docs/Web/Privacy/Third-party_cookies — external resources can have privacy implications. Rejected default `i.ytimg.com` poster before consent; retained consent-gated youtube-nocookie iframe. Actual browser network audit pending.
