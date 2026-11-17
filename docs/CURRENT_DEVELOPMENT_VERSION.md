@@ -1,3 +1,6 @@
+## V182 / 2026-11-17 — Contact clipboard pending feedback (DRAFT)
+PR https://github.com/WazzupDoc/green-sound-music-garden/pull/181; branch `fix/v182-contact-clipboard-pending-state`, stacked on V181. `QuoteForm.tsx` shows pending copy state, prevents repeated copy clicks while clipboard API resolves, and keeps explicit no-auto-send messaging. No new dependencies, media, homepage or production changes. TypeScript, Vitest, SSR, exact-head CI and matched real Chromium 390/1440 screenshots NOT YET VERIFIED. Next: clipboard success/denial and focus regression QA, then /evenimente audit.
+
 ## V181 / 2026-11-17 — Contact preview service/advice separation (DRAFT)
 Branch `fix/v181-contact-preview-advice-separation` stacked on V180 PR #179. Preview ticket lists only actual services and shows advice as a distinct explicit request, matching the V180 8-service counter. No homepage, media, dependencies, backend or sending changes. TypeScript/SSR/Vitest/Chromium 390/1440 before-after/CI exact-head pending; do not merge. Next: Contact edit/clipboard QA.
 
