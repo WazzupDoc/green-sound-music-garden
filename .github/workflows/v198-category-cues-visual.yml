@@ -1,0 +1,52 @@
+name: V198 Signature Category Cues — matched Chromium and motion evidence
+on:
+  push:
+    branches: [design/v198-category-signature-cues]
+permissions:
+  contents: read
+concurrency:
+  group: v198-category-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  visual-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Preserve exact V197 baseline
+        run: git worktree add --detach /tmp/gs-v197-category-baseline 45749fb6391f7ea92d9021f72fc3208094536554
+      - name: Install project dependencies
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v197-category-baseline && bun install --no-save)
+      - name: Install pinned Chromium (QA only)
+        run: |
+          npm install --prefix /tmp/gs-v198-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v198-playwright/node_modules/.bin/playwright install chromium
+      - name: Start original and candidate on different localhost ports
+        run: |
+          (cd /tmp/gs-v197-category-baseline && bunx vite dev --host 127.0.0.1 --port 4176 --strictPort > /tmp/gs197-index.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/gs198-index.log 2>&1 &)
+          for port in 4176 4175; do
+            ready=0
+            for i in $(seq 1 65); do
+              if curl --silent --fail "http://127.0.0.1:${port}/evenimente" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs197-index.log /tmp/gs198-index.log; exit 1; fi
+          done
+      - name: Real Chromium 6 widths, exact screenshots, press, record hover, Lite and no-JS
+        run: NODE_PATH=/tmp/gs-v198-playwright/node_modules node .github/scripts/verify-v198-category-cues.cjs
+      - name: Upload actual screenshots before and after, motion on and Lite off
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v198-category-cues-real-chromium
+          path: screenshots/gs-v198-category-cues/
+          if-no-files-found: warn
+          retention-days: 60
