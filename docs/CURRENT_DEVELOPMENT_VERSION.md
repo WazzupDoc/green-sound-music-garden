@@ -1,3 +1,6 @@
+## V187 / 2026-11-17 — Restore QA coverage for fix/feat branches (DRAFT)
+Branch `design/v187-qa-branch-coverage`, stacked on V186. Updated `.github/workflows/verify-crafted-react.yml` to include `fix/v*` and `feat/v*` in push and PR branch filters; previously those branches could skip the full quality pipeline. No jobs removed, no homepage or media changes, no deployment. Exact-head CI and screenshot/browser status pending; not merge-ready. Next: Contact clipboard and Event detail browser QA.
+
 ## V186 / 2026-11-17 — Contact handoff wording (DRAFT)
 Branch `fix/v186-contact-send-clarity` stacked on V185. The Contact journey step formerly labelled `SEND` now explicitly describes opening the external app and user-confirmed sending, consistent with the actual client-only quote handoff. No automatic send, new service, package, asset, homepage change or deployment. Source commit `4b357375a40d7853d3ca61e36593dcf5ea8c291e`. Exact-head CI, TypeScript, SSR, Vitest, real browser screenshots and keyboard/clipboard checks UNVERIFIED. Not merge-ready. Next: Contact clipboard and event-detail QA.
 
