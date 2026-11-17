@@ -94,6 +94,9 @@ async function overflow(page,where){
   assert.equal(res.status(),200,"atlas must be a real HTTP asset");
   assert.match(res.headers()["content-type"]||"",/webp/);
   assert((await res.body()).length>40000,"full optimized artwork bytes");
+  // The decoder must run in the same http:// origin as the actual CSS asset.
+  // A blank page cannot resolve /media/... and produces a false EncodingError.
+  await verify.goto("http://127.0.0.1:4175/evenimente",{waitUntil:"domcontentloaded"});
   const loaded=await verify.evaluate(async()=>{
     const img=new Image();img.src="/media/gs-category-illustrations-v201.webp";
     await img.decode();return {width:img.naturalWidth,height:img.naturalHeight};
