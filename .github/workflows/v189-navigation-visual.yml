@@ -1,0 +1,62 @@
+name: V189 Navigation — matched real Chromium before and after
+
+on:
+  push:
+    branches:
+      - design/v189-navigation-setlist
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gs-v189-navigation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nav-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Prepare exact V188 before-source worktree
+        run: |
+          git cat-file -e 0e86bb0964705ebaf0108a3e5741401057a39368^{commit}
+          git worktree add --detach /tmp/gs-v188-navigation-base 0e86bb0964705ebaf0108a3e5741401057a39368
+      - name: Install dependencies without package changes
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v188-navigation-base && bun install --no-save)
+      - name: Install Playwright Chromium (same pinned version as full QA)
+        run: |
+          npm install --prefix /tmp/gs-v189-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v189-playwright/node_modules/.bin/playwright install chromium
+      - name: Start independent real V188 and V189 preview servers
+        run: |
+          (cd /tmp/gs-v188-navigation-base && bunx vite dev --host 127.0.0.1 --port 4176 > /tmp/gs-v188-nav.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v189-nav.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf "http://127.0.0.1:${port}/" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then
+              cat /tmp/gs-v188-nav.log /tmp/gs-v189-nav.log
+              exit 1
+            fi
+          done
+      - name: Matched Chromium snapshots + six-width / keyboard / motion regression
+        run: NODE_PATH=/tmp/gs-v189-playwright/node_modules node .github/scripts/verify-v189-navigation.cjs
+      - name: Upload actual V188→V189 browser images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v189-navigation-before-after
+          path: screenshots/gs-v189-navigation/
+          if-no-files-found: warn
+          retention-days: 60
