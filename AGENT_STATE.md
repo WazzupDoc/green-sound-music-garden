@@ -637,3 +637,10 @@ User-visible design is not certified without Chromium evidence. No main push/dep
 | Portofoliu / photos | Existing 6 original photos + category lightbox | Unchanged and retained | Existing regression CI remains active | Later rotation |
 | Main / production | Stacked PRs, PR #19 conflicts | No merge or deploy | Await CI, owner approval, backup tag, rollback/CD audit | No publication |
 Visual audit: First V191 desktop screenshot was too empty above the film; tightened heading and section spacing. Browser filter diagnostics revealed aria-current=page and incorrect previous CSS selection highlight. Fixed both component and selectors without hiding the problem. No new media or packages.
+
+### V191 verified UI checkpoint / 2026-11-17
+- Source/UI commit 8a5d826848736f2e91c766297ca97ba22d85cb12 passed full exact-head QA: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041711279 (TypeScript, Vite/SSR, 47 suites/129 Vitest tests, client gzip budgets, six-width browser checks, Contact hydration and sitemap).
+- Real matched Chromium workflow exact same UI commit PASSED: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985 ; screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985/artifacts/14309761475.
+- The artifact contains V190 before / V191 after screenshots on /portofoliu with unchanged initial film state at 390 and 1440, full film-section captures, responsive screenshots 360/390/430/768/1440/1920, Studio filter states and Lite/full-motion frames. Approved existing poster image decoded; YouTube still only loads after Play.
+- CI measured: homepage entry gzip 125.4 kB (limit 190); client quote form 31.7 kB (limit 50); shared CSS 52.0 kB (limit 52, close to cap); not a Lighthouse field measurement.
+- Owner visual approval pending; no CD audit, backup tag, main merge or production release. Next site area: Studio interior page.
