@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import portfolioDirectorCss from "@/styles/portfolio-directors-cut-v161.css?inline";
+import portfolioCinemaCss from "@/styles/portfolio-cinema-v191.css?inline";
 import { RegiaPhotoRail, RegiaFilmArchive, galleryFrames } from "@/components/atelier/RegiaPortfolio";
 import { QuoteSection } from "@/components/site/blocks";
 import { images, videos } from "@/data/site";
@@ -25,7 +26,7 @@ export const Route=createFileRoute("/portofoliu")({
 function Portfolio(){
   const {film,photo}=Route.useSearch();
   return <div className="gs161-portfolio">
-    <style>{portfolioDirectorCss}</style>
+    <style>{portfolioDirectorCss + "\n" + portfolioCinemaCss}</style>
     <section className="gs161-hero" aria-labelledby="rs-portfolio-title">
       <div className="gs161-hero__media">
         <img src={images.concert.src} width={images.concert.w} height={images.concert.h}

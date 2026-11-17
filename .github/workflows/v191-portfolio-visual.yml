@@ -1,0 +1,55 @@
+name: V191 Portfolio Cinema — actual matched Chromium
+on:
+  push:
+    branches:
+      - design/v191-portfolio-cinema-registry
+permissions:
+  contents: read
+concurrency:
+  group: v191-cinema-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  cinema-review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Create clean V190 baseline
+        run: |
+          git cat-file -e f7e0317afd1bac2c113bbfde0a9bbbfdd4767665^{commit}
+          git worktree add --detach /tmp/gs-v190-port-base f7e0317afd1bac2c113bbfde0a9bbbfdd4767665
+      - name: Install reproducible dependencies
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v190-port-base && bun install --no-save)
+      - name: Install pinned Chromium
+        run: |
+          npm install --prefix /tmp/gs-v191-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v191-playwright/node_modules/.bin/playwright install chromium
+      - name: Start baseline and candidate in separate preview servers
+        run: |
+          (cd /tmp/gs-v190-port-base && bunx vite dev --host 127.0.0.1 --port 4176 >/tmp/gs190.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 >/tmp/gs191.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf "http://127.0.0.1:${port}/portofoliu" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs190.log /tmp/gs191.log; exit 1; fi
+          done
+      - name: Same route, same film and viewport, real before-after
+        run: NODE_PATH=/tmp/gs-v191-playwright/node_modules node .github/scripts/verify-v191-portfolio.cjs
+      - name: Upload original actual screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v191-portfolio-before-after
+          path: screenshots/gs-v191-portfolio/
+          if-no-files-found: warn
+          retention-days: 60

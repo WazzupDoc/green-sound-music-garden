@@ -300,7 +300,11 @@ async function main() {
         assert.equal(await portfolioPage.locator(".rs-video-library__item").count(),6);
         await portfolioPage.locator(".rs-video-library__item").nth(1).click();
         await portfolioPage.waitForFunction(()=>new URL(location.href).searchParams.has("film"));
-        assert.equal(await portfolioPage.locator(".rs-video-library__item[aria-current=true]").count(),1);
+        // TanStack Link exposes the active film as aria-current="page". Keep
+        // the distinct selected-film styling tied to the same real URL state.
+        await portfolioPage.waitForFunction(() => document.querySelectorAll(".rs-video-library__item[data-current=true]").length === 1);
+        assert.equal(await portfolioPage.locator(".rs-video-library__item[data-current=true]").count(),1);
+        assert.equal(await portfolioPage.locator(".rs-video-library__item[data-current=true]").getAttribute("aria-current"),"page");
         assert.equal(await portfolioPage.locator(".rs-video-library iframe").count(),0,
           "YouTube must never load until the visitor explicitly presses Play");
         await noOverflow(portfolioPage,"Portfolio interactions",portfolioWidth);

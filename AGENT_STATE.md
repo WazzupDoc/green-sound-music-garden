@@ -629,3 +629,18 @@ User-visible design is not certified without Chromium evidence. No main push/dep
 - Before/after same route `/`, same 390/1440 viewport, native menu open, `Servicii` preview focused; real Playwright `chromium` workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037 PASS. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682037/artifacts/14306981193 contains 12 source PNGs (before/after 390/1440, after 360/390/430/768/1440/1920, motion and Lite at 390).
 - QA-detected mismatch fixed: preview cue had described `Servicii` while `Acasă` stayed highlighted; `data-preview` now aligns visual emphasis to the focused destination without changing canonical page links.
 - Remaining: visual owner review, accessibility screen-reader manual check, production approval and exact-head QA after any documentation-only commit. No main changes. Next rotation portfolio/video gallery.
+
+## V191 / 2026-11-17 — /portofoliu film archive
+| Zone | Issue | Code change | QA evidence | Next |
+|---|---|---|---|---|
+| Portofoliu / films | Previous film list read as a generic column; selected link incorrectly styled by [aria-current=true] instead of router value page | New cinematic media frame, selected video slate, photo-backed native link playlist, keyboard arrows/Home/End, query persistence; selected visual state uses data-current while ARIA remains page | Matched Chromium 390/1440 and six-width workflow added; status to verify on exact HEAD | Studio interior page |
+| Portofoliu / photos | Existing 6 original photos + category lightbox | Unchanged and retained | Existing regression CI remains active | Later rotation |
+| Main / production | Stacked PRs, PR #19 conflicts | No merge or deploy | Await CI, owner approval, backup tag, rollback/CD audit | No publication |
+Visual audit: First V191 desktop screenshot was too empty above the film; tightened heading and section spacing. Browser filter diagnostics revealed aria-current=page and incorrect previous CSS selection highlight. Fixed both component and selectors without hiding the problem. No new media or packages.
+
+### V191 verified UI checkpoint / 2026-11-17
+- Source/UI commit 8a5d826848736f2e91c766297ca97ba22d85cb12 passed full exact-head QA: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041711279 (TypeScript, Vite/SSR, 47 suites/129 Vitest tests, client gzip budgets, six-width browser checks, Contact hydration and sitemap).
+- Real matched Chromium workflow exact same UI commit PASSED: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985 ; screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985/artifacts/14309761475.
+- The artifact contains V190 before / V191 after screenshots on /portofoliu with unchanged initial film state at 390 and 1440, full film-section captures, responsive screenshots 360/390/430/768/1440/1920, Studio filter states and Lite/full-motion frames. Approved existing poster image decoded; YouTube still only loads after Play.
+- CI measured: homepage entry gzip 125.4 kB (limit 190); client quote form 31.7 kB (limit 50); shared CSS 52.0 kB (limit 52, close to cap); not a Lighthouse field measurement.
+- Owner visual approval pending; no CD audit, backup tag, main merge or production release. Next site area: Studio interior page.

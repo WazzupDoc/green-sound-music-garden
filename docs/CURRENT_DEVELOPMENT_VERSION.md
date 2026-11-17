@@ -1,3 +1,14 @@
+
+### V191 verified UI checkpoint / 2026-11-17
+- Source/UI commit 8a5d826848736f2e91c766297ca97ba22d85cb12 passed full exact-head QA: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041711279 (TypeScript, Vite/SSR, 47 suites/129 Vitest tests, client gzip budgets, six-width browser checks, Contact hydration and sitemap).
+- Real matched Chromium workflow exact same UI commit PASSED: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985 ; screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44041706985/artifacts/14309761475.
+- The artifact contains V190 before / V191 after screenshots on /portofoliu with unchanged initial film state at 390 and 1440, full film-section captures, responsive screenshots 360/390/430/768/1440/1920, Studio filter states and Lite/full-motion frames. Approved existing poster image decoded; YouTube still only loads after Play.
+- CI measured: homepage entry gzip 125.4 kB (limit 190); client quote form 31.7 kB (limit 50); shared CSS 52.0 kB (limit 52, close to cap); not a Lighthouse field measurement.
+- Owner visual approval pending; no CD audit, backup tag, main merge or production release. Next site area: Studio interior page.
+
+## V191 / 2026-11-17 — Cinematic film registry (DRAFT)
+PR #190 https://github.com/WazzupDoc/green-sound-music-garden/pull/190, branch design/v191-portfolio-cinema-registry, stacked on V190 PR #189. Focus: /portofoliu film archive ONLY; homepage remains untouched. Rebuilt media and playlist layout with original film perforation and authentic source-backed poster, selected title and caption, keyboard Arrow/Home/End and shareable ?film= URL, native filters and no autoplay. Original V161 photo gallery/lightbox preserved. No external packages, new images or paid services. New route-scoped CSS (portfolio-cinema-v191.css), Vitest source checks and matched real Chromium workflow (v191-portfolio-visual.yml). Visual correction after first browser capture: reduced excess first-fold type/spacing, ensuring real film visible. Functional correction after tests: TanStack Link uses aria-current=page; selected film now also uses data-current=true for truthful CSS. Legacy tests not disabled; updated assertions. Final exact-head CI/screenshots still require verification; no main merge or deployment. Next: /studio-inregistrari audit, then Contact.
+
 ## V190 / 2026-11-17 — Portfolio hero navigation focus (DRAFT)
 Branch `fix/v190-portfolio-anchor-focus` stacked on V189 `design/v189-navigation-setlist`. Source SHA `62988c36ef9ca984e91ddec9dea2bffcef9949bc`. Native photo/film jump links now transfer keyboard focus to their headings; the films heading is programmatically focusable. This is a keyboard UX correction, NOT a visual redesign. Chromium before/after screenshots and exact-head CI are unverified; no merge, main or production change. Next: portfolio film filters/player and visual review.
 

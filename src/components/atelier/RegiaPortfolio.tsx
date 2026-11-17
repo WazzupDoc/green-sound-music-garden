@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useHydrated } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { images, videos, ytThumb, type ImageRef, type Video } from "@/data/site";
@@ -142,6 +142,7 @@ const videoList: Video[] = Object.values(videos);
 
 export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const navigate = useNavigate();
+  const hydrated = useHydrated();
   const [category,setCategory]=useState<string>("");
   const selectCategory = (tag:string) => {
     setCategory(tag);
@@ -155,8 +156,26 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
   const visibleCategory = film && category && !videoList.some(v=>v.id===film && v.tags.includes(category)) ? "" : category;
   const selectedVideos=videoList.filter(v=>!visibleCategory||v.tags.includes(visibleCategory));
   const chosen=selectedVideos.find(v=>v.id===film)??selectedVideos[0];
-  return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title">
+  // Native links remain the only selection action. Arrow/Home/End move focus,
+  // Enter activates the direct, shareable film URL; Tab is never intercepted.
+  const onFilmListKeyDown = (event: import("react").KeyboardEvent<HTMLDivElement>) => {
+    if (event.ctrlKey || event.metaKey || event.altKey || event.shiftKey) return;
+    const links = Array.from(event.currentTarget.querySelectorAll<HTMLAnchorElement>(".rs-video-library__item"));
+    const index = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (index < 0 || links.length === 0) return;
+    let next = index;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (index + 1) % links.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (index - 1 + links.length) % links.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = links.length - 1;
+    else return;
+    event.preventDefault();
+    links[next]?.focus();
+  };
+  return <section className="rs-video-library" id="portfolio-films" aria-labelledby="rs-video-library-title"
+    data-hydrated={hydrated ? "true" : "false"}>
     <div className="container-site">
+      <div className="gs191-film__folio" aria-hidden="true"><span>GREEN SOUND MUSIC / ARHIVĂ VIZUALĂ</span><span>02 — FILM / PLAYLIST</span></div>
       <div className="rs-video-library__top">
         <div><p>Filmări publicate</p><h2 id="rs-video-library-title" tabIndex={-1}>Vezi și ascultă producțiile</h2><p role="status" aria-live="polite" aria-atomic="true">{chosen ? `Selectat: ${chosen.title} · ${selectedVideos.findIndex(video => video.id === chosen.id) + 1} din ${selectedVideos.length}` : "Nicio filmare în această categorie"}</p></div>
         <p>Filmările sunt încărcate de pe YouTube doar după ce apeși redare. Nu pornește nimic automat.</p>
@@ -166,25 +185,47 @@ export function RegiaFilmArchive({film}: {film:string|undefined}) {
           onClick={()=>selectCategory(item.tag)}>{item.label}</button>)}
       </div>
       <div className="rs-video-library__layout">
-        <div className="rs-video-library__player">
-          {chosen && <VideoLite key={chosen.id} video={chosen} />}
+        <div className="rs-video-library__player" data-selected-film={chosen?.id ?? ""}>
+          <div className="gs191-film__leader" aria-hidden="true">
+            <span>GS / ORIGINAL FOOTAGE</span>
+            <span>FRAME {String(selectedVideos.findIndex(video => video.id === chosen?.id) + 1).padStart(2, "0")} / {String(selectedVideos.length).padStart(2, "0")}</span>
+          </div>
+          <div className="gs191-film__screen">
+            {chosen && <VideoLite key={chosen.id} video={chosen} />}
+          </div>
+          <div className="gs191-film__currently">
+            <div><span>ACUM ÎN ARHIVĂ / FILM SELECTAT</span>
+              <h3>{chosen?.title ?? "Alege filmarea"}</h3>
+              <p>{chosen?.caption ?? "Filmări din arhiva Green Sound Music"}</p>
+            </div>
+            <span className="gs191-film__play-note">PLAY <ArrowUpRight size={18} aria-hidden /></span>
+          </div>
         </div>
-        <div className="rs-video-library__list" role="group" aria-label="Alege filmarea">
+        <div className="rs-video-library__list" role="group" aria-label="Alege filmarea"
+          onKeyDown={onFilmListKeyDown}>
+          <div className="gs191-film__queue-title">
+            <span>SELECTEAZĂ FILMAREA</span>
+            <strong>{String(selectedVideos.length).padStart(2,"0")} / FILME</strong>
+          </div>
           {selectedVideos.map((video,index)=>(
             <Link key={video.id} to="/portofoliu" search={{film:video.id}}
-              aria-current={chosen?.id===video.id?"true":undefined}
+              aria-current={chosen?.id===video.id?"page":undefined}
+              data-current={chosen?.id===video.id?"true":undefined}
               className="rs-video-library__item">
               <span className="gs161-film-thumb" aria-hidden="true">
                 <img src={video.poster ?? ytThumb(video, "sd")} alt="" width={1280} height={720}
                   loading="lazy" decoding="async" />
                 <small>{String(index+1).padStart(2,"0")}</small>
               </span>
-              <strong>{video.title}</strong>
+              <span className="gs191-film__track-copy"><strong>{video.title}</strong>
+                <small>{video.caption}</small></span>
               <ArrowUpRight size={19} aria-hidden />
             </Link>
           ))}
         </div>
       </div>
+      <p className="gs191-film__endnote"><span>GREEN SOUND MUSIC / PITEȘTI</span>
+        <span>Filmările pornesc numai la cerere. Poți selecta un capitol și îl poți distribui prin URL.</span></p>
     </div>
   </section>;
 }

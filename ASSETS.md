@@ -278,3 +278,6 @@ No new media, icons, fonts or packages. Service photos remain the existing proje
 
 ## V189 / 2026-11-17 — navigation
 No new images, audio, video, SVG assets, font packages, third-party code or runtime dependencies. The five level bars are original local HTML/CSS decoration, not live audio data. Existing brand logo remains unchanged. Research sources are inspiration/documentation only, not redistributable assets.
+
+## V191 / 2026-11-17 — Portfolio cinema
+No new pictures, source footage, font, icon, package, library or licensed asset added. Film posters and videos are already in src/data/site.ts; the existing VideoLite component does not load YouTube until explicit Play. Film perforation, typography layout and indexed tracklist are original CSS and markup, not third-party content. No social/TikTok clips or generated event footage were used.
