@@ -33,9 +33,13 @@ async function capture(page,label){
     for(const width of [390,1440]){
       const before=await openPortfolio(browser,4176,width);
       await capture(before.page,"before-v190-"+width);
+      await before.page.locator("#portfolio-films").screenshot({path:output+"/before-section-v190-"+width+".png",animations:"disabled"});
       await before.page.close();
       const after=await openPortfolio(browser,4175,width);
       await capture(after.page,"after-v191-"+width);
+      await after.page.locator("#portfolio-films").screenshot({path:output+"/after-section-v191-"+width+".png",animations:"disabled"});
+      const decoded=await after.page.locator(".gs191-film__screen img").first().evaluate(async img=>{await img.decode().catch(()=>null);return {w:img.naturalWidth,h:img.naturalHeight};});
+      assert(decoded.w>0 && decoded.h>0,"Original approved poster must decode in Chrome");
       const heading=after.page.locator(".gs191-film__currently h3");
       assert((await heading.innerText()).trim().length>1);
       const sectionCss=await after.page.locator(".gs191-film__leader").evaluate(el=>getComputedStyle(el).backgroundColor);
@@ -75,15 +79,6 @@ async function capture(page,label){
       assert.equal(await page.locator("iframe").count(),0,"Film selection must not autoplay");
       const categories=page.locator('.rs-video-library__filters button');
       await categories.filter({hasText:"Studio"}).click();
-      await page.waitForTimeout(400);
-      const snapshot = await page.evaluate(() => ({
-        path:location.href,
-        filtered:Array.from(document.querySelectorAll(".rs-video-library__filters button")).map(e=>({name:e.textContent?.trim(),pressed:e.getAttribute("aria-pressed")})),
-        active:Array.from(document.querySelectorAll(".rs-video-library__item")).map(e=>({title:e.textContent?.trim().slice(0,60),current:e.getAttribute("aria-current")})),
-        player:document.querySelector(".rs-video-library__player")?.getAttribute("data-selected-film"),
-      }));
-      console.log("V191 FILTER DEBUG", JSON.stringify(snapshot));
-      await capture(page, "debug-studio-filter-"+width);
       // URL filter + React selection are asynchronous; inspect the settled UI.
       await page.waitForFunction(() => {
         const pressed = Array.from(document.querySelectorAll(".rs-video-library__filters button"))
@@ -94,6 +89,7 @@ async function capture(page,label){
       assert.equal(await page.locator("iframe").count(),0);
       const selected=await page.locator('.rs-video-library__item[data-current="true"]').count();
       assert.equal(selected,1,"One current film after filter");
+      await capture(page,"studio-filter-"+width);
       assert.equal(await page.locator('.rs-video-library__item[data-current="true"]').getAttribute("aria-current"),"page","Selected film must expose native current-page semantics");
       const noMotion=await page.locator(".gs191-film__track-copy").first().evaluate(el=>getComputedStyle(el).animationName);
       assert.equal(noMotion,"none");
