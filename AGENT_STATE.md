@@ -1,3 +1,10 @@
+### V199 / 2026-11-17 — Contact handoff audit (DRAFT PR #198)
+- **Primary zone:** /contact Guided Event Brief. Problem: visitors arriving from /evenimente or /servicii had no concise confirmation of the exact preselected service choices above the long form; the introductory sentence alone was generic.
+- **Implemented:** visible contextual handoff strip using the existing allowlisted validated route search fields (event/date/location/services). Semantic list for services; responsive wrap; clear no-auto-send text. No new query reflection, API, packages, media, or homepage changes.
+- **Source commit:** 8c775ea8038bac55f496c48447e36152fc5be192; branch design/v199-contact-prefill-handoff; draft https://github.com/WazzupDoc/green-sound-music-garden/pull/198, stacked on V198.
+- **Evidence gate OPEN:** exact-head CI, real Chromium before/after at /contact?event=...&services=... 390/1440 and 360/430/768/1920, focus, prefill, clipboard accept/deny, no-JS fallback. **No screenshots or passing tests claimed for V199.** Do not merge/deploy.
+- **Next rotation:** navigation/mobile menu, then footer/SEO; preserve Contact's real external handoff and homepage editorial contract.
+
 ### V198 verified source checkpoint / 2026-11-17
 - UI/test SHA `501026b89e2b813de97fd127e5912340b020dcbf`: full CI pass https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087716295 ; real matched Chromium pass https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087711567 ; PNG artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44087711567/artifacts/14329958280. Actual before/after inspected 390+1440, 6-width regression, event click/keyboard, DJ hover, Lite/reduce/no-JS all pass.
 - Remaining: owner design approval, physical device screen-reader review, deployment/CD inspection and backup/rollback before any permitted main integration. PR #19 remains conflicting and unrelated.
