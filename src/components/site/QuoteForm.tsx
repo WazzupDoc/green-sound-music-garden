@@ -44,7 +44,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   // The visitor must explicitly choose a channel after reviewing their message.
   // Never open a popup from an asynchronous schema validation callback.
   const [prepared, setPrepared] = useState<Quote | null>(null);
-  const [copyStatus, setCopyStatus] = useState<"idle" | "success" | "failed">("idle");
+  const [copyStatus, setCopyStatus] = useState<"idle" | "pending" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
   const previewHeadingRef = useRef<HTMLHeadingElement>(null);
   const wasPreparedRef = useRef(false);
@@ -69,6 +69,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   }, [copyStatus, failedCopyAttempts]);
 
   const copyMessage = async (message: string) => {
+    if (copyStatus === "pending") return;
+    setCopyStatus("pending");
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard not available");
       await navigator.clipboard.writeText(message);
@@ -201,14 +203,17 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             <ArrowUpRight className="size-4" aria-hidden />
           </a>
           <button type="button" className="quote-preview__copy"
+            disabled={copyStatus === "pending"} aria-busy={copyStatus === "pending"}
             onClick={() => { void copyMessage(message); }}>
             <ClipboardCopy className="size-5" aria-hidden />
-            {copyStatus === "success" ? "Mesaj copiat" : "Copiază mesajul"}
+            {copyStatus === "pending" ? "Se copiază…" : copyStatus === "success" ? "Mesaj copiat" : "Copiază mesajul"}
             <ArrowUpRight className="size-4" aria-hidden />
           </button>
         </div>
         <p className="quote-preview__copy-status" role="status" aria-live="polite">
-          {copyStatus === "success"
+          {copyStatus === "pending"
+            ? "Se încearcă copierea mesajului. Nu a fost trimis automat."
+            : copyStatus === "success"
             ? "Mesajul este în clipboard. Îl poți lipi în aplicația pe care o alegi; nu a fost trimis automat."
             : copyStatus === "failed"
               ? "Copierea automată nu este disponibilă în acest browser. Poți selecta și copia manual textul de mai jos."
