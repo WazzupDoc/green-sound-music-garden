@@ -12,7 +12,11 @@ describe("V204 explicit film stop control", () => {
   it("unmounts the playing iframe and restores focus to the play button", () => {
     expect(source).toContain("const stopPlayback = () =>");
     expect(source).toContain("setActive(false)");
+    expect(source).toContain("useLayoutEffect(() => {");
+    expect(source).toContain("restoreFocusRef.current = true");
+    expect(source).toContain("if (!active && restoreFocusRef.current)");
     expect(source).toContain("playButtonRef.current?.focus()");
+    expect(source).not.toContain("requestAnimationFrame(() => playButtonRef.current?.focus())");
     expect(source).toContain("onClick={stopPlayback}");
     expect(source).toContain("ref={playButtonRef}");
     expect(source).toContain("Oprește filmarea:");
