@@ -9,7 +9,12 @@ import type { Video } from "@/data/site";
 export function VideoLite({ video, className = "", priority = false }: { video: Video; className?: string; priority?: boolean }) {
   const [active, setActive] = useState(false);
   const playButtonRef = useRef<HTMLButtonElement>(null);
+  const stopButtonRef = useRef<HTMLButtonElement>(null);
   const restoreFocusRef = useRef(false);
+  useLayoutEffect(() => {
+    // The play button unmounts on activation; move focus to the visible stop action.
+    if (active) stopButtonRef.current?.focus();
+  }, [active]);
   useLayoutEffect(() => {
     // React has committed the poster button before focus is restored.
     if (!active && restoreFocusRef.current) {
@@ -38,7 +43,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
-          <button type="button" onClick={stopPlayback}
+          <button type="button" ref={stopButtonRef} onClick={stopPlayback}
             className="absolute right-3 top-3 z-10 inline-flex min-h-11 items-center gap-2 border border-white/60 bg-[#0A0F15] px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             aria-label={`Oprește filmarea: ${video.title}`}>
             <Square className="size-4 fill-current" aria-hidden /> Oprește
