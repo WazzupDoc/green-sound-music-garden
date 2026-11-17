@@ -1,5 +1,5 @@
 /* V201 / Green Sound Music — 13 owner-approved AI illustrations.
- * 1 locally hosted 1120x320 AVIF atlas, 160px per cell, no template or third-party requests.
+ * 1 locally hosted 1120x320 WebP atlas, 160px per cell, no template or third-party requests.
  * Original labels are native HTML. This artwork illustrates categories; it does not depict
  * real clients, actual event footage, or actual Green Sound employees.
  */
@@ -23,7 +23,7 @@
   inset: 0;
   z-index: 1;
   display: block;
-  background-image: url("/media/gs-category-illustrations-v201.avif");
+  background-image: url("/media/gs-category-illustrations-v201.webp");
   background-repeat: no-repeat;
   background-size: 700% 200%;
   image-rendering: auto;
@@ -179,7 +179,7 @@ html[data-gs-performance="lite"] .gs201-cue,
 html[data-gs-performance="lite"] .gs201-cue * {
   animation: none !important; transition: none !important; transform: none !important;
 }
-/* The 29 KB original artwork remains visible in Lite/reduced-motion; static art
+/* The 45 KB original artwork remains visible in Lite/reduced-motion; static art
  * is the point of this user-requested redesign. Only Save-Data can skip its
  * download and revert to existing lightweight SVG artwork. */
 @media (prefers-reduced-data: reduce) {
