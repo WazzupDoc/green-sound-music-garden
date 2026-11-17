@@ -544,3 +544,10 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path — nat
 
 ## 2026-11-15 — V144 semantic footer navigation
 Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav — semantic navigation for major link groups; https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/ — distinguish repeated navigation landmarks with labels. Adaptation: named native nav wrappers for existing footer directories, retaining headings, links and CSS. No third-party code/assets or license requirements. Rejected: extra navigation widgets or new animations as unnecessary and visually repetitive.
+
+
+## 2026-11-17 — V188 editorial service rhythm
+- Reference: https://www.awwwards.com/websites/music-sound/ — visual inspiration only: deliberate contrast in scale and composition; no source code, identity or images copied, license not assumed.
+- Reference: https://webflow.com/blog/grid-layouts — CSS grid editorial placement principle, adapted independently; no external code or assets copied.
+- Original implementation: `home-editorial-services-v188.css` makes existing 5 approved-photo service links asymmetric across desktop, tablet and mobile; all 8 service links remain. No dependencies or new assets.
+- Rejected: equal five-card strip, autoplay scrolling gallery, heavy WebGL, neon glow on each tile. Browser visual verdict pending.
