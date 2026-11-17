@@ -1,3 +1,8 @@
+### 2026-11-17 — V206 event film consent disclosure
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — iframe embeds third-party content; contextual notice before activation helps informed interaction. Adapted original Romanian copy, not external code.
+- https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear instructions for interactive elements; applied explanatory text and labelled film region. This does not assert WCAG compliance.
+- Rejected a new cookie banner, autoplay, API player and external consent dependency; existing click-to-load and Stop remain. No new assets or licenses.
+
 ### 2026-11-17 — V205 focus after React commit
 - https://react.dev/reference/react/useLayoutEffect — layout effect runs after DOM placement and before browser repaint; adapted to focus the newly mounted poster Play button after Stop. No external code copied, no dependency.
 - https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame — frame callback scheduling does not establish React commit order; rejected as focus synchronization strategy.
