@@ -3,6 +3,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { events, getService } from "@/data/site";
 import { QuoteSection } from "@/components/site/blocks";
+import { CategorySignal } from "@/components/site/CategorySignal";
+import categorySignalCss from "@/styles/category-signature-v198.css?inline";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import eventPosterCss from "@/styles/event-show-poster-v173.css?inline";
 import { preloadEventFrame } from "@/lib/preload-event-frame";
@@ -28,6 +30,8 @@ const initialEvent = firstEvent();
  * Only existing owner media is used; no booking, sending or price is implied. */
 function Events() {
   const [activeSlug, setActiveSlug] = useState(initialEvent.slug);
+  const [cueRevision, setCueRevision] = useState(0);
+  // A re-selection deliberately replays one short cue; no timers, autoplay or audio.
   // Keep the previous authentic photo on stage until the selected one is decoded.
   // This avoids an empty black frame when switching on slow mobile networks.
   const [visualEvent, setVisualEvent] = useState(initialEvent);
@@ -55,13 +59,14 @@ function Events() {
     const nextEvent = events[next];
     if (!nextEvent) return;
     setActiveSlug(nextEvent.slug);
+    setCueRevision(previous => previous + 1);
     event.currentTarget.closest(".gs173-setlist")
       ?.querySelectorAll<HTMLButtonElement>(".gs173-setlist__select")[next]?.focus();
   }
 
   return <>
-    <style>{eventPosterCss}</style>
-    <div className="gs173-events" data-hydrated={hydrated}>
+    <style>{eventPosterCss + "\n" + categorySignalCss}</style>
+    <div className="gs173-events gs198-events" data-hydrated={hydrated}>
       <section className="gs173-live" aria-labelledby="gs173-title">
         <div className="container-site gs173-live__container">
           <div className="gs173-topline">
@@ -103,9 +108,10 @@ function Events() {
                 <button type="button" className="gs173-setlist__select"
                   aria-pressed={selected} aria-controls="gs173-selected-programme"
                   aria-label={"Previzualizează " + event.name}
-                  onClick={() => setActiveSlug(event.slug)}
+                  onClick={() => { setActiveSlug(event.slug); setCueRevision(previous => previous + 1); }}
                   onKeyDown={(keyEvent) => onSetlistKeyDown(keyEvent, index)}>
                   <span className="gs173-setlist__index">{String(index + 1).padStart(2, "0")}.</span>
+                  <CategorySignal key={selected ? `${event.slug}-${cueRevision}` : event.slug} kind={event.slug} play={selected && cueRevision > 0} />
                   <span className="gs173-setlist__name">{event.name}</span>
                   <span className="gs173-setlist__beat" aria-hidden="true"><i/><i/><i/><i/></span>
                 </button>
