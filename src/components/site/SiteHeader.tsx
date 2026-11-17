@@ -52,6 +52,18 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // A menu opened on a narrow viewport must not trap the page after rotating
+  // the device or expanding the window to the desktop navigation breakpoint.
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) setOpen(false);
+    };
+    desktop.addEventListener("change", onDesktop);
+    if (desktop.matches) setOpen(false);
+    return () => desktop.removeEventListener("change", onDesktop);
+  }, []);
+
   // Native modal dialog manages the actual top layer, inert background,
   // Escape and keyboard focus containment. The previous role="dialog"
   // imitation did not make page content inert.
