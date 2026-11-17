@@ -1,3 +1,7 @@
+### V201 decoder QA clarification — 2026-11-17
+- An investigation of the WebP verification revealed the direct `Image().decode()` assertion was executed on an `about:blank` page, so the relative `/media/...` URL did **not** resolve to the local Vite site. The original AVIF decoder failure had the same test-origin bug; it is **not evidence that AVIF lacks Chromium support**. Corrected QA now navigates to `http://127.0.0.1:4175/evenimente` before decoding. Selected WebP asset remains preferred for conservative browser compatibility; no claim of AVIF incompatibility.
+- Actual screenshot evidence from the V201 partial workflow shows all 13 drawn icons visibly in the page, even though later test assertions failed. Need final exact-head, same-origin decode pass before release.
+
 ### V201 final codec correction — 2026-11-17
 - The initial optimized 29,919-byte AVIF failed **actual Chromium decoding** despite valid HTTP and local Pillow decoding, so it was removed from the branch. Final integrated asset: **`public/media/gs-category-illustrations-v201.webp`**, original cropped illustration atlas of **13 cells / 1120×320px / 45,888 bytes**, WebP q62, local path with no external CDN. No change to source composition or usage rights.
 - Source ImageGen boards and original generated faces are **illustrative**, not Green Sound real photographs or people; no AI event depiction was presented as real client media. User explicitly authorized integration of these generated boards.
