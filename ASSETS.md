@@ -1,3 +1,6 @@
+## V198 / 2026-11-17 — Category Signal asset provenance
+New `src/components/site/CategorySignal.tsx` contains 13 original vector drawings authored in code specifically for the site's own catalogue; `src/styles/category-signature-v198.css` contains original CSS. No image generation, third-party icons, animations, photo/audio/video, remote font, tracking, API or paid dependency was introduced. These vectors are decorative UI, **not actual live sound measurements, equipment photos or event documentation**. Existing Green Sound hero/film imagery and logo are unchanged. Webflow/MDN URLs are documentation/research references only — no copying or license inheritance asserted. Original TikTok reference clips remain excluded.
+
 ## V197 / 2026-11-17 — No new third-party assets
 Event page source reuses existing Green Sound media from `src/data/site.ts`, already in project. No new images, fonts, music, videos, icons, SVGs, logo, external code, dependencies, analytics or costs. Original CSS markup uses existing licensed project font dependencies (no font files redistributed). /nk Studio and Sirnik Studio were consulted for UX inspiration only; neither photography nor templates nor code were integrated. TikTok reference clips remain excluded from publishing.
 
