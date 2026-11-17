@@ -1,3 +1,6 @@
+### V208 / 2026-11-18 — Third-party thumbnail privacy (DRAFT)
+- Branch `fix/v208-local-film-poster-fallback` stacked on V207 PR #206. VideoLite no longer loads `i.ytimg.com` fallback thumbnails before user activation; configured poster remains, missing poster uses dark CSS surface. Added regression assertion. No new dependency, main unchanged. CI exact-head, network audit and matched 390/1440 Chromium screenshots PENDING.
+
 ### V207 / 2026-11-17 — Consented film referrer privacy (DRAFT)
 - Branch `fix/v207-film-referrer-privacy` stacked on V206 PR #205. Shared VideoLite iframe now sets `referrerPolicy="no-referrer"` so consented YouTube playback does not transmit the originating page URL in the Referer header. Regression assertion added. No new dependency or visual redesign. Exact-head CI, browser QA and matched screenshots NOT VERIFIED; main unchanged.
 
