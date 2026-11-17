@@ -1,3 +1,6 @@
+### V203 / 2026-11-17 — Contact / privacy discard
+- Added explicit discard control on prepared quote preview. Clears React preview and RHF retained personal fields (including query-prefilled details), consent and services; invalidates outstanding clipboard completion. Source regression test added. No backend, external services or new dependencies. **Exact-head CI and matched browser screenshots not yet verified.** Next zone: portfolio / film controls.
+
 ### V202 / 2026-11-17 — Navigation / focus continuity
 - Latest base: V201 PR #200 source `14feaa41c591ea992f48e110a258c4d51d673b15` (not necessarily CI-validated). V202 branch `fix/v202-menu-desktop-focus-handoff`, stacked on V201.
 - P1: mobile dialog closes on desktop resize but previously restored focus to a hidden mobile menu button. Now handoff to active visible desktop navigation link, with first-link fallback. Escape and ordinary close still return to mobile opener. Native dialog only; no new dependencies or homepage edits.
