@@ -75,6 +75,15 @@ async function capture(page,label){
       assert.equal(await page.locator("iframe").count(),0,"Film selection must not autoplay");
       const categories=page.locator('.rs-video-library__filters button');
       await categories.filter({hasText:"Studio"}).click();
+      await page.waitForTimeout(400);
+      const snapshot = await page.evaluate(() => ({
+        path:location.href,
+        filtered:Array.from(document.querySelectorAll(".rs-video-library__filters button")).map(e=>({name:e.textContent?.trim(),pressed:e.getAttribute("aria-pressed")})),
+        active:Array.from(document.querySelectorAll(".rs-video-library__item")).map(e=>({title:e.textContent?.trim().slice(0,60),current:e.getAttribute("aria-current")})),
+        player:document.querySelector(".rs-video-library__player")?.getAttribute("data-selected-film"),
+      }));
+      console.log("V191 FILTER DEBUG", JSON.stringify(snapshot));
+      await capture(page, "debug-studio-filter-"+width);
       // URL filter + React selection are asynchronous; inspect the settled UI.
       await page.waitForFunction(() => {
         const pressed = Array.from(document.querySelectorAll(".rs-video-library__filters button"))
