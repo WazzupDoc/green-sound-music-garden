@@ -6,11 +6,12 @@ const route = readFileSync(resolve(process.cwd(),"src/routes/portofoliu.tsx"),"u
 const component = readFileSync(resolve(process.cwd(),"src/components/atelier/RegiaPortfolio.tsx"),"utf8");
 const css = readFileSync(resolve(process.cwd(),"src/styles/portfolio-directors-cut-v161.css"),"utf8");
 
-describe("V161 authentic portfolio cinema/editorial rebuild",()=>{
-  it("really installs one route-scoped visual system and first-party documentary hero",()=>{
+describe("V161 original portfolio hero and gallery with V191 route-scoped film enhancement",()=>{
+  it("retains the original SSR-scoped archive art direction and first-party documentary hero",()=>{
     expect(route).toContain('portfolio-directors-cut-v161.css?inline');
     expect(route).toContain('className="gs161-portfolio"');
-    expect(route).toContain("<style>{portfolioDirectorCss}</style>");
+    expect(route).toContain('portfolio-cinema-v191.css?inline');
+    expect(route).toContain('<style>{portfolioDirectorCss + "\\n" + portfolioCinemaCss}</style>');
     expect(route).toContain('className="gs161-hero"');
     expect(route).toContain("src={images.concert.src}");
     expect(route).toContain('fetchPriority="high"');
