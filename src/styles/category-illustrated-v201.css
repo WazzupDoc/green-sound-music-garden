@@ -144,7 +144,6 @@
   100% { opacity: .1; transform: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  html:not([data-gs-performance="lite"]) .gs201-events .gs173-setlist__select[data-unused] .gs201-cue {transition: none;}
   html:not([data-gs-performance="lite"]) .gs201-events .gs173-setlist__select:is(:hover,:focus-visible) .gs201-cue,
   html:not([data-gs-performance="lite"]) .gs201-services .rs-service-index__group li a:is(:hover,:focus-visible) .gs201-cue {
     transform: translateY(-4px);
@@ -180,10 +179,9 @@ html[data-gs-performance="lite"] .gs201-cue,
 html[data-gs-performance="lite"] .gs201-cue * {
   animation: none !important; transition: none !important; transform: none !important;
 }
-/* Data Saver uses the existing original lightweight SVG cues, no AVIF is fetched
- * for this component when this rule matches before paint. */
-html[data-gs-performance="lite"] .gs201-cue__art { background-image: none; }
-html[data-gs-performance="lite"] .gs201-cue .gs198-cue__drawing { opacity: 1; z-index: 1; }
+/* The 29 KB original artwork remains visible in Lite/reduced-motion; static art
+ * is the point of this user-requested redesign. Only Save-Data can skip its
+ * download and revert to existing lightweight SVG artwork. */
 @media (prefers-reduced-data: reduce) {
   .gs201-cue__art { background-image: none; }
   .gs201-cue .gs198-cue__drawing { opacity: 1; z-index: 1; }
