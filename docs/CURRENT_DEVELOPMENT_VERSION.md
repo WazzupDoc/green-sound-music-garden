@@ -1,3 +1,6 @@
+## V190 / 2026-11-17 — Portfolio hero navigation focus (DRAFT)
+Branch `fix/v190-portfolio-anchor-focus` stacked on V189 `design/v189-navigation-setlist`. Source SHA `62988c36ef9ca984e91ddec9dea2bffcef9949bc`. Native photo/film jump links now transfer keyboard focus to their headings; the films heading is programmatically focusable. This is a keyboard UX correction, NOT a visual redesign. Chromium before/after screenshots and exact-head CI are unverified; no merge, main or production change. Next: portfolio film filters/player and visual review.
+
 
 ### V189 browser-validated UI checkpoint (2026-11-17)
 - UI SHA `f482e5a67f6f56b50b28e380330e0b31aedeac51` verified through full QA workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44034682149 : TypeScript, SSR/Vite build, asset budgets, Vitest 46 files/125 tests, browser interactions six viewports, Contact SSR and sitemap checks PASSED.
