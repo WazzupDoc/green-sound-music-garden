@@ -551,3 +551,12 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav — sem
 - Reference: https://webflow.com/blog/grid-layouts — CSS grid editorial placement principle, adapted independently; no external code or assets copied.
 - Original implementation: `home-editorial-services-v188.css` makes existing 5 approved-photo service links asymmetric across desktop, tablet and mobile; all 8 service links remain. No dependencies or new assets.
 - Rejected: equal five-card strip, autoplay scrolling gallery, heavy WebGL, neon glow on each tile. Browser visual verdict pending.
+
+
+## 2026-11-17 / V189 — Navigation setlist research
+- https://www.awwwards.com/websites/music-sound/ (opened 2026-11-17): category references for music/sound typography, unusual navigation and restrained interaction. Inspiration only; no CSS, JS, brand, photographs, fonts or assets copied; copyright/licence to source designs NOT assumed.
+- https://webflow.com/blog/breaking-the-illusion-of-completeness (opened 2026-11-17): navigation direction and visible affordances matter more than hidden motion. Adapted independently into explicit active-menu channel cue and reading order, not horizontal scroll/hijack. No code copied (licence N/A).
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog (opened 2026-11-17): native `showModal()` supplies modality and Escape, while explicit close button and focus handoff are recommended. Retained existing native dialog, close button and focus return; added optional Arrow/Home/End link navigation without intercepting Tab/Escape.
+- Original solution: muted asymmetrical editorial menu + five-bar **decorative** audio-channel signal on active/hover, CSS-only animations limited to hover-capable full-motion; static visual in Lite/reduced. Explicitly not a real live meter (would require actual sound input). No new dependencies; added stylesheet is route SSR-inlined.
+- Rejected: full-page WebGL sound visualizer, actual audio autoplay, scroll hijacking, copying interactive templates, new animation dependency, photos/TikTok clips, decorative loader that delays access.
+- Verification still required: Chromium 360/390/430/768/1440/1920, focus/keyboard/Escape, strict TypeScript, SSR, tests and gzip/CI.
