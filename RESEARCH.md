@@ -1,3 +1,6 @@
+## 2026-11-17 — V181 Contact preview semantics
+References: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html (clear labels), https://webflow.com/made-in-webflow/website/the-symphony (editorial hierarchy as inspiration only; no assets/code copied). Adapted an existing ticket hierarchy to distinguish advisory request from selected paid-service categories. Rejected adding a second interactive preview control or importing UI libraries: no utility, extra complexity. Original code only; no new license or asset.
+
 ## 2026-11-17 — V180 Contact service counter
 Local source audit: `src/components/site/QuoteForm.tsx` counted the advisory option as a service even though the eight-service cap excluded it. This created a misleading 9/8 possible display. Adapted the existing selection logic rather than adding a dependency or borrowing external design. Reference for accessible live status: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role (concept only; no copied code). Rejected adding a new progress widget or second homepage CTA: redundant UI and no conversion evidence. No asset/license changes.
 
