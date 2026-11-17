@@ -39,6 +39,7 @@ describe("V201 owner-approved illustrated category art",()=>{
     expect(css).toContain('background-size: 700% 200%');
     expect(css).toContain('prefers-reduced-motion: reduce');
     expect(css).toContain('data-gs-performance="lite"');
+    expect(css).not.toContain('data-gs-performance="lite"] .gs201-cue__art { background-image: none;');
     expect(css).toContain('prefers-reduced-data: reduce');
     expect(css).toContain('@media (max-width:480px)');
     expect(css).not.toContain("@import");
