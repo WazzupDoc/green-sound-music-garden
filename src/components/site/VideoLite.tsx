@@ -1,5 +1,5 @@
 import { Play, Square } from "lucide-react";
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Video } from "@/data/site";
 
 /**
@@ -9,10 +9,18 @@ import type { Video } from "@/data/site";
 export function VideoLite({ video, className = "", priority = false }: { video: Video; className?: string; priority?: boolean }) {
   const [active, setActive] = useState(false);
   const playButtonRef = useRef<HTMLButtonElement>(null);
+  const restoreFocusRef = useRef(false);
+  useLayoutEffect(() => {
+    // React has committed the poster button before focus is restored.
+    if (!active && restoreFocusRef.current) {
+      restoreFocusRef.current = false;
+      playButtonRef.current?.focus();
+    }
+  }, [active]);
   const stopPlayback = () => {
     // Unmounting the iframe stops both audio and network playback immediately.
+    restoreFocusRef.current = true;
     setActive(false);
-    requestAnimationFrame(() => playButtonRef.current?.focus());
   };
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (video.start) params.set("start", String(video.start));

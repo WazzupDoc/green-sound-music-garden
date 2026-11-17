@@ -1,3 +1,6 @@
+### V205 / 2026-11-17 — Portfolio stop focus reliability (draft)
+- Zone: portfolio film controls. V204 scheduled focus with requestAnimationFrame after setState, which does not guarantee that React has committed the replacement poster button. V205 uses a pending-focus ref and useLayoutEffect after the active→inactive commit; no focus on initial mount. Updated source regression. Browser screenshots and CI exact-head pending; main unchanged. Next: event detail UX.
+
 ### V204 / 2026-11-17 — Portfolio film playback controls (draft)
 - Rotation: Portfolio / film player. Problem: consent-loaded YouTube iframe previously had no first-party Stop action; visitor had to change film or leave page to silence playback.
 - Implemented: visible 44px+ Stop button unmounts iframe immediately and returns focus to original Play button on next animation frame. Native keyboard controls, no package, no autoplay before explicit Play; unchanged homepage and original films.
