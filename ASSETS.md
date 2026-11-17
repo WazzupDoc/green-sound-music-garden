@@ -1,3 +1,6 @@
+## V197 / 2026-11-17 — No new third-party assets
+Event page source reuses existing Green Sound media from `src/data/site.ts`, already in project. No new images, fonts, music, videos, icons, SVGs, logo, external code, dependencies, analytics or costs. Original CSS markup uses existing licensed project font dependencies (no font files redistributed). /nk Studio and Sirnik Studio were consulted for UX inspiration only; neither photography nor templates nor code were integrated. TikTok reference clips remain excluded from publishing.
+
 ## V195 / 2026-11-17
 No new images, fonts, icons, audio, external scripts or dependencies. Contact preview uses only user-entered values and existing CSS. No third-party license introduced.
 
