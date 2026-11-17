@@ -1,3 +1,22 @@
+## V201 / 2026-11-17 — owner-approved generated category illustrations / draft PR #200
+- Primary zone: event/service category selection and visual identity. User rejected V198 simple line icons and requested using the two rich icon concept images generated in this conversation.
+- V201 `design/v201-illustrated-category-art` stacked on V200 `fc8d9601ba94d26fbb8cafd929b1518e355296db` (V200 itself had pre-existing global CSS gzip budget failure; do NOT call that SHA validated). Draft https://github.com/WazzupDoc/green-sound-music-garden/pull/200 . Do not touch main/production.
+- New local source `public/media/gs-category-illustrations-v201.avif` (29,919 bytes / 13 cropped thematic AI illustrations), `CategorySignal.tsx` selects proper sprite-cell, `category-illustrated-v201.css` and route components include new imagery SSR. Generated lettering removed; real names/link copy preserved. No fake employee/event media, no new dependencies, paid services or homepage additions. Existing SVG remains fallback in Save-Data.
+- One inherited technical blocker addressed: global CSS budget on V200 exceeded 52KB gzip. V78/V79 legacy prototype CSS source files retained in history/repo, but removed from global `src/styles.css` import graph because production homepage uses `ConceptHomeV170` route-specific stylesheet; accompanying old visual integrity test updated to assert active V170 and retention of prototype files, **not disabled**. Validate this in exact-head CI and browser.
+- Evidence: `.github/workflows/v201-category-art-visual.yml` makes actual V200-before/V201-after same-state 390/1440 captures and six-width V201 regression; /servicii previews, generated AVIF 200/decode/dimensions, keyboard, click animation, Lite and reduced-motion/no-JS. Final artifact URL and green exact-head CI **PENDING** until check. No fabricated metrics.
+
+| Route/area | Prior status and problem | V201 status | Evidence / next |
+|---|---|---|---|
+| /evenimente event chooser | V198 simple line icons rejected | 5 illustration tiles with selection animation; photographed hero remains original media | Chromium before/after **PENDING** |
+| /servicii catalogue | V198 line icon too simple | 8 rendered detailed thematic illustrations | Chromium / DJ hover **PENDING** |
+| / home | clean V170 + V188 four-section contract | **UNMODIFIED** | existing historic artefacts; owner visual review |
+| /contact | V199 prefill handoff | inherited from V200 | NEXT rotation clipboard/validation |
+| /navigation | V200 viewport resize | inherited, QA budget previously red | Confirm CI and mobile |
+| /event detail | V197 editorial rundown | unchanged | historically validated |
+| /studio/portfolio | V194 / V191 draft visual themes | unchanged | future route rotation |
+| /SEO/SSR/404/security | global budgets and existing audits | CSS import cleanup source change | exact-head QA PENDING |
+- Next after V201: Contact clipboard denied/accepted UX and responsive form, then typography/footer and responsive page integrity.
+
 ### V200 / 2026-11-17 — Mobile menu viewport recovery (unverified)
 - Zone: navigation/mobile menu. On narrow→desktop viewport transitions an open native modal dialog could remain active and block the desktop nav. SiteHeader now listens for the desktop media-query transition and closes the dialog through existing state, restoring background interaction. No dependency, media or homepage changes.
 - Evidence pending: Chromium 390→1440 resize, keyboard/Escape/focus, Lite/reduced-motion, six-width screenshots, TypeScript, SSR, Vitest and CI exact-head. No visual QA claimed. Next: service discovery and portfolio.
