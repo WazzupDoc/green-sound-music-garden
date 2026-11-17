@@ -12,6 +12,7 @@ export function EventPage({event}:{event:EventType}){
       crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}>
       <a href="#oferta-titlu" className="rs-inline-link">Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
       <a href="#desfasurator-eveniment" className="rs-inline-link" onClick={(event) => { event.currentTarget.ownerDocument.getElementById("desfasurator-eveniment")?.focus({ preventScroll: true }); }}>Vezi desfășurătorul <ArrowUpRight size={18} aria-hidden /></a>
+      <a href="#servicii-potrivite" className="rs-inline-link" onClick={(event) => { event.currentTarget.ownerDocument.getElementById("servicii-potrivite")?.focus({ preventScroll: true }); }}>Vezi serviciile potrivite <ArrowUpRight size={18} aria-hidden /></a>
       <a href={business.phoneHref} className="rs-inline-link"><Phone size={18} aria-hidden /> Sună Green Sound</a>
     </PageHero>
     <section id="desfasurator-eveniment" className="rs-event-timeline" aria-labelledby="desfasurator-titlu" tabIndex={-1}>
@@ -33,9 +34,9 @@ export function EventPage({event}:{event:EventType}){
         })}</ol>
       </div>
     </section>
-    <section className="rs-event-offerings">
+    <section id="servicii-potrivite" className="rs-event-offerings" aria-labelledby="servicii-potrivite-titlu" tabIndex={-1}>
       <div className="container-site rs-event-offerings__inside">
-        <div><p>Servicii potrivite</p><h2>Ce putem pregăti</h2>
+        <div><p>Servicii potrivite</p><h2 id="servicii-potrivite-titlu">Ce putem pregăti pentru {event.name.toLowerCase()}</h2>
           <p>Poți discuta separat despre fiecare serviciu, în funcție de spațiu și de program.</p></div>
         <ul>{event.recommended.map(item=>{
           const service=getService(item.slug);

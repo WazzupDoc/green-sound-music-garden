@@ -1,3 +1,8 @@
+## 2026-11-17 — V185 event-service navigation
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — retained real fragment navigation for no-JS and browser history; original implementation, no code copied.
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — focus({preventScroll:true}) keeps keyboard focus at the destination; original implementation.
+- Rejected: adding another selection widget or modal to event detail (duplicates existing service discovery, heavier UX). No dependencies, new media, fonts or license changes. Premium visual reference comparison and browser evidence pending; this is a functional UX increment, not a certified redesign.
+
 ## 2026-11-17 — V184 event detail focus navigation
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — native fragment links retained for no-JS navigation; no external code copied.
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — focus({preventScroll:true}) used for keyboard focus handoff to existing `tabIndex=-1` section. No dependency or licensing issue; original implementation.
