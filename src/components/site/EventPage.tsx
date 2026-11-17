@@ -47,9 +47,10 @@ export function EventPage({event}:{event:EventType}){
         })}</ul>
       </div>
     </section>
-    {event.videos.length>0 && <section className="rs-event-film">
+    {event.videos.length>0 && <section className="rs-event-film" aria-labelledby="filmari-eveniment-titlu">
       <div className="container-site">
-        <h2>Filmări din arhiva Green Sound</h2>
+        <h2 id="filmari-eveniment-titlu">Filmări din arhiva Green Sound</h2>
+        <p className="mb-5 max-w-prose text-sm text-muted-foreground">Filmele nu pornesc automat. Dacă alegi „Redă filmarea”, se încarcă playerul YouTube; îl poți opri oricând din butonul „Oprește”.</p>
         <div>{event.videos.map(video=><VideoLite key={video.id} video={video}/>)}</div>
       </div>
     </section>}
