@@ -603,3 +603,11 @@ Area: `/studio-inregistrari` preparation heading. Added a studio-specific typogr
 
 ## 2026-11-15 V144 — Footer navigation landmarks
 Area: footer directory. Three visually unchanged columns are now named `<nav>` landmarks (Evenimente, Servicii, Green Sound) for screen-reader navigation. Regression test checks landmark count and matching closures. No dependencies, assets or main changes. CI and Chromium screenshots not yet verified. Next: Contact fragment focus and actual browser captures.
+
+
+## V188 / 2026-11-17 — Homepage service programme
+| Area | Severity | Observed issue | Change | QA | Next |
+|---|---|---|---|---|---|
+| Home / services | High visual | Five narrow equal-height photo tiles look generic | CSS Grid asymmetric editorial scale and image pacing, no new services | Browser before/after 390/1440, six widths, SSR and exact-head CI pending | Inspect real screenshots; then rotate to mobile navigation |
+
+No merge or deploy authorized. This is a design candidate until real Chromium validation.

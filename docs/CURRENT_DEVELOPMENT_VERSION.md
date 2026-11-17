@@ -1,3 +1,6 @@
+## V188 / 2026-11-17 — Asymmetric service editorial (DRAFT)
+Branch `design/v188-editorial-services-motion` stacked on V187. New `src/styles/home-editorial-services-v188.css` is SSR-inlined after the V170 home stylesheet in `src/routes/index.tsx`. Replaces the five equal service tiles with a varied CSS-grid editorial programme; preserves all eight direct service links, existing photos, 3 real films, CTA, keyboard access and reduced-motion/Lite gating. No packages/media/main/deployment. TypeScript, SSR, browser before/after 390/1440, six-width regression and exact-head CI not yet verified. Next: browser visual audit and mobile navigation.
+
 ## V187 / 2026-11-17 — Restore QA coverage for fix/feat branches (DRAFT)
 Branch `design/v187-qa-branch-coverage`, stacked on V186. Updated `.github/workflows/verify-crafted-react.yml` to include `fix/v*` and `feat/v*` in push and PR branch filters; previously those branches could skip the full quality pipeline. No jobs removed, no homepage or media changes, no deployment. Exact-head CI and screenshot/browser status pending; not merge-ready. Next: Contact clipboard and Event detail browser QA.
 
