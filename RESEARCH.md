@@ -1,3 +1,7 @@
+### 2026-11-18 — V208 third-party thumbnails
+- MDN https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img — image `src` triggers a network request when rendered. Adapted: only use an explicitly configured poster URL, otherwise local CSS fallback. No third-party source code, license or new dependency.
+- MDN https://developer.mozilla.org/en-US/docs/Web/Privacy/Third-party_cookies — external resources can have privacy implications. Rejected default `i.ytimg.com` poster before consent; retained consent-gated youtube-nocookie iframe. Actual browser network audit pending.
+
 ### 2026-11-17 — V207 embedded media privacy
 - MDN `https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#referrerpolicy`: native iframe `referrerpolicy` supports `no-referrer` to omit the Referer header. Adapted as one HTML attribute in existing click-to-load YouTube iframe; no external code or new dependency.
 - MDN `https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy`: browser-native privacy policy, rather than JavaScript interception. Rejected new video libraries and automatic third-party embedding due to bundle cost and consent regression. Runtime verification pending.
