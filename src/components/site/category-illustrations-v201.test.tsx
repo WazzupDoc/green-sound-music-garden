@@ -34,8 +34,8 @@ describe("V201 owner-approved illustrated category art",()=>{
     expect(eventsRoute).toContain("category-illustrated-v201.css?inline");
     expect(serviceRoute).toContain("category-illustrated-v201.css?inline");
   });
-  it("serves one atlas with original CSS responsive/motion and data saver guards",()=>{
-    expect(css).toContain('/media/gs-category-illustrations-v201.avif');
+  it("serves one WebP atlas with original CSS responsive/motion and data saver guards",()=>{
+    expect(css).toContain('/media/gs-category-illustrations-v201.webp');
     expect(css).toContain('background-size: 700% 200%');
     expect(css).toContain('prefers-reduced-motion: reduce');
     expect(css).toContain('data-gs-performance="lite"');
