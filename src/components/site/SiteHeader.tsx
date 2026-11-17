@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
-import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Logo } from "./Logo";
 import stageIndexCss from "@/styles/navigation-v81.css?inline";
+import liveSetlistCss from "@/styles/navigation-v189.css?inline";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
@@ -10,12 +11,12 @@ import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
 const navigation = [
-  { to: "/", title: "Acasă" },
-  { to: "/evenimente", title: "Evenimente" },
-  { to: "/servicii", title: "Servicii" },
-  { to: "/portofoliu", title: "Portofoliu" },
-  { to: "/studio-inregistrari", title: "Studio" },
-  { to: "/despre-noi", title: "Despre noi" },
+  { to: "/", title: "Acasă", note: "Descoperă Green Sound Music" },
+  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live" },
+  { to: "/servicii", title: "Servicii", note: "Muzică, sonorizare, lumini și studio" },
+  { to: "/portofoliu", title: "Portofoliu", note: "Filmele și proiectele existente" },
+  { to: "/studio-inregistrari", title: "Studio", note: "Înregistrări și producție audio" },
+  { to: "/despre-noi", title: "Despre noi", note: "Povestea și abordarea echipei" },
 ] as const;
 
 export function SiteHeader() {
@@ -93,6 +94,22 @@ export function SiteHeader() {
     return () => document.removeEventListener("keydown", onKey);
   }, [finderOpen]);
 
+  // Arrow keys are optional shortcuts within the six native links; Tab and Escape remain native.
+  const onMenuKeyDown = (event: ReactKeyboardEvent<HTMLOListElement>) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    const links = Array.from(event.currentTarget.querySelectorAll<HTMLAnchorElement>(".gsm-nav-index__link"));
+    const current = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (current < 0) return;
+    let next = current;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (current + 1) % links.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (current - 1 + links.length) % links.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = links.length - 1;
+    else return;
+    event.preventDefault();
+    links[next]?.focus();
+  };
+
   const onFinderOpenChange = (next: boolean) => {
     // Keep the dialog root mounted after first use; Radix owns close focus.
     setFinderOpen(next);
@@ -102,6 +119,7 @@ export function SiteHeader() {
     <header className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
       {/* Static, first-party CSS is present during SSR; no runtime fetch and no external script. */}
       <style>{stageIndexCss}</style>
+      <style>{liveSetlistCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
@@ -184,6 +202,10 @@ export function SiteHeader() {
                 Tot ce ține
                 <em> scena vie.</em>
               </h2>
+              <div className="gsm189-mobile-current" aria-hidden="true">
+                <span>CANAL {String(menuSelection + 1).padStart(2, "0")} / 06</span>
+                <strong>{navigation[menuSelection]?.note ?? navigation[0].note}</strong>
+              </div>
               <p className="gsm-nav-index__note">
                 Explorează evenimentele, producția și oamenii
                 din spatele Green Sound Music.
@@ -197,7 +219,7 @@ export function SiteHeader() {
             </div>
 
             <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
-              <ol className="gsm-nav-index__list">
+              <ol className="gsm-nav-index__list" onKeyDown={onMenuKeyDown}>
                 {navigation.map((entry, index) => (
                   <li key={entry.to} className="gsm-nav-index__entry">
                     <Link
@@ -211,6 +233,7 @@ export function SiteHeader() {
                     >
                       <small aria-hidden="true">{String(index + 1).padStart(2, "0")}</small>
                       <span>{entry.title}</span>
+                      <span className="gsm189-channel" aria-hidden="true"><i /><i /><i /><i /><i /></span>
                       <svg viewBox="0 0 28 28" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
                         <path d="M5 23L23 5M9 5H23V19" />
                       </svg>
