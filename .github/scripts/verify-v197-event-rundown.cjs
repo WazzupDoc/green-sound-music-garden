@@ -48,6 +48,7 @@ const hash = name => crypto.createHash("sha256").update(fs.readFileSync(dir + "/
           const jumps = await page.locator(".rs-inner-hero__actions a[href='#desfasurator-eveniment']").count();
           assert.equal(jumps, 1, "Original event navigation preserved");
           await page.locator(".rs-inner-hero__actions a[href='#desfasurator-eveniment']").click();
+          await page.waitForFunction(() => document.activeElement?.id === "desfasurator-eveniment", null, {timeout: 3000});
           assert.equal(await section.evaluate(el => document.activeElement === el), true, "Keyboard focus moved to timeline");
           const links = await section.locator("li a").evaluateAll(items => items.map(link => ({href:link.getAttribute("href"), label:link.textContent.trim()})));
           assert(links.every(link => link.href && link.href.startsWith("/") && link.label.length > 6));
