@@ -23,6 +23,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [menuSelection, setMenuSelection] = useState(1);
   const menuNavigatingRef = useRef(false);
+  const menuDesktopHandoffRef = useRef(false);
   const [finderOpen, setFinderOpen] = useState(false);
   const [finderActivated, setFinderActivated] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -57,10 +58,18 @@ export function SiteHeader() {
   useEffect(() => {
     const desktop = window.matchMedia("(min-width: 1024px)");
     const onDesktop = (event: MediaQueryListEvent) => {
-      if (event.matches) setOpen(false);
+      if (event.matches) {
+        // The mobile opener becomes hidden at this breakpoint. Return focus to
+        // the equivalent visible desktop link instead of a hidden control.
+        menuDesktopHandoffRef.current = Boolean(menuDialogRef.current?.open);
+        setOpen(false);
+      }
     };
     desktop.addEventListener("change", onDesktop);
-    if (desktop.matches) setOpen(false);
+    if (desktop.matches && menuDialogRef.current?.open) {
+      menuDesktopHandoffRef.current = true;
+      setOpen(false);
+    }
     return () => desktop.removeEventListener("change", onDesktop);
   }, []);
 
@@ -174,7 +183,14 @@ export function SiteHeader() {
         }}
         onClose={() => {
           setOpen(false);
-          if (!menuNavigatingRef.current) menuButtonRef.current?.focus();
+          if (menuDesktopHandoffRef.current) {
+            const desktopLink = document.querySelector<HTMLAnchorElement>('.atelier-header__nav .atelier-header__link--active')
+              ?? document.querySelector<HTMLAnchorElement>('.atelier-header__nav a');
+            desktopLink?.focus();
+          } else if (!menuNavigatingRef.current) {
+            menuButtonRef.current?.focus();
+          }
+          menuDesktopHandoffRef.current = false;
           menuNavigatingRef.current = false;
         }}
       >
