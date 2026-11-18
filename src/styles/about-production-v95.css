@@ -138,7 +138,9 @@ html[data-gs-performance=lite] .gs-about-v95__steps li{transition:none}
   }
 }
 @media(prefers-reduced-motion:reduce){
-  .gs-about-v95__steps li,.gs-about-v95__cue{transition:none}
+  /* Override the global accessibility utility's 0.01ms transition,
+     so reduced-motion screenshots and computed CSS are truly static. */
+  .gs-about-v95__steps li,.gs-about-v95__cue{transition:none!important;transition-duration:0s!important;transform:none!important}
 }
 html[data-gs-performance="lite"] .gs-about-v95__steps li,
-html[data-gs-performance="lite"] .gs-about-v95__cue{transition:none;transform:none}
+html[data-gs-performance="lite"] .gs-about-v95__cue{transition:none!important;transition-duration:0s!important;transform:none!important}
