@@ -132,6 +132,7 @@ function Contact() {
             <ClientOnly fallback={
               <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
                 <p>Pregătim formularul pentru evenimentul tău…</p>
+                <noscript><p className="text-sm">Formularul interactiv necesită JavaScript. Pentru o cerere fără JavaScript, folosește telefonul, WhatsApp sau emailul afișate în această pagină; mesajul nu se trimite automat.</p></noscript>
                 <p className="text-sm">Poți folosi și telefonul sau WhatsApp din zona de contact.</p>
               </div>
             }>
