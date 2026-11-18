@@ -252,3 +252,25 @@ html[data-gs-performance="lite"] .gs217-directory{
     outline-offset:4px;
   }
 }
+
+
+/* No-JavaScript escape hatch: keyboard-accessible real routes even when
+   the React dialog and mobile controls cannot hydrate. */
+.gs225-nojs-nav{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  padding:12px clamp(14px,3vw,36px);
+  border-top:1px solid #a8d4b44d;
+  background:#09251a;
+}
+.gs225-nojs-nav a{
+  display:inline-flex;align-items:center;min-height:44px;
+  padding:9px 13px;
+  color:#e3f8e1;font-weight:650;text-decoration:underline;
+  text-decoration-color:#83b995;text-underline-offset:4px;
+}
+.gs225-nojs-nav a:last-child{background:#9de9b8;color:#072317;text-decoration:none}
+.gs225-nojs-nav a:focus-visible{outline:3px solid #b1ffce;outline-offset:2px}
+@media(max-width:640px){
+  .gs225-nojs-nav{padding:12px;gap:4px}
+  .gs225-nojs-nav a{padding:8px 10px}
+}
