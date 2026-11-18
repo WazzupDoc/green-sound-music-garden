@@ -1,0 +1,53 @@
+name: V214 Signal Score Search — real Chromium before after
+on:
+  push:
+    branches:
+      - design/v214-signal-score-navigation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Exact V213 baseline worktree
+        run: |
+          git cat-file -e e43609dd09212d3cbf8d18a2b47d677f29fc2b56^{commit}
+          git worktree add --detach /tmp/gs-v213-before e43609dd09212d3cbf8d18a2b47d677f29fc2b56
+      - name: Install dependencies for baseline and candidate
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v213-before && bun install --no-save)
+      - name: Install pinned Chromium for QA only
+        run: |
+          npm install --prefix /tmp/gs-v214-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v214-playwright/node_modules/.bin/playwright install chromium
+      - name: Serve independent baseline and candidate
+        run: |
+          (cd /tmp/gs-v213-before && bunx vite dev --host 127.0.0.1 --port 4176 > /tmp/gs-v213.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v214.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf "http://127.0.0.1:$port/" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs-v213.log /tmp/gs-v214.log; exit 1; fi
+          done
+      - name: Capture matched real screenshots and verify functionality
+        run: NODE_PATH=/tmp/gs-v214-playwright/node_modules node .github/scripts/verify-v214-score-search.cjs
+      - name: Upload original before/after and motion screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v214-score-search-before-after
+          path: screenshots/gs-v214-navigation-score/
+          if-no-files-found: warn
+          retention-days: 60
