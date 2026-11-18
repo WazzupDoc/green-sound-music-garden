@@ -1,3 +1,6 @@
+### V218 / 2026-11-18 — Video privacy permission audit (DRAFT)
+- Rotation: shared video embeds (portfolio/events/home). Third-party iframe previously requested accelerometer, gyroscope and clipboard-write permissions without functional need. Reduced `allow` to autoplay (only after explicit Play), encrypted-media and picture-in-picture. Existing Stop/focus, no-referrer and click-to-load preserved. Source regression added. No visual redesign; screenshots/CI exact-head pending. Main untouched. Next: Contact and event CTA browser audit.
+
 ### V217 / 2026-11-18 — Desktop service directory (DRAFT / VISUAL QA PENDING)
 - Rotation: desktop navigation; next: Contact and events detail, then gallery and video.
 - Base: V216 `199ff989`; UI commit `7f765530`; PR #217 https://github.com/WazzupDoc/green-sound-music-garden/pull/217
