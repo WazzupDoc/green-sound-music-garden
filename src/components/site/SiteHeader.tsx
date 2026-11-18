@@ -232,6 +232,19 @@ export function SiteHeader() {
           </button>
         </div>
       </div>
+      {/* With JavaScript disabled the modal opener cannot run. Render actual
+          crawlable routes rather than leaving narrow screens without navigation. */}
+      <noscript>
+        <nav className="gs225-nojs-nav" aria-label="Navigare fără JavaScript">
+          <a href="/">Acasă</a>
+          <a href="/evenimente">Evenimente</a>
+          <a href="/servicii">Servicii</a>
+          <a href="/portofoliu">Portofoliu</a>
+          <a href="/studio-inregistrari">Studio</a>
+          <a href="/despre-noi">Despre noi</a>
+          <a href="/contact">Cere ofertă</a>
+        </nav>
+      </noscript>
       <dialog
         ref={menuDialogRef}
         id="atelier-mobile-navigation"
