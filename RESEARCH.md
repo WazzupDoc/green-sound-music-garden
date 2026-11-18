@@ -1,3 +1,8 @@
+### 2026-11-19 — V233 / Events truthful setlist
+- https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ — keyboard discoverability reference only. Existing event selectors are buttons, not tabs; **rejected** importing tablist roles or copied JS. Kept native buttons and exposed existing arrow-key behavior in copy.
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets — keyboard navigation guidance; reference for upcoming browser audit, no code copied.
+- No new dependency or media. Existing historical year was unsupported and removed. This entry records reference URLs; live web inspection was not performed in this run.
+
 ### 2026-11-18 — V232 Contact no-JavaScript conversion
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/noscript — `noscript` fallback is parsed as HTML only without scripting. Adapted native fallback CTA, no external code copied or new dependency.
 - https://web.dev/learn/accessibility/javascript — keyboard focus and progressive navigation should remain functional. Kept direct telephone link rather than simulating a form submission.
