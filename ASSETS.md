@@ -1,3 +1,6 @@
+### V225 / 2026-11-18 — navigation
+No new external media, photographs, logos, fonts, SVGs or libraries. The tablet index uses CSS and previously first-party link structure; no license-bearing assets integrated. `<noscript>` uses canonical first-party routes only.
+
 ### V224 / 2026-11-18 — About production score
 - Four inline path-only SVG signal traces are original shapes authored in `src/routes/despre-noi.tsx`. No external artwork, logo, font, photo, music or dependency. Used solely as aria-hidden decorative production cues.
 - Existing first-party media `images.scena` and `images.dj` retained unchanged. No third-party imagery integrated.
