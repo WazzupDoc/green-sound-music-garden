@@ -86,12 +86,16 @@ function Contact() {
               <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
               <li><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></li>
             </ol>
-            <a href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
+            <a id="contact-start-brief" href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
               // Keep the native fragment navigation while moving keyboard focus to the form heading.
               document.getElementById("contact-form-title")?.focus({ preventScroll: true });
             }}>
               Începe cererea <ArrowUpRight className="size-5" aria-hidden />
             </a>
+            <noscript>
+              <style>{`#contact-start-brief { display: none !important; }`}</style>
+              <a className="director-contact-signal__action" href={business.phoneHref}>Sună pentru ofertă <ArrowUpRight className="size-5" aria-hidden /></a>
+            </noscript>
           </div>
         </div>
       </section>
