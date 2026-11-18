@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { images, people, videos, type Service, type ServiceSlug } from "@/data/site";
+import { images, people, videos, type Service } from "@/data/site";
 import { VideoLite } from "./VideoLite";
 import { BeamPhoto } from "./BeamPhoto";
 
-function SectionLink({slug}: {slug:ServiceSlug}){
-  return <Link to="/contact" className="rs-inline-link">
+function SectionLink({ service }: { service: Service }) {
+  // Contact's whitelist accepts the exact human-readable labels in the catalogue,
+  // not URL slugs. Preserve the selection across the route transition.
+  return <Link to="/contact" search={{ services: [service.formLabel] }} hash="contact-form-title" className="rs-inline-link">
     Întreabă despre acest serviciu <ArrowUpRight size={18} aria-hidden />
   </Link>;
 }
@@ -27,7 +29,7 @@ export function ServiceSignature({service:s}:{service:Service}){
                 <div key={person.name}><span>{person.role}</span><strong>{person.name}</strong></div>)}
             </div>
             <p>Selecția muzicală și prezentarea momentelor se pregătesc împreună cu organizatorul.</p>
-            <SectionLink slug={s.slug}/></div>
+            <SectionLink service={s}/></div>
           <BeamPhoto image={images.dj} className="rs-service-feature__image"/>
         </div>
       </section>;
@@ -43,7 +45,7 @@ export function ServiceSignature({service:s}:{service:Service}){
             <div><h3>Ce discutăm înainte</h3><ol>{[
               "Genurile și piesele preferate","Momentele în care vrei muzică live",
               "Spațiul și sonorizarea necesară"
-            ].map((item,index)=><li key={item}><span>{index+1}</span>{item}</li>)}</ol><SectionLink slug={s.slug}/></div>
+            ].map((item,index)=><li key={item}><span>{index+1}</span>{item}</li>)}</ol><SectionLink service={s}/></div>
           </div>
         </div>
       </section>;
@@ -57,8 +59,8 @@ export function ServiceSignature({service:s}:{service:Service}){
             <BeamPhoto image={images.scena} className="rs-service-feature__image"/>
             <div><h3>Din oferta tehnică</h3>
               <ul>{(list.length?list:s.highlights.map(item=>item.title)).map(text=><li key={text}>{text}</li>)}</ul>
-              <p>Modelele și cantitățile exacte: [DE COMPLETAT DE PROPRIETAR].</p>
-              <SectionLink slug={s.slug}/></div>
+              <p>Modelele și cantitățile se confirmă în ofertă, în funcție de spațiu și de cerințele evenimentului.</p>
+              <SectionLink service={s}/></div>
           </div>
         </div>
       </section>;
@@ -71,7 +73,7 @@ export function ServiceSignature({service:s}:{service:Service}){
             <VideoLite video={videos.fumGreu}/>
             <div><BeamPhoto image={images.fum}/><h3>Ce confirmăm înainte</h3>
               <p>Momentul utilizării, accesul la locație, condițiile de siguranță și compatibilitatea cu spațiul.</p>
-              <SectionLink slug={s.slug}/></div>
+              <SectionLink service={s}/></div>
           </div>
         </div>
       </section>;
@@ -93,8 +95,8 @@ export function ServiceSignature({service:s}:{service:Service}){
           <BeamPhoto image={images.ursitoare2} className="rs-service-feature__image"/>
           <div><p className="rs-service-feature__eyebrow">Pentru botez</p><h2>Momentul ursitoarelor</h2>
             <p>Un moment dedicat copilului și familiei. Detaliile scenariului, numărul de personaje și desfășurarea se discută înainte de eveniment.</p>
-            <p>Scenariu și personaje exacte: [DE COMPLETAT DE PROPRIETAR].</p>
-            <SectionLink slug={s.slug}/></div>
+            <p>Scenariul, personajele și durata momentului se stabilesc în discuția despre eveniment.</p>
+            <SectionLink service={s}/></div>
         </div>
       </section>;
     case "start-veselia":
@@ -103,8 +105,8 @@ export function ServiceSignature({service:s}:{service:Service}){
           <BeamPhoto image={images.copii} className="rs-service-feature__kids-photo"/>
           <div className="rs-service-feature__kids-text"><p className="rs-service-feature__eyebrow">Pentru cei mici</p>
             <h2>Start Veselia</h2><p>Animație și activități pentru copii, în cadrul petrecerilor și evenimentelor.</p>
-            <p>Personajele disponibile pentru data ta: [DE COMPLETAT DE PROPRIETAR].</p>
-            <SectionLink slug={s.slug}/></div>
+            <p>Personajele și activitățile disponibile se confirmă pentru data și locul evenimentului.</p>
+            <SectionLink service={s}/></div>
         </div>
       </section>;
     case "hostess":
@@ -113,7 +115,7 @@ export function ServiceSignature({service:s}:{service:Service}){
           <div><p className="rs-service-feature__eyebrow">La sosirea invitaților</p>
             <h2>Primirea și îndrumarea invitaților</h2>
             <p>Discutăm dinainte punctul de acces, programul, sarcinile de întâmpinare și numărul de persoane necesar.</p>
-            <SectionLink slug={s.slug}/></div>
+            <SectionLink service={s}/></div>
           <BeamPhoto image={images.hostess} className="rs-service-feature__image"/>
         </div>
       </section>;
