@@ -14,7 +14,7 @@ describe("Contact query prefill safety", () => {
 
 
   it("rejects locations made only of controls and very long query values", () => {
-    expect(validateBrief({ location: "\u202e\u0000\\n" }).location).toBeUndefined();
+    expect(validateBrief({ location: "\u202e\u0000\n\t" }).location).toBeUndefined();
     expect(validateBrief({ location: "X".repeat(2001) }).location).toBeUndefined();
     expect(validateBrief({ location: " Pitești " }).location).toBe("Pitești");
   });
