@@ -1,3 +1,8 @@
+### 2026-11-18 — V232 Contact no-JavaScript conversion
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/noscript — `noscript` fallback is parsed as HTML only without scripting. Adapted native fallback CTA, no external code copied or new dependency.
+- https://web.dev/learn/accessibility/javascript — keyboard focus and progressive navigation should remain functional. Kept direct telephone link rather than simulating a form submission.
+- Rejected: new submission endpoint (not present), duplicate visible JS CTA, new animation (not helpful to contact conversion). Reference designs were not copied.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 

@@ -1,3 +1,9 @@
+### 2026-11-18 V232 — Contact / no-JS primary CTA (DRAFT)
+| Area | Defect | Change | QA | Next |
+| --- | --- | --- | --- | --- |
+| Contact no-JS | Primary 'Începe cererea' pointed to unavailable interactive form | Native `noscript` switches CTA to existing telephone link | Source assertion added; real browser and CI exact-head pending; screenshots unavailable | Contact 390/1440 no-JS browser, then Evenimente |
+No verified visual scores, no deployment or main changes.
+
 ### V222 / 2026-11-18 — MAIN SYNC COMPLETED (documentation-only status)
 - Full development history through V221 + V222 CI regression corrections merged by PR #222 https://github.com/WazzupDoc/green-sound-music-garden/pull/222 into main; merge commit `c97f36f6e6628a45f9b2da715888e5af5f5e59b3` (parents original main `557d8b4fd086f4592581cccc68ddd53d2542b45b` and candidate `7c946f5aff3038bc7286603463e3eaff356966af`). This supersedes older DRAFT entries below, which remain historical.
 - Validated exact candidate HEAD `7c946f5aff3038bc7286603463e3eaff356966af`: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018 (strict TypeScript, production SSR/Vite build, gzip budgets, 59 test files / 160 tests, real Chromium six widths, Contact SSR/hydration, sitemap and 20-page canonical/SEO audit). Supplemental V19 run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911322 passed. New screenshots: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018/artifacts/14430567777 . Visual changes derive from earlier development; V222 itself only repaired two stale regression assertions.
