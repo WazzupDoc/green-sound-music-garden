@@ -5,6 +5,15 @@ import { BeamPhoto } from "@/components/site/BeamPhoto";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import aboutCss from "@/styles/about-production-v95.css?inline";
 
+// Four original, decorative signal traces for the four real preparation steps.
+// SVG is first-party, static and inert: SSR-safe with no autoplay or JS animation.
+const productionCues = [
+  "M2 15H18L27 8L37 22L46 15H65L73 5L82 25L90 15H113L123 10L132 20L142 15H148",
+  "M2 15H26L35 3L44 27L52 15H62L69 11L76 19L83 15H103L111 6L120 24L129 15H148",
+  "M2 15H12L20 11L29 19L38 15H49L56 2L65 28L74 15H89L97 7L105 23L114 15H125L132 9L140 21L148 15",
+  "M2 15H24L30 10L36 20L42 15H59L67 8L75 22L83 15H100L108 12L116 18L124 15H148",
+] as const;
+
 export const Route = createFileRoute("/despre-noi")({
   head: () => pageHead({
     title: "Despre Green Sound Music | Muzică și evenimente în Pitești, din 2008",
@@ -18,7 +27,7 @@ export const Route = createFileRoute("/despre-noi")({
 function About() {
   return <>
     <style>{aboutCss}</style>
-    <main className="gs-about-v95">
+    <div className="gs-about-v95">
       <header className="gs-about-v95__hero">
         <div className="container-site gs-about-v95__hero-grid">
           <div className="gs-about-v95__intro">
@@ -48,10 +57,13 @@ function About() {
       <section className="gs-about-v95__process" aria-labelledby="gs-about-process">
         <div className="container-site">
           <div className="gs-about-v95__process-heading"><p className="gs-about-v95__section-index">02 / FLUXUL DE PRODUCȚIE</p><h2 id="gs-about-process">De la primul detaliu<br /><em>la ultimul moment.</em></h2></div>
-          <p className="gs-about-v95__process-intro">Patru momente ale pregătirii, de la discuția inițială la coordonarea din ziua evenimentului.</p>\n          <ol className="gs-about-v95__steps">{process.map((step, index) => <li key={step.title}>
+          <p className="gs-about-v95__process-intro">Patru momente ale pregătirii, de la discuția inițială la coordonarea din ziua evenimentului.</p>
+          <ol className="gs-about-v95__steps">{process.map((step, index) => <li key={step.title}>
             <span className="gs-about-v95__step-no" aria-hidden="true">{String(index + 1).padStart(2, "0")}<span className="gs-about-v95__step-track" /></span>
             <div><h3>{step.title}</h3><p>{step.text}</p></div>
-            <span className="gs-about-v95__step-mark" aria-hidden="true">↗</span>
+            <svg className="gs-about-v95__cue" viewBox="0 0 150 30" focusable="false" aria-hidden="true">
+              <path d={productionCues[index] ?? productionCues[0]} fill="none" stroke="currentColor" strokeLinecap="square" strokeLinejoin="miter" />
+            </svg>
           </li>)}</ol>
         </div>
       </section>
@@ -59,6 +71,6 @@ function About() {
         <figure><BeamPhoto image={images.dj} className="gs-about-v95__closing-photo" /><figcaption>Din arhiva Green Sound Music</figcaption></figure>
         <div><p className="gs-about-v95__section-index">03 / URMĂTORUL EVENIMENT</p><h2 id="gs-about-close">Spune-ne ce <em>pregătești.</em></h2><p>Data, locul și câteva detalii despre eveniment sunt suficiente pentru a începe discuția.</p><Link to="/contact" hash="contact-form-title" className="gs-about-v95__cta">Pregătește cererea <ArrowUpRight size={20} aria-hidden="true" /></Link></div>
       </section>
-    </main>
+    </div>
   </>;
 }
