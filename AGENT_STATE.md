@@ -1,3 +1,8 @@
+### V228 mobile events setlist / 2026-11-18
+- Zone: /evenimente, narrow mobile <=460px. Prior paired columns compressed labels and left each detail link in a cramped tile; changed to a single editorial row per event with a persistent 82px detail target, maintaining existing selection, keyboard controls, SSR links and reduced-motion behavior. No dependencies/media added.
+- Files: src/styles/event-index-v172.css; src/test/events-setlist-v227.test.ts. Source test added; **Chromium before/after, 6-width QA, TypeScript, SSR and exact-head CI remain unverified until workflow finishes**. Do not claim a validated visual release.
+- Next: inspect 390/1440 matched browser captures and all six widths; audit Contact prefill/clipboard flow next. PR #228 remains draft, main untouched.
+
 ### V227 / 2026-11-18 — Event setlist trust and keyboard discoverability (draft)
 | Zone | Observed issue | Fix | Verification | Next |
 | --- | --- | --- | --- | --- |
