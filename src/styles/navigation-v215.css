@@ -65,3 +65,34 @@
 html[data-gs-performance=lite] .gs215-finder__suggestions button{
  animation:none!important;transition:none!important
 }
+
+/* V216 — small-screen setlist: make actual destinations the visual headline.
+   The desktop editorial stage remains intact. No new art, scripts or packages. */
+@media (max-width: 640px) {
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__stage-mark,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__cue,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__note,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__live-mark {
+    display: none;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__intro h2 {
+    max-width: 18ch;
+    margin-block: 0;
+    font-size: clamp(1.6rem, 6.4vw, 2.25rem);
+    line-height: 1.05;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__layout {
+    gap: 12px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__navigation {
+    position: relative;
+    z-index: 1;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__link {
+    min-height: 54px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__link:focus-visible {
+    outline: 2px solid #d6f7b7;
+    outline-offset: -2px;
+  }
+}
