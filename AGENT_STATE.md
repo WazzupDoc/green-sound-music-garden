@@ -1,3 +1,8 @@
+### 2026-11-18 V226 — Error / 404 recovery rotation
+- Source V225 PR #225 exact-head `e29bb677630ed98f57344be2c253fa93ae45fe03`, CI links in PR #225. New draft PR #226 on `design/v226-signal-recovery-404`.
+- Area: root fallback 404/error. Defect: unrelated concert image suggested a real event on an error route. Replaced with original emerald signal routing SVG, accessible decorative treatment, responsive CSS, preserved real recovery actions. Files: StageFallback.tsx, signal-recovery-v226.css, signal-recovery-v226.test.ts.
+- Browser before/after 390/1440: NOT YET CAPTURED. Strict TS/SSR/Vitest/CI exact-head: NOT YET CONFIRMED. Do not mark visually approved. Next rotation: service finder tablet 1024–1120 and Contact.
+
 ### V225 / 2026-11-18 — One-zone audit: navigation responsive handoff
 | Zone / severity | Real defect on V224 | Implementation | Proof / release gate | Next |
 | --- | --- | --- | --- | --- |
