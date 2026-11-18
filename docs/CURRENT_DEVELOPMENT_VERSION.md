@@ -1,3 +1,6 @@
+### V218 / 2026-11-18 — Minimal consented video permissions (DRAFT / QA PENDING)
+- Branch `fix/v218-film-embed-permissions` stacked on V217 PR #217; shared VideoLite removes unnecessary accelerometer, gyroscope and clipboard-write permissions from YouTube iframe. Preserves explicit Play/Stop, focus handoff, referrer privacy and no third-party load before Play. Source regression added. No homepage layout or assets changed. CI exact-head and Chromium screenshots pending. Main untouched.
+
 ### V217 / 2026-11-18 — Production directory navigation (DRAFT / NOT VALIDATED)
 - PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/217 ; branch `design/v217-production-directory-header`; initial UI commit `7f765530d4d0b560af56e6b48d19ce6866203c7f`; base V216 `199ff989`.
 - Navigation now groups the eight real service routes in a three-chapter emerald editorial dropdown, with eight original SVG glyphs and three bespoke category diagrams. Dedicated direct Services link and mobile dialog retained; no homepage sections added.
