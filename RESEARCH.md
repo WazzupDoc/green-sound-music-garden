@@ -1,3 +1,5 @@
+### 2026-11-18 V220: React render vs effects, https://react.dev/learn/synchronizing-with-effects and https://react.dev/reference/react/useLayoutEffect. Effect-only reset cannot guarantee no iframe is committed on changed props; guard render synchronously. Original implementation; no external code/assets/packages. Rejected: key-only reset and autoplay of replacement. Browser network and focus tests pending.
+
 ### 2026-11-18 — V219 film identity consent boundary
 - Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe (iframe lifecycle); https://react.dev/reference/react/useLayoutEffect (pre-paint synchronization). Adaptation: first-party layout effect unmounts an already-playing iframe if the supplied video ID changes, rather than automatically playing the replacement film. No external code or assets copied, no new dependency. Rejected alternative: iframe key alone (would autoplay replacement).
 - QA still required: actual playback/film switch and focus in Chromium, exact-head CI, screenshots at 390/1440 and all six widths.
