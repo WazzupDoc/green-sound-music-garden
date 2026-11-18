@@ -1,0 +1,37 @@
+name: Archive main before Green Sound V222 integration
+on:
+  push:
+    branches: [ops/v222-backup-main-20261118]
+    paths:
+      - ".github/workflows/v222-backup-main.yml"
+permissions:
+  contents: write
+jobs:
+  backup:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 1
+      - name: Create and verify immutable backup tag for exact previous main
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="557d8b4fd086f4592581cccc68ddd53d2542b45b"
+          tag="backup/main-pre-v222-20261118"
+          git fetch --no-tags origin main
+          actual="$(git rev-parse refs/remotes/origin/main)"
+          test "$actual" = "$expected" || { echo "::error::main moved; abort backup"; exit 1; }
+          existing="$(git ls-remote --tags origin "refs/tags/$tag" | awk 'NR==1{print $1}')"
+          if [ -n "$existing" ]; then
+            test "$existing" = "$expected" || { echo "::error::backup tag points elsewhere"; exit 1; }
+            echo "Correct backup tag already exists."
+          else
+            git tag "$tag" "$expected"
+            git push origin "refs/tags/$tag"
+          fi
+          remote="$(git ls-remote --tags origin "refs/tags/$tag" | awk 'NR==1{print $1}')"
+          test "$remote" = "$expected"
+          echo "VERIFIED backup tag $tag -> $remote"
