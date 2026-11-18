@@ -133,3 +133,13 @@ html[data-gs-performance=lite] .gs172-events *:after{animation:none!important;tr
  .gs172-programme__item[data-active=true]{outline:2px solid Highlight;outline-offset:-2px}
  .gs172-events a:focus-visible,.gs172-events button:focus-visible{outline:3px solid Highlight}
 }
+
+/* V228 — mobile event setlist: one readable editorial column instead of cramped paired tiles.
+ * Existing detail links stay visible; no JS, imagery, or additional dependencies. */
+@media(max-width:460px){
+ .gs172-programme__options{grid-template-columns:minmax(0,1fr);gap:0;margin-bottom:26px}
+ .gs172-programme__item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;min-height:82px}
+ .gs172-programme__select{min-height:82px;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;padding:14px 8px 14px 12px}
+ .gs172-programme__select strong{font-size:clamp(1.35rem,5.8vw,1.85rem);line-height:1.12}
+ .gs172-programme__detail{align-self:stretch;justify-content:center;min-width:58px;min-height:82px;padding:8px 12px}
+}
