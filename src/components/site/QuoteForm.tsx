@@ -138,6 +138,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     if (!first) return;
     if (first === "services") {
       document.querySelector<HTMLInputElement>(".gs-quote__choices input:not(:disabled)")?.focus();
+      // Error text is associated with each choice, not only its fieldset:
+      // assistive technology announces the actual validation reason on focus.
     } else {
       setFocus(first as keyof QuoteInput);
     }
@@ -378,7 +380,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
                   <label key={label} data-checked={checked} data-disabled={disabled}
                     className="gs-quote__choice">
                     <input type="checkbox" className="sr-only" checked={checked} disabled={disabled}
-                      aria-describedby="q-services-guide" onChange={() =>
+                      aria-invalid={!!errors.services} aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"} onChange={() =>
                         field.onChange(toggleQuoteService(field.value ?? [], label))} />
                     {checked ? <CheckCircle2 className="size-3.5" aria-hidden /> :
                       <span className="gs-quote__choice-plus" aria-hidden>+</span>}
