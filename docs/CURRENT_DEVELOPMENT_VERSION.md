@@ -1,3 +1,7 @@
+### V215 / 2026-11-18 — Restored emerald art direction (DRAFT)
+- User rejected V214. Draft PR #214 closed without merge; V215 `design/v215-restored-emerald-refinement` forks exact green V213 commit `e43609dd09212d3cbf8d18a2b47d677f29fc2b56`. Hero restores original green concert photo, all original headline/CTA/video/service sections and 10-channel decorative mixer instead of V214 artificial vector score; subtle dark-green surface and warm metallic fader caps for texture, softened LED glare, and mobile-safe visual layering (hide console below 740px). Original compact desktop nav, no numbered nav; accessible search label and functional local presets, copy simplified.
+- Exact-head CI, tests, six-width Chromium, before/after screenshot and motion gates pending. Main untouched. Next rotation: mobile navigation and Contact conversion. Need owner visual signoff, **do not publish**.
+
 ### V213 / 2026-11-18 — Contact Vitest CI unblock (DRAFT)
 - V212 exact-head run #44241249565: TypeScript, SSR build and gzip passed; Vitest failed before running V212 tests (`ERR_INVALID_URL_SCHEME` from `new URL(..., import.meta.url)`). Replaced test source path with `resolve(process.cwd(), ...)`, no production UI change. Browser 390/1440 screenshots, six-width QA and exact-head green CI remain unverified. Main untouched. Next: browser Contact discard and event CTA.
 
