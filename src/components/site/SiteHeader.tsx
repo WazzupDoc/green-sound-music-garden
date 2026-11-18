@@ -132,9 +132,9 @@ export function SiteHeader() {
       }
     };
     const escape = (event: KeyboardEvent) => {
-      if (event.key !== "Escape") return;
-      if (!servicesRef.current?.contains(document.activeElement) &&
-          document.activeElement !== servicesButtonRef.current) return;
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      // Pointer interactions on non-focusable chapter text can move focus to
+      // body. While this disclosure is open Escape must still dismiss it.
       event.preventDefault();
       setServicesOpen(false);
       servicesButtonRef.current?.focus();
