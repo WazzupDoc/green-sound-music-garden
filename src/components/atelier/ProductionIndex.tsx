@@ -88,7 +88,7 @@ export function ProductionIndex() {
           <div className="gs-index__intro-grid">
             <h2 id="gs-index-title">Muzică. Lumini. <em>Experiență.</em></h2>
             <div className="gs-index__intro-note">
-              <p>DJ & MC, trupă live, sunet, lumini și momente pentru invitați. O producție construită în jurul evenimentului tău.</p>
+              <p>DJ & MC, trupă live, sunet, lumini și momente pentru invitați. Alege serviciile potrivite și discutăm concret despre muzică, echipamente și desfășurarea evenimentului.</p>
               <Link to="/servicii">Explorează toate serviciile <ArrowUpRight className="size-4" aria-hidden /></Link>
             </div>
           </div>
@@ -127,7 +127,7 @@ export function ProductionIndex() {
           ))}
         </div>
         <div className="gs-index__footer">
-          <span>DIN PITEȘTI / ÎN TOATĂ ROMÂNIA</span>
+          <span>PITEȘTI / ARGEȘ</span>
           <span>MUZICĂ · LUMINĂ · PRODUCȚIE</span>
         </div>
       </div>
