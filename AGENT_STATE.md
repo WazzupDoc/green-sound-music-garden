@@ -1,3 +1,7 @@
+### V219 / 2026-11-18 — Reset film consent on changed video identity (DRAFT / QA PENDING)
+- Branch `fix/v219-video-switch-consent-reset` stacked on V218 PR #218. Shared VideoLite now detects when a mounted player's video ID changes and stops the previous consented playback before rendering the replacement. Focus is restored to the new Play button. Regression source test added; no dependencies/assets/homepage sections/main/deploy changes.
+- Exact-head TypeScript/SSR/Vitest, actual Chromium playback/keyboard and matched screenshots NOT VERIFIED. Next rotation: Contact and event CTA.
+
 ### V218 / 2026-11-18 — Video privacy permission audit (DRAFT)
 - Rotation: shared video embeds (portfolio/events/home). Third-party iframe previously requested accelerometer, gyroscope and clipboard-write permissions without functional need. Reduced `allow` to autoplay (only after explicit Play), encrypted-media and picture-in-picture. Existing Stop/focus, no-referrer and click-to-load preserved. Source regression added. No visual redesign; screenshots/CI exact-head pending. Main untouched. Next: Contact and event CTA browser audit.
 
