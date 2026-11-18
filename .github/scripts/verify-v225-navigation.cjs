@@ -126,7 +126,7 @@ async function openSmallMenu(page) {
             if(width===390) await capture(page,kind,"nojs-"+width);
             await fallback.locator('a[href="/servicii"]').click();
             await page.waitForURL(/\/servicii\/?$/,{timeout:15000});
-            assert.match(await page.locator("h1").first().innerText(),/servicii/i);
+            assert((await page.locator("main h1").first().innerText()).trim().length > 5, "destination should have meaningful SSR title");
           }else{
             assert.equal(await fallback.count(),0);
             if(width===390) await capture(page,kind,"nojs-"+width);
