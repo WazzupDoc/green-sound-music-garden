@@ -1,0 +1,53 @@
+name: V217 Production Directory — real before after Chromium
+on:
+  push:
+    branches:
+      - design/v217-production-directory-header
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matched-visual:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Checkout validated parent V216 in detached worktree
+        run: |
+          git cat-file -e 199ff98914366e5541ae27e6e468bf2af51c17b3^{commit}
+          git worktree add --detach /tmp/gs-v216-before 199ff98914366e5541ae27e6e468bf2af51c17b3
+      - name: Install locked dependencies for baseline and current branch
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v216-before && bun install --no-save)
+      - name: Install Chromium for QA only — not a production dependency
+        run: |
+          npm install --prefix /tmp/gs-v217-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v217-playwright/node_modules/.bin/playwright install chromium
+      - name: Run independent preview servers
+        run: |
+          (cd /tmp/gs-v216-before && bunx vite dev --host 127.0.0.1 --port 4176 > /tmp/gs-v216.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v217.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 65); do
+              if curl -sf "http://127.0.0.1:$port/" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs-v216.log /tmp/gs-v217.log; exit 1; fi
+          done
+      - name: Real browser functionality and matched screenshots
+        run: NODE_PATH=/tmp/gs-v217-playwright/node_modules node .github/scripts/verify-v217-production-directory.cjs
+      - name: Preserve genuine screenshots regardless of QA status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v217-production-directory-before-after
+          path: screenshots/gs-v217-production-directory/
+          if-no-files-found: warn
+          retention-days: 60

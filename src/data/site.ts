@@ -1,10 +1,10 @@
-import scenaAsset from "@/assets/scena-concert-lumini.webp.asset.json";
-import djAsset from "@/assets/dj-mc-green-sound.webp.asset.json";
-import concertAsset from "@/assets/concert-public-lumini.webp.asset.json";
-import hostessAsset from "@/assets/hostess-evenimente.webp.asset.json";
-import ursitoareAsset from "@/assets/ursitoare-botez.webp.asset.json";
-import ursitoare2Asset from "@/assets/ursitoare-botez-2.webp.asset.json";
-import copiiAsset from "@/assets/animatie-petreceri-copii.webp.asset.json";
+const scenaAsset = { url: "/media/greensound/scena-concert-lumini.webp" } as const;
+const djAsset = { url: "/media/greensound/dj-mc-green-sound.webp" } as const;
+const concertAsset = { url: "/media/greensound/concert-public-lumini.webp" } as const;
+const hostessAsset = { url: "/media/greensound/hostess-evenimente.webp" } as const;
+const ursitoareAsset = { url: "/media/greensound/ursitoare-botez.webp" } as const;
+const ursitoare2Asset = { url: "/media/greensound/ursitoare-botez-2.webp" } as const;
+const copiiAsset = { url: "/media/greensound/animatie-petreceri-copii.webp" } as const;
 
 /* ------------------------------------------------------------------ */
 /* Business facts — verified on greensoundmusic.com. Edit here only.   */
@@ -53,7 +53,7 @@ export type ImageRef = (typeof images)[keyof typeof images];
 /* Real videos published by Green Sound Music                           */
 /* ------------------------------------------------------------------ */
 
-export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number; noHdThumb?: boolean };
+export type Video = { id: string; title: string; caption: string; tags: string[]; start?: number; noHdThumb?: boolean; poster?: string };
 
 /** YouTube poster; maxres exists for every video except the ones flagged noHdThumb. */
 export const ytThumb = (v: Video, size: "hd" | "sd" = "hd") =>
@@ -62,6 +62,7 @@ export const ytThumb = (v: Video, size: "hd" | "sd" = "hd") =>
 export const videos = {
   nuntaRamada: {
     id: "37QlXW3NlxU",
+    poster: "/media/greensound/film-nunta-ramada.webp",
     title: "Nuntă la Ramada Pitești — DJ Green Sound & MC Dana",
     caption: "DJ și MC la o nuntă din Pitești",
     tags: ["nunti", "dj-mc"],
@@ -69,12 +70,14 @@ export const videos = {
   },
   showLumini: {
     id: "eGLykw1G0EQ",
+    poster: "/media/greensound/film-show-lumini.webp",
     title: "DJ Green Sound, MC Dana & LJ Dom — show de lumini",
     caption: "DJ, MC și show de lumini la evenimente",
     tags: ["dj-mc", "sonorizare", "petreceri-private"],
   },
   neatza: {
     id: "nc_aWk8QPIU",
+    poster: "/media/greensound/film-studio-live.webp",
     title: "Lansarea single-ului „Muzica ne leagă” la Neatza cu Răzvan și Dani",
     caption: "Green Sound Music, alături de Bogdan și Mugurel, la TV",
     tags: ["trupa", "studio"],
@@ -475,7 +478,7 @@ export const events: EventType[] = [
       "Tot ce ține de muzică și atmosferă la nuntă: DJ & MC, trupă live, sonorizare, lumini, ecrane LED, fum greu și hostess, de la o singură echipă din Pitești.",
     h1: "Nunta voastră, de la intrarea în sală până la ultimul dans",
     lead: "Muzica, sunetul, luminile și efectele speciale de la aceeași echipă. Voi vă bucurați de seară; noi ne ocupăm de ritm.",
-    image: images.scena,
+    image: images.dj,
     moments: [
       { title: "Primirea invitaților", text: "Hostess la intrare și muzică de ambient la cocktail.", service: "hostess" },
       { title: "Intrarea mirilor", text: "Anunțată de MC, cu baloane cu fum pentru o intrare de efect.", service: "dj-mc" },

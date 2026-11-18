@@ -1,0 +1,98 @@
+/* V215 — keep the owner's simple V213 navigation; make search discoverable
+   without the rejected numbered nav, white box or navy theme. */
+.atelier-header .atelier-header__finder-btn{
+  min-width:96px;min-height:44px;gap:8px;
+  padding:8px 12px;background:#102b1c;
+  border:1px solid #8ce4a47e;color:#e8f9e3;border-radius:4px;
+  box-shadow:inset 0 1px #c1ffb017;
+}
+.atelier-header .atelier-header__finder-btn:hover{
+  background:#1a462b;border-color:#baf9b0;
+}
+.atelier-header .gs215-search-text{
+  font-size:.77rem;font-weight:780;letter-spacing:.01em;color:#f4ffed;
+}
+.atelier-header .atelier-header__finder-hint{
+ color:#b5e6a6;font-size:.61rem;padding-left:6px;
+}
+.atelier-header .atelier-header__nav .atelier-header__link{
+ letter-spacing:-.018em;
+}
+.atelier-header .atelier-header__nav .atelier-header__link::after{
+ height:2px;bottom:3px;background:#95f98d;
+}
+.atelier-header .atelier-header__nav .atelier-header__link:is(:focus-visible,:hover) {
+ color:#b5ffb3;
+}
+.gs-finder{background:linear-gradient(148deg,#12281a,#06130c 82%);border-color:#a1d5a37d}
+.gs-finder::before{background:linear-gradient(90deg,#70dc85,#d2efa4 70%,#e0d3a3)}
+.gs-finder__intro h2{letter-spacing:-.048em}
+.gs-finder__intro h2 em{color:#d2ffbe}
+.gs-finder__search{background:#eff5e8}
+.gs-finder__result:focus-visible,.gs-finder__result:hover{background:#d2f3b61f}
+.gs215-finder__suggestions{
+  display:flex;align-items:center;flex-wrap:wrap;gap:7px;
+  margin:13px clamp(18px,3.1vw,36px) 0;
+}
+.gs215-finder__suggestions>span{
+  margin-right:5px;color:#a4cf9c;
+  letter-spacing:.14em;font-size:.6rem;font-weight:800;
+}
+.gs215-finder__suggestions button{
+  min-height:35px;padding:7px 13px;
+  border:1px solid #8db69271;border-radius:999px;
+  background:transparent;color:#e4f4d9;
+  font-size:.72rem;font-weight:770;cursor:pointer;
+}
+.gs215-finder__suggestions button:is(:hover,:focus-visible){
+ background:#b9f8ad;color:#0c2615;border-color:#b9f8ad
+}
+.gs215-finder__suggestions button:focus-visible{
+ outline:2px solid #faf2bb;outline-offset:2px;
+}
+@media(max-width:1350px){
+ .atelier-header .atelier-header__finder-btn{min-width:44px;width:44px;padding:8px;justify-content:center}
+ .atelier-header .gs215-search-text{display:none}
+}
+@media(max-width:640px){
+ .gs215-finder__suggestions{margin:10px 17px 0;gap:6px}
+ .gs215-finder__suggestions>span{width:100%}
+ .gs215-finder__suggestions button{min-height:34px;padding:6px 11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs215-finder__suggestions button{animation:none!important;transition:none!important}
+}
+html[data-gs-performance=lite] .gs215-finder__suggestions button{
+ animation:none!important;transition:none!important
+}
+
+/* V216 — small-screen setlist: make actual destinations the visual headline.
+   The desktop editorial stage remains intact. No new art, scripts or packages. */
+@media (max-width: 640px) {
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__stage-mark,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__cue,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__note,
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__live-mark {
+    display: none;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__intro h2 {
+    max-width: 18ch;
+    margin-block: 0;
+    font-size: clamp(1.6rem, 6.4vw, 2.25rem);
+    line-height: 1.05;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__layout {
+    gap: 12px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__navigation {
+    position: relative;
+    z-index: 1;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__link {
+    min-height: 54px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__link:focus-visible {
+    outline: 2px solid #d6f7b7;
+    outline-offset: -2px;
+  }
+}

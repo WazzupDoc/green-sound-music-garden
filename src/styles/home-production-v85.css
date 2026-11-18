@@ -1,0 +1,378 @@
+/* V85 / GREEN SOUND — REAL BRAND, REAL PRODUCTION.
+   Visual reference supplied by the owner on 2026-11-13.
+   This is an original reinterpretation, not a screenshot/template clone:
+   locally authored 3D-ish VECTOR production desk above real owned project imagery,
+   energetic compact stage/typography and unequal technical-photo editorial panels.
+   No synthesized claim of company equipment, fake event photography, autoplay,
+   cursor hijack, new dependencies, network resources or statistics. */
+
+/* ACT I — concert atmosphere behind the brand, with the original desk ART up front */
+.gs-home-v84 .crafted-hero{min-height:clamp(700px,82svh,835px);background:#03110e}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__canvas{
+ inset:78px 0 76px auto!important;top:78px!important;left:auto!important;
+ right:0!important;bottom:76px!important;width:69%!important;
+ height:calc(100% - 154px)!important;border:0!important;
+ clip-path:none!important;opacity:1!important;
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__image{
+ filter:saturate(1.35) contrast(1.13) brightness(1.19);
+ object-position:50% 44%;
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__shade{
+ background:
+  linear-gradient(90deg,#04110dfc 0%,#04110df6 27%,#04110dcf 43%,#04110d73 63%,#04110d1a 89%),
+  linear-gradient(0deg,#04110df5 0%,transparent 19%,transparent 70%,#04110d85 100%);
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__canvas:after{
+ inset:0;border:0!important;
+ background:
+   radial-gradient(ellipse 46% 55% at 64% 30%,#32a45d66,transparent 77%),
+   linear-gradient(180deg,transparent 20%,#06270e3a 65%,#020b08aa 100%)!important;
+ mix-blend-mode:screen;opacity:.92;pointer-events:none;
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__layout{
+ min-height:clamp(700px,82svh,835px);
+ grid-template-columns:minmax(0,1.18fr) minmax(0,.62fr);
+ padding-top:clamp(138px,15vh,178px);padding-bottom:40px;
+ gap:clamp(15px,3vw,45px);
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__intro{max-width:750px}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__eyebrow{
+ color:#bdf3a8;letter-spacing:.20em;font-size:.65rem;
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__title{
+ font-size:clamp(4.6rem,7.6vw,9.1rem);line-height:.86;
+ letter-spacing:-.089em;font-weight:710;
+ margin:clamp(33px,4.8vh,50px) 0 0;
+ color:#fbfff3;max-width:100%;
+}
+.gs-home-v84 .gs-stage-v78__line--second{
+ font-size:.66em;margin-top:.21em;letter-spacing:-.07em;
+ color:#f6ffe8;
+}
+.gs-home-v84 .gs-stage-v78 .crafted-hero__title em{
+ color:#9df983;font-size:1.13em;letter-spacing:-.045em
+}
+.gs-home-v84 .crafted-hero__lead{
+ max-width:41ch;font-size:clamp(1rem,1.25vw,1.21rem);
+ color:#e0eee1;margin-top:clamp(34px,4.1vw,58px);
+ line-height:1.65;text-shadow:0 2px 24px #020c08;
+}
+.gs-home-v84 .crafted-hero__actions{margin-top:30px}
+.gs-home-v84 .crafted-button--light{
+ min-height:62px;
+ background:#83f5a5!important;border:1px solid #aaffb5!important;
+ color:#032413!important;font-size:.92rem;
+ box-shadow:0 10px 40px #13de5555!important;
+ clip-path:polygon(0 0,100% 0,94% 100%,0 100%);
+ padding:15px 41px 15px 24px;transition:transform .26s,background .25s!important;
+}
+.gs-home-v84 .crafted-button--light:is(:hover,:focus-visible){
+ background:#c9ffbd!important;transform:translateY(-2px)
+}
+.gs-home-v84 .crafted-hero__bottom{
+ border-top:1px solid #8fdc9888;
+ box-shadow:0 -1px 0 #153d24;
+}
+.gs-home-v84 .scene-console{
+ width:clamp(230px,23vw,290px);max-width:290px;
+ align-self:end;justify-self:end;
+ background:#031712e8;border-top:2px solid #7bee97;
+ border-inline:1px solid #93df8a44;
+ padding:0;box-shadow:0 28px 50px #0008;
+ margin:0 0 65px;
+}
+.gs-home-v84 .scene-console__top{padding:15px 16px}
+.gs-home-v84 .scene-console__content{padding:18px 18px 20px}
+.gs-home-v84 .scene-console__content h2{
+ font-size:clamp(1.25rem,1.5vw,1.75rem)
+}
+.gs-home-v84 .scene-console__content p{font-size:.74rem}
+
+/* original 3D production desk illustration: visually an actual console silhouette
+   while deliberately not claiming to depict any specific owned equipment. */
+.gs-home-v84 .gs-production-deck-v85{
+ position:absolute;z-index:2;right:-1.4%;top:35%;
+ width:min(58%,850px);
+ pointer-events:none;transform-origin:65% 68%;
+ transform:translate3d(0,0,0) rotate(-1.5deg);
+ filter:drop-shadow(-9px 21px 30px #0009);
+}
+.gs-home-v84 .gs-production-deck-v85 svg{
+ display:block;width:100%;height:auto;overflow:visible
+}
+.gs-home-v84 .gs-production-deck-v85:before{
+ content:"";position:absolute;inset:0;
+ background:radial-gradient(ellipse 57% 50% at 64% 60%,#39ed654e,transparent 80%);
+ pointer-events:none;filter:blur(15px);z-index:-1;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ html:not([data-gs-performance=lite]) .gs-home-v84 .gs-production-deck-v85{
+  transition:transform 750ms cubic-bezier(.2,.83,.2,1),filter 750ms;
+ }
+ html:not([data-gs-performance=lite]) .gs-home-v84 .crafted-hero:is(:hover,:focus-within) .gs-production-deck-v85{
+  transform:translate3d(-12px,-7px,0) rotate(-.5deg) scale(1.018);
+  filter:drop-shadow(-12px 28px 42px #000b);
+ }
+}
+
+/* ACT II — three UNEQUAL diagonal photo-led production acts, not three equal AI cards.
+   All 8 destinations remain visible as native links at all widths. */
+.gs-home-v84 .gs-index{
+ background:#071711;color:#f3f8ec;
+ padding-block:clamp(75px,7vw,110px) clamp(80px,7vw,120px)
+}
+.gs-home-v84 .gs-index__intro{margin-bottom:clamp(37px,4.7vw,75px)}
+.gs-home-v84 .gs-index__intro-grid{
+ grid-template-columns:minmax(0,1.3fr) minmax(260px,.48fr);
+ padding-top:38px;gap:clamp(22px,5vw,75px);
+}
+.gs-home-v84 .gs-index__intro h2{
+ font-size:clamp(3.6rem,6.2vw,7.7rem);
+ line-height:.92;letter-spacing:-.083em;
+}
+.gs-home-v84 .gs-index__intro h2 em{color:#9afa94}
+.gs-home-v84 .gs-index__chapters{
+ display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,.91fr) minmax(0,1.04fr);
+ gap:clamp(15px,2vw,30px);align-items:start;
+}
+.gs-home-v84 .gs-index__chapter,
+.gs-home-v84 .gs-index__chapter[data-chapter=stage],
+.gs-home-v84 .gs-index__chapter[data-chapter=people]{
+ display:flex;flex-direction:column;gap:0;
+ border-top:1px solid #91be9149;
+ padding:18px 0 0;margin:0;
+ grid-column:auto;grid-row:auto;min-width:0;
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=stage]{margin-top:clamp(28px,4vw,60px)}
+.gs-home-v84 .gs-index__chapter[data-chapter=people]{margin-top:clamp(8px,1.7vw,23px)}
+.gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+.gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+ grid-column:auto;grid-row:auto;
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{
+ grid-column:auto;grid-row:auto;
+}
+.gs-home-v84 .gs-index__photo,
+.gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo,
+.gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+.gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+ width:100%;height:clamp(255px,25.5vw,435px);
+ position:relative;min-width:0;
+ box-shadow:0 18px 45px #0006;
+ clip-path:polygon(6% 0,100% 0,92% 100%,0 100%);
+ background:#0d291c;
+ border:1px solid #74ad7b4e;
+ transition:clip-path 550ms cubic-bezier(.2,.85,.2,1);
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+ height:clamp(300px,30vw,495px);clip-path:polygon(0 0,100% 0,91% 100%,6% 100%)
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo{
+ height:clamp(235px,22.5vw,378px);clip-path:polygon(9% 0,100% 0,94% 100%,0 100%)
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+ height:clamp(255px,26vw,445px);clip-path:polygon(0 0,94% 0,100% 100%,9% 100%)
+}
+.gs-home-v84 .gs-index__photo img{
+ object-fit:cover;filter:saturate(1.08) contrast(1.08) brightness(1.04)
+}
+.gs-home-v84 .gs-index__photo:after{
+ background:linear-gradient(180deg,#06140e00 20%,#04130dbb 100%)
+}
+.gs-home-v84 .gs-index__photo-label{
+ left:clamp(20px,2.3vw,37px);bottom:clamp(18px,2vw,35px);
+ right:30px;font-size:clamp(2.15rem,3.2vw,4.5rem);
+ letter-spacing:-.075em;text-transform:uppercase;
+}
+.gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo-label{
+ font-size:clamp(2.4rem,3.6vw,5rem)
+}
+.gs-home-v84 .gs-index__chapter-body{
+ padding:24px 5px 15px
+}
+.gs-home-v84 .gs-index__chapter-body h3{
+ font-size:clamp(2.2rem,3.2vw,4.4rem);
+ letter-spacing:-.068em;margin-top:20px;
+}
+.gs-home-v84 .gs-index__chapter-body>p{
+ max-width:37ch;font-size:clamp(.86rem,.96vw,1.01rem);
+ line-height:1.52;margin-top:15px;color:#bbd3bc;
+}
+.gs-home-v84 .gs-index__links{
+ margin-top:24px;border-top:1px solid #a6d0a96a
+}
+.gs-home-v84 .gs-index__service{
+ min-height:54px;padding:13px 0;
+ border-bottom-color:#b5d6b45c;
+ font-size:clamp(.87rem,1.09vw,1.05rem)
+}
+.gs-home-v84 .gs-index__routing{
+ padding:18px 0 0;flex-wrap:wrap;gap:8px;
+}
+.gs-home-v84 .gs-index .gs-index__signal-ledger{
+ bottom:13px;right:13px;top:auto;
+ width:clamp(100px,10vw,135px);height:95px;
+ opacity:.86;pointer-events:none;
+}
+.gs-home-v84 .gs-index__footer{
+ margin-top:clamp(54px,5vw,80px)
+}
+
+/* Compact true film playback and a signature luminous CTA footer remain
+   as in V84; no extra home sections, testimonials or invented counters. */
+@media(max-width:1100px){
+ .gs-home-v84 .gs-index__chapters{grid-template-columns:1.05fr 1fr 1fr}
+ .gs-home-v84 .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+  height:clamp(225px,28vw,365px)
+ }
+ .gs-home-v84 .gs-index__chapter-body h3{font-size:clamp(2.15rem,3.1vw,3.3rem)}
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__title{font-size:clamp(4.25rem,7.9vw,7.2rem)}
+ .gs-home-v84 .gs-production-deck-v85{width:59%;right:-5%;top:39%}
+}
+@media(max-width:900px){
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__canvas{
+  width:100%!important;height:355px!important;
+  inset:78px 0 auto 0!important;left:0!important;right:0!important;
+  top:78px!important;bottom:auto!important;
+ }
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__shade{
+  background:linear-gradient(0deg,#04110d 0%,#04110de8 30%,#04110d77 85%),
+    linear-gradient(90deg,#04110d55,transparent);
+ }
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__layout{
+  min-height:0;grid-template-columns:1fr;
+  padding-top:clamp(193px,23vw,255px);padding-bottom:56px;
+ }
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(4.45rem,9vw,7rem);max-width:100%
+ }
+ .gs-home-v84 .gs-production-deck-v85{
+  right:-7%;top:110px;width:57%;opacity:.8;
+  filter:drop-shadow(-5px 13px 20px #0008);
+ }
+ .gs-home-v84 .scene-console{margin:0;max-width:450px;width:100%}
+ .gs-home-v84 .gs-index__intro-grid{grid-template-columns:1fr}
+ .gs-home-v84 .gs-index__chapters{
+  display:grid;grid-template-columns:1fr;gap:25px
+ }
+ .gs-home-v84 .gs-index__chapter,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage],
+ .gs-home-v84 .gs-index__chapter[data-chapter=people]{
+  display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:22px;align-items:start;margin:0;padding:24px 0 0
+ }
+ .gs-home-v84 .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+  height:clamp(240px,40vw,350px);grid-column:1;grid-row:1;
+ }
+ .gs-home-v84 .gs-index__chapter-body,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{
+  grid-column:2;grid-row:1
+ }
+ .gs-home-v84 .gs-index__chapter-body h3{font-size:clamp(2.7rem,5vw,4.1rem)}
+ .gs-home-v84 .gs-index__chapter-body{padding-top:5px}
+ .gs-home-v84 .gs-index__intro h2{font-size:clamp(3.4rem,7vw,6rem)}
+}
+@media(max-width:640px){
+ .gs-home-v84 .gs-production-deck-v85{display:none}
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__canvas{
+  height:295px!important;top:80px!important
+ }
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__layout{
+  padding-top:176px;padding-bottom:45px;gap:22px
+ }
+ .gs-home-v84 .gs-stage-v78 .crafted-hero__title{
+  font-size:clamp(3.65rem,13.3vw,5.9rem);
+  line-height:.93;margin-top:27px
+ }
+ .gs-home-v84 .gs-stage-v78__line--second{
+  font-size:.66em;letter-spacing:-.065em
+ }
+ .gs-home-v84 .crafted-hero__lead{
+  font-size:.94rem;line-height:1.55;max-width:36ch;
+  margin-top:27px
+ }
+ .gs-home-v84 .gs-index{padding-block:70px 82px}
+ .gs-home-v84 .gs-index__intro{margin-bottom:41px}
+ .gs-home-v84 .gs-index__intro h2{
+  font-size:clamp(3.2rem,11.3vw,5.25rem)
+ }
+ .gs-home-v84 .gs-index__chapters{gap:34px}
+ .gs-home-v84 .gs-index__chapter,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage],
+ .gs-home-v84 .gs-index__chapter[data-chapter=people]{
+  display:flex;flex-direction:column;gap:9px;padding:22px 0 0
+ }
+ .gs-home-v84 .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=sound] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+ .gs-home-v84 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+  width:100%;height:clamp(238px,71vw,360px);
+  clip-path:polygon(0 0,100% 0,95% 100%,0 100%);
+ }
+ .gs-home-v84 .gs-index__chapter-body,
+ .gs-home-v84 .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{
+  padding:16px 0 0
+ }
+ .gs-home-v84 .gs-index__chapter-body h3{font-size:clamp(3.1rem,11vw,4.1rem);margin-top:16px}
+ .gs-home-v84 .gs-index__photo-label{font-size:clamp(2.8rem,9vw,4rem)}
+ .gs-home-v84 .gs-index__service{min-height:58px;font-size:1rem}
+ .gs-home-v84 .gs-index .gs-index__signal-ledger{width:114px;height:90px}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-home-v84 .gs-production-deck-v85{transform:none!important;
+  transition:none!important;filter:drop-shadow(0 12px 20px #0009)}
+ .gs-home-v84 .gs-index__photo{transition:none!important;clip-path:none!important}
+}
+html[data-gs-performance=lite] .gs-home-v84 .gs-production-deck-v85{
+ transform:none!important;transition:none!important;filter:none!important;
+}
+html[data-gs-performance=lite] .gs-home-v84 .gs-index__photo{
+ transition:none!important;clip-path:none!important;
+}
+
+/* Place production notes like a small stage monitor above the equipment,
+   rather than an opaque SaaS card masking the original console illustration. */
+@media(min-width:901px){
+ .gs-home-v84 .scene-console{
+  position:absolute;z-index:4;right:1.2%;top:clamp(146px,16vh,195px);
+  bottom:auto;align-self:auto;justify-self:auto;
+  margin:0;width:min(24%,272px);max-width:272px;
+  background:#061811ee;
+  border:1px solid #89be8b5a;border-top:2px solid #9df293;
+  transform:skewY(-1deg);box-shadow:0 24px 50px #0009;
+ }
+ .gs-home-v84 .scene-console__top{padding:10px 13px}
+ .gs-home-v84 .scene-console__content{padding:13px 15px}
+ .gs-home-v84 .scene-console__content h2{font-size:1.24rem}
+ .gs-home-v84 .scene-console__content p{display:none}
+ .gs-home-v84 .scene-console__link{min-height:40px}
+}
+/* Small screens retain scene selection and full event discovery, but leave
+   the long stage notes out of the first screen so content starts promptly. */
+@media(max-width:900px){
+ .gs-home-v84 .scene-console{display:none}
+}
+
+/* Authentic existing stage imagery from this project supplies the green
+   atmosphere missing in the full-bleed crowd shot.  It is editorial decoration,
+   not an invented client, concert, installation or AI-generated performance. */
+.gs-home-v84 .gs-production-backdrop-v85{
+ position:absolute;z-index:1;top:77px;right:0;
+ width:clamp(410px,46%,745px);height:clamp(315px,36vw,505px);
+ display:block;pointer-events:none;
+ object-fit:cover;object-position:center 35%;
+ filter:saturate(1.43) contrast(1.1) brightness(.84);
+ opacity:.83;
+ -webkit-mask-image:radial-gradient(ellipse 84% 88% at 77% 24%,#000 41%,transparent 100%);
+ mask-image:radial-gradient(ellipse 84% 88% at 77% 24%,#000 41%,transparent 100%);
+}
+@media(max-width:900px){
+ .gs-home-v84 .gs-production-backdrop-v85{display:none}
+}

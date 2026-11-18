@@ -1,0 +1,73 @@
+/* V188 / Original editorial production programme.
+   Replaces the five equal visual tiles with a magazine-like composition.
+   No new images, packages, timers, scroll listeners or motion on Lite/reduced. */
+@media (min-width: 1101px) {
+  .gs170-home .gs170-services { padding-top: clamp(78px, 8vw, 142px); background: #07170f; }
+  .gs170-home .gs170-services__grid {
+    display: grid; grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 34px); align-items: start;
+  }
+  .gs170-home .gs170-services__intro {
+    grid-column: 1 / 6; grid-row: 1; display: block; padding: 18px clamp(12px, 2vw, 32px) 30px 0;
+    position: relative;
+  }
+  .gs170-home .gs170-services__intro h2 {
+    font-size: clamp(3.2rem, 5.5vw, 6.5rem); line-height: .93;
+    letter-spacing: -.078em; margin: 28px 0;
+  }
+  .gs170-home .gs170-services__intro p { font-size: clamp(.9rem, 1.1vw, 1.15rem); max-width: 30ch; }
+  .gs170-home .gs170-service-card {
+    clip-path: none; border: 0; border-radius: 0; min-height: 0;
+    aspect-ratio: 4 / 5; overflow: hidden; transform: none;
+    transition: none; isolation: isolate;
+  }
+  .gs170-home .gs170-service-card:nth-child(2) { grid-column: 7 / 13; grid-row: 1; aspect-ratio: 1.32; }
+  .gs170-home .gs170-service-card:nth-child(3) { grid-column: 1 / 5; grid-row: 2; aspect-ratio: .86; }
+  .gs170-home .gs170-service-card:nth-child(4) { grid-column: 5 / 13; grid-row: 2; aspect-ratio: 1.65; align-self: end; }
+  .gs170-home .gs170-service-card:nth-child(5) { grid-column: 1 / 8; grid-row: 3; aspect-ratio: 1.6; }
+  .gs170-home .gs170-service-card:nth-child(6) { grid-column: 9 / 13; grid-row: 3; aspect-ratio: .86; align-self: center; }
+  .gs170-home .gs170-service-card:hover,
+  .gs170-home .gs170-service-card:focus-visible { transform: none; filter: none; }
+  .gs170-home .gs170-service-card::after {
+    content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    border: 1px solid #c9e4c132; transition: border-color .25s ease;
+  }
+  .gs170-home .gs170-service-card:is(:hover,:focus-visible)::after { border-color: #d4f8c4c9; }
+  .gs170-home .gs170-service-card img {
+    filter: saturate(.85) contrast(1.06) brightness(.88);
+    transition: transform .65s cubic-bezier(.2,.7,.2,1),filter .5s;
+  }
+  .gs170-home .gs170-service-card:is(:hover,:focus-visible) img {
+    transform: scale(1.045); filter: saturate(1.04) contrast(1.06) brightness(1);
+  }
+  .gs170-home .gs170-service-card__body { bottom: clamp(22px, 3vw, 48px); left: clamp(22px, 3vw, 48px); right: 40px; }
+  .gs170-home .gs170-service-card__body strong { font-size: clamp(1.6rem, 2.5vw, 3.5rem); letter-spacing: -.06em; }
+  .gs170-home .gs170-service-card__body small { font-size: clamp(.78rem, 1vw, 1rem); max-width: 32ch; }
+  .gs170-home .gs170-service-card__number { top: 22px; left: clamp(22px, 3vw, 48px); }
+  .gs170-home .gs170-services__extras { margin-top: clamp(28px, 5vw, 80px); }
+}
+@media (min-width: 741px) and (max-width: 1100px) {
+  .gs170-home .gs170-services__grid { grid-template-columns: repeat(6, minmax(0,1fr)); gap: 18px; }
+  .gs170-home .gs170-services__intro { grid-column: 1 / 7; display: block; }
+  .gs170-home .gs170-service-card { grid-column: span 3; min-height: 330px; }
+  .gs170-home .gs170-service-card:nth-child(4) { grid-column: span 6; min-height: 390px; }
+}
+@media (max-width: 740px) {
+  .gs170-home .gs170-services__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .gs170-home .gs170-services__intro { grid-column: 1 / -1; display: block; }
+  .gs170-home .gs170-service-card { min-height: 260px; clip-path: none; border-radius: 0; }
+  .gs170-home .gs170-service-card:nth-child(2),
+  .gs170-home .gs170-service-card:nth-child(4),
+  .gs170-home .gs170-service-card:nth-child(6) { grid-column: 1 / -1; min-height: 310px; }
+  .gs170-home .gs170-service-card__body strong { font-size: clamp(1rem, 4vw, 1.5rem); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs170-home .gs170-service-card,
+  .gs170-home .gs170-service-card img,
+  .gs170-home .gs170-service-card::after { transition: none !important; animation: none !important; }
+  .gs170-home .gs170-service-card:is(:hover,:focus-visible) img { transform: none !important; }
+}
+html[data-gs-performance="lite"] .gs170-home .gs170-service-card,
+html[data-gs-performance="lite"] .gs170-home .gs170-service-card img,
+html[data-gs-performance="lite"] .gs170-home .gs170-service-card::after { transition: none !important; animation: none !important; }
+html[data-gs-performance="lite"] .gs170-home .gs170-service-card:is(:hover,:focus-visible) img { transform: none !important; }

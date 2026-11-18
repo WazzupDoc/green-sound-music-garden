@@ -1,0 +1,52 @@
+/*
+ * V33 / ADAPTIVE PERFORMANCE
+ * Applies only when the browser signals Save-Data, 2G/slow-2G or a small
+ * memory/CPU profile, or when reduced-motion is explicitly requested.
+ * All photos, text, form controls and navigation remain accessible and visible.
+ * No content-visibility on complex interactive sections (avoid focus/scroll bugs).
+ */
+html[data-gs-performance="lite"] .crafted-stage-lights__beam,
+html[data-gs-performance="lite"] .crafted-stage-lights__flare,
+html[data-gs-performance="lite"] .crafted-live-dot,
+html[data-gs-performance="lite"] .director-stage-ambient__ring,
+html[data-gs-performance="lite"] .director-progress__line,
+html[data-gs-performance="lite"] .gs-pulse__wave span,
+html[data-gs-performance="lite"] .gs-cursor__meter i,
+html[data-gs-performance="lite"] .gs-lightboard__swatch,
+html[data-gs-performance="lite"] .crafted-hero__pointer {
+  animation: none !important;
+  transition: none !important;
+}
+html[data-gs-performance="lite"] .crafted-stage-lights__beam {
+  filter: none !important;
+  opacity: .10;
+}
+html[data-gs-performance="lite"] .crafted-stage-lights__flare {
+  filter: none !important;
+  opacity: .10;
+}
+html[data-gs-performance="lite"] .director-stage-ambient__ring {
+  opacity: .14;
+}
+html[data-gs-performance="lite"] .gs-pulse__wave span {
+  transform: none !important;
+}
+html[data-gs-performance="lite"] .atelier-header,
+html[data-gs-performance="lite"] .atelier-mobile-menu,
+html[data-gs-performance="lite"] .gs-cursor__halo {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html[data-gs-performance="lite"] .atelier-header {
+  background: rgba(5,13,9,.96);
+}
+html[data-gs-performance="lite"] .gs-cursor,
+html[data-gs-performance="lite"] .gs-cursor__toggle {
+  display: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-gs-performance]) .crafted-stage-lights__beam,
+  html:not([data-gs-performance]) .crafted-stage-lights__flare {
+    animation: none !important;
+  }
+}

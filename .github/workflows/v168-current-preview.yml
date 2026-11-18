@@ -1,0 +1,67 @@
+name: V168 Real Browser Screenshot Preview
+on:
+  pull_request:
+    types: [opened, synchronize]
+  workflow_dispatch:
+jobs:
+  browser-preview:
+    if: github.event_name == 'workflow_dispatch' || github.head_ref == 'design/v168-dark-live-editorial-rebuild'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Install site dependencies
+        run: bun install
+      - name: Serve the actual V168 site
+        run: |
+          bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v168-vite.log 2>&1 &
+          for i in $(seq 1 55); do
+            if curl --silent --fail http://127.0.0.1:4175/ > /dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/gs-v168-vite.log
+          exit 1
+      - name: Install Chromium and Playwright
+        run: |
+          npm install --prefix /tmp/gs-v168-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v168-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture exactly rendered desktop/mobile pages and validate image
+        run: |
+          NODE_PATH=/tmp/gs-v168-playwright/node_modules node <<'NODE'
+          const assert=require('node:assert/strict');
+          const fs=require('node:fs');
+          const {chromium}=require('playwright');
+          (async()=>{
+            const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            fs.mkdirSync('screenshots/v168-current',{recursive:true});
+            try{
+              for(const width of [360,390,430,768,1440,1920]){
+                const page=await browser.newPage({viewport:{width,height:900},deviceScaleFactor:1,reducedMotion:'reduce'});
+                const response=await page.goto('http://127.0.0.1:4175/',{waitUntil:'domcontentloaded',timeout:45000});
+                assert.equal(response.status(),200);
+                await page.locator('.gs168-home .gs160-stage[data-hydrated="true"]').waitFor({timeout:18000});
+                await page.evaluate(async()=>{await document.fonts.ready});
+                const consoleCount=await page.locator('.gs169-production-desk').count();
+                assert.equal(consoleCount,1,'signal desk must render on the actual page');
+                const photo=await page.locator('.gs160-stage__photo').evaluate(async img=>{
+                  await img.decode();return {w:img.naturalWidth,h:img.naturalHeight,src:img.currentSrc};
+                });
+                assert(photo.w>0&&photo.h>0, 'real hero image missing');
+                const styles=await page.locator('.gs160-stage').evaluate(el=>({bg:getComputedStyle(el).backgroundColor,height:el.getBoundingClientRect().height}));
+                await page.screenshot({path:'screenshots/v168-current/full-page-'+width+'.png',fullPage:true,animations:'disabled'});
+                await page.locator('.gs160-stage').screenshot({path:'screenshots/v168-current/hero-'+width+'.png',animations:'disabled'});
+                console.log(JSON.stringify({width,photo,styles,h1:await page.locator('h1').first().innerText(),screenshot:true}));
+                await page.close();
+              }
+            }finally{await browser.close();}
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          NODE
+      - name: Publish screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v168-current-real-browser
+          path: screenshots/v168-current/
+          if-no-files-found: warn
+          retention-days: 30

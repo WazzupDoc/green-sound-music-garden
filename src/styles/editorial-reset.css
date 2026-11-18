@@ -1,0 +1,199 @@
+/* V48 / EDITORIAL RESET
+ * Awwwards Music & Sound-inspired principle, not a template clone:
+ * rhythm through composition and genuine performance, not UI overload.
+ * Existing hero stage lighting and real film remain functional.
+ */
+.crafted-hero__layout{grid-template-columns:minmax(0,1.39fr) minmax(285px,.61fr);gap:30px clamp(25px,4vw,65px);
+padding-top:clamp(142px,19vh,210px)}
+.crafted-hero__title{font-size:clamp(3.35rem,5.65vw,7.25rem);letter-spacing:-.067em;line-height:1.02;
+max-width:890px;text-wrap:balance}
+.crafted-hero__title em{margin-top:15px;line-height:.99}
+.crafted-hero__lead{max-width:565px}
+.scene-console{position:relative;align-self:end;justify-self:end;max-width:320px;
+border:0;border-left:1px solid rgba(226,244,213,.63);
+background:transparent;box-shadow:none;overflow:visible;backdrop-filter:none}
+.scene-console:before,.scene-console__top,.scene-console__bottom{display:none}
+.scene-console__content{padding:8px 0 8px 22px}
+.scene-console__content h2{font-size:clamp(1.45rem,1.7vw,2.25rem);line-height:1.1;letter-spacing:-.035em}
+.scene-console__content p{line-height:1.6;font-size:.76rem;max-width:29ch}
+.scene-console__eyebrow{font-size:.58rem}
+.scene-console__link{min-height:43px}
+.crafted-hero__bottom{align-items:center}
+.crafted-hero__mode{min-height:44px}
+.crafted-hero__scroll{min-height:44px}
+.gs-finale{background:#090f0a}
+.gs-finale .crafted-finale__grid{min-height:clamp(260px,28vw,390px)}
+.gs-finale h2{font-size:clamp(2.8rem,5.5vw,6.6rem);max-width:780px;letter-spacing:-.061em}
+.gs-finale .crafted-index{color:#bfe0b1}
+.gs-finale p{color:#c2cfc0}
+.director-reel{background:#0b130e}
+.director-reel__footage{display:none}
+.director-reel .crafted-section-intro{margin-bottom:clamp(38px,4vw,60px)}
+@media(max-width:1120px){
+ .crafted-hero__layout{grid-template-columns:minmax(0,1fr) minmax(245px,.48fr)}
+ .crafted-hero__title{font-size:clamp(3.1rem,6vw,6.6rem)}
+}
+@media(max-width:900px){
+ .crafted-hero__layout{grid-template-columns:1fr;gap:22px;padding-top:clamp(140px,16vh,190px)}
+ .crafted-hero__title{font-size:clamp(3.3rem,9.3vw,5.75rem);max-width:780px}
+ .scene-console{display:block;justify-self:start;max-width:520px;align-self:start;
+ border-left:2px solid #b5d99e}
+ .scene-console__content{padding:4px 0 4px 19px}
+ .scene-console__content h2{font-size:clamp(1.45rem,4vw,2.5rem)}
+ .crafted-hero__intro{padding-bottom:5px}
+}
+@media(max-width:640px){
+ .crafted-hero__layout{padding-top:132px;gap:24px;padding-bottom:28px}
+ .crafted-hero__title{font-size:clamp(2.85rem,12vw,4.35rem);letter-spacing:-.06em}
+ .crafted-hero__title em{margin-top:12px}
+ .scene-console{width:auto;max-width:100%;min-width:0}
+ .scene-console__content h2{font-size:1.55rem}
+ .scene-console__content p{display:none}
+ .scene-console__link{font-size:.73rem}
+ .crafted-hero__bottom{border-top:1px solid #e1eadb50;padding-top:12px}
+ .crafted-hero__modes{gap:3px 12px}
+ .gs-finale .crafted-finale__grid{min-height:0}
+ .gs-finale h2{font-size:clamp(2.75rem,11vw,4rem)}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-finale .crafted-finale__link,.crafted-hero__mode{transition:none!important}
+}
+
+/* V49 / Film-archive direction. The active film gets its own production slate,
+ * not a second gallery, carousel, or additional choice flow. */
+.gs-film-slate{padding:clamp(19px,2.6vw,34px);background:#15241a;color:#e9f3e6;
+ border-top:1px solid #8faf7c55;position:relative;overflow:hidden}
+.gs-film-slate:after{content:"";position:absolute;right:-5%;top:-120%;
+ width:45%;height:330%;background:linear-gradient(90deg,transparent,#d1f5b208,transparent);
+ transform:rotate(23deg);pointer-events:none}
+.gs-film-slate__meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;
+ font-size:.57rem;font-weight:800;letter-spacing:.19em;color:#b7d1ad}
+.gs-film-slate__story{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;
+ gap:clamp(15px,2.8vw,38px);padding:clamp(21px,3vw,38px) 0}
+.gs-film-slate__index{font-family:var(--font-display);font-weight:650;letter-spacing:-.09em;
+ font-size:clamp(4.5rem,9vw,10rem);line-height:.8;color:#a5d28d;opacity:.72}
+.gs-film-slate__story p{font-size:.62rem;font-weight:800;letter-spacing:.16em;color:#b5d6ac}
+.gs-film-slate__story h3{font-family:var(--font-display);font-size:clamp(1.55rem,3.2vw,3.5rem);
+ font-weight:650;letter-spacing:-.045em;line-height:1.05;margin:9px 0}
+.gs-film-slate__story div>span{font-size:clamp(.75rem,1vw,.95rem);color:#c0cfc0}
+.gs-film-slate__timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.gs-film-slate__timeline span{height:3px;background:#6c886c77}
+.gs-film-slate__timeline .is-current{background:#c9f3ab}
+@media(max-width:540px){
+ .gs-film-slate{padding:18px}
+ .gs-film-slate__meta{font-size:.49rem;letter-spacing:.1em}
+ .gs-film-slate__story{gap:17px;padding:24px 0}
+ .gs-film-slate__index{font-size:4.5rem}
+ .gs-film-slate__story h3{font-size:1.65rem}
+}
+
+/* V50 / GREEN SOUND RECORD SLEEVE — deliberately not a SaaS hero.
+   Custom vector signal, enormous record-cover lettering, cut-out live photo.
+   Existing stage controls and actual company media remain functional. */
+.crafted-hero{background:#050a06;isolation:isolate}
+.crafted-hero__canvas{inset:auto!important;left:auto!important;right:0!important;
+ top:0!important;bottom:0!important;width:56%!important;overflow:hidden;
+ clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);z-index:0}
+.crafted-hero__canvas:before{content:"";position:absolute;z-index:2;pointer-events:none;
+ inset:0;background:linear-gradient(90deg,#050a06 0%,#050a0626 23%,transparent 70%),
+ linear-gradient(0deg,#050a06bd,transparent 42%)}
+.crafted-hero__image{filter:saturate(.82) contrast(1.19);object-position:54% center}
+.crafted-hero__layout{position:relative;z-index:3;grid-template-columns:minmax(0,1fr) minmax(220px,.26fr);
+ min-height:min(940px,100svh);align-content:center;padding-top:clamp(155px,15vh,180px);
+ padding-bottom:clamp(94px,12vh,155px)}
+.crafted-hero__intro{position:relative;z-index:2}
+.crafted-hero__eyebrow{letter-spacing:.22em;color:#d3fac0}
+.crafted-hero__title{font-family:var(--font-display);font-size:clamp(5.6rem,11.9vw,13.5rem);
+ line-height:.72;letter-spacing:-.105em;max-width:none;overflow:visible;
+ font-weight:900;text-wrap:nowrap;margin:clamp(32px,4vw,58px) 0 0}
+.gs-poster__title-top,.gs-poster__title-bottom{display:block;white-space:nowrap}
+.gs-poster__title-top{color:#e8f5da}
+.gs-poster__title-bottom{position:relative;color:#b4ef6d;transform:translateX(clamp(4px,2vw,32px));
+ letter-spacing:-.11em}
+.gs-poster__asterisk{display:inline-block;font-size:.24em;color:#f2f9da;
+ vertical-align:top;letter-spacing:0;margin-left:.12em;transform:translateY(-.6em)}
+.gs-poster__title-caption{display:flex;gap:1.3em;align-items:baseline;flex-wrap:wrap;
+ font-family:var(--font-sans);font-size:clamp(.8rem,1.15vw,1.15rem);
+ letter-spacing:.02em;font-weight:600;line-height:1.5;color:#e6f3dc;margin-top:clamp(24px,3vw,42px)}
+.gs-poster__title-caption em{font-family:var(--font-serif);font-size:1.25em;font-weight:400;color:#d1f3b6}
+.gs-poster__stamp{display:flex;align-items:center;gap:15px;color:#b4ef6d;
+ font-size:.57rem;font-weight:800;letter-spacing:.19em;line-height:1.6;margin-top:25px}
+.gs-poster__symbol{width:clamp(67px,7vw,108px);height:auto;flex:none}
+.crafted-hero__lead{margin-top:clamp(14px,2vw,28px);max-width:470px;font-size:clamp(.9rem,1.2vw,1.06rem)}
+.crafted-hero__actions{margin-top:clamp(22px,3vw,42px)}
+.scene-console{max-width:245px;align-self:end;margin-bottom:clamp(50px,7vw,120px);
+ backdrop-filter:blur(12px);background:#051108b8;border-left:2px solid #b4ef6d}
+.scene-console__content{padding:15px}
+.scene-console__content h2{font-size:clamp(1.15rem,1.5vw,1.65rem)}
+.crafted-hero__bottom{grid-column:1 / -1;position:relative;z-index:4}
+.gs-poster__marquee{position:absolute;top:clamp(90px,11vh,120px);right:clamp(20px,4vw,70px);
+ display:flex;align-items:center;gap:14px;z-index:3;color:#eaf9d6;
+ font-size:.58rem;letter-spacing:.22em;font-weight:800;writing-mode:vertical-rl}
+.gs-poster__marquee-icon{font-size:1.35rem;color:#b4ef6d}
+.gs-poster__social{position:absolute;bottom:23px;right:clamp(20px,4vw,70px);
+ z-index:4;display:flex;gap:16px;align-items:center;color:#dbf1d4;font-size:.62rem;
+ font-weight:750;letter-spacing:.1em}
+.gs-poster__social a{padding:9px 0;color:#c3fd8a;border-bottom:1px solid currentColor}
+.gs-poster__social a:focus-visible{outline:2px solid #b4ef6d;outline-offset:4px}
+@media(max-width:1100px){
+ .crafted-hero__title{font-size:clamp(5.3rem,12vw,10rem)}
+ .crafted-hero__canvas{width:66%!important}
+ .crafted-hero__layout{grid-template-columns:minmax(0,1fr) minmax(170px,.2fr)}
+ .scene-console{max-width:215px}
+}
+@media(max-width:900px){
+ .crafted-hero__layout{grid-template-columns:1fr;min-height:auto;padding-top:155px}
+ .crafted-hero__canvas{width:100%!important;height:67%!important;top:0!important;bottom:auto!important;
+ clip-path:none;opacity:.68}
+ .crafted-hero__canvas:before{background:linear-gradient(0deg,#050a06 0%,#050a06a8 30%,#050a0620 85%)}
+ .crafted-hero__title{font-size:clamp(5rem,14.5vw,8.5rem)}
+ .scene-console{align-self:start;justify-self:start;max-width:380px;margin:15px 0 0}
+ .gs-poster__marquee{display:none}
+}
+@media(max-width:640px){
+ .crafted-hero__layout{padding-top:115px;padding-bottom:112px;gap:16px}
+ .crafted-hero__title{font-size:clamp(3.1rem,15.3vw,6rem);letter-spacing:-.115em;margin-top:25px}
+ .gs-poster__stamp{margin-top:12px;font-size:.48rem}
+ .gs-poster__symbol{width:57px}
+ .gs-poster__title-caption{display:block;font-size:.81rem;margin-top:21px;white-space:normal}
+ .gs-poster__title-caption em{display:block;margin-top:2px}
+ .crafted-hero__lead{font-size:.9rem;margin-top:12px}
+ .crafted-hero__actions{margin-top:18px}
+ .scene-console{width:100%;max-width:100%;margin:8px 0 0}
+ .scene-console__content h2{font-size:1.25rem}
+ .gs-poster__social{right:18px;bottom:15px;font-size:.55rem}
+ .gs-poster__social span{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs-poster__title-bottom{transform:none}
+}
+
+
+/* V72 / HERO PERFORMANCE CONTRACT
+ * The stage remains photographic and readable in Lite / reduced-motion modes.
+ * Decorative beams, rings and pointer gradients must not animate or composite.
+ * No JavaScript, new assets, or layout-changing transitions required.
+ */
+/* Motion gates intentionally mirror the same elements for both user preferences. */
+html[data-gs-performance="lite"] .crafted-hero__pointer,
+html[data-gs-performance="lite"] .crafted-stage-lights,
+html[data-gs-performance="lite"] .director-stage-ambient {
+  display: none !important;
+}
+html[data-gs-performance="lite"] .crafted-hero__image,
+html[data-gs-performance="lite"] .gs-poster__symbol,
+html[data-gs-performance="lite"] .gs-poster__title-bottom {
+  animation: none !important;
+  transition: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .crafted-hero__pointer,
+  .crafted-stage-lights,
+  .director-stage-ambient { display: none !important; }
+  .crafted-hero__image,
+  .gs-poster__symbol,
+  .gs-poster__title-bottom {
+    animation: none !important;
+    transition: none !important;
+  }
+}

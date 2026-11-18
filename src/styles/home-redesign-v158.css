@@ -1,0 +1,507 @@
+/* V158 — GREEN SOUND / SIGNAL & SHOW
+   A full HOMEPAGE art-direction reset over V157. One cinematic company photo,
+   typography in asymmetric editorial columns, ivory production catalogue,
+   dark film archive and single clear finale. No stock/AI photo, dependency,
+   client-side geometry or autoplay; existing videos/links/controls retained.
+   SSR-scoped to / and isolated from deeper pages. */
+.gs-home-v86.gs-home-v158{
+  --gs-v158-ink:#07120e;--gs-v158-cream:#ebeae0;--gs-v158-lime:#c5ef9c;
+  color:#f2f6ec;background:var(--gs-v158-ink)
+}
+/* ACT I — The unframed photograph now fills the right hand of a single spread,
+   rather than three floating cards fighting the headline. */
+.gs-home-v86.gs-home-v158 .gs-stage-v90{
+  min-height:800px!important;
+  background:#06110d;position:relative;
+  border:0!important;border-bottom:1px solid #c7ef9a40
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__canvas{
+  position:absolute!important;inset:0 0 0 31%!important;
+  width:69%!important;height:100%!important;opacity:1!important;
+  clip-path:none!important;filter:none!important;z-index:0!important
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__image{
+  width:100%;height:100%;object-fit:cover;
+  object-position:54% 42%!important;
+  filter:saturate(1.12) contrast(1.1) brightness(.88)!important
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__shade{
+  position:absolute;inset:0;background:
+  linear-gradient(90deg,#06110d 0%,#06110d 14%,#06110de8 34%,#06110da0 56%,#06110d17 92%),
+  linear-gradient(0deg,#06110d 0%,#06110d72 16%,transparent 49%,#06110d43 100%);
+  pointer-events:none
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90::after{
+  content:"";position:absolute;z-index:2;left:clamp(18px,3.5vw,64px);
+  top:145px;bottom:96px;border-left:1px solid #d3efb537;pointer-events:none
+}
+.gs-home-v86.gs-home-v158 .gs-v90-ticker{
+  top:78px;z-index:7;height:28px;
+  background:#d7edb8;color:#0a2014;border:0;
+  transform:none;letter-spacing:.24em
+}
+.gs-home-v86.gs-home-v158 .gs-v90-ticker__track{
+  font-size:.58rem;font-weight:850;letter-spacing:.28em
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__layout,
+.gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__layout{
+  display:grid;grid-template-columns:minmax(0,.98fr) minmax(0,.55fr);
+  grid-template-rows:1fr auto;min-height:800px!important;
+  max-width:1590px;gap:20px clamp(20px,3vw,50px);
+  align-items:end;padding-top:170px!important;
+  padding-bottom:29px!important;position:relative;z-index:5
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__intro{
+  align-self:center;max-width:none;min-width:0;
+  padding:clamp(28px,5vw,80px) 0 36px
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__eyebrow{
+  display:block;width:auto;max-width:48ch;background:none;
+  padding:0 0 17px;border-bottom:1px solid #b9eb9a74;
+  font-size:.65rem;letter-spacing:.2em;
+  color:#d6f1c2;font-weight:750
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__title,
+.gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__title{
+  display:block;margin:clamp(29px,4.5vw,65px) 0 0!important;
+  font-family:var(--font-display);
+  font-size:clamp(4.8rem,9.1vw,10.7rem)!important;
+  font-style:normal;font-weight:760;line-height:.79;
+  letter-spacing:-.091em!important;max-width:none;
+  filter:none;text-shadow:none
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .gs-stage-v78__line{
+  display:block;white-space:nowrap
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .gs-stage-v78__line--second{
+  margin-top:.12em!important;font-size:.88em!important;
+  color:#f0f4e8;letter-spacing:-.077em!important
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__title em{
+  font-family:var(--font-serif);font-style:italic;font-weight:400;
+  font-size:1.06em;letter-spacing:-.09em;color:#cef0a2;
+  -webkit-text-fill-color:currentColor;background:none
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__lead{
+  max-width:45ch;line-height:1.69;font-size:clamp(.94rem,1.18vw,1.12rem);
+  margin-top:34px!important;color:#d7e4d4;text-shadow:none
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__actions{
+  margin-top:28px!important;gap:14px 24px;align-items:center
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-button--light{
+  background:#d1efb0;color:#071a10;border:1px solid #d1efb0;
+  box-shadow:none;clip-path:none;min-height:60px;
+  padding:17px 22px;font-size:.9rem;font-weight:850
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-button--light:is(:hover,:focus-visible){
+  background:#f1ffe5;border-color:#f1ffe5;box-shadow:none
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-text-action{
+  font-size:.83rem;color:#f6f8f1;text-shadow:none
+}
+/* Retain all 3 real photos and stateful scene controls, but turn the "3D
+   card collage" into a compact archival contact strip beneath the
+   full-bleed photograph; no synthesized performers or fake metrics. */
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall{
+  top:auto;left:auto;right:3.5%;bottom:141px;
+  width:clamp(230px,33vw,500px);height:140px;
+  z-index:4;overflow:visible;pointer-events:none
+}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__number,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__rail,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__axis,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__backplane,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__scan{display:none!important}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__rig{
+  inset:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;perspective:900px;transform-style:preserve-3d
+}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--live,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--private,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--production{
+  display:block!important;position:relative;top:auto;left:auto;right:auto;bottom:auto;
+  width:100%;height:100%;margin:0;z-index:1;
+  transform:translateZ(0) rotateY(0deg);
+  box-shadow:none;border:1px solid #e0f4d45e;
+  transition:filter .35s,border-color .35s;
+  filter:saturate(.8) brightness(.82)
+}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame figcaption{
+  left:8px;right:5px;bottom:9px
+}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame figcaption span{font-size:.48rem}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame figcaption strong,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--production figcaption strong{
+  font-size:clamp(.85rem,1.35vw,1.25rem);font-style:normal;letter-spacing:-.06em
+}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame::after,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame-corner{display:none}
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=live] .gs-v90-show-wall__frame--live,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=private] .gs-v90-show-wall__frame--private,
+.gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=production] .gs-v90-show-wall__frame--production{
+  filter:brightness(1.05) saturate(1.2);
+  transform:translateY(-6px) translateZ(16px) scale(1.035);
+  border:2px solid #d5f3ad
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console{
+  position:relative;z-index:5;align-self:end;justify-self:end;
+  right:auto;bottom:auto;left:auto;top:auto;transform:none;
+  width:min(100%,280px);max-width:280px;margin:0 0 19px;
+  background:#07140fce;border:0;border-left:2px solid #c5edaa;
+  box-shadow:none;backdrop-filter:none;
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__top{
+  padding:9px 12px;border-color:#c5edaa49
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__content{
+  padding:12px 14px
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__content h2{
+  font-size:1.1rem;line-height:1.23;margin-top:7px
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__link{
+  min-height:38px
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__bottom{
+  grid-column:1/-1;display:flex;position:relative;z-index:6;
+  justify-content:space-between;align-items:center;
+  padding:13px 0 0!important;margin:0;
+  background:transparent;border:0;border-top:1px solid #d6efbf73;
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__mode{
+  font-size:.69rem;font-weight:750;letter-spacing:.07em;
+  border-bottom:2px solid transparent;min-height:49px
+}
+.gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__mode[aria-pressed=true]{
+  border-bottom-color:#d6f3b4;color:#d6f3b4
+}
+/* ACT II — paper and photography: large asymmetric chapters, no generic cards. */
+.gs-home-v86.gs-home-v158 .gs-index{
+  background:var(--gs-v158-cream)!important;color:#10251b!important;
+  padding:clamp(82px,10vw,144px) 0 clamp(75px,8vw,126px)!important;
+  border:0;position:relative
+}
+.gs-home-v86.gs-home-v158 .gs-index::before{display:none!important}
+.gs-home-v86.gs-home-v158 .gs-index__overline{
+  color:#4c6658;border-bottom:1px solid #1b34284d;
+  letter-spacing:.17em;padding-bottom:17px
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro{
+  margin-bottom:clamp(48px,6vw,90px)!important
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro-grid{
+  padding-top:35px!important;gap:clamp(30px,7vw,130px);
+  grid-template-columns:minmax(0,1.3fr) minmax(240px,.47fr)
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro h2{
+  color:#10251b;font-size:clamp(4rem,7.15vw,8.2rem);
+  line-height:.88;font-weight:690;letter-spacing:-.089em
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro h2 em{
+  color:#426d4b;font-family:var(--font-serif);
+  font-style:italic;font-weight:400;letter-spacing:-.07em
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro-note p{
+  color:#345442;font-size:clamp(.94rem,1.13vw,1.07rem);line-height:1.6
+}
+.gs-home-v86.gs-home-v158 .gs-index__intro-note a{
+  color:#0e3b22;border-bottom-color:#688a6c
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapters{
+  display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  grid-template-rows:repeat(2,minmax(0,1fr));
+  gap:clamp(36px,6vw,80px) clamp(35px,6vw,95px)
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage],
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people]{
+  min-width:0;background:transparent;gap:0;
+  border:0;border-top:1px solid #31533b7b;
+  padding:19px 0 0;align-items:start
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound]{
+  grid-column:1;grid-row:1/span 2;display:flex;flex-direction:column
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage],
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people]{
+  display:grid;grid-template-columns:minmax(0,1fr);
+  grid-template-rows:auto 1fr;grid-column:2
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage]{grid-row:1}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people]{grid-row:2}
+.gs-home-v86.gs-home-v158 .gs-index__photo,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+  position:relative;grid-column:1;grid-row:1;
+  height:clamp(220px,21vw,350px);
+  background:#243928;border:0;box-shadow:none;
+  clip-path:none;width:100%
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+  height:clamp(380px,44vw,680px);flex:none
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people] .gs-index__photo{
+  height:clamp(200px,20vw,310px)
+}
+.gs-home-v86.gs-home-v158 .gs-index__photo img{
+  filter:saturate(.93) contrast(1.09) brightness(.96);
+  transition:transform .55s cubic-bezier(.16,1,.3,1)
+}
+.gs-home-v86.gs-home-v158 .gs-index__photo-label{
+  font-style:normal;font-weight:750;letter-spacing:-.08em;
+  font-size:clamp(2.3rem,4vw,4.4rem);color:#f6f6e8
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo-label{
+  font-size:clamp(3.8rem,7vw,8rem);color:#f6f6e8
+}
+.gs-home-v86.gs-home-v158 .gs-index__photo-mark{color:#f3faec}
+.gs-home-v86.gs-home-v158 .gs-index__chapter-body,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__chapter-body,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people] .gs-index__chapter-body{
+  display:block;grid-column:1;grid-row:2;
+  padding:clamp(18px,2.3vw,35px) 0 0
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__chapter-body{
+  flex:1
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter-head{
+  color:#4f785c;font-weight:850
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter-body h3,
+.gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__chapter-body h3{
+  color:#152a20;font-size:clamp(2.4rem,3.3vw,4.5rem);
+  font-weight:690;line-height:1.02;letter-spacing:-.069em
+}
+.gs-home-v86.gs-home-v158 .gs-index__chapter-body>p{
+  color:#45604d;max-width:47ch;font-size:.87rem;line-height:1.58;
+  margin-top:13px
+}
+.gs-home-v86.gs-home-v158 .gs-index__links{
+  margin-top:26px;border-top:1px solid #304b385a
+}
+.gs-home-v86.gs-home-v158 .gs-index__service{
+  color:#1b3527;min-height:45px;padding:11px 5px;
+  font-size:clamp(.84rem,1vw,1.02rem);font-weight:730;
+  border-bottom:1px solid #304b385a
+}
+.gs-home-v86.gs-home-v158 .gs-index__service:before{color:#386545}
+.gs-home-v86.gs-home-v158 .gs-index__service:is(:hover,:focus-visible){
+  color:#135a30
+}
+.gs-home-v86.gs-home-v158 .gs-index__footer{
+  color:#476150;border-color:#304b385a;margin-top:60px
+}
+/* ACT III — films become a dark cinema archive with intentional breathing room. */
+.gs-home-v86.gs-home-v158 .director-reel{
+  background:#07130e!important;
+  padding:clamp(90px,9vw,150px) 0 clamp(90px,9vw,150px)!important;
+  border:0
+}
+.gs-home-v86.gs-home-v158 .director-reel .crafted-heading{
+  font-size:clamp(3.4rem,6.4vw,7.3rem);
+  line-height:.95;letter-spacing:-.07em;max-width:18ch
+}
+.gs-home-v86.gs-home-v158 .director-reel .crafted-heading em{
+  color:#c8e8ae;font-family:var(--font-serif);font-weight:400
+}
+.gs-home-v86.gs-home-v158 .director-reel .crafted-section-intro{
+  margin-bottom:clamp(40px,5vw,70px)
+}
+.gs-home-v86.gs-home-v158 .director-reel__layout{
+  gap:clamp(28px,4vw,65px);
+  grid-template-columns:minmax(0,1.45fr) minmax(240px,.55fr)
+}
+.gs-home-v86.gs-home-v158 .director-reel__display{
+  border:0;box-shadow:none;background:#10251a
+}
+.gs-home-v86.gs-home-v158 .director-reel__choice{
+  background:#12251a;border:1px solid #a3c79c43;
+  min-height:128px!important
+}
+/* ACT IV — one bold invitation, not extra forms or repeated homepage CTAs. */
+.gs-home-v86.gs-home-v158 .gs-finale{
+  background:#bde7a8!important;color:#07180f!important;
+  padding:0!important;border:0
+}
+.gs-home-v86.gs-home-v158 .gs-finale .crafted-finale__grid{
+  min-height:clamp(320px,28vw,520px);
+  gap:clamp(15px,4vw,65px)
+}
+.gs-home-v86.gs-home-v158 .gs-finale .crafted-index{color:#326343}
+.gs-home-v86.gs-home-v158 .gs-finale h2{
+  color:#0c2717;font-size:clamp(3.5rem,6.5vw,8.7rem);
+  letter-spacing:-.086em;line-height:.96
+}
+.gs-home-v86.gs-home-v158 .gs-finale h2 em{
+  font-family:var(--font-serif);color:#306645;font-style:italic;font-weight:400
+}
+.gs-home-v86.gs-home-v158 .gs-finale p{color:#30583c}
+.gs-home-v86.gs-home-v158 .gs-finale .crafted-finale__link{
+  color:#deffca;background:#112d1c;border:1px solid #112d1c;
+  box-shadow:none;width:76px;height:76px
+}
+.gs-home-v86.gs-home-v158 .gs-finale .crafted-finale__link:is(:hover,:focus-visible){
+  background:#254a2c
+}
+/* Responsive editorial hierarchy. The photo is a single panorama above the
+   copy on narrow screens; existing scene/mode buttons remain functional. */
+@media(max-width:1090px){
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__title,
+  .gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__title{
+    font-size:clamp(4.4rem,9.5vw,7.4rem)!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall{width:285px;height:115px}
+}
+@media(max-width:850px){
+  .gs-home-v86.gs-home-v158 .gs-stage-v90{min-height:0!important}
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__canvas{
+    inset:94px 0 auto!important;width:100%!important;
+    height:clamp(350px,51vw,505px)!important;opacity:1!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__shade{
+    background:linear-gradient(0deg,#06110d 0%,#06110d70 33%,#06110d05 85%);
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__layout,
+  .gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__layout{
+    min-height:0!important;grid-template-columns:1fr;
+    grid-template-rows:auto auto auto;gap:20px;
+    padding-top:clamp(350px,49vw,500px)!important;
+    padding-bottom:24px!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__intro{
+    padding:0;align-self:end
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__eyebrow{
+    font-size:.58rem;max-width:none
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__title,
+  .gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__title{
+    font-size:clamp(4.5rem,11.4vw,8.1rem)!important;
+    margin-top:20px!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall{
+    top:176px;left:auto;right:4%;bottom:auto;
+    width:min(42%,310px);height:95px;z-index:3
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console{
+    position:relative;justify-self:stretch;max-width:none;
+    width:100%;margin:0;padding:0
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__content p{
+    display:block
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__bottom{
+    margin-top:10px
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__intro-grid{grid-template-columns:1fr}
+  .gs-home-v86.gs-home-v158 .gs-index__chapters{
+    grid-template-columns:1fr;grid-template-rows:none;gap:52px
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound],
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=stage],
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=people]{
+    grid-column:1;grid-row:auto;display:grid;grid-template-columns:minmax(0,1fr)
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:clamp(270px,55vw,510px)
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__chapter-body{grid-column:1;grid-row:2}
+}
+@media(max-width:640px){
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__canvas{
+    inset:100px 0 auto!important;height:315px!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__shade{
+    background:linear-gradient(0deg,#06110d 0%,#06110d6e 35%,transparent 100%)
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__layout,
+  .gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__layout{
+    padding-top:360px!important;padding-bottom:21px!important;
+    gap:18px!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90::after{display:none}
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__eyebrow{
+    font-size:.53rem;letter-spacing:.12em;padding-bottom:11px
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__title,
+  .gs-home-v86.gs-home-v158 .gs-stage-v78 .crafted-hero__title{
+    font-size:clamp(3rem,12.6vw,5.5rem)!important;
+    margin-top:18px!important;letter-spacing:-.1em!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .gs-stage-v78__line--second{
+    margin-top:.15em!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__lead{
+    margin-top:19px!important;font-size:.94rem;line-height:1.55
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall{
+    top:245px;right:5%;left:auto;width:63%;height:83px
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame figcaption strong,
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall__frame--production figcaption strong{
+    font-size:.77rem
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .scene-console__content p{
+    display:none
+  }
+  .gs-home-v86.gs-home-v158 .gs-stage-v90 .crafted-hero__bottom{
+    align-items:flex-start;gap:8px;flex-wrap:wrap
+  }
+  .gs-home-v86.gs-home-v158 .gs-index{
+    padding:72px 0 80px!important
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__intro h2{
+    font-size:clamp(3.1rem,11.5vw,5.3rem)
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:310px
+  }
+  .gs-home-v86.gs-home-v158 .gs-index__photo-label,
+  .gs-home-v86.gs-home-v158 .gs-index__chapter[data-chapter=sound] .gs-index__photo-label{
+    font-size:clamp(2.6rem,11vw,4.7rem)
+  }
+  .gs-home-v86.gs-home-v158 .director-reel{
+    padding:80px 0!important
+  }
+  .gs-home-v86.gs-home-v158 .director-reel .crafted-heading{
+    font-size:clamp(3rem,10.5vw,4.7rem)
+  }
+  .gs-home-v86.gs-home-v158 .gs-finale .crafted-finale__grid{
+    min-height:0;padding-block:85px
+  }
+  .gs-home-v86.gs-home-v158 .gs-finale h2{
+    font-size:clamp(3.1rem,11vw,5rem)
+  }
+}
+/* The V90 script retains a legacy mobile one-photo mode using !important.
+   V158 deliberately shows all three original archival frames, so the active
+   selection is indicated in the strip while the full-bleed photo changes. */
+@media(max-width:850px){
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active] .gs-v90-show-wall__frame{
+    display:block!important;position:relative!important;
+    top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;
+    width:100%!important;height:100%!important;
+    filter:brightness(.82) saturate(.9)
+  }
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=live] .gs-v90-show-wall__frame--live,
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=private] .gs-v90-show-wall__frame--private,
+  .gs-home-v86.gs-home-v158 .gs-v90-show-wall[data-active=production] .gs-v90-show-wall__frame--production{
+    filter:brightness(1.05) saturate(1.2);
+    border:2px solid #d5f3ad
+  }
+}
+/* Motion applies only to native controls and existing photo transitions.
+   No extra animation in Lite/Save-Data/low memory/reduced motion. */
+html[data-gs-performance=lite] .gs-home-v158 .gs-v90-show-wall__frame,
+html[data-gs-performance=lite] .gs-home-v158 .gs-index__photo img{
+  animation:none!important;transition:none!important
+}
+@media(prefers-reduced-motion:reduce){
+  .gs-home-v158 .gs-v90-show-wall__frame,
+  .gs-home-v158 .gs-index__photo img,
+  .gs-home-v158 .crafted-button--light{animation:none!important;transition:none!important;transform:none!important}
+}

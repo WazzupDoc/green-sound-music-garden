@@ -32,6 +32,19 @@ describe("quote request", () => {
     expect(quoteSchema.safeParse({ ...valid, website: "http://spam" }).success).toBe(false);
   });
 
+  it("rejects invalid calendar dates and accepts an undecided date", () => {
+    expect(quoteSchema.safeParse({ ...valid, date: "2027-02-30" }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...valid, date: "2028-02-29" }).success).toBe(true);
+    expect(quoteSchema.safeParse({ ...valid, date: "" }).success).toBe(true);
+  });
+
+  it("rejects invented service labels, duplicate services and arbitrary guest counts", () => {
+    expect(quoteSchema.safeParse({ ...valid, services: ["Serviciu inventat"] }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...valid, services: ["DJ & MC", "DJ & MC"] }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...valid, guests: "999999" }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...valid, services: ["Nu știu încă — recomandați-mi"] }).success).toBe(true);
+  });
+
   it("builds a WhatsApp link to 0766 566 275 with the event details", () => {
     const q = quoteSchema.parse(valid);
     const msg = buildQuoteMessage(q);

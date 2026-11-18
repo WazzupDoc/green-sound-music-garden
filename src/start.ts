@@ -1,6 +1,23 @@
 import { createStart, createCsrfMiddleware, createMiddleware } from "@tanstack/react-start";
 
 import { renderErrorPage } from "./lib/error-page";
+import { getRequest } from "@tanstack/react-start/server";
+
+/**
+ * The live WordPress Contact page is /contact-green/; a route-level
+ * redirect may be translated to a temporary 307 by the dev SSR pipeline.
+ * Handle known moved URLs at the HTTP boundary so crawlers and old bookmarks
+ * receive a real 301, without requiring browser JS or a chain of redirects.
+ */
+const legacyContactMiddleware = createMiddleware().server(async ({ next }) => {
+  const request = getRequest();
+  const path = new URL(request.url).pathname;
+  if ((request.method === "GET" || request.method === "HEAD") &&
+      (path === "/contact-green" || path === "/contact-green/")) {
+    return Response.redirect(new URL("/contact/", request.url), 301);
+  }
+  return next();
+});
 
 const errorMiddleware = createMiddleware().server(async ({ next }) => {
   try {
@@ -31,5 +48,5 @@ const csrfMiddleware = createCsrfMiddleware({
 // user-managed Supabase project is connected, no middleware here sets Authorization, and the
 // project did not intentionally replace it.
 export const startInstance = createStart(() => ({
-  requestMiddleware: [errorMiddleware, csrfMiddleware],
+  requestMiddleware: [legacyContactMiddleware, errorMiddleware, csrfMiddleware],
 }));

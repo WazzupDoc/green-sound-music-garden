@@ -1,182 +1,351 @@
-import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { business, navEvents, navServices } from "@/data/site";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ArrowUpRight, ChevronDown, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
+import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Logo } from "./Logo";
+import stageIndexCss from "@/styles/navigation-v81.css?inline";
+import liveSetlistCss from "@/styles/navigation-v189.css?inline";
+import restoredNavCss from "@/styles/navigation-v215.css?inline";
+import productionNavCss from "@/styles/navigation-v217.css?inline";
+import { ServiceDirectoryV217 } from "./ServiceDirectoryV217";
+import { business } from "@/data/site";
+import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
-type Item = { to: string; label: string };
+// The searchable directory is requested only when opened, not on every page load.
+const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
-function Dropdown({ label, items, all }: { label: string; items: Item[]; all: Item }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    const onClick = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
-    document.addEventListener("keydown", onKey);
-    document.addEventListener("mousedown", onClick);
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onClick);
-    };
-  }, [open]);
-
-  return (
-    <div
-      ref={ref}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-1 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
-      >
-        {label}
-        <ChevronDown className={`size-3.5 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
-      </button>
-      {open && (
-        <div className="absolute left-1/2 top-full z-50 w-[22rem] -translate-x-1/2 pt-3">
-          <div className="rounded-xl border border-border bg-popover p-2 shadow-card">
-            {items.map((it) => (
-              <Link
-                key={it.to}
-                to={it.to}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm text-popover-foreground/85 transition-colors hover:bg-accent hover:text-foreground"
-              >
-                {it.label}
-              </Link>
-            ))}
-            <Link
-              to={all.to}
-              onClick={() => setOpen(false)}
-              className="mt-1 block rounded-lg border-t border-border px-3 py-2.5 text-sm font-semibold text-primary"
-            >
-              {all.label} →
-            </Link>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+const navigation = [
+  { to: "/", title: "Acasă", note: "Descoperă Green Sound Music" },
+  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live" },
+  { to: "/servicii", title: "Servicii", note: "Muzică, sonorizare, lumini și studio" },
+  { to: "/portofoliu", title: "Portofoliu", note: "Filmele și proiectele existente" },
+  { to: "/studio-inregistrari", title: "Studio", note: "Înregistrări și producție audio" },
+  { to: "/despre-noi", title: "Despre noi", note: "Povestea și abordarea echipei" },
+] as const;
 
 export function SiteHeader() {
+  const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const servicesButtonRef = useRef<HTMLButtonElement>(null);
+  const [menuSelection, setMenuSelection] = useState(1);
+  const menuNavigatingRef = useRef(false);
+  const menuDesktopHandoffRef = useRef(false);
+  const [finderOpen, setFinderOpen] = useState(false);
+  const [finderActivated, setFinderActivated] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const finderButtonRef = useRef<HTMLButtonElement>(null);
+  const menuDialogRef = useRef<HTMLDialogElement>(null);
+  const path = useRouterState({ select: state => state.location.pathname });
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
+    menuNavigatingRef.current = true;
+    setOpen(false);
+    setFinderOpen(false);
+    setServicesOpen(false);
+  }, [path]);
+
+  useEffect(() => {
+    // Avoid dispatching React state on every scroll frame; the floating header
+    // only needs to know when the 22px threshold changes.
+    let aboveThreshold = window.scrollY > 22;
+    setScrolled(aboveThreshold);
+    const onScroll = () => {
+      const next = window.scrollY > 22;
+      if (next === aboveThreshold) return;
+      aboveThreshold = next;
+      setScrolled(next);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // A menu opened on a narrow viewport must not trap the page after rotating
+  // the device or expanding the window to the desktop navigation breakpoint.
   useEffect(() => {
-    document.body.style.overflow = mobileOpen ? "hidden" : "";
-  }, [mobileOpen]);
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onDesktop = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        // The mobile opener becomes hidden at this breakpoint. Return focus to
+        // the equivalent visible desktop link instead of a hidden control.
+        menuDesktopHandoffRef.current = Boolean(menuDialogRef.current?.open);
+        setOpen(false);
+      }
+    };
+    desktop.addEventListener("change", onDesktop);
+    if (desktop.matches && menuDialogRef.current?.open) {
+      menuDesktopHandoffRef.current = true;
+      setOpen(false);
+    }
+    return () => desktop.removeEventListener("change", onDesktop);
+  }, []);
+
+  // Native modal dialog manages the actual top layer, inert background,
+  // Escape and keyboard focus containment. The previous role="dialog"
+  // imitation did not make page content inert.
+  useEffect(() => {
+    const dialog = menuDialogRef.current;
+    if (!dialog) return;
+    if (!open) {
+      if (dialog.open) dialog.close();
+      return;
+    }
+    if (!dialog.open) dialog.showModal();
+    menuNavigatingRef.current = false;
+    document.body.classList.add("atelier-menu-locked");
+    return () => {
+      document.body.classList.remove("atelier-menu-locked");
+      if (dialog.open) dialog.close();
+    };
+  }, [open]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || event.repeat) return;
+      const key = event.key.toLowerCase();
+      const command = (event.metaKey || event.ctrlKey) && key === "k" && !event.altKey;
+      const target = event.target;
+      const editing = target instanceof Element &&
+        Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      const hasModal = Boolean(document.querySelector('dialog[open], [role="dialog"]'));
+      const slash = key === "/" && !event.metaKey && !event.ctrlKey && !event.altKey &&
+        !editing && !hasModal;
+      // Never steal keystrokes from an existing dialog or a form.
+      if (!slash && !command) return;
+      if (!finderOpen && hasModal) return;
+      event.preventDefault();
+      setOpen(false);
+      setFinderActivated(true);
+      setFinderOpen(previous => !previous);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [finderOpen]);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !servicesRef.current?.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (!servicesRef.current?.contains(document.activeElement) &&
+          document.activeElement !== servicesButtonRef.current) return;
+      event.preventDefault();
+      setServicesOpen(false);
+      servicesButtonRef.current?.focus();
+    };
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
+    };
+  }, [servicesOpen]);
+
+  // Arrow keys are optional shortcuts within the six native links; Tab and Escape remain native.
+  const onMenuKeyDown = (event: ReactKeyboardEvent<HTMLOListElement>) => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    const links = Array.from(event.currentTarget.querySelectorAll<HTMLAnchorElement>(".gsm-nav-index__link"));
+    const current = links.indexOf(document.activeElement as HTMLAnchorElement);
+    if (current < 0) return;
+    let next = current;
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") next = (current + 1) % links.length;
+    else if (event.key === "ArrowUp" || event.key === "ArrowLeft") next = (current - 1 + links.length) % links.length;
+    else if (event.key === "Home") next = 0;
+    else if (event.key === "End") next = links.length - 1;
+    else return;
+    event.preventDefault();
+    links[next]?.focus();
+  };
+
+  const onFinderOpenChange = (next: boolean) => {
+    // Keep the dialog root mounted after first use; Radix owns close focus.
+    setFinderOpen(next);
+  };
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
-        scrolled || mobileOpen ? "border-b border-border bg-background/90 backdrop-blur-md" : "bg-transparent"
-      }`}
-    >
-      <a
-        href="#continut"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
-      >
-        Sari la conținut
-      </a>
-      <div className="container-site flex h-18 items-center justify-between gap-6 py-3">
+    <header className={`atelier-header ${scrolled || open ? "atelier-header--scrolled" : ""}`}>
+      {/* Static, first-party CSS is present during SSR; no runtime fetch and no external script. */}
+      <style>{stageIndexCss}</style>
+      <style>{liveSetlistCss}</style>
+      <style>{restoredNavCss}</style>
+      <style>{productionNavCss}</style>
+      <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
+      <div className="container-site atelier-header__inner">
         <Logo />
-
-        <nav aria-label="Navigare principală" className="hidden items-center gap-7 lg:flex">
-          <Dropdown label="Evenimente" items={navEvents} all={{ to: "/evenimente", label: "Toate evenimentele" }} />
-          <Dropdown label="Servicii" items={navServices} all={{ to: "/servicii", label: "Toate serviciile" }} />
-          <Link to="/portofoliu" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Portofoliu
-          </Link>
-          <Link to="/studio-inregistrari" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Studio
-          </Link>
-          <Link to="/despre-noi" className="text-sm font-medium text-foreground/80 hover:text-foreground" activeProps={{ className: "text-primary" }}>
-            Despre noi
-          </Link>
+        <nav className="atelier-header__nav" aria-label="Navigare principală">
+          {navigation.map((entry) => entry.to === "/servicii" ? (
+            <div key={entry.to} ref={servicesRef} className="gs217-services-wrap"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setServicesOpen(false);
+                }
+              }}>
+              <Link to="/servicii" className="atelier-header__link"
+                activeProps={{ className: "atelier-header__link--active" }}
+                onClick={() => setServicesOpen(false)}>Servicii</Link>
+              <button type="button" ref={servicesButtonRef}
+                className="gs217-services-toggle"
+                aria-label={servicesOpen ? "Închide catalogul serviciilor" : "Deschide catalogul serviciilor"}
+                aria-haspopup="true" aria-expanded={servicesOpen}
+                aria-controls="gs217-service-directory"
+                onClick={() => setServicesOpen(previous => !previous)}>
+                <ChevronDown aria-hidden="true" size={15} />
+              </button>
+              {servicesOpen && <ServiceDirectoryV217 onNavigate={() => setServicesOpen(false)} />}
+            </div>
+          ) : (
+            <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
+              activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
+              {entry.title}
+            </Link>
+          ))}
         </nav>
-
-        <div className="flex items-center gap-3">
-          <a
-            href={business.phoneHref}
-            className="hidden items-center gap-2 text-sm font-semibold text-foreground xl:inline-flex"
-          >
-            <Phone className="size-4 text-primary" aria-hidden />
-            {business.phoneDisplay}
+        <div className="atelier-header__actions">
+          <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
+            aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
+            aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
+            onClick={() => { setOpen(false); setServicesOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
+            <Search className="size-5" aria-hidden />
+            <span className="gs215-search-text" aria-hidden="true">Caută</span>
+            <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
+          </button>
+          <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
+            <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
           </a>
-          <Button asChild variant="hero" className="hidden h-11 px-5 sm:inline-flex">
-            <Link to="/contact">Cere ofertă</Link>
-          </Button>
-          <button
-            type="button"
-            className="grid size-11 place-items-center rounded-full border border-border lg:hidden"
-            aria-label={mobileOpen ? "Închide meniul" : "Deschide meniul"}
-            aria-expanded={mobileOpen}
-            aria-controls="meniu-mobil"
-            onClick={() => setMobileOpen((v) => !v)}
-          >
-            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          <Link to="/contact" className="atelier-header__quote">
+            Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
+          </Link>
+          <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
+            aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
+            {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
           </button>
         </div>
       </div>
+      <dialog
+        ref={menuDialogRef}
+        id="atelier-mobile-navigation"
+        className="atelier-mobile-menu"
+        aria-labelledby="gsm-stage-index-title"
+        onCancel={(event) => {
+          event.preventDefault();
+          setOpen(false);
+        }}
+        onClose={() => {
+          setOpen(false);
+          if (menuDesktopHandoffRef.current) {
+            const desktopLink = document.querySelector<HTMLAnchorElement>('.atelier-header__nav .atelier-header__link--active')
+              ?? document.querySelector<HTMLAnchorElement>('.atelier-header__nav a');
+            desktopLink?.focus();
+          } else if (!menuNavigatingRef.current) {
+            menuButtonRef.current?.focus();
+          }
+          menuDesktopHandoffRef.current = false;
+          menuNavigatingRef.current = false;
+        }}
+      >
+        <div className="gsm-nav-index">
+          <div className="gsm-nav-index__top">
+            <span className="gsm-nav-index__brand">GREEN SOUND / SCENE DIRECTORY</span>
+            <button
+              type="button"
+              autoFocus
+              className="gsm-nav-index__close"
+              onClick={() => setOpen(false)}
+            >
+              Închide
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                <path d="M5 5L19 19M19 5L5 19" />
+              </svg>
+            </button>
+          </div>
 
-      {mobileOpen && (
-        <div id="meniu-mobil" className="h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-border bg-background lg:hidden">
-          <nav aria-label="Navigare mobil" className="container-site grid gap-10 py-8 pb-32">
-            <div>
-              <p className="eyebrow mb-4">Ce sărbătorești?</p>
-              <ul className="grid gap-1">
-                {navEvents.map((it) => (
-                  <li key={it.to}>
-                    <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-2 font-display text-2xl font-semibold">
-                      {it.label}
+          <div className="gsm-nav-index__stage-mark" aria-hidden="true">
+            <svg viewBox="0 0 280 320" fill="none">
+              <g stroke="currentColor" strokeWidth="1">
+                <path d="M32 34H232L264 283H4L32 34Z" />
+                <path d="M58 64H210L234 258H32L58 64Z" />
+                <path d="M32 34L58 64M232 34L210 64M4 283L32 258M264 283L234 258" />
+                <path d="M94 64L118 258M174 64L148 258" strokeDasharray="4 11" />
+                <path d="M4 283H264" />
+              </g>
+            </svg>
+          </div>
+
+          <div className="gsm-nav-index__layout">
+            <div className="gsm-nav-index__intro">
+              <p className="gsm-nav-index__eyebrow">INDEX / 01—06</p>
+              <span className="gsm-nav-index__live-mark" aria-hidden="true">GS — PRODUCTION DIRECTORY / PITEȘTI</span>
+              <h2 id="gsm-stage-index-title">
+                Tot ce ține
+                <em> scena vie.</em>
+              </h2>
+              <div className="gsm189-mobile-current" aria-hidden="true">
+                <span>CANAL {String(menuSelection + 1).padStart(2, "0")} / 06</span>
+                <strong>{navigation[menuSelection]?.note ?? navigation[0].note}</strong>
+              </div>
+              <p className="gsm-nav-index__note">
+                Explorează evenimentele, producția și oamenii
+                din spatele Green Sound Music.
+              </p>
+              <div className="gsm-nav-index__cue" aria-live="off" aria-hidden="true">
+                <span className="gsm-nav-index__cue-label">ACUM EXPLOREZI / {String(menuSelection + 1).padStart(2, "0")}</span>
+                <strong>{navigation[menuSelection]?.title ?? "Acasă"}</strong>
+                <span className="gsm-nav-index__cue-rule" />
+                <small>GREEN SOUND MUSIC · EVENIMENTE / PRODUCȚIE / STUDIO</small>
+              </div>
+            </div>
+
+            <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
+              <ol className="gsm-nav-index__list" onKeyDown={onMenuKeyDown}>
+                {navigation.map((entry, index) => (
+                  <li key={entry.to} className="gsm-nav-index__entry" data-preview={index === menuSelection ? "true" : "false"}>
+                    <Link
+                      to={entry.to}
+                      onPointerEnter={() => setMenuSelection(index)}
+                      onFocus={() => setMenuSelection(index)}
+                      onClick={() => { menuNavigatingRef.current = true; setOpen(false); }}
+                      className="gsm-nav-index__link"
+                      activeOptions={{ exact: entry.to === "/" }}
+                      activeProps={{ className: "gsm-nav-index__link--active" }}
+                    >
+                      <small aria-hidden="true">{String(index + 1).padStart(2, "0")}</small>
+                      <span>{entry.title}</span>
+                      <span className="gsm189-channel" aria-hidden="true"><i /><i /><i /><i /><i /></span>
+                      <svg viewBox="0 0 28 28" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                        <path d="M5 23L23 5M9 5H23V19" />
+                      </svg>
                     </Link>
                   </li>
                 ))}
-              </ul>
+              </ol>
+            </nav>
+          </div>
+
+          <div className="gsm-nav-index__bottom">
+            <span className="gsm-nav-index__signature">CRAFTED ATMOSPHERES · PITEȘTI</span>
+            <div className="gsm-nav-index__actions">
+              <a href={business.phoneHref}>Sună</a>
+              <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+              <Link to="/contact" onClick={() => { menuNavigatingRef.current = true; setOpen(false); }}>
+                Cere ofertă
+                <svg viewBox="0 0 22 22" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
+                  <path d="M3 19L19 3M8 3H19V14" />
+                </svg>
+              </Link>
             </div>
-            <div>
-              <p className="eyebrow mb-4">Servicii</p>
-              <ul className="grid gap-1">
-                {navServices.map((it) => (
-                  <li key={it.to}>
-                    <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-1.5 text-lg text-foreground/85">
-                      {it.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <ul className="grid gap-1 border-t border-border pt-6">
-              {[
-                { to: "/portofoliu", label: "Portofoliu" },
-                { to: "/despre-noi", label: "Despre noi" },
-                { to: "/contact", label: "Contact" },
-              ].map((it) => (
-                <li key={it.to}>
-                  <Link to={it.to} onClick={() => setMobileOpen(false)} className="block py-1.5 text-lg text-foreground/85">
-                    {it.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          </div>
         </div>
-      )}
+      </dialog>
+      <Suspense fallback={null}>
+        {finderActivated && <FrequencyFinder open={finderOpen} onOpenChange={onFinderOpenChange}
+          returnFocusRef={finderButtonRef} />}
+      </Suspense>
     </header>
   );
 }
