@@ -1,3 +1,6 @@
+### V232 / 2026-11-18
+No new image, icon, font, video or third-party dependency. Existing Lucide ArrowUpRight reused. No new external media or license obligations.
+
 ### V217 / 2026-11-18 — Navigation service glyphs
 - `src/components/site/ServiceSigilV217.tsx`: eight original hand-authored SVG service pictograms plus three chapter diagrams, created for Green Sound; first-party, no third-party icon source or external licensing.
 - `src/styles/navigation-v217.css`: first-party CSS. Existing Lucide icons reused from project dependency; no new package, fonts, photos, videos, tracking or fabricated event media.
