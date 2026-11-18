@@ -2,7 +2,7 @@ name: V215 Restored Emerald Hero and Search — real Chromium before after
 on:
   push:
     branches:
-      - design/v215-signal-score-navigation
+      - design/v215-restored-emerald-refinement
   workflow_dispatch:
 permissions:
   contents: read
