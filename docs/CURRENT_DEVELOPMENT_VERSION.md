@@ -1,3 +1,7 @@
+### V214 / 2026-11-18 — Contact discard confirmation lifecycle (DRAFT)
+- On fresh user input after an explicit discard, the previous "data cleared" status is dismissed, avoiding a stale confirmation while the visitor is filling a new request. No sending, persistence, dependencies or homepage changes. Source `src/components/site/QuoteForm.tsx`.
+- Exact-head CI, strict TypeScript/SSR/Vitest, six-width Chromium and matched 390/1440 screenshots **NOT VERIFIED**. Do not merge/publish. Next: real-browser Contact form and clipboard QA; event detail CTA.
+
 ### V213 / 2026-11-18 — Contact Vitest CI unblock (DRAFT)
 - V212 exact-head run #44241249565: TypeScript, SSR build and gzip passed; Vitest failed before running V212 tests (`ERR_INVALID_URL_SCHEME` from `new URL(..., import.meta.url)`). Replaced test source path with `resolve(process.cwd(), ...)`, no production UI change. Browser 390/1440 screenshots, six-width QA and exact-head green CI remain unverified. Main untouched. Next: browser Contact discard and event CTA.
 

@@ -284,7 +284,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   }
 
   return (
-    <form id={id} onSubmit={handleSubmit(onSubmit, onInvalid)} noValidate className="grid gap-5 md:grid-cols-2" aria-label="Cerere de ofertă">
+    <form id={id} onSubmit={handleSubmit(onSubmit, onInvalid)} onInput={() => { if (discardConfirmed) setDiscardConfirmed(false); }} noValidate className="grid gap-5 md:grid-cols-2" aria-label="Cerere de ofertă">
       <div className="gs-quote__intro md:col-span-2">
         <div className="gs-quote__stephead">
           <span>PASUL 01 / 02</span>
