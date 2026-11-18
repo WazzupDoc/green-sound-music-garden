@@ -1,3 +1,6 @@
+### 2026-11-18 V221 — Contact URL prefill sanitation
+- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
+
 ### 2026-11-18 V220: React render vs effects, https://react.dev/learn/synchronizing-with-effects and https://react.dev/reference/react/useLayoutEffect. Effect-only reset cannot guarantee no iframe is committed on changed props; guard render synchronously. Original implementation; no external code/assets/packages. Rejected: key-only reset and autoplay of replacement. Browser network and focus tests pending.
 
 ### 2026-11-18 — V219 film identity consent boundary

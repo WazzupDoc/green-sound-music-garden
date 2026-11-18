@@ -1,3 +1,6 @@
+### V221 / 2026-11-18 — Contact location prefill validation (DRAFT)
+- Branch `fix/v221-contact-empty-location-sanitization` stacked on V220 PR #220. Prevent control-only location URL parameters from creating an empty prefill and cap raw input at 2000 characters before processing. Regression test added. V220 exact-head Actions #44299612544/#44299598313 FAILED in Test existing application; cause not yet isolated. V221 CI/TypeScript/SSR/Vitest/Chromium and matched 390/1440 screenshots pending. No visual redesign, main/deploy unchanged. Next: isolate CI test failure, then Contact browser and event CTA audit.
+
 ### V220 rotation: film identity/privacy. V219 effect-based reset could render a replacement iframe for one commit before useLayoutEffect stopped it. Added render-time identity guard; no visual redesign. Browser/CI exact-head and 390/1440 screenshots pending. Next: Contact/event CTA.
 
 ### V219 / 2026-11-18 — Reset film consent on changed video identity (DRAFT / QA PENDING)
