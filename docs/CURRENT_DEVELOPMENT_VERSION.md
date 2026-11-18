@@ -1,3 +1,6 @@
+### V212 / 2026-11-18 — Contact discard confirmation (DRAFT)
+- Branch `fix/v212-contact-discard-confirmation` stacked on V211 PR #210. After explicitly discarding the prepared quote, Contact now shows a live-region confirmation that local form values were cleared and no message was sent. Confirmation resets when preparing another quote. Added source regression test; no dependencies/assets/homepage/main changes. Exact-head CI, TypeScript/SSR/Vitest and matched Chromium 390/1440 screenshots **NOT YET VERIFIED**; do not merge/publish. Next: real-browser Contact discard QA and event-detail CTA.
+
 ### V211 / 2026-11-18 — Contact discard strict TypeScript unblock (DRAFT)
 - Parent V210 PR #209 SHA `27446472710b6b7dfc29d07c3b7c64e29ab676ba`. Its exact-head GitHub Actions #44203797699 FAILED at TypeScript: QuoteForm reset explicitly assigned `eventType: undefined` under `exactOptionalPropertyTypes`. V211 omits the optional key while preserving the clear-form action and other reset values. No homepage/media/dependency/main changes. New exact-head CI, SSR/Vitest/gzip and real Chromium screenshots pending; do not merge/publish. Next rotation: Contact form reset/validation browser QA, then events detail CTA/focus.
 
