@@ -1,3 +1,10 @@
+### V229 / 2026-11-18 — Contact service error accessible announcement (draft)
+| Area | Observed issue | Implementation | QA | Next |
+| --- | --- | --- | --- | --- |
+| Contact service selection / accessibility | Invalid form submission focused first checkbox, but checkbox only described generic guide; fieldset alone referenced the validation error, leaving actual focused control without direct error announcement | Add conditional aria-invalid and aria-describedby including q-services-err on every native checkbox; preserve disabled limits, group legend, no automatic send | Source regression src/test/contact-service-error-v229.test.ts; exact-head CI and real Chromium screenshot pending | Capture Contact invalid-state before/after at 390/1440, keyboard + screen-reader inspection; audit clipboard denied path |
+- Base PR #228 HEAD 5ee95ad80a0fc858830151f83c5dc18ee9e957a8 passed push/PR workflows #44353108812 and #44353126124. PR #19 remains dirty. Main untouched.
+- Scope is a functional accessibility correction, NOT a claimed visual redesign. Screenshot requirement remains open until a matched browser run.
+
 ### V228 mobile events setlist / 2026-11-18
 - Zone: /evenimente, narrow mobile <=460px. Prior paired columns compressed labels and left each detail link in a cramped tile; changed to a single editorial row per event with a persistent 82px detail target, maintaining existing selection, keyboard controls, SSR links and reduced-motion behavior. No dependencies/media added.
 - Files: src/styles/event-index-v172.css; src/test/events-setlist-v227.test.ts. Source test added; **Chromium before/after, 6-width QA, TypeScript, SSR and exact-head CI remain unverified until workflow finishes**. Do not claim a validated visual release.

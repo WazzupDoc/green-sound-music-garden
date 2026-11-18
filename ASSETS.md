@@ -1,3 +1,6 @@
+### V229 / 2026-11-18
+- No new imagery, fonts, SVGs, audio, packages or third-party assets. Accessibility-only change in existing form.
+
 ### V226 / 2026-11-18 — Original generated photo-illustrations and SVG marks
 | File | Origin | Role & licensing/provenance | Dimensions / size |
 | --- | --- | --- | --- |

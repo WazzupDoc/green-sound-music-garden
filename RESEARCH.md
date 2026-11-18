@@ -1,3 +1,8 @@
+### 2026-11-18 / V229 — Accessible form errors
+- WAI W3C Understanding SC 3.3.1 Error Identification: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html — validation must identify the erroneous field; adapted explicit error description on focusable service checkboxes. No external code copied.
+- MDN aria-describedby: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby — references may include multiple IDs; adapted existing guide plus error ID conditionally. No external code copied.
+- Rejected: adding a third-party form or toast package; unnecessary cost, new dependencies and SSR risk. Retain native checkbox and current react-hook-form.
+
 ### 2026-11-18 — V226 generated service chapter artwork / editorial system
 1. Webflow, `https://webflow.com/blog/music-websites-designed-with-webflow` — surveyed music website layouts and purpose-built hierarchy; adapted use of editorial category pacing and visuals keyed to a real service chapter, not a generic equal-card grid. Rejected copying templates, images, brand identities or source code (not licensed for reuse).
 2. Webflow editorial catalog, `https://webflow.com/templates/search/editorial` — reviewed examples of large visual/typographic hierarchy. Adaptation: original three still-life image crops in irregular existing 2-column category composition; rejected new homepage widgets and repeated artificial backdrop lighting.

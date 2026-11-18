@@ -1,3 +1,9 @@
+### V229 / 2026-11-18 — CONTACT SERVICE ERROR ACCESSIBILITY (DRAFT)
+- Parent: PR #228 `5ee95ad80a0fc858830151f83c5dc18ee9e957a8`, exact-head successful workflow runs #44353108812 / #44353126124. Main remains `4312f845c2e70b59a54cca002037906c6852c47a`.
+- Contact's invalid services field previously focused the first native checkbox but only fieldset referenced error ID. Now each checkbox exposes `aria-invalid` and conditionally includes `q-services-err` in `aria-describedby` when validation fails. No change to services, selection logic, send semantics, homepage, dependencies or assets.
+- Added `src/test/contact-service-error-v229.test.ts`. Exact-head TypeScript, Vitest, SSR, browser 390/1440 invalid-state screenshot and screen-reader verification remain pending. Do not mark validated until checked.
+- Next: real Chromium error-state matched screenshots and clipboard denied flow; keep PR draft, main untouched.
+
 ### V226 / 2026-11-18 — GENERATED VISUAL MEDIA IN ACTUAL SITE (DRAFT)
 - Latest base: validated V225 draft PR #225 exact SHA `e29bb677630ed98f57344be2c253fa93ae45fe03`; main remains V222 `4312f845c2e70b59a54cca002037906c6852c47a`. The user's explicit priority is **new original imagery and icons actually used in website UI**, not more invisible test-only PRs.
 - Imported actual owner-requested generated conceptual imagery, originally created from first-party image generation and processed to **three WebP files inside GitHub repository** by one-time GitHub Actions importer #44333027841. Files in `public/media/greensound/`: `v226-concept-muzica.webp` (18,746 B), `v226-concept-tehnica.webp` (18,784 B), `v226-concept-oameni.webp` (15,636 B), all 1152×252; transfer workflow deleted after success. No runtime Adobe dependency or new external media request.
