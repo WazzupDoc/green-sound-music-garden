@@ -1,3 +1,7 @@
+### 2026-11-18 — Contact discard feedback
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status feedback should be exposed to assistive technology without moving focus. Adaptation: existing inline `role=status` and `aria-live=polite`, no new dependency. Rejected: modal confirmation (unnecessary extra action) and toast with timeout (ephemeral, more JS). No external code or imagery copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role — nonurgent status updates. Applied original Romanian confirmation; no external code reused.
+
 ### 2026-11-18 — V210 film poster resilience
 - References: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/error_event (image resource load errors); https://web.dev/learn/design/responsive-images (robust image presentation). Applied: React `img onError` only to switch to an existing first-party CSS fallback; no copied code/assets and no new dependencies. Rejected: remote YouTube thumbnails (privacy request before consent), arbitrary stock images (provenance), and adding an image library (unnecessary bytes). Visual comparison and network verification pending.
 
