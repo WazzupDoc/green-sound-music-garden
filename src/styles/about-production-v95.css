@@ -65,3 +65,80 @@ html[data-gs-performance=lite] .gs-about-v95__cta{transition:none;transform:none
 @media(max-width:480px){.gs-about-v95__steps li{grid-template-columns:45px minmax(0,1fr)}.gs-about-v95__step-no{font-size:1.25rem;display:block}.gs-about-v95__step-track{display:none}.gs-about-v95__steps li:nth-child(even){padding-left:12px}}
 @media(prefers-reduced-motion:reduce){.gs-about-v95__steps li{transition:none}}
 html[data-gs-performance=lite] .gs-about-v95__steps li{transition:none}
+
+
+/* V224 — Green Sound's four-channel production score.
+   Editorial signal traces are original inline SVG; no image, library, JS
+   animation, or external request. The section deliberately contrasts with
+   the paper statement and closing rather than repeating a card grid. */
+.gs-about-v95__process{
+  position:relative;
+  overflow:hidden;
+  background:#0d251b;
+  color:#f0f6eb;
+}
+.gs-about-v95__process::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 max(15px,calc((100vw - 1320px)/2));
+  width:1px;
+  pointer-events:none;
+  background:rgba(181,235,160,.14);
+}
+.gs-about-v95__process .gs-about-v95__section-index{color:#b3e9a0}
+.gs-about-v95__process-heading h2 em{color:#bdf5a1}
+.gs-about-v95__process-intro{color:#c4d9c7}
+.gs-about-v95__steps{border-top-color:#446454}
+.gs-about-v95__steps li{
+  grid-template-columns:110px minmax(0,1fr) 160px;
+  align-items:center;
+  border-bottom-color:#446454;
+  padding-block:clamp(28px,3.4vw,58px);
+  transition:background-color .2s ease;
+}
+.gs-about-v95__steps li:nth-child(even){
+  background:#16382a;
+  padding-inline:clamp(14px,2.2vw,36px) clamp(8px,1vw,18px);
+}
+.gs-about-v95__step-no{color:#bdf5a1}
+.gs-about-v95__step-track{background:#477b5a}
+.gs-about-v95__steps li:last-child .gs-about-v95__step-track{background:#a8d99c}
+.gs-about-v95__steps h3{color:#f5f9f0}
+.gs-about-v95__steps p{color:#c2d7c8}
+.gs-about-v95__cue{
+  display:block;
+  width:100%;
+  max-width:150px;
+  height:auto;
+  justify-self:end;
+  color:#a9eb93;
+  opacity:.85;
+}
+.gs-about-v95__cue path{
+  stroke-width:2;
+  vector-effect:non-scaling-stroke;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .gs-about-v95__steps li:hover{background:#1b4130}
+  .gs-about-v95__cue{transition:opacity .2s ease, transform .2s ease}
+  .gs-about-v95__steps li:hover .gs-about-v95__cue{opacity:1;transform:translateX(-5px)}
+}
+@media(max-width:800px){
+  .gs-about-v95__steps li{grid-template-columns:78px minmax(0,1fr) 96px}
+  .gs-about-v95__cue{max-width:96px}
+}
+@media(max-width:640px){
+  .gs-about-v95__steps li{grid-template-columns:48px minmax(0,1fr);gap:14px}
+  .gs-about-v95__steps li:nth-child(even){padding-inline:14px 8px}
+  .gs-about-v95__cue{
+    grid-column:2;
+    justify-self:start;
+    width:120px;
+    margin-top:2px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .gs-about-v95__steps li,.gs-about-v95__cue{transition:none}
+}
+html[data-gs-performance="lite"] .gs-about-v95__steps li,
+html[data-gs-performance="lite"] .gs-about-v95__cue{transition:none;transform:none}
