@@ -1,0 +1,68 @@
+/* V214 / a production index, not a template navbar. Original CSS. */
+.atelier-header{--gs214-header-ivory:#f5f1e6;background:#0a131af2;border-bottom-color:#a9ceb94d}
+.atelier-header .atelier-header__nav .atelier-header__link{
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  min-height:61px;gap:3px;color:var(--gs214-header-ivory);
+  padding:7px 3px;font-size:.88rem;font-weight:680;letter-spacing:-.02em;
+}
+.atelier-header .atelier-header__nav .atelier-header__link .gs214-nav-code{
+  display:block;font-size:.52rem;letter-spacing:.16em;font-weight:800;line-height:1;color:#9fa9ac;
+}
+.atelier-header .atelier-header__nav .atelier-header__link .gs214-nav-label{line-height:1.25}
+.atelier-header .atelier-header__nav .atelier-header__link::after{
+  height:3px;bottom:0;background:linear-gradient(90deg,#b4ff96 0 65%,#ffc39b 65%);
+}
+.atelier-header .atelier-header__nav .atelier-header__link:is(:hover,:focus-visible,.atelier-header__link--active) .gs214-nav-code{color:#ffc49e}
+.atelier-header .atelier-header__nav .atelier-header__link--active .gs214-nav-label{color:#b9ffa5}
+.atelier-header .atelier-header__finder-btn{
+  min-width:114px;min-height:43px;padding:7px 11px;gap:10px;
+  justify-content:flex-start;background:#f0efe5;color:#122525;border:1px solid #f0efe5;
+  border-radius:3px;box-shadow:inset 0 -3px 0 #c5cfbf;
+}
+.atelier-header .atelier-header__finder-btn:hover{background:#d8f4d7;border-color:#abffa0}
+.atelier-header .atelier-header__finder-btn .gs214-finder-label{font-size:.76rem;font-weight:800;letter-spacing:-.015em}
+.atelier-header .atelier-header__finder-hint{color:#52675b;border-left:1px solid #4e685b65;font-size:.55rem;padding-left:5px}
+.atelier-header .atelier-header__finder-btn:focus-visible{outline:3px solid #ffc49e;outline-offset:3px}
+.atelier-header .atelier-header__quote{border-radius:3px;font-weight:850}
+.atelier-header .atelier-header__quote:hover{box-shadow:inset 0 -4px 0 #132b25}
+@media(max-width:1439px){
+  .atelier-header .atelier-header__nav .atelier-header__link .gs214-nav-code{display:none}
+  .atelier-header .atelier-header__nav .atelier-header__link{min-height:45px}
+  .atelier-header .atelier-header__finder-btn{min-width:44px;width:44px;justify-content:center;padding:8px}
+  .atelier-header .atelier-header__finder-btn .gs214-finder-label{display:none}
+}
+@media(max-width:1150px){.atelier-header .atelier-header__finder-hint{display:none}}
+@media(max-width:640px){.atelier-header .atelier-header__finder-btn{width:43px;min-width:43px;height:43px}}
+/* Search opens an editorial index; native Radix keyboard/focus remain unchanged. */
+.gs-finder{background:#0c161d;border-color:#92a7a0;box-shadow:0 45px 100px #000e}
+.gs-finder::before{background:linear-gradient(90deg,#bbffae 0 54%,#ffc49a 54% 76%,#a5a0f9 76%)}
+.gs-finder__topline>span{color:#f0c0a1}
+.gs-finder__intro h2{color:#fbf7ef;letter-spacing:-.075em}
+.gs-finder__intro h2 em{color:#baffab}
+.gs-finder__intro p{color:#c0cac9}
+.gs-finder__search{background:#f3f1e9;border-color:#fcfaf1;color:#0d1e24}
+.gs-finder__search input{color:#0c2228}
+.gs-finder__search input::placeholder{color:#6b7670}
+.gs-finder__results-top{color:#becdcb}
+.gs-finder__result{border-top-color:#9bb3ab55}
+.gs-finder__result:hover,.gs-finder__result:focus-visible{background:#f0efe71a}
+.gs-finder__result-no{color:#ffc49e}
+.gs-finder__result-type{color:#b4a9fb}
+.gs-finder__result-content small{color:#c8d4cf}
+.gs-finder__footer{color:#b9cac4}
+.gs214-finder__suggestions{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:12px clamp(18px,3.1vw,36px) 0}
+.gs214-finder__suggestions span{font-size:.65rem;font-weight:800;letter-spacing:.09em;color:#bdcfc8;margin-right:6px}
+.gs214-finder__suggestions button{min-height:37px;border:1px solid #a4bcb45c;padding:6px 12px;
+  color:#f5f2e8;background:#16292b;font-size:.74rem;font-weight:750;cursor:pointer;
+  transition:background .16s,color .16s}
+.gs214-finder__suggestions button:hover,.gs214-finder__suggestions button:focus-visible{background:#fff0de;color:#102127}
+.gs214-finder__suggestions button:focus-visible{outline:2px solid #ffc49e;outline-offset:3px}
+@media(max-width:640px){
+  .gs214-finder__suggestions{margin:9px 17px 0;gap:6px}
+  .gs214-finder__suggestions button{min-height:34px;padding:6px 9px}
+  .gs214-finder__suggestions span{width:100%;font-size:.58rem}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs214-finder__suggestions button{animation:none!important;transition:none!important}
+}
+html[data-gs-performance="lite"] .gs214-finder__suggestions button{animation:none!important;transition:none!important}

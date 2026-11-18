@@ -1,3 +1,6 @@
+### V214 / 2026-11-18 — Original procedural graphic
+- New `src/components/atelier/SceneScoreV214.tsx` and `src/styles/hero-signal-v214.css`: first-party original algorithmic waveform illustration, no external asset, image, AI event depiction, licensed snippet, audio, font or runtime dependency. It is labeled visually as an illustration (NOT a live meter). Original existing Green Sound event photo remains unchanged; soft amber and violet are code-generated accent colors. Search/header use existing Lucide icons already installed, no new assets. All rights within project code; no attribution dependency. No TikTok captures.
+
 ### 2026-11-18 — V213
 - No new assets, fonts, images, icons or dependencies. Only native Node path resolution in a test fixture; asset provenance unchanged.
 

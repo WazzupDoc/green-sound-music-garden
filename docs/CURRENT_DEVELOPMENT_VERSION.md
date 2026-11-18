@@ -1,3 +1,7 @@
+### V214 / 2026-11-18 — Signal score & editorial search header (DRAFT)
+- Branch `design/v214-signal-score-navigation` from V213 PR #212 exact base `e43609dd09212d3cbf8d18a2b47d677f29fc2b56`. Owner-directed scope: replace ten-fader fictional equalizer with first-party deterministic SVG score and CSS-only playhead; custom slate/ivory/warm-amber/lilac palette while preserving Green Sound green, existing real photograph and simple homepage. Numbered desktop nav, visible desktop search label and useful local DJ/lumini/nuntă presets in existing Radix finder. Keep native links, keyboard, Lite, reduced-motion, SSR, no audio/autoplay/backends, no new dependencies.
+- Release gate: older V213 exact-head quality PASS https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44248411343 with Chromium screenshot artifacts; this is **baseline only**. V214 exact-head TS/SSR/Vitest/gzip, six-width Chromium, before/after 390/1440, actual motion vs reduced/Lite MUST be checked before approval. Main/CD/production unchanged. Next: Contact discard focus & Event detail CTA.
+
 ### V213 / 2026-11-18 — Contact Vitest CI unblock (DRAFT)
 - V212 exact-head run #44241249565: TypeScript, SSR build and gzip passed; Vitest failed before running V212 tests (`ERR_INVALID_URL_SCHEME` from `new URL(..., import.meta.url)`). Replaced test source path with `resolve(process.cwd(), ...)`, no production UI change. Browser 390/1440 screenshots, six-width QA and exact-head green CI remain unverified. Main untouched. Next: browser Contact discard and event CTA.
 

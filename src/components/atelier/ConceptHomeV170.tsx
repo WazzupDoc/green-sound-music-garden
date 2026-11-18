@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { images, videos, services, type ServiceSlug, type Video } from "@/data/site";
 import { VideoLite } from "@/components/site/VideoLite";
+import { SceneScoreV214 } from "./SceneScoreV214";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 /** Reference-inspired design. Real first-party media and business catalogue only.
@@ -81,18 +82,7 @@ export function ConceptHomeV170() {
           <div className="gs170-stage__beams">
             {Array.from({ length: 5 }, (_, index) => <i key={index} style={{ "--beam": index } as CSSProperties} />)}
           </div>
-          <div className="gs170-stage__console">
-            <div className="gs170-stage__console-top"><span>GREEN SOUND / LIVE MIX</span><span className="gs170-stage__live">● SIGNAL</span></div>
-            <div className="gs170-stage__eq">
-              {Array.from({ length: 25 }, (_, i) => <span key={i} style={{ "--bar": i } as CSSProperties} />)}
-            </div>
-            <div className="gs170-stage__channels">
-              {Array.from({ length: 10 }, (_, i) =>
-                <span key={i} className="gs170-stage__channel" style={{ "--channel": i } as CSSProperties}><i /><b /><small /></span>
-              )}
-            </div>
-            <span className="gs170-stage__console-end">DECORATIVE VISUAL / SOUND · LIGHT · PRODUCTION</span>
-          </div>
+          <SceneScoreV214 />
         </div>
         <div className="gs170-hero__content container-site">
           <span className="gs170-kicker gs170-hero__eyebrow">GREEN SOUND MUSIC / PRODUCȚIE DE EVENIMENTE</span>

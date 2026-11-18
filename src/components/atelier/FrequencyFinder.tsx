@@ -155,6 +155,14 @@ export function FrequencyFinder({
               aria-controls="gs-finder-results" />
             <kbd aria-hidden>↵</kbd>
           </label>
+          <div className="gs214-finder__suggestions" aria-label="Căutări populare">
+            <span>CAUTĂ RAPID</span>
+            {(["DJ", "lumini", "nuntă"] as const).map(value => (
+              <button type="button" key={value} onClick={() => { setQuery(value); inputRef.current?.focus(); }}>
+                {value === "DJ" ? "DJ & MC" : value === "lumini" ? "Lumini" : "Nuntă"}
+              </button>
+            ))}
+          </div>
           <div className="gs-finder__results-top">
             <span>{query.trim() ? "REZULTATE" : "ÎNCEPE DE AICI"}</span>
             <span role="status">{results.length} {results.length === 1 ? "destinație" : "destinații"}</span>

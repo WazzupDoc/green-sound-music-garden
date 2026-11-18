@@ -1,3 +1,8 @@
+### 2026-11-18 — V214 navigation + production-score concept research
+- https://webflow.com/blog/menus-website (Webflow official): distinctive navigation still needs predictable links and discoverable entry points. Adapted: six existing routes retained with editorial indexing, visible search label and local quick-query buttons. Rejected: full-screen hover-only desktop mega-menu (discovery and focus overhead).
+- https://assets.awwwards.com/assets/files/live-presentation.pdf (Awwwards studio case study, Viens-là): art direction, motion and typography work together when they express identity. Adapted: an original sound-production score generated as deterministic SVG paths, not a photograph, with rare amber/lilac secondary accents. Rejected: borrowed artwork or WebGL/scroll effects.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion (MDN): disable discretionary animation in reduced-motion; Lite uses project performance flag. No code/images from sources copied, no external licenses involved; self-authored CSS/TSX only. Known risk: browser screenshot/contrast and gzip unmeasured pending exact-head QA.
+
 ### 2026-11-18 — V213 CI diagnosis
 - Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44241249565 — CI log confirms `ERR_INVALID_URL_SCHEME` in V212 source test, while TypeScript/SSR/gzip passed. Adaptation: native Node `path.resolve(process.cwd(),...)` for repo-local source fixture, no package or external code. Rejected: disabling the test or changing application UI to mask test harness failure. Premium visual research deferred because this iteration is an actual CI release blocker, not a design change.
 

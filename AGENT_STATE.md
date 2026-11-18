@@ -1,3 +1,8 @@
+### V214 / 2026-11-18 — Header + hero signal-score design (DRAFT, release gate pending)
+- Rotation: top navigation / search / homepage right ornament; owner explicitly requested replacing AI-like mixer and improving contrast/colors and search. Implementation on `design/v214-signal-score-navigation` stacked over V213 PR #212 source `e43609d`: six native nav routes gain editorial number cues, search has readable visible label and three real local search presets; retained Ctrl+K, slash, Escape, Radix focus and native mobile dialog. Replaces the repeated fake ten-slider decorative console with deterministic first-party SVG sound-production score and gentle CSS-only playhead, in slate/ivory/amber/lilac alongside brand green. No network, packages, logo/photos, invented data, homepage sections or deployment.
+- QA checkpoint: before images real GitHub Actions V213 #44248411343 (`green-sound-crafted-atmospheres-browser-review`, 390/1440); after screenshots and exact-head TypeScript/SSR/Vitest/gzip/Chromium pending. **Do not claim visual success until matched browser evidence reviewed.**
+- Matrix: Header/search — design update proposed, keyboard regression pending. Hero score — vector replacement proposed, screenshot & Lite/reduced motion pending. Next rotation: Contact discard real-browser proof and events CTA.
+
 ### V213 / 2026-11-18 — Contact CI blocker
 - Confirmed V212 exact-head Actions #44241249565: strict TypeScript, SSR, gzip passed; 54 test files / 147 tests passed, 1 suite failed during module load due to `import.meta.url` non-file URL. Corrected source test path on isolated V213 branch. No visual redesign or screenshots; full CI/browser gate pending. Next: Contact browser QA then events CTA.
 

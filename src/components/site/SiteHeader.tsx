@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as Reac
 import { Logo } from "./Logo";
 import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import liveSetlistCss from "@/styles/navigation-v189.css?inline";
+import signalNavCss from "@/styles/navigation-v214.css?inline";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
@@ -141,14 +142,16 @@ export function SiteHeader() {
       {/* Static, first-party CSS is present during SSR; no runtime fetch and no external script. */}
       <style>{stageIndexCss}</style>
       <style>{liveSetlistCss}</style>
+      <style>{signalNavCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
         <nav className="atelier-header__nav" aria-label="Navigare principală">
-          {navigation.map((entry) => (
+          {navigation.map((entry, index) => (
             <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
               activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
-              {entry.title}
+              <span className="gs214-nav-code" aria-hidden="true">{String(index + 1).padStart(2, "0")} / 06</span>
+              <span className="gs214-nav-label">{entry.title}</span>
             </Link>
           ))}
         </nav>
@@ -158,7 +161,8 @@ export function SiteHeader() {
             aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
             onClick={() => { setOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
             <Search className="size-5" aria-hidden />
-            <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
+            <span className="gs214-finder-label" aria-hidden="true">Caută</span>
+            <span className="atelier-header__finder-hint" aria-hidden="true">Ctrl K</span>
           </button>
           <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
             <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
