@@ -1,3 +1,11 @@
+### V227 / 2026-11-18 — Event setlist trust and keyboard discoverability (draft)
+| Zone | Observed issue | Fix | Verification | Next |
+| --- | --- | --- | --- | --- |
+| /evenimente index | Hard-coded `01—05` could become stale when catalogue changes; `DIN 2008` asserted an unverified founding date; existing keyboard arrow navigation was undiscoverable | Derive setlist total from `events.length`, replace founding-year assertion with local service area, explain arrow-key selection in existing caption | Source-level Vitest `events-setlist-v227.test.ts` added; CI exact-head and matched Chromium 390/1440 screenshots not yet verified. No visual release claim. | Run browser before/after screenshots and six-width regressions; inspect mobile caption layout and dynamic selection. |
+- Baseline: V226 generated-art PR #227 `bb2df39b715db6dfde0c8a017f7844889596dc3d`, exact-head GitHub Actions success #44334232899 and #44334051797. This V227 is a separate draft. PR #19 mergeable=false; main untouched.
+- Visual experiment: readable, truthful editorial setlist copy; no new media, dependency, unverified company history or extra homepage sections.
+- Sources for a future deeper event-interaction audit: MDN keyboard accessible widgets https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets and WAI APG https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ . Current event buttons are independent buttons (not tabs); do not apply tablist semantics blindly.
+
 ### V226 / 2026-11-18 — VISUAL ASSETS ACTUALLY ADDED (DRAFT)
 | Area | Concrete observed limitation | Changed source | QA and visual evidence | Next |
 | --- | --- | --- | --- | --- |
