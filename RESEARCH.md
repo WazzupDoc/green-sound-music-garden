@@ -1,3 +1,6 @@
+### 2026-11-18 — Editorial service-area accuracy
+- Review: homepage editorial service programme. The existing claim «în toată România» was not supported by verified service logistics. Adapted footer to «Pitești / Argeș» and made service introduction more actionable. No third-party code or assets used; no new dependencies. Premium visual experiments deferred until matched Chromium captures are available.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 
