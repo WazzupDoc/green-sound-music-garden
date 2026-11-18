@@ -1,3 +1,6 @@
+### V213 / 2026-11-18 — Contact CI blocker
+- Confirmed V212 exact-head Actions #44241249565: strict TypeScript, SSR, gzip passed; 54 test files / 147 tests passed, 1 suite failed during module load due to `import.meta.url` non-file URL. Corrected source test path on isolated V213 branch. No visual redesign or screenshots; full CI/browser gate pending. Next: Contact browser QA then events CTA.
+
 ### V212 / 2026-11-18 — Contact discard feedback (DRAFT)
 - Zone: Contact privacy/UX. Explicit discard now gives accessible local-clearing confirmation; no claim of delivery. Source test added. Draft PR #211. CI and matched Chromium screenshots pending. Next: Contact browser QA, then events detail CTA/focus. Main untouched.
 

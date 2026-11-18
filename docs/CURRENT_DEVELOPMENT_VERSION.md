@@ -1,3 +1,6 @@
+### V213 / 2026-11-18 — Contact Vitest CI unblock (DRAFT)
+- V212 exact-head run #44241249565: TypeScript, SSR build and gzip passed; Vitest failed before running V212 tests (`ERR_INVALID_URL_SCHEME` from `new URL(..., import.meta.url)`). Replaced test source path with `resolve(process.cwd(), ...)`, no production UI change. Browser 390/1440 screenshots, six-width QA and exact-head green CI remain unverified. Main untouched. Next: browser Contact discard and event CTA.
+
 ### V212 / 2026-11-18 — Contact discard confirmation (DRAFT)
 - Branch `fix/v212-contact-discard-confirmation` stacked on V211 PR #210. After explicitly discarding the prepared quote, Contact now shows a live-region confirmation that local form values were cleared and no message was sent. Confirmation resets when preparing another quote. Added source regression test; no dependencies/assets/homepage/main changes. Exact-head CI, TypeScript/SSR/Vitest and matched Chromium 390/1440 screenshots **NOT YET VERIFIED**; do not merge/publish. Next: real-browser Contact discard QA and event-detail CTA.
 

@@ -1,3 +1,6 @@
+### 2026-11-18 — V213 CI diagnosis
+- Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44241249565 — CI log confirms `ERR_INVALID_URL_SCHEME` in V212 source test, while TypeScript/SSR/gzip passed. Adaptation: native Node `path.resolve(process.cwd(),...)` for repo-local source fixture, no package or external code. Rejected: disabling the test or changing application UI to mask test harness failure. Premium visual research deferred because this iteration is an actual CI release blocker, not a design change.
+
 ### 2026-11-18 — Contact discard feedback
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status feedback should be exposed to assistive technology without moving focus. Adaptation: existing inline `role=status` and `aria-live=polite`, no new dependency. Rejected: modal confirmation (unnecessary extra action) and toast with timeout (ephemeral, more JS). No external code or imagery copied.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role — nonurgent status updates. Applied original Romanian confirmation; no external code reused.

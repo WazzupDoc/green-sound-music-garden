@@ -1,3 +1,6 @@
+### 2026-11-18 — V213
+- No new assets, fonts, images, icons or dependencies. Only native Node path resolution in a test fixture; asset provenance unchanged.
+
 ### V212 / 2026-11-18
 - No new images, fonts, media, packages or external assets. Contact feedback uses existing styles and native ARIA semantics.
 

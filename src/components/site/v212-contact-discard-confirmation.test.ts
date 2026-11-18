@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-const source = readFileSync(new URL("./QuoteForm.tsx", import.meta.url), "utf8");
+// Vitest/Vite may rewrite import.meta.url to a non-file URL in CI.
+const source = readFileSync(resolve(process.cwd(), "src/components/site/QuoteForm.tsx"), "utf8");
 
 describe("V212 Contact privacy discard confirmation", () => {
   it("confirms local clearing without claiming a message was sent", () => {
