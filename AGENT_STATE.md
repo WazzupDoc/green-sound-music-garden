@@ -1,3 +1,12 @@
+### V224 / 2026-11-18 — Component rotation: /despre-noi (draft QA)
+| Zone | Priority | Observed issue | Implemented solution | Evidence/QA | Next |
+|---|---|---|---|---|---|
+| About landmark | P1 accessibility | Route rendered `<main>` inside shared root `<main>`, and literal `\\n` appeared in production copy | Changed route wrapper to `div`, removed literal escape; preserve headings/semantics | `src/routes/despre-noi.tsx`, `src/routes/about-production-v224.test.ts`, browser before/after script; exact-head CI pending | validate screenshot and keyboard in Chromium |
+| About visual production journey | P1 brand differentiation | Pale horizontal four-row list read as generic timeline with repeating gray-green lines | Dark-emerald asymmetric four-channel score, original static SVG traces, text contrast and reduced-motion/Lite-safe hover | `src/styles/about-production-v95.css`, dedicated six-width screenshot job; visual sign-off pending | inspect mobile/1440 before-after |
+| Global Error/404 | P1 localization | fallback English text reported by Gemini audit | Not touched in V224 | Next rotation |
+| Navigation 1024–1120 | P1 usability | media query mismatch reported by Gemini audit | Not touched in V224 | After error/404 |
+- V223 real browser + exact-head CI green. V224 branch stacked on V223 for review; no main or production changes.
+
 ### V223 / 2026-11-18 — Services → Contact funnel (DRAFT)
 | Zone | Defect from owner-provided AI Studio audit | V223 solution | Evidence | Next |
 | --- | --- | --- | --- | --- |
