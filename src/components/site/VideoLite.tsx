@@ -12,6 +12,16 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
   const playButtonRef = useRef<HTMLButtonElement>(null);
   const stopButtonRef = useRef<HTMLButtonElement>(null);
   const restoreFocusRef = useRef(false);
+  const previousVideoIdRef = useRef(video.id);
+  useLayoutEffect(() => {
+    // A changed film is a new consent boundary: never auto-play it because
+    // the visitor previously pressed Play on another film in this same slot.
+    if (previousVideoIdRef.current !== video.id) {
+      previousVideoIdRef.current = video.id;
+      restoreFocusRef.current = true;
+      setActive(false);
+    }
+  }, [video.id]);
   useLayoutEffect(() => {
     // The play button unmounts on activation; move focus to the visible stop action.
     if (active) stopButtonRef.current?.focus();
