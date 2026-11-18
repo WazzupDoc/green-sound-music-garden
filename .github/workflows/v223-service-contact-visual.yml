@@ -1,0 +1,54 @@
+name: V223 Service to Contact — matched real Chromium
+on:
+  push:
+    branches: [fix/v223-service-contact-prefill-credibility]
+permissions:
+  contents: read
+jobs:
+  service-contact:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Checkout exact V222 main baseline
+        run: |
+          git cat-file -e 4312f845c2e70b59a54cca002037906c6852c47a^{commit}
+          git worktree add --detach /tmp/gs-v222-main-before 4312f845c2e70b59a54cca002037906c6852c47a
+      - name: Install project dependencies
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v222-main-before && bun install --no-save)
+      - name: Install real Chromium
+        run: |
+          npm install --prefix /tmp/gs-v223-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v223-playwright/node_modules/.bin/playwright install chromium
+      - name: Start separate before and after previews
+        run: |
+          (cd /tmp/gs-v222-main-before && bunx vite dev --host 127.0.0.1 --port 4176 > /tmp/gs-v222-before.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v223-after.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 65); do
+              if curl -sf "http://127.0.0.1:$port/" >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then
+              cat /tmp/gs-v222-before.log /tmp/gs-v223-after.log
+              exit 1
+            fi
+          done
+      - name: Assert service copy and prefilled Contact at six widths with matched images
+        run: NODE_PATH=/tmp/gs-v223-playwright/node_modules node .github/scripts/verify-v223-service-contact.cjs
+      - name: Upload actual before and after images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v223-service-contact-before-after
+          path: screenshots/gs-v223-service-contact/
+          if-no-files-found: warn
+          retention-days: 60
