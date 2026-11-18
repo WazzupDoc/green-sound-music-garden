@@ -1,3 +1,7 @@
+### 2026-11-18 — V219 film identity consent boundary
+- Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe (iframe lifecycle); https://react.dev/reference/react/useLayoutEffect (pre-paint synchronization). Adaptation: first-party layout effect unmounts an already-playing iframe if the supplied video ID changes, rather than automatically playing the replacement film. No external code or assets copied, no new dependency. Rejected alternative: iframe key alone (would autoplay replacement).
+- QA still required: actual playback/film switch and focus in Chromium, exact-head CI, screenshots at 390/1440 and all six widths.
+
 ### 2026-11-18 — V218 iframe permissions
 - Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe — iframe `allow` is a Permissions Policy restriction, not a grant needed for every embedded feature. Adaptation: remove unnecessary motion sensor and clipboard-write requests from click-consented YouTube player. No external code copied, no license dependency. Rejected: sandbox hardening without browser validation (could break video playback); autoplay on page load (privacy/accessibility regression). Browser verification pending.
 
