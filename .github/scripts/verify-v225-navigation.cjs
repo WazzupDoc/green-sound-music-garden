@@ -37,6 +37,7 @@ async function openSmallMenu(page) {
           if (startWidth !== width) await page.setViewportSize({width:startWidth,height:900});
           const response = await page.goto(rootUrl(port) + "/", {waitUntil:"domcontentloaded",timeout:50000});
           assert.equal(response.status(),200, "home HTTP " + kind + " " + width);
+          await page.locator('.gs170-hero[data-hydrated="true"]').waitFor({timeout:20000});
           await page.evaluate(() => document.fonts.ready);
           await page.waitForTimeout(650);
           if (width <= 1120) {
@@ -139,6 +140,7 @@ async function openSmallMenu(page) {
     const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});
     try{
       await page.goto(rootUrl(4175)+"/",{waitUntil:"domcontentloaded"});
+      await page.locator('.gs170-hero[data-hydrated="true"]').waitFor({timeout:20000});
       const toggle=page.locator(".gs217-services-toggle");
       await toggle.click();
       await page.locator(".gs217-directory").waitFor({state:"visible"});
