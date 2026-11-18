@@ -1,3 +1,6 @@
+### V212 / 2026-11-18 — Contact discard feedback (DRAFT)
+- Zone: Contact privacy/UX. Explicit discard now gives accessible local-clearing confirmation; no claim of delivery. Source test added. Draft PR #211. CI and matched Chromium screenshots pending. Next: Contact browser QA, then events detail CTA/focus. Main untouched.
+
 ### V210 / 2026-11-18 — Film poster error fallback (DRAFT)
 - Rotation: portfolio video image resilience. A configured first-party poster could fail to load and leave a browser broken-image glyph over the play surface. `VideoLite` now tracks the failed poster URL and renders the existing local dark surface; when a different poster URL arrives, it is attempted normally. Existing consent-gated playback, focus handoff, captions and homepage sections unchanged. Source regression updated. TypeScript, Vitest, SSR, exact-head CI and matched real Chromium 390/1440 screenshots **NOT VERIFIED**; main untouched. Next: event detail CTA/focus and real-browser QA.
 
