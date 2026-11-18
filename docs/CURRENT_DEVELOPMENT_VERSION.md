@@ -1,3 +1,6 @@
+### V216 / 2026-11-18 — Compact mobile setlist (DRAFT / UNVALIDATED)
+- Branch `design/v216-mobile-menu-editorial-clarity` stacked on V215. Mobile menu at <=640px prioritizes six navigable destinations, removes redundant stage ornament/secondary cue and reduces heading footprint; desktop and functional actions preserved. CSS-only, no dependencies. Real browser screenshots, TypeScript/SSR/Vitest and exact-head CI **pending**. No main/deploy.
+
 ### V215 / 2026-11-18 — Restored emerald art direction (DRAFT)
 - User rejected V214. Draft PR #214 closed without merge; V215 `design/v215-restored-emerald-refinement` forks exact green V213 commit `e43609dd09212d3cbf8d18a2b47d677f29fc2b56`. Hero restores original green concert photo, all original headline/CTA/video/service sections and 10-channel decorative mixer instead of V214 artificial vector score; subtle dark-green surface and warm metallic fader caps for texture, softened LED glare, and mobile-safe visual layering (hide console below 740px). Original compact desktop nav, no numbered nav; accessible search label and functional local presets, copy simplified.
 - Exact-head CI, tests, six-width Chromium, before/after screenshot and motion gates pending. Main untouched. Next rotation: mobile navigation and Contact conversion. Need owner visual signoff, **do not publish**.

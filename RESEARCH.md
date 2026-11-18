@@ -1,3 +1,6 @@
+### 2026-11-18 — V216 mobile navigation (source review pending)
+- Existing first-party navigation-v189.css and navigation-v215.css inspected. Observed competing visual cues, decorative stage and oversized heading on <=640px. Adaptation: progressive disclosure of decorative elements with CSS media query; retain all links, focus and native dialog. No external code/assets or new dependencies. Professional references and browser visual validation still pending; no external inspiration claimed as researched.
+
 ### V215 / 2026-11-18 — Real research supporting restraint, not trend-chasing
 - https://webflow.com/accessibility/checklist/task/layout-is-simple-straightforward-and-consistent — Webflow accessibility checklist: retain recognizable visual hierarchy and predictable navigation. Adapt: return simple six-name desktop navigation instead of V214 number codes, keep direct links and clear search; no external code reused.
 - https://assets.awwwards.com/awards/gallery/2023/07/HOT-RIGHT-NOW-BOOK-2023.pdf — Awwwards editorial discussion warns against copycat trends and encourages concept/brand fit. Adapt: prioritise green event atmosphere and original already approved photography; reject navy waveform score, pastel accent blocks, extra ornament.
