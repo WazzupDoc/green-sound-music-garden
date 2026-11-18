@@ -20,6 +20,7 @@ jobs:
           curl --location --fail --silent --show-error --retry 2 --max-time 90 \
             --output /tmp/gs-v226-source.png "https://at.adobe.com/wyqtcHdNbhFMVDct"
           file /tmp/gs-v226-source.png
+          python -m pip install --quiet Pillow
           python - <<'PY'
           from PIL import Image
           art=Image.open("/tmp/gs-v226-source.png")
