@@ -12,6 +12,13 @@ describe("Contact query prefill safety", () => {
     expect(validateBrief({ location: { unsafe: true } }).location).toBeUndefined();
   });
 
+
+  it("rejects locations made only of controls and very long query values", () => {
+    expect(validateBrief({ location: "\u202e\u0000\\n" }).location).toBeUndefined();
+    expect(validateBrief({ location: "X".repeat(2001) }).location).toBeUndefined();
+    expect(validateBrief({ location: " Pitești " }).location).toBe("Pitești");
+  });
+
   it("does not accept an unknown service from URL", () => {
     expect(validateBrief({ services: "not-an-actual-service" }).services).toBeUndefined();
   });
