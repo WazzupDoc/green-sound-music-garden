@@ -1,3 +1,12 @@
+### V226 / 2026-11-18 — Original generated photo-illustrations and SVG marks
+| File | Origin | Role & licensing/provenance | Dimensions / size |
+| --- | --- | --- | --- |
+| `public/media/greensound/v226-concept-muzica.webp` | Original AI-generated triptych requested 2026-11-18, upper panel (vinyl and strings) | Synthetic visual concept for /servicii Muzică, **not real Green Sound photo**. First-party generated design, no third-party stock/source copyright | 1152×252, 18,746 B |
+| `public/media/greensound/v226-concept-tehnica.webp` | Same original generated triptych, middle panel (spotlight and case) | Synthetic visual concept for /servicii Tehnică, **not actual company equipment** | 1152×252, 18,784 B |
+| `public/media/greensound/v226-concept-oameni.webp` | Same original generated triptych, bottom panel (velvet, ribbon, envelope) | Synthetic still life for /servicii Oameni, **not a Green Sound event photo or client** | 1152×252, 15,636 B |
+| `ChapterMark` SVG paths in `src/routes/servicii.tsx` | Original first-party icon design authored in V226 (record, spotlight rig, star/drapery) | Decorative aria-hidden marks, no third-party assets, custom vector code; no music or branded gear | Three inline symbols |
+- **User-visible provenance:** captions say `Ilustrație conceptuală`; no suggestion that image shows an actual event or specific inventory. Existing first-party photographs untouched. Media is self-hosted; no runtime Adobe request, tracking or new packages. One-time Adobe transfer + GitHub Actions image import used only during development; source links removed from HEAD after success. Do not use images in real-gallery/portfolio case studies.
+
 ### V225 / 2026-11-18 — navigation
 No new external media, photographs, logos, fonts, SVGs or libraries. The tablet index uses CSS and previously first-party link structure; no license-bearing assets integrated. `<noscript>` uses canonical first-party routes only.
 
