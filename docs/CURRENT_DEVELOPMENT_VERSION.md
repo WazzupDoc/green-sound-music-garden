@@ -1,3 +1,7 @@
+### V226 / 2026-11-18 — Signal-routing fallback (DRAFT)
+- Stacked on validated V225 PR #225 `e29bb677630ed98f57344be2c253fa93ae45fe03`; draft PR #226. 404 and root error fallback now use a bespoke decorative emerald audio routing diagram instead of unrelated concert photo; real retry/navigation/contact actions retained. New scoped responsive CSS and regression test. No dependency, external asset, main or deployment changes.
+- Exact-head TypeScript/SSR/Vitest/Chromium 390/1440 before/after, HTTP404 semantics and CI pending. Not approved for merge until verified. Next: tablet service finder.
+
 ### V225 / 2026-11-18 — Navigation tablet handoff and no-JS (DRAFT)
 - Source baseline: V224 `bf7009a1179c2e735c216fab4a2cf22af477ef8c` (PR #224, 61 Vitest suites / 168 tests and matched Chromium green; not main). V225 is a stacked draft; `main` still V222 `4312f845c2e70b59a54cca002037906c6852c47a`.
 - Selected audit area: global header/mobile navigation. Real observed CSS/JS mismatch: `atelier.css` hides desktop nav until 1120px but SiteHeader JS closed the mobile dialog at 1024px; resizing from narrow to tablet could leave neither visible. New responsive handoff is uniformly desktop ≥1121px / native-dialog ≤1120px in `SiteHeader.tsx` and `navigation-v217.css`.

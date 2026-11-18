@@ -1,3 +1,6 @@
+### V226 original recovery diagram
+- `src/components/site/StageFallback.tsx`: hand-authored SVG waveform/connection interruption, created for Green Sound, no third-party asset or licensing obligation. Not a photo of any event. Existing concert photo removed from fallback only.
+
 ### V225 / 2026-11-18 — navigation
 No new external media, photographs, logos, fonts, SVGs or libraries. The tablet index uses CSS and previously first-party link structure; no license-bearing assets integrated. `<noscript>` uses canonical first-party routes only.
 
