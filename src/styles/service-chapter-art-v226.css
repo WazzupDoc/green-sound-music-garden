@@ -1,0 +1,77 @@
+/* V226 / Green Sound chapter still lifes: first-party generated conceptual media
+   with original SVG marks, not event photography or gear inventory. */
+.gs226-chapter__figure{
+  margin:clamp(26px,3.2vw,48px) 0 0;
+  width:100%;
+  min-width:0;
+  position:relative;
+  isolation:isolate;
+}
+.gs226-chapter__artwork{
+  display:grid;position:relative;overflow:hidden;
+  height:clamp(165px,15vw,245px);
+  background:#0b2d21;border-top:2px solid #b9a678;
+  border-bottom:1px solid #688b66;
+}
+.gs226-chapter__artwork img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  filter:saturate(.84) contrast(1.04);
+}
+.gs226-chapter__artwork::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(93deg,transparent 25%,#041b12c4 100%);
+}
+.gs226-chapter__mark{
+  position:relative;z-index:2;place-self:center end;
+  width:clamp(58px,6.4vw,100px);height:auto;
+  margin-right:clamp(13px,2vw,33px);
+  color:#f5e2af;filter:drop-shadow(0 5px 15px #071d14);
+  opacity:.9;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),opacity .35s ease;
+}
+.gs226-chapter__figure figcaption{
+  display:flex;justify-content:space-between;flex-wrap:wrap;
+  gap:9px 20px;align-items:center;padding-top:13px;
+  border-top:1px solid #405b4b;
+  font-size:.74rem;letter-spacing:.045em;font-weight:650;
+  color:#d0dccc;
+}
+.gs226-chapter__figure figcaption small{
+  text-transform:uppercase;font-size:.61rem;letter-spacing:.12em;
+  color:#a6d08f;
+}
+.gs226-chapter__figure[data-kind="tech"] .gs226-chapter__artwork{
+  border-top-color:#bca47a;
+  height:clamp(205px,19vw,290px);
+}
+.gs226-chapter__figure[data-kind="tech"] .gs226-chapter__mark{color:#ffdf9b}
+.gs226-chapter__figure[data-kind="people"] .gs226-chapter__artwork{border-top-color:#d0ba90}
+.gs226-chapter__figure[data-kind="people"] .gs226-chapter__mark{color:#fff0bd}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  html:not([data-gs-performance="lite"]) .rs-service-index__group-title:hover .gs226-chapter__mark{
+    transform:translate(-6px,-3px) rotate(-5deg);opacity:1;
+  }
+}
+@media(max-width:760px){
+  .gs226-chapter__figure{margin:25px 0 0}
+  .gs226-chapter__artwork,
+  .gs226-chapter__figure[data-kind="tech"] .gs226-chapter__artwork{
+    height:clamp(190px,37vw,300px);
+  }
+  .gs226-chapter__mark{width:clamp(72px,12vw,100px)}
+}
+@media(max-width:430px){
+  .gs226-chapter__artwork,
+  .gs226-chapter__figure[data-kind="tech"] .gs226-chapter__artwork{height:165px}
+  .gs226-chapter__figure figcaption{font-size:.68rem}
+  .gs226-chapter__figure figcaption small{font-size:.56rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .gs226-chapter__mark{transition:none!important;transform:none!important}
+}
+html[data-gs-performance="lite"] .gs226-chapter__mark{
+  transition:none!important;transform:none!important;filter:none;
+}
+/* Save-Data visitors still receive the first-party photo at only 16–19KB
+   on-demand below the fold; no autoplay or heavy canvas effects. */

@@ -1,3 +1,13 @@
+### V226 / 2026-11-18 — VISUAL ASSETS ACTUALLY ADDED (DRAFT)
+| Area | Concrete observed limitation | Changed source | QA and visual evidence | Next |
+| --- | --- | --- | --- | --- |
+| /servicii three chapters — P1 visual | Editorial text headings had only small V201 icon atlas; user explicitly asked for NEW original imagery and icons applied to the real UI | Generated one photorealistic conceptual still-life triptych, imported 3 optimized local WebPs (55KB total) and added 3 first-party SVG service-chapter marks. Composed as asymmetric emerald chapter figures with honest conceptual captions, not claims of actual events/gear | GitHub asset import workflow #44333027841 green; `src/routes/servicii.tsx`, `src/styles/service-chapter-art-v226.css`; `src/test/service-concept-art-v226.test.ts`; six-width matched Chromium workflow; final exact-head CI/screenshot pending | Review 390 and 1440 matched visual screenshot, any overflow, asset decode; revise if not premium |
+| Navigation — V225 | Previously absent between tablet/desktop breakpoint and no-JS | Previous V225 passed 62 suites/172 tests and 11 widths; not touched | PR #225 / SHA e29bb677 | Leave stable |
+| Home — V48 contract | Do not add widgets, repeated cards or fake event images | Untouched | Existing V225 CI coverage | Only improve as separate future creative-direction iteration |
+| Actual event photography | Unauthorized synthetic “real” event representation prohibited | New generated still lifes explicitly captioned `Ilustrație conceptuală`; all existing Green Sound authorized photos remain untouched | `ASSETS.md` provenance; no generated people/event footage | Acquire real originals from owner for documentary sections |
+| Error/404 fallback | English server fallback still present | Not touched V226 | Next technical rotation | Localize in separate PR after visual signoff |
+- Assets/provenance/research update committed. No deployment, main merge or domain changes.
+
 ### V225 / 2026-11-18 — One-zone audit: navigation responsive handoff
 | Zone / severity | Real defect on V224 | Implementation | Proof / release gate | Next |
 | --- | --- | --- | --- | --- |
