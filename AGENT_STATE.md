@@ -1,3 +1,11 @@
+### V217 / 2026-11-18 — Desktop service directory (DRAFT / VISUAL QA PENDING)
+- Rotation: desktop navigation; next: Contact and events detail, then gallery and video.
+- Base: V216 `199ff989`; UI commit `7f765530`; PR #217 https://github.com/WazzupDoc/green-sound-music-garden/pull/217
+- Defect: plain service link gave no preview of the eight actual services; owner asked for clearly visible custom iconography and a substantially more designed top navigation.
+- Implemented: three grouped editorial chapters (Muzică, Tehnică, Momente), eight original SVG sigils, keyboard/touch menu toggle with Escape and outside-pointer dismissal; existing mobile menu unchanged.
+- Visual gate: screenshots before/after 390/1440 NOT YET AVAILABLE; no aesthetic acceptance claim. CI exact-head pending.
+- Main unchanged; PR draft, no publish. Revisit panel clipping, Escape, focus, performance and Lite before merge.
+
 ### V216 / 2026-11-18 — Mobile navigation visual decluttering (DRAFT, QA PENDING)
 - Parent V215 SHA d221aa53718560939183e62b70fbca98a9228570, PR #215. Zone: mobile navigation only. On <=640px hide decorative stage SVG, redundant live cue and explanatory note, reduce oversized heading and give six actual destinations clearer hierarchy. Preserve desktop navigation, keyboard/escape, existing real actions and no extra media/dependencies. Code: src/styles/navigation-v215.css. Source CSS change committed, **not** yet validated in real Chromium 390/1440; no screenshot before/after or exact-head CI claim. Next: run matched browser captures, verify compact-height devices and contact flow. Main untouched.
 
