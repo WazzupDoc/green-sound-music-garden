@@ -1,3 +1,5 @@
+### V220 / 2026-11-18 DRAFT: fix/v220-film-identity-render-guard stacked on V219 PR #219. Render-time guard prevents mounting a third-party iframe for a replacement film before the layout-effect reset; source regression updated. No homepage change, media, dependencies or main deployment. Exact-head CI and real Chromium before/after screenshots NOT VERIFIED. Next: Contact/event CTA.
+
 ### V219 / 2026-11-18 — Reset film consent on changed video identity (DRAFT / QA PENDING)
 - Branch `fix/v219-video-switch-consent-reset` stacked on V218 PR #218. Shared VideoLite now detects when a mounted player's video ID changes and stops the previous consented playback before rendering the replacement. Focus is restored to the new Play button. Regression source test added; no dependencies/assets/homepage sections/main/deploy changes.
 - Exact-head TypeScript/SSR/Vitest, actual Chromium playback/keyboard and matched screenshots NOT VERIFIED. Next rotation: Contact and event CTA.

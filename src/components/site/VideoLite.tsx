@@ -38,13 +38,16 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
     restoreFocusRef.current = true;
     setActive(false);
   };
+  // Guard during render, before layout effects: React must never mount a new
+  // third-party iframe using consent granted for the previous film.
+  const canRenderPlayer = active && previousVideoIdRef.current === video.id;
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (video.start) params.set("start", String(video.start));
 
   return (
     <figure className={className}>
       <div className="group relative aspect-video overflow-hidden bg-card">
-        {active ? (
+        {canRenderPlayer ? (
           <>
           <iframe
             className="absolute inset-0 size-full"

@@ -1,3 +1,5 @@
+### V220 rotation: film identity/privacy. V219 effect-based reset could render a replacement iframe for one commit before useLayoutEffect stopped it. Added render-time identity guard; no visual redesign. Browser/CI exact-head and 390/1440 screenshots pending. Next: Contact/event CTA.
+
 ### V219 / 2026-11-18 — Reset film consent on changed video identity (DRAFT / QA PENDING)
 - Branch `fix/v219-video-switch-consent-reset` stacked on V218 PR #218. Shared VideoLite now detects when a mounted player's video ID changes and stops the previous consented playback before rendering the replacement. Focus is restored to the new Play button. Regression source test added; no dependencies/assets/homepage sections/main/deploy changes.
 - Exact-head TypeScript/SSR/Vitest, actual Chromium playback/keyboard and matched screenshots NOT VERIFIED. Next rotation: Contact and event CTA.
