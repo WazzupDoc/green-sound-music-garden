@@ -3,26 +3,31 @@ import { describe, expect, it } from "vitest";
 const route=readFileSync("src/routes/index.tsx","utf8");
 const page=readFileSync("src/components/atelier/ConceptHomeV170.tsx","utf8");
 const css=readFileSync("src/styles/home-reference-v170.css","utf8");
+const scoreCss=readFileSync("src/styles/hero-signal-v214.css","utf8");
 describe("V170 authentic event-production art direction",()=>{
  it("imports one source-authored reference design, no stacked legacy masks",()=>{
    expect(route).toContain("home-reference-v170.css?inline");
    expect(route).toContain("<ConceptHomeV170 />");
    expect(route).not.toMatch(/home-direction-v160.css|home-rebuild-v166.css|home-v168-dark-live.css/);
-   expect(css).toContain(".gs170-home .gs170-stage__console");
+   expect(route).toContain("hero-signal-v214.css?inline");
+   expect(scoreCss).toContain(".gs170-home .gs214-score");
  });
  it("keeps production image, animated light beams, 5 service cards and 4 workflow steps",()=>{
    expect(page).toContain("images.concert.src");
    expect(page).toContain('className="gs170-stage__beams"');
-   expect(page).toContain('className="gs170-stage__console"');
+   expect(page).toContain("<SceneScoreV214 />");
+   expect(page).not.toContain('className="gs170-stage__console"');
    expect(page).toContain("featured.map((item, index)");
    expect(page).toContain("process.map((step, index)");
    expect(css).toContain("@keyframes gs170-beam");
-   expect(css).toContain("@keyframes gs170-meter");
+   expect(scoreCss).toContain("@keyframes gs214-score-pulse");
  });
  it("respects reduced-motion and Lite without WebGL or forced media autoplay",()=>{
    expect(css).toContain("@media(prefers-reduced-motion:reduce)");
    expect(css).toContain("html[data-gs-performance=lite]");
    expect(page).not.toMatch(/autoplay|new AudioContext|WebGL/);
    expect(page).toContain("VideoLite video={film.video}");
+   expect(scoreCss).toContain("prefers-reduced-motion:reduce");
+   expect(scoreCss).toContain('data-gs-performance="lite"');
  });
 });

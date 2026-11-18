@@ -4,14 +4,18 @@ const read=(path:string)=>readFileSync(path,"utf8");
 const route=read("src/routes/index.tsx");
 const page=read("src/components/atelier/ConceptHomeV170.tsx");
 const css=read("src/styles/home-reference-v170.css");
+const scoreCss=read("src/styles/hero-signal-v214.css");
+const score=read("src/components/atelier/SceneScoreV214.tsx");
 const oldArtwork=read("src/components/atelier/ProductionDeckArt.tsx");
-describe("V170 production equipment is a lightweight UI illustration",()=>{
+describe("V214 procedural production artwork preserves the original site",()=>{
  it("leaves archived production artwork for rollback but does not mount it",()=>{
    expect(oldArtwork).toContain('<svg viewBox="0 0 900 490"');
    expect(route).toContain("<ConceptHomeV170 />");
    expect(page).not.toContain("<ProductionDeckArt");
-   expect(page).toContain("gs170-stage__console");
-   expect(css).toContain("gs170-stage__eq");
+   expect(page).toContain("<SceneScoreV214 />");
+   expect(page).not.toContain("gs170-stage__console");
+   expect(scoreCss).toContain("gs214-score__plot");
+   expect(score).toContain("makeScorePath");
  });
  it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
    expect(page).toContain('slug: "dj-mc"');
@@ -27,5 +31,7 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
    expect(page).toContain("VideoLite video={film.video}");
    expect(css).toContain("prefers-reduced-motion:reduce");
    expect(css).not.toContain("url(https:");
+   expect(scoreCss).toContain("prefers-reduced-motion:reduce");
+   expect(scoreCss).not.toContain("url(https:");
  });
 });
