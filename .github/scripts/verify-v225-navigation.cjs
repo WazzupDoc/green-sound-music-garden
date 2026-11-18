@@ -19,6 +19,8 @@ async function capture(page, prefix, label) {
 async function openSmallMenu(page) {
   const opener = page.locator(".atelier-header__menu-btn");
   assert.equal(await visible(page, ".atelier-header__menu-btn"), true, "small menu opener visible");
+  await page.waitForFunction(() => !!document.querySelector("html") && !!document.querySelector(".atelier-header__menu-btn") && !!document.querySelector("dialog#atelier-mobile-navigation") && !!document.querySelector(".atelier-header__menu-btn")?.getAttribute("aria-controls"));
+  await page.waitForTimeout(500);
   await opener.click();
   await page.locator("dialog#atelier-mobile-navigation[open]").waitFor({ timeout: 12000 });
   assert.equal(await page.locator("dialog#atelier-mobile-navigation .gsm-nav-index__link").count(), 6);
@@ -36,6 +38,7 @@ async function openSmallMenu(page) {
           const response = await page.goto(rootUrl(port) + "/", {waitUntil:"domcontentloaded",timeout:50000});
           assert.equal(response.status(),200, "home HTTP " + kind + " " + width);
           await page.evaluate(() => document.fonts.ready);
+          await page.waitForTimeout(650);
           if (width <= 1120) {
             await openSmallMenu(page);
             if (startWidth !== width) {
