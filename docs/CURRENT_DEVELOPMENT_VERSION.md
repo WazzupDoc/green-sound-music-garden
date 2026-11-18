@@ -1,3 +1,8 @@
+### V233 / 2026-11-19 — Events truthful setlist (DRAFT / QA PENDING)
+- Branch `fix/v233-events-truthful-setlist` stacked on V232 `28386c0ae9bcec29c055ea429d5b5d54506b24bc`.
+- /evenimente: dynamic event count, removed unsupported founding-year claim, explained existing keyboard arrow controls. Source regression test added. No homepage, assets, backend, main or deployment changes.
+- Pending: exact-head CI, TypeScript, SSR, Vitest, six-width Chromium, same-state before/after 390/1440 screenshots. Do not merge until verified.
+
 ### V232 / 2026-11-18 — Contact no-JS primary CTA recovery (DRAFT / QA PENDING)
 - Branch `fix/v232-contact-nojs-cta-recovery`, based on V231 draft branch. With JavaScript disabled, the prominent CTA now points to the existing phone contact rather than the unavailable client-only form; JavaScript-enabled experience unchanged. No backend, auto-send, new asset, package or homepage change.
 - Source regression added. Exact-head CI, TypeScript, SSR/Vitest, 390/1440 before-after Chromium screenshots and six-width regression NOT VERIFIED. Do not merge or deploy. Next: browser no-JS validation, then Evenimente conversion.
