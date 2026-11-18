@@ -1,3 +1,6 @@
+### V211 / 2026-11-18 — Contact discard strict TypeScript unblock (DRAFT)
+- Parent V210 PR #209 SHA `27446472710b6b7dfc29d07c3b7c64e29ab676ba`. Its exact-head GitHub Actions #44203797699 FAILED at TypeScript: QuoteForm reset explicitly assigned `eventType: undefined` under `exactOptionalPropertyTypes`. V211 omits the optional key while preserving the clear-form action and other reset values. No homepage/media/dependency/main changes. New exact-head CI, SSR/Vitest/gzip and real Chromium screenshots pending; do not merge/publish. Next rotation: Contact form reset/validation browser QA, then events detail CTA/focus.
+
 ### V210 / 2026-11-18 — Broken film poster fallback (DRAFT)
 - Branch `fix/v210-film-poster-load-fallback` stacked on V209 PR #208. Configured first-party posters now gracefully fall back to the local dark play surface on image load error, instead of displaying a broken image. Source assertion updated. No dependency, new media or homepage section. CI exact-head and Chromium screenshots pending; do not merge or publish.
 

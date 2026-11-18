@@ -268,7 +268,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           copyPendingRef.current = false;
           setCopyStatus("idle");
           reset({
-            name: "", phone: "", email: "", eventType: undefined,
+            name: "", phone: "", email: "",
             date: "", location: "", guests: "", services: [],
             message: "", consent: undefined as unknown as true, website: "",
           });
