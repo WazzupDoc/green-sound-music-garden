@@ -41,7 +41,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             src={`https://www.youtube-nocookie.com/embed/${video.id}?${params}`}
             title={video.title}
             referrerPolicy="no-referrer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
           />
           <button type="button" ref={stopButtonRef} onClick={stopPlayback}
