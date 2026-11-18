@@ -1,3 +1,6 @@
+### V212 / 2026-11-18
+- No new images, fonts, media, packages or external assets. Contact feedback uses existing styles and native ARIA semantics.
+
 ### V206 / 2026-11-17 — Asset audit
 - No new media, fonts, icons, external code or dependencies. Event film players reuse the existing project VideoLite and already-referenced films. No social clips imported.
 

@@ -44,6 +44,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   // The visitor must explicitly choose a channel after reviewing their message.
   // Never open a popup from an asynchronous schema validation callback.
   const [prepared, setPrepared] = useState<Quote | null>(null);
+  const [discardConfirmed, setDiscardConfirmed] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "pending" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
   // Ignore clipboard results from a preview that the visitor has already left.
@@ -148,6 +149,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     ++copyGenerationRef.current;
     copyPendingRef.current = false;
     setCopyStatus("idle");
+    setDiscardConfirmed(false);
     setPrepared(q);
   };
 
@@ -273,6 +275,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             message: "", consent: undefined as unknown as true, website: "",
           });
           setPrepared(null);
+          setDiscardConfirmed(true);
         }}>
           Renunță și șterge datele din formular
         </button>
@@ -290,6 +293,11 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <h3>Pregătește cererea pentru evenimentul tău.</h3>
         <p>Spune-ne câteva detalii despre eveniment. Următorul pas îți arată mesajul înainte de a-l trimite.</p>
       </div>
+      {discardConfirmed && (
+        <p role="status" aria-live="polite" className="md:col-span-2 rounded-lg border border-primary/40 px-4 py-3 text-sm text-foreground">
+          Datele introduse au fost șterse din acest formular. Nu a fost trimis niciun mesaj.
+        </p>
+      )}
       {Object.keys(errors).some(key => key !== "website") && (
         <p className="gs-quote__errors md:col-span-2" role="alert">
           Verifică informațiile marcate mai jos. Cererea nu a fost trimisă.
