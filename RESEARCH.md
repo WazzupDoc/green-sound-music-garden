@@ -1,3 +1,6 @@
+### 2026-11-18 — V218 iframe permissions
+- Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe — iframe `allow` is a Permissions Policy restriction, not a grant needed for every embedded feature. Adaptation: remove unnecessary motion sensor and clipboard-write requests from click-consented YouTube player. No external code copied, no license dependency. Rejected: sandbox hardening without browser validation (could break video playback); autoplay on page load (privacy/accessibility regression). Browser verification pending.
+
 ### 2026-11-18 — V217 / navigation: original SVG and progressive disclosure
 - Source review: existing `src/components/site/SiteHeader.tsx`, `src/data/site.ts`, `src/styles/navigation-v215.css`; all eight destination routes verified. The main service navigation had no bespoke visual preview.
 - References for follow-up design review (not copied or claimed as newly browsed): https://www.awwwards.com/ and https://webflow.com/blog/navigation-design. Adapted principle: curated, grouped service discovery with typographic hierarchy, not another full-homepage card grid.
