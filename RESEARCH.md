@@ -1,3 +1,9 @@
+### 2026-11-18 — V217 / navigation: original SVG and progressive disclosure
+- Source review: existing `src/components/site/SiteHeader.tsx`, `src/data/site.ts`, `src/styles/navigation-v215.css`; all eight destination routes verified. The main service navigation had no bespoke visual preview.
+- References for follow-up design review (not copied or claimed as newly browsed): https://www.awwwards.com/ and https://webflow.com/blog/navigation-design. Adapted principle: curated, grouped service discovery with typographic hierarchy, not another full-homepage card grid.
+- Engineering reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded and https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion . Custom button exposes expanded state, Escape restores focus, motion disabled for Lite/reduced-motion.
+- Code is original inline SVG and CSS, no external source or new dependency. Rejected: decorative neon blobs, stock imagery, fake metrics and hover-only mega menu. Browser screenshots and live research verification pending; no visual gate passed.
+
 ### 2026-11-18 — V216 mobile navigation (source review pending)
 - Existing first-party navigation-v189.css and navigation-v215.css inspected. Observed competing visual cues, decorative stage and oversized heading on <=640px. Adaptation: progressive disclosure of decorative elements with CSS media query; retain all links, focus and native dialog. No external code/assets or new dependencies. Professional references and browser visual validation still pending; no external inspiration claimed as researched.
 

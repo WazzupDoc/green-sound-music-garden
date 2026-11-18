@@ -1,3 +1,8 @@
+### V217 / 2026-11-18 — Production directory navigation (DRAFT / NOT VALIDATED)
+- PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/217 ; branch `design/v217-production-directory-header`; initial UI commit `7f765530d4d0b560af56e6b48d19ce6866203c7f`; base V216 `199ff989`.
+- Navigation now groups the eight real service routes in a three-chapter emerald editorial dropdown, with eight original SVG glyphs and three bespoke category diagrams. Dedicated direct Services link and mobile dialog retained; no homepage sections added.
+- Tests added for icon SSR, route coverage, keyboard contract and motion flags. Exact-head CI, Chromium screenshots and real visual comparison pending. No main/deploy. Next: verify panel positioning at 1440, focus/Escape, mobile at 390, Lite/reduced-motion, then rotate to Contact.
+
 ### V216 / 2026-11-18 — Compact mobile setlist (DRAFT / UNVALIDATED)
 - Branch `design/v216-mobile-menu-editorial-clarity` stacked on V215. Mobile menu at <=640px prioritizes six navigable destinations, removes redundant stage ornament/secondary cue and reduces heading footprint; desktop and functional actions preserved. CSS-only, no dependencies. Real browser screenshots, TypeScript/SSR/Vitest and exact-head CI **pending**. No main/deploy.
 

@@ -1,10 +1,12 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Logo } from "./Logo";
 import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import liveSetlistCss from "@/styles/navigation-v189.css?inline";
 import restoredNavCss from "@/styles/navigation-v215.css?inline";
+import productionNavCss from "@/styles/navigation-v217.css?inline";
+import { ServiceDirectoryV217 } from "./ServiceDirectoryV217";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
@@ -22,6 +24,9 @@ const navigation = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const servicesButtonRef = useRef<HTMLButtonElement>(null);
   const [menuSelection, setMenuSelection] = useState(1);
   const menuNavigatingRef = useRef(false);
   const menuDesktopHandoffRef = useRef(false);
@@ -37,6 +42,7 @@ export function SiteHeader() {
     menuNavigatingRef.current = true;
     setOpen(false);
     setFinderOpen(false);
+    setServicesOpen(false);
   }, [path]);
 
   useEffect(() => {
@@ -116,6 +122,29 @@ export function SiteHeader() {
     return () => document.removeEventListener("keydown", onKey);
   }, [finderOpen]);
 
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const dismiss = (event: PointerEvent) => {
+      if (event.target instanceof Node && !servicesRef.current?.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    };
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (!servicesRef.current?.contains(document.activeElement) &&
+          document.activeElement !== servicesButtonRef.current) return;
+      event.preventDefault();
+      setServicesOpen(false);
+      servicesButtonRef.current?.focus();
+    };
+    document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("keydown", escape);
+    return () => {
+      document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("keydown", escape);
+    };
+  }, [servicesOpen]);
+
   // Arrow keys are optional shortcuts within the six native links; Tab and Escape remain native.
   const onMenuKeyDown = (event: ReactKeyboardEvent<HTMLOListElement>) => {
     if (event.altKey || event.ctrlKey || event.metaKey) return;
@@ -143,11 +172,32 @@ export function SiteHeader() {
       <style>{stageIndexCss}</style>
       <style>{liveSetlistCss}</style>
       <style>{restoredNavCss}</style>
+      <style>{productionNavCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
         <nav className="atelier-header__nav" aria-label="Navigare principală">
-          {navigation.map((entry) => (
+          {navigation.map((entry) => entry.to === "/servicii" ? (
+            <div key={entry.to} ref={servicesRef} className="gs217-services-wrap"
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  setServicesOpen(false);
+                }
+              }}>
+              <Link to="/servicii" className="atelier-header__link"
+                activeProps={{ className: "atelier-header__link--active" }}
+                onClick={() => setServicesOpen(false)}>Servicii</Link>
+              <button type="button" ref={servicesButtonRef}
+                className="gs217-services-toggle"
+                aria-label={servicesOpen ? "Închide catalogul serviciilor" : "Deschide catalogul serviciilor"}
+                aria-haspopup="true" aria-expanded={servicesOpen}
+                aria-controls="gs217-service-directory"
+                onClick={() => setServicesOpen(previous => !previous)}>
+                <ChevronDown aria-hidden="true" size={15} />
+              </button>
+              {servicesOpen && <ServiceDirectoryV217 onNavigate={() => setServicesOpen(false)} />}
+            </div>
+          ) : (
             <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
               activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
               {entry.title}
@@ -158,7 +208,7 @@ export function SiteHeader() {
           <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
             aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
             aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
-            onClick={() => { setOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
+            onClick={() => { setOpen(false); setServicesOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
             <Search className="size-5" aria-hidden />
             <span className="gs215-search-text" aria-hidden="true">Caută</span>
             <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
