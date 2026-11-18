@@ -76,11 +76,11 @@ function Events() {
           </div>
           <div className="gs173-live__layout">
             <div className="gs173-statement">
-              <span className="gs173-statement__edition">GREEN SOUND / LIVE PRODUCTION <span>01—05</span></span>
+              <span className="gs173-statement__edition">GREEN SOUND / LIVE PRODUCTION <span>01—{String(events.length).padStart(2, "0")}</span></span>
               <h1 id="gs173-title"><span>NU TOATE</span><span>SERILE</span><span className="gs173-statement__script">SUNĂ LA FEL.</span></h1>
               <p>Nunți, botezuri, petreceri sau producții mari. Nu începem cu un pachet. Începem cu evenimentul tău.</p>
               <a href="#gs173-setlist-title" className="gs173-statement__jump">Alege atmosfera <ArrowDownRight size={20} aria-hidden="true" /></a>
-              <div className="gs173-statement__registration" aria-hidden="true"><span>GS—M / LIVE</span><span>DIN 2008</span></div>
+              <div className="gs173-statement__registration" aria-hidden="true"><span>GS—M / LIVE</span><span>PITEȘTI / ARGEȘ</span></div>
             </div>
             <div className="gs173-live__photobox">
               <div key={visualEvent.slug} className="gs173-stage-image">
@@ -100,7 +100,7 @@ function Events() {
           </div>
           <div className="gs173-setlist__header" id="gs173-setlist-title">
             <span>01 / SETLIST DE EVENIMENTE</span>
-            <p>Alege scena. Ilustrațiile reprezintă categoriile; fotografia reală și momentele se schimbă după selecție.</p>
+            <p>Alege tipul de eveniment. Folosește și săgețile tastaturii pentru a schimba selecția; fotografia și programul se actualizează.</p>
           </div>
           <ol className="gs173-setlist" aria-label="Alege tipul de eveniment">
             {events.map((event, index) => {
