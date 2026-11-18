@@ -1,3 +1,13 @@
+### V225 / 2026-11-18 — One-zone audit: navigation responsive handoff
+| Zone / severity | Real defect on V224 | Implementation | Proof / release gate | Next |
+| --- | --- | --- | --- | --- |
+| Navigation 1024–1120 / P1 | CSS desktop hidden to 1120 while JS media `min-width:1024px` dismisses dialog on 900→1080 resize; focus can be handed to hidden desktop link | Unified threshold 1121 and original high-contrast landscape setlist with compact current-channel copy | Source `SiteHeader.tsx`, `navigation-v217.css`; dedicated real-browser `v225-navigation-visual.yml` six+ widths/screenshots pending | Inspect 390/1080/1440 matched images and active motion |
+| Desktop service mega-directory / P1 | `onBlur` on wrapper closed disclosure on click in non-focusable group caption; pointer handler already existed | Removed brittle onBlur; document focusin outside closes only when actual focus moves outside, preserve pointerdown and Escape focus restore | Browser test non-focusable h2 click / Escape / outsider focus, pending | Final keyboard pass |
+| No-JS mobile / P1 | JS-disabled mobile opener cannot open modal, CSS hides desktop nav | <noscript> 7 actual first-party links styled as focusable route index | Browser with JS disabled at 390/1080/1440, pending | Inspect accessible semantics |
+| /despre-noi V224 / validated | Nested main and literal `\\n`, pale generic timeline | V224 fixed and passed 168 tests; actual before-after artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44316707127/artifacts/14433630289 | V224 head `bf7009a1` | Do not reopen this zone now |
+| Error/404 / P1 | SSR fallback `lang=en`, English labels, alternate branding | Not changed in V225 | Not validated | Next iteration |
+- Owner must review meaningful visual differences before merges. Homepage structure remains unchanged; no production alterations in V225.
+
 ### V224 / 2026-11-18 — Component rotation: /despre-noi (draft QA)
 | Zone | Priority | Observed issue | Implemented solution | Evidence/QA | Next |
 |---|---|---|---|---|---|

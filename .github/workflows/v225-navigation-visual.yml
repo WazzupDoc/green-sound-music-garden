@@ -1,0 +1,49 @@
+name: V225 Navigation Handoff — matched Chromium & no-JS
+on:
+  push:
+    branches: [design/v225-responsive-navigation-handoff]
+permissions:
+  contents: read
+jobs:
+  navigation-qa:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Check out exact validated V224 baseline
+        run: |
+          git cat-file -e bf7009a1179c2e735c216fab4a2cf22af477ef8c^{commit}
+          git worktree add --detach /tmp/gs-v224-baseline bf7009a1179c2e735c216fab4a2cf22af477ef8c
+      - name: Install application and browser
+        run: |
+          bun install --no-save
+          (cd /tmp/gs-v224-baseline && bun install --no-save)
+          npm install --prefix /tmp/gs-v225-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs-v225-playwright/node_modules/.bin/playwright install chromium
+      - name: Serve baseline and candidate independently
+        run: |
+          (cd /tmp/gs-v224-baseline && bunx vite dev --host 127.0.0.1 --port 4176 > /tmp/gs-v224.log 2>&1 &)
+          (bunx vite dev --host 127.0.0.1 --port 4175 > /tmp/gs-v225.log 2>&1 &)
+          for port in 4175 4176; do
+            ready=0
+            for i in $(seq 1 65); do
+              if curl -sf "http://127.0.0.1:$port/" > /dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" -ne 1 ]; then cat /tmp/gs-v224.log /tmp/gs-v225.log; exit 1; fi
+          done
+      - name: Real navigation, keyboard, responsive handoff and no-JS screenshots
+        run: NODE_PATH=/tmp/gs-v225-playwright/node_modules node .github/scripts/verify-v225-navigation.cjs
+      - name: Upload matched before/after real Chromium images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gs-v225-navigation-before-after
+          path: screenshots/gs-v225-navigation/
+          if-no-files-found: warn
+          retention-days: 60

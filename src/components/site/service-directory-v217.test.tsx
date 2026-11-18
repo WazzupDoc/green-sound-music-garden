@@ -45,7 +45,7 @@ describe("V217: first-party production directory", () => {
     expect(header).toContain('navigation-v217.css?inline');
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
     expect(css).toContain('data-gs-performance="lite"');
-    expect(css).toContain("@media(max-width:1023px)");
+    expect(css).toContain("@media(max-width:1120px)");
     expect(css).toContain(".gs217-directory__grid");
     expect(css).not.toContain("https://");
   });

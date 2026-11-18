@@ -4,8 +4,8 @@ import { describe, expect, it } from "vitest";
 const header = readFileSync("src/components/site/SiteHeader.tsx", "utf8");
 
 describe("V202 mobile-to-desktop focus continuity", () => {
-  it("closes the modal on the actual 1024px desktop breakpoint", () => {
-    expect(header).toContain('window.matchMedia("(min-width: 1024px)")');
+  it("closes the modal on the actual 1121px desktop breakpoint", () => {
+    expect(header).toContain('window.matchMedia("(min-width: 1121px)")');
     expect(header).toContain('desktop.addEventListener("change", onDesktop)');
     expect(header).toContain("menuDesktopHandoffRef.current = Boolean(menuDialogRef.current?.open)");
     expect(header).toContain("setOpen(false)");
