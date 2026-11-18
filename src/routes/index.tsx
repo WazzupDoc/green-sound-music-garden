@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ConceptHomeV170 } from "@/components/atelier/ConceptHomeV170";
 import homeReferenceCss from "@/styles/home-reference-v170.css?inline";
 import editorialServicesCss from "@/styles/home-editorial-services-v188.css?inline";
+import restoredHomeCss from "@/styles/home-refinement-v215.css?inline";
 import { localBusinessLd, pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -18,7 +19,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="gs170-home">
-      <style>{homeReferenceCss + "\n" + editorialServicesCss}</style>
+      <style>{homeReferenceCss + "\n" + editorialServicesCss + "\n" + restoredHomeCss}</style>
       <ConceptHomeV170 />
     </div>
   );

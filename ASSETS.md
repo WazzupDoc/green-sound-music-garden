@@ -1,3 +1,6 @@
+### V215 / 2026-11-18 — Restore existing asset provenance
+- V214 generated procedural Score artwork is not used in the new V215 branch, nor is the V214 navy palette. V215 uses the V213 original first-party event image, existing CSS/SVG audio console illustration, Green Sound logo and existing icon set. Minor original CSS-only material styling and search chips; no new assets/photos/audio/fonts/licenses/external packages. The console is an abstract decorative illustration, never an actual real-world Green Sound device.
+
 ### 2026-11-18 — V213
 - No new assets, fonts, images, icons or dependencies. Only native Node path resolution in a test fixture; asset provenance unchanged.
 

@@ -1,0 +1,58 @@
+/* V215 — owner-requested restoration: preserve original V213 green photographic hero,
+   classic live mixing desk, service structure, movement system and typography.
+   This is purely a restrained refinement; never use the rejected V214 navy score. */
+.gs170-home .gs170-stage__console{
+  right:clamp(4px,3.1vw,60px);
+  bottom:94px;
+  width:clamp(310px,31vw,480px);
+  height:clamp(150px,16vw,235px);
+  border:1px solid #8ae3a36a;
+  border-radius:6px 6px 2px 2px;
+  background:linear-gradient(142deg,#0b2b1ef2 0%,#03130cfa 65%,#061d12f5 100%);
+  box-shadow:0 26px 64px #0009,0 0 16px #23dc7417,inset 0 1px #c8efb32e;
+  transform:perspective(950px) rotateY(-10deg) rotateX(7deg) rotateZ(-2deg);
+}
+.gs170-home .gs170-stage__console::before{
+  height:2px;background:linear-gradient(90deg,#9aff92aa,#f2dfa477 57%,transparent);
+}
+.gs170-home .gs170-stage__console-top{
+  color:#e0f7dd;font-size:.58rem;
+}
+.gs170-home .gs170-stage__eq{
+  border-color:#9ddb9d50;background:#04180eeb;
+  box-shadow:inset 0 1px 6px #000a;
+}
+.gs170-home .gs170-stage__eq span{
+  background:linear-gradient(0deg,#20ba59,#91eb86 74%,#d7efad);
+  box-shadow:0 0 5px #61d67855;
+}
+.gs170-home .gs170-stage__channel{border-color:#93cc9b45}
+.gs170-home .gs170-stage__channel i{background:#d0eeb5;box-shadow:0 0 5px #90dba4b0}
+.gs170-home .gs170-stage__channel small{
+  background:linear-gradient(#e7ebe2,#7e9784);
+  border-color:#f1e4b58c;box-shadow:0 1px 3px #000a;
+}
+.gs170-home .gs170-stage__console-end{color:#a7bfa0}
+.gs170-home .gs170-stage__beams{opacity:.72}
+.gs170-home .gs170-hero__lead{color:#f3f7ed}
+.gs170-home .gs170-hero__control{border-color:#8edda45c}
+.gs170-home .gs170-hero__control button:focus-visible{
+ outline:2px solid #faf3bb;outline-offset:2px
+}
+@media(max-width:1100px){
+ .gs170-home .gs170-stage__console{
+  width:330px;height:172px;right:-54px;bottom:100px;opacity:.77;
+ }
+}
+@media(max-width:740px){
+ /* Real V213 issue: the decorative console obscured the light controls on phones.
+    Keep the authentic image and moving beams, remove only the overlapping ornament. */
+ .gs170-home .gs170-stage__console{display:none}
+ .gs170-home .gs170-stage__beams{opacity:.58}
+}
+@media(prefers-reduced-motion:reduce){
+ .gs170-home .gs170-stage__console{transition:none}
+}
+html[data-gs-performance=lite] .gs170-home .gs170-stage__console{
+ box-shadow:none;
+}

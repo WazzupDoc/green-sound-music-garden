@@ -1,3 +1,8 @@
+### V215 / 2026-11-18 — Real research supporting restraint, not trend-chasing
+- https://webflow.com/accessibility/checklist/task/layout-is-simple-straightforward-and-consistent — Webflow accessibility checklist: retain recognizable visual hierarchy and predictable navigation. Adapt: return simple six-name desktop navigation instead of V214 number codes, keep direct links and clear search; no external code reused.
+- https://assets.awwwards.com/awards/gallery/2023/07/HOT-RIGHT-NOW-BOOK-2023.pdf — Awwwards editorial discussion warns against copycat trends and encourages concept/brand fit. Adapt: prioritise green event atmosphere and original already approved photography; reject navy waveform score, pastel accent blocks, extra ornament.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — disable nonessential motion, and existing Lite flag. Self-authored CSS only. Rejected: new dependency, new image, AI event shot, nav restructuring or faux backend.
+
 ### 2026-11-18 — V213 CI diagnosis
 - Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44241249565 — CI log confirms `ERR_INVALID_URL_SCHEME` in V212 source test, while TypeScript/SSR/gzip passed. Adaptation: native Node `path.resolve(process.cwd(),...)` for repo-local source fixture, no package or external code. Rejected: disabling the test or changing application UI to mask test harness failure. Premium visual research deferred because this iteration is an actual CI release blocker, not a design change.
 

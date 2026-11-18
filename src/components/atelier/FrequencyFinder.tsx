@@ -140,9 +140,9 @@ export function FrequencyFinder({
             </Dialog.Close>
           </div>
           <div className="gs-finder__intro">
-            <Dialog.Title>Găsește-ți <em>ritmul.</em></Dialog.Title>
+            <Dialog.Title>Ce <em>pregătești?</em></Dialog.Title>
             <Dialog.Description id="gs-finder-description">
-              Caută în serviciile, evenimentele și paginile Green Sound Music. Fără cont sau cereri trimise automat.
+              Caută un serviciu sau tipul evenimentului. Deschizi direct pagina potrivită, fără cont sau mesaje trimise automat.
             </Dialog.Description>
           </div>
           <label className="gs-finder__search" htmlFor="gs-finder-input">
@@ -155,6 +155,15 @@ export function FrequencyFinder({
               aria-controls="gs-finder-results" />
             <kbd aria-hidden>↵</kbd>
           </label>
+          <div className="gs215-finder__suggestions" role="group" aria-label="Căutări rapide">
+            <span>ÎNCEARCĂ</span>
+            {(["DJ", "lumini", "nuntă"] as const).map(term => (
+              <button key={term} type="button"
+                onClick={() => { setQuery(term); inputRef.current?.focus(); }}>
+                {term === "DJ" ? "DJ & MC" : term === "lumini" ? "Lumini" : "Nuntă"}
+              </button>
+            ))}
+          </div>
           <div className="gs-finder__results-top">
             <span>{query.trim() ? "REZULTATE" : "ÎNCEPE DE AICI"}</span>
             <span role="status">{results.length} {results.length === 1 ? "destinație" : "destinații"}</span>
