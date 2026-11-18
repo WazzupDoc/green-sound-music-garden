@@ -1,3 +1,7 @@
+### V224 / 2026-11-18 — About production score
+- Four inline path-only SVG signal traces are original shapes authored in `src/routes/despre-noi.tsx`. No external artwork, logo, font, photo, music or dependency. Used solely as aria-hidden decorative production cues.
+- Existing first-party media `images.scena` and `images.dj` retained unchanged. No third-party imagery integrated.
+
 ### 2026-11-18 V223
 No new assets, photos, videos, fonts, icons or external code integrated. Only first-party React copy and Contact link validation changed; original source media unchanged.
 
