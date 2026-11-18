@@ -8,12 +8,12 @@
     linear-gradient(0deg,#050e13ff 0%,#050f16dc 9%,transparent 35%,#040e159e 100%);
 }
 .gs170-home .gs170-hero{background:#071015}
-.gs170-home .gs170-stage__beams{opacity:.5}
+.gs170-home .gs170-stage__beams{opacity:.24}
 .gs170-home .gs170-hero h1 em{color:#acff98;text-shadow:none}
 .gs170-home .gs170-hero__lead{color:#f2f2e9}
 .gs170-home .gs214-score{
   --gs214-ivory:#f2f1e7;--gs214-muted:#a9bbb5;
-  position:absolute;z-index:1;bottom:105px;right:clamp(24px,4.4vw,84px);
+  position:absolute;z-index:1;bottom:58px;right:clamp(24px,4.4vw,84px);
   width:clamp(345px,33vw,495px);padding:19px 22px 16px;
   background:linear-gradient(155deg,#13212aef,#09131be9 82%);
   border:1px solid #c4ded16b;
@@ -60,8 +60,9 @@
     animation:gs214-score-scan 7.5s linear infinite alternate;
   }
 }
-@media(max-width:1100px){
-  .gs170-home .gs214-score{right:-70px;bottom:92px;width:345px;opacity:.82}
+@media(max-width:1180px){
+  /* Do not let decorative art intersect the service headline on smaller screens. */
+  .gs170-home .gs214-score{display:none}
 }
 @media(max-width:740px){
   .gs170-home .gs214-score{right:-28px;bottom:88px;width:265px;padding:12px 13px 9px;opacity:.56;transform:rotate(-3deg)}
