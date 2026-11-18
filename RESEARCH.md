@@ -1,3 +1,8 @@
+### 2026-11-18 — V226 recovery graphic
+- MDN SVG accessibility: https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_in_HTML ; original SVG marked decorative and hidden from assistive technology; no borrowed code.
+- W3C WAI error handling: https://www.w3.org/WAI/tutorials/forms/notifications/ ; preserve explicit retry and recovery links; do not simulate form submission.
+- Original dark-emerald audio routing rather than another hero photograph or animated neon; no dependencies or external artwork.
+
 ### 2026-11-18 — V225 / responsive navigation references (verified URLs)
 - https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/ — W3C WAI APG: ordinary site nav uses real links with disclosure buttons, Escape closes and restores focus, standard Tab remains functional; no artificial `menu` role needed. Applied to existing Green Sound directory: dismissal only on outside pointer/focus, retention for clicks in nonfocusable chapter headings, Escape focus back to toggle. Code independently written; W3C documentation used only as guidance.
 - https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia — MDN: use MediaQueryList and `change` events to react to viewport breakpoint changes. Applied consistent ≥1121 desktop handoff in JS with corresponding CSS ≤1120. Avoided ResizeObserver or extra package; no copied source.
