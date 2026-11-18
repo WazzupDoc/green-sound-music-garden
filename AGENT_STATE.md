@@ -1,3 +1,9 @@
+### 2026-11-19 V233 — Evenimente truthful setlist (DRAFT)
+| Zone | Defect | Change | QA | Next |
+| --- | --- | --- | --- | --- |
+| /evenimente | Hard-coded 01—05 and unsupported DIN 2008, keyboard arrows not described | Live count, Pitești/Argeș, discoverable keyboard hint | Source regression added; TypeScript/SSR/Chromium screenshots and CI exact-head pending | Browser screenshots 390/1440, then Contact prefill |
+No main changes or verified visual score.
+
 ### 2026-11-18 V232 — Contact / no-JS primary CTA (DRAFT)
 | Area | Defect | Change | QA | Next |
 | --- | --- | --- | --- | --- |
