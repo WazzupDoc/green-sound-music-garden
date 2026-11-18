@@ -63,7 +63,9 @@ export function SiteHeader() {
   // A menu opened on a narrow viewport must not trap the page after rotating
   // the device or expanding the window to the desktop navigation breakpoint.
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 1024px)");
+    // Keep in sync with atelier.css and navigation-v217.css: the native
+    // modal owns navigation through 1120px, desktop links from 1121px.
+    const desktop = window.matchMedia("(min-width: 1121px)");
     const onDesktop = (event: MediaQueryListEvent) => {
       if (event.matches) {
         // The mobile opener becomes hidden at this breakpoint. Return focus to
@@ -137,10 +139,20 @@ export function SiteHeader() {
       setServicesOpen(false);
       servicesButtonRef.current?.focus();
     };
+    // A non-focusable heading/empty space inside the directory must never
+    // dismiss it. Close only when focus actually enters another control
+    // outside the disclosure, or when a pointer is pressed outside.
+    const focusOutside = (event: FocusEvent) => {
+      if (event.target instanceof Node && !servicesRef.current?.contains(event.target)) {
+        setServicesOpen(false);
+      }
+    };
     document.addEventListener("pointerdown", dismiss);
+    document.addEventListener("focusin", focusOutside);
     document.addEventListener("keydown", escape);
     return () => {
       document.removeEventListener("pointerdown", dismiss);
+      document.removeEventListener("focusin", focusOutside);
       document.removeEventListener("keydown", escape);
     };
   }, [servicesOpen]);
@@ -178,12 +190,7 @@ export function SiteHeader() {
         <Logo />
         <nav className="atelier-header__nav" aria-label="Navigare principală">
           {navigation.map((entry) => entry.to === "/servicii" ? (
-            <div key={entry.to} ref={servicesRef} className="gs217-services-wrap"
-              onBlur={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-                  setServicesOpen(false);
-                }
-              }}>
+            <div key={entry.to} ref={servicesRef} className="gs217-services-wrap">
               <Link to="/servicii" className="atelier-header__link"
                 activeProps={{ className: "atelier-header__link--active" }}
                 onClick={() => setServicesOpen(false)}>Servicii</Link>
@@ -249,7 +256,7 @@ export function SiteHeader() {
       >
         <div className="gsm-nav-index">
           <div className="gsm-nav-index__top">
-            <span className="gsm-nav-index__brand">GREEN SOUND / SCENE DIRECTORY</span>
+            <span className="gsm-nav-index__brand">GREEN SOUND / INDEXUL EVENIMENTELOR</span>
             <button
               type="button"
               autoFocus
@@ -280,8 +287,8 @@ export function SiteHeader() {
               <p className="gsm-nav-index__eyebrow">INDEX / 01—06</p>
               <span className="gsm-nav-index__live-mark" aria-hidden="true">GS — PRODUCTION DIRECTORY / PITEȘTI</span>
               <h2 id="gsm-stage-index-title">
-                Tot ce ține
-                <em> scena vie.</em>
+                Muzica, echipa
+                <em> și evenimentul.</em>
               </h2>
               <div className="gsm189-mobile-current" aria-hidden="true">
                 <span>CANAL {String(menuSelection + 1).padStart(2, "0")} / 06</span>
