@@ -1,3 +1,8 @@
+### 2026-11-18 — V223 typed service URLs, source: official TanStack Router
+- https://tanstack.com/router/latest/docs/guide/search-params — The Router validates JSON-parsed search params using `validateSearch` and strongly types Link search state. Adapted original code: service details pass catalogue `formLabel` as an array and Contact validates allowlisted arrays, retaining legacy pipe-separated URL compatibility. No external code copied.
+- https://tanstack.com/router/latest/docs/how-to/arrays-objects-dates-search-params — Array serialization is supported; validated type should be checked at the URL boundary, not assumed. Rejected alternatives: passing URL slug as `services` (not accepted by form labels), unbounded raw query reflection, adding a new dependency for trivial array handling.
+- Owner-supplied AI Studio code audit (V221, 2026-11-18): verified the reported CTA does not prefill, selected this one user-visible conversion defect for V223. Other report claims require code/production validation. No new image, font, icon, library, external service or tracking.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 
