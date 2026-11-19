@@ -6,6 +6,10 @@ import { VideoLite } from "./VideoLite";
 import type { eventTypeOptions } from "@/lib/quote";
 
 export function EventPage({event}:{event:EventType}){
+  // A native, shareable link: Contact allowlists the event and service labels.
+  // Suggested services are editable there; this is not a booking or submission.
+  const serviceLabels = [...new Set(event.recommended.map(item => getService(item.slug).formLabel))];
+  const briefHref = `/contact?event=${encodeURIComponent(event.formLabel)}&services=${encodeURIComponent(serviceLabels.join("|"))}#contact-form-title`;
   return <>
     <PageHero eyebrow={`Evenimente · ${event.name}`} title={event.h1} lead={event.lead}
       image={event.image} transitionName={`gs-event-${event.slug}`}
@@ -34,17 +38,35 @@ export function EventPage({event}:{event:EventType}){
         })}</ol>
       </div>
     </section>
-    <section id="servicii-potrivite" className="rs-event-offerings" aria-labelledby="servicii-potrivite-titlu" tabIndex={-1}>
+    <section id="servicii-potrivite" className="rs-event-offerings gs241-mix" aria-labelledby="servicii-potrivite-titlu" tabIndex={-1}>
       <div className="container-site rs-event-offerings__inside">
-        <div><p>Servicii potrivite</p><h2 id="servicii-potrivite-titlu">Ce putem pregăti pentru {event.name.toLowerCase()}</h2>
-          <p>Poți discuta separat despre fiecare serviciu, în funcție de spațiu și de program.</p></div>
-        <ul>{event.recommended.map(item=>{
-          const service=getService(item.slug);
-          return <li key={item.slug}>
-            <Link to={`/${service.slug}`} viewTransition><strong>{service.name}</strong>
-              <span>{item.why}</span><ArrowUpRight size={18} aria-hidden /></Link>
-          </li>;
-        })}</ul>
+        <div className="gs241-mix__intro">
+          <p>GREEN SOUND / MIX DE SERVICII</p>
+          <h2 id="servicii-potrivite-titlu">Un eveniment. <em>Mai multe posibilități.</em></h2>
+          <p>O selecție orientativă pentru {event.name.toLowerCase()}. Alegem împreună doar ce se potrivește spațiului și programului.</p>
+          <div className="gs241-mix__handoff">
+            <span className="gs241-mix__cue">BRIEF / {String(serviceLabels.length).padStart(2, "0")} PROPUNERI</span>
+            <a href={briefHref} className="gs241-mix__brief">
+              Pregătește cererea cu aceste servicii <ArrowUpRight size={22} aria-hidden />
+            </a>
+            <p>Selecția se poate modifica în Contact. Mesajul nu se trimite automat.</p>
+          </div>
+        </div>
+        <ol className="gs241-mix__list" aria-label="Servicii propuse pentru eveniment">
+          {event.recommended.map((item, index)=>{
+            const service=getService(item.slug);
+            return <li key={item.slug}>
+              <span className="gs241-mix__number" aria-hidden="true">{String(index+1).padStart(2,"0")}</span>
+              <div className="gs241-mix__service">
+                <h3>{service.name}</h3>
+                <p>{item.why}</p>
+              </div>
+              <Link to={`/${service.slug}`} viewTransition className="gs241-mix__detail" aria-label={`Detalii despre ${service.name}`}>
+                <span>Detalii serviciu</span><ArrowUpRight size={20} aria-hidden />
+              </Link>
+            </li>;
+          })}
+        </ol>
       </div>
     </section>
     {event.videos.length>0 && <section className="rs-event-film" aria-labelledby="filmari-eveniment-titlu">
