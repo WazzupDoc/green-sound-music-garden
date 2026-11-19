@@ -1,3 +1,8 @@
+### V246 / 2026-11-19 — Mobile navigation audit
+| Area | Issue | Implemented | QA / visual gate | Next |
+| --- | --- | --- | --- | --- |
+| Mobile menu (360–430px, short height) | Scrolling a tall six-link native dialog may leave the close control above the viewport | Sticky safe-area header, minimum 44px close target, compact short-height heading, native Escape preserved | Source test committed; real browser before/after and CI exact-head PENDING, do not claim visual improvement yet | Contact/mobile, then event details |
+
 ### V245 / 2026-11-19 — Homepage services directory
 
 | Area | Finding in V244 | V245 change | Verification |
