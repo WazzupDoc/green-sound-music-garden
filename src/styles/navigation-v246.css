@@ -1,0 +1,32 @@
+/* V246: mobile menu exit remains visible while the six-link index scrolls.
+   Native dialog, no JS scroll listener, no external asset/dependency. */
+@media (max-width: 850px) {
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__top {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    margin-inline: -18px;
+    padding: max(10px, env(safe-area-inset-top)) 18px 10px;
+    background: #091911;
+    border-bottom: 1px solid #dbebc77f;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__link {
+    scroll-margin-top: 78px;
+  }
+}
+@media (max-width: 500px) and (max-height: 680px) {
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__layout {
+    padding-block: 8px 12px;
+  }
+  dialog.atelier-mobile-menu[open] .gsm-nav-index__intro h2 {
+    font-size: clamp(1.75rem, 7vw, 2.4rem);
+  }
+  dialog.atelier-mobile-menu[open] .gsm189-mobile-current {
+    margin-top: 5px;
+    padding-block: 5px;
+  }
+}
