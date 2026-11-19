@@ -34,7 +34,7 @@ describe("V189 live-setlist navigation contract", () => {
     }
     expect(header).toContain("event.preventDefault()");
     expect(header).toContain("links[next]?.focus()");
-    expect(header).toContain("if (event.altKey || event.ctrlKey || event.metaKey) return;");
+    expect(header).toContain("if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;");
     expect(header).toContain("else return;");
     expect(header).toContain("onCancel={(event) => {");
   });
