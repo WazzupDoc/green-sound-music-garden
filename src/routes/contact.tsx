@@ -74,17 +74,17 @@ function Contact() {
       <section className="director-contact-intro" aria-labelledby="director-contact-title">
         <div className="container-site">
           <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
-          <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
+          <h1 id="director-contact-title">Pregătești un eveniment? <em>Hai să discutăm detaliile.</em></h1>
           <p>
             {fromBrief
               ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
-              : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
+              : "Spune-ne tipul evenimentului, data, locația și serviciile dorite. Pregătești un mesaj pe care îl poți trimite tu prin WhatsApp sau email."}
           </p>
           <div className="director-contact-signal" aria-label="Etapele cererii de ofertă">
             <ol className="director-contact-signal__steps">
               <li><span>01 / INPUT</span><strong>Spui ce pregătești</strong></li>
               <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
-              <li><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></li>
+              <li><span>03 / DESCHIDERE</span><strong>Trimiți tu prin WhatsApp sau email</strong></li>
             </ol>
             <a id="contact-start-brief" href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
               // Keep the native fragment navigation while moving keyboard focus to the form heading.
