@@ -40,7 +40,8 @@ describe("V241 native event mix -> Contact handoff", () => {
 
   it("keeps an accessible responsive visual difference without always-on motion", () => {
     expect(style).toContain(".gs197-event-page .gs241-mix__number");
-    expect(style).toContain(".gs197-event-page .gs241-mix__brief:focus-visible");
+    expect(style).toContain(".gs197-event-page .gs241-mix .gs241-mix__brief:focus-visible");
+    expect(style).toContain(".gs197-event-page .gs241-mix .gs241-mix__detail:focus-visible");
     expect(style).toContain("@media (max-width: 550px)");
     expect(style).toContain("@media (prefers-reduced-motion: no-preference)");
     expect(style).toContain('html:not([data-gs-performance="lite"])');
