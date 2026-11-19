@@ -1,3 +1,6 @@
+### V252 / 2026-11-19
+No assets, images, fonts, icons or dependencies added. Native HTML attributes only.
+
 ### V245 / 2026-11-19 — Homepage services directory
 
 - The section uses the existing authorized Green Sound stage photograph `images.scena` from `src/data/site.ts`, served at `/media/greensound/scena-concert-lumini.webp`. The original project records it in `public/media/greensound/SOURCES.json` under asset `7a207982-2b53-4e43-a6ca-6f6da88605c2`. The local file matches its recorded SHA-256 `75ff77dc0d72947c34e4801ad84f2043fa99595b0069a7665f1518c55bf08ed2`.
