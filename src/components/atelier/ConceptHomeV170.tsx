@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  ArrowRight, ArrowUpRight, AudioLines, CalendarDays, CirclePlay, Headphones,
+  ArrowRight, ArrowUpRight, AudioLines, Headphones,
   Layers3, MessageCircle, Mic2, Play, RadioTower, Settings2, SlidersHorizontal,
   Sparkles, Star
 } from "lucide-react";
