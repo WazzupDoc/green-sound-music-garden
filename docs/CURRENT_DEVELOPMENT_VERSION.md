@@ -1,3 +1,7 @@
+### V252 / 2026-11-19 — Contact field length consistency (DRAFT / QA PENDING)
+- Branch `fix/v252-contact-input-length-guard`, stacked on V251. Name and location now use native maxLength matching Zod 80/120 limits, preventing excess entry on mobile. No changed form submission behavior, homepage or backend.
+- QA pending: exact-head CI, TS/SSR/Vitest, six Chromium widths, keyboard and mobile validation, matched 390/1440 screenshots. Do not merge main or publish.
+
 ### V248 / 2026-11-19 — Finder shortcut vs services popover (DRAFT / QA PENDING)
 - Branch `fix/v248-finder-shortcut-dismiss-services`, stacked on V247. Keyboard Ctrl/Meta+K and `/` now dismiss the desktop service directory before opening Finder; avoids simultaneous active menus. No package/assets/homepage changes.
 - Added `src/test/navigation-v248.test.ts` source regression for shortcut ordering and modal/editing guard.
