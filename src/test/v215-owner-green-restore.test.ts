@@ -4,10 +4,12 @@ import { resolve } from "node:path";
 const read=(p:string)=>readFileSync(resolve(process.cwd(),p),"utf8");
 
 describe("V215: restore the owner's green concept without losing real discovery",()=>{
- it("keeps the actual V213 original content, media, mixer and no V214 vector score",()=>{
+ it("preserves real source media and service discovery while replacing rejected faux mixer",()=>{
    const home=read("src/components/atelier/ConceptHomeV170.tsx");
    const route=read("src/routes/index.tsx");
-   expect(home).toContain('className="gs170-stage__console"');
+   expect(home).not.toContain('className="gs170-stage__console"');
+   expect(home).toContain('className="gs244-hero__title"');
+   expect(route).toContain("home-editorial-cover-v244.css?inline");
    expect(home).not.toContain("SceneScoreV214");
    expect(home).toContain("images.concert.src");
    expect(home).toContain("featured.map((item, index)");
