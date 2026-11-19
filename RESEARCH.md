@@ -1,10 +1,19 @@
+### 2026-11-19 — V245 homepage service discovery
+
+- Viewed in Chromium at 1440 px. Moment Factory uses differentiated heading levels, accurate categories, concise link labels and distinct evidence of work. V245 applies that hierarchy to four Green Sound service groups with direct links. [Moment Factory](https://momentfactory.com/) · [Custom experiences](https://momentfactory.com/collections/custom)
+- Viewed in Chromium at 1440 px. Stufish gives production imagery, studio positioning and concrete work labels distinct roles. V245 uses one existing Green Sound stage photograph and gives service names a dedicated directory. [Stufish](https://stufish.com/) · [About Stufish](https://stufish.com/about/)
+- Viewed in Chromium at 1440 px. Treatment Studio’s concise case labels were a supplementary reference for short, specific link text. [Treatment Studio work](https://www.treatmentstudio.com/work/)
+- Webflow’s Live Impact entry led to the studio’s distinction between examples of work and its production process. The Awwwards listing for BLR Music led to a separately labeled film programme. Green Sound keeps the service directory, process and films easy to distinguish with typography and spacing. [Webflow](https://webflow.com/made-in-webflow/website/live--impact) · [Live Impact](https://live-impact.nl/) · [Awwwards](https://www.awwwards.com/sites/blr-music) · [BLR Music](https://www.blrmusic.com/)
+- The copy, layout and CSS are original Green Sound project work. Research pages supplied design principles only. No external source code, imagery, templates or fonts were incorporated, so the implementation introduces no third-party license obligations.
+- We ruled out another stack of photo panels and a carousel. Both would put extra distance between visitors and direct service links on narrow screens.
+
 ### 2026-11-19 — V244 homepage photographic editorial art direction
 - https://webflow.com/blog/typographic-design — original adaptation of typographic hierarchy and readable line spacing, not borrowed visual identity, font or code.
 - https://webflow.com/blog/music-websites-designed-with-webflow — compared music/artist visual approaches, adapted principle of distinct photography-led creative direction and minimal interactive chrome; rejected color-block template imitation and stacked cards.
 - https://web.dev/articles/optimize-lcp/ — prioritize discoverable first-party hero image with HTML src and high fetch priority; no CSS background replacement. Actual LCP field metrics not measured.
 - https://web.dev/learn/design/responsive-images — maintain intrinsic width/height and explicit image above the fold; no new image dependency.
 - No external code copied; CSS + React source developed first-party. No new packages, third-party font, media, costs or altered provenance. Rejected speculative fake events, fictitious mixing equipment, 3D dependencies and glow blobs as unauthentic and slow.
-- Before V241 Chrome screenshots https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44478443449/artifacts/14507836105. After evidence pending V244 exact-head screenshot artifact and visual comparison.
+- The quality workflow produced matching V241 and V244 Chromium screenshots. [V241 captures](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44478443449/artifacts/14507836105) · [V244 captures](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44487892039/artifacts/14511527348)
 
 ### 2026-11-19 — V241 / Event detail editorial mix and conversion
 - https://webflow.com/blog/visual-hierarchy — studied visual priority and purposeful CTA placement; adapted the PRINCIPLE of one clearly ranked action at the end of a service recommendation cluster, not Webflow CSS or designs.

@@ -15,13 +15,14 @@ describe("V244 retains prior illustration assets only as archival source",()=>{
    expect(css).toContain("gs170-stage__eq");
  });
  it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
-   expect(page).toContain('slug: "dj-mc"');
-   expect(page).toContain('slug: "trupa"');
-   expect(page).toContain('slug: "echipamente-de-sunet-si-lumini"');
-   expect(page).toContain('slug: "masina-fum-greu-cu-gheata-carbonica"');
-   expect(page).toContain('slug: "studio-inregistrari"');
+   expect(page).toContain('"dj-mc"');
+   expect(page).toContain('"trupa"');
+   expect(page).toContain('"echipamente-de-sunet-si-lumini"');
+   expect(page).toContain('"masina-fum-greu-cu-gheata-carbonica"');
+   expect(page).toContain('"studio-inregistrari"');
    expect(page).toContain('"hostess", "ursitoare-botez", "start-veselia"');
    expect(page).toContain("services.some(service => !allSlugs.includes(service.slug))");
+   expect(page).toContain('to={`/${slug}`}');
  });
  it("keeps provenance, reduced motion and no auto-playing media",()=>{
    expect(page).toContain("Real first-party media");

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ConceptHomeV170 } from "@/components/atelier/ConceptHomeV170";
 import homeReferenceCss from "@/styles/home-reference-v170.css?inline";
-import editorialServicesCss from "@/styles/home-editorial-services-v188.css?inline";
+import serviceDirectoryCss from "@/styles/home-service-directory.css?inline";
 import restoredHomeCss from "@/styles/home-refinement-v215.css?inline";
 import editorialCoverCss from "@/styles/home-editorial-cover-v244.css?inline";
 import { localBusinessLd, pageHead } from "@/lib/seo";
@@ -16,11 +16,10 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-/** One new concept-faithful composition; no cumulative V160/V166/V168 CSS. */
 function Home() {
   return (
     <div className="gs170-home">
-      <style>{homeReferenceCss + "\n" + editorialServicesCss + "\n" + restoredHomeCss + "\n" + editorialCoverCss}</style>
+      <style>{homeReferenceCss + "\n" + serviceDirectoryCss + "\n" + restoredHomeCss + "\n" + editorialCoverCss}</style>
       <ConceptHomeV170 />
     </div>
   );

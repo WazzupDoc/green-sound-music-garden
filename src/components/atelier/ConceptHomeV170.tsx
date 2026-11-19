@@ -1,41 +1,41 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
-import {
-  ArrowRight, ArrowUpRight, AudioLines, Headphones,
-  Layers3, MessageCircle, Mic2, Play, RadioTower, Settings2, SlidersHorizontal,
-  Sparkles, Star
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Play, SlidersHorizontal } from "lucide-react";
 import { images, videos, services, type ServiceSlug, type Video } from "@/data/site";
 import { VideoLite } from "@/components/site/VideoLite";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
-/** Reference-inspired design. Real first-party media and business catalogue only.
- * CSS/SVG console is a decorative UI illustration, not a client installation.
- */
-type Feature = { slug: ServiceSlug; title: string; detail: string; src: string; alt: string; icon: typeof Headphones };
-const featured: readonly Feature[] = [
-  { slug: "dj-mc", title: "DJ & MC", detail: "Muzică, energie și prezentarea momentelor importante.", src: images.dj.src, alt: images.dj.alt, icon: Headphones },
-  { slug: "trupa", title: "Trupă live", detail: "Soliști, instrumentiști și show live.", src: images.scena.src, alt: images.scena.alt, icon: Mic2 },
-  { slug: "echipamente-de-sunet-si-lumini", title: "Sunet, lumini & LED", detail: "Sonorizare, lumini scenice și ecrane LED.", src: images.concert.src, alt: images.concert.alt, icon: RadioTower },
-  { slug: "masina-fum-greu-cu-gheata-carbonica", title: "Fum greu", detail: "Efecte speciale pentru momente memorabile.", src: images.fum.src, alt: images.fum.alt, icon: Sparkles },
-  { slug: "studio-inregistrari", title: "Studio audio", detail: "Înregistrare, mixaj și producție muzicală.", src: videos.neatza.poster!, alt: "Cadru Green Sound Music din emisiunea Neatza", icon: AudioLines },
+// Real first-party media and links to the Green Sound service catalogue.
+const serviceGroups: readonly { title: string; slugs: readonly ServiceSlug[] }[] = [
+  { title: "Muzică live", slugs: ["dj-mc", "trupa"] },
+  {
+    title: "Scenotehnică",
+    slugs: ["echipamente-de-sunet-si-lumini", "masina-fum-greu-cu-gheata-carbonica"],
+  },
+  { title: "Invitați și copii", slugs: ["hostess", "ursitoare-botez", "start-veselia"] },
+  { title: "Studio", slugs: ["studio-inregistrari"] },
 ];
-const secondarySlugs: readonly ServiceSlug[] = ["hostess", "ursitoare-botez", "start-veselia"];
-const allSlugs = [...featured.map(item => item.slug), ...secondarySlugs];
+
+const allSlugs = serviceGroups.flatMap(group => group.slugs);
 if (allSlugs.length !== services.length || new Set(allSlugs).size !== services.length ||
     services.some(service => !allSlugs.includes(service.slug))) {
-  throw new Error("V170 must display all real services exactly once");
+  throw new Error("Homepage directory must display all services exactly once");
 }
-const secondary = secondarySlugs.map(slug => {
-  const service = services.find(item => item.slug === slug);
-  if (!service) throw new Error("Missing service " + slug);
-  return service;
-});
+
+const serviceDirectory = serviceGroups.map(({ title, slugs }) => ({
+  title,
+  items: slugs.map(slug => {
+    const service = services.find(item => item.slug === slug);
+    if (!service) throw new Error("Missing service " + slug);
+    return service;
+  }),
+}));
+
 const process = [
-  { title: "Discuție & brief", detail: "Ne spui ce pregătești și ce contează pentru tine.", icon: MessageCircle },
-  { title: "Propunere", detail: "Alegem muzica și soluția tehnică potrivită.", icon: Layers3 },
-  { title: "Pregătire", detail: "Organizăm echipa, echipamentele și probele.", icon: Settings2 },
-  { title: "Eveniment", detail: "Sunet, lumini și coordonare pe durata evenimentului.", icon: Star },
+  { title: "Discuție și brief", detail: "Ne spui ce pregătești și ce contează pentru tine." },
+  { title: "Propunere", detail: "Alegem muzica și soluția tehnică potrivită." },
+  { title: "Pregătire", detail: "Organizăm echipa, echipamentele și probele." },
+  { title: "Eveniment", detail: "Sunet, lumini și coordonare pe durata evenimentului." },
 ] as const;
 const films: { label: string; eyebrow: string; video: Video }[] = [
   { label: "Nuntă la Ramada Pitești", eyebrow: "NUNTĂ / DJ & MC", video: videos.nuntaRamada },
@@ -129,52 +129,56 @@ export function ConceptHomeV170() {
 
       <section className="gs170-services" id="gs-production-index" aria-labelledby="gs170-services-title">
         <div className="container-site">
-          <div className="gs170-services__grid">
-            <header className="gs170-services__intro">
-              <span className="gs170-kicker">SERVICIILE NOASTRE / 01—08</span>
-              <h2 id="gs170-services-title">Producție<br />completă<br />pentru <em>tine.</em></h2>
-              <p>De la muzică până la ultimul detaliu tehnic.</p>
-              <Link to="/servicii" className="gs170-inline">Toate serviciile <ArrowUpRight size={17} aria-hidden /></Link>
-            </header>
-            {featured.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <Link to={`/${item.slug}`} className="gs170-service-card" key={item.slug}>
-                  <img src={item.src} alt={item.alt} width={400} height={320} loading="lazy" decoding="async" />
-                  <span className="gs170-service-card__veil" aria-hidden="true" />
-                  <span className="gs170-service-card__number">0{index + 1}</span>
-                  <span className="gs170-service-card__body">
-                    <Icon size={23} strokeWidth={1.6} aria-hidden />
-                    <strong>{item.title}</strong><small>{item.detail}</small>
-                    <ArrowUpRight size={20} className="gs170-service-card__arrow" aria-hidden />
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
+          <header className="gs170-services__intro">
+            <div>
+              <span className="gs170-kicker">Servicii</span>
+              <h2 id="gs170-services-title">Muzică și <span className="gs170-services__title-accent">producție live.</span></h2>
+            </div>
+            <div className="gs170-services__summary">
+              <p>Pentru nunți, botezuri, petreceri, evenimente corporate și concerte. Poți alege serviciile separat sau le poți combina.</p>
+              <Link to="/servicii" className="gs170-services__all">
+                Toate serviciile <ArrowUpRight size={17} aria-hidden />
+              </Link>
+            </div>
+          </header>
 
-          <div className="gs170-services__extras">
-            <span>ALTE MOMENTE SPECIALE</span>
-            <nav aria-label="Alte servicii Green Sound Music">
-              {secondary.map(item => (
-                <Link key={item.slug} to={`/${item.slug}`}>{item.name} <ArrowUpRight size={16} aria-hidden /></Link>
+          <div className="gs170-services__layout">
+            <figure className="gs170-services__photo">
+              <div className="gs170-services__photo-frame">
+                <img src={images.scena.src} alt={images.scena.alt} width={images.scena.w}
+                  height={images.scena.h} loading="lazy" decoding="async" />
+              </div>
+              <figcaption>Scenă și lumini <span>Green Sound Music</span></figcaption>
+            </figure>
+
+            <nav className="gs170-services__directory" aria-label="Servicii Green Sound Music">
+              {serviceDirectory.map(({ title, items }) => (
+                <div className="gs170-services__group" key={title}>
+                  <h3>{title}</h3>
+                  <ul role="list">
+                    {items.map(({ slug, name }) => (
+                      <li key={slug}>
+                        <Link to={`/${slug}`}>
+                          <span>{name}</span>
+                          <ArrowUpRight size={17} aria-hidden />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </nav>
           </div>
-          <div className="gs170-process" aria-labelledby="gs170-process-title">
-            <div className="gs170-process__intro">
-              <span className="gs170-kicker">DE LA IDEE LA EVENIMENT</span>
-              <h2 id="gs170-process-title">Cum <em>lucrăm.</em></h2>
-            </div>
+
+          <div className="gs170-process">
+            <h3>Cum lucrăm</h3>
             <ol className="gs170-process__steps">
-              {process.map((step, index) => {
-                const Icon = step.icon;
-                return <li key={step.title}>
-                  <Icon size={29} strokeWidth={1.5} aria-hidden />
-                  <div><strong>0{index + 1}. {step.title}</strong><p>{step.detail}</p></div>
-                  {index < process.length - 1 && <ArrowRight size={17} aria-hidden className="gs170-process__next" />}
-                </li>;
-              })}
+              {process.map(step => (
+                <li key={step.title}>
+                  <strong>{step.title}</strong>
+                  <p>{step.detail}</p>
+                </li>
+              ))}
             </ol>
           </div>
         </div>

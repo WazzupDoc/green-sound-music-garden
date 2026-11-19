@@ -11,12 +11,12 @@ describe("V170 owner-selected concept implementation contract",()=>{
    expect(home).toContain("<ConceptHomeV170 />");
    expect(home).not.toMatch(/ProductionHeroV166|ProductionHeroV168/);
  });
- it("reconstructs visual journey hero / service cards / process / films / CTA",()=>{
+ it("reconstructs visual journey hero / service directory / process / films / CTA",()=>{
    for(const className of ["gs170-hero","gs170-services","gs170-process","gs170-films","gs170-final"]){
      expect(page).toContain(className);
    }
-   expect(page).toContain("featured.map((item, index)");
-   expect(page).toContain("process.map((step, index)");
+   expect(page).toContain("serviceDirectory.map(({ title, items })");
+   expect(page).toContain("process.map(step");
    expect(page).toContain("films.map((item, index)");
  });
  it("keeps real services and films, with functional film dialog",()=>{

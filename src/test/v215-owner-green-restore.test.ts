@@ -12,8 +12,8 @@ describe("V215: restore the owner's green concept without losing real discovery"
    expect(route).toContain("home-editorial-cover-v244.css?inline");
    expect(home).not.toContain("SceneScoreV214");
    expect(home).toContain("images.concert.src");
-   expect(home).toContain("featured.map((item, index)");
-   expect(home).toContain("process.map((step, index)");
+   expect(home).toContain("serviceDirectory.map(({ title, items })");
+   expect(home).toContain("process.map(step");
    expect(home).toContain("VideoLite video={film.video}");
    expect(route).toContain('home-refinement-v215.css?inline');
    expect(route).not.toContain("hero-signal-v214");

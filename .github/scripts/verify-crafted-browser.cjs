@@ -61,8 +61,32 @@ async function main() {
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
       assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente\s+de neuitat/i);
-      assert.equal(await page.locator(".gs170-service-card").count(),5);
-      assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
+      assert.equal(await page.locator(".gs170-services__group").count(),4);
+      const directoryAccent = await page.locator(".gs170-services__title-accent").evaluate(el=>({
+        family:getComputedStyle(el).fontFamily,
+        style:getComputedStyle(el).fontStyle,
+      }));
+      assert.match(directoryAccent.family,/Instrument Serif/,
+        "Service heading accent must use the editorial serif already used on the homepage");
+      assert.equal(directoryAccent.style,"italic");
+      const serviceLinks = page.locator(".gs170-services__directory a[href]");
+      assert.deepEqual(await serviceLinks.evaluateAll(links=>links.map(link=>
+        new URL(link.href).pathname.replace(/\/$/,""))),[
+        "/dj-mc", "/trupa", "/echipamente-de-sunet-si-lumini",
+        "/masina-fum-greu-cu-gheata-carbonica", "/hostess", "/ursitoare-botez",
+        "/start-veselia", "/studio-inregistrari",
+      ],"Homepage must link to each of the eight real services once, in directory order");
+      const servicePhoto = page.locator(".gs170-services__photo img");
+      assert.equal(await servicePhoto.count(),1);
+      await servicePhoto.scrollIntoViewIfNeeded();
+      const directoryImage = await servicePhoto.evaluate(async img=>{
+        await img.decode();
+        return {src:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight};
+      });
+      assert.match(directoryImage.src,/\/media\/greensound\/scena-concert-lumini\.webp$/,
+        "Directory must use the existing first-party stage photograph");
+      assert(directoryImage.width>0&&directoryImage.height>0,"Directory photograph must decode");
+      await page.evaluate(()=>window.scrollTo({top:0,behavior:"instant"}));
       assert.equal(await page.locator(".gs170-process__steps li").count(),4);
       assert.equal(await page.locator(".gs170-film-card").count(),3);
       assert.equal(await page.locator("main form").count(),0);
@@ -80,6 +104,16 @@ async function main() {
         await page.locator(".gs170-films").screenshot({path:output+"/v170-films-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-final").screenshot({path:output+"/v170-finale-"+width+".png",animations:"disabled"});
       }
+      await serviceLinks.first().focus();
+      await page.keyboard.press("Tab");
+      assert.equal(await serviceLinks.nth(1).evaluate(link=>link.matches(":focus-visible")),true,
+        "The directory must support keyboard navigation in reading order");
+      const focusStyle = await serviceLinks.nth(1).evaluate(link=>({
+        style:getComputedStyle(link).outlineStyle,
+        width:getComputedStyle(link).outlineWidth,
+      }));
+      assert(focusStyle.style!=="none"&&parseFloat(focusStyle.width)>0,
+        "The focused directory link must display an outline");
       await page.getByRole("button",{name:"Efect ON"}).click();
       assert.equal(await page.locator(".gs170-hero").getAttribute("data-lights"),"off");
       await page.getByRole("button",{name:"Efect OFF"}).click();
@@ -475,7 +509,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V170 owner-selected source-photo stage, animated mixing deck and beams, 5 featured + 3 real service links, 4-step process, 3 source films, Lite/reduced motion, responsive navigation, Contact, portfolio, sitemap and six-width pages.");
+    console.log("PASS photographic homepage, eight service links in four groups, production steps, three films, keyboard and adaptive modes, responsive navigation, Contact, portfolio and six-width pages.");
   } finally {
     await browser.close();
   }
