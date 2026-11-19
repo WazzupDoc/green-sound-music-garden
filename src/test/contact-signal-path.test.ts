@@ -11,7 +11,8 @@ describe("Contact signal path", () => {
     expect(contact).toContain('aria-label="Etapele cererii de ofertă"');
     expect(contact).toContain('<ol className="director-contact-signal__steps">');
     expect((contact.match(/<li><span>0[123] \/ /g) ?? [])).toHaveLength(3);
-    expect(contact).toContain("Tu confirmi trimiterea în aplicație");
+    expect(contact).toContain("Trimiți tu prin WhatsApp sau email");
+    expect(contact).toContain("mesajul nu se trimite automat");
     expect(contact).toContain("03 / DESCHIDERE");
     expect(contact).not.toContain("03 / SEND");
     expect(contact).toContain('href="#contact-form-title"');

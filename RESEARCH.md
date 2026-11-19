@@ -1,3 +1,8 @@
+### 2026-11-19 — Events progressive enhancement / V240
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/noscript — native fallback only when scripting unavailable; applied to existing setlist with direct detail links.
+- https://web.dev/learn/html/semantic-html — prefer navigable native links over JS-only interactions; retained existing SSR event links.
+- No third-party code, image or design copied; no license/dependency change. Rejected duplicate no-JS event cards and JS detection scripts as unnecessary UI and payload.
+
 ### 2026-11-19 — V239 footer factual accuracy
 - https://developers.google.com/search/docs/appearance/structured-data/local-business — official documentation; business facts should reflect real verified information. Adapted: removed an unsupported founding-year claim from footer. No external code/assets copied.
 - https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — descriptive links support navigation; existing labeled footer navigation retained.

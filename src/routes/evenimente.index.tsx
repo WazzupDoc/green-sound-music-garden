@@ -102,6 +102,9 @@ function Events() {
             <span>01 / SETLIST DE EVENIMENTE</span>
             <p>Alege tipul de eveniment. Poți folosi și săgețile tastaturii pentru selecție; fotografia și desfășurătorul se actualizează.</p>
           </div>
+          <noscript>
+            <p role="note">Previzualizarea interactivă necesită JavaScript. Pentru informații despre fiecare tip de eveniment, folosește linkul „Detalii” din dreptul acestuia; paginile de prezentare rămân accesibile.</p>
+          </noscript>
           <ol className="gs173-setlist" aria-label="Alege tipul de eveniment">
             {events.map((event, index) => {
               const selected = event.slug === activeEvent.slug;
