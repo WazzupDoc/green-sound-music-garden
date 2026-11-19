@@ -1,3 +1,7 @@
+### 2026-11-19 — V252 Contact input length
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength — native text-input maximum length; applied only where existing schema has known limits. No external code copied.
+- https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — review before submission; existing preview preserved. Rejected truncating values silently in JavaScript or modifying server schema.
+
 ### 2026-11-19 — V246 mobile menu exit
 - Existing first-party source inspected: `src/components/site/SiteHeader.tsx`, `src/styles/navigation-v81.css`, `src/styles/navigation-v189.css`. Native modal dialog already handles Escape and inert background; no JS scroll listener required.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning — native sticky positioning within scrolling ancestor; implemented a sticky close strip.

@@ -1,3 +1,7 @@
+### V252 / 2026-11-19 — Contact input length UX (DRAFT)
+- Area: Contact form. Native maxLength=80 for name and 120 for location matches existing Zod validation; prevents typing excess characters on mobile rather than surprising users at submission. No changed schema, sending, services, media, dependencies or homepage.
+- Exact-head CI, Chromium 390/1440 before/after, six-width QA, TS/SSR/Vitest pending. No visual redesign claim. Next rotation: event details and mobile Contact browser audit.
+
 ### V248 / 2026-11-19 — Navigation / keyboard Finder
 | Area | Source defect | Change | QA | Next |
 | --- | --- | --- | --- | --- |

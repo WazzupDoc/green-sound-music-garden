@@ -313,7 +313,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-name" className={labelCls}>Nume *</label>
-        <input id="q-name" autoComplete="name" className={fieldCls} aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} {...register("name")} />
+        <input id="q-name" maxLength={80} autoComplete="name" className={fieldCls} aria-invalid={!!errors.name} aria-describedby={errors.name ? "q-name-err" : undefined} {...register("name")} />
         <FieldError id="q-name-err" msg={errors.name?.message} />
       </div>
       <div>
@@ -341,7 +341,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-location" className={labelCls}>Localitate / locație</label>
-        <input id="q-location" placeholder="ex. Pitești, restaurantul…" className={fieldCls} aria-invalid={!!errors.location} aria-describedby={errors.location ? "q-loc-err" : undefined} {...register("location")} />
+        <input id="q-location" maxLength={120} placeholder="ex. Pitești, restaurantul…" className={fieldCls} aria-invalid={!!errors.location} aria-describedby={errors.location ? "q-loc-err" : undefined} {...register("location")} />
         <FieldError id="q-loc-err" msg={errors.location?.message} />
       </div>
       <div>
