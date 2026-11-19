@@ -411,9 +411,12 @@ async function main() {
           animations: "disabled",
         });
         await cta.click();
-        await detailPage.locator(".director-contact-quote [role=status]").waitFor({timeout: 15000});
-        assert.equal(await detailPage.locator(
-          '.director-contact-quote [aria-label="Servicii preselectate"] li').count(), 5,
+        // The ClientOnly SSR fallback also has role=status. Wait for the actual
+        // hydrated five-service summary, not the earlier generic loading status.
+        const selected = detailPage.locator(
+          '.director-contact-quote [aria-label="Servicii preselectate"] li');
+        await selected.nth(4).waitFor({timeout: 15000});
+        assert.equal(await selected.count(), 5,
           "All five recommended services must survive Contact hydration");
         assert.equal(await detailPage.locator("form[aria-label='Cerere de ofertă']").count(), 1);
       }
