@@ -1,3 +1,8 @@
+### V245 / 2026-11-19 — Homepage services directory
+
+- The section uses the existing authorized Green Sound stage photograph `images.scena` from `src/data/site.ts`, served at `/media/greensound/scena-concert-lumini.webp`. The original project records it in `public/media/greensound/SOURCES.json` under asset `7a207982-2b53-4e43-a6ca-6f6da88605c2`. The local file matches its recorded SHA-256 `75ff77dc0d72947c34e4801ad84f2043fa99595b0069a7665f1518c55bf08ed2`.
+- Typography and any existing icons use the project’s bundled resources. The styling is first-party CSS. The change introduces no new files for images, video, audio, fonts or icons, and no new dependencies or licenses.
+
 ### V244 / 2026-11-19 — Homepage editorial hero
 Uses only existing /media/greensound/concert-public-lumini.webp already used in prior validated homepage. First-party CSS, existing Instrument Serif/Hanken Grotesk font assets and existing Lucide icons. No generated/stock photos, TikTok frames, sound files, fonts, new external code or dependencies. No license changes. Deleted faux stage console and decorative wave from hero markup (not authentic photo assets).
 
