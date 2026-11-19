@@ -152,7 +152,8 @@ export function SiteHeader() {
 
   // Arrow keys are optional shortcuts within the six native links; Tab and Escape remain native.
   const onMenuKeyDown = (event: ReactKeyboardEvent<HTMLOListElement>) => {
-    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    // Modified arrow/Home/End keys belong to browser and assistive-technology navigation.
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     const links = Array.from(event.currentTarget.querySelectorAll<HTMLAnchorElement>(".gsm-nav-index__link"));
     const current = links.indexOf(document.activeElement as HTMLAnchorElement);
     if (current < 0) return;
