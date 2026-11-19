@@ -1,3 +1,8 @@
+### 2026-11-19 V239 — Footer factual-claim audit (DRAFT / QA PENDING)
+- Single zone: global footer. Removed unsupported founding-year assertion from visible company description; preserved Pitești/Argeș and conditional other-location copy, all links, navigation and Light Desk. Regression test added.
+- Visual delta: one sentence only, not a redesign. Same-route 390/1440 before/after screenshots, six-width Chromium, TS/SSR/Vitest and exact-head Actions NOT VERIFIED. Do not merge/deploy. Next: /evenimente details and mobile CTA.
+- Source-only implementation, no new dependencies/assets; main unchanged.
+
 ### 2026-11-19 V238 — Contact prefill announcement (DRAFT / QA PENDING)
 - Single zone: Contact. Hydration adds the prefilled event/services summary after the initial SSR render; changed the existing summary to `role=status`, `aria-live=polite`, `aria-atomic=true` so assistive technology can announce it. No automatic send, no backend, no new homepage section, assets or dependencies.
 - QA gate: exact-head CI, screen-reader announcement, SSR/hydration, 390/1440 matched Chromium screenshots and six-width browser regression NOT VERIFIED. Do not merge or deploy. Next rotation: /evenimente details.
