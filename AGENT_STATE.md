@@ -1,3 +1,8 @@
+### V248 / 2026-11-19 — Navigation / keyboard Finder
+| Area | Source defect | Change | QA | Next |
+| --- | --- | --- | --- | --- |
+| Desktop services popover + Finder | Ctrl/Meta+K or `/` opened Finder without closing `servicesOpen` | Explicitly dismiss service directory before Finder; regression test added | CI/browser/screenshots pending; no visual claims | Contact mobile clipboard and validation |
+
 ### V246 / 2026-11-19 — Mobile navigation audit
 | Area | Issue | Implemented | QA / visual gate | Next |
 | --- | --- | --- | --- | --- |
