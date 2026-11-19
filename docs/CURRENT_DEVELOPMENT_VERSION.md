@@ -1,3 +1,8 @@
+### V257 / 2026-11-20 — Event detail hero to prefilled Contact (DRAFT / QA PENDING)
+- Branch `design/v257-event-detail-prefilled-brief`, stacked on V256 draft PR #256. Hero CTA on all event detail routes now uses the same existing prefilled Contact URL as the service-mix CTA. Existing event label and recommended service labels remain editable on Contact; no submission implied.
+- Source regression: `src/components/site/event-page-v257.test.ts`. No new dependency/media, homepage section or backend.
+- QA NOT VERIFIED: exact-head GitHub Actions, TypeScript, SSR, Vitest, six Chromium widths, 390/1440 matched screenshots, keyboard/Contact prefill. Do not merge or deploy. Next: verify event-to-Contact in browser and audit media provenance.
+
 ### V252 / 2026-11-19 — Contact field length consistency (DRAFT / QA PENDING)
 - Branch `fix/v252-contact-input-length-guard`, stacked on V251. Name and location now use native maxLength matching Zod 80/120 limits, preventing excess entry on mobile. No changed form submission behavior, homepage or backend.
 - QA pending: exact-head CI, TS/SSR/Vitest, six Chromium widths, keyboard and mobile validation, matched 390/1440 screenshots. Do not merge main or publish.
