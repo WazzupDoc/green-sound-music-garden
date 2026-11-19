@@ -1,3 +1,6 @@
+### V235 / 2026-11-19 — Editorial service-link motion gate (DRAFT)
+Area: homepage editorial programme, specifically service-link arrow hover. Defect: arrow movement was enabled for Full motion regardless of prefers-reduced-motion until a separate override, and touch-hover behaviour was handled later. Moved the positive motion opt-in onto the hover transform itself (`hover:hover`, `prefers-reduced-motion:no-preference`, non-Lite); opacity remains a non-geometric cue. No dependency or asset. Source-level CSS change only: real-browser 390/1440 screenshots, six-width QA and exact-head CI NOT VERIFIED. Main unchanged. Next rotation: Contact mobile browser validation.
+
 ### V234 / 2026-11-19 — Finder keyboard safety (draft)
 Area: navigation/finder. Ctrl/Cmd+K was intercepted while typing in form controls; fixed guard to leave editing shortcuts and all open dialogs untouched. Source regression added. No new media/dependencies. Exact-head CI and real-browser before/after screenshots pending. Next: Contact mobile browser validation. Main untouched.
 
