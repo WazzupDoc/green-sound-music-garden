@@ -1,3 +1,6 @@
+### V244 / 2026-11-19 — Homepage editorial hero
+Uses only existing /media/greensound/concert-public-lumini.webp already used in prior validated homepage. First-party CSS, existing Instrument Serif/Hanken Grotesk font assets and existing Lucide icons. No generated/stock photos, TikTok frames, sound files, fonts, new external code or dependencies. No license changes. Deleted faux stage console and decorative wave from hero markup (not authentic photo assets).
+
 ### V241 / 2026-11-19 — Event detail mix
 - 100% original first-party CSS, native HTML and existing Lucide ArrowUpRight already installed. No imported external photos/fonts/icon sets, no new media, tracking or dependencies. Existing business-authorized photographs and service dataset unchanged.
 
