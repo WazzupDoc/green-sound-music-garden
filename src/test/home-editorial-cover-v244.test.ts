@@ -14,6 +14,7 @@ describe("V244 Green Sound editorial cover", () => {
     expect(hero).toContain('className="gs244-hero__title"');
     expect(hero).toContain("Evenimente");
     expect(hero).toContain("de neuitat.");
+    expect(hero).toContain('className="gs244-hero__script"');
     expect(hero).not.toContain('className="gs170-stage__console"');
     expect(hero).not.toContain('className="gs170-wave"');
     expect(route).toContain("editorialCoverCss");
