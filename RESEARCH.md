@@ -1,3 +1,8 @@
+### 2026-11-19 — V236 Contact copy, research notes
+- https://web.dev/articles/optimize-lcp — first viewport should prioritize meaningful visible content; adapted as concise, task-oriented heading (not a measured LCP improvement).
+- https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — explicit instructions support users completing forms; adapted copy describing inputs and manual send handoff. No external code/assets copied, so no external code license required.
+- Rejected: theatrical/abstract hero claims and an extra form/CTA; both obscure conversion or add redundant UI.
+
 ### 2026-11-19 — V235 editorial hover motion
 - Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — media query for reducing nonessential animation. Applied positive motion opt-in to existing arrow transform; no copied code or external asset.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover — detect hover-capable primary input, avoiding sticky touch hover. Adapted only conditional behavior, no new dependency.
