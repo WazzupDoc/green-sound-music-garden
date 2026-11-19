@@ -1,3 +1,6 @@
+### V240 / 2026-11-19
+No new media, fonts, icons, dependencies or external assets. Existing event photographs remain unchanged; no TikTok material used.
+
 ### V239 / 2026-11-19
 Footer text-only correction. No new assets, fonts, third-party images or dependencies.
 
