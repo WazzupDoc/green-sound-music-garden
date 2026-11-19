@@ -1,3 +1,6 @@
+### V234 / 2026-11-19 — Finder keyboard shortcut safety (DRAFT)
+- Branch `fix/v234-finder-shortcut-form-safety`, stacked on V233 PR #233. Finder Ctrl/Cmd+K no longer intercepts shortcuts in input/textarea/select/contenteditable or an open dialog. Added source regression test. Exact-head CI, SSR/Vitest and matched Chromium screenshots pending. Main unchanged; do not merge or publish.
+
 ### V233 / 2026-11-19 — Events truthful setlist (DRAFT / QA PENDING)
 - Branch `fix/v233-events-truthful-setlist` stacked on V232 `28386c0ae9bcec29c055ea429d5b5d54506b24bc`.
 - /evenimente: dynamic event count, removed unsupported founding-year claim, explained existing keyboard arrow controls. Source regression test added. No homepage, assets, backend, main or deployment changes.
