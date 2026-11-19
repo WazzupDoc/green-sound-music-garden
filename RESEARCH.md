@@ -1,3 +1,8 @@
+### 2026-11-19 — V237 / honest local coverage
+- https://developers.google.com/search/docs/fundamentals/creating-helpful-content — principle: accurate, people-first copy; reference only, no copied code.
+- https://developers.google.com/search/docs/appearance/structured-data/local-business — avoid unsupported service-area claims; reference only, no copied code.
+- Adaptation: concise truthful homepage service-area footer. Rejected: nationwide assertion without verified operational coverage; no external asset or dependency.
+
 ### 2026-11-19 — V236 Contact copy, research notes
 - https://web.dev/articles/optimize-lcp — first viewport should prioritize meaningful visible content; adapted as concise, task-oriented heading (not a measured LCP improvement).
 - https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — explicit instructions support users completing forms; adapted copy describing inputs and manual send handoff. No external code/assets copied, so no external code license required.
