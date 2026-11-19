@@ -127,7 +127,7 @@ export function ProductionIndex() {
           ))}
         </div>
         <div className="gs-index__footer">
-          <span>DIN PITEȘTI / ÎN TOATĂ ROMÂNIA</span>
+          <span>PITEȘTI / ARGEȘ · ALTE LOCAȚII LA CERERE</span>
           <span>MUZICĂ · LUMINĂ · PRODUCȚIE</span>
         </div>
       </div>
