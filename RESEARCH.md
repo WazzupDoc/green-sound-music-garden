@@ -1,3 +1,10 @@
+### 2026-11-19 — V246 mobile menu exit
+- Existing first-party source inspected: `src/components/site/SiteHeader.tsx`, `src/styles/navigation-v81.css`, `src/styles/navigation-v189.css`. Native modal dialog already handles Escape and inert background; no JS scroll listener required.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/position#sticky_positioning — native sticky positioning within scrolling ancestor; implemented a sticky close strip.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html — target-size guidance; 44px close target chosen conservatively, not claimed as full WCAG audit.
+- Rejected: fixed overlay with custom scroll handler (unnecessary complexity); replacing native dialog (would regress focus/inert behavior). No external code or assets copied; CSS original, no new dependency.
+- Pending: verify short-viewport scrolling and same-state before/after Chromium screenshots; no performance or visual score claimed.
+
 ### 2026-11-19 — V245 homepage service discovery
 
 - Viewed in Chromium at 1440 px. Moment Factory uses differentiated heading levels, accurate categories, concise link labels and distinct evidence of work. V245 applies that hierarchy to four Green Sound service groups with direct links. [Moment Factory](https://momentfactory.com/) · [Custom experiences](https://momentfactory.com/collections/custom)
