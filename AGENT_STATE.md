@@ -1,3 +1,8 @@
+### 2026-11-19 V237 — Homepage editorial programme / geographical accuracy
+- Observed: footer asserted nationwide service, unsupported by verified service-area data. Changed footer to Pitești / Argeș and other locations on request. Source: `src/components/atelier/ProductionIndex.tsx`.
+- Single-zone audit: homepage editorial programme. Visual difference is footer copy, not redesign. No screenshot/browser test available this run; release blocked pending exact-head CI, 390/1440 before/after, six-width checks and owner confirmation of service area.
+- Next rotation: Contact form / clipboard and mobile keyboard, then Events. Do not merge or deploy.
+
 ### V236 / 2026-11-19 — Contact funnel copy (DRAFT)
 | Zone | Observed issue | Implemented | Evidence / status | Next |
 | --- | --- | --- | --- | --- |
