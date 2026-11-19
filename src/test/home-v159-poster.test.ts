@@ -4,10 +4,11 @@ const route=readFileSync("src/routes/index.tsx","utf8");
 const page=readFileSync("src/components/atelier/ConceptHomeV170.tsx","utf8");
 const css=readFileSync("src/styles/home-reference-v170.css","utf8");
 describe("V170 removes rejected static hero without regressing movie and contact",()=>{
- it("switches route to concept and source-backed stage with interactive visual production desk",()=>{
+ it("keeps source-backed stage with native CTAs and removes artificial desk",()=>{
    expect(route).toContain('className="gs170-home"');
    expect(route).not.toMatch(/gs166-home|gs168-home|home-cover-v159/);
-   expect(page).toContain('className="gs170-stage__console"');
+   expect(page).not.toContain('className="gs170-stage__console"');
+   expect(page).toContain('className="gs244-hero__title"');
    expect(css).toContain(".gs170-stage__channels");
  });
  it("uses a true modal for films with separate visitor Play",()=>{
