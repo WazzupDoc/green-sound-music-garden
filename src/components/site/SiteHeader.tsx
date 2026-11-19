@@ -104,7 +104,7 @@ export function SiteHeader() {
     const onKey = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.repeat) return;
       const key = event.key.toLowerCase();
-      const command = (event.metaKey || event.ctrlKey) && key === "k" && !event.altKey;
+      const command = (event.metaKey || event.ctrlKey) && key === "k" && !event.altKey && !event.shiftKey;
       const target = event.target;
       const editing = target instanceof Element &&
         Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
