@@ -1,3 +1,9 @@
+### V236 / 2026-11-19 — Contact funnel copy (DRAFT)
+| Zone | Observed issue | Implemented | Evidence / status | Next |
+| --- | --- | --- | --- | --- |
+| Contact hero / steps | Generic atmospheric headline obscured actual offer flow; third step vague about destination | Direct event question, explicit required details and manual WhatsApp/email handoff | Source diff only; real browser screenshots and CI exact-head pending; not visually accepted | Capture same-state 390/1440; test keyboard/form/clipboard and six widths |
+No main changes or assets/dependencies. No measured visual score.
+
 ### V235 / 2026-11-19 — Editorial service-link motion gate (DRAFT)
 Area: homepage editorial programme, specifically service-link arrow hover. Defect: arrow movement was enabled for Full motion regardless of prefers-reduced-motion until a separate override, and touch-hover behaviour was handled later. Moved the positive motion opt-in onto the hover transform itself (`hover:hover`, `prefers-reduced-motion:no-preference`, non-Lite); opacity remains a non-geometric cue. No dependency or asset. Source-level CSS change only: real-browser 390/1440 screenshots, six-width QA and exact-head CI NOT VERIFIED. Main unchanged. Next rotation: Contact mobile browser validation.
 

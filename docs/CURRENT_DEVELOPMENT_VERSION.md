@@ -1,3 +1,7 @@
+### V236 / 2026-11-19 — Contact conversion copy (DRAFT / QA PENDING)
+- Branch `fix/v236-contact-clear-conversion-copy`, stacked on V235. Contact headline now asks directly about an event; initial instructions specify event type/date/location/services and accurately explain that the user sends via WhatsApp/email. Third step names the actual manual handoff. No backend, auto-send, homepage changes, dependencies or media.
+- Real Chromium 390/1440 before/after, six-width regression, exact-head TypeScript/SSR/Vitest/CI NOT YET VERIFIED. Main unchanged. Next: Contact screenshots and form/clipboard acceptance/refusal.
+
 ### V235 / 2026-11-19 — Editorial link motion opt-in (DRAFT / QA PENDING)
 - Branch `fix/v235-editorial-link-motion-gate`, stacked on V234 PR #234. CSS-only: homepage editorial service-link arrow translates on hover exclusively with fine hover, Full mode and no reduced-motion preference; color/opacity feedback preserved. No homepage section, media or dependency added. Exact-head TypeScript, SSR, Vitest, six-width Chromium, and matched before/after screenshots NOT VERIFIED. Main unchanged.
 
