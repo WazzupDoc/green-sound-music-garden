@@ -237,8 +237,9 @@ html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none
 body:has(.gs170-home) .gs-global-light-wrap{display:none}
 
 /* Intentional signature typography from selected concept: only emphasis is italic neon serif. */
-.gs170-home .gs170-hero h1 em{font-family:"Instrument Serif",Georgia,serif!important;font-style:italic!important;font-weight:400!important;font-size:1.08em!important;color:#82ff80!important;letter-spacing:-.025em}
-@media(max-width:740px){.gs170-home .gs170-hero h1 em{font-size:1.02em!important;line-height:1!important}}
+/* Historical green emphasis remains fallback; route-level art direction can now override without !important. */
+.gs170-home .gs170-hero h1 em{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:1.08em;color:#82ff80;letter-spacing:-.025em}
+@media(max-width:740px){.gs170-home .gs170-hero h1 em{font-size:1.02em;line-height:1}}
 
 /* Directional stage glow: brighter moving-head beams and subtle green flare, aligned with selected concept. */
 .gs170-home .gs170-stage__beams i{mix-blend-mode:screen;filter:blur(5px);opacity:.54}
