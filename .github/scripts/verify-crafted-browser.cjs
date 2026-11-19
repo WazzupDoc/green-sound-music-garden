@@ -53,7 +53,7 @@ async function main() {
       });
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
-      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente\s+memorabile/i);
+      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente\s+de neuitat/i);
       assert.equal(await page.locator(".gs170-service-card").count(),5);
       assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
       assert.equal(await page.locator(".gs170-process__steps li").count(),4);
