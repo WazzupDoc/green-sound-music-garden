@@ -1,3 +1,11 @@
+### 2026-11-19 — V244 homepage photographic editorial art direction
+- https://webflow.com/blog/typographic-design — original adaptation of typographic hierarchy and readable line spacing, not borrowed visual identity, font or code.
+- https://webflow.com/blog/music-websites-designed-with-webflow — compared music/artist visual approaches, adapted principle of distinct photography-led creative direction and minimal interactive chrome; rejected color-block template imitation and stacked cards.
+- https://web.dev/articles/optimize-lcp/ — prioritize discoverable first-party hero image with HTML src and high fetch priority; no CSS background replacement. Actual LCP field metrics not measured.
+- https://web.dev/learn/design/responsive-images — maintain intrinsic width/height and explicit image above the fold; no new image dependency.
+- No external code copied; CSS + React source developed first-party. No new packages, third-party font, media, costs or altered provenance. Rejected speculative fake events, fictitious mixing equipment, 3D dependencies and glow blobs as unauthentic and slow.
+- Before V241 Chrome screenshots https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44478443449/artifacts/14507836105. After evidence pending V244 exact-head screenshot artifact and visual comparison.
+
 ### 2026-11-19 — V241 / Event detail editorial mix and conversion
 - https://webflow.com/blog/visual-hierarchy — studied visual priority and purposeful CTA placement; adapted the PRINCIPLE of one clearly ranked action at the end of a service recommendation cluster, not Webflow CSS or designs.
 - https://webflow.com/blog/typographic-design — studied size/spacing hierarchy and editorial reading order; adapted a compact typographic numbered cue-sheet with original CSS, not fonts or code from Webflow.

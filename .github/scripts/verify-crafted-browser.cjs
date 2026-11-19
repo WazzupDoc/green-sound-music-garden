@@ -36,13 +36,31 @@ async function main() {
       assert.equal(await page.locator(".gs170-home").count(),1);
       assert.equal(await page.locator('nav[aria-label="Contact rapid"]').count(),0);
       assert.equal(await page.locator(".gs170-stage__image").count(),1);
+      assert.equal(await page.locator(".gs170-stage__console").count(),0,
+        "Rejected faux mixing console must not reappear in editorial hero");
+      assert.equal(await page.locator(".gs244-hero__title").count(),1);
+      assert.equal(await page.locator(".gs244-hero__statement").count(),1);
+      assert.equal(await page.locator(".gs170-wave").count(),0,
+        "Removed giant neon waveform must not return");
+      const coverStyle=await page.locator(".gs170-hero").evaluate(el=>({
+        bg:getComputedStyle(el).backgroundColor,
+        photoWidth:getComputedStyle(el.querySelector(".gs170-stage")).width
+      }));
+      assert.equal(coverStyle.bg,"rgb(10, 25, 17)","New forest cover CSS must be loaded");
+      const scriptStyle = await page.locator(".gs244-hero__script").evaluate(el => ({
+        family:getComputedStyle(el).fontFamily, weight:getComputedStyle(el).fontWeight,
+        color:getComputedStyle(el).color,
+      }));
+      assert.match(scriptStyle.family,/Instrument Serif/,"Editorial second line must use real serif typography");
+      assert.equal(scriptStyle.weight,"400","Serif line must not inherit bold hero text");
+      assert.equal(scriptStyle.color,"rgb(196, 231, 167)","Old neon CSS must not override sage accent");
       const image=await page.locator(".gs170-stage__image").evaluate(async img=>{
         await img.decode().catch(()=>null);
         return {src:img.currentSrc,w:img.naturalWidth,h:img.naturalHeight};
       });
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
-      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente memorabile/i);
+      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente\s+de neuitat/i);
       assert.equal(await page.locator(".gs170-service-card").count(),5);
       assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
       assert.equal(await page.locator(".gs170-process__steps li").count(),4);
@@ -57,6 +75,7 @@ async function main() {
       await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
       if(width===390||width===1440){
         await page.locator(".gs170-hero").screenshot({path:output+"/v170-hero-"+width+".png",animations:"disabled"});
+        await page.locator(".gs170-hero").screenshot({path:output+"/v244-editorial-cover-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-services").screenshot({path:output+"/v170-services-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-films").screenshot({path:output+"/v170-films-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-final").screenshot({path:output+"/v170-finale-"+width+".png",animations:"disabled"});

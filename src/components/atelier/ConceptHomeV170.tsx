@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  ArrowRight, ArrowUpRight, AudioLines, CalendarDays, CirclePlay, Headphones,
+  ArrowRight, ArrowUpRight, AudioLines, Headphones,
   Layers3, MessageCircle, Mic2, Play, RadioTower, Settings2, SlidersHorizontal,
   Sparkles, Star
 } from "lucide-react";
@@ -81,50 +81,49 @@ export function ConceptHomeV170() {
           <div className="gs170-stage__beams">
             {Array.from({ length: 5 }, (_, index) => <i key={index} style={{ "--beam": index } as CSSProperties} />)}
           </div>
-          <div className="gs170-stage__console">
-            <div className="gs170-stage__console-top"><span>GREEN SOUND / LIVE MIX</span><span className="gs170-stage__live">● SIGNAL</span></div>
-            <div className="gs170-stage__eq">
-              {Array.from({ length: 25 }, (_, i) => <span key={i} style={{ "--bar": i } as CSSProperties} />)}
-            </div>
-            <div className="gs170-stage__channels">
-              {Array.from({ length: 10 }, (_, i) =>
-                <span key={i} className="gs170-stage__channel" style={{ "--channel": i } as CSSProperties}><i /><b /><small /></span>
-              )}
-            </div>
-            <span className="gs170-stage__console-end">DECORATIVE VISUAL / SOUND · LIGHT · PRODUCTION</span>
-          </div>
         </div>
         <div className="gs170-hero__content container-site">
-          <span className="gs170-kicker gs170-hero__eyebrow">GREEN SOUND MUSIC / PRODUCȚIE DE EVENIMENTE</span>
-          <h1 id="gs170-title">Sunet, lumini și<br />experiență pentru<br />
-            <em>evenimente memorabile.</em></h1>
-          <p className="gs170-hero__lead">
-            DJ & MC, trupă live, sonorizare, lumini și producție de evenimente.
-            Construim atmosfera potrivită, de la prima piesă până la finalul serii.
-          </p>
-          <div className="gs170-hero__actions">
-            <Link to="/contact" className="gs170-btn gs170-btn--green">
-              <CalendarDays size={19} aria-hidden /> Solicită o ofertă <ArrowRight size={19} aria-hidden />
-            </Link>
-            <a href="#gs170-films" className="gs170-btn gs170-btn--outline">
-              <CirclePlay size={20} aria-hidden /> Vezi portofoliul
-            </a>
+          <div className="gs244-hero__body">
+            <span className="gs170-kicker gs170-hero__eyebrow">
+              GREEN SOUND MUSIC <span aria-hidden="true">/</span> PITEȘTI · ARGEȘ
+            </span>
+            <h1 id="gs170-title" className="gs244-hero__title">
+              <span>Evenimente</span>
+              <span className="gs244-hero__script">de neuitat.</span>
+            </h1>
+            <div className="gs244-hero__statement">
+              <p className="gs170-hero__lead">
+                Muzica ține seara în mișcare. Noi aducem DJ & MC, trupă live,
+                sonorizare și lumini, potrivite evenimentului tău.
+              </p>
+              <div className="gs170-hero__actions">
+                <Link to="/contact" className="gs170-btn gs170-btn--green">
+                  Discută cu noi <ArrowUpRight size={19} aria-hidden />
+                </Link>
+                <a href="#gs170-films" className="gs170-btn gs170-btn--outline">
+                  Vezi filmările <ArrowRight size={19} aria-hidden />
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="gs170-hero__control" role="group" aria-label="Atmosfera vizuală a site-ului">
-            <span className="gs170-hero__control-label"><SlidersHorizontal size={15} aria-hidden /> LUMINI SCENICE</span>
-            <button type="button" aria-pressed={lightsOn} onClick={() => setLightsOn(value => !value)}>
-              {lightsOn ? "Efect ON" : "Efect OFF"}
-            </button>
-            <button type="button" aria-pressed={lightHue === "green"} onClick={() => setLightHue("green")}>Verde</button>
-            <button type="button" aria-pressed={lightHue === "cool"} onClick={() => setLightHue("cool")}>Rece</button>
+          <div className="gs244-hero__photo-caption" aria-hidden="true">
+            <span>GREEN SOUND / LIVE</span>
+            <span>MUZICĂ <b>×</b> LUMINĂ <b>×</b> ATMOSFERĂ</span>
           </div>
-        </div>
-        <div className="gs170-wave" aria-hidden="true">
-          <svg viewBox="0 0 1440 90" preserveAspectRatio="none" focusable="false">
-            <path className="gs170-wave__soft" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-            <path className="gs170-wave__main" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-            <path className="gs170-wave__pulse" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-          </svg>
+          <div className="gs244-hero__foot">
+            <div className="gs244-hero__foot-title">
+              <span>THE SOUND OF YOUR EVENT</span>
+              <strong>De la primul acord. Până la ultimul dans.</strong>
+            </div>
+            <div className="gs170-hero__control" role="group" aria-label="Atmosfera vizuală a site-ului">
+              <span className="gs170-hero__control-label"><SlidersHorizontal size={15} aria-hidden /> LUMINĂ</span>
+              <button type="button" aria-pressed={lightsOn} onClick={() => setLightsOn(value => !value)}>
+                {lightsOn ? "Efect ON" : "Efect OFF"}
+              </button>
+              <button type="button" aria-pressed={lightHue === "green"} onClick={() => setLightHue("green")}>Verde</button>
+              <button type="button" aria-pressed={lightHue === "cool"} onClick={() => setLightHue("cool")}>Rece</button>
+            </div>
+          </div>
         </div>
       </section>
 
