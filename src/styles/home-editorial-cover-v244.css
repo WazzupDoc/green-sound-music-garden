@@ -254,11 +254,21 @@
   }
 }
 @media (max-width: 430px) {
-  .gs170-home .gs170-hero__content {
-    min-height: 740px;
-    padding-top: 108px;
+  /* Treat the genuine concert photograph as its own opening visual before
+     the typographic statement, rather than letting dark copy cover the stage. */
+  .gs170-home .gs170-stage {
+    inset: 0 0 auto;
+    height: 375px;
   }
-  .gs170-home .gs244-hero__body { padding-top: 95px; }
+  .gs170-home .gs170-stage__image { object-position: center 41%; }
+  .gs170-home .gs170-stage__shade {
+    background: linear-gradient(0deg, #0a1911 0%, #0a19119c 19%, transparent 62%);
+  }
+  .gs170-home .gs170-hero__content {
+    min-height: 0;
+    padding-top: 275px;
+  }
+  .gs170-home .gs244-hero__body { padding-top: 0; }
   .gs170-home .gs170-hero h1.gs244-hero__title {
     font-size: clamp(2.65rem, 11.8vw, 3.8rem);
     letter-spacing: -.073em;
