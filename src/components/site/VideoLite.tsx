@@ -68,7 +68,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             type="button"
             ref={playButtonRef}
             onClick={() => setActive(true)}
-            className="absolute inset-0 size-full text-left"
+            className="absolute inset-0 size-full text-left focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[3px] focus-visible:outline-[#B5F4C5]"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
             {video.poster && failedPoster !== video.poster ? (
