@@ -89,7 +89,7 @@ export function ConceptHomeV170() {
             </span>
             <h1 id="gs170-title" className="gs244-hero__title">
               <span>Evenimente</span>
-              <em>de neuitat.</em>
+              <span className="gs244-hero__script">de neuitat.</span>
             </h1>
             <div className="gs244-hero__statement">
               <p className="gs170-hero__lead">
