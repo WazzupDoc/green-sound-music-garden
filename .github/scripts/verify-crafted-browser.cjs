@@ -367,6 +367,27 @@ async function main() {
       await aboutPage.close();
     }
 
+    // Baseline QA only: capture unmodified V240 event detail and same
+    // exact 390/1440 viewport for honest comparison against V241.
+    for (const baselineWidth of [390,1440]) {
+      const baselinePage = await browser.newPage({
+        viewport: {width: baselineWidth, height: 900}, reducedMotion: "reduce",
+      });
+      const response = await baselinePage.goto(base + "/evenimente/nunti", {waitUntil: "domcontentloaded"});
+      assert.equal(response.status(), 200);
+      await baselinePage.locator(".rs-event-offerings li").first().waitFor({timeout:15000});
+      await noOverflow(baselinePage, "/evenimente/nunti baseline", baselineWidth);
+      await baselinePage.screenshot({
+        path: `${output}/v241-before-event-detail-${baselineWidth}.png`,
+        animations: "disabled", fullPage: true,
+      });
+      await baselinePage.locator(".rs-event-offerings").screenshot({
+        path: `${output}/v241-before-event-mix-${baselineWidth}.png`,
+        animations: "disabled",
+      });
+      await baselinePage.close();
+    }
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });
