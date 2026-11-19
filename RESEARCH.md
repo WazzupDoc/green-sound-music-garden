@@ -1,3 +1,8 @@
+### 2026-11-19 — Keyboard shortcut ownership
+- https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey — modifier shortcuts should not override user editing context.
+- https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialog retains keyboard interaction; global finder must not steal focus.
+- Adapted: guard existing global shortcut in editing controls and modal contexts; no third-party code or dependency. Rejected: global shortcut capture in dialogs, because it breaks keyboard ownership.
+
 ### 2026-11-19 — V233 / Events truthful setlist
 - https://www.w3.org/WAI/ARIA/apg/patterns/tabs/ — keyboard discoverability reference only. Existing event selectors are buttons, not tabs; **rejected** importing tablist roles or copied JS. Kept native buttons and exposed existing arrow-key behavior in copy.
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets — keyboard navigation guidance; reference for upcoming browser audit, no code copied.

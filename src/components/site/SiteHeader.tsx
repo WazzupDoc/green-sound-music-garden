@@ -112,7 +112,8 @@ export function SiteHeader() {
         !editing && !hasModal;
       // Never steal keystrokes from an existing dialog or a form.
       if (!slash && !command) return;
-      if (!finderOpen && hasModal) return;
+      // Preserve native editing shortcuts and never intercept keys inside an open dialog.
+      if (editing || hasModal) return;
       event.preventDefault();
       setOpen(false);
       setFinderActivated(true);

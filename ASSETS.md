@@ -1,3 +1,6 @@
+### V234 / 2026-11-19
+No new assets, fonts, images, licenses or external dependencies; existing authorized assets unchanged.
+
 ### V233 / 2026-11-19
 No new photographs, fonts, SVGs, icons, third-party scripts or dependencies. Existing authorized media untouched.
 

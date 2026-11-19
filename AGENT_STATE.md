@@ -1,3 +1,6 @@
+### V234 / 2026-11-19 — Finder keyboard safety (draft)
+Area: navigation/finder. Ctrl/Cmd+K was intercepted while typing in form controls; fixed guard to leave editing shortcuts and all open dialogs untouched. Source regression added. No new media/dependencies. Exact-head CI and real-browser before/after screenshots pending. Next: Contact mobile browser validation. Main untouched.
+
 ### 2026-11-19 V233 — Evenimente truthful setlist (DRAFT)
 | Zone | Defect | Change | QA | Next |
 | --- | --- | --- | --- | --- |
