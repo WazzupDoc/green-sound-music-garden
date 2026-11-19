@@ -47,6 +47,13 @@ async function main() {
         photoWidth:getComputedStyle(el.querySelector(".gs170-stage")).width
       }));
       assert.equal(coverStyle.bg,"rgb(10, 25, 17)","New forest cover CSS must be loaded");
+      const scriptStyle = await page.locator(".gs244-hero__script").evaluate(el => ({
+        family:getComputedStyle(el).fontFamily, weight:getComputedStyle(el).fontWeight,
+        color:getComputedStyle(el).color,
+      }));
+      assert.match(scriptStyle.family,/Instrument Serif/,"Editorial second line must use real serif typography");
+      assert.equal(scriptStyle.weight,"400","Serif line must not inherit bold hero text");
+      assert.equal(scriptStyle.color,"rgb(196, 231, 167)","Old neon CSS must not override sage accent");
       const image=await page.locator(".gs170-stage__image").evaluate(async img=>{
         await img.decode().catch(()=>null);
         return {src:img.currentSrc,w:img.naturalWidth,h:img.naturalHeight};
