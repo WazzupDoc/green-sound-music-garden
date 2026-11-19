@@ -1,3 +1,9 @@
+### V240 / 2026-11-19 — Events no-JS setlist fallback (DRAFT / QA PENDING)
+- Branch `fix/v240-events-nojs-setlist-guidance`, stacked on V239 PR #239.
+- /evenimente setlist now explains in native noscript markup that the interactive preview requires JavaScript and directs users to existing SSR event-detail links. Source regression added. No new assets/dependencies/backend, main unchanged.
+- Exact-head CI, TypeScript, SSR/Vitest, six-width Chromium, no-JS 390/1440 and before/after screenshots NOT VERIFIED. Do not merge or deploy.
+- Next: event detail conversion, focus and browser QA.
+
 ### V239 / 2026-11-19 — Footer founding-year claim removal (DRAFT)
 - Branch `fix/v239-footer-unverified-founding-year`, stacked on V238 PR #238 SHA `13dc131e58b1982183af73b342202b6366a17497`.
 - Removes unsupported year-of-founding claim in shared footer. Adds source regression. No new media/dependencies or homepage sections. Main unchanged.
