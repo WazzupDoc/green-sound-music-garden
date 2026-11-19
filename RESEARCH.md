@@ -1,3 +1,8 @@
+### 2026-11-20 — V257 event-detail conversion
+- https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — a link should lead to its described destination. Adaptation: hero CTA goes directly to the existing editable Contact brief; no external code copied.
+- https://web.dev/learn/accessibility/links — descriptive native links preserve keyboard and no-JS behavior. Adaptation: retain native anchor rather than introduce a scripted modal.
+- Rejected: duplicate inline form and new sticky conversion widget (redundant UI, increased complexity). No new dependencies or licensed assets.
+
 ### 2026-11-19 — V252 Contact input length
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength — native text-input maximum length; applied only where existing schema has known limits. No external code copied.
 - https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — review before submission; existing preview preserved. Rejected truncating values silently in JavaScript or modifying server schema.

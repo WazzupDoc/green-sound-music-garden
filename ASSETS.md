@@ -1,3 +1,6 @@
+### V257 / 2026-11-20
+No new media, icons, fonts, imagery, libraries or third-party assets. Event photographs and video sources unchanged; TikTok reference clips not used.
+
 ### V252 / 2026-11-19
 No assets, images, fonts, icons or dependencies added. Native HTML attributes only.
 

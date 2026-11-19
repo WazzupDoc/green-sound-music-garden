@@ -1,3 +1,8 @@
+### V257 / 2026-11-20 — Event detail hero conversion (DRAFT / QA PENDING)
+- Area: all /evenimente/$slug details. Previous hero CTA jumped to bottom QuoteSection, losing the already available event+service-prefill handoff. New hero CTA reuses the exact existing Contact URL with editable event and suggested services. No new service, media or backend.
+- Matrix: Event detail conversion | priority high | functional fix implemented | visual delta: hero link text unchanged, navigation target changes | browser screenshots 390/1440, six widths, keyboard, SSR and exact-head CI pending | next: event media provenance and Contact handoff browser verification.
+- Main/deploy untouched. No release claim.
+
 ### V252 / 2026-11-19 — Contact input length UX (DRAFT)
 - Area: Contact form. Native maxLength=80 for name and 120 for location matches existing Zod validation; prevents typing excess characters on mobile rather than surprising users at submission. No changed schema, sending, services, media, dependencies or homepage.
 - Exact-head CI, Chromium 390/1440 before/after, six-width QA, TS/SSR/Vitest pending. No visual redesign claim. Next rotation: event details and mobile Contact browser audit.
