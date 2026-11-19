@@ -69,23 +69,22 @@
   text-transform: uppercase;
   margin: 0;
 }
-.gs170-home .gs244-hero__title span,
-.gs170-home .gs244-hero__title em {
+.gs170-home .gs244-hero__title span {
   display: block;
   white-space: nowrap;
 }
-.gs170-home .gs244-hero__title span {
+.gs170-home .gs244-hero__title > span:first-child {
   color: #f2f1e8;
 }
-.gs170-home .gs170-hero .gs244-hero__title em {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: .99em;
+.gs170-home .gs170-hero .gs244-hero__title .gs244-hero__script {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 1.08em;
   font-style: italic;
   font-weight: 400;
   text-transform: none;
   line-height: 1.01;
-  letter-spacing: -.065em;
-  color: #bfdfa5;
+  letter-spacing: -.06em;
+  color: #c4e7a7;
   text-shadow: none;
 }
 .gs170-home .gs244-hero__statement {
@@ -215,6 +214,17 @@
   background: #b3d69e29;
 }
 .gs170-home .gs170-wave { display: none; }
+/* Align the live site's existing header accent with the calmer homepage cover. */
+body:has(.gs170-home) .atelier-header {
+  background: #08140df5;
+  border-bottom-color: #a8cda24a;
+}
+body:has(.gs170-home) .atelier-header__quote {
+  background: #c4e7a7;
+  border-color: #c4e7a7;
+  color: #0b2211;
+}
+body:has(.gs170-home) .atelier-header__link--active { color: #c4e7a7; }
 @media (max-width: 1100px) {
   .gs170-home .gs170-hero__content {
     grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
