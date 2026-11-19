@@ -5,12 +5,13 @@ const route=read("src/routes/index.tsx");
 const page=read("src/components/atelier/ConceptHomeV170.tsx");
 const css=read("src/styles/home-reference-v170.css");
 const oldArtwork=read("src/components/atelier/ProductionDeckArt.tsx");
-describe("V170 production equipment is a lightweight UI illustration",()=>{
+describe("V244 retains prior illustration assets only as archival source",()=>{
  it("leaves archived production artwork for rollback but does not mount it",()=>{
    expect(oldArtwork).toContain('<svg viewBox="0 0 900 490"');
    expect(route).toContain("<ConceptHomeV170 />");
    expect(page).not.toContain("<ProductionDeckArt");
-   expect(page).toContain("gs170-stage__console");
+   expect(page).not.toContain("gs170-stage__console");
+   expect(page).toContain("gs244-hero__title");
    expect(css).toContain("gs170-stage__eq");
  });
  it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
