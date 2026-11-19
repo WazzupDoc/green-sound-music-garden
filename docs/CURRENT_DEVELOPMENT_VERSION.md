@@ -1,3 +1,9 @@
+### V248 / 2026-11-19 — Finder shortcut vs services popover (DRAFT / QA PENDING)
+- Branch `fix/v248-finder-shortcut-dismiss-services`, stacked on V247. Keyboard Ctrl/Meta+K and `/` now dismiss the desktop service directory before opening Finder; avoids simultaneous active menus. No package/assets/homepage changes.
+- Added `src/test/navigation-v248.test.ts` source regression for shortcut ordering and modal/editing guard.
+- QA NOT VERIFIED: TypeScript, SSR, Vitest, six-width Chromium, keyboard flow, exact-head CI and screenshots. No visual improvement claim; keep draft and main untouched.
+- Next: verify V246–V248 browser behavior, then Contact mobile validation and clipboard handling.
+
 ### V246 / 2026-11-19 — Mobile menu persistent exit (DRAFT / QA PENDING)
 - Branch `fix/v246-mobile-menu-close-access`, stacked on V245 draft PR #245. Draft PR #246 https://github.com/WazzupDoc/green-sound-music-garden/pull/246
 - One zone: native mobile navigation dialog. Sticky top/close control, 44px minimum target, safe-area padding, short-screen compact typography. No new asset, package, backend or homepage section. Source regression added.
