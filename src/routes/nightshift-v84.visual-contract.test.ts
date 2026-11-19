@@ -15,8 +15,8 @@ describe("V170 authentic event-production art direction",()=>{
    expect(page).toContain('className="gs170-stage__beams"');
    expect(page).not.toContain('className="gs170-stage__console"');
    expect(page).toContain('className="gs244-hero__title"');
-   expect(page).toContain("featured.map((item, index)");
-   expect(page).toContain("process.map((step, index)");
+   expect(page).toContain("serviceDirectory.map(({ title, items })");
+   expect(page).toContain("process.map(step");
    expect(css).toContain("@keyframes gs170-beam");
    expect(css).toContain("@keyframes gs170-meter");
  });

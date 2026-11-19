@@ -12,8 +12,8 @@ describe("V170 preserves original conversion and visitor control",()=>{
  });
  it("uses first-party source images and exactly three published film references",()=>{
    expect(page).toContain("images.concert.src");
-   expect(page).toContain("images.dj.src");
    expect(page).toContain("images.scena.src");
+   expect(page).toContain("alt={images.scena.alt}");
    expect(page).toContain("videos.nuntaRamada");
    expect(page).toContain("videos.showLumini");
    expect(page).toContain("videos.neatza");

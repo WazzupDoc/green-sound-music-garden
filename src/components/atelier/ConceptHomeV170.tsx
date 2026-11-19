@@ -5,6 +5,7 @@ import { images, videos, services, type ServiceSlug, type Video } from "@/data/s
 import { VideoLite } from "@/components/site/VideoLite";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
+// Real first-party media and links to the Green Sound service catalogue.
 const serviceGroups: readonly { title: string; slugs: readonly ServiceSlug[] }[] = [
   { title: "Muzică live", slugs: ["dj-mc", "trupa"] },
   {
@@ -131,7 +132,7 @@ export function ConceptHomeV170() {
           <header className="gs170-services__intro">
             <div>
               <span className="gs170-kicker">Servicii</span>
-              <h2 id="gs170-services-title">Muzică și <em>producție live.</em></h2>
+              <h2 id="gs170-services-title">Muzică și <span className="gs170-services__title-accent">producție live.</span></h2>
             </div>
             <div className="gs170-services__summary">
               <p>Pentru nunți, botezuri, petreceri, evenimente corporate și concerte. Poți alege serviciile separat sau le poți combina.</p>

@@ -62,7 +62,7 @@ async function main() {
         "First-party concert hero must decode");
       assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente\s+de neuitat/i);
       assert.equal(await page.locator(".gs170-services__group").count(),4);
-      const directoryAccent = await page.locator(".gs170-services__intro h2 em").evaluate(el=>({
+      const directoryAccent = await page.locator(".gs170-services__title-accent").evaluate(el=>({
         family:getComputedStyle(el).fontFamily,
         style:getComputedStyle(el).fontStyle,
       }));
