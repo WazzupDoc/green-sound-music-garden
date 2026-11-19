@@ -1,3 +1,11 @@
+### 2026-11-19 — V241 / Event detail editorial mix and conversion
+- https://webflow.com/blog/visual-hierarchy — studied visual priority and purposeful CTA placement; adapted the PRINCIPLE of one clearly ranked action at the end of a service recommendation cluster, not Webflow CSS or designs.
+- https://webflow.com/blog/typographic-design — studied size/spacing hierarchy and editorial reading order; adapted a compact typographic numbered cue-sheet with original CSS, not fonts or code from Webflow.
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-visible — keyboard-visible links in dark interface; original 3px focus outlines and genuine link labels.
+- Code & license: original first-party CSS/TSX, no external code reused, so no third-party license requirement, no new packages, no media. Owner-licensed existing event photos and service data untouched.
+- Rejected: decorative 3D stage, synthetic photos, duplicate service card grid, automatic service selection without editing and new motion libraries — would hurt clarity, provenance, performance, consent or original brand fit.
+- Hypothesis (not measured): a one-click editable event+service prefill can reduce quote friction. Requires browser funnel verification; no conversion-rate claim.
+
 ### 2026-11-19 — Events progressive enhancement / V240
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/noscript — native fallback only when scripting unavailable; applied to existing setlist with direct detail links.
 - https://web.dev/learn/html/semantic-html — prefer navigable native links over JS-only interactions; retained existing SSR event links.
