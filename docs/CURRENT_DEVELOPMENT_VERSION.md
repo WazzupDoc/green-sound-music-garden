@@ -1,3 +1,9 @@
+### V239 / 2026-11-19 — Footer founding-year claim removal (DRAFT)
+- Branch `fix/v239-footer-unverified-founding-year`, stacked on V238 PR #238 SHA `13dc131e58b1982183af73b342202b6366a17497`.
+- Removes unsupported year-of-founding claim in shared footer. Adds source regression. No new media/dependencies or homepage sections. Main unchanged.
+- QA pending: TypeScript, SSR, Vitest, exact-head CI, 390/1440 before/after browser screenshots, six-width regression. Do not merge/deploy.
+- Next: Events detail CTA audit.
+
 ### V238 / 2026-11-19 — Contact prefill accessible status (DRAFT / QA PENDING)
 - Branch `fix/v238-contact-prefill-status` stacked on V237. Existing hydrated prefill summary now uses a polite atomic status region, to expose selected event/date/location/services without stealing keyboard focus. No new UI sections or backend; main unchanged.
 - Exact-head CI, TypeScript/SSR/Vitest, screen-reader behavior and Chromium 390/1440 before/after and six widths pending. Do not merge/deploy. Next: /evenimente details.

@@ -1,3 +1,6 @@
+### V239 / 2026-11-19
+Footer text-only correction. No new assets, fonts, third-party images or dependencies.
+
 ### V238 / 2026-11-19
 No assets, fonts, icons, photos, videos or third-party dependencies added; semantic markup only.
 

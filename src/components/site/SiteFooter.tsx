@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="space-y-6">
           <Logo />
           <p className="max-w-xs text-base leading-relaxed text-muted-foreground">
-            Muzică, sunet, lumini și efecte pentru evenimente. Firmă din Pitești, activă din {business.founded}.
+            Muzică, sunet, lumini și efecte pentru evenimente în Pitești, Argeș și alte locații, în funcție de proiect.
           </p>
           <address className="space-y-1 text-base not-italic text-foreground/85">
             <p>
