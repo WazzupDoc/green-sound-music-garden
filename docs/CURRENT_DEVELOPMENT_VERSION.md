@@ -1,3 +1,9 @@
+### V246 / 2026-11-19 — Mobile menu persistent exit (DRAFT / QA PENDING)
+- Branch `fix/v246-mobile-menu-close-access`, stacked on V245 draft PR #245. Draft PR #246 https://github.com/WazzupDoc/green-sound-music-garden/pull/246
+- One zone: native mobile navigation dialog. Sticky top/close control, 44px minimum target, safe-area padding, short-screen compact typography. No new asset, package, backend or homepage section. Source regression added.
+- QA NOT VERIFIED: exact-head CI, TypeScript, SSR, Vitest, six Chromium widths, matched 390/1440 screenshots, short-height scroll/keyboard/Escape/focus return, Lite/reduced-motion. Do not merge or publish.
+- Next rotation: Contact mobile validation/clipboard, then events and galleries.
+
 ### V245 / 2026-11-19 — Homepage services directory
 
 - Development branch `design/v245-home-service-directory`, based on V244 commit `9c83d99740b0f65580597fc1b56722ac6cf115cd`. Visual implementation commit `f4dda90cb6a3094cc552972b0e5e99aacbf74c8f`. [Draft PR #245](https://github.com/WazzupDoc/green-sound-music-garden/pull/245)
