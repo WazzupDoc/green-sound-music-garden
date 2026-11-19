@@ -367,6 +367,73 @@ async function main() {
       await aboutPage.close();
     }
 
+    // V241: verify the ACTUAL event detail route and editorial service mix on
+    // every required width. Keep original media, SSR links and manual handoff.
+    for (const eventWidth of widths) {
+      const detailPage = await browser.newPage({
+        viewport: { width: eventWidth, height: 900 }, reducedMotion: "reduce",
+      });
+      const detailErrors = [];
+      detailPage.on("pageerror", error => detailErrors.push(error.message));
+      const response = await detailPage.goto(base + "/evenimente/nunti", { waitUntil: "domcontentloaded" });
+      assert.equal(response.status(), 200, "Nunta detail HTTP 200");
+      const mix = detailPage.locator(".gs197-event-page .gs241-mix");
+      await mix.waitFor({timeout: 15000});
+      assert.equal(await mix.locator(".gs241-mix__list li").count(), 5,
+        "All five actual wedding service suggestions must render");
+      const cssPresent = await detailPage.locator("style").evaluateAll(styles =>
+        styles.some(style => style.textContent.includes(".gs241-mix__number")));
+      assert.equal(cssPresent, true, "Scoped event-mix CSS must be present");
+      const photo = await detailPage.locator(".rs-inner-hero__image img").evaluate(async img => {
+        await img.decode().catch(() => null);
+        return {w: img.naturalWidth, h: img.naturalHeight, src: img.currentSrc};
+      });
+      assert(photo.w > 0 && photo.h > 0,
+        "Real Green Sound event photo must decode: " + JSON.stringify(photo));
+      const cta = detailPage.locator(".gs241-mix__brief");
+      const href = await cta.getAttribute("href");
+      const url = new URL(href, base);
+      assert.equal(url.pathname, "/contact");
+      assert.equal(url.searchParams.get("event"), "Nuntă");
+      assert.equal(url.searchParams.get("services").split("|").length, 5);
+      assert.equal(url.hash, "#contact-form-title");
+      await cta.focus();
+      assert.equal(await cta.evaluate(el => document.activeElement === el), true,
+        "Brief CTA must accept focus");
+      await noOverflow(detailPage, "/evenimente/nunti", eventWidth);
+      if (eventWidth === 390 || eventWidth === 1440) {
+        await detailPage.screenshot({
+          path: `${output}/v241-event-detail-${eventWidth}.png`,
+          animations: "disabled", fullPage: true,
+        });
+        await mix.screenshot({
+          path: `${output}/v241-event-mix-${eventWidth}.png`,
+          animations: "disabled",
+        });
+        await cta.click();
+        // The ClientOnly SSR fallback also has role=status. Wait for the actual
+        // hydrated five-service summary, not the earlier generic loading status.
+        const selected = detailPage.locator(
+          '.director-contact-quote [aria-label="Servicii preselectate"] li');
+        await selected.nth(4).waitFor({timeout: 15000});
+        assert.equal(await selected.count(), 5,
+          "All five recommended services must survive Contact hydration");
+        assert.equal(await detailPage.locator("form[aria-label='Cerere de ofertă']").count(), 1);
+      }
+      assert.deepEqual(detailErrors, [], "Event detail browser errors at " + eventWidth);
+      await detailPage.close();
+    }
+
+    const noJsDetail = await browser.newPage({
+      viewport: { width: 390, height: 844 }, javaScriptEnabled: false,
+    });
+    const noJsResponse = await noJsDetail.goto(base + "/evenimente/nunti", {waitUntil: "domcontentloaded"});
+    assert.equal(noJsResponse.status(), 200);
+    assert.equal(await noJsDetail.locator(".gs241-mix__brief").count(), 1,
+      "Native event brief link must remain in server HTML without JavaScript");
+    await noOverflow(noJsDetail, "/evenimente/nunti no JS", 390);
+    await noJsDetail.close();
+
     const page = await browser.newPage({
       viewport: { width: 390, height: 844 }, reducedMotion: "reduce",
     });
