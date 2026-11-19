@@ -89,7 +89,7 @@ export function ConceptHomeV170() {
             </span>
             <h1 id="gs170-title" className="gs244-hero__title">
               <span>Evenimente</span>
-              <em>memorabile.</em>
+              <em>de neuitat.</em>
             </h1>
             <div className="gs244-hero__statement">
               <p className="gs170-hero__lead">
