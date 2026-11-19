@@ -1,3 +1,8 @@
+### 2026-11-19 — Contact prefill live status (V238)
+- Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role — polite noninterrupting status announcements; adapted native role on existing prefill summary, without JS package.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status messages should be exposed without requiring focus. Existing content stays visible; avoid intrusive alert/dialog or forced focus.
+- No third-party code/assets copied. Rejected assertive `role=alert` as unnecessarily disruptive. Real screen-reader/Chromium validation pending.
+
 ### 2026-11-19 — V237 / honest local coverage
 - https://developers.google.com/search/docs/fundamentals/creating-helpful-content — principle: accurate, people-first copy; reference only, no copied code.
 - https://developers.google.com/search/docs/appearance/structured-data/local-business — avoid unsupported service-area claims; reference only, no copied code.
