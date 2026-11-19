@@ -1,3 +1,8 @@
+### V241 / 2026-11-19 — Event detail editorial mix with one native prefilled brief (DRAFT)
+- Branch `design/v241-event-mix-brief` stacked on V240 exact-head `9a831fa7ccfe89a1a4dfffe9f2c768ca3a99c089`. V240 quality Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44472732386 passed, including Chromium and responsive screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44472732386/artifacts/14505216822 .
+- Event detail section /evenimente/$slug: original editorial cue-sheet visual design and one native CTA that preselects current event + suggested service mix in Contact, all still editable; individual detail links kept; no automatic sending. Scoped responsive CSS, keyboard focus, motion only Full hover. Added source/data regression. No new image, dependency, homepage section, backend, main or deployment change.
+- **V241 EXACT-HEAD QA and before/after screenshots NOT YET CONFIRMED AT DOCUMENT AUTHORING**. Never equate V240 passing with V241 passing. Next navigation/mobile audit. No merge/publish.
+
 ### V240 / 2026-11-19 — Events no-JS setlist fallback (DRAFT / QA PENDING)
 - Branch `fix/v240-events-nojs-setlist-guidance`, stacked on V239 PR #239.
 - /evenimente setlist now explains in native noscript markup that the interactive preview requires JavaScript and directs users to existing SSR event-detail links. Source regression added. No new assets/dependencies/backend, main unchanged.
