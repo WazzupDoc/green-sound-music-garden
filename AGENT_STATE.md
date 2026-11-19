@@ -1,3 +1,12 @@
+### V241 / 2026-11-19 — Event detail: editorial mix → prefilled Contact (DRAFT)
+- Rotation: /evenimente/$slug — recommended services section ONLY. Verified source defect: the previous list offered service-detail links but no single route carrying its suggested combination and event into the editable Contact brief.
+- Implementation: native shareable event+deduplicated allowed-service labels in Contact URL, one user-controlled conversion CTA, existing individual service-detail links retained, no automatic sending or booking. Distinct dark-emerald typographic numbered run-sheet with asymmetrical sticky editorial introduction on desktop and single-column mobile. No dependency/media added. Homepage contract unchanged.
+- Files: src/components/site/EventPage.tsx; src/routes/evenimente.$slug.tsx; src/styles/event-offerings-v241.css; src/test/event-mix-v241.test.ts; documentation.
+- Audit matrix: Event detail / urgency=high / before=two-column generic service rows without combined brief CTA / after=numbered mix list + editable native brief link / keyboard=focus-visible outlines / motion=hover-only under full-motion / Lite+reduced-motion=no transitions / SSR=native anchors / test=source and data label roundtrip / screenshots=unverified on V241 until exact-head CI artifact and manual side-by-side inspection.
+- V240 exact-head `9a831fa7ccfe89a1a4dfffe9f2c768ca3a99c089`: Actions 44472732386 **success** (TypeScript, production build, gzip, Vitest, Chromium browser responsive interactions, SSR Contact hydration, sitemap/SEO). Browser screenshot artifact 14505216822. Distinct V168 preview workflow was skipped; it is not required for quality CI.
+- V241: DO NOT mark validated before exact HEAD CI and actual 390/1440 screenshot comparison. No main/deploy changes. PR #19 remains conflicted, separate from this work.
+- Next rotation: navigation/menu mobile, especially focus/escape/overlay and real page transitions, then gallery and global footer. Do not revisit homepage hero without evidence of a distinct issue.
+
 ### V240 / 2026-11-19 — Events setlist no-JS guidance (DRAFT)
 - Area: /evenimente index; defect: interactive selection buttons cannot change the preview without JavaScript, although direct detail routes remain linked.
 - Change: native noscript guidance points to each existing SSR detail link; source regression added. No homepage, assets, dependency or backend changes.
