@@ -1,3 +1,6 @@
+### V235 / 2026-11-19
+No new assets, media, fonts, icons, or dependencies. Existing service arrows are unchanged Lucide components; only their CSS motion eligibility changed.
+
 ### V234 / 2026-11-19
 No new assets, fonts, images, licenses or external dependencies; existing authorized assets unchanged.
 

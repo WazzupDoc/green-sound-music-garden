@@ -1,3 +1,6 @@
+### V235 / 2026-11-19 — Editorial link motion opt-in (DRAFT / QA PENDING)
+- Branch `fix/v235-editorial-link-motion-gate`, stacked on V234 PR #234. CSS-only: homepage editorial service-link arrow translates on hover exclusively with fine hover, Full mode and no reduced-motion preference; color/opacity feedback preserved. No homepage section, media or dependency added. Exact-head TypeScript, SSR, Vitest, six-width Chromium, and matched before/after screenshots NOT VERIFIED. Main unchanged.
+
 ### V234 / 2026-11-19 — Finder keyboard shortcut safety (DRAFT)
 - Branch `fix/v234-finder-shortcut-form-safety`, stacked on V233 PR #233. Finder Ctrl/Cmd+K no longer intercepts shortcuts in input/textarea/select/contenteditable or an open dialog. Added source regression test. Exact-head CI, SSR/Vitest and matched Chromium screenshots pending. Main unchanged; do not merge or publish.
 
