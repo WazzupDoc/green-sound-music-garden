@@ -121,6 +121,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
   const chosenServices = useWatch({ control, name: "services" }) ?? [];
   const chosenEvent = useWatch({ control, name: "eventType" });
+  const messageLength = (useWatch({ control, name: "message" }) ?? "").length;
   const suggestions = quoteRecommendations(chosenEvent);
   const selectedServiceCount = chosenServices.filter(label => label !== ADVICE_SERVICE_LABEL).length;
   const wantsAdvice = chosenServices.includes(ADVICE_SERVICE_LABEL);
@@ -431,7 +432,10 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
       <div className="md:col-span-2">
         <label htmlFor="q-message" className={labelCls}>Detalii <span className="text-muted-foreground">(opțional)</span></label>
-        <textarea id="q-message" rows={4} maxLength={1500} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "q-msg-err" : undefined} {...register("message")} />
+        <textarea id="q-message" rows={4} maxLength={1500} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "q-message-count q-msg-err" : "q-message-count"} {...register("message")} />
+        <p id="q-message-count" className="mt-1.5 text-xs text-muted-foreground" aria-live="off">
+          {messageLength} / 1500 caractere · Detaliile sunt opționale.
+        </p>
         <FieldError id="q-msg-err" msg={errors.message?.message} />
       </div>
 
