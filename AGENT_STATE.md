@@ -1,3 +1,7 @@
+### 2026-11-19 V238 — Contact prefill announcement (DRAFT / QA PENDING)
+- Single zone: Contact. Hydration adds the prefilled event/services summary after the initial SSR render; changed the existing summary to `role=status`, `aria-live=polite`, `aria-atomic=true` so assistive technology can announce it. No automatic send, no backend, no new homepage section, assets or dependencies.
+- QA gate: exact-head CI, screen-reader announcement, SSR/hydration, 390/1440 matched Chromium screenshots and six-width browser regression NOT VERIFIED. Do not merge or deploy. Next rotation: /evenimente details.
+
 ### 2026-11-19 V237 — Homepage editorial programme / geographical accuracy
 - Observed: footer asserted nationwide service, unsupported by verified service-area data. Changed footer to Pitești / Argeș and other locations on request. Source: `src/components/atelier/ProductionIndex.tsx`.
 - Single-zone audit: homepage editorial programme. Visual difference is footer copy, not redesign. No screenshot/browser test available this run; release blocked pending exact-head CI, 390/1440 before/after, six-width checks and owner confirmation of service area.

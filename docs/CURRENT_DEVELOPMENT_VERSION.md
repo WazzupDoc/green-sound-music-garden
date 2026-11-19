@@ -1,3 +1,7 @@
+### V238 / 2026-11-19 — Contact prefill accessible status (DRAFT / QA PENDING)
+- Branch `fix/v238-contact-prefill-status` stacked on V237. Existing hydrated prefill summary now uses a polite atomic status region, to expose selected event/date/location/services without stealing keyboard focus. No new UI sections or backend; main unchanged.
+- Exact-head CI, TypeScript/SSR/Vitest, screen-reader behavior and Chromium 390/1440 before/after and six widths pending. Do not merge/deploy. Next: /evenimente details.
+
 ### V237 / 2026-11-19 — Homepage service-area claim (DRAFT / QA PENDING)
 - Branch `fix/v237-homepage-geographic-claim` stacked on V236. Editorial programme footer no longer claims nationwide coverage without confirmation; now reads Pitești / Argeș, other locations on request. No new section, asset, dependency, backend or automatic publishing. Chromium matched 390/1440 screenshots, six-width audit, TypeScript/SSR/Vitest and exact-head CI pending. Main unchanged. Next: Contact browser QA and Event detail audit.
 

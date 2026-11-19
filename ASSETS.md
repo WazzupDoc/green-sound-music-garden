@@ -1,3 +1,6 @@
+### V238 / 2026-11-19
+No assets, fonts, icons, photos, videos or third-party dependencies added; semantic markup only.
+
 ### V237 / 2026-11-19
 - No assets, fonts, images, video, icons or third-party code added. Homepage copy-only correction.
 
