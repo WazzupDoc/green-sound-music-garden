@@ -1,6 +1,8 @@
 /* V246: mobile menu exit remains visible while the six-link index scrolls.
    Native dialog, no JS scroll listener, no external asset/dependency. */
-@media (max-width: 850px) {
+/* Match the actual desktop navigation handoff at min-width: 1024px.
+   At 851–1023px the native mobile dialog still opens and must keep its close control visible. */
+@media (max-width: 1023px) {
   dialog.atelier-mobile-menu[open] .gsm-nav-index__top {
     position: sticky;
     top: 0;
