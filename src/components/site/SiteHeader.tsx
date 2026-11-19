@@ -116,6 +116,9 @@ export function SiteHeader() {
       // Preserve native editing shortcuts and never intercept keys inside an open dialog.
       if (editing || hasModal) return;
       event.preventDefault();
+      // The finder takes precedence over the desktop services popover.
+      // Close the popover before mounting the modal to avoid two active menus.
+      setServicesOpen(false);
       setOpen(false);
       setFinderActivated(true);
       setFinderOpen(previous => !previous);
