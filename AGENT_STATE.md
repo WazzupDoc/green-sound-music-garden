@@ -1,3 +1,9 @@
+### V244 FINAL browser review / 2026-11-19 — photographic editorial hero
+- Verified code HEAD before this documentation update: `e0dc43b2e71497bdbbe283f693d199223b54c7ed`; quality Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44487061420 **SUCCESS**: typecheck, production SSR/Vite build, gzip budgets, 66 Vitest files / 175 tests, real Chromium six widths, image decoded, Contact hydration, sitemap/20-page SEO.
+- After screenshots 390/1440: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44487061420/artifacts/14511051859 (v244-editorial-cover-390.png; v244-editorial-cover-1440.png; full-page editorial-home-*). Before V241 at same viewports: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44478443449/artifacts/14507836105 . Captures inspected: original photo visibly brighter / separate editorial layout, old faux console and glowing baseline gone; serif emphasis visibly rendered, subdued green header/CTA. Mobile shows photographic banner then readable typographic cover; no horizontal overflow in six widths.
+- Actual visual verdict: noticeably different at 390/1440, but only HERO was changed; services, films, process and remaining homepage sections await user evaluation and next rotation. No claimed conversion/Lighthouse improvements or production publishing.
+- Release: PR #244 remains DRAFT, main unmodified; inspect auto-deploy, main backup tag/rollback and obtain separate publish authorization before merge. PR #19 still conflicted.
+
 ### V244 / 2026-11-19 — Homepage hero editorial cover (DRAFT)
 - User feedback: V241 screenshot homepage looks too templated / generic, especially dark-lost authentic image, artificial glowing waveform/faux mixing console, pill CTA treatment. Visual defect confirmed from actual V241 screenshot, NOT a measured UX conversion claim.
 - Single-zone rotation: HOME HERO ONLY; all other routes/services/film functionality unchanged.
