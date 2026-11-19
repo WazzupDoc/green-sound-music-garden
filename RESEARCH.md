@@ -1,3 +1,8 @@
+### 2026-11-19 — V239 footer factual accuracy
+- https://developers.google.com/search/docs/appearance/structured-data/local-business — official documentation; business facts should reflect real verified information. Adapted: removed an unsupported founding-year claim from footer. No external code/assets copied.
+- https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — descriptive links support navigation; existing labeled footer navigation retained.
+- Rejected: adding a decorative timeline or fabricated founding-year milestone. No dependency or asset license applicable.
+
 ### 2026-11-19 — Contact prefill live status (V238)
 - Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role — polite noninterrupting status announcements; adapted native role on existing prefill summary, without JS package.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status messages should be exposed without requiring focus. Existing content stays visible; avoid intrusive alert/dialog or forced focus.
