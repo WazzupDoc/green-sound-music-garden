@@ -509,7 +509,7 @@ async function main() {
     assert.match(await sitemap.text(), /<loc>/);
     assert.deepEqual(errors, [], "Secondary route browser errors");
     await page.close();
-    console.log("PASS V170 owner-selected source-photo stage, animated mixing deck and beams, 5 featured + 3 real service links, 4-step process, 3 source films, Lite/reduced motion, responsive navigation, Contact, portfolio, sitemap and six-width pages.");
+    console.log("PASS photographic homepage, eight service links in four groups, production steps, three films, keyboard and adaptive modes, responsive navigation, Contact, portfolio and six-width pages.");
   } finally {
     await browser.close();
   }
