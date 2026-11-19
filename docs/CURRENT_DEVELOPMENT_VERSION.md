@@ -1,3 +1,6 @@
+### V237 / 2026-11-19 — Homepage service-area claim (DRAFT / QA PENDING)
+- Branch `fix/v237-homepage-geographic-claim` stacked on V236. Editorial programme footer no longer claims nationwide coverage without confirmation; now reads Pitești / Argeș, other locations on request. No new section, asset, dependency, backend or automatic publishing. Chromium matched 390/1440 screenshots, six-width audit, TypeScript/SSR/Vitest and exact-head CI pending. Main unchanged. Next: Contact browser QA and Event detail audit.
+
 ### V236 / 2026-11-19 — Contact conversion copy (DRAFT / QA PENDING)
 - Branch `fix/v236-contact-clear-conversion-copy`, stacked on V235. Contact headline now asks directly about an event; initial instructions specify event type/date/location/services and accurately explain that the user sends via WhatsApp/email. Third step names the actual manual handoff. No backend, auto-send, homepage changes, dependencies or media.
 - Real Chromium 390/1440 before/after, six-width regression, exact-head TypeScript/SSR/Vitest/CI NOT YET VERIFIED. Main unchanged. Next: Contact screenshots and form/clipboard acceptance/refusal.
