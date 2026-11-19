@@ -1,3 +1,6 @@
+### V241 / 2026-11-19 — Event detail mix
+- 100% original first-party CSS, native HTML and existing Lucide ArrowUpRight already installed. No imported external photos/fonts/icon sets, no new media, tracking or dependencies. Existing business-authorized photographs and service dataset unchanged.
+
 ### V240 / 2026-11-19
 No new media, fonts, icons, dependencies or external assets. Existing event photographs remain unchanged; no TikTok material used.
 
