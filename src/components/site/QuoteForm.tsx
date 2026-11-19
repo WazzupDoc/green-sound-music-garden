@@ -426,12 +426,12 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
 
       <div>
         <label htmlFor="q-email" className={labelCls}>Email <span className="text-muted-foreground">(opțional)</span></label>
-        <input id="q-email" type="email" autoComplete="email" className={fieldCls} aria-invalid={!!errors.email} aria-describedby={errors.email ? "q-email-err" : undefined} {...register("email")} />
+        <input id="q-email" type="email" maxLength={120} autoComplete="email" className={fieldCls} aria-invalid={!!errors.email} aria-describedby={errors.email ? "q-email-err" : undefined} {...register("email")} />
         <FieldError id="q-email-err" msg={errors.email?.message} />
       </div>
       <div className="md:col-span-2">
         <label htmlFor="q-message" className={labelCls}>Detalii <span className="text-muted-foreground">(opțional)</span></label>
-        <textarea id="q-message" rows={4} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "q-msg-err" : undefined} {...register("message")} />
+        <textarea id="q-message" rows={4} maxLength={1500} placeholder="Program, momente speciale, preferințe muzicale…" className={fieldCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "q-msg-err" : undefined} {...register("message")} />
         <FieldError id="q-msg-err" msg={errors.message?.message} />
       </div>
 
