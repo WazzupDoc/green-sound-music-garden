@@ -11,6 +11,7 @@ describe("V246 mobile menu close access", () => {
   });
 
   it("keeps a visible close action in the scrolling native dialog", () => {
+    expect(css).toContain("@media (max-width: 1023px)");
     expect(css).toMatch(/\.gsm-nav-index__top\s*\{[^}]*position:\s*sticky/s);
     expect(css).toMatch(/\.gsm-nav-index__close\s*\{[^}]*min-height:\s*44px/s);
     expect(header).toContain('onCancel={(event) => {');
