@@ -14,7 +14,7 @@ export function EventPage({event}:{event:EventType}){
     <PageHero eyebrow={`Evenimente · ${event.name}`} title={event.h1} lead={event.lead}
       image={event.image} transitionName={`gs-event-${event.slug}`}
       crumbs={[{name:"Acasă",to:"/"},{name:"Evenimente",to:"/evenimente"},{name:event.name}]}>
-      <a href="#oferta-titlu" className="rs-inline-link" onClick={(click) => { click.currentTarget.ownerDocument.getElementById("oferta-titlu")?.focus({ preventScroll: true }); }}>Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
+      <a href={briefHref} className="rs-inline-link" aria-label={`Pregătește cererea pentru ${event.name} cu servicii propuse; selecția se poate modifica în Contact`}>Pregătește cererea pentru {event.name.toLowerCase()} <ArrowUpRight size={18} aria-hidden /></a>
       <a href="#desfasurator-eveniment" className="rs-inline-link" onClick={(event) => { event.currentTarget.ownerDocument.getElementById("desfasurator-eveniment")?.focus({ preventScroll: true }); }}>Vezi desfășurătorul <ArrowUpRight size={18} aria-hidden /></a>
       <a href="#servicii-potrivite" className="rs-inline-link" onClick={(event) => { event.currentTarget.ownerDocument.getElementById("servicii-potrivite")?.focus({ preventScroll: true }); }}>Vezi serviciile potrivite <ArrowUpRight size={18} aria-hidden /></a>
       <a href={business.phoneHref} className="rs-inline-link"><Phone size={18} aria-hidden /> Sună Green Sound</a>
