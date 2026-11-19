@@ -1,3 +1,9 @@
+### V240 / 2026-11-19 — Events setlist no-JS guidance (DRAFT)
+- Area: /evenimente index; defect: interactive selection buttons cannot change the preview without JavaScript, although direct detail routes remain linked.
+- Change: native noscript guidance points to each existing SSR detail link; source regression added. No homepage, assets, dependency or backend changes.
+- QA: TypeScript, SSR, Vitest, Chromium before/after 390/1440 and six widths, and exact-head Actions NOT verified. No visual release claim; no merge/deploy.
+- Next: event detail conversion and keyboard audit; validate no-JS output in real browser.
+
 ### 2026-11-19 V239 — Footer factual-claim audit (DRAFT / QA PENDING)
 - Single zone: global footer. Removed unsupported founding-year assertion from visible company description; preserved Pitești/Argeș and conditional other-location copy, all links, navigation and Light Desk. Regression test added.
 - Visual delta: one sentence only, not a redesign. Same-route 390/1440 before/after screenshots, six-width Chromium, TS/SSR/Vitest and exact-head Actions NOT VERIFIED. Do not merge/deploy. Next: /evenimente details and mobile CTA.
