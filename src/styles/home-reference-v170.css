@@ -70,39 +70,6 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 .gs170-home .gs170-wave__soft{stroke:#45ff76;stroke-width:16;opacity:.1;filter:blur(12px)}
 .gs170-home .gs170-wave__main{stroke:#60ff9d;stroke-width:1.6;filter:drop-shadow(0 0 7px #5aff81);stroke-dasharray:none}
 .gs170-home .gs170-wave__pulse{stroke:#edffdf;stroke-width:3;opacity:.85;filter:drop-shadow(0 0 8px #92ff8e);stroke-linecap:round;stroke-dasharray:55 1550;animation:gs170-waveflow 8s linear infinite}
-/* Services / all eight real services, five featured visual cards. */
-.gs170-home .gs170-services{padding:58px 0 0;background:
- radial-gradient(ellipse at 80% 10%,#16442b88,transparent 55%),#041710;color:#f5fff4}
-.gs170-home .gs170-services__grid{display:grid;grid-template-columns:minmax(175px,1.2fr) repeat(5,minmax(0,1fr));gap:clamp(8px,.9vw,15px);align-items:stretch}
-.gs170-home .gs170-services__intro{padding:4px 10px 10px 0;min-width:0}
-.gs170-home .gs170-services__intro h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2.15rem,2.65vw,3.65rem);line-height:1.01;letter-spacing:-.057em;font-weight:500;margin:18px 0 12px}
-.gs170-home .gs170-services__intro h2 em{color:#92f99a}
-.gs170-home .gs170-services__intro p{font-size:.78rem;line-height:1.5;color:#c0dac6}
-.gs170-home .gs170-service-card{position:relative;isolation:isolate;min-width:0;min-height:clamp(245px,20vw,315px);border:1px solid #4bf86b72;clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);background:#082a19;color:white;overflow:hidden;transition:transform .4s,border-color .3s,filter .3s}
-.gs170-home .gs170-service-card:hover,.gs170-home .gs170-service-card:focus-visible{transform:translateY(-8px);border-color:#8effaa;filter:drop-shadow(0 0 14px #69ff7160)}
-.gs170-home .gs170-service-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.1) brightness(.85);transition:transform .65s}
-.gs170-home .gs170-service-card:hover img{transform:scale(1.06)}
-.gs170-home .gs170-service-card__veil{position:absolute;inset:0;background:linear-gradient(180deg,transparent 4%,#04201254 39%,#02170ce8 65%,#021008fc 100%)}
-.gs170-home .gs170-service-card__number{position:absolute;z-index:1;top:13px;left:18px;font-size:.62rem;font-weight:850;color:#d4ffd3;letter-spacing:.16em}
-.gs170-home .gs170-service-card__body{position:absolute;z-index:2;bottom:19px;left:clamp(17px,1.7vw,29px);right:clamp(15px,1.1vw,21px);display:flex;flex-direction:column;align-items:flex-start;gap:7px;min-width:0}
-.gs170-home .gs170-service-card__body>svg{color:#83fb86;margin-bottom:3px}
-.gs170-home .gs170-service-card__body strong{font-family:var(--font-display);font-size:clamp(.89rem,1.08vw,1.25rem);line-height:1.13;letter-spacing:-.02em}
-.gs170-home .gs170-service-card__body small{font-size:clamp(.65rem,.73vw,.79rem);line-height:1.4;color:#dfefe0;max-width:22ch;padding-right:8px}
-.gs170-home .gs170-service-card__arrow{position:absolute;right:3px;bottom:2px;color:#7eff87}
-.gs170-home .gs170-services__extras{display:flex;gap:25px;align-items:center;flex-wrap:wrap;padding:25px 0 31px;border-bottom:1px solid #8be68d3a}
-.gs170-home .gs170-services__extras>span{font-size:.63rem;letter-spacing:.18em;font-weight:850;color:#a9ecb6}
-.gs170-home .gs170-services__extras nav{display:flex;gap:clamp(15px,2.8vw,48px);flex-wrap:wrap;align-items:center}
-.gs170-home .gs170-services__extras a{display:inline-flex;gap:10px;align-items:center;font-size:.78rem;color:#dff2df;font-weight:750;min-height:40px;transition:color .2s}
-.gs170-home .gs170-services__extras a:hover{color:#73fb86}
-.gs170-home .gs170-process{display:grid;grid-template-columns:minmax(195px,.95fr) minmax(0,4.6fr);gap:clamp(20px,3vw,55px);align-items:center;padding:clamp(27px,3.4vw,50px) 0;border-bottom:1px solid #91f08b37}
-.gs170-home .gs170-process__intro h2{font-family:var(--font-display,system-ui,sans-serif);font-size:clamp(2rem,2.8vw,3.5rem);line-height:1.1;margin:10px 0 0;font-weight:450;letter-spacing:-.06em}
-.gs170-home .gs170-process__intro h2 em{color:#83ff87}
-.gs170-home .gs170-process__steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,1.5vw,25px);padding:0;margin:0;list-style:none}
-.gs170-home .gs170-process__steps li{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:start;gap:11px;position:relative;min-width:0;padding:9px 0}
-.gs170-home .gs170-process__steps li>svg:first-child{color:#7afa85;flex-shrink:0}
-.gs170-home .gs170-process__steps strong{display:block;font-size:clamp(.76rem,.87vw,1rem);line-height:1.3;color:#edffed}
-.gs170-home .gs170-process__steps p{font-size:clamp(.64rem,.75vw,.83rem);line-height:1.48;color:#b8d2bd;margin:7px 0 0}
-.gs170-home .gs170-process__next{position:absolute;right:-9px;top:13px;color:#70de77}
 /* Portfolio / three grounded films, explicit click opens a real video dialog */
 .gs170-home .gs170-films{padding:clamp(43px,5.2vw,86px) 0 clamp(60px,6vw,104px);background:linear-gradient(180deg,#041710,#02110c)}
 .gs170-home .gs170-films__grid{display:grid;grid-template-columns:minmax(198px,1.1fr) minmax(0,4.55fr);gap:clamp(25px,3vw,52px);align-items:start}
@@ -131,19 +98,10 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 .gs170-home .gs170-final p{font-size:clamp(.81rem,1vw,1.04rem);color:#d8eadd;line-height:1.6;margin:0}
 /* Responsive is art directed, not a scaled screenshot. */
 @media(max-width:1350px){
- .gs170-home .gs170-services__grid{grid-template-columns:repeat(5,minmax(0,1fr))}
- .gs170-home .gs170-services__intro{grid-column:1/-1;display:flex;align-items:center;gap:30px;justify-content:space-between;padding:0 0 18px}
- .gs170-home .gs170-services__intro h2{margin:0;font-size:clamp(1.9rem,3.6vw,3.2rem)}
- .gs170-home .gs170-services__intro p{max-width:20ch}
- .gs170-home .gs170-process{grid-template-columns:1fr}
 }
 @media(max-width:1100px){
  .gs170-home .gs170-stage__console{width:360px;height:185px;right:-72px;bottom:98px;opacity:.85}
  .gs170-home .gs170-hero h1{font-size:clamp(2.7rem,6vw,5.6rem)}
- .gs170-home .gs170-services__grid{grid-template-columns:repeat(3,minmax(0,1fr))}
- .gs170-home .gs170-services__intro{grid-column:1/-1}
- .gs170-home .gs170-service-card{min-height:300px;clip-path:none;border-radius:7px}
- .gs170-home .gs170-process__steps{grid-template-columns:repeat(2,minmax(0,1fr))}
  .gs170-home .gs170-films__grid{grid-template-columns:1fr}
  .gs170-home .gs170-films__intro h2{max-width:730px}
  .gs170-home .gs170-final__inner{grid-template-columns:1fr auto}
@@ -163,11 +121,6 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
  .gs170-home .gs170-hero h1 em{white-space:normal}
  .gs170-home .gs170-hero__lead{max-width:43ch}
  .gs170-home .gs170-hero__control{margin-top:33px}
- .gs170-home .gs170-services__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .gs170-home .gs170-services__intro{display:block;padding-bottom:4px}
- .gs170-home .gs170-services__intro h2{font-size:clamp(2.3rem,7vw,3.8rem);margin:12px 0}
- .gs170-home .gs170-service-card{min-height:270px}
- .gs170-home .gs170-services__extras nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:7px 14px}
  .gs170-home .gs170-films__cards{grid-template-columns:repeat(2,minmax(0,1fr))}
  .gs170-home .gs170-final__inner{grid-template-columns:1fr}
  .gs170-home .gs170-final__inner>p{grid-column:1;grid-row:auto}
@@ -182,14 +135,6 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
  .gs170-home .gs170-hero__control{width:100%;flex-wrap:wrap;border-radius:15px;gap:5px}
  .gs170-home .gs170-hero__control-label{flex-basis:100%;min-height:24px}
  .gs170-home .gs170-stage__console{right:-95px;opacity:.32}
- .gs170-home .gs170-services{padding-top:42px}
- .gs170-home .gs170-services__grid{gap:10px}
- .gs170-home .gs170-service-card{min-height:245px}
- .gs170-home .gs170-service-card__body{left:14px;right:14px;bottom:15px}
- .gs170-home .gs170-service-card__body strong{font-size:.95rem}
- .gs170-home .gs170-service-card__body small{font-size:.7rem}
- .gs170-home .gs170-process__steps{grid-template-columns:1fr}
- .gs170-home .gs170-process__next{display:none}
  .gs170-home .gs170-films__cards{grid-template-columns:1fr}
  .gs170-home .gs170-films__intro h2{font-size:3.2rem}
  .gs170-home .gs170-final h2{font-size:2.9rem}
@@ -206,7 +151,6 @@ body:has(.gs170-home) .atelier-header__quote{background:#7cfb73;color:#001307;bo
 @media(prefers-reduced-motion:reduce){
  .gs170-home .gs170-stage__beams i,.gs170-home .gs170-stage__eq span,
  .gs170-home .gs170-wave__main,.gs170-home .gs170-wave__pulse,.gs170-home .gs170-stage__live{animation:none!important;transition:none!important}
- .gs170-home .gs170-service-card,.gs170-home .gs170-service-card img,
  .gs170-home .gs170-btn{transition:none!important}
 }
 html[data-gs-performance=lite] .gs170-home .gs170-stage__beams i,
@@ -223,8 +167,6 @@ html[data-gs-performance=lite] .gs170-home .gs170-stage__console{box-shadow:none
 
 /* V170 typography correction from real mobile screenshot: readable roman headlines with only green accents in italic Instrument Serif. */
 .gs170-home .gs170-hero h1 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
-.gs170-home .gs170-services__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
-.gs170-home .gs170-process__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
 .gs170-home .gs170-films__intro h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
 .gs170-home .gs170-final h2 em{font-family:var(--font-serif,Georgia,serif);font-weight:400;font-style:italic}
 
