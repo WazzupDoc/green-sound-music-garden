@@ -1,3 +1,8 @@
+### 2026-11-19 — V235 editorial hover motion
+- Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion — media query for reducing nonessential animation. Applied positive motion opt-in to existing arrow transform; no copied code or external asset.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover — detect hover-capable primary input, avoiding sticky touch hover. Adapted only conditional behavior, no new dependency.
+- Rejected: unconditional transform on hover (reduced-motion inconsistency); JavaScript motion detection (unnecessary complexity and hydration cost). Visual browser QA pending.
+
 ### 2026-11-19 — Keyboard shortcut ownership
 - https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey — modifier shortcuts should not override user editing context.
 - https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialog retains keyboard interaction; global finder must not steal focus.
