@@ -6,6 +6,7 @@ import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import liveSetlistCss from "@/styles/navigation-v189.css?inline";
 import restoredNavCss from "@/styles/navigation-v215.css?inline";
 import productionNavCss from "@/styles/navigation-v217.css?inline";
+import mobileExitCss from "@/styles/navigation-v246.css?inline";
 import { ServiceDirectoryV217 } from "./ServiceDirectoryV217";
 import { business } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
@@ -174,6 +175,7 @@ export function SiteHeader() {
       <style>{liveSetlistCss}</style>
       <style>{restoredNavCss}</style>
       <style>{productionNavCss}</style>
+      <style>{mobileExitCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
