@@ -1,3 +1,8 @@
+### 2026-11-20 — V230 root snippet accuracy
+- Google Search Central: https://developers.google.com/search/docs/appearance/snippet — guidance reference for accurate, descriptive snippets; no guarantee Google will display supplied meta description.
+- MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name — metadata semantics reference.
+- Adapted: replace unverified founding-year claim with actual services and geographic coverage. Rejected: keyword repetition, invented years/ratings, additional SEO package. No external code, assets or dependencies added. Links documented; live SERP/volume measurements not performed.
+
 ### 2026-11-18 / V229 — Accessible form errors
 - WAI W3C Understanding SC 3.3.1 Error Identification: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html — validation must identify the erroneous field; adapted explicit error description on focusable service checkboxes. No external code copied.
 - MDN aria-describedby: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby — references may include multiple IDs; adapted existing guide plus error ID conditionally. No external code copied.
