@@ -1,3 +1,9 @@
+### V263 / 2026-11-20 — VideoLite start offset validation (DRAFT / QA PENDING)
+- Single zone: shared film player. The existing video.start field was inserted directly into the consented YouTube embed query. Now only safe whole seconds in (0, 86400] are forwarded; invalid/negative/fractional/non-finite offsets are omitted. The existing explicit Play/Stop and no-preconsent third-party loading remain unchanged.
+- Files: src/components/site/VideoLite.tsx and src/test/video-start-offset-v263.test.ts. No new dependencies or assets; no homepage structural changes. This is a functional hardening, **not a visual redesign**.
+- Exact-head CI, TypeScript, SSR, Vitest, real Chromium 390/1440 matched screenshots and six-width consent/keyboard tests NOT VERIFIED. No release claim. Main/deploy untouched.
+- Next: prioritize real-browser verification of stacked VideoLite changes, film provenance and event→Contact prefill; do not continue stacking unvalidated fixes indefinitely.
+
 ### V262 / 2026-11-20 — VideoLite embed safety (DRAFT / QA PENDING)
 - Zone: shared YouTube film player. Reject noncanonical video IDs before iframe creation; show unavailable disabled action instead of an invalid embed. Source regression: src/test/video-embed-id-v262.test.ts. No new media or dependencies.
 - PR #262 stacked on V261; implementation SHA d208796015038dcd2d7191a4da7dc05646b22293. Exact-head CI, real Chromium before/after 390/1440, six-width regression, TypeScript/SSR/Vitest and active play/stop **NOT VERIFIED**. No visual redesign claimed.
