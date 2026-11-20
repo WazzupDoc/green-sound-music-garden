@@ -1,3 +1,8 @@
+### 2026-11-20 — Contact privacy navigation
+- MDN `target=_blank`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target — new browsing context; announce the behavior to visitors. Applied to the existing privacy link so the unsent draft stays mounted.
+- W3C G201: https://www.w3.org/WAI/WCAG21/Techniques/general/G201 — explain new-window behavior. Adapted explicit visible `(filă nouă)` and accessible label.
+- Rejected: localStorage/sessionStorage persistence (unnecessary retention of personal data), duplicating legal text inside form, modal overlay (additional complexity). No external code or media copied.
+
 ### 2026-11-20 — V230 root snippet accuracy
 - Google Search Central: https://developers.google.com/search/docs/appearance/snippet — guidance reference for accurate, descriptive snippets; no guarantee Google will display supplied meta description.
 - MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name — metadata semantics reference.
