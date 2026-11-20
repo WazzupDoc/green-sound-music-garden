@@ -327,7 +327,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       </div>
       <div>
         <label htmlFor="q-phone" className={labelCls}>Telefon *</label>
-        <input id="q-phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="07xx xxx xxx" className={fieldCls} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "q-phone-err" : undefined} {...register("phone")} />
+        <input id="q-phone" type="tel" inputMode="tel" maxLength={32} autoComplete="tel" placeholder="07xx xxx xxx" className={fieldCls} aria-invalid={!!errors.phone} aria-describedby={errors.phone ? "q-phone-err" : undefined} {...register("phone")} />
         <FieldError id="q-phone-err" msg={errors.phone?.message} />
       </div>
 
