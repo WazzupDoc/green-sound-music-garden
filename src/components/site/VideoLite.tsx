@@ -44,7 +44,11 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
   const validVideoId = /^[A-Za-z0-9_-]{11}$/.test(video.id);
   const canRenderPlayer = validVideoId && active && previousVideoIdRef.current === video.id;
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
-  if (video.start) params.set("start", String(video.start));
+  // Only allow a bounded whole-second offset in the consented embed URL.
+  // Invalid data must not become an arbitrary third-party query parameter.
+  if (typeof video.start === "number" && Number.isSafeInteger(video.start) && video.start > 0 && video.start <= 86400) {
+    params.set("start", String(video.start));
+  }
 
   return (
     <figure className={className}>
