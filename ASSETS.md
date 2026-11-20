@@ -1,3 +1,6 @@
+### V258 / 2026-11-20
+No new media, fonts, icons or external assets. Existing event photos unchanged. Browser evidence pending.
+
 ### V257 / 2026-11-20
 No new media, icons, fonts, imagery, libraries or third-party assets. Event photographs and video sources unchanged; TikTok reference clips not used.
 
