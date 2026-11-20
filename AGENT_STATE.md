@@ -1,3 +1,7 @@
+### V258 / 2026-11-20 — Contact native-query hydration (DRAFT / QA PENDING)
+- Area: Contact prefill from event details. V257 exact-head browser job failed waiting for fifth preselected service after click; cause not yet proven. Candidate fix: allowlisted address-bar query fallback after hydration if router search state is empty. Source test added. Before/after Chromium screenshots and exact-head CI pending; no visual redesign claim. Next: browser handoff audit and media provenance.
+- Main/deploy unchanged. PR #258.
+
 ### V257 / 2026-11-20 — Event detail hero conversion (DRAFT / QA PENDING)
 - Area: all /evenimente/$slug details. Previous hero CTA jumped to bottom QuoteSection, losing the already available event+service-prefill handoff. New hero CTA reuses the exact existing Contact URL with editable event and suggested services. No new service, media or backend.
 - Matrix: Event detail conversion | priority high | functional fix implemented | visual delta: hero link text unchanged, navigation target changes | browser screenshots 390/1440, six widths, keyboard, SSR and exact-head CI pending | next: event media provenance and Contact handoff browser verification.
