@@ -1,3 +1,8 @@
+### V230 / 2026-11-20 — Global SEO metadata (draft PR #265)
+- One-zone audit: SSR root meta description asserted unverified business start year `din 2008`. Replaced with verified service categories and service area in `src/routes/__root.tsx`; added `src/test/root-seo-trust-v230.test.ts`.
+- Branch `fix/v230-root-seo-truthful-description`, source SHA `328f9e93c87caac6ef8235bf9ad3711227880a26`; PR https://github.com/WazzupDoc/green-sound-music-garden/pull/265 stacked on V229. Exact-head CI, real browser, screenshots **NOT VERIFIED**; no visual redesign claim. PR initially mergeable=false (stacked base; investigate conflicts before merge).
+- Rotation next: Contact clipboard-denied UX or /evenimente mobile flow, depending on latest verified branch. No main/deployment changes.
+
 ### V229 / 2026-11-18 — Contact service error accessible announcement (draft)
 | Area | Observed issue | Implementation | QA | Next |
 | --- | --- | --- | --- | --- |
