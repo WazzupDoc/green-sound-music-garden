@@ -1,3 +1,6 @@
+### V260 / 2026-11-20 — Contact phone input bound (DRAFT / QA PENDING)
+- Draft branch `fix/v260-contact-phone-input-guard` stacked on V259. Native phone maxLength=32 and matching Zod maximum, plus regression coverage. No new dependencies, media, homepage changes or backend. Exact-head CI and matched Chromium captures not yet confirmed; do not merge or publish.
+
 ### V259 / 2026-11-20 — Discarded Contact URL privacy (DRAFT / QA PENDING)
 - Draft PR #259 `fix/v259-contact-discard-url-privacy` stacked on V258. Explicit discard clears brief parameters from the browser URL, preventing reload from restoring them. No new dependency or backend. Source regression only; CI and Chromium before/after not yet confirmed. Main untouched.
 
