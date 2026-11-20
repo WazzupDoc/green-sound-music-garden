@@ -1,3 +1,6 @@
+### V232 / 2026-11-20
+No new media, fonts, libraries or external code. Existing /evenimente imagery remains unchanged; its event-specific ownership/provenance must be checked against owner originals before any affirmative attribution.
+
 ### V231 / 2026-11-20
 No new images, icons, fonts, video, audio or external dependencies. Existing first-party form and Lucide icons unchanged.
 
