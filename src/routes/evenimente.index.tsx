@@ -152,7 +152,7 @@ function Events() {
             <a href={"/contact?event=" + encodeURIComponent(activeEvent.formLabel) + "#contact-form-title"} className="gs173-cues__contact">
               Cere ofertă pentru {activeEvent.name.toLowerCase()} <ArrowUpRight size={19} aria-hidden="true" /></a>
           </div>
-          <p className="gs173-cues__note">Fotografii din materialele Green Sound existente. Prezentarea este orientativă, fără prețuri sau disponibilitate confirmată; nicio cerere nu se trimite automat.</p>
+          <p className="gs173-cues__note">Imaginile ilustrează tipuri de evenimente, fără a certifica locul, data sau participarea Green Sound la un eveniment anume. Desfășurătorul este orientativ; prețurile și disponibilitatea se confirmă separat. Cererea nu se trimite automat.</p>
         </div>
       </section>
       <QuoteSection title="Pregătim împreună evenimentul tău"
