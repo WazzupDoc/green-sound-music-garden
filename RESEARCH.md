@@ -1,3 +1,8 @@
+### 2026-11-20 — V235 native fragment navigation
+- MDN https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page — fragment navigation handles location/hash and scrolling natively. Adaptation: remove pre-navigation focus handlers, preserve focusable destinations.
+- W3C https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR37 — focus management requires verified destinations and timing. Rejected: custom timeout or scroll/focus choreography; no dependency/code copied.
+- Browser verification pending; not a measured visual redesign.
+
 ### 2026-11-20 — Event anchor focus
 - MDN fragment links: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page — native fragment navigation retained.
 - W3C focus guidance: https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR37 — script-driven focus needs a focusable destination. Avoid premature focus on unverified heading; test actual browser behavior before release.

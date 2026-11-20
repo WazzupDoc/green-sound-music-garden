@@ -1,3 +1,8 @@
+### V235 / 2026-11-20 — Event detail section anchors
+| Zone | Defect | Change | QA | Next |
+| --- | --- | --- | --- | --- |
+| Event hero → timeline/services | Imperative focus before native hash navigation risks scroll/focus mismatch | Keep native fragments and focusable section destinations; remove two premature handlers | Source regression added; browser/CI pending | Validate 390/1440 focus, hash and scroll, then Contact |
+
 ### V234 / 2026-11-20 — Event detail quote handoff
 | Zone | Defect | Change | QA | Next |
 | --- | --- | --- | --- | --- |
