@@ -1,3 +1,8 @@
+### 2026-11-20 — V258 Contact query recovery
+- https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams — native parsing of address-bar query; original code uses existing `validateBrief` allowlist rather than reflecting raw values.
+- https://tanstack.com/router/latest/docs/framework/react/guide/search-params — route search validation remains canonical; address fallback only after hydration. No third-party code copied or dependency added.
+- Rejected unvalidated query reflection and replacing the router. Root cause and browser effectiveness still require CI confirmation.
+
 ### 2026-11-20 — V257 event-detail conversion
 - https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — a link should lead to its described destination. Adaptation: hero CTA goes directly to the existing editable Contact brief; no external code copied.
 - https://web.dev/learn/accessibility/links — descriptive native links preserve keyboard and no-JS behavior. Adaptation: retain native anchor rather than introduce a scripted modal.
