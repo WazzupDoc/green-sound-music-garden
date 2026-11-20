@@ -7,6 +7,7 @@ describe("V256 film keyboard focus", () => {
     const source = readFileSync(resolve(process.cwd(), "src/components/site/VideoLite.tsx"), "utf8");
     expect(source).toContain("focus-visible:outline-[#B5F4C5]");
     expect(source).toContain("focus-visible:-outline-offset-[3px]");
-    expect(source).toContain("aria-label={`Redă videoclipul: ${video.title}`}");
+    expect(source).toContain("`Redă videoclipul: ${video.title}`");
+    expect(source).toContain("`Filmarea nu este disponibilă: ${video.title}`");
   });
 });
