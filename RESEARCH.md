@@ -1,3 +1,9 @@
+### V236 / 2026-11-20 — MediaLightbox consent gate (DRAFT, QA pending)
+- Base V223 exact-head c2be7b21dc620dd30166377190fb8ccf5b421963, Actions 44807070192 success. Branch `fix/v236-lightbox-consent-gate`.
+- Rotation: portfolio/gallery lightbox. Previously opening a video mounted an autoplay YouTube iframe immediately. New per-film click-to-play consent, Stop action, video ID guard, narrower iframe permissions, and reduced-motion-aware filmstrip scroll. No new packages or assets. Homepage sections and main untouched.
+- Test added: `src/components/site/media-lightbox-v236.test.ts` (source regression). Exact-head TypeScript/SSR/Vitest/Chromium, visual before/after and CI NOT YET VERIFIED. Do not mark validated until these pass.
+- Research: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe (iframe loading/permissions); https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion (motion preference). No external code copied, license N/A. Rejected autoplay-on-open and embedding a third-party player before explicit user action. Next: browser-check lightbox keyboard, mobile, iframe request timing, then Contact funnel.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 
