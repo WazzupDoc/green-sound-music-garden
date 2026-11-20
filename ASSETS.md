@@ -1,3 +1,6 @@
+### 2026-11-20 V234
+- No new assets, fonts, media, icons, or dependencies. Event quote anchor only.
+
 ### V233 / 2026-11-20
 No new assets. Existing video embeds remain unchanged; their ownership and event participation are not inferred from availability of URLs. Detail page now explicitly discloses illustrative use. Verify each asset's rights separately before any ownership claim.
 

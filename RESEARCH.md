@@ -1,3 +1,8 @@
+### 2026-11-20 — Event anchor focus
+- MDN fragment links: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page — native fragment navigation retained.
+- W3C focus guidance: https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR37 — script-driven focus needs a focusable destination. Avoid premature focus on unverified heading; test actual browser behavior before release.
+- No code copied, no new dependency. Alternative rejected: adding forced tabindex to every heading without validating scroll/focus requirements.
+
 ### 2026-11-20 — V233 event-detail film attribution
 - https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear labels should describe the actual content; adapted truthful video heading, no borrowed code.
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — third-party embeds should be deliberate and understandable; existing consent-driven VideoLite preserved, no new iframe implementation or dependencies.

@@ -1,3 +1,7 @@
+### V234 / 2026-11-20 — EVENT DETAIL QUOTE ANCHOR (DRAFT)
+- One zone: event detail hero quote anchor. Removed premature programmatic focus on an unverified heading; native hash scrolling remains. Other focusable section anchors unchanged. Regression `src/test/event-anchor-focus-v234.test.ts`.
+- Exact-head CI, real Chromium 390/1440 before/after and 6-width regression pending. No visual redesign claim. Main untouched. Next: verify quote focus/scroll and event media provenance.
+
 ### V233 / 2026-11-20 — EVENT DETAIL FILM TRUST (DRAFT)
 - Based on V232 PR #267 exact-head 26a870c038c7039cc0331dde17031066c57063a9; successful workflows #44768764706 and #44768744672.
 - Zone: event detail films. Replaced unverified archive-ownership heading with illustrative-purpose heading and explicit participation disclaimer. Preserved click-to-play YouTube and no-autoplay.

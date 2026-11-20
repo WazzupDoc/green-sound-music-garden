@@ -1,3 +1,8 @@
+### V234 / 2026-11-20 — Event detail quote handoff
+| Zone | Defect | Change | QA | Next |
+| --- | --- | --- | --- | --- |
+| Event hero → quote | Programmatic focus attempted on heading without verified focusability | Preserve native hash navigation; remove redundant focus call | Source regression added; Chromium/CI pending | Test mobile keyboard hash navigation, quote prefill and screenshots |
+
 ### V233 / 2026-11-20 — Event detail video provenance
 | Zone | Defect | Implementation | QA | Next |
 | --- | --- | --- | --- | --- |
