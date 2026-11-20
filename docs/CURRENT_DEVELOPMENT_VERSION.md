@@ -1,3 +1,9 @@
+### V231 / 2026-11-20 — CONTACT PRIVACY LINK / DRAFT
+- Stacked over V230 PR #265, baseline `34294aa39d27628a34e2fcf236e0e9fe0b85e946`; new branch `fix/v231-contact-privacy-policy-preserve-brief`.
+- Privacy-policy consent link now opens a visibly and accessibly disclosed new tab instead of discarding the unsent quote through same-tab navigation. No tracking or automatic submission.
+- Regression `src/test/contact-privacy-v231.test.ts`; exact-head CI and paired Chromium screenshots pending. No production or main update.
+- Next: event-detail mobile experience and original-media provenance.
+
 ### V229 / 2026-11-18 — CONTACT SERVICE ERROR ACCESSIBILITY (DRAFT)
 - Parent: PR #228 `5ee95ad80a0fc858830151f83c5dc18ee9e957a8`, exact-head successful workflow runs #44353108812 / #44353126124. Main remains `4312f845c2e70b59a54cca002037906c6852c47a`.
 - Contact's invalid services field previously focused the first native checkbox but only fieldset referenced error ID. Now each checkbox exposes `aria-invalid` and conditionally includes `q-services-err` in `aria-describedby` when validation fails. No change to services, selection logic, send semantics, homepage, dependencies or assets.

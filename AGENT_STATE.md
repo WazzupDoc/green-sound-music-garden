@@ -1,3 +1,8 @@
+### V231 / 2026-11-20 — Contact privacy handoff (draft)
+- Zone: Contact consent/policy navigation. Previously the privacy-policy link navigated in the same tab, unmounting the incomplete quote and risking loss of the visitor's draft. The link now opens a clearly announced new tab with `noopener noreferrer`, preserving the original form. No automatic send or storage claim.
+- Code: `src/components/site/QuoteForm.tsx`; regression: `src/test/contact-privacy-v231.test.ts`. No dependency, image, homepage or main change. Browser screenshots 390/1440 and exact-head CI remain pending; do not claim visual validation.
+- Next rotation: /evenimente detail mobile and verified media.
+
 ### V230 / 2026-11-20 — Global SEO metadata (draft PR #265)
 - One-zone audit: SSR root meta description asserted unverified business start year `din 2008`. Replaced with verified service categories and service area in `src/routes/__root.tsx`; added `src/test/root-seo-trust-v230.test.ts`.
 - Branch `fix/v230-root-seo-truthful-description`, source SHA `328f9e93c87caac6ef8235bf9ad3711227880a26`; PR https://github.com/WazzupDoc/green-sound-music-garden/pull/265 stacked on V229. Exact-head CI, real browser, screenshots **NOT VERIFIED**; no visual redesign claim. PR initially mergeable=false (stacked base; investigate conflicts before merge).
