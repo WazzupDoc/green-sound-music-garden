@@ -445,7 +445,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
               Sunt de acord ca Green Sound Music să folosească aceste date doar pentru a-mi răspunde la cerere.
             </label>{" "}
             Detalii în{" "}
-            <Link to="/confidentialitate" className="text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">politica de confidențialitate</Link>.
+            <Link to="/confidentialitate" target="_blank" rel="noopener noreferrer" aria-label="Politica de confidențialitate (se deschide într-o filă nouă)" className="text-primary underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">politica de confidențialitate <span className="text-xs">(filă nouă)</span></Link>.
           </div>
         </div>
         <FieldError id="q-consent-err" msg={errors.consent?.message} />
