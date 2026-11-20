@@ -1,3 +1,9 @@
+### 2026-11-20 — V232 event-gallery trust
+- Source inspected: repository /evenimente index and existing media disclaimer. No external visual/code asset imported.
+- Editorial principle: do not infer ownership or historical participation from an existing image path. Replaced an unverified global provenance claim with precise scope and quote/availability disclaimer.
+- External references for follow-up verification (not independently fetched this run): https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html ; https://developers.google.com/search/docs/appearance/google-images . No code or licensed assets copied.
+- Rejected: presenting image as a documented Green Sound event without owner proof; replacing existing photos with AI imagery.
+
 ### 2026-11-20 — Contact privacy navigation
 - MDN `target=_blank`: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target — new browsing context; announce the behavior to visitors. Applied to the existing privacy link so the unsent draft stays mounted.
 - W3C G201: https://www.w3.org/WAI/WCAG21/Techniques/general/G201 — explain new-window behavior. Adapted explicit visible `(filă nouă)` and accessible label.
