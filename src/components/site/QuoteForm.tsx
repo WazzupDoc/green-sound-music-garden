@@ -276,6 +276,14 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             message: "", consent: undefined as unknown as true, website: "",
           });
           setPrepared(null);
+          // A discarded event brief may still be present in the address bar.
+          // Remove only the brief parameters so reload/back-to-contact cannot
+          // silently restore details the visitor explicitly discarded.
+          if (typeof window !== "undefined") {
+            const url = new URL(window.location.href);
+            for (const key of ["event", "date", "location", "services"]) url.searchParams.delete(key);
+            window.history.replaceState(window.history.state, "", url.pathname + url.search + url.hash);
+          }
           setDiscardConfirmed(true);
         }}>
           Renunță și șterge datele din formular
