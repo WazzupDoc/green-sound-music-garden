@@ -1,3 +1,10 @@
+### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
+- Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
+- Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.
+- Regression: src/components/site/media-lightbox-v237.test.ts. TypeScript, SSR, Vitest, six-width Chromium, network audit, matched screenshots 390/1440 and exact-head CI are NOT VERIFIED. Do not merge until validated.
+- Research: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img (image src fetch behavior); https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe (third-party embeds); https://web.dev/articles/third-party-javascript (third-party performance). Adaptation: avoid third-party thumbnail requests without consent; no external code copied. Rejected remote thumbnails and invented event posters. Existing Lucide icon only; no asset added.
+- Next rotation: Contact prefill and form validation with real-browser evidence. Main/deploy unchanged.
+
 ### V217 / 2026-11-18 — Navigation service glyphs
 - `src/components/site/ServiceSigilV217.tsx`: eight original hand-authored SVG service pictograms plus three chapter diagrams, created for Green Sound; first-party, no third-party icon source or external licensing.
 - `src/styles/navigation-v217.css`: first-party CSS. Existing Lucide icons reused from project dependency; no new package, fonts, photos, videos, tracking or fabricated event media.
