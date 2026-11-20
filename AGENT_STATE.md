@@ -1,3 +1,8 @@
+### V232 / 2026-11-20 — Events gallery provenance (draft)
+| Zone | Observed issue | Change | Evidence | Next |
+| --- | --- | --- | --- | --- |
+| /evenimente index / gallery trust | Copy claimed photographs were Green Sound materials without item-level verification | Replace ownership claim with truthful illustrative-purpose disclosure and explicit no-booking/no-auto-send text; source regression | src/routes/evenimente.index.tsx; src/test/events-provenance-v232.test.ts. Exact-head CI and matched Chromium screenshots pending | Audit event-detail mobile imagery and verify each image provenance |
+
 ### V231 / 2026-11-20 — Contact privacy handoff (draft)
 - Zone: Contact consent/policy navigation. Previously the privacy-policy link navigated in the same tab, unmounting the incomplete quote and risking loss of the visitor's draft. The link now opens a clearly announced new tab with `noopener noreferrer`, preserving the original form. No automatic send or storage claim.
 - Code: `src/components/site/QuoteForm.tsx`; regression: `src/test/contact-privacy-v231.test.ts`. No dependency, image, homepage or main change. Browser screenshots 390/1440 and exact-head CI remain pending; do not claim visual validation.
