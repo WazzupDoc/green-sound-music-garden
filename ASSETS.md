@@ -1,3 +1,6 @@
+### 2026-11-20 V235
+- No new media, fonts, icons, external scripts or dependencies. Navigation-only source change.
+
 ### 2026-11-20 V234
 - No new assets, fonts, media, icons, or dependencies. Event quote anchor only.
 
