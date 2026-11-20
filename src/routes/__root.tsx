@@ -46,7 +46,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       ...(import.meta.env["VITE_SITE_ENV"] !== "production" ? [{ name: "robots", content: "noindex, follow" }] : []),
       { name: "theme-color", content: "#0A0F15" },
       { title: "Green Sound Music — DJ, trupă, sonorizare și lumini în Pitești" },
-      { name: "description", content: "Muzică, sunet, lumini și efecte pentru evenimente, din Pitești, din 2008." },
+      { name: "description", content: "DJ & MC, trupe live, sonorizare, lumini și servicii de studio pentru evenimente în Pitești, Argeș și România." },
       { name: "author", content: "Green Sound Music" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
