@@ -6,7 +6,7 @@ import type { MediaItem } from "@/data/site";
 const pad = (n: number) => String(n).padStart(2, "0");
 
 /** Consent is scoped to one film: switching items unmounts the previous player. */
-function ConsentedFilm({ id, title, start }: { id: string; title: string; start?: number }) {
+function ConsentedFilm({ id, title, start }: { id: string; title: string; start: number | undefined }) {
   const [playing, setPlaying] = useState(false);
   const validId = /^[a-zA-Z0-9_-]{11}$/.test(id);
   if (!validId) return <p role="status">Acest videoclip nu este disponibil.</p>;
