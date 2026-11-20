@@ -1,3 +1,9 @@
+### V232 / 2026-11-20 — EVENTS IMAGE TRUST (DRAFT)
+- Parent V231 PR #266, HEAD at branch creation `123f501c9cf862910b1c0724bb7d053ce5aec383` (CI #44749448416 reported success).
+- Zone /evenimente: replace unverified blanket photo-provenance claim with illustrative-use disclaimer and clear no automatic sending / no confirmed price or availability. Source regression added.
+- Branch `fix/v232-event-gallery-provenance-clarity`. Exact-head CI, real browser screenshots 390/1440 and six-width audit pending; no visual redesign claimed.
+- Next: /evenimente/$slug mobile media provenance and image decode/browser audit. Main and deployment untouched.
+
 ### V231 / 2026-11-20 — CONTACT PRIVACY LINK / DRAFT
 - Stacked over V230 PR #265, baseline `34294aa39d27628a34e2fcf236e0e9fe0b85e946`; new branch `fix/v231-contact-privacy-policy-preserve-brief`.
 - Privacy-policy consent link now opens a visibly and accessibly disclosed new tab instead of discarding the unsent quote through same-tab navigation. No tracking or automatic submission.
