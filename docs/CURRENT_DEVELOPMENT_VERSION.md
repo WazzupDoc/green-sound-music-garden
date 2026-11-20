@@ -1,3 +1,9 @@
+### V233 / 2026-11-20 — EVENT DETAIL FILM TRUST (DRAFT)
+- Based on V232 PR #267 exact-head 26a870c038c7039cc0331dde17031066c57063a9; successful workflows #44768764706 and #44768744672.
+- Zone: event detail films. Replaced unverified archive-ownership heading with illustrative-purpose heading and explicit participation disclaimer. Preserved click-to-play YouTube and no-autoplay.
+- Test: src/test/event-detail-film-provenance-v233.test.ts. CI exact-head and matched real Chromium screenshots pending; no visual QA claim. No new assets/dependencies.
+- Next: event detail mobile 390/1440 matched browser audit, inspect original footage provenance and media dimensions. Main untouched.
+
 ### V232 / 2026-11-20 — EVENTS IMAGE TRUST (DRAFT)
 - Parent V231 PR #266, HEAD at branch creation `123f501c9cf862910b1c0724bb7d053ce5aec383` (CI #44749448416 reported success).
 - Zone /evenimente: replace unverified blanket photo-provenance claim with illustrative-use disclaimer and clear no automatic sending / no confirmed price or availability. Source regression added.
