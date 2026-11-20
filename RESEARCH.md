@@ -1,3 +1,8 @@
+### 2026-11-20 — Contact discard privacy
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState — native history replacement permits removing stale query parameters without a navigation. Adapted only to explicit discard; no external code copied.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — user review and reversible data entry informed retaining explicit discard, rather than automatic clearing during editing. No dependency or asset added.
+- Rejected: clearing all query parameters indiscriminately, as it may remove unrelated navigation state.
+
 ### 2026-11-20 — V258 Contact query recovery
 - https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams — native parsing of address-bar query; original code uses existing `validateBrief` allowlist rather than reflecting raw values.
 - https://tanstack.com/router/latest/docs/framework/react/guide/search-params — route search validation remains canonical; address fallback only after hydration. No third-party code copied or dependency added.
