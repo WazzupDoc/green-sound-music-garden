@@ -16,6 +16,6 @@ describe("V260 Contact phone length guard", () => {
       services: [], message: "", consent: true, website: "",
     };
     expect(quoteSchema.safeParse(base).success).toBe(true);
-    expect(quoteSchema.safeParse({ ...base, phone: " ".repeat(33) + "0766566275" }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...base, phone: "9".repeat(33) }).success).toBe(false);
   });
 });
