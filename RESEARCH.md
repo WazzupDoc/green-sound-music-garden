@@ -1,3 +1,8 @@
+### 2026-11-20 — V233 event-detail film attribution
+- https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear labels should describe the actual content; adapted truthful video heading, no borrowed code.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe — third-party embeds should be deliberate and understandable; existing consent-driven VideoLite preserved, no new iframe implementation or dependencies.
+- Rejected: presenting linked video as proprietary archive without per-item provenance. No stock, external code, or assets introduced.
+
 ### 2026-11-20 — V232 event-gallery trust
 - Source inspected: repository /evenimente index and existing media disclaimer. No external visual/code asset imported.
 - Editorial principle: do not infer ownership or historical participation from an existing image path. Replaced an unverified global provenance claim with precise scope and quote/availability disclaimer.
