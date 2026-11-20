@@ -9,7 +9,8 @@ describe("V218 consented video permission boundary", () => {
     expect(source).not.toMatch(/allow="[^"]*(accelerometer|gyroscope|clipboard-write)/);
   });
   it("preserves explicit click-to-play, referrer privacy and Stop", () => {
-    expect(source).toContain('onClick={() => setActive(true)}');
+    expect(source).toMatch(/onClick=\{\(\) => \{ if \(validVideoId\) setActive\(true\); \}\}/);
+    expect(source).toContain('disabled={!validVideoId}');
     expect(source).toContain('referrerPolicy="no-referrer"');
     expect(source).toContain('onClick={stopPlayback}');
     expect(source).toContain('youtube-nocookie.com/embed/');
