@@ -114,7 +114,7 @@ export function SiteHeader() {
       if (!slash && !command) return;
       // Contact visitors must retain native editing shortcuts while completing a brief.
       // Finder remains available through its visible button outside the form.
-      if (editing || hasModal) return;
+      if (editing || (!finderOpen && hasModal)) return;
       event.preventDefault();
       setOpen(false);
       setFinderActivated(true);
