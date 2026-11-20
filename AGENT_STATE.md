@@ -1,3 +1,8 @@
+### V233 / 2026-11-20 — Event detail video provenance
+| Zone | Defect | Implementation | QA | Next |
+| --- | --- | --- | --- | --- |
+| /evenimente/$slug film heading | Unverified claim that embedded films belonged to Green Sound archive | Truthful illustrative-purpose copy and disclaimer; no changes to video consent | Static Vitest added; exact-head CI/browser screenshots pending | 390/1440 matched screenshots, video source verification and mobile film layout |
+
 ### V232 / 2026-11-20 — Events gallery provenance (draft)
 | Zone | Observed issue | Change | Evidence | Next |
 | --- | --- | --- | --- | --- |
