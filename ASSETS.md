@@ -1,3 +1,6 @@
+### V233 / 2026-11-20
+No new assets. Existing video embeds remain unchanged; their ownership and event participation are not inferred from availability of URLs. Detail page now explicitly discloses illustrative use. Verify each asset's rights separately before any ownership claim.
+
 ### V232 / 2026-11-20
 No new media, fonts, libraries or external code. Existing /evenimente imagery remains unchanged; its event-specific ownership/provenance must be checked against owner originals before any affirmative attribution.
 
