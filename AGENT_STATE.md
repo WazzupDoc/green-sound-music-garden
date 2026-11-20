@@ -1,3 +1,10 @@
+### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
+- Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
+- Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.
+- Regression: src/components/site/media-lightbox-v237.test.ts. TypeScript, SSR, Vitest, six-width Chromium, network audit, matched screenshots 390/1440 and exact-head CI are NOT VERIFIED. Do not merge until validated.
+- Research: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img (image src fetch behavior); https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe (third-party embeds); https://web.dev/articles/third-party-javascript (third-party performance). Adaptation: avoid third-party thumbnail requests without consent; no external code copied. Rejected remote thumbnails and invented event posters. Existing Lucide icon only; no asset added.
+- Next rotation: Contact prefill and form validation with real-browser evidence. Main/deploy unchanged.
+
 ### V236 / 2026-11-20 — MediaLightbox consent gate (DRAFT, QA pending)
 - Base V223 exact-head c2be7b21dc620dd30166377190fb8ccf5b421963, Actions 44807070192 success. Branch `fix/v236-lightbox-consent-gate`.
 - Rotation: portfolio/gallery lightbox. Previously opening a video mounted an autoplay YouTube iframe immediately. New per-film click-to-play consent, Stop action, video ID guard, narrower iframe permissions, and reduced-motion-aware filmstrip scroll. No new packages or assets. Homepage sections and main untouched.

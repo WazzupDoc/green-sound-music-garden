@@ -154,7 +154,11 @@ export function MediaLightbox({
                     }`}
                     style={{ aspectRatio: "16 / 10" }}
                   >
-                    <img src={it.video ? `https://i.ytimg.com/vi/${it.video.id}/mqdefault.jpg` : it.src} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                    {it.kind === "video" ? (
+                      <span aria-hidden="true" className="flex size-full items-center justify-center bg-card text-primary"><Play className="size-5" /></span>
+                    ) : (
+                      <img src={it.src} alt="" loading="lazy" decoding="async" className="size-full object-cover" />
+                    )}
                     {it.kind === "video" && <Play className="absolute bottom-1.5 left-1.5 size-3 fill-current" aria-hidden />}
                   </button>
                 ))}
