@@ -40,7 +40,9 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
   };
   // Guard during render, before layout effects: React must never mount a new
   // third-party iframe using consent granted for the previous film.
-  const canRenderPlayer = active && previousVideoIdRef.current === video.id;
+  // Only canonical YouTube video IDs may reach an embed URL. Never interpolate arbitrary data into iframe src.
+  const validVideoId = /^[A-Za-z0-9_-]{11}$/.test(video.id);
+  const canRenderPlayer = validVideoId && active && previousVideoIdRef.current === video.id;
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (video.start) params.set("start", String(video.start));
 
@@ -67,9 +69,10 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
           <button
             type="button"
             ref={playButtonRef}
-            onClick={() => setActive(true)}
+            onClick={() => { if (validVideoId) setActive(true); }}
+            disabled={!validVideoId}
             className="absolute inset-0 size-full text-left focus-visible:outline focus-visible:outline-[3px] focus-visible:-outline-offset-[3px] focus-visible:outline-[#B5F4C5]"
-            aria-label={`Redă videoclipul: ${video.title}`}
+            aria-label={validVideoId ? `Redă videoclipul: ${video.title}` : `Filmarea nu este disponibilă: ${video.title}`}
           >
             {video.poster && failedPoster !== video.poster ? (
               <img
@@ -87,7 +90,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             )}
             <span className="hero-fade absolute inset-0 opacity-80" />
             <span className="absolute left-5 top-5 inline-flex min-h-11 items-center gap-3 border border-[#F3F0E9a8] bg-[#0A0F15e8] px-4 py-2 text-base font-semibold text-[#F3F0E9]">
-              <Play className="size-5 fill-current" aria-hidden /> Redă filmarea
+              <Play className="size-5 fill-current" aria-hidden /> {validVideoId ? "Redă filmarea" : "Film indisponibil"}
             </span>
             <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-[#F3F0E9]">
               {video.title}

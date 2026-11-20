@@ -1,3 +1,8 @@
+### V262 / 2026-11-20 — VideoLite embed safety (DRAFT / QA PENDING)
+- Zone: shared YouTube film player. Reject noncanonical video IDs before iframe creation; show unavailable disabled action instead of an invalid embed. Source regression: src/test/video-embed-id-v262.test.ts. No new media or dependencies.
+- PR #262 stacked on V261; implementation SHA d208796015038dcd2d7191a4da7dc05646b22293. Exact-head CI, real Chromium before/after 390/1440, six-width regression, TypeScript/SSR/Vitest and active play/stop **NOT VERIFIED**. No visual redesign claimed.
+- Next: verify video provenance and consent, then event-to-Contact handoff in browser. Main/deploy unchanged.
+
 ### V260 / 2026-11-20 — Contact phone length guard (DRAFT)
 - Area: Contact phone field. Native maxLength=32 and Zod max(32) now agree; existing Romanian number formats remain supported. Regression test added. Visual change: none claimed. CI/Chromium screenshots not verified; main untouched. Next: Events media provenance and Contact browser handoff.
 
