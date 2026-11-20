@@ -1,3 +1,8 @@
+### V235 / 2026-11-20 — EVENT NATIVE SECTION NAVIGATION (DRAFT)
+- Branch `fix/v235-event-native-section-navigation` stacked on V234 PR #269. Event hero links to timeline and service recommendations now use native fragment navigation instead of premature synchronous focus. Sections retain `tabIndex={-1}`; quote anchor remains native.
+- Source regression: `src/test/event-native-navigation-v235.test.ts`. Exact-head TypeScript, SSR, Vitest, CI, six-width Chromium, keyboard focus and matched 390/1440 screenshots **NOT YET VERIFIED**. No visual redesign claim, dependencies, assets, homepage, main or deployment changes.
+- Next: browser verify event hash/focus/scroll, Contact prefill and screenshot parity.
+
 ### V234 / 2026-11-20 — EVENT DETAIL QUOTE ANCHOR (DRAFT)
 - One zone: event detail hero quote anchor. Removed premature programmatic focus on an unverified heading; native hash scrolling remains. Other focusable section anchors unchanged. Regression `src/test/event-anchor-focus-v234.test.ts`.
 - Exact-head CI, real Chromium 390/1440 before/after and 6-width regression pending. No visual redesign claim. Main untouched. Next: verify quote focus/scroll and event media provenance.
