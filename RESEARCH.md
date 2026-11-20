@@ -1,3 +1,6 @@
+### 2026-11-20 — V260 Contact input bounds
+- Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/maxlength — native length limit gives immediate input guard; existing Zod validation remains authoritative. No external code, dependency, imagery or license added. Rejected: new input masking package (unnecessary weight and potential accessibility regressions). The 32-character bound is a conservative product decision, not a measured UX metric. Browser validation pending.
+
 ### 2026-11-20 — Contact discard privacy
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState — native history replacement permits removing stale query parameters without a navigation. Adapted only to explicit discard; no external code copied.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/error-prevention-legal-financial-data.html — user review and reversible data entry informed retaining explicit discard, rather than automatic clearing during editing. No dependency or asset added.

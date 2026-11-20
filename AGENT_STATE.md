@@ -1,3 +1,6 @@
+### V260 / 2026-11-20 — Contact phone length guard (DRAFT)
+- Area: Contact phone field. Native maxLength=32 and Zod max(32) now agree; existing Romanian number formats remain supported. Regression test added. Visual change: none claimed. CI/Chromium screenshots not verified; main untouched. Next: Events media provenance and Contact browser handoff.
+
 ### V259 / 2026-11-20 — Contact discard URL privacy (DRAFT)
 - Contact privacy: explicit discard now removes event/date/location/services from address bar as well as React form state. Source regression added. Browser screenshots, functional replay, exact-head CI pending. PR #259; main unchanged. Next: Events media provenance and Contact browser handoff.
 

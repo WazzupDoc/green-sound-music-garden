@@ -42,6 +42,7 @@ export const quoteSchema = z.object({
   phone: z
     .string()
     .trim()
+    .max(32, "Maximum 32 de caractere pentru telefon.")
     .refine((v) => RO_PHONE.test(normalizePhone(v)), "Introdu un număr de mobil valid, ex. 0766 566 275."),
   email: z
     .string()
