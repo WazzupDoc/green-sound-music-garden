@@ -1,3 +1,7 @@
+### V258 / 2026-11-20 — Contact native query fallback (DRAFT / QA PENDING)
+- Branch `fix/v258-contact-native-query-prefill`, PR #258 stacked on V257. V257 browser job failed waiting for five preselected services after event-to-Contact click; diagnosis not conclusive. V258 uses existing allowlist to recover native URL query after hydration when router search is empty.
+- Added source regression. CI exact-head, six-width browser and before/after screenshots pending. No main/deploy changes.
+
 ### V257 / 2026-11-20 — Event detail hero to prefilled Contact (DRAFT / QA PENDING)
 - Branch `design/v257-event-detail-prefilled-brief`, stacked on V256 draft PR #256. Hero CTA on all event detail routes now uses the same existing prefilled Contact URL as the service-mix CTA. Existing event label and recommended service labels remain editable on Contact; no submission implied.
 - Source regression: `src/components/site/event-page-v257.test.ts`. No new dependency/media, homepage section or backend.

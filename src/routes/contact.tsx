@@ -63,10 +63,16 @@ function Contact() {
   // useHydrated is false on the server AND the first client render.
   const hydrated = useHydrated();
   const search = Route.useSearch();
-  const event = hydrated ? search.event : undefined;
-  const date = hydrated ? search.date : undefined;
-  const location = hydrated ? search.location : undefined;
-  const selectedServices = hydrated ? search.services ?? [] : [];
+  // Native event-detail anchors can enter via a full document navigation. On
+  // hydration, recover the actual address-bar query if the router initially
+  // supplied empty search state; apply the same allowlist as route validation.
+  const addressBrief = hydrated && typeof window !== "undefined"
+    ? validateBrief(Object.fromEntries(new URLSearchParams(window.location.search)))
+    : {};
+  const event = hydrated ? search.event ?? addressBrief.event : undefined;
+  const date = hydrated ? search.date ?? addressBrief.date : undefined;
+  const location = hydrated ? search.location ?? addressBrief.location : undefined;
+  const selectedServices = hydrated ? (search.services?.length ? search.services : addressBrief.services ?? []) : [];
   const fromBrief = Boolean(event || date || location || selectedServices.length);
 
   return (
