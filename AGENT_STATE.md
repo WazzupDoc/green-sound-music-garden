@@ -1,3 +1,6 @@
+### V259 / 2026-11-20 — Contact discard URL privacy (DRAFT)
+- Contact privacy: explicit discard now removes event/date/location/services from address bar as well as React form state. Source regression added. Browser screenshots, functional replay, exact-head CI pending. PR #259; main unchanged. Next: Events media provenance and Contact browser handoff.
+
 ### V258 / 2026-11-20 — Contact native-query hydration (DRAFT / QA PENDING)
 - Area: Contact prefill from event details. V257 exact-head browser job failed waiting for fifth preselected service after click; cause not yet proven. Candidate fix: allowlisted address-bar query fallback after hydration if router search state is empty. Source test added. Before/after Chromium screenshots and exact-head CI pending; no visual redesign claim. Next: browser handoff audit and media provenance.
 - Main/deploy unchanged. PR #258.
