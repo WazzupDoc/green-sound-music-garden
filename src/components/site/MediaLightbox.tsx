@@ -5,6 +5,30 @@ import type { MediaItem } from "@/data/site";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Consent is scoped to one film: switching items unmounts the previous player. */
+function ConsentedFilm({ id, title, start }: { id: string; title: string; start?: number }) {
+  const [playing, setPlaying] = useState(false);
+  const validId = /^[a-zA-Z0-9_-]{11}$/.test(id);
+  if (!validId) return <p role="status">Acest videoclip nu este disponibil.</p>;
+  const params = new URLSearchParams({ autoplay: "1", rel: "0", playsinline: "1" });
+  if (Number.isSafeInteger(start) && start! > 0) params.set("start", String(start));
+  return (
+    <div className="flex aspect-video w-full max-w-6xl items-center justify-center overflow-hidden rounded-lg bg-card">
+      {playing ? (
+        <div className="relative size-full">
+          <iframe className="size-full" src={`https://www.youtube-nocookie.com/embed/${id}?${params}`}
+            title={title} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen referrerPolicy="strict-origin-when-cross-origin" />
+          <button type="button" onClick={() => setPlaying(false)} className="absolute bottom-3 right-3 rounded bg-ink px-4 py-2 text-sm text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary">Oprește filmul</button>
+        </div>
+      ) : (
+        <button type="button" onClick={() => setPlaying(true)} className="flex min-h-12 items-center gap-3 rounded border border-primary px-6 py-4 font-semibold text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary">
+          <Play className="size-5" aria-hidden /> Redă filmul · se va încărca YouTube
+        </button>
+      )}
+    </div>
+  );
+}
+
 /**
  * Full-screen viewer for real Green Sound videos and photos.
  * Arrow keys, swipe and the filmstrip move between items; videos load only once opened.
@@ -35,11 +59,8 @@ export function MediaLightbox({
 
   useEffect(() => {
     if (index === null) return;
-    strip.current?.querySelector<HTMLElement>(`[data-i="${index}"]`)?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    strip.current?.querySelector<HTMLElement>(`[data-i="${index}"]`)?.scrollIntoView({ block: "nearest", inline: "center", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }, [index]);
-
-  const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1", playsinline: "1" });
-  if (item?.video?.start) params.set("start", String(item.video.start));
 
   return (
     <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()}>
@@ -75,15 +96,7 @@ export function MediaLightbox({
                 }}
               >
                 {item.kind === "video" && item.video ? (
-                  <div key={item.key} className="aspect-video w-full max-w-6xl overflow-hidden rounded-lg bg-card">
-                    <iframe
-                      className="size-full"
-                      src={`https://www.youtube-nocookie.com/embed/${item.video.id}?${params}`}
-                      title={item.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
+                  <ConsentedFilm key={item.key} id={item.video.id} title={item.title} start={item.video.start} />
                 ) : (
                   <img
                     key={item.key}
