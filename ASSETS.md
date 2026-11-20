@@ -1,3 +1,6 @@
+### V231 / 2026-11-20
+No new images, icons, fonts, video, audio or external dependencies. Existing first-party form and Lucide icons unchanged.
+
 ### V229 / 2026-11-18
 - No new imagery, fonts, SVGs, audio, packages or third-party assets. Accessibility-only change in existing form.
 
