@@ -91,7 +91,7 @@ function Events() {
               <div className="gs173-photobox__top" aria-hidden="true"><span>GS / EVENT FRAME</span><span>{visualIndexText} / {String(events.length).padStart(2, "0")}</span></div>
               <div className="gs173-photobox__stamp" aria-hidden="true"><strong>{visualIndexText}</strong><span>SCENA SELECTATĂ</span></div>
               <div className="gs173-photobox__caption">
-                <span>ACUM ÎN REGIE</span><h2>{visualEvent.name}</h2>
+                <span aria-live="polite">{activeEvent.slug === visualEvent.slug ? "ACUM ÎN REGIE" : "SE PREGĂTEȘTE FOTOGRAFIA SELECTATĂ"}</span><h2>{visualEvent.name}</h2>
                 <svg aria-hidden="true" viewBox="0 0 220 24" preserveAspectRatio="none">
                   <path d="M0 12H31L40 8L48 17L57 4L65 21L73 12H94L104 7L113 18L122 12H141L152 5L162 19L169 12H187L198 9L210 15L220 12"/>
                 </svg>
