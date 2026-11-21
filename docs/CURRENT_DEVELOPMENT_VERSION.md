@@ -1,3 +1,8 @@
+### V238 / 2026-11-21 — Lightbox keyboard focus (DRAFT / QA PENDING)
+- Branch `fix/v238-lightbox-play-stop-focus`, stacked on V237 PR #273. MediaLightbox focuses Stop after explicit Play and returns focus to Play after Stop. Regression source test added. No homepage/main/deploy changes.
+- Exact-head CI, strict TS, SSR, Vitest, Chromium 360/390/430/768/1440/1920 and before/after screenshots NOT VERIFIED; do not merge.
+- Next rotation: Contact funnel; complete pending gallery QA first.
+
 ### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
 - Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
 - Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.
