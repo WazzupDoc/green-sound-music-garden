@@ -1,3 +1,7 @@
+### 2026-11-21 — Contact clipboard delayed rejection
+- https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — Clipboard write is asynchronous and may reject; use an explicit manual fallback, never claim delivery.
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve logical keyboard focus. Original implementation checks current focus before focusing fallback. No external code copied, no new license/dependency. Rejected: forced focus on every rejection (focus theft), automatic retries (unexpected prompts), timed toast (ephemeral).
+
 ### 2026-11-21 V245 — Focus continuity
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve predictable keyboard focus when unrelated UI changes. Adaptation: restore video Play focus only after active playback is interrupted, never on passive carousel changes. No third-party code copied, no dependency, license N/A. Rejected: unconditional focus on every video identity change, because it steals focus from forms/navigation. Premium visual reference review and real Chromium evidence still pending.
 
