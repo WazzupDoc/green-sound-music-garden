@@ -1,3 +1,27 @@
+### V250 / 2026-11-21 — Events image decode failure feedback (DRAFT / QA PENDING)
+- Branch `fix/v250-events-frame-loading-status`, stacked on V249 PR #285. Added guarded decode-error callback and accessible loading/failure announcement while retaining previous event photograph; stale decode failures ignored. Added Vitest regressions. No homepage, new assets, dependencies or main changes.
+- Exact-head GitHub Actions, TypeScript, SSR/Vitest/gzip, Chromium 390/1440 before-after and six-width checks NOT VERIFIED. Do not merge/publish. Next: Contact keyboard/clipboard and event slow-network QA.
+
+### V248 / 2026-11-21 — Events provenance test CI unblock (DRAFT)
+- Branch `fix/v248-events-provenance-test-ci` stacked on V247 PR #283. Fixes Vitest `import.meta.url` non-file scheme crash using project-root file path. V247 Actions #44897261840 failed (60 suites, 162 passing tests, one suite load failure). V248 exact-head CI and Chromium screenshots pending. No production UI/assets/dependencies/main change.
+
+### V247 / 2026-11-21 — Events trust copy (DRAFT / QA PENDING)
+- Branch `fix/v247-events-unverified-founding-year` stacked on V246 PR #282. /evenimente stage registration removes unsupported «DIN 2008» historical claim and displays Pitești / Argeș instead. No media, dependencies, homepage or main change. Exact-head CI and matched Chromium screenshots pending; next audit: event image decode fallback and keyboard selection.
+
+### V246 / 2026-11-21 — Contact clipboard focus (DRAFT / QA PENDING)
+- Branch `fix/v246-contact-clipboard-focus-continuity` based on V245 VideoLite focus PR #281. QuoteForm preserves focus on other controls if asynchronous clipboard permission fails after the user navigates away; still focuses/selects manual fallback when copy button loses focus to body. No homepage/main/deploy changes. Browser 390/1440 matched screenshots, six widths, TS/SSR/Vitest and exact-head Actions pending. Next rotation: Events visual/keyboard.
+
+### V245 / 2026-11-21 — Passive video-switch focus fix (DRAFT / NOT VALIDATED)
+- Branch `fix/v245-video-switch-no-focus-theft` stacked on V244 PR #280 (`8ba1843ffd85b768ccfa5b2a03208e750064ac16`). Shared VideoLite no longer steals focus when video identity changes while playback is inactive; if playing, focus still returns to new Play control. Existing source regression updated. No main/deployment. Exact-head CI, six-width Chromium, matched 390/1440 screenshots and keyboard behavior not yet verified. Next rotation: Contact mobile clipboard.
+
+### V243 / 2026-11-21 — VideoLite unavailable accessible label (DRAFT / QA PENDING)
+- Branch `fix/v243-videolite-unavailable-accessibility` stacked on V242 PR #278. Invalid YouTube IDs are already blocked; disabled Play now announces the truthful unavailable state to assistive technology. No homepage, assets, dependencies, main or deploy changes. V242 CI success: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44863868659 . V243 exact-head CI and browser screenshots pending; do not merge or publish.
+
+
+### 2026-11-21 V242 — VideoLite regression CI repair (draft / pending)
+- Area: shared VideoLite tests ONLY. V241 exact-head workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 failed four outdated string assertions across v204/v218/v219; all still demanded unguarded Play. Updated them to require the safer `safeVideoId` gate and guarded click. No production component, homepage, asset or dependency changes.
+- Evidence: GitHub Actions job 136707569819 inspected. New V242 exact-head CI, TS, SSR, Chromium six widths and before/after screenshots NOT YET VERIFIED. No visual redesign claimed. Main/deploy untouched. Next zone: Contact mobile keyboard and clipboard recovery.
+
 ### V222 / 2026-11-18 — MAIN SYNC COMPLETED (documentation-only status)
 - Full development history through V221 + V222 CI regression corrections merged by PR #222 https://github.com/WazzupDoc/green-sound-music-garden/pull/222 into main; merge commit `c97f36f6e6628a45f9b2da715888e5af5f5e59b3` (parents original main `557d8b4fd086f4592581cccc68ddd53d2542b45b` and candidate `7c946f5aff3038bc7286603463e3eaff356966af`). This supersedes older DRAFT entries below, which remain historical.
 - Validated exact candidate HEAD `7c946f5aff3038bc7286603463e3eaff356966af`: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018 (strict TypeScript, production SSR/Vite build, gzip budgets, 59 test files / 160 tests, real Chromium six widths, Contact SSR/hydration, sitemap and 20-page canonical/SEO audit). Supplemental V19 run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911322 passed. New screenshots: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018/artifacts/14430567777 . Visual changes derive from earlier development; V222 itself only repaired two stale regression assertions.

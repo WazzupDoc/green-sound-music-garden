@@ -1,3 +1,44 @@
+### V250 / 2026-11-21 — Events decode failure status (DRAFT / QA PENDING)
+- Zone: /evenimente stage image. Previously a failed image decode left the previous photograph on screen indefinitely with no explanation. V250 distinguishes loading versus failed decoding in a polite accessible status, preserves authentic previous photograph and current event CTA, and ignores cancelled/stale failures.
+- Files: src/routes/evenimente.index.tsx, src/lib/preload-event-frame.ts, src/test/events-frame-failure-v250.test.ts. Source + unit regressions added. No assets/dependencies/homepage/main/deployment changes.
+- QA: exact-head CI, strict TS, SSR, Vitest, gzip, six-width real Chromium and matched 390/1440 screenshots NOT VERIFIED. This is a functional accessibility correction, not a visually validated redesign. Next zone: Contact mobile clipboard and keyboard; recheck event image on slow/failed network.
+
+### V249 / 2026-11-21 — Events previous-frame provenance (DRAFT / QA PENDING)
+- Zone: /evenimente event-stage image selection. While an event photo decodes (or decode fails), the last successfully decoded photograph remains visible. Previously it was still stamped “SCENA SELECTATĂ”, which could falsely imply the photo matched the newly selected event. The stage now explicitly says “CADRU ANTERIOR” and “FOTOGRAFIE DIN CATEGORIA ANTERIOARĂ” until the matching image decodes. Active event detail/offer links remain tied to the selected event.
+- Files: src/routes/evenimente.index.tsx and src/test/events-frame-provenance-v249.test.ts. No dependency, new image, tracking, backend or homepage change. Source-level regression only; not a verified visual redesign.
+- QA gate: TypeScript, SSR, Vitest, gzip, Chromium six widths, matched 390/1440 screenshots and exact-head CI pending. Next rotation: Contact clipboard keyboard/focus and event image failure handling. Main/deploy untouched.
+
+### V248 / 2026-11-21 — Events test CI unblock
+- Exact V247 HEAD `8bd4e0c` Actions #44897261840 failed Vitest with `ERR_INVALID_URL_SCHEME` at `src/test/events-provenance-copy-v247.test.ts:4`; 60 suites / 162 tests passed. Changed source fixture loading to `resolve(process.cwd(), ...)`, no production UI change. CI/browser screenshot still pending; next zone: Events image decode/focus. Main unchanged.
+
+### V247 / 2026-11-21 — Events provenance copy (DRAFT)
+- Zone: /evenimente hero. Replaced unsupported founding-year claim «DIN 2008» with geographic service identity «PITEȘTI / ARGEȘ». No visual layout expansion, dependencies or media. Screenshot before/after, six-width browser, exact-head CI pending. Next zone: event image decode fallback and keyboard state. Main untouched.
+
+### 2026-11-21 V246 — Contact clipboard focus continuity (DRAFT / QA PENDING)
+- Zone: Contact / QuoteForm. A rejected asynchronous clipboard request could steal focus from another control when the visitor moved during the browser permission prompt. Fallback textarea now receives focus only when the copy control retains focus or the disabled pending control has dropped focus to document.body. Other active controls keep focus. No data sent, new dependencies or media. Exact-head CI and real Chromium keyboard/screenshots pending; next zone: /evenimente visual and keyboard audit. Main unchanged.
+
+### 2026-11-21 V245 — Video carousel focus continuity (DRAFT / QA PENDING)
+- Zone: shared VideoLite. A passive film identity update previously set restoreFocusRef unconditionally and focused Play even when visitor was using another control. Now focus restoration is armed only if previous film was playing; explicit Stop still restores focus. Source regression updated. Browser keyboard verification, matched 390/1440 screenshots and exact-head CI remain pending. Next zone: Contact mobile clipboard/keyboard. Main untouched.
+
+### 2026-11-21 V243 — VideoLite invalid film accessible state (QA pending)
+- Zone: shared video player. Invalid 11-character YouTube IDs already block playback; now their disabled control announces «Videoclip indisponibil» rather than misleading screen-reader users with «Redă videoclipul». Disabled cursor communicates non-action. No new dependencies/media/homepage changes.
+- Prior V242 PR #278 exact-head Actions run 44863868659 succeeded; V243 exact-head CI, TypeScript/SSR/Vitest, 390/1440 real screenshots and six-width browser validation pending. No visual redesign claim. Next: Contact mobile clipboard and keyboard audit.
+
+
+### 2026-11-21 V242 — VideoLite regression CI repair (draft / pending)
+- Area: shared VideoLite tests ONLY. V241 exact-head workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 failed four outdated string assertions across v204/v218/v219; all still demanded unguarded Play. Updated them to require the safer `safeVideoId` gate and guarded click. No production component, homepage, asset or dependency changes.
+- Evidence: GitHub Actions job 136707569819 inspected. New V242 exact-head CI, TS, SSR, Chromium six widths and before/after screenshots NOT YET VERIFIED. No visual redesign claimed. Main/deploy untouched. Next zone: Contact mobile keyboard and clipboard recovery.
+
+### 2026-11-21 V241 — VideoLite TSX parser unblock (draft / QA pending)
+- Zone: shared video player. V240 introduced literal `\\n` tokens outside strings in `src/components/site/VideoLite.tsx` at the ID validation and Play handler, a concrete TSX syntax blocker. V241 replaces these with actual line breaks; video behavior remains V240, no dependencies/assets/homepage/main changes.
+- Evidence: V240 source inspected through GitHub connector; V241 commit `7c388b1e2cfe2ab455c60ffd109ea2fa51684ccc`. TypeScript, SSR, Vitest, exact-head CI, browser six widths, keyboard/focus, consent network and 390/1440 before-after screenshots NOT YET VERIFIED. No visual redesign claimed.
+- Next: validate V241 exact-head and restore CI; audit Contact mobile clipboard and /evenimente image decode in subsequent zone rotation. Do not merge/deploy without green checks and real Chromium evidence.
+
+### 2026-11-21 V240 — shared video embed input validation (DRAFT / QA PENDING)
+- Single zone: shared VideoLite. Invalid video IDs previously entered a third-party iframe URL; now only 11-character YouTube IDs permit Play and iframe mount. Nonpositive/noninteger start offsets are ignored. Invalid videos show an unavailable state rather than loading an external origin.
+- No dependencies, media, homepage structure, backend, or main change. Source-level change only. TypeScript/SSR/Vitest, exact-head CI, real Chromium 390/1440 matched screenshots, six widths and consent/focus tests NOT VERIFIED. Do not merge/deploy.
+- Next rotation: /evenimente image decode failure recovery and Contact mobile keyboard/clipboard.
+
 ### V222 / 2026-11-18 — MAIN SYNC COMPLETED (documentation-only status)
 - Full development history through V221 + V222 CI regression corrections merged by PR #222 https://github.com/WazzupDoc/green-sound-music-garden/pull/222 into main; merge commit `c97f36f6e6628a45f9b2da715888e5af5f5e59b3` (parents original main `557d8b4fd086f4592581cccc68ddd53d2542b45b` and candidate `7c946f5aff3038bc7286603463e3eaff356966af`). This supersedes older DRAFT entries below, which remain historical.
 - Validated exact candidate HEAD `7c946f5aff3038bc7286603463e3eaff356966af`: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018 (strict TypeScript, production SSR/Vite build, gzip budgets, 59 test files / 160 tests, real Chromium six widths, Contact SSR/hydration, sitemap and 20-page canonical/SEO audit). Supplemental V19 run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911322 passed. New screenshots: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44311911018/artifacts/14430567777 . Visual changes derive from earlier development; V222 itself only repaired two stale regression assertions.

@@ -47,6 +47,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
   const [discardConfirmed, setDiscardConfirmed] = useState(false);
   const [copyStatus, setCopyStatus] = useState<"idle" | "pending" | "success" | "failed">("idle");
   const manualCopyRef = useRef<HTMLTextAreaElement>(null);
+  const copyButtonRef = useRef<HTMLButtonElement>(null);
+  const restoreManualCopyFocusRef = useRef(false);
   // Ignore clipboard results from a preview that the visitor has already left.
   const copyGenerationRef = useRef(0);
   const copyPendingRef = useRef(false);
@@ -68,14 +70,18 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
     if (copyStatus !== "failed") return;
     // Clipboard permissions may be denied. Put keyboard users directly on
     // the selectable fallback instead of leaving focus on the failed action.
-    manualCopyRef.current?.focus();
-    manualCopyRef.current?.select();
+    if (restoreManualCopyFocusRef.current) {
+      manualCopyRef.current?.focus();
+      manualCopyRef.current?.select();
+    }
+    restoreManualCopyFocusRef.current = false;
   }, [copyStatus, failedCopyAttempts]);
 
   const copyMessage = async (message: string) => {
     if (copyPendingRef.current) return;
     copyPendingRef.current = true;
     const generation = ++copyGenerationRef.current;
+    restoreManualCopyFocusRef.current = false;
     setCopyStatus("pending");
     try {
       if (!navigator.clipboard?.writeText) throw new Error("Clipboard not available");
@@ -86,6 +92,9 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       if (generation !== copyGenerationRef.current) return;
       // Permissions and insecure contexts vary. Never claim the copy worked.
       // Render a keyboard-selectable alternative directly below the actions.
+      // A delayed permission prompt must not steal focus after the visitor
+      // has moved to another action or field while the copy was pending.
+      restoreManualCopyFocusRef.current = document.activeElement === copyButtonRef.current || document.activeElement === document.body;
       setCopyStatus("failed");
       // Re-select on every denied retry, even when status is already "failed".
       setFailedCopyAttempts(attempts => attempts + 1);
@@ -230,7 +239,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             Deschide emailul
             <ArrowUpRight className="size-4" aria-hidden />
           </a>
-          <button type="button" className="quote-preview__copy"
+          <button type="button" ref={copyButtonRef} className="quote-preview__copy"
             disabled={copyStatus === "pending"} aria-busy={copyStatus === "pending"}
             onClick={() => { void copyMessage(message); }}>
             <ClipboardCopy className="size-5" aria-hidden />

@@ -1,3 +1,30 @@
+### 2026-11-21 — V250 / Events image decode status
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decoded image may reject; retain previous rendered photograph and provide an explicit failure state.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite non-disruptive status for loading/error; no focus hijack.
+- Technique: original local React state and existing decode helper; no third-party code, assets or dependencies. Rejected: automatic retry/network polling and replacing failed images with unverified media. Links are documentation references; fresh web verification not performed in this run.
+
+### 2026-11-21 — V248 Events test runner diagnosis
+- Source: GitHub Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44897261840 — verified CI log: `ERR_INVALID_URL_SCHEME` when passing transformed `import.meta.url` to `new URL` for a local test fixture. Adapted Node built-in `path.resolve(process.cwd(), ...)` for a repository-root Vitest run. No third-party code or dependency. Rejected adding a URL polyfill or suppressing the failing test; neither addresses the actual fixture path. No visual reference or visual change claimed.
+
+### 2026-11-21 V247 — Events trust copy
+- Source: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear labels and truthful context; documentation reference, not copied code.
+- Source: https://webflow.com/blog/website-copywriting — editorial clarity inspiration only; no code, image, or brand reused.
+- Adaptation: removed unsupported «DIN 2008» claim in Events stage microcopy, retained known Pitești/Argeș positioning. Rejected adding decorative effects or unverified historical milestones. No new dependencies/assets.
+
+### 2026-11-21 — Contact clipboard delayed rejection
+- https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — Clipboard write is asynchronous and may reject; use an explicit manual fallback, never claim delivery.
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve logical keyboard focus. Original implementation checks current focus before focusing fallback. No external code copied, no new license/dependency. Rejected: forced focus on every rejection (focus theft), automatic retries (unexpected prompts), timed toast (ephemeral).
+
+### 2026-11-21 V245 — Focus continuity
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve predictable keyboard focus when unrelated UI changes. Adaptation: restore video Play focus only after active playback is interrupted, never on passive carousel changes. No third-party code copied, no dependency, license N/A. Rejected: unconditional focus on every video identity change, because it steals focus from forms/navigation. Premium visual reference review and real Chromium evidence still pending.
+
+### 2026-11-21 V243 — truthful unavailable video state
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html — accessible control names must describe the actual action/state. Original local adjustment: invalid video label changes from «Redă» to «Videoclip indisponibil»; no external code copied or new license. Rejected: a disabled control with a misleading playback name.
+
+
+### 2026-11-21 V242 — CI regression contract
+Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 — inspected actual failing Vitest log. Three source-level assertions still expected pre-V240 unguarded playback; corrected to assert the 11-character video-ID guard. No external code reused. Rejected weakening/removing tests; no dependencies.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 

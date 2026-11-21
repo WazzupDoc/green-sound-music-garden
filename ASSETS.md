@@ -1,3 +1,25 @@
+### 2026-11-21 — V250
+No new media, font, icon, external code, dependency or license introduced. Existing event photographs remain unchanged; a failed selection retains the previously decoded image with an explicit accessible status. Provenance of existing media is not independently reverified here.
+
+### 2026-11-21 — V248 asset ledger
+- No new images, video, fonts, icons, libraries or external resources; CI fixture-path correction only. Existing asset permissions and provenance unchanged.
+
+### V247 / 2026-11-21
+No assets, media, fonts, icons or dependencies added. Existing Events photography unchanged; provenance remains subject to prior asset audit.
+
+### V246 / 2026-11-21
+- No added imagery, fonts, video, code libraries, tracking or external assets. Existing Contact form only.
+
+### 2026-11-21 V245
+- No new assets, photographs, video, iconography, fonts, dependencies or external tracking. Existing asset provenance unchanged.
+
+### 2026-11-21 V243
+No new media, icons, fonts, dependencies or third-party assets. Existing authorized video data unchanged.
+
+
+### 2026-11-21 V242
+No new assets, media, fonts, packages or external licenses. Existing video poster and consent boundary unchanged.
+
 ### V217 / 2026-11-18 — Navigation service glyphs
 - `src/components/site/ServiceSigilV217.tsx`: eight original hand-authored SVG service pictograms plus three chapter diagrams, created for Green Sound; first-party, no third-party icon source or external licensing.
 - `src/styles/navigation-v217.css`: first-party CSS. Existing Lucide icons reused from project dependency; no new package, fonts, photos, videos, tracking or fabricated event media.

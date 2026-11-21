@@ -11,12 +11,12 @@ describe("V219 film replacement requires new consent", () => {
     expect(source).toContain("}, [video.id])");
   });
   it("does not mount a replacement iframe in the render before effects run", () => {
-    expect(source).toContain("const canRenderPlayer = active && previousVideoIdRef.current === video.id");
+    expect(source).toContain("const canRenderPlayer = safeVideoId && active && previousVideoIdRef.current === video.id");
     expect(source).toContain("{canRenderPlayer ? (");
     expect(source).not.toContain("{active ? (");
   });
   it("preserves explicit Play and accessible focus restoration", () => {
-    expect(source).toContain("onClick={() => setActive(true)}");
+    expect(source).toContain("onClick={() => { if (safeVideoId) setActive(true); }}");
     expect(source).toContain("restoreFocusRef.current = true");
     expect(source).toContain("playButtonRef.current?.focus()");
   });
