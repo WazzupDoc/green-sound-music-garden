@@ -1,3 +1,7 @@
+### 2026-11-21 — V254 Contact clipboard keyboard
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-disabled — `aria-disabled` keeps control discoverable/focusable; application must prevent action. Existing synchronous `copyPendingRef` prevents repeated writes. Original adaptation, no external code or license dependency.
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve meaningful keyboard focus. Rejected native `disabled` while asynchronous permission prompt pending, because focused element can lose focus. No assets or packages.
+
 ### 2026-11-21 — V253 / focus continuity
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — focus should follow meaningful operation sequence. Adaptation: after retry button unmount, focus existing selected event. No code copied, no external license dependency.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — native focus() avoids dependency. Adaptation: focus selected setlist control synchronously on user click. Rejected: leaving focus on removed button; no new package or UI.
