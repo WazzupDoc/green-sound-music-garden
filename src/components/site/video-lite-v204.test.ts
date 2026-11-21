@@ -36,7 +36,8 @@ describe("V204 explicit film stop control", () => {
   it("preserves descriptive title, native buttons and no automatic playback before click", () => {
     expect(source).toContain("title={video.title}");
     expect(source).toContain('type="button"');
-    expect(source).toContain('aria-label={`Redă videoclipul: ${video.title}`}');
+    expect(source).toContain('aria-label={safeVideoId ? `Redă videoclipul: ${video.title}` : `Videoclip indisponibil: ${video.title}`}');
+    expect(source).toContain("disabled={!safeVideoId}");
     expect(source).not.toContain("<video autoPlay");
   });
 });
