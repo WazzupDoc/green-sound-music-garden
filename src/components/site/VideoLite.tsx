@@ -40,7 +40,9 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
   };
   // Guard during render, before layout effects: React must never mount a new
   // third-party iframe using consent granted for the previous film.
-  // Reject malformed IDs before constructing an external iframe URL.\n  const safeVideoId = /^[A-Za-z0-9_-]{11}$/.test(video.id);\n  const canRenderPlayer = safeVideoId && active && previousVideoIdRef.current === video.id;
+  // Reject malformed IDs before constructing an external iframe URL.
+  const safeVideoId = /^[A-Za-z0-9_-]{11}$/.test(video.id);
+  const canRenderPlayer = safeVideoId && active && previousVideoIdRef.current === video.id;
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
   if (Number.isSafeInteger(video.start) && (video.start ?? 0) > 0) params.set("start", String(video.start));
 
@@ -67,7 +69,8 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
           <button
             type="button"
             ref={playButtonRef}
-            onClick={() => { if (safeVideoId) setActive(true); }}\n            disabled={!safeVideoId}
+            onClick={() => { if (safeVideoId) setActive(true); }}
+            disabled={!safeVideoId}
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
