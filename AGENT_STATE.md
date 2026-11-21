@@ -1,3 +1,7 @@
+### 2026-11-21 V239 — /evenimente photograph transition (DRAFT / QA PENDING)
+- Single zone: event selection stage. The photo intentionally stays on the last decoded image during a switch; the former caption misleadingly said `ACUM ÎN REGIE` for the old event. It now displays `SE PREGĂTEȘTE FOTOGRAFIA SELECTATĂ` while selected and visible image differ, then returns to the original caption after decode. No assets/dependencies or homepage changes.
+- Risk: failed image decode leaves pending label until another successful selection. Browser 390/1440 matched screenshots, six widths, TypeScript/SSR/Vitest, screen-reader and exact-head CI NOT VERIFIED. Do not merge/deploy. Next: error fallback for failed image decode, Contact mobile QA.
+
 ### 2026-11-19 V238 — Contact prefill announcement (DRAFT / QA PENDING)
 - Single zone: Contact. Hydration adds the prefilled event/services summary after the initial SSR render; changed the existing summary to `role=status`, `aria-live=polite`, `aria-atomic=true` so assistive technology can announce it. No automatic send, no backend, no new homepage section, assets or dependencies.
 - QA gate: exact-head CI, screen-reader announcement, SSR/hydration, 390/1440 matched Chromium screenshots and six-width browser regression NOT VERIFIED. Do not merge or deploy. Next rotation: /evenimente details.

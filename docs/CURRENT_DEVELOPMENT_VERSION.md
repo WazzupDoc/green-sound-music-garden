@@ -1,3 +1,7 @@
+### V239 / 2026-11-21 — Events photo pending state (DRAFT / QA PENDING)
+- Branch `fix/v239-event-photo-selection-state` stacked on V238. /evenimente photo caption now truthfully indicates when the selected event's photograph has not yet decoded, instead of labelling the previous event image as current. No homepage change, new media, backend or dependency.
+- Exact-head CI, strict TS, SSR/Vitest, six-width Chromium and matched before/after 390/1440 screenshots NOT VERIFIED. Main untouched; do not merge/deploy. Next: image decode failure fallback and Contact browser QA.
+
 ### V238 / 2026-11-19 — Contact prefill accessible status (DRAFT / QA PENDING)
 - Branch `fix/v238-contact-prefill-status` stacked on V237. Existing hydrated prefill summary now uses a polite atomic status region, to expose selected event/date/location/services without stealing keyboard focus. No new UI sections or backend; main unchanged.
 - Exact-head CI, TypeScript/SSR/Vitest, screen-reader behavior and Chromium 390/1440 before/after and six widths pending. Do not merge/deploy. Next: /evenimente details.
