@@ -1,3 +1,6 @@
+### V246 / 2026-11-21
+- No added imagery, fonts, video, code libraries, tracking or external assets. Existing Contact form only.
+
 ### 2026-11-21 V245
 - No new assets, photographs, video, iconography, fonts, dependencies or external tracking. Existing asset provenance unchanged.
 
