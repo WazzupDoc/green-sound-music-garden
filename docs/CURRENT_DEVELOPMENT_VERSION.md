@@ -1,3 +1,6 @@
+### V254 / 2026-11-21 — Contact pending clipboard focus (DRAFT / QA PENDING)
+- Branch `fix/v254-contact-copy-focus-pending` stacked on V253 PR #289. Preserve keyboard focus on copy action during async clipboard permissions with `aria-disabled` instead of native disabled; existing `copyPendingRef` guards duplicate actions. Source regression added. No visual redesign; screenshots 390/1440 and six widths NOT CAPTURED, TS/SSR/Vitest/gzip and CI exact-head NOT YET VERIFIED. No main/deploy changes. Next: Events full visual audit.
+
 ### V253 / 2026-11-21 — Events retry focus continuity (DRAFT / QA PENDING)
 - Branch `fix/v253-events-retry-focus-return` stacked on V252 PR #288. On manual photo retry, keyboard focus returns to selected setlist item before retry control unmounts. Source regression added. No main/deploy, media or dependencies. Browser screenshots, six widths and exact-head CI pending; do not merge.
 
