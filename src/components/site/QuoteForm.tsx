@@ -240,7 +240,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
             <ArrowUpRight className="size-4" aria-hidden />
           </a>
           <button type="button" ref={copyButtonRef} className="quote-preview__copy"
-            disabled={copyStatus === "pending"} aria-busy={copyStatus === "pending"}
+            aria-disabled={copyStatus === "pending"} aria-busy={copyStatus === "pending"}
             onClick={() => { void copyMessage(message); }}>
             <ClipboardCopy className="size-5" aria-hidden />
             {copyStatus === "pending" ? "Se copiază…" : copyStatus === "success" ? "Mesaj copiat" : "Copiază mesajul"}
