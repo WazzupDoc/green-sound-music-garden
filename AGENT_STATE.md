@@ -1,3 +1,6 @@
+### V253 / 2026-11-21 — Events retry keyboard focus (DRAFT / QA PENDING)
+- Zone: /evenimente retry control. Retrying removes the focused button; V253 explicitly focuses the selected event's existing setlist button, keeping keyboard position meaningful. Added source regression. No new assets/packages, homepage or main change. Chromium 390/1440 before-after, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: Contact keyboard clipboard.
+
 ### V252 / 2026-11-21 — Events manual image retry (DRAFT / QA PENDING)
 - Zone: /evenimente. When the selected real photograph fails to decode, a keyboard-accessible manual retry button now restarts preload without losing the selected event or previous photograph. Source regression added. No new media/dependencies. Browser before/after, six widths, exact-head CI, TypeScript/SSR/gzip not verified. Next: Contact form clipboard keyboard/focus; verify V252 visual and functional QA.
 
