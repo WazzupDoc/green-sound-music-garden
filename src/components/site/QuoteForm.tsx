@@ -94,7 +94,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
       // Render a keyboard-selectable alternative directly below the actions.
       // A delayed permission prompt must not steal focus after the visitor
       // has moved to another action or field while the copy was pending.
-      restoreManualCopyFocusRef.current = document.activeElement === copyButtonRef.current;
+      restoreManualCopyFocusRef.current = document.activeElement === copyButtonRef.current || document.activeElement === document.body;
       setCopyStatus("failed");
       // Re-select on every denied retry, even when status is already "failed".
       setFailedCopyAttempts(attempts => attempts + 1);
