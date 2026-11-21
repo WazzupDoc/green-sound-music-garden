@@ -1,3 +1,8 @@
+### 2026-11-21 — V238 playback focus continuity
+- https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — modal dialogs must retain predictable keyboard focus; adapted focus continuity inside existing player, not copied code.
+- https://react.dev/reference/react/useLayoutEffect — synchronize focus after DOM replacement and before paint. Original implementation; no external license/code or new package.
+- Rejected timeout-based focus restoration (race condition) and automatic iframe loading (privacy). This is a functional keyboard fix, not a claimed visual redesign; browser evidence pending.
+
 ### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
 - Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
 - Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.
