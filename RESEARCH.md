@@ -1,3 +1,8 @@
+### 2026-11-21 V247 — Events trust copy
+- Source: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear labels and truthful context; documentation reference, not copied code.
+- Source: https://webflow.com/blog/website-copywriting — editorial clarity inspiration only; no code, image, or brand reused.
+- Adaptation: removed unsupported «DIN 2008» claim in Events stage microcopy, retained known Pitești/Argeș positioning. Rejected adding decorative effects or unverified historical milestones. No new dependencies/assets.
+
 ### 2026-11-21 — Contact clipboard delayed rejection
 - https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText — Clipboard write is asynchronous and may reject; use an explicit manual fallback, never claim delivery.
 - https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve logical keyboard focus. Original implementation checks current focus before focusing fallback. No external code copied, no new license/dependency. Rejected: forced focus on every rejection (focus theft), automatic retries (unexpected prompts), timed toast (ephemeral).
