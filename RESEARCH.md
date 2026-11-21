@@ -1,3 +1,8 @@
+### 2026-11-21 — V252 manual recovery for failed event imagery
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decode can reject, so a user-initiated retry is preferable to an infinite automatic retry loop. First-party implementation; no external code/license dependency.
+- https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html — provide actionable recovery for errors; button stays keyboard operable and does not move focus. No external code copied.
+- Rejected: automatic retry loop (network waste), replacement stock photo (unverified provenance), adding an extra homepage widget.
+
 ### 2026-11-21 — V251 Events decode exception safety
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — image decoding returns a Promise and may reject; normal browser failure is asynchronous. Defensive synchronous exception handling covers test doubles, unsupported environments and image creation failures; no external code copied.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch — synchronous exception guard; adapted in first-party helper only. Rejected: retry loops, extra dependencies, replacement stock photography; these add complexity or misrepresent event provenance. No code license dependency.
