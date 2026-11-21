@@ -1,3 +1,6 @@
+### V247 / 2026-11-21 — Events trust copy (DRAFT / QA PENDING)
+- Branch `fix/v247-events-unverified-founding-year` stacked on V246 PR #282. /evenimente stage registration removes unsupported «DIN 2008» historical claim and displays Pitești / Argeș instead. No media, dependencies, homepage or main change. Exact-head CI and matched Chromium screenshots pending; next audit: event image decode fallback and keyboard selection.
+
 ### V246 / 2026-11-21 — Contact clipboard focus (DRAFT / QA PENDING)
 - Branch `fix/v246-contact-clipboard-focus-continuity` based on V245 VideoLite focus PR #281. QuoteForm preserves focus on other controls if asynchronous clipboard permission fails after the user navigates away; still focuses/selects manual fallback when copy button loses focus to body. No homepage/main/deploy changes. Browser 390/1440 matched screenshots, six widths, TS/SSR/Vitest and exact-head Actions pending. Next rotation: Events visual/keyboard.
 
