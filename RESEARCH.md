@@ -1,3 +1,7 @@
+### 2026-11-21 — V253 / focus continuity
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — focus should follow meaningful operation sequence. Adaptation: after retry button unmount, focus existing selected event. No code copied, no external license dependency.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus — native focus() avoids dependency. Adaptation: focus selected setlist control synchronously on user click. Rejected: leaving focus on removed button; no new package or UI.
+
 ### 2026-11-21 — V252 manual recovery for failed event imagery
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decode can reject, so a user-initiated retry is preferable to an infinite automatic retry loop. First-party implementation; no external code/license dependency.
 - https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html — provide actionable recovery for errors; button stays keyboard operable and does not move focus. No external code copied.

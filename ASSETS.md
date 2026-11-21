@@ -1,3 +1,6 @@
+### 2026-11-21 — V253
+- No new image, video, font, icon, package or third-party asset. Existing /evenimente images retained without modification. Focus behavior only.
+
 ### 2026-11-21 V252
 No new photos, videos, fonts, icons, third-party scripts or dependencies. Retry only requests the already configured event photograph after explicit visitor action.
 
