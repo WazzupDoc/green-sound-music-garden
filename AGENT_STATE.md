@@ -1,3 +1,6 @@
+### 2026-11-21 V255 — Contact test gate repair (draft PR #291)
+- Exact-head V254 CI #44944217144: strict TS, SSR/Vite and gzip passed; Vitest 173/174 passed, one failed because a substring test mistook aria-disabled for native disabled. V255 changes only the negative assertion to a token-boundary regex; no product UI/asset/dependency changes. V255 CI exact-head and real browser screenshots pending. Branch fix/v255-contact-copy-focus-test-precision stacked on V254; main untouched. Next zone: Events full visual/browser audit at 390/1440 plus six widths.
+
 ### 2026-11-21 V254 — Contact clipboard pending focus (DRAFT / QA PENDING)
 - Contact/QuoteForm: native disabled button removed keyboard focus during asynchronous clipboard permission; `aria-disabled` preserves focus and existing synchronous pending guard prevents duplicate copy requests. Source regression added. No visual redesign, new assets, packages, homepage or main changes. Browser 390/1440 before/after, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: Events visual QA.
 
