@@ -36,17 +36,22 @@ function Events() {
   // Keep the previous authentic photo on stage until the selected one is decoded.
   // This avoids an empty black frame when switching on slow mobile networks.
   const [visualEvent, setVisualEvent] = useState(initialEvent);
+  const [failedFrameSlug, setFailedFrameSlug] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
   useEffect(() => setHydrated(true), []);
   const activeEvent = events.find((event) => event.slug === activeSlug) ?? initialEvent;
   const activeIndex = events.findIndex((event) => event.slug === activeEvent.slug) + 1;
   const indexText = String(activeIndex).padStart(2, "0");
   const framePending = visualEvent.slug !== activeEvent.slug;
+  const frameFailed = framePending && failedFrameSlug === activeEvent.slug;
   const visualIndex = events.findIndex((event) => event.slug === visualEvent.slug) + 1;
   const visualIndexText = String(visualIndex).padStart(2, "0");
   useEffect(() => {
     if (activeEvent.slug === visualEvent.slug) return;
-    return preloadEventFrame(activeEvent.image.src, () => setVisualEvent(activeEvent));
+    return preloadEventFrame(activeEvent.image.src, () => {
+      setVisualEvent(activeEvent);
+      setFailedFrameSlug(null);
+    }, undefined, () => setFailedFrameSlug(activeEvent.slug));
   }, [activeEvent, visualEvent.slug]);
 
   function onSetlistKeyDown(event: KeyboardEvent<HTMLButtonElement>, index: number) {
@@ -93,6 +98,9 @@ function Events() {
               <div className="gs173-photobox__stamp" aria-hidden="true"><strong>{visualIndexText}</strong><span>{framePending ? "CADRU ANTERIOR" : "SCENA SELECTATĂ"}</span></div>
               <div className="gs173-photobox__caption">
                 <span>{framePending ? "FOTOGRAFIE DIN CATEGORIA ANTERIOARĂ" : "ACUM ÎN REGIE"}</span><h2>{visualEvent.name}</h2>
+                <p role="status" aria-live="polite" style={{ fontSize: "0.75rem", letterSpacing: "0.03em", marginTop: "0.5rem" }}>
+                  {frameFailed ? "Fotografia selectată nu s-a putut încărca. Rămâne afișat cadrul anterior." : framePending ? "Se încarcă fotografia selectată; este afișat cadrul anterior." : ""}
+                </p>
                 <svg aria-hidden="true" viewBox="0 0 220 24" preserveAspectRatio="none">
                   <path d="M0 12H31L40 8L48 17L57 4L65 21L73 12H94L104 7L113 18L122 12H141L152 5L162 19L169 12H187L198 9L210 15L220 12"/>
                 </svg>
