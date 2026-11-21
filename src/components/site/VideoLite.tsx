@@ -40,9 +40,9 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
   };
   // Guard during render, before layout effects: React must never mount a new
   // third-party iframe using consent granted for the previous film.
-  const canRenderPlayer = active && previousVideoIdRef.current === video.id;
+  // Reject malformed IDs before constructing an external iframe URL.\n  const safeVideoId = /^[A-Za-z0-9_-]{11}$/.test(video.id);\n  const canRenderPlayer = safeVideoId && active && previousVideoIdRef.current === video.id;
   const params = new URLSearchParams({ autoplay: "1", rel: "0", modestbranding: "1" });
-  if (video.start) params.set("start", String(video.start));
+  if (Number.isSafeInteger(video.start) && (video.start ?? 0) > 0) params.set("start", String(video.start));
 
   return (
     <figure className={className}>
@@ -67,7 +67,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
           <button
             type="button"
             ref={playButtonRef}
-            onClick={() => setActive(true)}
+            onClick={() => { if (safeVideoId) setActive(true); }}\n            disabled={!safeVideoId}
             className="absolute inset-0 size-full text-left"
             aria-label={`Redă videoclipul: ${video.title}`}
           >
@@ -87,7 +87,7 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             )}
             <span className="hero-fade absolute inset-0 opacity-80" />
             <span className="absolute left-5 top-5 inline-flex min-h-11 items-center gap-3 border border-[#F3F0E9a8] bg-[#0A0F15e8] px-4 py-2 text-base font-semibold text-[#F3F0E9]">
-              <Play className="size-5 fill-current" aria-hidden /> Redă filmarea
+              <Play className="size-5 fill-current" aria-hidden /> {safeVideoId ? "Redă filmarea" : "Film indisponibil"}
             </span>
             <span className="absolute inset-x-5 bottom-4 font-display text-lg font-semibold leading-tight text-[#F3F0E9]">
               {video.title}
