@@ -1,3 +1,6 @@
+### 2026-11-21 V254
+No new images, fonts, videos, logos, icons, libraries or tracking. Contact clipboard focus-only code change.
+
 ### 2026-11-21 — V253
 - No new image, video, font, icon, package or third-party asset. Existing /evenimente images retained without modification. Focus behavior only.
 
