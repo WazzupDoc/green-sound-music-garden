@@ -1,3 +1,8 @@
+### 2026-11-21 V239 — Event preview transition clarity
+- https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status feedback without focus movement; adapted existing caption with polite status while photo decode is pending. Reference only; no code copied.
+- https://web.dev/articles/optimize-lcp — preserve predecoded photo before replacement, avoiding blank stage; no new preload dependency. Reference only; no code copied.
+- Rejected forced immediate image swap and artificial progress percentage. No third-party asset/code or new dependency.
+
 ### 2026-11-19 — Contact prefill live status (V238)
 - Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role — polite noninterrupting status announcements; adapted native role on existing prefill summary, without JS package.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — status messages should be exposed without requiring focus. Existing content stays visible; avoid intrusive alert/dialog or forced focus.
