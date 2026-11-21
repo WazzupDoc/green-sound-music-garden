@@ -7,7 +7,7 @@ const source = readFileSync(resolve(process.cwd(), "src/components/site/QuoteFor
 describe("V254 Contact clipboard pending keyboard focus", () => {
   it("retains the copy control in keyboard focus order while async clipboard permission is pending", () => {
     expect(source).toContain('aria-disabled={copyStatus === "pending"} aria-busy={copyStatus === "pending"}');
-    expect(source).not.toContain('disabled={copyStatus === "pending"}');
+    expect(source).not.toMatch(/(?:^|\s)disabled=\{copyStatus === "pending"\}/m);
   });
   it("guards duplicate clipboard requests even when the button remains focusable", () => {
     expect(source).toContain("if (copyPendingRef.current) return;");
