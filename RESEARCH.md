@@ -1,3 +1,7 @@
+
+### 2026-11-21 V242 — CI regression contract
+Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 — inspected actual failing Vitest log. Three source-level assertions still expected pre-V240 unguarded playback; corrected to assert the 11-character video-ID guard. No external code reused. Rejected weakening/removing tests; no dependencies.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 
