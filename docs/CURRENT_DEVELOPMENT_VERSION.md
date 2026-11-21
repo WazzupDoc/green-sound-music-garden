@@ -1,3 +1,6 @@
+### V252 / 2026-11-21 — Events image retry (DRAFT / QA PENDING)
+- Branch `fix/v252-events-frame-manual-retry` stacked on V251 PR #287. Failed image decode now offers an explicit retry while preserving previous verified photo and active event; two source regression assertions. No new media/dependencies/main changes. CI exact-head, TS/SSR/Vitest/gzip and Chromium before/after screenshots NOT VERIFIED. Next: Contact keyboard/clipboard and six-width Events browser QA.
+
 ### V251 / 2026-11-21 — Events synchronous image failure guard (DRAFT / QA PENDING)
 - Branch `fix/v251-events-sync-decode-fallback` based on V250 PR #286. Handles synchronous image creation, src assignment and decode exceptions via existing recoverable error callback; two tests added. No new media, dependencies, homepage/main or deployment changes. Exact-head CI, TS/SSR/Vitest/gzip and real Chromium screenshots pending. Next: Contact keyboard/clipboard.
 

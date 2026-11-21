@@ -1,3 +1,6 @@
+### V252 / 2026-11-21 — Events manual image retry (DRAFT / QA PENDING)
+- Zone: /evenimente. When the selected real photograph fails to decode, a keyboard-accessible manual retry button now restarts preload without losing the selected event or previous photograph. Source regression added. No new media/dependencies. Browser before/after, six widths, exact-head CI, TypeScript/SSR/gzip not verified. Next: Contact form clipboard keyboard/focus; verify V252 visual and functional QA.
+
 ### V251 / 2026-11-21 — Events synchronous decode safety (DRAFT / QA PENDING)
 - Zone: /evenimente image stage. The preload helper previously caught rejected decode promises but not synchronous image-constructor/src/decode exceptions. These now report a recoverable failure, retaining the last valid photograph; two Vitest cases added. No new assets/dependencies or main changes.
 - No real Chromium screenshots, exact-head CI, TS/SSR/gzip or six-width regression verified. Next: Contact keyboard/clipboard and Events slow-network visual QA. Do not merge or publish.

@@ -1,3 +1,6 @@
+### 2026-11-21 V252
+No new photos, videos, fonts, icons, third-party scripts or dependencies. Retry only requests the already configured event photograph after explicit visitor action.
+
 ### 2026-11-21 V251
 No assets, photographs, fonts, videos, icons or dependencies introduced. Existing event media remains unchanged; failed image decode retains the previous successfully decoded frame.
 
