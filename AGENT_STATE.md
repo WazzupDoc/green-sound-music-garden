@@ -1,3 +1,6 @@
+### 2026-11-21 V254 — Contact clipboard pending focus (DRAFT / QA PENDING)
+- Contact/QuoteForm: native disabled button removed keyboard focus during asynchronous clipboard permission; `aria-disabled` preserves focus and existing synchronous pending guard prevents duplicate copy requests. Source regression added. No visual redesign, new assets, packages, homepage or main changes. Browser 390/1440 before/after, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: Events visual QA.
+
 ### V253 / 2026-11-21 — Events retry keyboard focus (DRAFT / QA PENDING)
 - Zone: /evenimente retry control. Retrying removes the focused button; V253 explicitly focuses the selected event's existing setlist button, keeping keyboard position meaningful. Added source regression. No new assets/packages, homepage or main change. Chromium 390/1440 before-after, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: Contact keyboard clipboard.
 
