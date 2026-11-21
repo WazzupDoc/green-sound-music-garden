@@ -1,3 +1,6 @@
+### V253 / 2026-11-21 — Events retry focus continuity (DRAFT / QA PENDING)
+- Branch `fix/v253-events-retry-focus-return` stacked on V252 PR #288. On manual photo retry, keyboard focus returns to selected setlist item before retry control unmounts. Source regression added. No main/deploy, media or dependencies. Browser screenshots, six widths and exact-head CI pending; do not merge.
+
 ### V252 / 2026-11-21 — Events image retry (DRAFT / QA PENDING)
 - Branch `fix/v252-events-frame-manual-retry` stacked on V251 PR #287. Failed image decode now offers an explicit retry while preserving previous verified photo and active event; two source regression assertions. No new media/dependencies/main changes. CI exact-head, TS/SSR/Vitest/gzip and Chromium before/after screenshots NOT VERIFIED. Next: Contact keyboard/clipboard and six-width Events browser QA.
 
