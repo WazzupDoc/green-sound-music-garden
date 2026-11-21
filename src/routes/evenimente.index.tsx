@@ -66,6 +66,7 @@ function Events() {
     event.preventDefault();
     const nextEvent = events[next];
     if (!nextEvent) return;
+    setFailedFrameSlug(null);
     setActiveSlug(nextEvent.slug);
     setCueRevision(previous => previous + 1);
     event.currentTarget.closest(".gs173-setlist")
@@ -120,7 +121,7 @@ function Events() {
                 <button type="button" className="gs173-setlist__select"
                   aria-pressed={selected} aria-controls="gs173-selected-programme"
                   aria-label={"Previzualizează " + event.name}
-                  onClick={() => { setActiveSlug(event.slug); setCueRevision(previous => previous + 1); }}
+                  onClick={() => { setFailedFrameSlug(null); setActiveSlug(event.slug); setCueRevision(previous => previous + 1); }}
                   onKeyDown={(keyEvent) => onSetlistKeyDown(keyEvent, index)}>
                   <span className="gs173-setlist__index">{String(index + 1).padStart(2, "0")}.</span>
                   <CategorySignal key={selected ? `${event.slug}-${cueRevision}` : event.slug} kind={event.slug} play={selected && cueRevision > 0} />
