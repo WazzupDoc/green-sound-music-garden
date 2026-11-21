@@ -1,3 +1,6 @@
+### 2026-11-21 V245 — Focus continuity
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve predictable keyboard focus when unrelated UI changes. Adaptation: restore video Play focus only after active playback is interrupted, never on passive carousel changes. No third-party code copied, no dependency, license N/A. Rejected: unconditional focus on every video identity change, because it steals focus from forms/navigation. Premium visual reference review and real Chromium evidence still pending.
+
 ### 2026-11-21 V243 — truthful unavailable video state
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html — accessible control names must describe the actual action/state. Original local adjustment: invalid video label changes from «Redă» to «Videoclip indisponibil»; no external code copied or new license. Rejected: a disabled control with a misleading playback name.
 
