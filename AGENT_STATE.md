@@ -1,3 +1,8 @@
+### 2026-11-21 V241 — VideoLite TSX parser unblock (draft / QA pending)
+- Zone: shared video player. V240 introduced literal `\\n` tokens outside strings in `src/components/site/VideoLite.tsx` at the ID validation and Play handler, a concrete TSX syntax blocker. V241 replaces these with actual line breaks; video behavior remains V240, no dependencies/assets/homepage/main changes.
+- Evidence: V240 source inspected through GitHub connector; V241 commit `7c388b1e2cfe2ab455c60ffd109ea2fa51684ccc`. TypeScript, SSR, Vitest, exact-head CI, browser six widths, keyboard/focus, consent network and 390/1440 before-after screenshots NOT YET VERIFIED. No visual redesign claimed.
+- Next: validate V241 exact-head and restore CI; audit Contact mobile clipboard and /evenimente image decode in subsequent zone rotation. Do not merge/deploy without green checks and real Chromium evidence.
+
 ### 2026-11-21 V240 — shared video embed input validation (DRAFT / QA PENDING)
 - Single zone: shared VideoLite. Invalid video IDs previously entered a third-party iframe URL; now only 11-character YouTube IDs permit Play and iframe mount. Nonpositive/noninteger start offsets are ignored. Invalid videos show an unavailable state rather than loading an external origin.
 - No dependencies, media, homepage structure, backend, or main change. Source-level change only. TypeScript/SSR/Vitest, exact-head CI, real Chromium 390/1440 matched screenshots, six widths and consent/focus tests NOT VERIFIED. Do not merge/deploy.
