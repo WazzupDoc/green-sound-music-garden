@@ -1,3 +1,8 @@
+### 2026-11-21 — V250 / Events image decode status
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decoded image may reject; retain previous rendered photograph and provide an explicit failure state.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite non-disruptive status for loading/error; no focus hijack.
+- Technique: original local React state and existing decode helper; no third-party code, assets or dependencies. Rejected: automatic retry/network polling and replacing failed images with unverified media. Links are documentation references; fresh web verification not performed in this run.
+
 ### 2026-11-21 — V248 Events test runner diagnosis
 - Source: GitHub Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44897261840 — verified CI log: `ERR_INVALID_URL_SCHEME` when passing transformed `import.meta.url` to `new URL` for a local test fixture. Adapted Node built-in `path.resolve(process.cwd(), ...)` for a repository-root Vitest run. No third-party code or dependency. Rejected adding a URL polyfill or suppressing the failing test; neither addresses the actual fixture path. No visual reference or visual change claimed.
 
