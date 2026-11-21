@@ -1,3 +1,6 @@
+### V246 / 2026-11-21 — Contact clipboard focus (DRAFT / QA PENDING)
+- Branch `fix/v246-contact-clipboard-focus-continuity` based on V245 VideoLite focus PR #281. QuoteForm preserves focus on other controls if asynchronous clipboard permission fails after the user navigates away; still focuses/selects manual fallback when copy button loses focus to body. No homepage/main/deploy changes. Browser 390/1440 matched screenshots, six widths, TS/SSR/Vitest and exact-head Actions pending. Next rotation: Events visual/keyboard.
+
 ### V245 / 2026-11-21 — Passive video-switch focus fix (DRAFT / NOT VALIDATED)
 - Branch `fix/v245-video-switch-no-focus-theft` stacked on V244 PR #280 (`8ba1843ffd85b768ccfa5b2a03208e750064ac16`). Shared VideoLite no longer steals focus when video identity changes while playback is inactive; if playing, focus still returns to new Play control. Existing source regression updated. No main/deployment. Exact-head CI, six-width Chromium, matched 390/1440 screenshots and keyboard behavior not yet verified. Next rotation: Contact mobile clipboard.
 
