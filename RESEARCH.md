@@ -1,3 +1,7 @@
+### 2026-11-21 — V251 Events decode exception safety
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — image decoding returns a Promise and may reject; normal browser failure is asynchronous. Defensive synchronous exception handling covers test doubles, unsupported environments and image creation failures; no external code copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch — synchronous exception guard; adapted in first-party helper only. Rejected: retry loops, extra dependencies, replacement stock photography; these add complexity or misrepresent event provenance. No code license dependency.
+
 ### 2026-11-21 — V250 / Events image decode status
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decoded image may reject; retain previous rendered photograph and provide an explicit failure state.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — polite non-disruptive status for loading/error; no focus hijack.

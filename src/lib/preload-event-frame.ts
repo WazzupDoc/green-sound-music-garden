@@ -10,13 +10,18 @@ export function preloadEventFrame(
   onError?: () => void,
 ): () => void {
   let cancelled = false;
-  const image = createImage();
-  image.src = src;
-  void image.decode().then(() => {
-    if (!cancelled) onReady();
-  }).catch(() => {
-    // Keep the last decoded photograph and report a failure only for the current selection.
-    if (!cancelled) onError?.();
-  });
+  const fail = () => { if (!cancelled) onError?.(); };
+  try {
+    const image = createImage();
+    image.src = src;
+    // Promise.resolve also handles a thenable or a non-Promise decode implementation.
+    void Promise.resolve(image.decode()).then(() => {
+      if (!cancelled) onReady();
+    }).catch(fail);
+  } catch {
+    // Browser/image mocks may throw synchronously when assigning src or decoding.
+    // Report the same recoverable failure rather than crashing the Events route.
+    fail();
+  }
   return () => { cancelled = true; };
 }
