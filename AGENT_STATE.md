@@ -1,3 +1,6 @@
+### V248 / 2026-11-21 — Events test CI unblock
+- Exact V247 HEAD `8bd4e0c` Actions #44897261840 failed Vitest with `ERR_INVALID_URL_SCHEME` at `src/test/events-provenance-copy-v247.test.ts:4`; 60 suites / 162 tests passed. Changed source fixture loading to `resolve(process.cwd(), ...)`, no production UI change. CI/browser screenshot still pending; next zone: Events image decode/focus. Main unchanged.
+
 ### V247 / 2026-11-21 — Events provenance copy (DRAFT)
 - Zone: /evenimente hero. Replaced unsupported founding-year claim «DIN 2008» with geographic service identity «PITEȘTI / ARGEȘ». No visual layout expansion, dependencies or media. Screenshot before/after, six-width browser, exact-head CI pending. Next zone: event image decode fallback and keyboard state. Main untouched.
 

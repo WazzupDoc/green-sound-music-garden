@@ -1,3 +1,6 @@
+### 2026-11-21 — V248 Events test runner diagnosis
+- Source: GitHub Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44897261840 — verified CI log: `ERR_INVALID_URL_SCHEME` when passing transformed `import.meta.url` to `new URL` for a local test fixture. Adapted Node built-in `path.resolve(process.cwd(), ...)` for a repository-root Vitest run. No third-party code or dependency. Rejected adding a URL polyfill or suppressing the failing test; neither addresses the actual fixture path. No visual reference or visual change claimed.
+
 ### 2026-11-21 V247 — Events trust copy
 - Source: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — clear labels and truthful context; documentation reference, not copied code.
 - Source: https://webflow.com/blog/website-copywriting — editorial clarity inspiration only; no code, image, or brand reused.
