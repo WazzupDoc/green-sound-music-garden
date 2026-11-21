@@ -1,3 +1,6 @@
+### V251 / 2026-11-21 — Events synchronous image failure guard (DRAFT / QA PENDING)
+- Branch `fix/v251-events-sync-decode-fallback` based on V250 PR #286. Handles synchronous image creation, src assignment and decode exceptions via existing recoverable error callback; two tests added. No new media, dependencies, homepage/main or deployment changes. Exact-head CI, TS/SSR/Vitest/gzip and real Chromium screenshots pending. Next: Contact keyboard/clipboard.
+
 ### V250 / 2026-11-21 — Events image decode failure feedback (DRAFT / QA PENDING)
 - Branch `fix/v250-events-frame-loading-status`, stacked on V249 PR #285. Added guarded decode-error callback and accessible loading/failure announcement while retaining previous event photograph; stale decode failures ignored. Added Vitest regressions. No homepage, new assets, dependencies or main changes.
 - Exact-head GitHub Actions, TypeScript, SSR/Vitest/gzip, Chromium 390/1440 before-after and six-width checks NOT VERIFIED. Do not merge/publish. Next: Contact keyboard/clipboard and event slow-network QA.
