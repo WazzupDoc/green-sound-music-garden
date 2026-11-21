@@ -1,3 +1,7 @@
+### V251 / 2026-11-21 — Events synchronous decode safety (DRAFT / QA PENDING)
+- Zone: /evenimente image stage. The preload helper previously caught rejected decode promises but not synchronous image-constructor/src/decode exceptions. These now report a recoverable failure, retaining the last valid photograph; two Vitest cases added. No new assets/dependencies or main changes.
+- No real Chromium screenshots, exact-head CI, TS/SSR/gzip or six-width regression verified. Next: Contact keyboard/clipboard and Events slow-network visual QA. Do not merge or publish.
+
 ### V250 / 2026-11-21 — Events decode failure status (DRAFT / QA PENDING)
 - Zone: /evenimente stage image. Previously a failed image decode left the previous photograph on screen indefinitely with no explanation. V250 distinguishes loading versus failed decoding in a polite accessible status, preserves authentic previous photograph and current event CTA, and ignores cancelled/stale failures.
 - Files: src/routes/evenimente.index.tsx, src/lib/preload-event-frame.ts, src/test/events-frame-failure-v250.test.ts. Source + unit regressions added. No assets/dependencies/homepage/main/deployment changes.
