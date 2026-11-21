@@ -1,3 +1,6 @@
+### 2026-11-21 — V248 asset ledger
+- No new images, video, fonts, icons, libraries or external resources; CI fixture-path correction only. Existing asset permissions and provenance unchanged.
+
 ### V247 / 2026-11-21
 No assets, media, fonts, icons or dependencies added. Existing Events photography unchanged; provenance remains subject to prior asset audit.
 
