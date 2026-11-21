@@ -1,3 +1,6 @@
+### 2026-11-21 — V250
+No new media, font, icon, external code, dependency or license introduced. Existing event photographs remain unchanged; a failed selection retains the previously decoded image with an explicit accessible status. Provenance of existing media is not independently reverified here.
+
 ### 2026-11-21 — V248 asset ledger
 - No new images, video, fonts, icons, libraries or external resources; CI fixture-path correction only. Existing asset permissions and provenance unchanged.
 
