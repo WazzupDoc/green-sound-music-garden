@@ -26,6 +26,25 @@ describe("V250 Events image failure provenance", () => {
     expect(onReady).not.toHaveBeenCalled();
   });
 
+  it("reports a synchronous decode exception without throwing from the route", () => {
+    const onReady = vi.fn();
+    const onError = vi.fn();
+    expect(() => preloadEventFrame("/broken.webp", onReady, () => ({
+      src: "",
+      decode: () => { throw new Error("synchronous decode failure"); },
+    }), onError)).not.toThrow();
+    expect(onError).toHaveBeenCalledOnce();
+    expect(onReady).not.toHaveBeenCalled();
+  });
+
+  it("reports a synchronous image creation exception", () => {
+    const onError = vi.fn();
+    expect(() => preloadEventFrame("/broken.webp", vi.fn(), () => {
+      throw new Error("image constructor unavailable");
+    }, onError)).not.toThrow();
+    expect(onError).toHaveBeenCalledOnce();
+  });
+
   it("does not report a stale failure after the selection is superseded", async () => {
     let rejectDecode: (reason?: unknown) => void = () => {};
     const onError = vi.fn();
