@@ -1,3 +1,6 @@
+### 2026-11-21 V245 — Video carousel focus continuity (DRAFT / QA PENDING)
+- Zone: shared VideoLite. A passive film identity update previously set restoreFocusRef unconditionally and focused Play even when visitor was using another control. Now focus restoration is armed only if previous film was playing; explicit Stop still restores focus. Source regression updated. Browser keyboard verification, matched 390/1440 screenshots and exact-head CI remain pending. Next zone: Contact mobile clipboard/keyboard. Main untouched.
+
 ### 2026-11-21 V243 — VideoLite invalid film accessible state (QA pending)
 - Zone: shared video player. Invalid 11-character YouTube IDs already block playback; now their disabled control announces «Videoclip indisponibil» rather than misleading screen-reader users with «Redă videoclipul». Disabled cursor communicates non-action. No new dependencies/media/homepage changes.
 - Prior V242 PR #278 exact-head Actions run 44863868659 succeeded; V243 exact-head CI, TypeScript/SSR/Vitest, 390/1440 real screenshots and six-width browser validation pending. No visual redesign claim. Next: Contact mobile clipboard and keyboard audit.

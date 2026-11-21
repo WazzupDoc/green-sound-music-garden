@@ -18,7 +18,9 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
     // the visitor previously pressed Play on another film in this same slot.
     if (previousVideoIdRef.current !== video.id) {
       previousVideoIdRef.current = video.id;
-      restoreFocusRef.current = true;
+      // Only restore focus when the previous film was actually playing.
+      // A passive carousel update must not steal focus from navigation or forms.
+      restoreFocusRef.current = active;
       setActive(false);
     }
   }, [video.id]);

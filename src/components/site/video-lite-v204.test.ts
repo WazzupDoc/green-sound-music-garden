@@ -21,6 +21,7 @@ describe("V204 explicit film stop control", () => {
     expect(source).toContain("setActive(false)");
     expect(source).toContain("useLayoutEffect(() => {");
     expect(source).toContain("restoreFocusRef.current = true");
+    expect(source).toContain("restoreFocusRef.current = active");
     expect(source).toContain("if (!active && restoreFocusRef.current)");
     expect(source).toContain("playButtonRef.current?.focus()");
     expect(source).not.toContain("requestAnimationFrame(() => playButtonRef.current?.focus())");

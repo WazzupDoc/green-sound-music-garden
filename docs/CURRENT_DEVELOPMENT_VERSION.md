@@ -1,3 +1,6 @@
+### V245 / 2026-11-21 — Passive video-switch focus fix (DRAFT / NOT VALIDATED)
+- Branch `fix/v245-video-switch-no-focus-theft` stacked on V244 PR #280 (`8ba1843ffd85b768ccfa5b2a03208e750064ac16`). Shared VideoLite no longer steals focus when video identity changes while playback is inactive; if playing, focus still returns to new Play control. Existing source regression updated. No main/deployment. Exact-head CI, six-width Chromium, matched 390/1440 screenshots and keyboard behavior not yet verified. Next rotation: Contact mobile clipboard.
+
 ### V243 / 2026-11-21 — VideoLite unavailable accessible label (DRAFT / QA PENDING)
 - Branch `fix/v243-videolite-unavailable-accessibility` stacked on V242 PR #278. Invalid YouTube IDs are already blocked; disabled Play now announces the truthful unavailable state to assistive technology. No homepage, assets, dependencies, main or deploy changes. V242 CI success: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44863868659 . V243 exact-head CI and browser screenshots pending; do not merge or publish.
 
