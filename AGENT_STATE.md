@@ -1,3 +1,8 @@
+### V249 / 2026-11-21 — Events previous-frame provenance (DRAFT / QA PENDING)
+- Zone: /evenimente event-stage image selection. While an event photo decodes (or decode fails), the last successfully decoded photograph remains visible. Previously it was still stamped “SCENA SELECTATĂ”, which could falsely imply the photo matched the newly selected event. The stage now explicitly says “CADRU ANTERIOR” and “FOTOGRAFIE DIN CATEGORIA ANTERIOARĂ” until the matching image decodes. Active event detail/offer links remain tied to the selected event.
+- Files: src/routes/evenimente.index.tsx and src/test/events-frame-provenance-v249.test.ts. No dependency, new image, tracking, backend or homepage change. Source-level regression only; not a verified visual redesign.
+- QA gate: TypeScript, SSR, Vitest, gzip, Chromium six widths, matched 390/1440 screenshots and exact-head CI pending. Next rotation: Contact clipboard keyboard/focus and event image failure handling. Main/deploy untouched.
+
 ### V248 / 2026-11-21 — Events test CI unblock
 - Exact V247 HEAD `8bd4e0c` Actions #44897261840 failed Vitest with `ERR_INVALID_URL_SCHEME` at `src/test/events-provenance-copy-v247.test.ts:4`; 60 suites / 162 tests passed. Changed source fixture loading to `resolve(process.cwd(), ...)`, no production UI change. CI/browser screenshot still pending; next zone: Events image decode/focus. Main unchanged.
 
