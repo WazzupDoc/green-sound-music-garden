@@ -1,3 +1,8 @@
+### V250 / 2026-11-21 — Events decode failure status (DRAFT / QA PENDING)
+- Zone: /evenimente stage image. Previously a failed image decode left the previous photograph on screen indefinitely with no explanation. V250 distinguishes loading versus failed decoding in a polite accessible status, preserves authentic previous photograph and current event CTA, and ignores cancelled/stale failures.
+- Files: src/routes/evenimente.index.tsx, src/lib/preload-event-frame.ts, src/test/events-frame-failure-v250.test.ts. Source + unit regressions added. No assets/dependencies/homepage/main/deployment changes.
+- QA: exact-head CI, strict TS, SSR, Vitest, gzip, six-width real Chromium and matched 390/1440 screenshots NOT VERIFIED. This is a functional accessibility correction, not a visually validated redesign. Next zone: Contact mobile clipboard and keyboard; recheck event image on slow/failed network.
+
 ### V249 / 2026-11-21 — Events previous-frame provenance (DRAFT / QA PENDING)
 - Zone: /evenimente event-stage image selection. While an event photo decodes (or decode fails), the last successfully decoded photograph remains visible. Previously it was still stamped “SCENA SELECTATĂ”, which could falsely imply the photo matched the newly selected event. The stage now explicitly says “CADRU ANTERIOR” and “FOTOGRAFIE DIN CATEGORIA ANTERIOARĂ” until the matching image decodes. Active event detail/offer links remain tied to the selected event.
 - Files: src/routes/evenimente.index.tsx and src/test/events-frame-provenance-v249.test.ts. No dependency, new image, tracking, backend or homepage change. Source-level regression only; not a verified visual redesign.
