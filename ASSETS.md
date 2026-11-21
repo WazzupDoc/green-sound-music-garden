@@ -1,3 +1,6 @@
+### V247 / 2026-11-21
+No assets, media, fonts, icons or dependencies added. Existing Events photography unchanged; provenance remains subject to prior asset audit.
+
 ### V246 / 2026-11-21
 - No added imagery, fonts, video, code libraries, tracking or external assets. Existing Contact form only.
 

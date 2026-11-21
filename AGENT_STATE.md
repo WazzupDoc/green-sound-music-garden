@@ -1,3 +1,6 @@
+### V247 / 2026-11-21 — Events provenance copy (DRAFT)
+- Zone: /evenimente hero. Replaced unsupported founding-year claim «DIN 2008» with geographic service identity «PITEȘTI / ARGEȘ». No visual layout expansion, dependencies or media. Screenshot before/after, six-width browser, exact-head CI pending. Next zone: event image decode fallback and keyboard state. Main untouched.
+
 ### 2026-11-21 V246 — Contact clipboard focus continuity (DRAFT / QA PENDING)
 - Zone: Contact / QuoteForm. A rejected asynchronous clipboard request could steal focus from another control when the visitor moved during the browser permission prompt. Fallback textarea now receives focus only when the copy control retains focus or the disabled pending control has dropped focus to document.body. Other active controls keep focus. No data sent, new dependencies or media. Exact-head CI and real Chromium keyboard/screenshots pending; next zone: /evenimente visual and keyboard audit. Main unchanged.
 
