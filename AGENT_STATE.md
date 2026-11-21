@@ -1,3 +1,6 @@
+### 2026-11-21 V246 — Contact clipboard focus continuity (DRAFT / QA PENDING)
+- Zone: Contact / QuoteForm. A rejected asynchronous clipboard request could steal focus from another control when the visitor moved during the browser permission prompt. Fallback textarea now receives focus only when the copy control retains focus or the disabled pending control has dropped focus to document.body. Other active controls keep focus. No data sent, new dependencies or media. Exact-head CI and real Chromium keyboard/screenshots pending; next zone: /evenimente visual and keyboard audit. Main unchanged.
+
 ### 2026-11-21 V245 — Video carousel focus continuity (DRAFT / QA PENDING)
 - Zone: shared VideoLite. A passive film identity update previously set restoreFocusRef unconditionally and focused Play even when visitor was using another control. Now focus restoration is armed only if previous film was playing; explicit Stop still restores focus. Source regression updated. Browser keyboard verification, matched 390/1440 screenshots and exact-head CI remain pending. Next zone: Contact mobile clipboard/keyboard. Main untouched.
 
