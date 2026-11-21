@@ -1,3 +1,6 @@
+### 2026-11-21 V243 — truthful unavailable video state
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html — accessible control names must describe the actual action/state. Original local adjustment: invalid video label changes from «Redă» to «Videoclip indisponibil»; no external code copied or new license. Rejected: a disabled control with a misleading playback name.
+
 
 ### 2026-11-21 V242 — CI regression contract
 Source: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 — inspected actual failing Vitest log. Three source-level assertions still expected pre-V240 unguarded playback; corrected to assert the 11-character video-ID guard. No external code reused. Rejected weakening/removing tests; no dependencies.

@@ -71,8 +71,8 @@ export function VideoLite({ video, className = "", priority = false }: { video: 
             ref={playButtonRef}
             onClick={() => { if (safeVideoId) setActive(true); }}
             disabled={!safeVideoId}
-            className="absolute inset-0 size-full text-left"
-            aria-label={`Redă videoclipul: ${video.title}`}
+            className="absolute inset-0 size-full text-left disabled:cursor-not-allowed"
+            aria-label={safeVideoId ? `Redă videoclipul: ${video.title}` : `Videoclip indisponibil: ${video.title}`}
           >
             {video.poster && failedPoster !== video.poster ? (
               <img
