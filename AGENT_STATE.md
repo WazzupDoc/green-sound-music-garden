@@ -1,3 +1,8 @@
+
+### 2026-11-21 V242 — VideoLite regression CI repair (draft / pending)
+- Area: shared VideoLite tests ONLY. V241 exact-head workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 failed four outdated string assertions across v204/v218/v219; all still demanded unguarded Play. Updated them to require the safer `safeVideoId` gate and guarded click. No production component, homepage, asset or dependency changes.
+- Evidence: GitHub Actions job 136707569819 inspected. New V242 exact-head CI, TS, SSR, Chromium six widths and before/after screenshots NOT YET VERIFIED. No visual redesign claimed. Main/deploy untouched. Next zone: Contact mobile keyboard and clipboard recovery.
+
 ### 2026-11-21 V241 — VideoLite TSX parser unblock (draft / QA pending)
 - Zone: shared video player. V240 introduced literal `\\n` tokens outside strings in `src/components/site/VideoLite.tsx` at the ID validation and Play handler, a concrete TSX syntax blocker. V241 replaces these with actual line breaks; video behavior remains V240, no dependencies/assets/homepage/main changes.
 - Evidence: V240 source inspected through GitHub connector; V241 commit `7c388b1e2cfe2ab455c60ffd109ea2fa51684ccc`. TypeScript, SSR, Vitest, exact-head CI, browser six widths, keyboard/focus, consent network and 390/1440 before-after screenshots NOT YET VERIFIED. No visual redesign claimed.
