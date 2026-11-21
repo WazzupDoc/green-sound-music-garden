@@ -1,3 +1,6 @@
+### V248 / 2026-11-21 — Events provenance test CI unblock (DRAFT)
+- Branch `fix/v248-events-provenance-test-ci` stacked on V247 PR #283. Fixes Vitest `import.meta.url` non-file scheme crash using project-root file path. V247 Actions #44897261840 failed (60 suites, 162 passing tests, one suite load failure). V248 exact-head CI and Chromium screenshots pending. No production UI/assets/dependencies/main change.
+
 ### V247 / 2026-11-21 — Events trust copy (DRAFT / QA PENDING)
 - Branch `fix/v247-events-unverified-founding-year` stacked on V246 PR #282. /evenimente stage registration removes unsupported «DIN 2008» historical claim and displays Pitești / Argeș instead. No media, dependencies, homepage or main change. Exact-head CI and matched Chromium screenshots pending; next audit: event image decode fallback and keyboard selection.
 
