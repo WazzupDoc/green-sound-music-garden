@@ -1,3 +1,6 @@
+### 2026-11-21 V251
+No assets, photographs, fonts, videos, icons or dependencies introduced. Existing event media remains unchanged; failed image decode retains the previous successfully decoded frame.
+
 ### 2026-11-21 — V250
 No new media, font, icon, external code, dependency or license introduced. Existing event photographs remain unchanged; a failed selection retains the previously decoded image with an explicit accessible status. Provenance of existing media is not independently reverified here.
 
