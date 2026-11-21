@@ -1,3 +1,6 @@
+### V243 / 2026-11-21 — VideoLite unavailable accessible label (DRAFT / QA PENDING)
+- Branch `fix/v243-videolite-unavailable-accessibility` stacked on V242 PR #278. Invalid YouTube IDs are already blocked; disabled Play now announces the truthful unavailable state to assistive technology. No homepage, assets, dependencies, main or deploy changes. V242 CI success: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44863868659 . V243 exact-head CI and browser screenshots pending; do not merge or publish.
+
 
 ### 2026-11-21 V242 — VideoLite regression CI repair (draft / pending)
 - Area: shared VideoLite tests ONLY. V241 exact-head workflow https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/44858935944 failed four outdated string assertions across v204/v218/v219; all still demanded unguarded Play. Updated them to require the safer `safeVideoId` gate and guarded click. No production component, homepage, asset or dependency changes.
