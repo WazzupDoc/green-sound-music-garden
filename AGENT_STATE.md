@@ -1,3 +1,8 @@
+### V238 / 2026-11-21 — Gallery playback keyboard focus (DRAFT / QA pending)
+- One-zone rotation: MediaLightbox ConsentedFilm. Explicit Play now focuses Stop after iframe mount; Stop restores focus to Play after player unmount. This prevents keyboard focus from disappearing when the active button is replaced. No homepage, asset, dependency or main changes.
+- Regression: src/components/site/media-lightbox-v238.test.ts (source assertion only, NOT browser proof). TypeScript, SSR, Vitest, exact-head CI, six-width Chromium, matched 390/1440 screenshots and keyboard/iframe network verification PENDING. Do not merge or publish.
+- Next: Contact prefill / validation, after completing gallery QA.
+
 ### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
 - Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
 - Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.

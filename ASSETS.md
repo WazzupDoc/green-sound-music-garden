@@ -1,3 +1,6 @@
+### V238 / 2026-11-21
+No new assets, fonts, photos, icons, media, licenses or external dependencies. Existing Green Sound media untouched. Focus fix only.
+
 ### V237 / 2026-11-21 — Lightbox filmstrip privacy (DRAFT / QA pending)
 - Base V236 PR #272, SHA f00f01345bb13d4162e7baf00c841d48ccf259a1. Zone: gallery lightbox only.
 - Removed pre-consent requests to i.ytimg.com from filmstrip video thumbnails. Video entries now use an original CSS/Lucide play placeholder; photographs remain unchanged. YouTube iframe still loads only after explicit Play. No new dependency, media, tracking or homepage changes.
