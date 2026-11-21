@@ -7,6 +7,7 @@ export function preloadEventFrame(
   src: string,
   onReady: () => void,
   createImage: () => Pick<HTMLImageElement, "src" | "decode"> = () => new Image(),
+  onError?: () => void,
 ): () => void {
   let cancelled = false;
   const image = createImage();
@@ -14,7 +15,8 @@ export function preloadEventFrame(
   void image.decode().then(() => {
     if (!cancelled) onReady();
   }).catch(() => {
-    // Keep the last decoded photograph if the new one fails.
+    // Keep the last decoded photograph and report a failure only for the current selection.
+    if (!cancelled) onError?.();
   });
   return () => { cancelled = true; };
 }
