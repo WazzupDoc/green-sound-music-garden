@@ -1,3 +1,7 @@
+### V250 / 2026-11-21 — Events image decode failure feedback (DRAFT / QA PENDING)
+- Branch `fix/v250-events-frame-loading-status`, stacked on V249 PR #285. Added guarded decode-error callback and accessible loading/failure announcement while retaining previous event photograph; stale decode failures ignored. Added Vitest regressions. No homepage, new assets, dependencies or main changes.
+- Exact-head GitHub Actions, TypeScript, SSR/Vitest/gzip, Chromium 390/1440 before-after and six-width checks NOT VERIFIED. Do not merge/publish. Next: Contact keyboard/clipboard and event slow-network QA.
+
 ### V248 / 2026-11-21 — Events provenance test CI unblock (DRAFT)
 - Branch `fix/v248-events-provenance-test-ci` stacked on V247 PR #283. Fixes Vitest `import.meta.url` non-file scheme crash using project-root file path. V247 Actions #44897261840 failed (60 suites, 162 passing tests, one suite load failure). V248 exact-head CI and Chromium screenshots pending. No production UI/assets/dependencies/main change.
 
