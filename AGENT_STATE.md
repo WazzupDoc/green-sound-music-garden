@@ -1,3 +1,6 @@
+### 2026-11-22 V258 — Events retry on reselect (DRAFT / QA PENDING)
+- Same selected event clicked or keyboard reselected after photo decode failure no longer clears its retry button and error message. Switching to another event still clears stale errors. Source regression added; no media/packages/homepage/main changes. Exact-head CI, six-width browser and matched screenshots pending. Next: Events Chromium image-failure simulation and Contact mobile audit.
+
 ### 2026-11-22 V257 — Events stale image-error reset (DRAFT / QA PENDING)
 - One-zone /evenimente: switching events by pointer or keyboard clears the prior failed-photo marker before the next image preload. Prevents an obsolete failure announcement when revisiting a previously failed category. Two source regressions added. No homepage, assets, dependencies or main changes.
 - Screenshot before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED; no visual redesign claimed. Next: full Events visual/browser QA and retry failure simulation.
