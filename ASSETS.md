@@ -1,3 +1,6 @@
+### 2026-11-22 V261
+No new visual assets, images, fonts, third-party code or dependencies; existing authorized Events photography unchanged.
+
 ### V260 / 2026-11-22
 No assets added, modified or repurposed. Existing authorized Events photographs remain unchanged. No external image, font or code license introduced.
 
