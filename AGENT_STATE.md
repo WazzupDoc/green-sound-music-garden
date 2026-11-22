@@ -1,3 +1,6 @@
+### V269 / 2026-11-22 — Event/service quote fallback context (DRAFT)
+- Zone: event detail quote conversion / no-JS. Prior fallback provided contact actions but silently dropped preselected event type/services. Now exposes selection as plain text, with instruction to mention it manually; no claim that mailto transmits selections automatically. Files: src/components/site/blocks.tsx, src/test/quote-nojs-context-v269.test.ts. No new assets or dependencies. Browser screenshot before/after 390/1440 and 360/430/768/1920, SSR/TypeScript/Vitest/gzip and CI exact-head pending. Next zone: Contact prefill/focus validation.
+
 ### V267 / 2026-11-22 — Event detail quote no-JS fallback (DRAFT / QA PENDING)
 - Rotation: event detail conversion. Shared QuoteSection previously displayed an indefinite loading-style placeholder when JavaScript was disabled; now offers real mailto and telephone actions, explicitly states JS requirement and no automatic sending. Code: src/components/site/blocks.tsx. Shared QuoteSection may also affect service pages; regression coverage required. No new dependency/media/backend, no homepage structure change. Exact-head TypeScript/Vitest/SSR/Chromium matched 390/1440 screenshots NOT VERIFIED; no visual acceptance claim. Next: browser test and focus/keyboard event CTA.
 
