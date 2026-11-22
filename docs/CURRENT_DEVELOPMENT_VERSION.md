@@ -1,3 +1,6 @@
+### V267 / 2026-11-22 — Event quote SSR/no-JS actions (DRAFT / QA PENDING)
+- Branch `fix/v267-event-quote-nojs-actions` stacked on V223 PR #303; shared QuoteSection now provides direct email and phone links in SSR/no-JS state instead of indefinite preparation text. No automatic message delivery, new assets, packages or main deployment. CI and real browser screenshots pending. Next: validate six widths and event CTA/focus.
+
 ### V223 / 2026-11-22 — Contact SSR/no-JS fallback (DRAFT / NOT VALIDATED)
 - Branch `fix/v223-contact-nojs-fallback-clarity` from main V222. The server-side Contact form fallback now gives an accurate JavaScript requirement and direct mail/telephone actions instead of an indefinite loading message. No automatic transmission or backend. UI screenshots, browser QA and exact-head CI pending; main/deployment untouched. Next: event CTA conversion.
 
