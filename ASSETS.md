@@ -1,3 +1,6 @@
+### 2026-11-22 V263
+No new assets, dependencies or external code. Existing event images unchanged; publication provenance still requires independent verification.
+
 ### 2026-11-22 V262
 No new assets or dependencies. Existing event imagery unchanged; provenance and publication authorization must continue to be checked against the original asset inventory.
 

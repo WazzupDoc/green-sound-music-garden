@@ -1,3 +1,6 @@
+### 2026-11-22 V263 — Events photo source scheme guard
+- Zone: /evenimente image preload. Reject non-HTTP(S) explicit URL schemes before Image creation; keep relative paths. 8 parameterized Vitest cases. Functional safety only; no visual redesign. Exact-head CI, browser matched screenshots, TypeScript/SSR/gzip NOT VERIFIED. Next: real Chromium Events audit, then Contact mobile.
+
 ### 2026-11-22 V262 — Events photograph source audit
 - Zone: `/evenimente` image preload. Defect: nonblank padded image paths were passed to `image.src` verbatim, risking an incorrect request. Changed: normalize with `trim()` and cover success/cancellation in Vitest. Status: draft, QA pending; no visual redesign claimed. Screenshots before/after: not captured. Next rotation: Events browser regression, then Contact mobile form.
 
