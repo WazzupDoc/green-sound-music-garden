@@ -1,3 +1,8 @@
+### 2026-11-22 — Events error-state continuity
+- https://www.w3.org/WAI/ARIA/apg/patterns/alert/ — error announcements must correspond to current context; adapted as state reset before selection, not copied code.
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions — live regions can announce state changes; stale messages should be avoided. No external code, images, dependencies or licenses integrated.
+- Rejected: hiding all loading/failure messages (would reduce accessibility); global remount of Events (would reset keyboard focus).
+
 ### 2026-11-21 — V254 Contact clipboard keyboard
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-disabled — `aria-disabled` keeps control discoverable/focusable; application must prevent action. Existing synchronous `copyPendingRef` prevents repeated writes. Original adaptation, no external code or license dependency.
 - https://www.w3.org/WAI/WCAG22/Understanding/focus-order.html — preserve meaningful keyboard focus. Rejected native `disabled` while asynchronous permission prompt pending, because focused element can lose focus. No assets or packages.
