@@ -112,6 +112,8 @@ export function SiteHeader() {
         !editing && !hasModal;
       // Never steal keystrokes from an existing dialog or a form.
       if (!slash && !command) return;
+      // Do not intercept native editing shortcuts (including Ctrl+K) in forms.
+      if (editing) return;
       if (!finderOpen && hasModal) return;
       event.preventDefault();
       setOpen(false);
