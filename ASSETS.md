@@ -1,3 +1,6 @@
+### V265 / 2026-11-22
+- No new assets, media, fonts, dependencies or third-party code. Existing photography provenance remains subject to separate audit.
+
 ### 2026-11-22 V264
 - No new media, fonts, icons, images or external code. Existing asset provenance unchanged; source-only syntax repair.
 

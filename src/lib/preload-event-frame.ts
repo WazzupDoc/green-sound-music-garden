@@ -15,9 +15,9 @@ export function preloadEventFrame(
   // Reject them without creating a request or replacing the verified frame.
   const normalizedSrc = src.trim();
   // Keep event photography on ordinary relative or HTTP(S) URLs; reject
-  // opaque/active schemes without constructing an image request.
+  // opaque/active schemes and protocol-relative remote hosts without an image request.
   const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(normalizedSrc)?.[1]?.toLowerCase();
-  if (!normalizedSrc || (scheme !== undefined && scheme !== "http" && scheme !== "https")) {
+  if (!normalizedSrc || normalizedSrc.startsWith("//") || (scheme !== undefined && scheme !== "http" && scheme !== "https")) {
     fail();
     return () => { cancelled = true; };
   }
