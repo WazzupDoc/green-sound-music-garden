@@ -1,3 +1,8 @@
+### 2026-11-22 — V265 Events URL boundary
+- Zone: Events photograph preload; protocol-relative remote source guard implemented in `src/lib/preload-event-frame.ts` with six regression cases in `src/lib/events-protocol-relative-v265.test.ts`.
+- Visual before/after: NOT CAPTURED. QA: TypeScript, SSR, Vitest, gzip, exact-head Actions and six-width Chromium NOT VERIFIED. No visual redesign claimed.
+- Next zone: Contact mobile prefill/clipboard, after Events browser QA. Main/deployment unchanged.
+
 ### 2026-11-22 V264 — Events TypeScript CI unblock
 - Exact-head V263 Actions #45015157929 failed at TypeScript strict check. Inspected `src/lib/preload-event-frame.ts`: literal `\\n` escape sequences had been committed into source between comments and `const scheme`/`if`, invalidating TypeScript syntax. V264 replaces those with real line breaks, preserving scheme validation behavior and existing eight regression cases. No visual redesign; browser before/after screenshots NOT captured. V264 exact-head CI/SSR/Vitest/gzip pending. Main/deploy unchanged. Next: Chromium /evenimente photo failure/retry at 390/1440 and six widths; then Contact.
 
