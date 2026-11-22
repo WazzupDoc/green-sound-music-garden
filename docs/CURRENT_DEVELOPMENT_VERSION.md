@@ -1,3 +1,6 @@
+### V261 / 2026-11-22 — Events decode error classification (DRAFT / QA PENDING)
+- Branch `fix/v261-events-decode-callback-isolation`, stacked on V260 PR #295. Separate image decode rejection from onReady callback failure. Added two unit tests. No new assets/dependencies/homepage/main/deploy. Exact-head CI and real Chromium screenshots NOT VERIFIED; do not merge.
+
 ### V260 / 2026-11-22 — Events blank image URL guard (DRAFT / QA PENDING)
 - Branch `fix/v260-events-empty-photo-source-guard` stacked on V259 PR #294. `preloadEventFrame` now rejects blank/whitespace URLs before constructing an Image; existing failure UI can retain previous verified photo. Added `events-empty-photo-source-v260.test.ts`. No UI redesign claimed, no new dependencies/assets/main/deploy. Exact-head CI and real Chromium before/after screenshots NOT VERIFIED; do not merge.
 
