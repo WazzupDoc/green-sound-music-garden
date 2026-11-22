@@ -1,3 +1,8 @@
+### 2026-11-22 — V264 Events CI repair
+- Source: https://www.typescriptlang.org/docs/handbook/2/basic-types.html — TypeScript syntax must parse before functional tests; adapted only a syntax repair, no external code or assets copied.
+- Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — retain the existing decode-based event photograph workflow; no dependency added.
+- Rejected: visual redesign while strict TypeScript is failing; correct the release-blocking syntax first. Screenshot comparison still required before visual claims.
+
 ### 2026-11-22 — V263 event photo URL schemes
 - https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src — image URL semantics; documentation only, no code copied.
 - https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes — URI scheme reference; original minimal scheme allowlist. Rejected: dependency URL parser, automatic retries, and third-party images. No external design/code assets used.
