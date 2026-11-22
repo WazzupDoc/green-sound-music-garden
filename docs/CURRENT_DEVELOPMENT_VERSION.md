@@ -1,3 +1,6 @@
+### V268 / 2026-11-22 — Accessible no-JS quote actions (DRAFT / QA PENDING)
+- Parent V267 PR #304. Removed `role=status` from a persistent no-JS fallback containing actionable links; retained labelled region and mail/telephone actions. Regression `src/test/quote-nojs-a11y-v268.test.ts`. No dependency, new asset, automatic sending or homepage/main change. Exact-head CI, TypeScript/SSR/Vitest and matched Chromium 390/1440 screenshots not yet verified; no visual redesign claimed. Next: browser verification and event detail Contact prefill.
+
 ### V267 / 2026-11-22 — Event quote SSR/no-JS actions (DRAFT / QA PENDING)
 - Branch `fix/v267-event-quote-nojs-actions` stacked on V223 PR #303; shared QuoteSection now provides direct email and phone links in SSR/no-JS state instead of indefinite preparation text. No automatic message delivery, new assets, packages or main deployment. CI and real browser screenshots pending. Next: validate six widths and event CTA/focus.
 
