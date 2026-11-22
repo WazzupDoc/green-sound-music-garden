@@ -1,3 +1,6 @@
+### V257 / 2026-11-22 — Events stale-photo error reset (DRAFT / QA PENDING)
+- Branch `fix/v257-events-clear-stale-photo-error` stacked on V255 PR #291. Pointer and keyboard event changes clear previous image failure state; source regression added. No new media, packages, homepage, main or deploy changes. CI exact-head and matched real Chromium screenshots NOT VERIFIED. Next: Events browser visual audit and image-retry simulation.
+
 ### V254 / 2026-11-21 — Contact pending clipboard focus (DRAFT / QA PENDING)
 - Branch `fix/v254-contact-copy-focus-pending` stacked on V253 PR #289. Preserve keyboard focus on copy action during async clipboard permissions with `aria-disabled` instead of native disabled; existing `copyPendingRef` guards duplicate actions. Source regression added. No visual redesign; screenshots 390/1440 and six widths NOT CAPTURED, TS/SSR/Vitest/gzip and CI exact-head NOT YET VERIFIED. No main/deploy changes. Next: Events full visual audit.
 
