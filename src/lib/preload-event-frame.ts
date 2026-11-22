@@ -23,7 +23,7 @@ export function preloadEventFrame(
     // Promise.resolve also handles a thenable or a non-Promise decode implementation.
     void Promise.resolve(image.decode()).then(() => {
       if (!cancelled) onReady();
-    }).catch(fail);
+    }, fail);
   } catch {
     // Browser/image mocks may throw synchronously when assigning src or decoding.
     // Report the same recoverable failure rather than crashing the Events route.
