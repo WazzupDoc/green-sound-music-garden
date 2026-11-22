@@ -158,7 +158,7 @@ export function QuoteSection({
           </dl>
         </div>
         <div className="relative border border-border bg-card p-6 md:p-10">
-          <ClientOnly fallback={<p role="status" className="py-14 text-sm text-muted-foreground">Pregătim formularul pentru evenimentul tău… Poți folosi și telefonul sau emailul din această secțiune.</p>}>
+          <ClientOnly fallback={<div role="status" className="flex flex-col gap-4 py-10 text-sm text-muted-foreground"><p>Formularul interactiv necesită JavaScript. Poți solicita o ofertă și fără formular:</p><a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${business.email}?subject=${encodeURIComponent("Cerere de ofertă Green Sound Music")}`}>Trimite un email pentru ofertă</a><a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={business.phoneHref}>Sună pentru detalii</a><p>Niciun mesaj nu este trimis automat.</p></div>}>
             <QuoteForm defaultEventType={defaultEventType} defaultServices={defaultServices} />
           </ClientOnly>
         </div>
