@@ -1,3 +1,6 @@
+### V263 / 2026-11-22 — Events photo scheme guard (DRAFT / QA PENDING)
+- Branch `fix/v263-events-photo-source-scheme-guard`, stacked on V262 PR #297. Reject explicit non-HTTP(S) schemes in event photograph preload, while allowing existing relative URLs. Eight parameterized regression cases. No new packages, images, homepage changes, main changes or deployment. Exact-head CI, TS/SSR/Vitest/gzip and matched 390/1440 browser screenshots NOT VERIFIED; do not merge or publish.
+
 ### V262 / 2026-11-22 — Events photo URL normalization (DRAFT / QA PENDING)
 - Branch `fix/v262-events-trim-photo-url`, stacked on V261 PR #296. Trim surrounding whitespace on nonblank Events photo URLs before assigning `image.src`, retaining V260 blank rejection and V261 decode error classification. Two Vitest cases. No new packages/media/homepage/main/deploy. Exact-head CI, Chromium before/after and six-width QA NOT VERIFIED; do not merge.
 
