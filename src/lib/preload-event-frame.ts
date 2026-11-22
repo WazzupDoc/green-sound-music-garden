@@ -11,6 +11,12 @@ export function preloadEventFrame(
 ): () => void {
   let cancelled = false;
   const fail = () => { if (!cancelled) onError?.(); };
+  // Empty/whitespace URLs can resolve against the document itself in image.src.
+  // Reject them without creating a request or replacing the verified frame.
+  if (!src.trim()) {
+    fail();
+    return () => { cancelled = true; };
+  }
   try {
     const image = createImage();
     image.src = src;
