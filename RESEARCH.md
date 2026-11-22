@@ -1,3 +1,8 @@
+### 2026-11-22 — Contact SSR/no-JS resilience
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — native `mailto:` and `tel:` actions offer a progressive fallback without client JavaScript. Applied to existing Contact ClientOnly fallback; no copied source or external asset.
+- https://web.dev/learn/forms/ — form UX and progressive enhancement principles; adapted actionable fallback, rejected simulating submission without backend.
+- No dependency, third-party image, tracking or licensed external code introduced. Browser visual comparison and runtime validation remain pending.
+
 ### 2026-11-18 V221 — Contact URL prefill sanitation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim and https://owasp.org/www-community/attacks/Unicode_Encoding. Adapted: sanitize and bound incoming location before accepting it; reject empty result. Original code, no dependency or asset. Rejected: silently treating control-only values as meaningful prefill. Browser QA pending.
 

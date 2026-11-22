@@ -1,3 +1,6 @@
+### 2026-11-22 / V223
+- No new media, fonts, icons, logos, code assets or external dependencies. Existing first-party Contact links only.
+
 ### V217 / 2026-11-18 — Navigation service glyphs
 - `src/components/site/ServiceSigilV217.tsx`: eight original hand-authored SVG service pictograms plus three chapter diagrams, created for Green Sound; first-party, no third-party icon source or external licensing.
 - `src/styles/navigation-v217.css`: first-party CSS. Existing Lucide icons reused from project dependency; no new package, fonts, photos, videos, tracking or fabricated event media.
