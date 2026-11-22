@@ -1,3 +1,6 @@
+### V262 / 2026-11-22 — Events photo URL normalization (DRAFT / QA PENDING)
+- Branch `fix/v262-events-trim-photo-url`, stacked on V261 PR #296. Trim surrounding whitespace on nonblank Events photo URLs before assigning `image.src`, retaining V260 blank rejection and V261 decode error classification. Two Vitest cases. No new packages/media/homepage/main/deploy. Exact-head CI, Chromium before/after and six-width QA NOT VERIFIED; do not merge.
+
 ### V261 / 2026-11-22 — Events decode error classification (DRAFT / QA PENDING)
 - Branch `fix/v261-events-decode-callback-isolation`, stacked on V260 PR #295. Separate image decode rejection from onReady callback failure. Added two unit tests. No new assets/dependencies/homepage/main/deploy. Exact-head CI and real Chromium screenshots NOT VERIFIED; do not merge.
 

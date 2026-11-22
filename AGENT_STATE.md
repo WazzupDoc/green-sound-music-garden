@@ -1,3 +1,6 @@
+### 2026-11-22 V262 — Events photograph source audit
+- Zone: `/evenimente` image preload. Defect: nonblank padded image paths were passed to `image.src` verbatim, risking an incorrect request. Changed: normalize with `trim()` and cover success/cancellation in Vitest. Status: draft, QA pending; no visual redesign claimed. Screenshots before/after: not captured. Next rotation: Events browser regression, then Contact mobile form.
+
 ### 2026-11-22 V261 — Events decode callback isolation (DRAFT / QA PENDING)
 - One-zone /evenimente: decode rejection handler now attaches as second argument to `.then`, so a successful image decode is not classified as failed by the same promise chain if its ready callback throws. Regression tests cover resolved and rejected decode. Browser screenshots, exact-head CI, TypeScript, SSR, gzip and six-width QA NOT VERIFIED. No homepage/main/deploy changes. Next: Events real-browser image failure/retry, then Contact.
 

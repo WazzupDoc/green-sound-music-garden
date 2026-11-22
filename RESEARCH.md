@@ -1,3 +1,8 @@
+### 2026-11-22 — V262 Events source normalization
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decode success/failure semantics; documentation, not reused code.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim — whitespace normalization; documentation, not reused code.
+- Adaptation: native `trim()` before image source assignment; no external code or dependency. Rejected: new image loader package (unnecessary size and license overhead); automatic retry (unwanted network traffic). Browser visual verification pending.
+
 ### 2026-11-22 V261 — Promise rejection semantics
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then — `.then(onFulfilled, onRejected)` handles rejection of the source promise, whereas `.then(onFulfilled).catch(onRejected)` also catches exceptions thrown in onFulfilled. Adapted only the former error classification for image decoding. No external code copied, no new dependency or asset. Rejected: automatic retries and decorative loading effects, because they add network/visual complexity without evidence.
 

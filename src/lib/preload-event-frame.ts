@@ -13,13 +13,14 @@ export function preloadEventFrame(
   const fail = () => { if (!cancelled) onError?.(); };
   // Empty/whitespace URLs can resolve against the document itself in image.src.
   // Reject them without creating a request or replacing the verified frame.
-  if (!src.trim()) {
+  const normalizedSrc = src.trim();
+  if (!normalizedSrc) {
     fail();
     return () => { cancelled = true; };
   }
   try {
     const image = createImage();
-    image.src = src;
+    image.src = normalizedSrc;
     // Promise.resolve also handles a thenable or a non-Promise decode implementation.
     void Promise.resolve(image.decode()).then(() => {
       if (!cancelled) onReady();
