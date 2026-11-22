@@ -1,3 +1,6 @@
+### V265 / 2026-11-22 — Events protocol-relative photograph guard (DRAFT / QA PENDING)
+- Branch `fix/v265-events-protocol-relative-photo-guard`, based on V264 PR #299. Reject `//remote-host/path` before creating an Image to prevent unreviewed protocol-relative external photo requests; preserve root-relative, dot-relative and explicit HTTPS sources. Six parameterized regressions. No new packages, images, homepage, main or deployment changes. TypeScript, SSR, Vitest, gzip, exact-head CI and Chromium screenshots pending; no visual redesign claimed. Next: Events browser verification at 390/1440 and Contact.
+
 ### V264 / 2026-11-22 — Events scheme guard CI syntax repair (DRAFT / QA PENDING)
 - Based on V263 PR #298, which failed strict TypeScript at https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45015157929 . Replaced accidental literal `\\n` text in `src/lib/preload-event-frame.ts` with actual newlines. No behavioral change intended, new dependencies, media, homepage/main/deploy modifications. Exact-head CI, TypeScript/SSR/Vitest/gzip and matched real-browser screenshots pending. Do not merge/publish.
 
