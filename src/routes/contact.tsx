@@ -131,8 +131,10 @@ function Contact() {
             <h2 id="contact-form-title" tabIndex={-1} className="scroll-mt-28 font-display mt-4 mb-9 text-3xl font-semibold tracking-tight md:text-4xl">Povestește-ne despre eveniment.</h2>
             <ClientOnly fallback={
               <div role="status" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
-                <p>Pregătim formularul pentru evenimentul tău…</p>
-                <p className="text-sm">Poți folosi și telefonul sau WhatsApp din zona de contact.</p>
+                <p>Formularul interactiv se afișează după activarea JavaScript.</p>
+                <p className="text-sm">Dacă nu apare, poți cere oferta direct, fără formular:</p>
+                <a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${business.email}?subject=${encodeURIComponent("Cerere de ofertă Green Sound Music")}`}>Trimite un email pentru ofertă</a>
+                <a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={business.phoneHref}>Sună pentru detalii</a>
               </div>
             }>
               <QuoteForm key={`${event ?? ""}|${date ?? ""}|${location ?? ""}|${selectedServices.join("|")}`}
