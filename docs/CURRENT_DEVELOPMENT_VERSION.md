@@ -1,3 +1,6 @@
+### V258 / 2026-11-22 — Preserve Events retry on active reselect (DRAFT / QA PENDING)
+- Branch `fix/v258-events-preserve-retry-on-reselect` stacked on V257 PR #292. Retain active failed-photo state when selecting the same event; clear stale state only when changing categories. Source regression added. No homepage/media/dependency/main/deploy changes. Exact-head CI, TS/SSR/Vitest/gzip, 390/1440 screenshots and six widths NOT VERIFIED.
+
 ### V257 / 2026-11-22 — Events stale-photo error reset (DRAFT / QA PENDING)
 - Branch `fix/v257-events-clear-stale-photo-error` stacked on V255 PR #291. Pointer and keyboard event changes clear previous image failure state; source regression added. No new media, packages, homepage, main or deploy changes. CI exact-head and matched real Chromium screenshots NOT VERIFIED. Next: Events browser visual audit and image-retry simulation.
 
