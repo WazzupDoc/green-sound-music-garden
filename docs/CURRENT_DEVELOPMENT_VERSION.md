@@ -1,3 +1,6 @@
+### V264 / 2026-11-22 — Events scheme guard CI syntax repair (DRAFT / QA PENDING)
+- Based on V263 PR #298, which failed strict TypeScript at https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45015157929 . Replaced accidental literal `\\n` text in `src/lib/preload-event-frame.ts` with actual newlines. No behavioral change intended, new dependencies, media, homepage/main/deploy modifications. Exact-head CI, TypeScript/SSR/Vitest/gzip and matched real-browser screenshots pending. Do not merge/publish.
+
 ### V263 / 2026-11-22 — Events photo scheme guard (DRAFT / QA PENDING)
 - Branch `fix/v263-events-photo-source-scheme-guard`, stacked on V262 PR #297. Reject explicit non-HTTP(S) schemes in event photograph preload, while allowing existing relative URLs. Eight parameterized regression cases. No new packages, images, homepage changes, main changes or deployment. Exact-head CI, TS/SSR/Vitest/gzip and matched 390/1440 browser screenshots NOT VERIFIED; do not merge or publish.
 
