@@ -1,3 +1,6 @@
+### V269 / 2026-11-22 — Quote no-JS context (DRAFT / QA PENDING)
+- Stacked on V268 PR #305. Shared QuoteSection SSR fallback now displays the existing selected event type and service list so no-JS visitors can mention their choices when using real mail/telephone actions. No automatic sending, no dependency, no new media or homepage change. Source regression added. TypeScript, Vitest, SSR, browser six widths, before/after screenshots and exact-head CI remain unverified. Next: real browser validation and Contact prefill journey.
+
 ### V268 / 2026-11-22 — Accessible no-JS quote actions (DRAFT / QA PENDING)
 - Parent V267 PR #304. Removed `role=status` from a persistent no-JS fallback containing actionable links; retained labelled region and mail/telephone actions. Regression `src/test/quote-nojs-a11y-v268.test.ts`. No dependency, new asset, automatic sending or homepage/main change. Exact-head CI, TypeScript/SSR/Vitest and matched Chromium 390/1440 screenshots not yet verified; no visual redesign claimed. Next: browser verification and event detail Contact prefill.
 
