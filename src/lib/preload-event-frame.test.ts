@@ -10,6 +10,21 @@ function deferred() {
 const tick = async () => { await Promise.resolve(); await Promise.resolve(); };
 
 describe("event stage image decode", () => {
+  it.each([
+    String.raw`\\\\external.example/photo.webp`,
+    String.raw`/\\external.example/photo.webp`,
+    String.raw`\\/external.example/photo.webp`,
+    "//external.example/photo.webp",
+  ])("rejects network-path alias %s without constructing an image", (url) => {
+    const ready = vi.fn();
+    const error = vi.fn();
+    const createImage = vi.fn(() => ({ src: "", decode: vi.fn() }));
+    preloadEventFrame(url, ready, createImage, error);
+    expect(createImage).not.toHaveBeenCalled();
+    expect(ready).not.toHaveBeenCalled();
+    expect(error).toHaveBeenCalledTimes(1);
+  });
+
   it("switches only after a successful decode", async () => {
     const pending = deferred();
     const ready = vi.fn();

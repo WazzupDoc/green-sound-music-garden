@@ -1,3 +1,7 @@
+### V266 / 2026-11-22 — Events network-path backslash guard (DRAFT / QA PENDING)
+- Branch `fix/v266-events-backslash-remote-photo-guard` stacked on V265 PR #301. Rejects `\\\\host`, `/\\host` and `\\/host` aliases before constructing an image, preserving valid relative and explicit HTTP(S) URLs. Added four Vitest cases. No dependencies, assets, homepage, main or deployment changes.
+- CI exact-head, strict TypeScript, SSR, gzip, six-width Chromium and matched before/after 390/1440 screenshots NOT YET VERIFIED. Do not merge or publish. Next: audit Contact and Events photographic stage in real browser.
+
 ### V265 / 2026-11-22 — Events protocol-relative photograph guard (DRAFT / QA PENDING)
 - Branch `fix/v265-events-protocol-relative-photo-guard`, based on V264 PR #299. Reject `//remote-host/path` before creating an Image to prevent unreviewed protocol-relative external photo requests; preserve root-relative, dot-relative and explicit HTTPS sources. Six parameterized regressions. No new packages, images, homepage, main or deployment changes. TypeScript, SSR, Vitest, gzip, exact-head CI and Chromium screenshots pending; no visual redesign claimed. Next: Events browser verification at 390/1440 and Contact.
 
