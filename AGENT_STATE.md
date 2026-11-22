@@ -1,3 +1,6 @@
+### 2026-11-22 V261 — Events decode callback isolation (DRAFT / QA PENDING)
+- One-zone /evenimente: decode rejection handler now attaches as second argument to `.then`, so a successful image decode is not classified as failed by the same promise chain if its ready callback throws. Regression tests cover resolved and rejected decode. Browser screenshots, exact-head CI, TypeScript, SSR, gzip and six-width QA NOT VERIFIED. No homepage/main/deploy changes. Next: Events real-browser image failure/retry, then Contact.
+
 ### 2026-11-22 V260 — Events empty photograph source guard (DRAFT / QA PENDING)
 - One-zone /evenimente preload helper rejects blank/whitespace source before image construction; preserves prior verified frame and invokes existing recoverable failure callback. Unit tests cover blank values and normal valid decoding. No new assets, dependencies, homepage or deployment changes. Browser screenshots 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: real Chromium Events failure/retry visual audit; then Contact mobile keyboard.
 
