@@ -1,3 +1,6 @@
+### 2026-11-22 V264 — Events TypeScript CI unblock
+- Exact-head V263 Actions #45015157929 failed at TypeScript strict check. Inspected `src/lib/preload-event-frame.ts`: literal `\\n` escape sequences had been committed into source between comments and `const scheme`/`if`, invalidating TypeScript syntax. V264 replaces those with real line breaks, preserving scheme validation behavior and existing eight regression cases. No visual redesign; browser before/after screenshots NOT captured. V264 exact-head CI/SSR/Vitest/gzip pending. Main/deploy unchanged. Next: Chromium /evenimente photo failure/retry at 390/1440 and six widths; then Contact.
+
 ### 2026-11-22 V263 — Events photo source scheme guard
 - Zone: /evenimente image preload. Reject non-HTTP(S) explicit URL schemes before Image creation; keep relative paths. 8 parameterized Vitest cases. Functional safety only; no visual redesign. Exact-head CI, browser matched screenshots, TypeScript/SSR/gzip NOT VERIFIED. Next: real Chromium Events audit, then Contact mobile.
 
