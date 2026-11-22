@@ -1,3 +1,5 @@
+### V270 / 2026-11-23 — draft CI unblock on V269 PR #306, branch fix/v270-quote-nojs-test-boundary. V269 run 45074860586 failed Vitest (1/163) due to brittle regex in V268 regression, not production failure. Updated test extraction to cover nested JSX and preserve contact assertions. CI exact-head, browser screenshots and six-width QA pending; no UI redesign, main/deploy untouched. Next Contact prefill browser audit.
+
 ### V269 / 2026-11-22 — Quote no-JS context (DRAFT / QA PENDING)
 - Stacked on V268 PR #305. Shared QuoteSection SSR fallback now displays the existing selected event type and service list so no-JS visitors can mention their choices when using real mail/telephone actions. No automatic sending, no dependency, no new media or homepage change. Source regression added. TypeScript, Vitest, SSR, browser six widths, before/after screenshots and exact-head CI remain unverified. Next: real browser validation and Contact prefill journey.
 
