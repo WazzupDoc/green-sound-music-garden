@@ -1,3 +1,7 @@
+### 2026-11-22 V257 — Events stale image-error reset (DRAFT / QA PENDING)
+- One-zone /evenimente: switching events by pointer or keyboard clears the prior failed-photo marker before the next image preload. Prevents an obsolete failure announcement when revisiting a previously failed category. Two source regressions added. No homepage, assets, dependencies or main changes.
+- Screenshot before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip and exact-head CI NOT VERIFIED; no visual redesign claimed. Next: full Events visual/browser QA and retry failure simulation.
+
 ### 2026-11-21 V255 — Contact test gate repair (draft PR #291)
 - Exact-head V254 CI #44944217144: strict TS, SSR/Vite and gzip passed; Vitest 173/174 passed, one failed because a substring test mistook aria-disabled for native disabled. V255 changes only the negative assertion to a token-boundary regex; no product UI/asset/dependency changes. V255 CI exact-head and real browser screenshots pending. Branch fix/v255-contact-copy-focus-test-precision stacked on V254; main untouched. Next zone: Events full visual/browser audit at 390/1440 plus six widths.
 
