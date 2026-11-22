@@ -1,3 +1,6 @@
+### 2026-11-22 V264
+- No new media, fonts, icons, images or external code. Existing asset provenance unchanged; source-only syntax repair.
+
 ### 2026-11-22 V263
 No new assets, dependencies or external code. Existing event images unchanged; publication provenance still requires independent verification.
 
