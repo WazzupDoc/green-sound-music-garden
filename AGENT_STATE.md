@@ -1,3 +1,5 @@
+### V270 / 2026-11-23 — One-zone CI regression: V269 PR #306 exact-head run 45074860586 failed 1/163 Vitest because V268 source-test regex terminated at nested JSX `}>` before the phone link. Replaced fragile extraction with bounded ClientOnly-to-QuoteForm slice. No production UI change. QA exact-head CI and browser screenshots pending; next Contact prefill browser audit.
+
 ### V269 / 2026-11-22 — Event/service quote fallback context (DRAFT)
 - Zone: event detail quote conversion / no-JS. Prior fallback provided contact actions but silently dropped preselected event type/services. Now exposes selection as plain text, with instruction to mention it manually; no claim that mailto transmits selections automatically. Files: src/components/site/blocks.tsx, src/test/quote-nojs-context-v269.test.ts. No new assets or dependencies. Browser screenshot before/after 390/1440 and 360/430/768/1920, SSR/TypeScript/Vitest/gzip and CI exact-head pending. Next zone: Contact prefill/focus validation.
 
