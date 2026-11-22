@@ -1,3 +1,6 @@
+### 2026-11-22 V261 — Promise rejection semantics
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then — `.then(onFulfilled, onRejected)` handles rejection of the source promise, whereas `.then(onFulfilled).catch(onRejected)` also catches exceptions thrown in onFulfilled. Adapted only the former error classification for image decoding. No external code copied, no new dependency or asset. Rejected: automatic retries and decorative loading effects, because they add network/visual complexity without evidence.
+
 ### 2026-11-22 — V260 Events image URL guard
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src — image URL assignment semantics; adapted a local blank-input guard, no external code copied.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — asynchronous image decode and error handling; existing verified-frame retention preserved.
