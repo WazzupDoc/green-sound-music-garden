@@ -1,3 +1,7 @@
+### 2026-11-22 — V263 event photo URL schemes
+- https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src — image URL semantics; documentation only, no code copied.
+- https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes — URI scheme reference; original minimal scheme allowlist. Rejected: dependency URL parser, automatic retries, and third-party images. No external design/code assets used.
+
 ### 2026-11-22 — V262 Events source normalization
 - Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — decode success/failure semantics; documentation, not reused code.
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim — whitespace normalization; documentation, not reused code.
