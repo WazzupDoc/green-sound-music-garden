@@ -17,7 +17,7 @@ export function preloadEventFrame(
   // Keep event photography on ordinary relative or HTTP(S) URLs; reject
   // opaque/active schemes and protocol-relative remote hosts without an image request.
   const scheme = /^([a-z][a-z0-9+.-]*):/i.exec(normalizedSrc)?.[1]?.toLowerCase();
-  if (!normalizedSrc || normalizedSrc.startsWith("//") || (scheme !== undefined && scheme !== "http" && scheme !== "https")) {
+  if (!normalizedSrc || /^[\\/]{2}/.test(normalizedSrc) || (scheme !== undefined && scheme !== "http" && scheme !== "https")) {
     fail();
     return () => { cancelled = true; };
   }
