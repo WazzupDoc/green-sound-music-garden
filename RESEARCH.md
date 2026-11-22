@@ -1,3 +1,8 @@
+### 2026-11-22 — V265 Events photo protocol-relative guard
+- Reference: https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Authority — protocol-relative network-path references can select an external authority; applied a minimal original string guard, no external code copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src — assigning an image source may initiate a request; reject unsupported input before Image creation.
+- Rejected: third-party URL parsing dependency and blanket rejection of all HTTPS media; neither necessary for this narrow safeguard. No licensed external assets integrated.
+
 ### 2026-11-22 — V264 Events CI repair
 - Source: https://www.typescriptlang.org/docs/handbook/2/basic-types.html — TypeScript syntax must parse before functional tests; adapted only a syntax repair, no external code or assets copied.
 - Source: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — retain the existing decode-based event photograph workflow; no dependency added.
