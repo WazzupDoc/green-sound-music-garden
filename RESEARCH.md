@@ -1,3 +1,8 @@
+### 2026-11-22 — V269 progressive enhancement / quote fallback
+- https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/CSS_and_JavaScript — native functionality should remain usable without JS; adapted explicit email/phone links and plain selection context; no external code copied.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a — descriptive native links are keyboard accessible; retained first-party email/telephone anchors. No code or image copied; no license required for conceptual guidance.
+- Rejected: fake server-side form submission, automatic email sending and a new dependency, because no real backend delivery contract exists. Visual redesign not claimed.
+
 ### 2026-11-22 — Contact SSR/no-JS resilience
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — native `mailto:` and `tel:` actions offer a progressive fallback without client JavaScript. Applied to existing Contact ClientOnly fallback; no copied source or external asset.
 - https://web.dev/learn/forms/ — form UX and progressive enhancement principles; adapted actionable fallback, rejected simulating submission without backend.
