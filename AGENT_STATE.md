@@ -1,3 +1,6 @@
+### 2026-11-22 V260 — Events empty photograph source guard (DRAFT / QA PENDING)
+- One-zone /evenimente preload helper rejects blank/whitespace source before image construction; preserves prior verified frame and invokes existing recoverable failure callback. Unit tests cover blank values and normal valid decoding. No new assets, dependencies, homepage or deployment changes. Browser screenshots 390/1440, six widths, TS/SSR/Vitest/gzip and exact-head CI NOT VERIFIED. Next: real Chromium Events failure/retry visual audit; then Contact mobile keyboard.
+
 ### 2026-11-22 V258 — Events retry on reselect (DRAFT / QA PENDING)
 - Same selected event clicked or keyboard reselected after photo decode failure no longer clears its retry button and error message. Switching to another event still clears stale errors. Source regression added; no media/packages/homepage/main changes. Exact-head CI, six-width browser and matched screenshots pending. Next: Events Chromium image-failure simulation and Contact mobile audit.
 

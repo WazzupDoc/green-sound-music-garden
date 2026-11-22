@@ -1,3 +1,6 @@
+### V260 / 2026-11-22 — Events blank image URL guard (DRAFT / QA PENDING)
+- Branch `fix/v260-events-empty-photo-source-guard` stacked on V259 PR #294. `preloadEventFrame` now rejects blank/whitespace URLs before constructing an Image; existing failure UI can retain previous verified photo. Added `events-empty-photo-source-v260.test.ts`. No UI redesign claimed, no new dependencies/assets/main/deploy. Exact-head CI and real Chromium before/after screenshots NOT VERIFIED; do not merge.
+
 ### V259 / 2026-11-22 — Events regression CI repair (DRAFT / QA PENDING)
 - Branch `fix/v259-events-stale-error-regression-ci` stacked on V258 PR #293. Exact-head V258 Actions #44969428571: strict TypeScript, production SSR and gzip passed; Vitest 177/178 passed, 1 stale V257 source assertion failed after intentional V258 same-event retry preservation. Updated both pointer/keyboard assertions to require reset only on actual event change. Production UI unchanged; no visual improvement claimed. Exact-head V259 CI, browser screenshots and six-width QA pending. No main/deployment changes.
 

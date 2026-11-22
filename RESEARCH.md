@@ -1,3 +1,8 @@
+### 2026-11-22 — V260 Events image URL guard
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src — image URL assignment semantics; adapted a local blank-input guard, no external code copied.
+- Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode — asynchronous image decode and error handling; existing verified-frame retention preserved.
+- Rejected: adding an image retry package or synthetic event media; neither is necessary. No third-party code or new asset license introduced. References are documentation links, not a claim of fresh browser verification.
+
 ### 2026-11-22 — Events error-state continuity
 - https://www.w3.org/WAI/ARIA/apg/patterns/alert/ — error announcements must correspond to current context; adapted as state reset before selection, not copied code.
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions — live regions can announce state changes; stale messages should be avoided. No external code, images, dependencies or licenses integrated.
