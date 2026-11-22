@@ -1,3 +1,5 @@
+### V270 / 2026-11-23: no new assets, fonts, images, media or dependencies.
+
 ### V269 / 2026-11-22
 No new media, icon, font, code library or external asset. Existing Green Sound assets unchanged.
 

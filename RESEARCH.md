@@ -1,3 +1,5 @@
+### 2026-11-23 V270 — Evidence: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45074860586 (Vitest assertion failure due to test parser). Source testing should not parse nested JSX with lazy regex. Adapted a narrow source boundary; no external code or license required. Rejected weakening/removing the assertions.
+
 ### 2026-11-22 — V269 progressive enhancement / quote fallback
 - https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Accessibility/CSS_and_JavaScript — native functionality should remain usable without JS; adapted explicit email/phone links and plain selection context; no external code copied.
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a — descriptive native links are keyboard accessible; retained first-party email/telephone anchors. No code or image copied; no license required for conceptual guidance.
