@@ -876,3 +876,6 @@ Visual audit: First V191 desktop screenshot was too empty above the film; tighte
 - The artifact contains V190 before / V191 after screenshots on /portofoliu with unchanged initial film state at 390 and 1440, full film-section captures, responsive screenshots 360/390/430/768/1440/1920, Studio filter states and Lite/full-motion frames. Approved existing poster image decoded; YouTube still only loads after Play.
 - CI measured: homepage entry gzip 125.4 kB (limit 190); client quote form 31.7 kB (limit 50); shared CSS 52.0 kB (limit 52, close to cap); not a Lighthouse field measurement.
 - Owner visual approval pending; no CD audit, backup tag, main merge or production release. Next site area: Studio interior page.
+
+### 2026-11-23 V286 rotation: Event detail timeline
+- Area: `/evenimente/$slug` planning section; source `EventPage.tsx`. Changed generic heading and repetitive paragraph to event-specific planning explanation. No visual screenshot or performance measurement; no premium redesign claim. QA pending. Next: browser evidence and navigation/mobile.
