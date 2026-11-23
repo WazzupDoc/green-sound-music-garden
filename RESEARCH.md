@@ -1,3 +1,7 @@
+### 2026-11-23 — V277 Events contextual link naming
+- https://www.w3.org/WAI/WCAG22/Understanding/link-purpose-in-context.html — link purpose and contextual identification; authored a unique accessible name for timeline service links without changing destination. No external code copied; no new license/dependency.
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label — label interactive element where context is needed. Rejected extra visible badges and new animations because this iteration targets accessible link identification; no premium visual research or visual redesign claimed.
+
 ### 2026-11-23 — V276 Contact dynamic status
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — nonurgent updates use polite status; applied only to the noninteractive hydrated brief summary. No external code copied, no new dependency.
 - https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — announce status without focus movement; adapted as an atomic summary, not as a wrapper around controls. Avoided assertive alerts and repeated announcements. Browser/AT behavior not yet measured.
