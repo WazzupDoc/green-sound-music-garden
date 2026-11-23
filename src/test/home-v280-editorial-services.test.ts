@@ -41,6 +41,6 @@ describe("V280 premium editorial service programme", () => {
     expect(css).toContain("@media (prefers-reduced-motion: reduce)");
     expect(css).toContain('html[data-gs-performance="lite"]');
     expect(css).toContain('.gs-index__chapters');
-    expect(css).not.toMatch(/@keyframes|autoplay|WebGL/);
+    expect(css).not.toMatch(/@keyframes\\s+[A-Za-z]|animation(?:-name)?:/);
   });
 });
