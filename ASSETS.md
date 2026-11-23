@@ -380,3 +380,6 @@ No new images, audio, video, SVG assets, font packages, third-party code or runt
 
 ## V191 / 2026-11-17 — Portfolio cinema
 No new pictures, source footage, font, icon, package, library or licensed asset added. Film posters and videos are already in src/data/site.ts; the existing VideoLite component does not load YouTube until explicit Play. Film perforation, typography layout and indexed tracklist are original CSS and markup, not third-party content. No social/TikTok clips or generated event footage were used.
+
+### V286 / 2026-11-23
+- No new assets, imagery, icons, fonts or dependencies. Existing authorized project media unchanged. Text-only event detail change.

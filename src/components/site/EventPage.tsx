@@ -18,8 +18,8 @@ export function EventPage({event}:{event:EventType}){
     <section id="desfasurator-eveniment" className="rs-event-timeline" aria-labelledby="desfasurator-titlu" tabIndex={-1}>
       <div className="container-site">
         <div className="rs-event-timeline__title">
-          <p>Desfășurătorul</p><h2 id="desfasurator-titlu">De la primele pregătiri <em>până la ultimul moment.</em></h2>
-          <p>Un parcurs în {event.moments.length} etape, de la primele pregătiri la încheiere. Ordinea este orientativă; programul și serviciile se stabilesc împreună cu organizatorul.</p>
+          <p>Plan orientativ · {event.name}</p><h2 id="desfasurator-titlu">Cum pregătim <em>{event.name.toLowerCase()}</em></h2>
+          <p>Cele {event.moments.length} momente de mai jos sunt exemple de organizare, nu un program fix. Alegem împreună ce se potrivește locației, invitaților și desfășurării evenimentului.</p>
         </div>
         <ol>{event.moments.map((moment,index)=>{
           const service=getService(moment.service);

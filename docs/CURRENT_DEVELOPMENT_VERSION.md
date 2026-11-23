@@ -1,3 +1,8 @@
+### V286 / 2026-11-23 — Event detail planning clarity (DRAFT)
+- Branch `ux/v286-event-detail-clear-planning` stacked on V285 #323; source `15bd384432dcecdbee343fa5b8fe7aee99914561`.
+- Event detail timeline heading now names the selected event; introductory copy makes clear stages are examples, not a guaranteed schedule. No new packages/media, no homepage/main/deployment changes. Browser screenshots, TS/SSR/Vitest/gzip and exact-head CI pending.
+- Next: real browser 390/1440 before/after and Contact funnel, then navigation/mobile audit.
+
 ### V285 / 2026-11-23 — Events selection feedback (draft)
 - Branch `ux/v285-events-live-selection-feedback`, stacked on V284 PR #322. Source `173a9a08206d3f97369fb8d638eb0f4a66ad0bdc`.
 - Changed `/evenimente` stage registration to show live selected event name instead of unverified year. Visual/AT/CI exact-head pending; no main or deployment.
