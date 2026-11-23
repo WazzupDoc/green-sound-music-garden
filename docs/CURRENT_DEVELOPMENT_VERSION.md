@@ -1,3 +1,7 @@
+### V292 / 2026-11-23 — Quote SSR test-contract repair (DRAFT)
+- Branch `fix/v292-quote-nojs-contract-tests`, draft PR #330, stacked on V291 PR #329. V291 exact-head CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45265516688 failed Vitest at obsolete V269 text assertions; TypeScript, SSR and gzip steps passed. Updated test assertions to current user-controlled email/WhatsApp draft text, without altering production UI. Source `1590898850d402d0404198f7e9a65b6b58e56807` before docs.
+- CI exact-head, full tests and browser screenshots remain unverified; no main/deploy. Next: event detail CTA and matched Chromium before/after.
+
 ### V291 / 2026-11-23 — Mobile menu same-route focus (DRAFT)
 - Branch `fix/v291-mobile-menu-same-route-focus` stacked on V290 PR #328. Same-route selection in the mobile dialog now restores focus to the opener; true route changes continue without focusing a departing control. Source `22b640b93e89fe1a9fe66f60aeb0ccb3e20856bf`.
 - QA gate pending: real Chromium matched 390/1440 before/after, 360–1920, keyboard/Escape, TS/SSR/Vitest/gzip and CI exact-head. No main or deployment changes. Next: event detail CTA.
