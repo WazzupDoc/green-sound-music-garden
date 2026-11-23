@@ -1,3 +1,6 @@
+### 2026-11-23 — V275 Contact test TypeScript blocker
+- Rotation zone: Contact QA; V274 exact-head `13000ceaaf1c19e35da90564d297ed8ba1d1e105` failed strict TypeScript (run 45103808941) at `src/test/contact-location-invisible-v272.test.ts:13` (TS2769 optional capture). V275 narrows capture; CI pending, no screenshot or visual claim. Next Contact real-browser prefill + six widths, then Events. Main unchanged.
+
 ### V273 / 2026-11-23 — Contact prefill: normalize Unicode U+2028/U+2029 separators to spaces, preserving Romanian characters. Regression added. No visual redesign; CI and browser proof pending. Next: Contact end-to-end prefill and mobile screenshots. Main untouched.
 
 ### V272 / 2026-11-23 — Contact location prefill: strips invisible Unicode format controls (zero-width, bidi and BOM) before empty-value validation. Test added. No visual change; exact-head CI/Chromium pending. Next: Contact prefill browser journey. Main untouched.

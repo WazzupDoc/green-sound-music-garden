@@ -1,3 +1,6 @@
+### V275 / 2026-11-23 — Contact strict TypeScript unblock (DRAFT)
+- Branch `fix/v275-contact-invisible-test-typecheck` stacked on V274 PR #311. Fixed second TS2769 in `src/test/contact-location-invisible-v272.test.ts`: explicitly guard optional regex capture before `new RegExp`. Exact-head V274 failed at [run 45103808941](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45103808941); this is a test-only unblock, NOT visual redesign. CI and screenshots for V275 pending. Main untouched. Next: browser Contact prefill audit, then Events.
+
 ### V274 / 2026-11-23 — CI TypeScript unblock (DRAFT)
 - Branch `fix/v274-contact-separator-test-typecheck` on V273 PR #310. Fixed `src/test/contact-location-separators-v273.test.ts` by explicitly narrowing the optional regex capture before `new RegExp`, addressing TypeScript TS2769 seen in [failed exact-head CI V273](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45097479244). No production UI/code change; no visual redesign claim. Browser screenshots, full QA and new exact-head CI pending. Main/deployment untouched. Next: Contact prefill real-browser audit, then Events page.
 
