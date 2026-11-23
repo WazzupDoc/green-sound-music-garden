@@ -1,3 +1,6 @@
+### 2026-11-23 — V288 no-JS email fallback
+- Implementation is based on native `mailto:` URI with `encodeURIComponent` applied to subject/body; no external code, imagery, tracking, dependencies or licensing needed. Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_email_address ; https://datatracker.ietf.org/doc/html/rfc6068 . Adapted: prefilled editable message, never automatic send. Rejected: JavaScript-only mail composer or third-party form service (unnecessary dependency and privacy impact). Awwwards/Webflow visual research deferred because this is a narrowly functional fallback fix, not a design iteration.
+
 ### 2026-11-23 / V285 — Events live selection
 - MDN https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — status announces nonurgent selection updates without focus movement. Adapted native role, no borrowed code.
 - WAI-ARIA APG https://www.w3.org/WAI/ARIA/apg/patterns/ — avoid replacing actual navigation with faux tabs. Kept real detail links and native buttons. Rejected extra animated overlay and invented founding year.
