@@ -1,3 +1,6 @@
+### 2026-11-23 — V277 Events timeline link context (DRAFT / QA PENDING)
+- Zone: event detail timeline. Service links previously had the same accessible name whenever a service recurred across moments; now include step number and moment title while preserving visible copy and destination. Regression added. This is accessibility/functionality, NOT a visual redesign. No new assets/dependencies/backend. Browser screenshots, six widths, keyboard screen reader, strict TS, Vitest, SSR, gzip and exact-head CI NOT VERIFIED. Next: Events real-browser CTA/focus and visual composition; main untouched.
+
 ### 2026-11-23 — V276 Contact selected-brief screen-reader feedback (DRAFT)
 - Rotation: Contact prefill. On hydration the selected event/date/location/services summary appears dynamically but previously had no announced status. Added a single polite atomic status to the noninteractive summary, retaining explicit no-auto-send copy. Source regression added. No visual redesign, new dependency or media. TypeScript, Vitest, SSR, gzip, CI exact-head, Chromium six widths and matched screenshots NOT VERIFIED. Next rotation: Events detail CTA and focus; do not merge/publish.
 

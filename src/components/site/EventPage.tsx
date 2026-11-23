@@ -27,7 +27,7 @@ export function EventPage({event}:{event:EventType}){
             <span className="rs-event-timeline__counter" aria-label={`Etapa ${index + 1} din ${event.moments.length}`} role="img"><span aria-hidden="true">{String(index+1).padStart(2,"0")}</span><small aria-hidden="true">/{String(event.moments.length).padStart(2,"0")}</small></span>
             <h3>{moment.title}</h3>
             <p>{moment.text}</p>
-            <Link to={`/${service.slug}`} viewTransition>
+            <Link to={`/${service.slug}`} viewTransition aria-label={`Descoperă ${service.name} pentru etapa ${index + 1}: ${moment.title}`}>
               Descoperă {service.name} <ArrowUpRight size={18} aria-hidden />
             </Link>
           </li>;

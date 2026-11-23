@@ -1,3 +1,6 @@
+### V277 / 2026-11-23 — Events timeline contextual links (DRAFT / QA PENDING)
+- Branch `fix/v277-event-contextual-service-links` stacked on V276 PR #313. Distinguishes accessible names of timeline service links by stage number and title, with source regression. No visual redesign, new dependencies, assets, backend or homepage change. CI exact-head, TypeScript, SSR/Vitest/gzip and real Chromium before/after pending. Do not merge or publish. Next: Events CTA/focus browser QA.
+
 ### V276 / 2026-11-23 — Contact hydrated prefill announcement (DRAFT / QA PENDING)
 - Branch `fix/v276-contact-prefill-announcement` stacked on V275 PR #312. Added polite atomic status to the existing noninteractive Contact selection summary, so its appearance after hydration can be announced without moving focus. Added source regression. No visual redesign or homepage change; no new dependencies/media/backend. Exact-head CI, TypeScript, SSR/Vitest/gzip, real browser and before/after screenshots NOT VERIFIED. Do not merge/publish. Next: Events detail CTA/focus audit.
 
