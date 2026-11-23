@@ -10,12 +10,13 @@ describe("V170 authentic event-production art direction",()=>{
    expect(route).not.toMatch(/home-direction-v160.css|home-rebuild-v166.css|home-v168-dark-live.css/);
    expect(css).toContain(".gs170-home .gs170-stage__console");
  });
- it("keeps production image, animated light beams, 5 service cards and 4 workflow steps",()=>{
+ it("keeps original photo/lighting controls and replaces old cards with three editorial chapters",()=>{
    expect(page).toContain("images.concert.src");
    expect(page).toContain('className="gs170-stage__beams"');
    expect(page).toContain('className="gs170-stage__console"');
-   expect(page).toContain("featured.map((item, index)");
-   expect(page).toContain("process.map((step, index)");
+   expect(page).toContain("<ProductionIndex />");
+   expect(page).not.toContain("featured.map((item, index)");
+   expect(page).not.toContain("process.map((step, index)");
    expect(css).toContain("@keyframes gs170-beam");
    expect(css).toContain("@keyframes gs170-meter");
  });
