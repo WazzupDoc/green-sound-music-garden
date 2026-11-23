@@ -111,7 +111,7 @@ function Contact() {
           <div className="director-contact-quote border border-border bg-[#121c15] p-5 sm:p-8 lg:p-11">
             <span className="crafted-index">02 / CERERE DE OFERTĂ</span>
             {fromBrief && (
-              <div className="mb-7 mt-5 border-l-2 border-primary bg-primary/[0.06] px-4 py-4" aria-label="Selecția preluată din paginile de evenimente și servicii">
+              <div className="mb-7 mt-5 border-l-2 border-primary bg-primary/[0.06] px-4 py-4" role="status" aria-live="polite" aria-atomic="true" aria-label="Selecția preluată din paginile de evenimente și servicii">
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Selecția ta a fost preluată</p>
                 <p className="mt-2 text-sm leading-relaxed text-foreground/85">
                   {event ? <span className="font-semibold">{event}</span> : "Cerere personalizată"}
