@@ -1,3 +1,8 @@
+### V284 / 2026-11-23 — Contact full-message review (draft)
+- Branch `ux/v284-contact-message-review-visible` stacked over V283 PR #321. Source commit `9150c8500f92eefb16b533453a17616a16a8bebb`.
+- Full outgoing message in the Contact preview is initially visible using native `details open`, collapsible via summary; user still deliberately chooses WhatsApp/email/copy. No backend or auto-send.
+- QA and visual evidence pending: Chromium same-route before/after 390/1440, 360–1920 regression, TS/SSR/Vitest, gzip, exact-head CI. No main/deploy. Next: events pages.
+
 ### V283 / 2026-11-23 — Contact service validation (draft)
 - Branch `fix/v283-contact-form-service-error-focus` based on V282 #320; source SHA `7b185078268dc8e9fd992d80efb345a1fa345abc`.
 - Actual change: service checkboxes expose `aria-invalid` and existing error text via `aria-describedby`, so focus after failed validation reaches an input carrying the error semantics. No new form/backend, no automatic sending.
