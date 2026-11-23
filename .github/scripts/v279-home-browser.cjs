@@ -17,6 +17,15 @@ fs.mkdirSync(dir,{recursive:true});
    assert.equal(response.status(),200);
    await page.locator('.gs170-hero[data-hydrated="true"]').waitFor({timeout:15000});
    await page.evaluate(async()=>{await document.fonts.ready});
+   // Full-page browser captures must not show blank unloaded lazy media.
+   const media=await page.evaluate(async()=>{
+     const imgs=[...document.images];
+     imgs.forEach(im=>{if(im.loading==="lazy")im.loading="eager";});
+     await Promise.allSettled(imgs.map(im=>im.decode()));
+     return imgs.map(im=>({src:im.currentSrc,w:im.naturalWidth,h:im.naturalHeight}));
+   });
+   const absent=media.filter(im=>im.w===0||im.h===0);
+   if(absent.length) console.warn("Unloaded image resources",stage,width,JSON.stringify(absent));
    const image=await page.locator(".gs170-stage__image").evaluate(async im=>{
     await im.decode();return{w:im.naturalWidth,h:im.naturalHeight,src:im.currentSrc,filter:getComputedStyle(im).filter};
    });
