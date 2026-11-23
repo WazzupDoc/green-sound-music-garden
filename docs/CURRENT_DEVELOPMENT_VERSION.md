@@ -1,3 +1,8 @@
+### V287 / 2026-11-23 — Shared quote no-JS WhatsApp parity (DRAFT)
+- Branch `fix/v287-quote-nojs-whatsapp-parity`, stacked on V286 PR #324; draft PR #325.
+- `src/components/site/blocks.tsx`: user-initiated WhatsApp link in SSR/ClientOnly fallback with existing event and service context. No auto-send, new dependencies or main changes.
+- Browser before/after 390/1440, six-width regression, TypeScript, SSR, Vitest, gzip and exact-head CI remain pending. Do not merge. Next: Contact keyboard and WhatsApp message encoding audit.
+
 ### V286 / 2026-11-23 — Event detail planning clarity (DRAFT)
 - Branch `ux/v286-event-detail-clear-planning` stacked on V285 #323; source `15bd384432dcecdbee343fa5b8fe7aee99914561`.
 - Event detail timeline heading now names the selected event; introductory copy makes clear stages are examples, not a guaranteed schedule. No new packages/media, no homepage/main/deployment changes. Browser screenshots, TS/SSR/Vitest/gzip and exact-head CI pending.
