@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 const page=readFileSync("src/components/atelier/ConceptHomeV170.tsx","utf8");
 const css=readFileSync("src/styles/home-reference-v170.css","utf8");
+const programme=readFileSync("src/components/atelier/ProductionIndex.tsx","utf8");
 describe("V170 preserves original conversion and visitor control",()=>{
  it("has a real Contact destination, portfolio anchor, and visual-only light toggles",()=>{
    expect(page).toContain('to="/contact"');
@@ -12,8 +13,8 @@ describe("V170 preserves original conversion and visitor control",()=>{
  });
  it("uses first-party source images and exactly three published film references",()=>{
    expect(page).toContain("images.concert.src");
-   expect(page).toContain("images.dj.src");
-   expect(page).toContain("images.scena.src");
+   expect(programme).toContain("image: images.dj");
+   expect(programme).toContain("image: images.scena");
    expect(page).toContain("videos.nuntaRamada");
    expect(page).toContain("videos.showLumini");
    expect(page).toContain("videos.neatza");
