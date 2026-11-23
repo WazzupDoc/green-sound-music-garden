@@ -34,7 +34,7 @@ fs.mkdirSync(dir,{recursive:true});
    }));
    function GetStyle(){return{}}
    if(after){
-    assert.equal(await page.locator(".gs279-home").count(),1);
+    assert.equal(await page.locator(".gs170-home[data-art-direction=v279]").count(),1);
     assert.equal(state.console,"none");
     assert.equal(state.wave,"none");
     assert(!/hue-rotate\(-105deg\)/.test(image.filter),"No fake monochromatic green photo filter");
@@ -69,7 +69,7 @@ fs.mkdirSync(dir,{recursive:true});
   }
   if(after){
    const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});
-   await page.goto(base+"/",{waitUntil:"domcontentloaded"});await page.locator(".gs279-home .gs170-hero[data-hydrated=true]").waitFor();
+   await page.goto(base+"/",{waitUntil:"domcontentloaded"});await page.locator(".gs170-home[data-art-direction=v279] .gs170-hero[data-hydrated=true]").waitFor();
    assert.match(await page.locator(".gs170-stage__beams i").first().evaluate(el=>getComputedStyle(el).animationName),/gs170-beam/);
    await page.screenshot({path:dir+"/after-motion-1440.png",animations:"allow"});
    await page.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
