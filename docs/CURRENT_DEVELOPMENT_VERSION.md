@@ -1,3 +1,6 @@
+### V272 / 2026-11-23 — Contact location invisible-format guard (DRAFT)
+- Branch `fix/v272-contact-invisible-location-guard` stacked on V271 PR #308. Sanitizes zero-width, bidi and BOM format characters from location prefill, preserving Romanian letters and rejecting invisible-only values. Added `src/test/contact-location-invisible-v272.test.ts`. No homepage, assets, dependencies, main or deployment changes. Exact-head CI, strict TypeScript, SSR/Vitest/gzip and matched Chromium screenshots **pending**. Next: Contact prefill end-to-end browser audit.
+
 ### V271 / 2026-11-23 — Contact static no-JS fallback accessibility (DRAFT)
 - Branch fix/v271-contact-nojs-static-a11y stacked on V270. Remove permanent live-region role from Contact's actionable SSR/no-JS fallback; preserve labelled alternative and native links. Regression test added. No UI redesign, dependencies, assets or main deployment. Exact-head CI and matched Chromium screenshots pending. Next Contact prefill flow.
 
