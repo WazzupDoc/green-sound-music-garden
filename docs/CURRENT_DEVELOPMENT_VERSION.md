@@ -1,3 +1,6 @@
+### V276 / 2026-11-23 — Contact hydrated prefill announcement (DRAFT / QA PENDING)
+- Branch `fix/v276-contact-prefill-announcement` stacked on V275 PR #312. Added polite atomic status to the existing noninteractive Contact selection summary, so its appearance after hydration can be announced without moving focus. Added source regression. No visual redesign or homepage change; no new dependencies/media/backend. Exact-head CI, TypeScript, SSR/Vitest/gzip, real browser and before/after screenshots NOT VERIFIED. Do not merge/publish. Next: Events detail CTA/focus audit.
+
 ### V275 / 2026-11-23 — Contact strict TypeScript unblock (DRAFT)
 - Branch `fix/v275-contact-invisible-test-typecheck` stacked on V274 PR #311. Fixed second TS2769 in `src/test/contact-location-invisible-v272.test.ts`: explicitly guard optional regex capture before `new RegExp`. Exact-head V274 failed at [run 45103808941](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45103808941); this is a test-only unblock, NOT visual redesign. CI and screenshots for V275 pending. Main untouched. Next: browser Contact prefill audit, then Events.
 
