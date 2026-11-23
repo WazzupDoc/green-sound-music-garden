@@ -1,3 +1,6 @@
+### V271 / 2026-11-23 — Contact static no-JS fallback accessibility (DRAFT)
+- Branch fix/v271-contact-nojs-static-a11y stacked on V270. Remove permanent live-region role from Contact's actionable SSR/no-JS fallback; preserve labelled alternative and native links. Regression test added. No UI redesign, dependencies, assets or main deployment. Exact-head CI and matched Chromium screenshots pending. Next Contact prefill flow.
+
 ### V270 / 2026-11-23 — draft CI unblock on V269 PR #306, branch fix/v270-quote-nojs-test-boundary. V269 run 45074860586 failed Vitest (1/163) due to brittle regex in V268 regression, not production failure. Updated test extraction to cover nested JSX and preserve contact assertions. CI exact-head, browser screenshots and six-width QA pending; no UI redesign, main/deploy untouched. Next Contact prefill browser audit.
 
 ### V269 / 2026-11-22 — Quote no-JS context (DRAFT / QA PENDING)
