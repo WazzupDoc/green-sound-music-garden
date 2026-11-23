@@ -1,3 +1,7 @@
+### V288 / 2026-11-23 — Quote fallback email parity
+- Zone: shared QuoteSection SSR/no-JS fallback. Email previously opened with subject only, losing event/service selections while WhatsApp retained them. Email draft now includes the same context and editable event logistics fields. Source `8c83509fc4d768efff1887e78291ef3b98130eba`; no auto-send.
+- Evidence: code inspection only. Browser screenshots, keyboard/mobile, TS/SSR/Vitest/gzip and exact-head CI pending; visual gate NOT passed. Next rotation: mobile navigation, after validating this fallback. Main untouched.
+
 ### V285 / 2026-11-23 — Events selection cue
 - Zone: `/evenimente` hero stage registration. Replaced unsupported `DIN 2008` claim with live selected event name, announced via native status. No new widget or dependency. Source `173a9a08206d3f97369fb8d638eb0f4a66ad0bdc`.
 - QA gate: matched browser screenshots 390/1440 and six-width regression NOT available; TypeScript, SSR, Vitest, gzip, CI exact-head pending. Do not merge. Next rotation: event detail page CTA and mobile.
