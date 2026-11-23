@@ -47,7 +47,7 @@ fs.mkdirSync(dir,{recursive:true});
     assert.equal(state.console,"none");
     assert.equal(state.wave,"none");
     assert(!/hue-rotate\(-105deg\)/.test(image.filter),"No fake monochromatic green photo filter");
-    const font=await page.locator(".gs170-hero h1 em").evaluate(el=>({family:getComputedStyle(el).fontFamily,color:getComputedStyle(el).color}));
+    const font=await page.locator(".gs170-hero h1 .gs279-title-serif").evaluate(el=>({family:getComputedStyle(el).fontFamily,color:getComputedStyle(el).color}));
     assert(/serif/i.test(font.family),"The real editorial italic is serif");
     const reduced=await page.locator(".gs170-stage__beams i").first().evaluate(el=>getComputedStyle(el).animationName);
     assert.equal(reduced,"none","Reduced motion must stop decorative beams");
