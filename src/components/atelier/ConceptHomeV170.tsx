@@ -96,11 +96,11 @@ export function ConceptHomeV170() {
         </div>
         <div className="gs170-hero__content container-site">
           <span className="gs170-kicker gs170-hero__eyebrow">GREEN SOUND MUSIC / PRODUCȚIE DE EVENIMENTE</span>
-          <h1 id="gs170-title">Sunet, lumini și<br />experiență pentru<br />
-            <em>evenimente memorabile.</em></h1>
+          <h1 id="gs170-title">Sunet. Muzică. Lumini.<br />
+            <span className="gs279-title-serif">Evenimente memorabile.</span></h1>
           <p className="gs170-hero__lead">
-            DJ & MC, trupă live, sonorizare, lumini și producție de evenimente.
-            Construim atmosfera potrivită, de la prima piesă până la finalul serii.
+            DJ & MC, trupă live, sonorizare, lumini și efecte pentru nunți, botezuri, petreceri și concerte.
+            Alegem împreună muzica și soluția tehnică potrivite spațiului și programului.
           </p>
           <div className="gs170-hero__actions">
             <Link to="/contact" className="gs170-btn gs170-btn--green">

@@ -1,0 +1,295 @@
+/* V279 — GREEN SOUND / PHOTOGRAPHIC EDITORIAL HERO
+ * Real existing concert photograph, neutral colour rendering, deliberately
+ * quieter typography, one restrained interaction rail. No extra media,
+ * packages, filters on actual company footage, fake controls or autoplays.
+ * Scoped to Home; services, films, Contact, and interior pages unchanged. */
+.gs170-home[data-art-direction="v279"] {
+  --gs279-ink: #101813;
+  --gs279-paper: #f1ede4;
+  --gs279-warm: #e2cfb3;
+  --gs279-muted: #b5c1b6;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero {
+  min-height: clamp(650px, 78svh, 795px);
+  background: var(--gs279-ink);
+  border-bottom: 1px solid #526357;
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage {
+  inset: clamp(38px, 6vw, 90px) clamp(24px, 4.5vw, 76px) clamp(48px, 5vw, 80px) 47%;
+  z-index: 0;
+  overflow: hidden;
+  background: #213026;
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage::after {
+  content: "GREEN SOUND / LIVE";
+  position: absolute;
+  z-index: 2;
+  bottom: 18px;
+  right: 19px;
+  color: #f3efe5;
+  text-shadow: 0 1px 7px #000b;
+  font-size: .59rem;
+  font-weight: 750;
+  letter-spacing: .18em;
+  pointer-events: none;
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage__image {
+  width: 100%;
+  height: 100%;
+  object-position: 56% 45%;
+  filter: saturate(1.12) contrast(1.03) brightness(1.12);
+  transition: filter .4s ease;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero[data-hue="cool"] .gs170-stage__image {
+  filter: saturate(.9) contrast(1.04) brightness(1.06) hue-rotate(12deg);
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero[data-lights="off"] .gs170-stage__image {
+  filter: saturate(.75) contrast(1.03) brightness(.84);
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage__shade {
+  inset: 0;
+  background:
+    linear-gradient(90deg, #101813e8 0%, #10181399 12%, #10181310 45%, transparent 82%),
+    linear-gradient(0deg, #1018138a 0%, transparent 28%, transparent 82%, #10181321 100%);
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage__beams { opacity: .075; }
+.gs170-home[data-art-direction="v279"] .gs170-stage__beams:before,
+.gs170-home[data-art-direction="v279"] .gs170-stage__beams:after { opacity: 0; }
+.gs170-home[data-art-direction="v279"] .gs170-stage__beams i {
+  background: linear-gradient(180deg, #e3eee954, #a6cec31b 37%, transparent 70%);
+  filter: blur(12px);
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero[data-hue="green"] .gs170-stage__beams i {
+  background: linear-gradient(180deg,#90ba9a65,#8baf9340 30%,transparent 70%);
+}
+.gs170-home[data-art-direction="v279"] .gs170-stage__console,
+.gs170-home[data-art-direction="v279"] .gs170-wave { display: none; }
+.gs170-home[data-art-direction="v279"] .gs170-hero__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(650px, 78svh, 795px);
+  padding-top: clamp(145px, 12vw, 190px);
+  padding-bottom: clamp(115px, 10vw, 150px);
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__eyebrow {
+  color: var(--gs279-warm);
+  font-size: .68rem;
+  font-weight: 740;
+  letter-spacing: .16em;
+  margin-bottom: clamp(28px, 3vw, 48px);
+  max-width: 90%;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero h1 {
+  max-width: min(750px, 64%);
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: clamp(3.45rem, 5.4vw, 6rem);
+  line-height: .97;
+  font-weight: 650;
+  letter-spacing: -.066em;
+  color: var(--gs279-paper);
+  text-shadow: none;
+  text-wrap: balance;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero h1 .gs279-title-serif {
+  display: block;
+  margin-top: .095em;
+  max-width: 10.5ch;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: .93em !important;
+  font-weight: 400 !important;
+  font-style: italic !important;
+  letter-spacing: -.042em !important;
+  line-height: 1.06 !important;
+  color: var(--gs279-warm) !important;
+  white-space: normal;
+  text-shadow: none;
+  -webkit-text-fill-color: var(--gs279-warm) !important;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__lead {
+  width: min(100%, 460px);
+  max-width: 46ch;
+  margin: 31px 0 0;
+  color: #d5dfd5;
+  font-size: clamp(.98rem, 1.12vw, 1.13rem);
+  line-height: 1.7;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__actions {
+  margin-top: clamp(27px, 3vw, 40px);
+  gap: 17px;
+}
+.gs170-home[data-art-direction="v279"] .gs170-btn {
+  border-radius: 3px;
+  font-size: .88rem;
+  letter-spacing: .008em;
+  font-weight: 760;
+  transition: background-color .22s ease, color .22s ease, border-color .22s ease;
+}
+.gs170-home[data-art-direction="v279"] .gs170-btn:hover { transform: none; }
+.gs170-home[data-art-direction="v279"] .gs170-btn--green {
+  background: var(--gs279-paper);
+  border: 1px solid var(--gs279-paper);
+  color: #172019;
+  box-shadow: none;
+}
+.gs170-home[data-art-direction="v279"] .gs170-btn--green:hover {
+  background: var(--gs279-warm);
+  border-color: var(--gs279-warm);
+  box-shadow: none;
+}
+.gs170-home[data-art-direction="v279"] .gs170-btn--outline {
+  background: transparent;
+  border: 1px solid #c0c9be82;
+  color: var(--gs279-paper);
+}
+.gs170-home[data-art-direction="v279"] .gs170-btn--outline:hover {
+  background: #e8efdf16;
+  border-color: #f5efe6;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__control {
+  position: absolute;
+  bottom: clamp(49px, 6.5vw, 94px);
+  right: clamp(30px, 6.5vw, 105px);
+  margin: 0;
+  max-width: 390px;
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 9px;
+  align-items: center;
+  padding: 7px 9px 7px 12px;
+  color: #e0eadd;
+  background: #101b16cf;
+  border: 1px solid #b6c6b68c;
+  border-radius: 2px;
+  backdrop-filter: none;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__control-label {
+  color: #d4e0d1;
+  font-size: .57rem;
+  letter-spacing: .08em;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__control button {
+  border-radius: 2px;
+  color: #e2e9dc;
+  min-height: 33px;
+  font-size: .67rem;
+  padding: 6px 8px;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__control button[aria-pressed="true"] {
+  background: var(--gs279-warm);
+  color: #182019;
+}
+.gs170-home[data-art-direction="v279"] .gs170-hero__control button:hover:not([aria-pressed="true"]) {
+  background: #e9f1e91b;
+}
+body:has(.gs170-home[data-art-direction="v279"]) .atelier-header {
+  background: #0b1511e8;
+  border-bottom: 1px solid #97a89639;
+}
+body:has(.gs170-home[data-art-direction="v279"]) .atelier-header__quote {
+  background: #eee8d9;
+  color: #152017;
+  border-color: #eee8d9;
+}
+@media(max-width:1000px) {
+  .gs170-home[data-art-direction="v279"] .gs170-stage { left: 45%; right: 24px; }
+  .gs170-home[data-art-direction="v279"] .gs170-hero h1 { font-size: clamp(3.3rem, 6vw, 5.7rem); }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__lead { max-width: 390px; }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__control { right: 36px; bottom: 45px; }
+}
+@media(max-width:740px) {
+  .gs170-home[data-art-direction="v279"] .gs170-hero { min-height: 0; }
+  .gs170-home[data-art-direction="v279"] .gs170-stage {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    width: 100%;
+    height: clamp(280px, 82vw, 430px);
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-stage__image {
+    height: 100%;
+    object-position: center 40%;
+    filter: saturate(1.12) contrast(1.05) brightness(1.09);
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-stage__shade {
+    background: linear-gradient(0deg, #101813 0%, #101813d1 15%, #10181332 45%, #1018131a 90%);
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-stage::after {
+    right: 19px;
+    bottom: 78px;
+    font-size: .52rem;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-stage__beams { opacity: .025; }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__content {
+    min-height: 0;
+    padding-top: clamp(278px, 79vw, 395px);
+    padding-bottom: 45px;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__eyebrow {
+    margin-bottom: 17px;
+    font-size: .6rem;
+    letter-spacing: .11em;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.8rem, 9.6vw, 4.8rem);
+    letter-spacing: -.065em;
+    line-height: 1.01;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero h1 .gs279-title-serif {
+    max-width: 100%;
+    margin-top: .02em;
+    font-size: 1em !important;
+    line-height: 1.02 !important;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__lead {
+    max-width: 42ch;
+    margin-top: 20px;
+    font-size: .95rem;
+    line-height: 1.63;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__actions {
+    margin-top: 24px;
+    width: 100%;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__control {
+    position: static;
+    max-width: 100%;
+    margin-top: 23px;
+    padding: 6px;
+    width: auto;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 0;
+    border-top: 1px solid #68796a;
+    background: transparent;
+  }
+}
+@media(max-width:470px) {
+  .gs170-home[data-art-direction="v279"] .gs170-hero__content {
+    padding-top: 278px;
+    padding-bottom: 37px;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-hero h1 { font-size: clamp(2.55rem, 10.8vw, 3.65rem); }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 390px;
+  }
+  .gs170-home[data-art-direction="v279"] .gs170-btn { min-height: 52px; }
+  .gs170-home[data-art-direction="v279"] .gs170-hero__control-label { flex-basis: auto; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .gs170-home[data-art-direction="v279"] .gs170-stage__image,
+  .gs170-home[data-art-direction="v279"] .gs170-hero__control button,
+  .gs170-home[data-art-direction="v279"] .gs170-btn { transition: none !important; }
+}
+html[data-gs-performance=lite] .gs170-home[data-art-direction="v279"] .gs170-stage__image,
+html[data-gs-performance=lite] .gs170-home[data-art-direction="v279"] .gs170-hero__control button,
+html[data-gs-performance=lite] .gs170-home[data-art-direction="v279"] .gs170-btn { transition: none !important; }

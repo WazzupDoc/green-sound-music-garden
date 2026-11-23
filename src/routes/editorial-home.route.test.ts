@@ -7,6 +7,8 @@ describe("V170 concept reference homepage route", () => {
     expect(route).toContain("<ConceptHomeV170 />");
     expect(route).toContain('home-reference-v170.css?inline');
     expect(route).toContain('className="gs170-home"');
+    expect(route).toContain('home-photographic-v279.css?inline');
+    expect(route).toContain('data-art-direction="v279"');
     expect(route.match(/<style>/g)).toHaveLength(1);
   });
   it("keeps the four real sections in reference order and two functional quote actions", () => {

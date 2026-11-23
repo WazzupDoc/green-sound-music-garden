@@ -1,0 +1,73 @@
+name: V279 Photographic Home — real before/after
+on:
+  push:
+    branches: [design/v279-home-photo-editorial-hero]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  photographic-home-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Install dependencies
+        run: bun install --no-save
+      - name: Install Chromium
+        run: |
+          npm install --prefix /tmp/gs279-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs279-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture V277 genuine baseline
+        env:
+          BASE_SHA: 10a144e3ac015617186c8df069d1f94fc19eacc3
+          GS279_STAGE: before
+          NODE_PATH: /tmp/gs279-playwright/node_modules
+        run: |
+          cp .github/scripts/v279-home-browser.cjs /tmp/v279-browser.cjs
+          git checkout --detach "$BASE_SHA"
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v279-before.log 2>&1 & echo $! > /tmp/v279-before.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/ > /dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v279-browser.cjs
+          kill "$(cat /tmp/v279-before.pid)" || true
+          sleep 2
+      - name: Strict TS SSR gzip Vitest exact head
+        env:
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          bun run typecheck
+          bun run build
+          python3 .github/scripts/check-client-budget.py
+          bun run test
+      - name: Run six-width Chromium and interactive states
+        env:
+          GS279_STAGE: after
+          NODE_PATH: /tmp/gs279-playwright/node_modules
+        run: |
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v279-after.log 2>&1 & echo $! > /tmp/v279-after.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/ > /dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v279-browser.cjs
+          kill "$(cat /tmp/v279-after.pid)" || true
+      - name: Assert matched real screenshot changed
+        run: |
+          node - <<'NODE'
+          const fs=require("node:fs"),crypto=require("node:crypto");
+          for(const width of [390,1440]){
+            const hash=stage=>crypto.createHash("sha256").update(fs.readFileSync("screenshots/v279/"+stage+"-viewport-"+width+".png")).digest("hex");
+            if(hash("before")===hash("after"))throw Error("Hero is visually unchanged at "+width);
+            console.log("Real Chromium screenshot difference: "+width+"px");
+          }
+          NODE
+      - name: Upload real Chromium screenshots even if failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v279-home-photographic-before-after
+          path: screenshots/v279/
+          if-no-files-found: warn
+          retention-days: 60
