@@ -1,3 +1,6 @@
+### V291 / 2026-11-23
+No new visual, audio, font or third-party assets. Native focus-state correction only.
+
 ### V290 / 2026-11-23
 No new visual, audio, font, code library, or media assets. Existing user-initiated WhatsApp link only.
 
