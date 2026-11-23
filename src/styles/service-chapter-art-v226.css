@@ -75,3 +75,30 @@ html[data-gs-performance="lite"] .gs226-chapter__mark{
 }
 /* Save-Data visitors still receive the first-party photo at only 16–19KB
    on-demand below the fold; no autoplay or heavy canvas effects. */
+
+/* V227: on narrow screens the 1152×252 editorial artwork was being cropped
+   to less than half its width. Preserve the entire original composition
+   instead of presenting a misleading close-up of conceptual imagery. */
+@media(max-width:760px){
+  .gs226-chapter__artwork,
+  .gs226-chapter__figure[data-kind="tech"] .gs226-chapter__artwork{
+    height:auto;
+    aspect-ratio:1152 / 252;
+    min-height:0;
+  }
+  .gs226-chapter__artwork img{
+    object-fit:contain;
+    object-position:center;
+  }
+  .gs226-chapter__mark{
+    width:clamp(34px,7vw,58px);
+    margin-right:clamp(8px,2vw,18px);
+  }
+}
+@media(max-width:430px){
+  .gs226-chapter__artwork,
+  .gs226-chapter__figure[data-kind="tech"] .gs226-chapter__artwork{
+    height:auto;
+    aspect-ratio:1152 / 252;
+  }
+}
