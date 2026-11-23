@@ -1,3 +1,12 @@
+### V280 ACTUAL EVIDENCE / 2026-11-23 — COMPLETE (source SHA 2b9362db1e285240f1a5eb547a7c9b7a150e0060)
+
+- **Genuine matched Chromium V279 baseline vs V280**: [GitHub Actions run #45157402285](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285) SUCCESS, [all screenshots artifact #14810225055](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055) captured at identical 390/1440 widths; after 360/390/430/768/1440/1920; full-page, service chapter, genuine-image decoding, focus/links/film Escape/SSR/no-JS, reduced-motion/Lite and hover verified. In screenshot-only capture, header positioning normalized *in both baseline and candidate* to prevent sticky navigation from covering the editorial section; normal site CSS untouched.
+- **TS, SSR, Vitest, gzip, global browser QA green** exact source SHA `2b9362db1e285240f1a5eb547a7c9b7a150e0060`: push [#45157401422](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157401422), PR [#45157410738](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157410738), both SUCCESS. Standard browser verified other routes; stale selectors from V215/V85 corrected to assert same real eight services via ProductionIndex, not disabled.
+- **Visible verdict:** undeniable original-code layout change (dark card wall → asymmetric bright photographic editorial, three chapters); aesthetic suitability is a subjective owner decision, not implied by green tests. First photo shows the existing couple/service artwork, not a newly claimed DJ live show. Avoid pretending validation establishes premium taste.
+- **PR:** https://github.com/WazzupDoc/green-sound-music-garden/pull/318 (draft), branch `design/v280-premium-editorial-service-programme`. No main/deploy. Next rotation gallery/films.
+- Source SHA above was the visually verified exact-head prior to this documentation-only update; after docs changes recheck the *new* exact-head checks and report status truthfully.
+
+---
 ## 2026-11-23 / V280 — homepage services: editorial visual overhaul, DRAFT, QA PENDING
 
 | Zone | Prior visual issue | Change in code | Before screenshot | After screenshot | Verified status | Next |
