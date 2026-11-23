@@ -38,7 +38,7 @@ export function validateBrief(search: Record<string, unknown>): BriefQuery {
     brief.date = dateValue;
   }
   if (typeof locationValue === "string" && locationValue.length <= 2000) {
-    const safeLocation = locationValue.replace(/[\u0000-\u001F\u007F-\u009F\u202A-\u202E\u2066-\u2069]/g, " ").replace(/\s+/g, " ").trim().slice(0, 120);
+    const safeLocation = locationValue.replace(/[\u0000-\u001F\u007F-\u009F\u061C\u200B-\u200F\u202A-\u202E\u2060\u2066-\u2069\uFEFF]/g, " ").replace(/\s+/g, " ").trim().slice(0, 120);
     // Control-only input must not produce an empty, apparently prefilled brief.
     if (safeLocation) brief.location = safeLocation;
   }

@@ -1,3 +1,8 @@
+### 2026-11-23 — V272 Contact prefill safety
+- Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace — Unicode character-class filtering; adapted locally to discard invisible formatting code points in user-supplied location, without new dependency.
+- Reference: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — preserve comprehensible visible form data; avoid accepting invisible-only location strings.
+- Rejected: broad Unicode non-ASCII removal (would corrupt Romanian place names); adding sanitization library (unnecessary package cost). No external code copied.
+
 ### 2026-11-23 — V271 Contact SSR fallback semantics
 - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — status is a live region for status updates, not a permanent interactive fallback. Adaptation: remove role=status, preserve labelled section. No code copied; documentation reference.
 - https://www.w3.org/WAI/ARIA/apg/patterns/alert/ — live announcements are reserved for timely messages; rejected alert/live region for persistent contact links. No code copied.
