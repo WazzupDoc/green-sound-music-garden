@@ -1,3 +1,8 @@
+### 2026-11-23 — V271 Contact SSR fallback semantics
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — status is a live region for status updates, not a permanent interactive fallback. Adaptation: remove role=status, preserve labelled section. No code copied; documentation reference.
+- https://www.w3.org/WAI/ARIA/apg/patterns/alert/ — live announcements are reserved for timely messages; rejected alert/live region for persistent contact links. No code copied.
+- No new dependencies or assets. Visual redesign deferred pending browser capture.
+
 ### 2026-11-23 V270 — Evidence: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45074860586 (Vitest assertion failure due to test parser). Source testing should not parse nested JSX with lazy regex. Adapted a narrow source boundary; no external code or license required. Rejected weakening/removing the assertions.
 
 ### 2026-11-22 — V269 progressive enhancement / quote fallback
