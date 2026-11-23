@@ -1,3 +1,7 @@
+### V289 / 2026-11-23 — Quote no-JS draft clarity (DRAFT)
+- Branch `ux/v289-quote-nojs-clear-draft-actions`, draft PR #327, source `244c80b2430ad3ed72a98d99636fb7a792c595be`, based on V288 PR #326. Explicitly states selections are prefilled in drafts and email is not automatically sent. No new dependencies, no main/deploy changes.
+- CI exact-head, browser screenshots at 390/1440 and six-width QA pending; do not merge. Next rotation: mobile navigation.
+
 ### V288 / 2026-11-23 — Shared quote no-JS email context (DRAFT)
 - Branch `fix/v288-quote-nojs-email-context`, stacked on V287 PR #325. Email fallback now prepares a user-editable mailto body with selected event/services plus blank date, location, guests and details. Nothing is sent automatically; WhatsApp and phone remain unchanged. No dependency/media/main/deployment changes.
 - Source commit `8c83509fc4d768efff1887e78291ef3b98130eba`. Browser before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip and CI exact-head NOT verified. Do not merge. Next: real browser QA and mobile navigation.

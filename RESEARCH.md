@@ -1,3 +1,7 @@
+### 2026-11-23 — V289 native draft handoff
+- https://datatracker.ietf.org/doc/html/rfc6068 — `mailto:` creates a draft in the user's mail client, not a sent message; adapted truthful CTA wording. No external code or license involved.
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_email_address — native links remain functional without JavaScript; retained existing implementation. Rejected external form provider and modal confirmation because both add complexity without improving native draft behavior.
+
 ### 2026-11-23 — V288 no-JS email fallback
 - Implementation is based on native `mailto:` URI with `encodeURIComponent` applied to subject/body; no external code, imagery, tracking, dependencies or licensing needed. Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_email_address ; https://datatracker.ietf.org/doc/html/rfc6068 . Adapted: prefilled editable message, never automatic send. Rejected: JavaScript-only mail composer or third-party form service (unnecessary dependency and privacy impact). Awwwards/Webflow visual research deferred because this is a narrowly functional fallback fix, not a design iteration.
 

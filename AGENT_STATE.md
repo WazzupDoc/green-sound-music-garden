@@ -1,3 +1,6 @@
+### V289 / 2026-11-23 — Quote no-JS action clarity
+- Zone: QuoteSection SSR fallback; PR #327, source `244c80b2430ad3ed72a98d99636fb7a792c595be`. Selected event/services are now explicitly described as prefilled in email/WhatsApp drafts; email link clarifies no sending. No screenshot or browser audit yet; visual gate pending. Next: mobile navigation. Main unchanged.
+
 ### V288 / 2026-11-23 — Quote fallback email parity
 - Zone: shared QuoteSection SSR/no-JS fallback. Email previously opened with subject only, losing event/service selections while WhatsApp retained them. Email draft now includes the same context and editable event logistics fields. Source `8c83509fc4d768efff1887e78291ef3b98130eba`; no auto-send.
 - Evidence: code inspection only. Browser screenshots, keyboard/mobile, TS/SSR/Vitest/gzip and exact-head CI pending; visual gate NOT passed. Next rotation: mobile navigation, after validating this fallback. Main untouched.
