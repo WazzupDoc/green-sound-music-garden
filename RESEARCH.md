@@ -1,3 +1,8 @@
+### 2026-11-23 — V276 Contact dynamic status
+- https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — nonurgent updates use polite status; applied only to the noninteractive hydrated brief summary. No external code copied, no new dependency.
+- https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html — announce status without focus movement; adapted as an atomic summary, not as a wrapper around controls. Avoided assertive alerts and repeated announcements. Browser/AT behavior not yet measured.
+- Premium visual references not researched in this iteration; no visual redesign is claimed. Rejected adding another homepage widget because V48 editorial contract remains binding.
+
 ### 2026-11-23 — V275 Contact test QA
 - Source: https://www.typescriptlang.org/docs/handbook/2/narrowing.html — TypeScript control-flow narrowing; explicit guard for potentially undefined regex match. Original test code only, no external code copied, no dependency or license introduced.
 - Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match — `match()` can return null; regex capture may be absent. Rejected non-null assertion as it does not establish safe capture.
