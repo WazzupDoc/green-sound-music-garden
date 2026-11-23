@@ -1,3 +1,5 @@
+### V271 / 2026-11-23 — Contact SSR/no-JS accessibility: removed persistent role=status from interactive fallback, retained labelled region and direct email/phone actions. Added source regression. No visual redesign; screenshots, exact-head CI, six-width browser QA, TypeScript/SSR/Vitest pending. Next: Contact prefill real-browser audit. Main untouched.
+
 ### V270 / 2026-11-23 — One-zone CI regression: V269 PR #306 exact-head run 45074860586 failed 1/163 Vitest because V268 source-test regex terminated at nested JSX `}>` before the phone link. Replaced fragile extraction with bounded ClientOnly-to-QuoteForm slice. No production UI change. QA exact-head CI and browser screenshots pending; next Contact prefill browser audit.
 
 ### V269 / 2026-11-22 — Event/service quote fallback context (DRAFT)
