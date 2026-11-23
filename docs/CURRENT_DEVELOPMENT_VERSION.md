@@ -1,3 +1,6 @@
+### V273 / 2026-11-23 — Contact Unicode separator normalization (DRAFT)
+- Branch `fix/v273-contact-unicode-separator-prefill`, stacked on V272 PR #309. Location prefill now converts U+2028/U+2029 line/paragraph separators to spaces, preserving Romanian diacritics; added `src/test/contact-location-separators-v273.test.ts`. No new media/dependencies, no homepage/main/deployment changes. Exact-head CI, TypeScript, SSR/Vitest/gzip, Chromium six widths and matched screenshots NOT VERIFIED. Next: real-browser Contact prefill journey.
+
 ### V272 / 2026-11-23 — Contact location invisible-format guard (DRAFT)
 - Branch `fix/v272-contact-invisible-location-guard` stacked on V271 PR #308. Sanitizes zero-width, bidi and BOM format characters from location prefill, preserving Romanian letters and rejecting invisible-only values. Added `src/test/contact-location-invisible-v272.test.ts`. No homepage, assets, dependencies, main or deployment changes. Exact-head CI, strict TypeScript, SSR/Vitest/gzip and matched Chromium screenshots **pending**. Next: Contact prefill end-to-end browser audit.
 

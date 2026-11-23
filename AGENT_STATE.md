@@ -1,3 +1,5 @@
+### V273 / 2026-11-23 — Contact prefill: normalize Unicode U+2028/U+2029 separators to spaces, preserving Romanian characters. Regression added. No visual redesign; CI and browser proof pending. Next: Contact end-to-end prefill and mobile screenshots. Main untouched.
+
 ### V272 / 2026-11-23 — Contact location prefill: strips invisible Unicode format controls (zero-width, bidi and BOM) before empty-value validation. Test added. No visual change; exact-head CI/Chromium pending. Next: Contact prefill browser journey. Main untouched.
 
 ### V271 / 2026-11-23 — Contact SSR/no-JS accessibility: removed persistent role=status from interactive fallback, retained labelled region and direct email/phone actions. Added source regression. No visual redesign; screenshots, exact-head CI, six-width browser QA, TypeScript/SSR/Vitest pending. Next: Contact prefill real-browser audit. Main untouched.

@@ -1,3 +1,6 @@
+### V273 / 2026-11-23
+No new images, icons, fonts, audio, dependencies, external code or licenses; Contact input normalization only.
+
 ### V272 / 2026-11-23
 No new imagery, fonts, icons, audio, third-party code, packages or assets. Contact input sanitation only.
 

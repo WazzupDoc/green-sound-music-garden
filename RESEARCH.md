@@ -1,3 +1,8 @@
+### 2026-11-23 — V273 Unicode separator prefill
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace — replace unwanted Unicode separators with spaces; original small regex extension, no copied code or dependency.
+- https://www.w3.org/TR/WCAG22/#labels-or-instructions — keep location input understandable. Rejected stripping all non-ASCII because Romanian diacritics must survive.
+- No Awwwards/Webflow design adaptation: functional input-safety iteration, not visual redesign.
+
 ### 2026-11-23 — V272 Contact prefill safety
 - Reference: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace — Unicode character-class filtering; adapted locally to discard invisible formatting code points in user-supplied location, without new dependency.
 - Reference: https://www.w3.org/WAI/WCAG22/Understanding/labels-or-instructions.html — preserve comprehensible visible form data; avoid accepting invisible-only location strings.
