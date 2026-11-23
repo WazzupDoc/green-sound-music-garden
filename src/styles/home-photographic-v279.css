@@ -94,7 +94,7 @@
   text-shadow: none;
   text-wrap: balance;
 }
-.gs170-home[data-art-direction="v279"] .gs170-hero h1 em {
+.gs170-home[data-art-direction="v279"] .gs170-hero h1 .gs279-title-serif {
   display: block;
   margin-top: .095em;
   max-width: 10.5ch;
@@ -241,7 +241,7 @@ body:has(.gs170-home[data-art-direction="v279"]) .atelier-header__quote {
     letter-spacing: -.065em;
     line-height: 1.01;
   }
-  .gs170-home[data-art-direction="v279"] .gs170-hero h1 em {
+  .gs170-home[data-art-direction="v279"] .gs170-hero h1 .gs279-title-serif {
     max-width: 100%;
     margin-top: .02em;
     font-size: 1em !important;
