@@ -1,3 +1,13 @@
+### 2026-11-23 — V278 / EVENTS EDITORIAL SETLIST (DRAFT PR #315, VISUAL QA GATE OPEN)
+- Component rotation: **/evenimente — five-event selector**. Concrete defect: previous equal 5-column category cards felt repetitive and required horizontal scrolling at mobile width; all five choices could not be seen in the same vertical reading flow.
+- **Implemented**: first-party five-row stage setlist, large mixed typography, active-line cue, visible desktop/mobile structure, native button selection, full-width direct event links. Preserved authentic existing owner imagery, CategorySignal graphics, keyboard/Arrow/Home/End, all event detail routes, Contact prefill and SSR/no-JS.
+- Files: `src/styles/event-editorial-setlist-v278.css` (new), `src/routes/evenimente.index.tsx`, `src/test/events-editorial-v278.test.ts`, `.github/scripts/v278-events-browser.cjs`, `.github/workflows/v278-events-qa.yml`. No dependencies/new media. Home unchanged.
+- Matched baseline source: V277 `10a144e3ac015617186c8df069d1f94fc19eacc3`. Draft PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/315 . Exact-head CI and image evidence: **NOT YET VERIFIED**; required 390/1440 before-after and six-width after browser artifact from `V278 Events Editorial Setlist — real browser difference` workflow. Do not assert visual pass until inspecting both images.
+- Audit matrix (selected component): | Area | Severity | Defect | Fix | Evidence | Next |
+  | /evenimente event selector | high UX/visual | five repeated cards; mobile horizontal discovery | five-row score with desktop typography, mobile all-choices-visible | before/after Chromium pending | verify 390/1440 images, focus, alt/media and CI exact-head |
+  | /evenimente detail | medium | event-specific CTA flow not yet browser-inspected | unchanged in V278 | pending | next rotation: contact journey and event-detail mobile CTA |
+- Rollback: revert PR #315 branch or omit new stylesheet/class; no main update. Production auto-deploy policy unchanged; main untouched. No numerical scores claimed.
+
 ### 2026-11-23 — V277 Events timeline link context (DRAFT / QA PENDING)
 - Zone: event detail timeline. Service links previously had the same accessible name whenever a service recurred across moments; now include step number and moment title while preserving visible copy and destination. Regression added. This is accessibility/functionality, NOT a visual redesign. No new assets/dependencies/backend. Browser screenshots, six widths, keyboard screen reader, strict TS, Vitest, SSR, gzip and exact-head CI NOT VERIFIED. Next: Events real-browser CTA/focus and visual composition; main untouched.
 
