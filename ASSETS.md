@@ -1,3 +1,6 @@
+### V278 visual evidence — 2026-11-23
+- GitHub Actions https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45133101037/artifacts/14797779537 contains ORIGINAL real Chromium screenshots before and after of /evenimente (390/1440 plus six after widths); they are *evidence*, not new published site assets. No new third-party art. Hero photo remains existing owner catalogue; illustrations remain existing project-approved atlas.
+
 ### V278 / 2026-11-23 — Events first-party setlist
 - **No new photographs, AI imagery, TikTok frames, logos, fonts, icon packs, audio/video, libraries or packages.** New stylesheet and test/QA scripts are original project code. The category illustrations are the already-existing project-approved `/media/gs-category-illustrations-v201.webp`; real photograph comes from existing event catalogue `/media/greensound/` as before. No third-party art or design source copied.
 - Editorial references in `RESEARCH.md` were used as non-code inspiration only; no license-dependent assets adopted. Existing icon package already in project; no new dependency.

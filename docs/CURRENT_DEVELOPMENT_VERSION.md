@@ -1,3 +1,8 @@
+### V278 VERIFIED SOURCE / 2026-11-23
+- Draft PR #315 https://github.com/WazzupDoc/green-sound-music-garden/pull/315 ; source commit `0f5dfe65de183b3d7628ae4bff851cf68a7aa99d`.
+- Verified exact-head browser workflow SUCCESS: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45133101037; screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45133101037/artifacts/14797779537. Strict TS, SSR build, gzip, Vitest, six widths 360/390/430/768/1440/1920, keyboard/selection, decoded real photo, no-JS, reduced-motion and Lite succeeded. Full-page screenshot delta desktop 5482→6312px, mobile 7414→8148px. First viewport is unchanged because redesign occurs below fold; before/after section is visibly different.
+- This docs-only evidence update is a NEW commit; exact-head must be checked separately for it. Keep PR draft. Main untouched, no deploy/backup tag/merge. Next event-detail and Contact CTA browser audit.
+
 ### V278 / 2026-11-23 — Events editorial five-track selector (DRAFT / VISUAL QA PENDING)
 - Branch `design/v278-events-editorial-setlist`, draft PR #315 https://github.com/WazzupDoc/green-sound-music-garden/pull/315 stacked on V277 `fix/v277-event-contextual-service-links` SHA `10a144e3ac015617186c8df069d1f94fc19eacc3`.
 - **Actual visible implementation** at `/evenimente`: replaced 5 equal category cards and horizontal mobile scroll strip with vertical editorial setlist, distinct large type and event-specific active state; native direct detail links, existing true owner media and all contact/event behaviors preserved. Homepage untouched, no new assets/dependencies.
