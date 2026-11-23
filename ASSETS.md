@@ -1,3 +1,6 @@
+### V277 / 2026-11-23
+- No new media, icons, fonts, libraries or external assets; source-only accessible-name adjustment.
+
 ### V276 / 2026-11-23
 - No new images, video, fonts, icon packs, code libraries or external assets. Existing first-party media unchanged.
 
