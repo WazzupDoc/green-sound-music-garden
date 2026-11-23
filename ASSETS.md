@@ -1,3 +1,6 @@
+### V272 / 2026-11-23
+No new imagery, fonts, icons, audio, third-party code, packages or assets. Contact input sanitation only.
+
 ### V271 / 2026-11-23
 No new images, fonts, icons, videos or dependencies. Contact fallback semantics only; existing business contact data retained.
 
