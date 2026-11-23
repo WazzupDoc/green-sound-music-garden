@@ -133,6 +133,7 @@ function Contact() {
               <div aria-label="Alternative de contact fără JavaScript" className="flex min-h-[250px] flex-col justify-center gap-3 text-muted-foreground">
                 <p>Formularul interactiv se afișează după activarea JavaScript.</p>
                 <p className="text-sm">Dacă nu apare, poți cere oferta direct, fără formular:</p>
+                <a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer">Deschide WhatsApp pentru ofertă</a>
                 <a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${business.email}?subject=${encodeURIComponent("Cerere de ofertă Green Sound Music")}`}>Trimite un email pentru ofertă</a>
                 <a className="w-fit underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={business.phoneHref}>Sună pentru detalii</a>
               </div>

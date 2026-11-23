@@ -1,3 +1,8 @@
+### V282 / 2026-11-23 — Contact SSR/no-JS alternative (draft)
+- PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/320 ; branch `fix/v282-contact-nojs-whatsapp-access` based on V281 PR #319.
+- Change: existing Contact fallback gains native WhatsApp offer link, alongside email/phone. No JS requirement for navigation, no automatic send.
+- Source SHA before docs updates: `4aeceddd75de72bc37015afca770244ad7d57070`. CI exact-head, browser screenshot and full tests NOT verified. Main unchanged. Next: Contact mobile form.
+
 ### V280 ACTUAL EVIDENCE / 2026-11-23 — COMPLETE (source SHA 2b9362db1e285240f1a5eb547a7c9b7a150e0060)
 
 - **Genuine matched Chromium V279 baseline vs V280**: [GitHub Actions run #45157402285](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285) SUCCESS, [all screenshots artifact #14810225055](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055) captured at identical 390/1440 widths; after 360/390/430/768/1440/1920; full-page, service chapter, genuine-image decoding, focus/links/film Escape/SSR/no-JS, reduced-motion/Lite and hover verified. In screenshot-only capture, header positioning normalized *in both baseline and candidate* to prevent sticky navigation from covering the editorial section; normal site CSS untouched.
