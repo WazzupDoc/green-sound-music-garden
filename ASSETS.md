@@ -1,3 +1,8 @@
+### V279 / 2026-11-23 — Photographic home
+- No new image/video/audio/AI photography/illustration/logo/font/third-party code. Hero reuses first-party `images.concert.src` from `@/data/site` with original alt, intrinsic dimensions and fetchPriority high. No TikTok/social screenshots imported.
+- Fonts stay already bundled with project (Instrument Serif and display family); existing Lucide icons reused, no new dependency. The decorative on-screen fake mixing desk and neon waveform are now hidden in V279 hero only; all real media, video and route links remain.
+- References in RESEARCH.md are inspiration only; no copyrighted asset or source code copied. Browser screenshot artifact link pending exact-head GitHub Actions completion.
+
 ### V277 / 2026-11-23
 - No new media, icons, fonts, libraries or external assets; source-only accessible-name adjustment.
 
