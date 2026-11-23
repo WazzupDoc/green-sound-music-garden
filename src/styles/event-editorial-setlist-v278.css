@@ -1,0 +1,187 @@
+/* V278 — EVENTS / FIVE TRACKS, ONE SHOW
+   A first-party editorial running order replaces five equal cards and the
+   inaccessible-on-first-glance horizontal mobile rail. No new assets or deps.
+   The real stage photograph, buttons, details links and keyboard model remain. */
+.gs278-events .gs173-setlist__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(220px, .55fr);
+  align-items: end;
+  gap: clamp(22px, 5vw, 80px);
+  margin-top: clamp(36px, 5vw, 76px);
+  margin-bottom: clamp(26px, 3vw, 44px);
+  padding-top: 25px;
+}
+.gs278-setlist__heading > span {
+  display: block;
+  color: #b7ff87;
+  font-size: .67rem;
+  font-weight: 850;
+  letter-spacing: .2em;
+}
+.gs278-setlist__heading h2 {
+  margin: 20px 0 0;
+  max-width: 16ch;
+  color: #f2f1e8;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(3rem, 6.2vw, 7.4rem);
+  font-weight: 730;
+  line-height: .92;
+  letter-spacing: -.082em;
+}
+.gs278-setlist__heading h2 em {
+  color: #b7ff87;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -.055em;
+}
+.gs278-events .gs173-setlist__header > p {
+  display: block;
+  text-align: left;
+  color: #b9d1ba;
+  max-width: 34ch;
+  padding-bottom: 8px;
+}
+.gs278-events .gs173-setlist {
+  display: block;
+  overflow: visible;
+  scroll-snap-type: none;
+  grid-template-columns: none;
+  border-top: 1px solid #53755a;
+  padding-bottom: clamp(40px, 5.5vw, 90px);
+}
+.gs278-events .gs173-setlist__item {
+  min-height: clamp(104px, 10vw, 152px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid #416148;
+  background: transparent;
+  position: relative;
+  transition: background-color .3s ease;
+}
+.gs278-events .gs173-setlist__item:last-child { border-right: 0; }
+.gs278-events .gs173-setlist__item[data-active="true"] {
+  background: linear-gradient(90deg, #1f452a 0%, #142a1d 60%, #0a1d13 100%);
+}
+.gs278-events .gs173-setlist__item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  height: 100%;
+  background: #b7ff87;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform .34s ease;
+}
+.gs278-events .gs173-setlist__item[data-active="true"]::before { transform: scaleY(1); }
+.gs278-events .gs173-setlist__select {
+  display: grid;
+  grid-template-columns: clamp(55px, 7vw, 100px) clamp(74px, 9vw, 112px) minmax(0, 1fr) 32px;
+  align-items: center;
+  justify-content: stretch;
+  gap: clamp(15px, 2.7vw, 42px);
+  padding: clamp(14px, 1.9vw, 29px) clamp(16px, 2.5vw, 38px);
+  min-height: clamp(104px, 10vw, 152px);
+  text-align: left;
+}
+.gs278-events .gs173-setlist__index {
+  color: #8fb89a;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(2.2rem, 3.8vw, 4.1rem);
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -.07em;
+}
+.gs278-events .gs173-setlist__name {
+  color: #f2f0e5;
+  font-size: clamp(1.65rem, 3.9vw, 4.65rem);
+  letter-spacing: -.07em;
+  font-weight: 660;
+  line-height: 1.02;
+}
+.gs278-events .gs173-setlist__item[data-active="true"] .gs173-setlist__name { color: #bdff9a; }
+.gs278-events .gs173-setlist__select > .gs201-cue {
+  width: clamp(70px, 8vw, 106px);
+  height: clamp(70px, 8vw, 106px);
+  border-radius: 2px;
+  box-shadow: none;
+  align-self: center;
+}
+.gs278-events .gs173-setlist__beat {
+  margin: 0;
+  align-self: center;
+  justify-self: end;
+}
+.gs278-events .gs173-setlist__route {
+  margin: 0;
+  padding: 0 clamp(15px, 2.7vw, 42px) 0 16px;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 72px;
+  font-size: .8rem;
+  font-weight: 780;
+  letter-spacing: .025em;
+  border-left: 1px solid #416148;
+  color: #cce7c3;
+}
+.gs278-events .gs173-setlist__route:hover { color: #bdff9a; }
+.gs278-events .gs173-setlist__item[data-active="true"] .gs173-setlist__route {
+  color: #efffe5;
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  html:not([data-gs-performance="lite"]) .gs278-events .gs173-setlist__item:not([data-active="true"]):hover { background: #162b1d; }
+  html:not([data-gs-performance="lite"]) .gs278-events .gs173-setlist__item:hover::before { transform: scaleY(.4); }
+  html:not([data-gs-performance="lite"]) .gs278-events .gs173-setlist__item[data-active="true"]:hover::before { transform: scaleY(1); }
+}
+@media (max-width: 900px) {
+  .gs278-events .gs173-setlist__header { grid-template-columns: 1fr; gap: 18px; }
+  .gs278-events .gs173-setlist__header > p { max-width: 56ch; }
+  .gs278-events .gs173-setlist__select {
+    grid-template-columns: 54px 74px minmax(0,1fr) 20px;
+    gap: 20px;
+  }
+  .gs278-events .gs173-setlist__route { padding-right: 18px; }
+  .gs278-events .gs173-setlist__name { font-size: clamp(1.65rem, 4.5vw, 3rem); }
+  .gs278-events .gs173-setlist__select > .gs201-cue { width: 72px; height: 72px; }
+}
+@media (max-width: 600px) {
+  .gs278-events .gs173-setlist__header { margin-top: 22px; }
+  .gs278-setlist__heading h2 { font-size: clamp(3.1rem, 11vw, 5rem); }
+  .gs278-events .gs173-setlist__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .gs278-events .gs173-setlist__select {
+    min-height: 104px;
+    grid-template-columns: 32px 65px minmax(0, 1fr);
+    gap: clamp(12px, 3vw, 17px);
+    padding: 18px 13px 8px 15px;
+  }
+  .gs278-events .gs173-setlist__index { font-size: 2.3rem; }
+  .gs278-events .gs173-setlist__select > .gs201-cue { width: 65px; height: 65px; }
+  .gs278-events .gs173-setlist__name {
+    font-size: clamp(1.35rem, 5.8vw, 2rem);
+    overflow-wrap: anywhere;
+  }
+  .gs278-events .gs173-setlist__beat { display: none; }
+  .gs278-events .gs173-setlist__route {
+    margin: 0 13px 9px auto;
+    padding: 0 9px;
+    min-height: 42px;
+    border-left: 0;
+    border-bottom: 1px solid #638d69;
+    font-size: .8rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs278-events .gs173-setlist__item,
+  .gs278-events .gs173-setlist__item::before { transition: none !important; }
+}
+html[data-gs-performance="lite"] .gs278-events .gs173-setlist__item,
+html[data-gs-performance="lite"] .gs278-events .gs173-setlist__item::before { transition: none !important; }
