@@ -1,3 +1,8 @@
+### 2026-11-23 / V284 — Native visible review before manual sending
+- MDN https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details — `open` exposes content by default; native summary remains collapsible, keyboard operable. Adapted only native HTML semantics; no external code or asset.
+- web.dev https://web.dev/learn/html/forms — clear instructions and preventing mistakes in form flows. Adapted the review-first principle, not example code.
+- Rejected modal preview and custom animated accordion: additional focus traps, JS and motion without conversion evidence. Experiment pending matched real Chromium and owner review.
+
 ### 2026-11-23 — V283 Contact error semantics
 - [WAI-ARIA aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid): expose validation state on interactive checkbox inputs. [WAI-ARIA aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby): associate the existing inline service error with each checkbox. Original JSX adaptation; no third-party code or dependency. Rejected new modal/error wizard as redundant and harmful to the clean Contact flow. Browser/AT verification pending.
 
