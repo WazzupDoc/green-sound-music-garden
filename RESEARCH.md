@@ -1,3 +1,6 @@
+### 2026-11-23 — V283 Contact error semantics
+- [WAI-ARIA aria-invalid](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-invalid): expose validation state on interactive checkbox inputs. [WAI-ARIA aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby): associate the existing inline service error with each checkbox. Original JSX adaptation; no third-party code or dependency. Rejected new modal/error wizard as redundant and harmful to the clean Contact flow. Browser/AT verification pending.
+
 ### 2026-11-23 — Contact no-JS progressive enhancement
 - Source: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a — native links work without client JavaScript; existing WhatsApp helper reused. No external design/code copied.
 - Source: https://web.dev/learn/html/links — semantic anchor navigation and meaningful link labels. Technique: direct fallback navigation; no dependency or asset.
