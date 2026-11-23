@@ -763,3 +763,7 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav — sem
 - https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — verified accessibility motion preference. Implemented route-scoped reduced-motion and Lite motion gates, no new dependency.
 - Original experiment: film perforation frame, selected-film slate and numbered real video queue using only original CSS and existing Green Sound posters/catalogue. No new photographs, audio playback, third-party scripts, stats, backend or tracking. Reject WebGL tunnel, fake 3D stage, autoplay and scroll hijacking.
 - Before/after gate: exact V190 SHA f7e0317afd1bac2c113bbfde0a9bbbfdd4767665 vs V191, /portofoliu same state at 390/1440, plus 360/430/768/1920, keyboard, filters, URL, Lite and media decode. Record exact-head artifact after green run.
+
+### 2026-11-23 V286 — event planning clarity
+- https://www.w3.org/WAI/tutorials/page-structure/headings/ — descriptive headings help users navigate content; adapted original Romanian heading, no external code or assets.
+- https://web.dev/learn/accessibility/headings-and-landmarks — meaningful hierarchy improves scan/navigation; retained h2/h3 structure. No copied code. Rejected adding a decorative animated timeline because it adds weight without proven conversion benefit.
