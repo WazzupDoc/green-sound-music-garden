@@ -1,3 +1,7 @@
+### V285 / 2026-11-23 — Events selection cue
+- Zone: `/evenimente` hero stage registration. Replaced unsupported `DIN 2008` claim with live selected event name, announced via native status. No new widget or dependency. Source `173a9a08206d3f97369fb8d638eb0f4a66ad0bdc`.
+- QA gate: matched browser screenshots 390/1440 and six-width regression NOT available; TypeScript, SSR, Vitest, gzip, CI exact-head pending. Do not merge. Next rotation: event detail page CTA and mobile.
+
 ### V284 / 2026-11-23 — Contact / message review
 - Zone: Contact quote preview. Previously complete outgoing text was collapsed by default, making actual message easy to miss before choosing WhatsApp/email. Native `details open` now shows full message by default while remaining collapsible; no automatic send. Source SHA `9150c8500f92eefb16b533453a17616a16a8bebb`.
 - Visual gate: before/after Chromium 390/1440, overflow, keyboard summary, six widths, TS/SSR/Vitest and exact-head CI NOT verified. Do not merge or call validated. Next rotation: events interior route. Main untouched.
