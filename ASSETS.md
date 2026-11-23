@@ -1,3 +1,6 @@
+### V282 / 2026-11-23
+No new assets, imagery, icons, fonts, libraries or licenses. Reuses existing WhatsApp URL helper and text-only native link on Contact.
+
 ## V280 proof — 2026-11-23
 Existing pre-authorized three first-party service photos unchanged; real browser decode verified at 360,390,430,768,1440,1920 by https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285 . No new photos, stocks, TikTok, AI, fonts or libraries. Capture artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055 .
 
