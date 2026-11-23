@@ -1,0 +1,73 @@
+name: V278 Events Editorial Setlist — real browser difference
+on:
+  push:
+    branches: [design/v278-events-editorial-setlist]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-head-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 32
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Dependencies
+        run: bun install --no-save
+      - name: Chromium
+        run: |
+          npm install --prefix /tmp/gs278-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs278-playwright/node_modules/.bin/playwright install chromium
+      - name: Matched baseline screenshot from actual V277
+        env:
+          BASE_SHA: 10a144e3ac015617186c8df069d1f94fc19eacc3
+          GS278_STAGE: before
+          NODE_PATH: /tmp/gs278-playwright/node_modules
+        run: |
+          cp .github/scripts/v278-events-browser.cjs /tmp/v278-browser.cjs
+          git checkout --detach "$BASE_SHA"
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v278-before.log 2>&1 & echo $! > /tmp/v278-before.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/evenimente > /dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v278-browser.cjs
+          kill "$(cat /tmp/v278-before.pid)" || true
+          sleep 2
+      - name: Exact-head strict TS SSR build budget and Vitest
+        env:
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          bun run typecheck
+          bun run build
+          python3 .github/scripts/check-client-budget.py
+          bun run test
+      - name: Six widths, keyboards, full motion, Lite, no-JS and matched screenshots
+        env:
+          GS278_STAGE: after
+          NODE_PATH: /tmp/gs278-playwright/node_modules
+        run: |
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v278-after.log 2>&1 & echo $! > /tmp/v278-after.pid)
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/evenimente > /dev/null; then break; fi; sleep 2; done
+          NODE_PATH="$NODE_PATH" node /tmp/v278-browser.cjs
+          kill "$(cat /tmp/v278-after.pid)" || true
+      - name: Confirm visible screenshot difference at matching viewport
+        run: |
+          node - <<'NODE'
+          const fs=require("node:fs"),crypto=require("node:crypto");
+          for(const w of [390,1440]) {
+            const hash=stage=>crypto.createHash("sha256").update(fs.readFileSync("screenshots/v278/"+stage+"-full-"+w+".png")).digest("hex");
+            if(hash("before")===hash("after"))throw Error("No visual difference at "+w);
+            console.log("Changed Chromium pixels at",w);
+          }
+          NODE
+      - name: Upload real browser evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v278-matched-before-after
+          path: screenshots/v278/
+          if-no-files-found: warn
+          retention-days: 60
