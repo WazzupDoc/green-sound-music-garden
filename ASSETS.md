@@ -1,3 +1,6 @@
+### V275 / 2026-11-23
+No new images, video, audio, icons, fonts, third-party code, dependencies or external assets; test-only TypeScript fix.
+
 ### V273 / 2026-11-23
 No new images, icons, fonts, audio, dependencies, external code or licenses; Contact input normalization only.
 
