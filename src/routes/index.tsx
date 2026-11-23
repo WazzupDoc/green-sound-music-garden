@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
 /** One new concept-faithful composition; no cumulative V160/V166/V168 CSS. */
 function Home() {
   return (
-    <div className="gs170-home gs279-home">
+    <div className="gs170-home" data-art-direction="v279">
       <style>{homeReferenceCss + "\n" + editorialServicesCss + "\n" + restoredHomeCss + "\n" + photographicHeroCss}</style>
       <ConceptHomeV170 />
     </div>
