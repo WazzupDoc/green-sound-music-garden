@@ -1,3 +1,7 @@
+### V290 / 2026-11-23 — Quote no-JS WhatsApp logistics parity (DRAFT)
+- Branch `fix/v290-quote-nojs-whatsapp-logistics-parity`, based on V289 PR #327. WhatsApp draft now includes editable event date/location, guest count, and details, matching the existing email fallback. Source `411188fc04674f9c4e8259f1dfecf830e0aa900c`.
+- CI exact-head, TypeScript/SSR/Vitest/gzip, Chromium before/after 390/1440 and six-width QA pending. Do not merge. Next rotation: mobile navigation. No main/deployment changes.
+
 ### V289 / 2026-11-23 — Quote no-JS draft clarity (DRAFT)
 - Branch `ux/v289-quote-nojs-clear-draft-actions`, draft PR #327, source `244c80b2430ad3ed72a98d99636fb7a792c595be`, based on V288 PR #326. Explicitly states selections are prefilled in drafts and email is not automatically sent. No new dependencies, no main/deploy changes.
 - CI exact-head, browser screenshots at 390/1440 and six-width QA pending; do not merge. Next rotation: mobile navigation.

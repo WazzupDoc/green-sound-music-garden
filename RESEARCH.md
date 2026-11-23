@@ -1,3 +1,8 @@
+### 2026-11-23 / V290 — no-JS quote handoff
+- Reference: https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/mailto — prefilled drafts are editable and user-initiated; adapted consistency principle to existing WhatsApp URL, without importing code.
+- Reference: https://faq.whatsapp.com/5913398998672934 — WhatsApp click-to-chat context; no automatic sending claimed. No third-party code/assets copied.
+- Rejected: automatic message sending, extra widget, new dependency, or invented backend. Test gate remains pending.
+
 ### 2026-11-23 — V289 native draft handoff
 - https://datatracker.ietf.org/doc/html/rfc6068 — `mailto:` creates a draft in the user's mail client, not a sent message; adapted truthful CTA wording. No external code or license involved.
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_email_address — native links remain functional without JavaScript; retained existing implementation. Rejected external form provider and modal confirmation because both add complexity without improving native draft behavior.

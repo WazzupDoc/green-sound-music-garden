@@ -1,3 +1,7 @@
+### V290 / 2026-11-23 — Quote no-JS WhatsApp logistics parity
+- One zone: shared QuoteSection SSR/no-JS contact handoff. WhatsApp draft previously carried only selected event/services while email draft provided editable date/location, guests, and details. Added identical editable logistics prompts to the WhatsApp draft, with user-initiated sending only. Source commit `411188fc04674f9c4e8259f1dfecf830e0aa900c`.
+- No new dependencies or assets. Chromium matched screenshots, six widths, TypeScript/SSR/Vitest/gzip and exact-head CI NOT confirmed. Do not merge. Next: mobile navigation; main unchanged.
+
 ### V289 / 2026-11-23 — Quote no-JS action clarity
 - Zone: QuoteSection SSR fallback; PR #327, source `244c80b2430ad3ed72a98d99636fb7a792c595be`. Selected event/services are now explicitly described as prefilled in email/WhatsApp drafts; email link clarifies no sending. No screenshot or browser audit yet; visual gate pending. Next: mobile navigation. Main unchanged.
 

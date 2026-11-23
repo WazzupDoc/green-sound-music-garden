@@ -1,3 +1,6 @@
+### V290 / 2026-11-23
+No new visual, audio, font, code library, or media assets. Existing user-initiated WhatsApp link only.
+
 ### V289 / 2026-11-23
 - No new visual, audio, font, icon, image or third-party code assets. Text-only accessibility/clarity adjustment in existing QuoteSection.
 
