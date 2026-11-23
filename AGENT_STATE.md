@@ -1,3 +1,7 @@
+### V284 / 2026-11-23 — Contact / message review
+- Zone: Contact quote preview. Previously complete outgoing text was collapsed by default, making actual message easy to miss before choosing WhatsApp/email. Native `details open` now shows full message by default while remaining collapsible; no automatic send. Source SHA `9150c8500f92eefb16b533453a17616a16a8bebb`.
+- Visual gate: before/after Chromium 390/1440, overflow, keyboard summary, six widths, TS/SSR/Vitest and exact-head CI NOT verified. Do not merge or call validated. Next rotation: events interior route. Main untouched.
+
 ### V283 / 2026-11-23 — Contact form service validation accessibility
 - Zone: Contact service checkbox group. Added `aria-invalid` and error-description linkage on the actual focusable checkboxes, not only the fieldset. Existing onInvalid focus targets first enabled checkbox. Source commit `7b185078268dc8e9fd992d80efb345a1fa345abc`. Real browser screenshots, TS, Vitest, CI exact-head not yet confirmed. Next: events page. No main deployment.
 
