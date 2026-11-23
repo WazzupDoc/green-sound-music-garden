@@ -1,3 +1,6 @@
+### V274 / 2026-11-23 — CI TypeScript unblock (DRAFT)
+- Branch `fix/v274-contact-separator-test-typecheck` on V273 PR #310. Fixed `src/test/contact-location-separators-v273.test.ts` by explicitly narrowing the optional regex capture before `new RegExp`, addressing TypeScript TS2769 seen in [failed exact-head CI V273](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45097479244). No production UI/code change; no visual redesign claim. Browser screenshots, full QA and new exact-head CI pending. Main/deployment untouched. Next: Contact prefill real-browser audit, then Events page.
+
 ### V273 / 2026-11-23 — Contact Unicode separator normalization (DRAFT)
 - Branch `fix/v273-contact-unicode-separator-prefill`, stacked on V272 PR #309. Location prefill now converts U+2028/U+2029 line/paragraph separators to spaces, preserving Romanian diacritics; added `src/test/contact-location-separators-v273.test.ts`. No new media/dependencies, no homepage/main/deployment changes. Exact-head CI, TypeScript, SSR/Vitest/gzip, Chromium six widths and matched screenshots NOT VERIFIED. Next: real-browser Contact prefill journey.
 
