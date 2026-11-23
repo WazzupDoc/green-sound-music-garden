@@ -4,6 +4,7 @@ const source=(path:string)=>readFileSync(path,"utf8");
 const home=source("src/routes/index.tsx");
 const page=source("src/components/atelier/ConceptHomeV170.tsx");
 const css=source("src/styles/home-reference-v170.css");
+const programme=source("src/components/atelier/ProductionIndex.tsx");
 describe("V170 owner-selected concept implementation contract",()=>{
  it("has a single owner-selected art direction without V166/V168 themes",()=>{
    expect(home).toContain('home-reference-v170.css?inline');
@@ -11,17 +12,18 @@ describe("V170 owner-selected concept implementation contract",()=>{
    expect(home).toContain("<ConceptHomeV170 />");
    expect(home).not.toMatch(/ProductionHeroV166|ProductionHeroV168/);
  });
- it("reconstructs visual journey hero / service cards / process / films / CTA",()=>{
-   for(const className of ["gs170-hero","gs170-services","gs170-process","gs170-films","gs170-final"]){
+ it("keeps a clear hero / three editorial service chapters / three films / CTA",()=>{
+   for(const className of ["gs170-hero","gs170-films","gs170-final"]){
      expect(page).toContain(className);
    }
-   expect(page).toContain("featured.map((item, index)");
-   expect(page).toContain("process.map((step, index)");
+   expect(page).toContain("<ProductionIndex />");
+   expect(page).not.toContain("featured.map((item, index)");
+   expect(page).not.toContain("process.map((step, index)");
    expect(page).toContain("films.map((item, index)");
  });
  it("keeps real services and films, with functional film dialog",()=>{
-   expect(page).toContain("new Set(allSlugs)");
-   expect(page).toContain("services.find(item => item.slug === slug)");
+   expect(programme).toContain("new Set(editorialServiceSlugs)");
+   expect(programme).toContain("editorialChapters.map((chapter)");
    expect(page).toContain("VideoLite video={film.video}");
    expect(page).toContain("images.concert");
  });
