@@ -27,6 +27,6 @@ describe("V278 events editorial five-track selector", () => {
     expect(css).toContain("prefers-reduced-motion: reduce");
     expect(css).toContain('data-gs-performance="lite"');
     expect(route).toContain('fetchPriority={visualIndex === 1 ? "high" : undefined}');
-    expect(route).toContain('event.moments.slice(0, 3)');
+    expect(route).toContain('activeEvent.moments.slice(0, 3)');
   });
 });
