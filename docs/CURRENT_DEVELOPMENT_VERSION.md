@@ -1,3 +1,7 @@
+### V291 / 2026-11-23 — Mobile menu same-route focus (DRAFT)
+- Branch `fix/v291-mobile-menu-same-route-focus` stacked on V290 PR #328. Same-route selection in the mobile dialog now restores focus to the opener; true route changes continue without focusing a departing control. Source `22b640b93e89fe1a9fe66f60aeb0ccb3e20856bf`.
+- QA gate pending: real Chromium matched 390/1440 before/after, 360–1920, keyboard/Escape, TS/SSR/Vitest/gzip and CI exact-head. No main or deployment changes. Next: event detail CTA.
+
 ### V290 / 2026-11-23 — Quote no-JS WhatsApp logistics parity (DRAFT)
 - Branch `fix/v290-quote-nojs-whatsapp-logistics-parity`, based on V289 PR #327. WhatsApp draft now includes editable event date/location, guest count, and details, matching the existing email fallback. Source `411188fc04674f9c4e8259f1dfecf830e0aa900c`.
 - CI exact-head, TypeScript/SSR/Vitest/gzip, Chromium before/after 390/1440 and six-width QA pending. Do not merge. Next rotation: mobile navigation. No main/deployment changes.

@@ -1,3 +1,7 @@
+### V291 / 2026-11-23 — Mobile menu same-route focus
+- Zone: mobile navigation native dialog. Selecting the already-current route previously marked the interaction as navigation and suppressed focus restoration on close; now same-route activation returns focus to the menu opener, while actual route changes retain existing navigation behavior. Source commit `22b640b93e89fe1a9fe66f60aeb0ccb3e20856bf`.
+- Browser 390/1440 before/after, keyboard focus/Escape, six widths, TypeScript/SSR/Vitest/gzip and CI exact-head are NOT verified. Do not merge. Next zone: events detail keyboard/CTA.
+
 ### V290 / 2026-11-23 — Quote no-JS WhatsApp logistics parity
 - One zone: shared QuoteSection SSR/no-JS contact handoff. WhatsApp draft previously carried only selected event/services while email draft provided editable date/location, guests, and details. Added identical editable logistics prompts to the WhatsApp draft, with user-initiated sending only. Source commit `411188fc04674f9c4e8259f1dfecf830e0aa900c`.
 - No new dependencies or assets. Chromium matched screenshots, six widths, TypeScript/SSR/Vitest/gzip and exact-head CI NOT confirmed. Do not merge. Next: mobile navigation; main unchanged.

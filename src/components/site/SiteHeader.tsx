@@ -307,7 +307,7 @@ export function SiteHeader() {
                       to={entry.to}
                       onPointerEnter={() => setMenuSelection(index)}
                       onFocus={() => setMenuSelection(index)}
-                      onClick={() => { menuNavigatingRef.current = true; setOpen(false); }}
+                      onClick={() => { menuNavigatingRef.current = entry.to !== path; setOpen(false); }}
                       className="gsm-nav-index__link"
                       activeOptions={{ exact: entry.to === "/" }}
                       activeProps={{ className: "gsm-nav-index__link--active" }}
