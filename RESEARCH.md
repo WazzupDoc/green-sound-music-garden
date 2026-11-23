@@ -1,3 +1,8 @@
+### 2026-11-23 — V275 Contact test QA
+- Source: https://www.typescriptlang.org/docs/handbook/2/narrowing.html — TypeScript control-flow narrowing; explicit guard for potentially undefined regex match. Original test code only, no external code copied, no dependency or license introduced.
+- Source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match — `match()` can return null; regex capture may be absent. Rejected non-null assertion as it does not establish safe capture.
+- No Awwwards/Webflow design adaptation this run: CI blocker only, not a visual experiment.
+
 ### 2026-11-23 — V273 Unicode separator prefill
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace — replace unwanted Unicode separators with spaces; original small regex extension, no copied code or dependency.
 - https://www.w3.org/TR/WCAG22/#labels-or-instructions — keep location input understandable. Rejected stripping all non-ASCII because Romanian diacritics must survive.
