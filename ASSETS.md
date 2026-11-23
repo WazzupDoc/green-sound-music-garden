@@ -1,3 +1,6 @@
+### V289 / 2026-11-23
+- No new visual, audio, font, icon, image or third-party code assets. Text-only accessibility/clarity adjustment in existing QuoteSection.
+
 ### V285 / 2026-11-23
 No new assets, photos, fonts, external code, or dependencies. Existing event imagery unchanged.
 
