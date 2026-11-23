@@ -1,0 +1,207 @@
+/* V280 / PHOTO + TYPE: a genuine three-act service editorial for Green Sound.
+ * Replaces repeated dark service cards with one paper/ink magazine spread.
+ * Three already licensed-in-project photographs; no stock, AI claims, JavaScript,
+ * autoplay, new package or animation loops. Local to the homepage only. */
+.gs170-home[data-services-direction="v280"] .gs-index {
+  background: #ebe7db;
+  color: #17251b;
+  padding-block: clamp(78px, 9vw, 146px) clamp(58px, 7vw, 115px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index::before { display: none; }
+.gs170-home[data-services-direction="v280"] .gs-index__intro {
+  margin-bottom: clamp(48px, 6vw, 92px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__overline {
+  border-bottom: 1px solid #33493980;
+  padding-bottom: 18px;
+  color: #426047;
+  font-size: .66rem;
+  letter-spacing: .155em;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro-grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(240px, .54fr);
+  align-items: end;
+  gap: clamp(32px, 6vw, 108px);
+  padding-top: clamp(27px, 4vw, 66px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro h2 {
+  max-width: 13ch;
+  font-size: clamp(4rem, 8vw, 9.2rem);
+  line-height: .88;
+  letter-spacing: -.095em;
+  font-weight: 680;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro h2 em {
+  color: #376444;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.058em;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro-note {
+  border-left: 1px solid #6475677f;
+  padding: 2px 0 4px clamp(18px, 2vw, 32px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro-note p {
+  color: #354a3b;
+  font-size: clamp(.95rem, 1.18vw, 1.11rem);
+  line-height: 1.7;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__intro-note a {
+  font-size: .83rem;
+  color: #254d31;
+  border-color: #456447;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapters {
+  grid-template-columns: minmax(0, 1.13fr) minmax(0, .87fr);
+  column-gap: clamp(35px, 6.5vw, 120px);
+  row-gap: clamp(40px, 5.4vw, 90px);
+  counter-reset: gs-service;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__photo,
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__photo,
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__photo {
+  border: 0;
+  background: #1b3625;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="sound"] .gs-index__photo {
+  height: clamp(380px, 42vw, 655px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__photo {
+  height: clamp(225px, 21vw, 330px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__photo {
+  height: clamp(225px, 21vw, 330px);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__photo img {
+  filter: saturate(1.06) contrast(1.03) brightness(1.07);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__photo::after {
+  background: linear-gradient(0deg, #08190cb9, transparent 56%, #061a112b);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__photo-label {
+  left: clamp(22px, 2.5vw, 42px);
+  bottom: clamp(20px, 2.5vw, 40px);
+  right: 22px;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(3rem, 5vw, 6.4rem);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -.053em;
+  line-height: .91;
+  color: #f4efe3;
+  text-transform: none;
+  text-shadow: 0 2px 10px #08180a90;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__photo-label,
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__photo-label {
+  font-size: clamp(2.6rem, 3.5vw, 4.6rem);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__photo-mark {
+  top: clamp(18px, 2vw, 30px);
+  left: clamp(20px, 2.5vw, 42px);
+  color: #f8f2e4;
+  font-size: .63rem;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter-body {
+  padding: 20px 0 0;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter-body h3 {
+  margin-top: 17px;
+  color: #13281b;
+  font-size: clamp(2.45rem, 4vw, 5.1rem);
+  font-weight: 635;
+  letter-spacing: -.075em;
+  line-height: 1;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__chapter-body h3,
+.gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__chapter-body h3 {
+  font-size: clamp(2.3rem, 3vw, 3.75rem);
+}
+.gs170-home[data-services-direction="v280"] .gs-index__chapter-body > p {
+  max-width: 45ch;
+  min-height: 0;
+  margin-top: 16px;
+  color: #45604a;
+  font-size: clamp(.87rem, 1vw, 1.03rem);
+  line-height: 1.66;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__links {
+  margin-top: 28px;
+  border-color: #859483;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__service {
+  min-height: 61px;
+  color: #1a3b26;
+  font-size: clamp(.92rem, 1.1vw, 1.15rem);
+  border-color: #8594837d;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__service:hover,
+.gs170-home[data-services-direction="v280"] .gs-index__service:focus-visible {
+  color: #21713b;
+}
+.gs170-home[data-services-direction="v280"] .gs-index__footer {
+  margin-top: clamp(50px, 6vw, 110px);
+  color: #546d58;
+  border-color: #859483;
+}
+@media (max-width: 1040px) {
+  .gs170-home[data-services-direction="v280"] .gs-index__intro-grid { grid-template-columns: minmax(0, 1fr) minmax(235px, .75fr); }
+  .gs170-home[data-services-direction="v280"] .gs-index__intro h2 { font-size: clamp(3.8rem, 7vw, 6.5rem); }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapters { column-gap: 32px; }
+}
+@media (max-width: 780px) {
+  .gs170-home[data-services-direction="v280"] .gs-index__intro-grid { grid-template-columns: 1fr; }
+  .gs170-home[data-services-direction="v280"] .gs-index__intro-note {
+    border-left: 0; border-top: 1px solid #6475677f;
+    padding: 20px 0 0;
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapters { grid-template-columns: 1fr; row-gap: 38px; }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"],
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] {
+    display: grid; grid-column: 1; grid-row: auto;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
+    gap: 23px; padding-top: 23px;
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="sound"] .gs-index__photo,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__photo,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__photo {
+    height: clamp(250px, 48vw, 375px);
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__photo-label { font-size: clamp(2rem, 4vw, 3.8rem); }
+}
+@media (max-width: 540px) {
+  .gs170-home[data-services-direction="v280"] .gs-index { padding-block: 64px 55px; }
+  .gs170-home[data-services-direction="v280"] .gs-index__intro h2 {
+    font-size: clamp(3.4rem, 11.6vw, 5rem);
+    line-height: .92;
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__intro { margin-bottom: 32px; }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"],
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] {
+    display: block; padding-top: 21px;
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="sound"] .gs-index__photo,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__photo,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__photo {
+    height: clamp(228px, 66vw, 320px);
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__photo-label { font-size: clamp(2.7rem, 9vw, 3.9rem); }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter-body { padding-top: 17px; }
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter-body h3,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="stage"] .gs-index__chapter-body h3,
+  .gs170-home[data-services-direction="v280"] .gs-index__chapter[data-chapter="people"] .gs-index__chapter-body h3 {
+    font-size: clamp(2.5rem, 10vw, 3.6rem);
+  }
+  .gs170-home[data-services-direction="v280"] .gs-index__links { margin-top: 17px; }
+  .gs170-home[data-services-direction="v280"] .gs-index__service { min-height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs170-home[data-services-direction="v280"] .gs-index__photo img,
+  .gs170-home[data-services-direction="v280"] .gs-index__service,
+  .gs170-home[data-services-direction="v280"] .gs-index__service * { transition: none !important; transform: none !important; }
+}
+html[data-gs-performance="lite"] .gs170-home[data-services-direction="v280"] .gs-index__photo img,
+html[data-gs-performance="lite"] .gs170-home[data-services-direction="v280"] .gs-index__service,
+html[data-gs-performance="lite"] .gs170-home[data-services-direction="v280"] .gs-index__service * { transition: none !important; transform: none !important; }
