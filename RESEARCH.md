@@ -1,3 +1,7 @@
+### 2026-11-23 / V285 — Events live selection
+- MDN https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role — status announces nonurgent selection updates without focus movement. Adapted native role, no borrowed code.
+- WAI-ARIA APG https://www.w3.org/WAI/ARIA/apg/patterns/ — avoid replacing actual navigation with faux tabs. Kept real detail links and native buttons. Rejected extra animated overlay and invented founding year.
+
 ### 2026-11-23 / V284 — Native visible review before manual sending
 - MDN https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details — `open` exposes content by default; native summary remains collapsible, keyboard operable. Adapted only native HTML semantics; no external code or asset.
 - web.dev https://web.dev/learn/html/forms — clear instructions and preventing mistakes in form flows. Adapted the review-first principle, not example code.
