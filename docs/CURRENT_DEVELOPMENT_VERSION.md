@@ -1,3 +1,7 @@
+### V288 / 2026-11-23 — Shared quote no-JS email context (DRAFT)
+- Branch `fix/v288-quote-nojs-email-context`, stacked on V287 PR #325. Email fallback now prepares a user-editable mailto body with selected event/services plus blank date, location, guests and details. Nothing is sent automatically; WhatsApp and phone remain unchanged. No dependency/media/main/deployment changes.
+- Source commit `8c83509fc4d768efff1887e78291ef3b98130eba`. Browser before/after 390/1440, six widths, TypeScript, SSR, Vitest, gzip and CI exact-head NOT verified. Do not merge. Next: real browser QA and mobile navigation.
+
 ### V287 / 2026-11-23 — Shared quote no-JS WhatsApp parity (DRAFT)
 - Branch `fix/v287-quote-nojs-whatsapp-parity`, stacked on V286 PR #324; draft PR #325.
 - `src/components/site/blocks.tsx`: user-initiated WhatsApp link in SSR/ClientOnly fallback with existing event and service context. No auto-send, new dependencies or main changes.
