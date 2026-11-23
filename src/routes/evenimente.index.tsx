@@ -8,6 +8,7 @@ import categorySignalCss from "@/styles/category-signature-v198.css?inline";
 import illustratedCategoryCss from "@/styles/category-illustrated-v201.css?inline";
 import { breadcrumbLd, pageHead } from "@/lib/seo";
 import eventPosterCss from "@/styles/event-show-poster-v173.css?inline";
+import editorialSetlistCss from "@/styles/event-editorial-setlist-v278.css?inline";
 import { preloadEventFrame } from "@/lib/preload-event-frame";
 
 export const Route = createFileRoute("/evenimente/")({
@@ -66,8 +67,8 @@ function Events() {
   }
 
   return <>
-    <style>{eventPosterCss}</style><style>{categorySignalCss}</style><style>{illustratedCategoryCss}</style>
-    <div className="gs173-events gs198-events gs201-events" data-hydrated={hydrated}>
+    <style>{eventPosterCss}</style><style>{categorySignalCss}</style><style>{illustratedCategoryCss}</style><style>{editorialSetlistCss}</style>
+    <div className="gs173-events gs198-events gs201-events gs278-events" data-hydrated={hydrated}>
       <section className="gs173-live" aria-labelledby="gs173-title">
         <div className="container-site gs173-live__container">
           <div className="gs173-topline">
@@ -99,8 +100,8 @@ function Events() {
             </div>
           </div>
           <div className="gs173-setlist__header" id="gs173-setlist-title">
-            <span>01 / SETLIST DE EVENIMENTE</span>
-            <p>Alege scena. Ilustrațiile reprezintă categoriile; fotografia reală și momentele se schimbă după selecție.</p>
+            <div className="gs278-setlist__heading"><span>02 / SETLIST DE EVENIMENTE</span><h2>Alege <em>ritmul.</em></h2></div>
+            <p>Cinci direcții, un singur punct de pornire: evenimentul tău. Selectează un tip pentru a vedea o fotografie reală și un desfășurător orientativ. Pentru detalii, deschide pagina evenimentului.</p>
           </div>
           <ol className="gs173-setlist" aria-label="Alege tipul de eveniment">
             {events.map((event, index) => {
