@@ -1,3 +1,6 @@
+### V285 / 2026-11-23
+No new assets, photos, fonts, external code, or dependencies. Existing event imagery unchanged.
+
 ### V284 / 2026-11-23
 No new assets, fonts, dependencies, images, icons, or external code. Native HTML `details` only.
 
