@@ -1,3 +1,7 @@
+### V279 / 2026-11-23 — verified render provenance
+- The true hero image in matched browser proof is existing original `/media/greensound/concert-public-lumini.webp` (1800×1350 natural), not TikTok, AI or third-party stock. It remains in place with native img, width/height and high-priority fetch. Existing other site image and YouTube posters loaded in the full-page screenshot after eager decode during QA.
+- Matched real browser screenshot ZIP: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086/artifacts/14801619612, source https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086. Screenshots are QA evidence only, not site-embedded illustrations. No new photos, SVGs, fonts, videos, commercial logos, dependencies, tracking or licenses introduced.
+
 ### V279 / 2026-11-23 — Photographic home
 - No new image/video/audio/AI photography/illustration/logo/font/third-party code. Hero reuses first-party `images.concert.src` from `@/data/site` with original alt, intrinsic dimensions and fetchPriority high. No TikTok/social screenshots imported.
 - Fonts stay already bundled with project (Instrument Serif and display family); existing Lucide icons reused, no new dependency. The decorative on-screen fake mixing desk and neon waveform are now hidden in V279 hero only; all real media, video and route links remain.
