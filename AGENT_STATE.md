@@ -1,3 +1,7 @@
+### V282 / 2026-11-23 — Contact no-JS channel parity
+- Zone: Contact SSR/no-JS fallback. Added direct WhatsApp choice alongside existing email/phone; no automatic send. Draft PR #320, base V281, source SHA `4aeceddd75de72bc37015afca770244ad7d57070` (before documentation updates).
+- QA: no browser screenshots, exact-head CI, TypeScript, SSR, or gzip verified for V282. No aesthetic redesign claim. Next: Contact mobile form/error/clipboard real-browser audit. PR #19 mergeable=false. Main untouched.
+
 ### V280 ACTUAL EVIDENCE / 2026-11-23 — COMPLETE (source SHA 2b9362db1e285240f1a5eb547a7c9b7a150e0060)
 
 - **Genuine matched Chromium V279 baseline vs V280**: [GitHub Actions run #45157402285](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285) SUCCESS, [all screenshots artifact #14810225055](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055) captured at identical 390/1440 widths; after 360/390/430/768/1440/1920; full-page, service chapter, genuine-image decoding, focus/links/film Escape/SSR/no-JS, reduced-motion/Lite and hover verified. In screenshot-only capture, header positioning normalized *in both baseline and candidate* to prevent sticky navigation from covering the editorial section; normal site CSS untouched.
