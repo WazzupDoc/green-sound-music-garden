@@ -1,3 +1,18 @@
+## 2026-11-23 / V280 — homepage services: editorial visual overhaul, DRAFT, QA PENDING
+
+| Zone | Prior visual issue | Change in code | Before screenshot | After screenshot | Verified status | Next |
+|---|---|---|---|---|---|---|
+| Homepage services | V279 used five dark cards, three extra links, four workflow boxes: repeated, generic, long | V280: one existing `ProductionIndex` with three asymmetrical genuine-photo chapters, all eight direct service links, paper/ink contrast and editorial type. Removed old card/process markup and unused V188 inline CSS | V279 artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45142161685/artifacts/14802193389 | V280 six-width script/workflow added; new artifact **pending**, no before/after outcome asserted | Code committed; exact-head CI & real Chromium pending | Inspect screenshots, validate, fix if necessary; next zone films |
+| Hero | V279 photographic art direction owner review pending | Unchanged in V280 | V279 artifact above | Same hero expected; browser verification pending | Unchanged source | Visual review |
+| Films / Contact / other routes | No V280 intervention | Unchanged | N/A | N/A | No new functional assertions | Film gallery is next visual zone |
+
+- Branch: `design/v280-premium-editorial-service-programme`, base V279 PR #316 exact `521337c42d0af8731e0cb813945c20b3f0b7089b`; do not stack on unrelated V227 PR #317.
+- Changed source: `src/components/atelier/ConceptHomeV170.tsx`, `src/routes/index.tsx`, new `src/styles/home-editorial-v280.css`; updated stale source tests and added exact service contract test, dedicated six-width screenshot workflow.
+- No new media, packages, claims about client events or commercial fonts. No backend, contact delivery, domain, main, merge or production deployment changes.
+- **Status: pending** TS/SSR/Vitest/real Chromium/CI screenshot gate. Do not call V280 validated or visually superior before inspecting genuine screenshots.
+- PR #19 remains open/draft/conflicted; not part of this change. Never merge into main without permission, exact-head green, backup tag and rollback.
+
+---
 ### V279 / 2026-11-23 — ACTUAL CHROMIUM PROOF & SOURCE QA (draft / owner approval pending)
 - Source commit `2a66e48d9cb35f38881168b5cd7cef768cfb39f1`: dedicated exact-head Chromium SUCCESS [workflow](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086); [before-after artifacts](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086/artifacts/14801619612), standard site React/SEO/Contact/SSR QA SUCCESS [workflow](https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619254). Six widths 360/390/430/768/1440/1920, real decoded original concert photo (`/media/greensound/concert-public-lumini.webp`), zero body overflow, selected lights ON/OFF/cool/green, full-motion, Lite and reduced-motion, no-JS, and film modal Escape. TypeScript, SSR build, bundle gzip and 168/168 tests (66 test files) PASS. Homepage hero height: before 868px desktop / 810px mobile; after 848px desktop / 847px mobile. No LCP numeric score measured.
 - Visual comparison: BEFORE intensely hue-shifted green dark stage, fake 3D mixing desk and neon sine wave; AFTER photographic violet-light stage, cream typography with genuine Georgia italic, flat CTAs, fake console/wave hidden. All 8 service links, genuine three films and one final CTA retained.
