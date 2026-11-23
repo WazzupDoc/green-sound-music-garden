@@ -1,3 +1,6 @@
+### V292 / 2026-11-23 — CI quote fallback test repair
+- Zone: SSR/no-JS quote contract test. V291 CI #45265516688 passed TS/SSR/gzip but failed Vitest because V269 test asserted superseded email and context copy. Updated assertions to require explicit email/WhatsApp draft wording and user review. Draft PR #330; source commit `1590898850d402d0404198f7e9a65b6b58e56807` before documentation. CI exact-head and Chromium screenshot evidence pending. No production UI changes, no visual redesign claim. PR #19 remains conflicted. Next: event detail CTA and browser QA.
+
 ### V291 / 2026-11-23 — Mobile menu same-route focus
 - Zone: mobile navigation native dialog. Selecting the already-current route previously marked the interaction as navigation and suppressed focus restoration on close; now same-route activation returns focus to the menu opener, while actual route changes retain existing navigation behavior. Source commit `22b640b93e89fe1a9fe66f60aeb0ccb3e20856bf`.
 - Browser 390/1440 before/after, keyboard focus/Escape, six widths, TypeScript/SSR/Vitest/gzip and CI exact-head are NOT verified. Do not merge. Next zone: events detail keyboard/CTA.
