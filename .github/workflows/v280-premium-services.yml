@@ -1,0 +1,77 @@
+name: V280 Premium Service Programme — real before and after
+on:
+  push:
+    branches: [design/v280-premium-editorial-service-programme]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  editorial-service-browser-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 38
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - name: Install dependencies
+        run: bun install --no-save
+      - name: Install Chromium for real screenshots
+        run: |
+          npm install --prefix /tmp/gs280-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs280-playwright/node_modules/.bin/playwright install chromium
+      - name: Baseline exact V279 screenshot at 390 and 1440
+        env:
+          BASE_SHA: 521337c42d0af8731e0cb813945c20b3f0b7089b
+          GS280_STAGE: before
+          NODE_PATH: /tmp/gs280-playwright/node_modules
+        run: |
+          cp .github/scripts/v280-home-browser.cjs /tmp/v280-home-browser.cjs
+          git checkout --detach "$BASE_SHA"
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v280-before.log 2>&1 & echo $! > /tmp/v280-before.pid)
+          ready=0
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/ > /dev/null; then ready=1; break; fi; sleep 2; done
+          if [ "$ready" != 1 ]; then cat /tmp/v280-before.log; exit 1; fi
+          NODE_PATH="$NODE_PATH" node /tmp/v280-home-browser.cjs
+          kill "$(cat /tmp/v280-before.pid)" || true
+          sleep 2
+      - name: Exact candidate TypeScript production SSR gzip and Vitest
+        env:
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          bun run typecheck
+          bun run build
+          python3 .github/scripts/check-client-budget.py
+          bun run test
+      - name: V280 six-width visual, keyboard, navigation and media gate
+        env:
+          GS280_STAGE: after
+          NODE_PATH: /tmp/gs280-playwright/node_modules
+        run: |
+          (./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > /tmp/v280-after.log 2>&1 & echo $! > /tmp/v280-after.pid)
+          ready=0
+          for i in $(seq 1 60); do if curl -sf http://127.0.0.1:4175/ > /dev/null; then ready=1; break; fi; sleep 2; done
+          if [ "$ready" != 1 ]; then cat /tmp/v280-after.log; exit 1; fi
+          NODE_PATH="$NODE_PATH" node /tmp/v280-home-browser.cjs
+          kill "$(cat /tmp/v280-after.pid)" || true
+      - name: Assert actual matched section renders differ
+        run: |
+          node - <<'NODE'
+          const fs=require("node:fs"),crypto=require("node:crypto");
+          for(const width of [390,1440]){
+            const checksum=s=>crypto.createHash("sha256").update(fs.readFileSync("screenshots/v280/"+s+"-services-"+width+".png")).digest("hex");
+            if(checksum("before")===checksum("after"))throw Error("Service programme has no visible screenshot difference at "+width);
+            console.log("V280 genuine section screenshot DIFFERENCE at "+width+"px");
+          }
+          NODE
+      - name: Upload genuine Chromium before/after PNG evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v280-service-magazine-real-browser
+          path: screenshots/v280/
+          if-no-files-found: warn
+          retention-days: 60
