@@ -355,7 +355,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
         <FieldError id="q-guests-err" msg={errors.guests?.message} />
       </div>
 
-      <fieldset className="md:col-span-2 gs-quote__services" aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"}>
+      <fieldset className="md:col-span-2 gs-quote__services" aria-invalid={!!errors.services} aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"}>
         <legend className={labelCls}>Ce servicii te interesează?</legend>
         <div className="gs-quote__selection-meta" id="q-services-guide">
           <span>Poți alege serviciile dorite sau ne poți cere recomandări.</span>
@@ -378,7 +378,7 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
                   <label key={label} data-checked={checked} data-disabled={disabled}
                     className="gs-quote__choice">
                     <input type="checkbox" className="sr-only" checked={checked} disabled={disabled}
-                      aria-describedby="q-services-guide" onChange={() =>
+                      aria-invalid={!!errors.services} aria-describedby={errors.services ? "q-services-guide q-services-err" : "q-services-guide"} onChange={() =>
                         field.onChange(toggleQuoteService(field.value ?? [], label))} />
                     {checked ? <CheckCircle2 className="size-3.5" aria-hidden /> :
                       <span className="gs-quote__choice-plus" aria-hidden>+</span>}
