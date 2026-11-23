@@ -1,3 +1,6 @@
+### V283 / 2026-11-23
+No new assets, fonts, media, icons, or third-party packages. Existing licensed icons unchanged.
+
 ### V282 / 2026-11-23
 No new assets, imagery, icons, fonts, libraries or licenses. Reuses existing WhatsApp URL helper and text-only native link on Contact.
 

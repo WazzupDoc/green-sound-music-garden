@@ -1,3 +1,6 @@
+### V283 / 2026-11-23 — Contact form service validation accessibility
+- Zone: Contact service checkbox group. Added `aria-invalid` and error-description linkage on the actual focusable checkboxes, not only the fieldset. Existing onInvalid focus targets first enabled checkbox. Source commit `7b185078268dc8e9fd992d80efb345a1fa345abc`. Real browser screenshots, TS, Vitest, CI exact-head not yet confirmed. Next: events page. No main deployment.
+
 ### V282 / 2026-11-23 — Contact no-JS channel parity
 - Zone: Contact SSR/no-JS fallback. Added direct WhatsApp choice alongside existing email/phone; no automatic send. Draft PR #320, base V281, source SHA `4aeceddd75de72bc37015afca770244ad7d57070` (before documentation updates).
 - QA: no browser screenshots, exact-head CI, TypeScript, SSR, or gzip verified for V282. No aesthetic redesign claim. Next: Contact mobile form/error/clipboard real-browser audit. PR #19 mergeable=false. Main untouched.
