@@ -1,3 +1,6 @@
+### V276 / 2026-11-23
+- No new images, video, fonts, icon packs, code libraries or external assets. Existing first-party media unchanged.
+
 ### V275 / 2026-11-23
 No new images, video, audio, icons, fonts, third-party code, dependencies or external assets; test-only TypeScript fix.
 

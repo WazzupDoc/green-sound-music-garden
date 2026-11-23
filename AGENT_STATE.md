@@ -1,3 +1,6 @@
+### 2026-11-23 — V276 Contact selected-brief screen-reader feedback (DRAFT)
+- Rotation: Contact prefill. On hydration the selected event/date/location/services summary appears dynamically but previously had no announced status. Added a single polite atomic status to the noninteractive summary, retaining explicit no-auto-send copy. Source regression added. No visual redesign, new dependency or media. TypeScript, Vitest, SSR, gzip, CI exact-head, Chromium six widths and matched screenshots NOT VERIFIED. Next rotation: Events detail CTA and focus; do not merge/publish.
+
 ### 2026-11-23 — V275 Contact test TypeScript blocker
 - Rotation zone: Contact QA; V274 exact-head `13000ceaaf1c19e35da90564d297ed8ba1d1e105` failed strict TypeScript (run 45103808941) at `src/test/contact-location-invisible-v272.test.ts:13` (TS2769 optional capture). V275 narrows capture; CI pending, no screenshot or visual claim. Next Contact real-browser prefill + six widths, then Events. Main unchanged.
 
