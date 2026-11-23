@@ -9,10 +9,12 @@ describe("V269 no-JS quote context", () => {
     expect(source).toContain("Selecția ta pentru ofertă");
     expect(source).toContain("Tip eveniment: {defaultEventType}");
     expect(source).toContain("Servicii: {defaultServices.join(\", \")}");
-    expect(source).toContain("Menționează aceste detalii în email sau la telefon.");
+    expect(source).toContain("Selecția este inclusă în mesajele pregătite pentru email și WhatsApp.");
+    expect(source).toContain("Verifică și completează detaliile înainte de trimitere.");
   });
   it("retains real contact actions and does not claim automatic delivery", () => {
-    expect(source).toContain("Trimite un email pentru ofertă");
+    expect(source).toContain("Deschide emailul pentru ofertă (mesaj pregătit, netrimis)");
+    expect(source).toContain("Deschide WhatsApp pentru ofertă (mesaj pregătit, netrimis)");
     expect(source).toContain("Sună pentru detalii");
     expect(source).toContain("Niciun mesaj nu este trimis automat.");
   });
