@@ -1,3 +1,8 @@
+### V283 / 2026-11-23 — Contact service validation (draft)
+- Branch `fix/v283-contact-form-service-error-focus` based on V282 #320; source SHA `7b185078268dc8e9fd992d80efb345a1fa345abc`.
+- Actual change: service checkboxes expose `aria-invalid` and existing error text via `aria-describedby`, so focus after failed validation reaches an input carrying the error semantics. No new form/backend, no automatic sending.
+- Browser screenshots, assistive technology, TS/Vitest/SSR and exact-head CI pending. No main/deploy. Next: events route.
+
 ### V282 / 2026-11-23 — Contact SSR/no-JS alternative (draft)
 - PR: https://github.com/WazzupDoc/green-sound-music-garden/pull/320 ; branch `fix/v282-contact-nojs-whatsapp-access` based on V281 PR #319.
 - Change: existing Contact fallback gains native WhatsApp offer link, alongside email/phone. No JS requirement for navigation, no automatic send.
