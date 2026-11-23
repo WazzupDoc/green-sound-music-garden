@@ -10,8 +10,9 @@ describe("V215: restore the owner's green concept without losing real discovery"
    expect(home).toContain('className="gs170-stage__console"');
    expect(home).not.toContain("SceneScoreV214");
    expect(home).toContain("images.concert.src");
-   expect(home).toContain("featured.map((item, index)");
-   expect(home).toContain("process.map((step, index)");
+   expect(home).toContain("<ProductionIndex />");
+   expect(home).not.toContain("featured.map((item, index)");
+   expect(home).not.toContain("process.map((step, index)");
    expect(home).toContain("VideoLite video={film.video}");
    expect(route).toContain('home-refinement-v215.css?inline');
    expect(route).not.toContain("hero-signal-v214");
