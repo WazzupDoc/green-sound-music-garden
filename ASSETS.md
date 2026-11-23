@@ -1,3 +1,7 @@
+## V280 proof — 2026-11-23
+Existing pre-authorized three first-party service photos unchanged; real browser decode verified at 360,390,430,768,1440,1920 by https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285 . No new photos, stocks, TikTok, AI, fonts or libraries. Capture artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055 .
+
+---
 ## V280 asset provenance update — 2026-11-23
 
 - **No files added.** The three pictures in `ProductionIndex` remain the project's already-included `images.dj`, `images.scena` and `images.ursitoare` from `src/data/site`; their existing provenance and uses elsewhere in this file remain authoritative.
