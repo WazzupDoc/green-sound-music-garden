@@ -1,3 +1,10 @@
+### V278 / 2026-11-23 — Events editorial five-track selector (DRAFT / VISUAL QA PENDING)
+- Branch `design/v278-events-editorial-setlist`, draft PR #315 https://github.com/WazzupDoc/green-sound-music-garden/pull/315 stacked on V277 `fix/v277-event-contextual-service-links` SHA `10a144e3ac015617186c8df069d1f94fc19eacc3`.
+- **Actual visible implementation** at `/evenimente`: replaced 5 equal category cards and horizontal mobile scroll strip with vertical editorial setlist, distinct large type and event-specific active state; native direct detail links, existing true owner media and all contact/event behaviors preserved. Homepage untouched, no new assets/dependencies.
+- New tests: `src/test/events-editorial-v278.test.ts` and `.github/scripts/v278-events-browser.cjs`; new workflow `.github/workflows/v278-events-qa.yml` checks exact head TS/build/Vitest/gzip and real Chromium full/viewport 390+1440 before/after, six widths, keyboard, selected photo, no-JS, Lite/reduced-motion.
+- **GATES NOT CLEARED YET**: exact-head Actions outcome, before/after screenshots/visual verdict, main auto-deploy, backup tag and rollback are unverified. Keep PR draft and main intact. Screenshot artifact should be found in Actions when run succeeds; do not invent link.
+- Next: inspect real visual delta at identical 390/1440, fix any regression, then audit event-detail CTA/contact funnel.
+
 ### V277 / 2026-11-23 — Events timeline contextual links (DRAFT / QA PENDING)
 - Branch `fix/v277-event-contextual-service-links` stacked on V276 PR #313. Distinguishes accessible names of timeline service links by stage number and title, with source regression. No visual redesign, new dependencies, assets, backend or homepage change. CI exact-head, TypeScript, SSR/Vitest/gzip and real Chromium before/after pending. Do not merge or publish. Next: Events CTA/focus browser QA.
 
