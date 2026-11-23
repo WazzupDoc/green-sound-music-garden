@@ -1,3 +1,8 @@
+### 2026-11-23 / V291 mobile navigation
+- Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog — native modal dialog close and focus behavior; adapt the existing native dialog, no copied code.
+- Reference: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — focus returns to invoking element after dialog closure unless workflow changes context. Apply only for same-route navigation; route changes preserve intentional focus handoff.
+- Rejected: forcing focus to the mobile opener on every close, which can focus a hidden control after navigation/desktop resize. No new dependency or asset.
+
 ### 2026-11-23 / V290 — no-JS quote handoff
 - Reference: https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Schemes/mailto — prefilled drafts are editable and user-initiated; adapted consistency principle to existing WhatsApp URL, without importing code.
 - Reference: https://faq.whatsapp.com/5913398998672934 — WhatsApp click-to-chat context; no automatic sending claimed. No third-party code/assets copied.
