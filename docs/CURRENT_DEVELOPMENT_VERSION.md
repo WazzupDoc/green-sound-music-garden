@@ -1,3 +1,7 @@
+### V285 / 2026-11-23 — Events selection feedback (draft)
+- Branch `ux/v285-events-live-selection-feedback`, stacked on V284 PR #322. Source `173a9a08206d3f97369fb8d638eb0f4a66ad0bdc`.
+- Changed `/evenimente` stage registration to show live selected event name instead of unverified year. Visual/AT/CI exact-head pending; no main or deployment.
+
 ### V284 / 2026-11-23 — Contact full-message review (draft)
 - Branch `ux/v284-contact-message-review-visible` stacked over V283 PR #321. Source commit `9150c8500f92eefb16b533453a17616a16a8bebb`.
 - Full outgoing message in the Contact preview is initially visible using native `details open`, collapsible via summary; user still deliberately chooses WhatsApp/email/copy. No backend or auto-send.
