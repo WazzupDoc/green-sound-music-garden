@@ -34,6 +34,11 @@ describe("V226 first-party generated concept artwork /servicii", () => {
     expect(page).toContain('to={`/${service.slug}`}');
   });
 
+  it("preserves full-width conceptual artwork at mobile widths", () => {
+    expect(css).toContain("aspect-ratio:1152 / 252");
+    expect(css).toContain("object-fit:contain");
+  });
+
   it("preserves mobile layout and disables visual motion under Lite or reduced motion", () => {
     expect(css).toContain("@media(max-width:760px)");
     expect(css).toContain("@media(max-width:430px)");
