@@ -1,3 +1,6 @@
+### V271 / 2026-11-23
+No new images, fonts, icons, videos or dependencies. Contact fallback semantics only; existing business contact data retained.
+
 ### V270 / 2026-11-23: no new assets, fonts, images, media or dependencies.
 
 ### V269 / 2026-11-22
