@@ -40,22 +40,27 @@ fs.mkdirSync(dir,{recursive:true});
     assert.equal(color,"rgb(235, 231, 219)","New warm-paper editorial direction is applied in browser");
     const reduced=await page.locator(".gs-index__photo img").first().evaluate(el=>getComputedStyle(el).transitionDuration);
     assert(reduced.split(",").every(x=>parseFloat(x) < .01),"Reduced-motion removes service photo transitions");
-    const first=page.locator(".gs-index__service").first();
-    await first.focus();assert(await first.evaluate(el=>document.activeElement===el),"Keyboard can focus native service link");
-    if(width===390)await page.screenshot({path:dir+"/after-keyboard-focus-390.png",animations:"disabled"});
    }else{
     assert.equal(await page.locator(".gs170-service-card").count(),5,"Genuine V279 baseline");
     assert.equal(await page.locator(".gs170-process__steps li").count(),4);
    }
-   await page.screenshot({path:dir+"/"+stage+"-full-"+width+".png",fullPage:true,animations:"disabled"});
+   // Chromium's sticky navigation otherwise appears across the middle of
+   // element/full-page screenshots after focus scroll. Capture the real DOM
+   // with the same screenshot-only header positioning before AND after.
+   const proofStyle=".atelier-header{position:absolute!important;top:0!important;left:0!important;right:0!important}";
+   await page.evaluate(()=>window.scrollTo(0,0));
+   await page.screenshot({path:dir+"/"+stage+"-full-"+width+".png",fullPage:true,animations:"disabled",style:proofStyle});
    if(width===390||width===1440){
-    await page.screenshot({path:dir+"/"+stage+"-viewport-"+width+".png",animations:"disabled"});
+    await page.screenshot({path:dir+"/"+stage+"-viewport-"+width+".png",animations:"disabled",style:proofStyle});
     const target=after?".gs-index":".gs170-services";
-    await page.locator(target).screenshot({path:dir+"/"+stage+"-services-"+width+".png",animations:"disabled"});
-    await page.locator(".gs170-films").screenshot({path:dir+"/"+stage+"-films-"+width+".png",animations:"disabled"});
+    await page.locator(target).screenshot({path:dir+"/"+stage+"-services-"+width+".png",animations:"disabled",style:proofStyle});
+    await page.locator(".gs170-films").screenshot({path:dir+"/"+stage+"-films-"+width+".png",animations:"disabled",style:proofStyle});
    }
    if(after){
     const first=page.locator(".gs-index__service").first();
+    await first.focus();
+    assert(await first.evaluate(el=>document.activeElement===el),"Keyboard focus on native service link");
+    if(width===390)await page.screenshot({path:dir+"/after-keyboard-focus-390.png",animations:"disabled",style:proofStyle});
     await first.click();
     await page.waitForURL(/\/dj-mc\/?$/, {timeout:12000});
     await page.goBack({waitUntil:"domcontentloaded"});
