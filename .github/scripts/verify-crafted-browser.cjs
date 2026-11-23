@@ -43,9 +43,9 @@ async function main() {
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
       assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente memorabile/i);
-      assert.equal(await page.locator(".gs170-service-card").count(),5);
-      assert.equal(await page.locator(".gs170-services__extras nav a").count(),3);
-      assert.equal(await page.locator(".gs170-process__steps li").count(),4);
+      assert.equal(await page.locator(".gs-index__chapter").count(),3);
+      assert.equal(await page.locator(".gs-index__service").count(),8);
+      assert.equal(await page.locator(".gs170-service-card").count(),0);
       assert.equal(await page.locator(".gs170-film-card").count(),3);
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator("video[autoplay]").count(),0);
@@ -57,7 +57,7 @@ async function main() {
       await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
       if(width===390||width===1440){
         await page.locator(".gs170-hero").screenshot({path:output+"/v170-hero-"+width+".png",animations:"disabled"});
-        await page.locator(".gs170-services").screenshot({path:output+"/v170-services-"+width+".png",animations:"disabled"});
+        await page.locator(".gs-index").screenshot({path:output+"/v170-services-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-films").screenshot({path:output+"/v170-films-"+width+".png",animations:"disabled"});
         await page.locator(".gs170-final").screenshot({path:output+"/v170-finale-"+width+".png",animations:"disabled"});
       }

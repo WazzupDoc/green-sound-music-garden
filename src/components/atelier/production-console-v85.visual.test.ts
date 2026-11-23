@@ -5,6 +5,7 @@ const route=read("src/routes/index.tsx");
 const page=read("src/components/atelier/ConceptHomeV170.tsx");
 const css=read("src/styles/home-reference-v170.css");
 const oldArtwork=read("src/components/atelier/ProductionDeckArt.tsx");
+const programme=read("src/components/atelier/ProductionIndex.tsx");
 describe("V170 production equipment is a lightweight UI illustration",()=>{
  it("leaves archived production artwork for rollback but does not mount it",()=>{
    expect(oldArtwork).toContain('<svg viewBox="0 0 900 490"');
@@ -14,13 +15,15 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
    expect(css).toContain("gs170-stage__eq");
  });
  it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
-   expect(page).toContain('slug: "dj-mc"');
-   expect(page).toContain('slug: "trupa"');
-   expect(page).toContain('slug: "echipamente-de-sunet-si-lumini"');
-   expect(page).toContain('slug: "masina-fum-greu-cu-gheata-carbonica"');
-   expect(page).toContain('slug: "studio-inregistrari"');
-   expect(page).toContain('"hostess", "ursitoare-botez", "start-veselia"');
-   expect(page).toContain("services.some(service => !allSlugs.includes(service.slug))");
+   for (const slug of [
+     "dj-mc", "trupa", "echipamente-de-sunet-si-lumini",
+     "masina-fum-greu-cu-gheata-carbonica", "studio-inregistrari",
+     "hostess", "ursitoare-botez", "start-veselia",
+   ]) expect(programme).toContain('"' + slug + '"');
+   expect(page).toContain("<ProductionIndex />");
+   expect(programme).toContain("new Set(editorialServiceSlugs)");
+   expect(programme).toContain("editorialServiceSlugs.length !== catalogueSlugs.size");
+   expect(programme).toContain("chapter.linkedServices.map((service)");
  });
  it("keeps provenance, reduced motion and no auto-playing media",()=>{
    expect(page).toContain("Real first-party media");

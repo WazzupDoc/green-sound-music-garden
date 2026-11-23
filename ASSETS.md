@@ -1,3 +1,15 @@
+## V280 proof — 2026-11-23
+Existing pre-authorized three first-party service photos unchanged; real browser decode verified at 360,390,430,768,1440,1920 by https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285 . No new photos, stocks, TikTok, AI, fonts or libraries. Capture artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45157402285/artifacts/14810225055 .
+
+---
+## V280 asset provenance update — 2026-11-23
+
+- **No files added.** The three pictures in `ProductionIndex` remain the project's already-included `images.dj`, `images.scena` and `images.ursitoare` from `src/data/site`; their existing provenance and uses elsewhere in this file remain authoritative.
+- These pictures are displayed as service-category/editorial photographs, **not** labeled as new events, clients, personnel or projects. Original existing concert hero and three owned film posters retained. No TikTok reference frames, AI stock, external music, fonts, logos, libraries or image downloads used in V280.
+- New `src/styles/home-editorial-v280.css` is original source-authored CSS; no external code licence or attribution required. Reference research sources and rejection rationale are in `RESEARCH.md`.
+- Authentic three-image rendering and natural sizes are **not yet Chromium verified for V280**; browser CI is configured to check and capture before/after PNG at 390/1440, six-width coverage.
+
+---
 ### V279 / 2026-11-23 — verified render provenance
 - The true hero image in matched browser proof is existing original `/media/greensound/concert-public-lumini.webp` (1800×1350 natural), not TikTok, AI or third-party stock. It remains in place with native img, width/height and high-priority fetch. Existing other site image and YouTube posters loaded in the full-page screenshot after eager decode during QA.
 - Matched real browser screenshot ZIP: https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086/artifacts/14801619612, source https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45141619086. Screenshots are QA evidence only, not site-embedded illustrations. No new photos, SVGs, fonts, videos, commercial logos, dependencies, tracking or licenses introduced.
