@@ -6,7 +6,8 @@ describe("V170 concept reference homepage route", () => {
   it("mounts exactly one full homepage composition with route-scoped CSS", () => {
     expect(route).toContain("<ConceptHomeV170 />");
     expect(route).toContain('home-reference-v170.css?inline');
-    expect(route).toContain('className="gs170-home"');
+    expect(route).toContain('className="gs170-home gs279-home"');
+    expect(route).toContain('home-photographic-v279.css?inline');
     expect(route.match(/<style>/g)).toHaveLength(1);
   });
   it("keeps the four real sections in reference order and two functional quote actions", () => {
