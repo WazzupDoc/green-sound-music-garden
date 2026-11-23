@@ -213,8 +213,8 @@ export function QuoteForm({ defaultEventType, defaultServices = [], defaultDate 
           <p className="quote-preview__identity">Solicitat de {prepared.name}</p>
         </div>
 
-        <details className="quote-preview__details">
-          <summary>Vezi mesajul complet care va fi pregătit</summary>
+        <details className="quote-preview__details" open>
+          <summary>Mesajul complet — verifică înainte de trimitere</summary>
           <pre>{message}</pre>
         </details>
 

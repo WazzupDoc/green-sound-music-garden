@@ -1,3 +1,6 @@
+### V284 / 2026-11-23
+No new assets, fonts, dependencies, images, icons, or external code. Native HTML `details` only.
+
 ### V283 / 2026-11-23
 No new assets, fonts, media, icons, or third-party packages. Existing licensed icons unchanged.
 
