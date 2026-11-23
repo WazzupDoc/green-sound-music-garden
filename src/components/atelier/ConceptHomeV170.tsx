@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight, CalendarDays, CirclePlay, Play, SlidersHorizontal } from "lucide-react";
-import { images, videos, type Video } from "@/data/site";
+import { images, videos, ytThumb, type Video } from "@/data/site";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { VideoLite } from "@/components/site/VideoLite";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -117,7 +117,7 @@ export function ConceptHomeV170() {
                 onClick={() => setFilmIndex(index)}
                 aria-label={"Deschide filmul: " + item.label}>
                 <span className="gs170-film-card__image">
-                  <img src={item.video.poster!} alt="" width={640} height={360}
+                  <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360}
                     loading="lazy" decoding="async" />
                   <span className="gs170-film-card__play"><Play size={23} fill="currentColor" aria-hidden /></span>
                   <span className="gs170-film-card__number">0{index + 1} / 03</span>
