@@ -80,7 +80,7 @@ function Events() {
               <h1 id="gs173-title"><span>NU TOATE</span><span>SERILE</span><span className="gs173-statement__script">SUNĂ LA FEL.</span></h1>
               <p>Nunți, botezuri, petreceri sau producții mari. Nu începem cu un pachet. Începem cu evenimentul tău.</p>
               <a href="#gs173-setlist-title" className="gs173-statement__jump">Alege atmosfera <ArrowDownRight size={20} aria-hidden="true" /></a>
-              <div className="gs173-statement__registration" aria-hidden="true"><span>GS—M / LIVE</span><span>DIN 2008</span></div>
+              <div className="gs173-statement__registration"><span aria-hidden="true">GS—M / LIVE</span><span role="status" aria-live="polite" aria-atomic="true">Selectat: {activeEvent.name}</span></div>
             </div>
             <div className="gs173-live__photobox">
               <div key={visualEvent.slug} className="gs173-stage-image">
