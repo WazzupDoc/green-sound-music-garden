@@ -1,3 +1,7 @@
+### V278 / 2026-11-23 — Events first-party setlist
+- **No new photographs, AI imagery, TikTok frames, logos, fonts, icon packs, audio/video, libraries or packages.** New stylesheet and test/QA scripts are original project code. The category illustrations are the already-existing project-approved `/media/gs-category-illustrations-v201.webp`; real photograph comes from existing event catalogue `/media/greensound/` as before. No third-party art or design source copied.
+- Editorial references in `RESEARCH.md` were used as non-code inspiration only; no license-dependent assets adopted. Existing icon package already in project; no new dependency.
+
 ### V277 / 2026-11-23
 - No new media, icons, fonts, libraries or external assets; source-only accessible-name adjustment.
 
