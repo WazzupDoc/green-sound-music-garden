@@ -1,3 +1,6 @@
+## V293 — 2026-11-24 — Bespoke homepage rebuild (DRAFT, QA pending)
+Original full-home visual direction, based on V292 exact head 25afddbca9cdb9a8e564d89fb14d5eb0dcdbda72 (CI run 45275626040). Dark emerald service editorial, large three-line opening, asymmetrical film catalogue on paper, lime final CTA; retains three chapters/eight services, three films, existing light controls and contact routes. No added assets, packages, backend, automatic sending or production deployment. Six-width real Chromium before/after and exact-head QA required; no 60fps/CLS/rank claims. Next: inspect real captures, then events detail and global navigation. Rollback: discard isolated branch, no main changes.
+
 ### V292 / 2026-11-23 — Quote SSR test-contract repair (DRAFT)
 - Branch `fix/v292-quote-nojs-contract-tests`, draft PR #330, stacked on V291 PR #329. V291 exact-head CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45265516688 failed Vitest at obsolete V269 text assertions; TypeScript, SSR and gzip steps passed. Updated test assertions to current user-controlled email/WhatsApp draft text, without altering production UI. Source `1590898850d402d0404198f7e9a65b6b58e56807` before docs.
 - CI exact-head, full tests and browser screenshots remain unverified; no main/deploy. Next: event detail CTA and matched Chromium before/after.

@@ -11,6 +11,8 @@ describe("V170 concept reference homepage route", () => {
     expect(route).toContain('data-art-direction="v279"');
     expect(route).toContain('data-services-direction="v280"');
     expect(route).toContain("home-editorial-v280.css?inline");
+    expect(route).toContain("home-bespoke-v293.css?inline");
+    expect(route).toContain('data-bespoke="v293"');
     expect(route.match(/<style>/g)).toHaveLength(1);
   });
   it("keeps the four real sections in reference order and two functional quote actions", () => {

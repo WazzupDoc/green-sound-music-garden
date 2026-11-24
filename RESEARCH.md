@@ -1,3 +1,8 @@
+## V293 — 2026-11-24 — Editorial / motion research
+- https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — musical notation and differentiated type hierarchy; adapted as an original numbered composition, not copied assets/code.
+- https://tympanus.net/codrops/2026/06/29/inside-bisous-designing-an-editorial-experience-for-cinematic-cgi/ — restrained motion and media-led editorial layout; adapted asymmetrical film ordering and whitespace. No third-party code adopted, license not relied upon.
+- https://developers.google.com/search/docs/fundamentals/ai-optimization-guide — visible factual content and crawlability, no special AI schema guarantee; no fabricated metrics or FAQ markup. Rejected WebGL, additional scroll library, forced hidden SSR text, unverified external icons/assets; no dependency or cost.
+
 ### 2026-11-23 / V291 mobile navigation
 - Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog — native modal dialog close and focus behavior; adapt the existing native dialog, no copied code.
 - Reference: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ — focus returns to invoking element after dialog closure unless workflow changes context. Apply only for same-route navigation; route changes preserve intentional focus handoff.

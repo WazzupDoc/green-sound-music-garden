@@ -1,3 +1,6 @@
+## V293 — 2026-11-24
+No new external assets or font imports. Existing project concert, service and three film media retain their existing provenance. New inline arrow/play marks and SVG turbulence texture are original code for this branch, not copied from external UI kits. No stock or AI event media.
+
 ### V291 / 2026-11-23
 No new visual, audio, font or third-party assets. Native focus-state correction only.
 
