@@ -1,3 +1,6 @@
+## V293 — 2026-11-24
+No new external assets or font imports. Existing project concert, service and three film media retain their existing provenance. New inline arrow/play marks and SVG turbulence texture are original code for this branch, not copied from external UI kits. No stock or AI event media.
+
 ### V291 / 2026-11-23
 No new visual, audio, font or third-party assets. Native focus-state correction only.
 
@@ -392,3 +395,6 @@ No new pictures, source footage, font, icon, package, library or licensed asset 
 
 ### V286 / 2026-11-23
 - No new assets, imagery, icons, fonts or dependencies. Existing authorized project media unchanged. Text-only event detail change.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.

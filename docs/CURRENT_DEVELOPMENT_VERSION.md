@@ -1,3 +1,6 @@
+## V293 — 2026-11-24 — Bespoke homepage rebuild (DRAFT, QA pending)
+Original full-home visual direction, based on V292 exact head 25afddbca9cdb9a8e564d89fb14d5eb0dcdbda72 (CI run 45275626040). Dark emerald service editorial, large three-line opening, asymmetrical film catalogue on paper, lime final CTA; retains three chapters/eight services, three films, existing light controls and contact routes. No added assets, packages, backend, automatic sending or production deployment. Six-width real Chromium before/after and exact-head QA required; no 60fps/CLS/rank claims. Next: inspect real captures, then events detail and global navigation. Rollback: discard isolated branch, no main changes.
+
 ### V292 / 2026-11-23 — Quote SSR test-contract repair (DRAFT)
 - Branch `fix/v292-quote-nojs-contract-tests`, draft PR #330, stacked on V291 PR #329. V291 exact-head CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45265516688 failed Vitest at obsolete V269 text assertions; TypeScript, SSR and gzip steps passed. Updated test assertions to current user-controlled email/WhatsApp draft text, without altering production UI. Source `1590898850d402d0404198f7e9a65b6b58e56807` before docs.
 - CI exact-head, full tests and browser screenshots remain unverified; no main/deploy. Next: event detail CTA and matched Chromium before/after.
@@ -1101,3 +1104,6 @@ Branch `fix/v134-photo-dialog-home-end-keyboard` stacked on V133. Photo dialog s
 
 ## V135 — Portfolio modal origin focus (DRAFT, QA pending)
 Branch `fix/v135-photo-dialog-origin-focus` based on V134. Photo modal now preserves the opening thumbnail as the focus-return target when navigating between photos; fallback remains gallery heading. Source change committed; TypeScript/SSR/Vitest/gzip, real Chromium before/after at 390/1440 and four other widths, and exact-head CI remain unverified. Main and production unchanged. Next: film archive flow and full browser regression.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.

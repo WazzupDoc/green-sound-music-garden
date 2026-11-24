@@ -42,7 +42,7 @@ async function main() {
       });
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
-      assert.match(await page.locator(".gs170-hero h1").innerText(),/evenimente memorabile/i);
+      assert.match((await page.locator(".gs170-hero h1").innerText()).replace(/\s+/g," "),/^Muzica\.\s*Lumina\.\s*Evenimentul tău\.$/i);
       assert.equal(await page.locator(".gs-index__chapter").count(),3);
       assert.equal(await page.locator(".gs-index__service").count(),8);
       assert.equal(await page.locator(".gs170-service-card").count(),0);

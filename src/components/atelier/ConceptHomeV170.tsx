@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ArrowUpRight, CalendarDays, CirclePlay, Play, SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal } from "lucide-react";
+function ArrowRight({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
+function ArrowUpRight({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M7 5h12v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
+function Play({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4.5 20 12 8 19.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>; }
 import { images, videos, ytThumb, type Video } from "@/data/site";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { VideoLite } from "@/components/site/VideoLite";
@@ -39,6 +42,48 @@ export function ConceptHomeV170() {
     return () => { observer.disconnect(); document.removeEventListener("visibilitychange", onVisibility); };
   }, []);
 
+  useEffect(() => {
+    const root = stageRef.current?.closest(".gs170-home");
+    if (!root) return;
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    const nodes = Array.from(root.querySelectorAll<HTMLElement>("[data-gs293-magnetic], [data-gs293-spotlight]"));
+    let frame = 0;
+    let active: HTMLElement | null = null;
+    let x = 0, y = 0;
+    const reset = (node: HTMLElement) => {
+      node.style.removeProperty("--mouse-x"); node.style.removeProperty("--mouse-y");
+      node.style.removeProperty("--mag-x"); node.style.removeProperty("--mag-y");
+    };
+    const enabled = () => mq.matches && document.documentElement.dataset["gsPerformance"] !== "lite";
+    const move = (e: PointerEvent) => {
+      if (!enabled() || e.pointerType !== "mouse") return;
+      active = e.currentTarget as HTMLElement;
+      const bounds = active.getBoundingClientRect();
+      x = e.clientX - bounds.left; y = e.clientY - bounds.top;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        if (!active || !enabled()) return;
+        active.style.setProperty("--mouse-x", x + "px");
+        active.style.setProperty("--mouse-y", y + "px");
+        active.style.setProperty("--mag-x", Math.max(-7, Math.min(7, (x - active.clientWidth / 2) * .09)) + "px");
+        active.style.setProperty("--mag-y", Math.max(-5, Math.min(5, (y - active.clientHeight / 2) * .12)) + "px");
+      });
+    };
+    const leave = (e: Event) => {
+      if (frame) cancelAnimationFrame(frame);
+      frame = 0; active = null; reset(e.currentTarget as HTMLElement);
+    };
+    const clear = () => { if (frame) cancelAnimationFrame(frame); frame = 0; active = null; nodes.forEach(reset); };
+    nodes.forEach(node => { node.addEventListener("pointermove", move); node.addEventListener("pointerleave", leave); node.addEventListener("blur", leave); });
+    mq.addEventListener("change", clear);
+    document.addEventListener("visibilitychange", clear);
+    return () => {
+      clear(); mq.removeEventListener("change", clear); document.removeEventListener("visibilitychange", clear);
+      nodes.forEach(node => { node.removeEventListener("pointermove", move); node.removeEventListener("pointerleave", leave); node.removeEventListener("blur", leave); });
+    };
+  }, []);
+
   return (
     <>
       <section className="gs170-hero" aria-labelledby="gs170-title" ref={stageRef}
@@ -67,19 +112,18 @@ export function ConceptHomeV170() {
           </div>
         </div>
         <div className="gs170-hero__content container-site">
-          <span className="gs170-kicker gs170-hero__eyebrow">GREEN SOUND MUSIC / PRODUCȚIE DE EVENIMENTE</span>
-          <h1 id="gs170-title">Sunet. Muzică. Lumini.<br />
-            <span className="gs279-title-serif">Evenimente memorabile.</span></h1>
+          <span className="gs170-kicker gs170-hero__eyebrow">01 // PRODUCȚIE DE EVENIMENTE · PITEȘTI</span>
+          <h1 id="gs170-title"><span className="gs293-line">Muzica.</span><span className="gs293-line">Lumina.</span><span className="gs279-title-serif">Evenimentul tău.</span></h1>
           <p className="gs170-hero__lead">
             DJ & MC, trupă live, sonorizare, lumini și efecte pentru nunți, botezuri, petreceri și concerte.
-            Alegem împreună muzica și soluția tehnică potrivite spațiului și programului.
+            De la muzica serii la montajul tehnic, discutăm ce se potrivește spațiului și programului tău.
           </p>
           <div className="gs170-hero__actions">
-            <Link to="/contact" className="gs170-btn gs170-btn--green">
-              <CalendarDays size={19} aria-hidden /> Solicită o ofertă <ArrowRight size={19} aria-hidden />
+            <Link to="/contact" data-gs293-magnetic className="gs170-btn gs170-btn--green">
+              Solicită o ofertă <ArrowRight size={19} />
             </Link>
             <a href="#gs170-films" className="gs170-btn gs170-btn--outline">
-              <CirclePlay size={20} aria-hidden /> Vezi portofoliul
+              <Play size={20} /> Vezi portofoliul
             </a>
           </div>
           <div className="gs170-hero__control" role="group" aria-label="Atmosfera vizuală a site-ului">
@@ -106,25 +150,25 @@ export function ConceptHomeV170() {
       <section className="gs170-films" id="gs170-films" aria-labelledby="gs170-films-title">
         <div className="container-site gs170-films__grid">
           <div className="gs170-films__intro">
-            <span className="gs170-kicker">PORTOFOLIU / FILME REALE</span>
-            <h2 id="gs170-films-title">Momente care<br /><em>vorbesc</em><br />de la sine.</h2>
-            <p>Trei filmări publicate de Green Sound Music. Sunetul pornește numai la cererea ta.</p>
-            <Link to="/portofoliu" className="gs170-inline">Vezi toate proiectele <ArrowUpRight size={17} aria-hidden /></Link>
+            <span className="gs170-kicker">03 // FILME GREEN SOUND</span>
+            <h2 id="gs170-films-title">Pe scenă.<br /><em>În cadru.</em></h2>
+            <p>O nuntă, un show de lumini și o apariție TV. Trei filmări publicate de Green Sound Music.</p>
+            <Link to="/portofoliu" className="gs170-inline">Vezi toate proiectele <ArrowUpRight size={17} /></Link>
           </div>
           <div className="gs170-films__cards">
             {films.map((item, index) => (
-              <button className="gs170-film-card" key={item.video.id} type="button"
+              <button className="gs170-film-card" data-gs293-spotlight key={item.video.id} type="button"
                 onClick={() => setFilmIndex(index)}
                 aria-label={"Deschide filmul: " + item.label}>
                 <span className="gs170-film-card__image">
                   <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360}
                     loading="lazy" decoding="async" />
-                  <span className="gs170-film-card__play"><Play size={23} fill="currentColor" aria-hidden /></span>
+                  <span className="gs170-film-card__play"><Play size={23} /></span>
                   <span className="gs170-film-card__number">0{index + 1} / 03</span>
                 </span>
                 <span className="gs170-film-card__title">
                   <span><small>{item.eyebrow}</small><strong>{item.label}</strong></span>
-                  <ArrowUpRight size={18} aria-hidden />
+                  <ArrowUpRight size={18} />
                 </span>
               </button>
             ))}
@@ -136,11 +180,11 @@ export function ConceptHomeV170() {
         <img src={images.concert.src} alt="" width={images.concert.w}
           height={images.concert.h} loading="lazy" decoding="async" />
         <div className="container-site gs170-final__inner">
-          <div><span className="gs170-kicker">GREEN SOUND MUSIC / PITEȘTI</span>
-            <h2 id="gs170-final-title">Planifică acum<br /><em>evenimentul tău.</em></h2></div>
-          <p>Hai să discutăm despre ideile tale și să construim împreună o seară memorabilă.</p>
+          <div><span className="gs170-kicker">04 // URMĂTORUL EVENIMENT</span>
+            <h2 id="gs170-final-title">Spune-ne data.<br /><em>Stabilim detaliile.</em></h2></div>
+          <p>Locația, tipul evenimentului și serviciile dorite sunt suficiente pentru a începe discuția.</p>
           <Link to="/contact" className="gs170-btn gs170-btn--green">
-            Solicită o ofertă <ArrowRight size={19} aria-hidden />
+            Solicită o ofertă <ArrowRight size={19} />
           </Link>
         </div>
       </section>

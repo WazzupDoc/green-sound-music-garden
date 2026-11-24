@@ -1,3 +1,6 @@
+## V293 — 2026-11-24 — Bespoke homepage rebuild (DRAFT, QA pending)
+Original full-home visual direction, based on V292 exact head 25afddbca9cdb9a8e564d89fb14d5eb0dcdbda72 (CI run 45275626040). Dark emerald service editorial, large three-line opening, asymmetrical film catalogue on paper, lime final CTA; retains three chapters/eight services, three films, existing light controls and contact routes. No added assets, packages, backend, automatic sending or production deployment. Six-width real Chromium before/after and exact-head QA required; no 60fps/CLS/rank claims. Next: inspect real captures, then events detail and global navigation. Rollback: discard isolated branch, no main changes.
+
 ### V292 / 2026-11-23 — CI quote fallback test repair
 - Zone: SSR/no-JS quote contract test. V291 CI #45265516688 passed TS/SSR/gzip but failed Vitest because V269 test asserted superseded email and context copy. Updated assertions to require explicit email/WhatsApp draft wording and user review. Draft PR #330; source commit `1590898850d402d0404198f7e9a65b6b58e56807` before documentation. CI exact-head and Chromium screenshot evidence pending. No production UI changes, no visual redesign claim. PR #19 remains conflicted. Next: event detail CTA and browser QA.
 
@@ -897,3 +900,6 @@ Visual audit: First V191 desktop screenshot was too empty above the film; tighte
 
 ### 2026-11-23 V286 rotation: Event detail timeline
 - Area: `/evenimente/$slug` planning section; source `EventPage.tsx`. Changed generic heading and repetitive paragraph to event-specific planning explanation. No visual screenshot or performance measurement; no premium redesign claim. QA pending. Next: browser evidence and navigation/mobile.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.
