@@ -1,3 +1,6 @@
+## V296 / 2026-11-24
+Photo contact sheet reuses the existing six `galleryFrames` image references from `src/data/site` (concert, dj, scena, ursitoare2, hostess, copii). Existing provenance/authorization unchanged, no newly sourced photography or license assertion; original URLs referenced by the same image objects, dimensions preserved, duplicate decorative thumbnails lazy-loaded only inside the dialog. No TikTok extracts, generated images, stock, fonts, music or new icons. CSS authored for project.
+
 ## V295 / 2026-11-24
 Existing first-party `images.concert`, `images.dj`, `images.scena`, `images.hostess` reused as decorative menu previews; provenance unchanged, no external assets or new image download. Studio cue is original inline SVG waveform, not a studio photograph. No new fonts or packages; previews are rendered only while the native menu is open.
 
