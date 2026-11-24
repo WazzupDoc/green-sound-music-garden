@@ -294,9 +294,13 @@ async function main() {
         const photoDialog=portfolioPage.locator(".rs-photo-dialog");
         await photoDialog.waitFor({state:"visible",timeout:8000});
         assert.equal(new URL(portfolioPage.url()).searchParams.get("photo"),"concert");
+        const sheet=photoDialog.locator(".gs296-filmstrip");
+        assert.equal(await sheet.locator("button").count(),6,"Viewer must expose the six real photographs");
+        assert.equal(await sheet.locator('[aria-pressed="true"]').getAttribute("data-frame-id"),"concert");
         await photoDialog.focus();
         await portfolioPage.keyboard.press("ArrowRight");
         await portfolioPage.waitForFunction(()=>new URL(location.href).searchParams.get("photo")==="dj");
+        assert.equal(await sheet.locator('[aria-pressed="true"]').getAttribute("data-frame-id"),"dj");
         await portfolioPage.keyboard.press("Escape");
         await photoDialog.waitFor({state:"hidden",timeout:8000});
         await portfolioPage.locator(".rs-video-library__filters button").nth(3).click();
