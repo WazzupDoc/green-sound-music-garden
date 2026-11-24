@@ -77,3 +77,8 @@ dialog.atelier-mobile-menu[open] .gsm-nav-index__actions a:last-child{background
   dialog.atelier-mobile-menu[open] .gs295-preview *{animation:none!important;transition:none!important}
 }
 html[data-gs-performance="lite"] dialog.atelier-mobile-menu[open] .gs295-preview *{animation:none!important;transition:none!important}
+
+/* Native page transitions are progressive; reduce and Lite avoid snapshot motion. */
+html[data-gs-performance="lite"]::view-transition-old(*),
+html[data-gs-performance="lite"]::view-transition-new(*),
+html[data-gs-performance="lite"]::view-transition-group(*){animation:none!important;}
