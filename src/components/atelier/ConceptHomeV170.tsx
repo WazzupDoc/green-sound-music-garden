@@ -54,7 +54,7 @@ export function ConceptHomeV170() {
       node.style.removeProperty("--mouse-x"); node.style.removeProperty("--mouse-y");
       node.style.removeProperty("--mag-x"); node.style.removeProperty("--mag-y");
     };
-    const enabled = () => mq.matches && document.documentElement.dataset.gsPerformance !== "lite";
+    const enabled = () => mq.matches && document.documentElement.dataset["gsPerformance"] !== "lite";
     const move = (e: PointerEvent) => {
       if (!enabled() || e.pointerType !== "mouse") return;
       active = e.currentTarget as HTMLElement;
