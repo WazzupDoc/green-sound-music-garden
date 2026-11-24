@@ -1,203 +1,128 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { SlidersHorizontal } from "lucide-react";
-function ArrowRight({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12h17m-7-7 7 7-7 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
-function ArrowUpRight({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M7 5h12v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>; }
-function Play({ size = 20 }: { size?: number }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 4.5 20 12 8 19.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>; }
 import { images, videos, ytThumb, type Video } from "@/data/site";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
 import { VideoLite } from "@/components/site/VideoLite";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
-/** Reference-inspired design. Real first-party media and business catalogue only.
- * CSS/SVG console is a decorative UI illustration, not a client installation.
- */
+function Arrow({ diagonal = false }: { diagonal?: boolean }) {
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d={diagonal ? "M5 19 19 5M7 5h12v12" : "M3 12h17m-7-7 7 7-7 7"}
+      stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>;
+}
+function Play() {
+  return <svg width="23" height="23" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M8 4.5 20 12 8 19.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+  </svg>;
+}
 const films: { label: string; eyebrow: string; video: Video }[] = [
   { label: "Nuntă la Ramada Pitești", eyebrow: "NUNTĂ / DJ & MC", video: videos.nuntaRamada },
   { label: "Show de lumini Green Sound", eyebrow: "LUMINI / DJ / MC", video: videos.showLumini },
   { label: "Green Sound Music la TV", eyebrow: "LIVE / STUDIO", video: videos.neatza },
 ];
 
+/** V297: a new poster composition, in normal document flow. Native links and
+ * the real existing service programme; no video load before explicit Play. */
 export function ConceptHomeV170() {
   const [hydrated, setHydrated] = useState(false);
   const [lightsOn, setLightsOn] = useState(true);
-  const [stageVisible, setStageVisible] = useState(true);
-  const stageRef = useRef<HTMLElement>(null);
-  const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
+  const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const film = filmIndex === null ? null : films[filmIndex];
   useEffect(() => { setHydrated(true); }, []);
-  useEffect(() => {
-    const node = stageRef.current;
-    if (!node || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(([entry]) => {
-      setStageVisible(Boolean(entry?.isIntersecting) && !document.hidden);
-    }, { threshold: .01 });
-    observer.observe(node);
-    const onVisibility = () => {
-      const rect = node.getBoundingClientRect();
-      setStageVisible(!document.hidden && rect.bottom > 0 && rect.top < window.innerHeight);
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => { observer.disconnect(); document.removeEventListener("visibilitychange", onVisibility); };
-  }, []);
 
-  useEffect(() => {
-    const root = stageRef.current?.closest(".gs170-home");
-    if (!root) return;
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
-    const nodes = Array.from(root.querySelectorAll<HTMLElement>("[data-gs293-magnetic], [data-gs293-spotlight]"));
-    let frame = 0;
-    let active: HTMLElement | null = null;
-    let x = 0, y = 0;
-    const reset = (node: HTMLElement) => {
-      node.style.removeProperty("--mouse-x"); node.style.removeProperty("--mouse-y");
-      node.style.removeProperty("--mag-x"); node.style.removeProperty("--mag-y");
-    };
-    const enabled = () => mq.matches && document.documentElement.dataset["gsPerformance"] !== "lite";
-    const move = (e: PointerEvent) => {
-      if (!enabled() || e.pointerType !== "mouse") return;
-      active = e.currentTarget as HTMLElement;
-      const bounds = active.getBoundingClientRect();
-      x = e.clientX - bounds.left; y = e.clientY - bounds.top;
-      if (frame) return;
-      frame = requestAnimationFrame(() => {
-        frame = 0;
-        if (!active || !enabled()) return;
-        active.style.setProperty("--mouse-x", x + "px");
-        active.style.setProperty("--mouse-y", y + "px");
-        active.style.setProperty("--mag-x", Math.max(-7, Math.min(7, (x - active.clientWidth / 2) * .09)) + "px");
-        active.style.setProperty("--mag-y", Math.max(-5, Math.min(5, (y - active.clientHeight / 2) * .12)) + "px");
-      });
-    };
-    const leave = (e: Event) => {
-      if (frame) cancelAnimationFrame(frame);
-      frame = 0; active = null; reset(e.currentTarget as HTMLElement);
-    };
-    const clear = () => { if (frame) cancelAnimationFrame(frame); frame = 0; active = null; nodes.forEach(reset); };
-    nodes.forEach(node => { node.addEventListener("pointermove", move); node.addEventListener("pointerleave", leave); node.addEventListener("blur", leave); });
-    mq.addEventListener("change", clear);
-    document.addEventListener("visibilitychange", clear);
-    return () => {
-      clear(); mq.removeEventListener("change", clear); document.removeEventListener("visibilitychange", clear);
-      nodes.forEach(node => { node.removeEventListener("pointermove", move); node.removeEventListener("pointerleave", leave); node.removeEventListener("blur", leave); });
-    };
-  }, []);
-
-  return (
-    <>
-      <section className="gs170-hero" aria-labelledby="gs170-title" ref={stageRef}
-        data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}
-        data-hydrated={hydrated ? "true" : "false"}
-        data-stage-visible={stageVisible ? "true" : "false"}>
-        <div className="gs170-stage" aria-hidden="true">
-          <img src={images.concert.src} alt="" width={images.concert.w}
-            height={images.concert.h} className="gs170-stage__image"
-            decoding="async" fetchPriority="high" />
-          <div className="gs170-stage__shade" />
-          <div className="gs170-stage__beams">
-            {Array.from({ length: 5 }, (_, index) => <i key={index} style={{ "--beam": index } as CSSProperties} />)}
-          </div>
-          <div className="gs170-stage__console">
-            <div className="gs170-stage__console-top"><span>GREEN SOUND / LIVE MIX</span><span className="gs170-stage__live">● SIGNAL</span></div>
-            <div className="gs170-stage__eq">
-              {Array.from({ length: 25 }, (_, i) => <span key={i} style={{ "--bar": i } as CSSProperties} />)}
-            </div>
-            <div className="gs170-stage__channels">
-              {Array.from({ length: 10 }, (_, i) =>
-                <span key={i} className="gs170-stage__channel" style={{ "--channel": i } as CSSProperties}><i /><b /><small /></span>
-              )}
-            </div>
-            <span className="gs170-stage__console-end">DECORATIVE VISUAL / SOUND · LIGHT · PRODUCTION</span>
+  return <>
+    <section className="gs170-hero" aria-labelledby="gs170-title"
+      data-hydrated={hydrated ? "true" : "false"} data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}>
+      <div className="gs297-shell">
+        <div className="gs297-coverline">
+          <span>GREEN SOUND MUSIC</span>
+          <span className="gs297-signal" aria-hidden="true"><svg viewBox="0 0 90 22" width="90" height="22">
+            <path d="M1 11h17l5-7 5 14 5-10 5 5h12l5-12 5 20 5-10h24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+          </svg></span>
+          <span>PITEȘTI / ARGEȘ</span>
+        </div>
+        <div className="gs170-hero__content">
+          <h1 id="gs170-title"><span>EVENIMENTE</span><em>de neuitat.</em></h1>
+          <div className="gs297-cover-aside">
+            <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
+            <p className="gs170-hero__lead">DJ & MC, trupă live și producție tehnică pentru nunți, petreceri și concerte.</p>
+            <Link to="/contact" className="gs170-btn gs170-btn--green">Solicită o ofertă <Arrow diagonal /></Link>
           </div>
         </div>
-        <div className="gs170-hero__content container-site">
-          <span className="gs170-kicker gs170-hero__eyebrow">01 // PRODUCȚIE DE EVENIMENTE · PITEȘTI</span>
-          <h1 id="gs170-title"><span className="gs293-line">Muzica.</span><span className="gs293-line">Lumina.</span><span className="gs279-title-serif">Evenimentul tău.</span></h1>
-          <p className="gs170-hero__lead">
-            DJ & MC, trupă live, sonorizare, lumini și efecte pentru nunți, botezuri, petreceri și concerte.
-            De la muzica serii la montajul tehnic, discutăm ce se potrivește spațiului și programului tău.
-          </p>
-          <div className="gs170-hero__actions">
-            <Link to="/contact" data-gs293-magnetic className="gs170-btn gs170-btn--green">
-              Solicită o ofertă <ArrowRight size={19} />
-            </Link>
-            <a href="#gs170-films" className="gs170-btn gs170-btn--outline">
-              <Play size={20} /> Vezi portofoliul
-            </a>
-          </div>
+        <div className="gs297-diptych">
+          <figure className="gs170-stage">
+            <img src={images.concert.src} alt={images.concert.alt} width={images.concert.w}
+              height={images.concert.h} className="gs170-stage__image" decoding="async" fetchPriority="high" />
+            <figcaption><span>01 / PRODUCȚIE LIVE</span><span>ARHIVA GREEN SOUND</span></figcaption>
+          </figure>
+          <figure className="gs297-portrait">
+            <img src={images.dj.src} alt={images.dj.alt} width={images.dj.w} height={images.dj.h} decoding="async" loading="lazy" />
+            <figcaption>02 / DJ & MC</figcaption>
+          </figure>
+        </div>
+        <div className="gs297-cover-bottom">
+          <a href="#gs-production-index" className="gs170-inline">Explorează serviciile <Arrow /></a>
+          <a href="#gs170-films" className="gs170-inline">Vezi portofoliul <Play /></a>
           <div className="gs170-hero__control" role="group" aria-label="Atmosfera vizuală a site-ului">
-            <span className="gs170-hero__control-label"><SlidersHorizontal size={15} aria-hidden /> LUMINI SCENICE</span>
-            <button type="button" aria-pressed={lightsOn} onClick={() => setLightsOn(value => !value)}>
-              {lightsOn ? "Efect ON" : "Efect OFF"}
-            </button>
+            <span className="gs297-control-label">TON FOTO</span>
+            <button type="button" aria-pressed={lightsOn} onClick={() => setLightsOn(value => !value)}>{lightsOn ? "Efect ON" : "Efect OFF"}</button>
             <button type="button" aria-pressed={lightHue === "green"} onClick={() => setLightHue("green")}>Verde</button>
             <button type="button" aria-pressed={lightHue === "cool"} onClick={() => setLightHue("cool")}>Rece</button>
           </div>
         </div>
-        <div className="gs170-wave" aria-hidden="true">
-          <svg viewBox="0 0 1440 90" preserveAspectRatio="none" focusable="false">
-            <path className="gs170-wave__soft" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-            <path className="gs170-wave__main" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-            <path className="gs170-wave__pulse" d="M0 45C118 2 210 90 351 47S563 11 704 46 886 88 1021 43 1225 3 1440 47" />
-          </svg>
-        </div>
-      </section>
-
-      {/* V280: three genuine photographic chapters, all eight direct service links. No duplicate process cards. */}
-      <ProductionIndex />
-
-      <section className="gs170-films" id="gs170-films" aria-labelledby="gs170-films-title">
-        <div className="container-site gs170-films__grid">
-          <div className="gs170-films__intro">
-            <span className="gs170-kicker">03 // FILME GREEN SOUND</span>
-            <h2 id="gs170-films-title">Pe scenă.<br /><em>În cadru.</em></h2>
-            <p>O nuntă, un show de lumini și o apariție TV. Trei filmări publicate de Green Sound Music.</p>
-            <Link to="/portofoliu" className="gs170-inline">Vezi toate proiectele <ArrowUpRight size={17} /></Link>
+      </div>
+    </section>
+    <ProductionIndex />
+    <section className="gs170-films" id="gs170-films" aria-labelledby="gs170-films-title">
+      <div className="gs297-shell">
+        <div className="gs297-film-heading">
+          <div>
+            <span className="gs170-kicker">03 / FILME GREEN SOUND</span>
+            <h2 id="gs170-films-title">În <em>cadru.</em></h2>
           </div>
-          <div className="gs170-films__cards">
-            {films.map((item, index) => (
-              <button className="gs170-film-card" data-gs293-spotlight key={item.video.id} type="button"
-                onClick={() => setFilmIndex(index)}
-                aria-label={"Deschide filmul: " + item.label}>
-                <span className="gs170-film-card__image">
-                  <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360}
-                    loading="lazy" decoding="async" />
-                  <span className="gs170-film-card__play"><Play size={23} /></span>
-                  <span className="gs170-film-card__number">0{index + 1} / 03</span>
-                </span>
-                <span className="gs170-film-card__title">
-                  <span><small>{item.eyebrow}</small><strong>{item.label}</strong></span>
-                  <ArrowUpRight size={18} />
-                </span>
-              </button>
-            ))}
+          <div>
+            <p>Un ring de dans, un show de lumini și o apariție TV. Trei filmări publicate de Green Sound Music.</p>
+            <Link to="/portofoliu" className="gs170-inline">Toată arhiva <Arrow diagonal /></Link>
           </div>
         </div>
-      </section>
-
-      <section className="gs170-final" aria-labelledby="gs170-final-title">
-        <img src={images.concert.src} alt="" width={images.concert.w}
-          height={images.concert.h} loading="lazy" decoding="async" />
-        <div className="container-site gs170-final__inner">
-          <div><span className="gs170-kicker">04 // URMĂTORUL EVENIMENT</span>
-            <h2 id="gs170-final-title">Spune-ne data.<br /><em>Stabilim detaliile.</em></h2></div>
+        <div className="gs170-films__cards">
+          {films.map((item, index) => <button className="gs170-film-card" key={item.video.id} type="button"
+            onClick={() => setFilmIndex(index)} aria-label={"Deschide filmul: " + item.label}>
+            <span className="gs170-film-card__image">
+              <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360} loading="lazy" decoding="async" />
+              <span className="gs170-film-card__play"><Play /> <span>Redă filmul</span></span>
+              <span className="gs170-film-card__number">0{index + 1} / 03</span>
+            </span>
+            <span className="gs170-film-card__title">
+              <span><small>{item.eyebrow}</small><strong>{item.label}</strong></span><Arrow diagonal />
+            </span>
+          </button>)}
+        </div>
+      </div>
+    </section>
+    <section className="gs170-final" aria-labelledby="gs170-final-title">
+      <div className="gs297-shell gs170-final__inner">
+        <div>
+          <span className="gs170-kicker">04 / URMĂTORUL EVENIMENT</span>
+          <h2 id="gs170-final-title">Spune-ne data.<br/><em>Stabilim detaliile.</em></h2>
+        </div>
+        <div>
           <p>Locația, tipul evenimentului și serviciile dorite sunt suficiente pentru a începe discuția.</p>
-          <Link to="/contact" className="gs170-btn gs170-btn--green">
-            Solicită o ofertă <ArrowRight size={19} />
-          </Link>
+          <Link to="/contact" className="gs170-btn gs170-btn--green">Solicită o ofertă <Arrow diagonal /></Link>
         </div>
-      </section>
-
-      <Dialog open={filmIndex !== null} onOpenChange={open => { if (!open) setFilmIndex(null); }}>
-        <DialogContent className="gs170-dialog">
-          <DialogTitle className="pr-8 font-display text-xl">{film?.label ?? "Film Green Sound Music"}</DialogTitle>
-          <DialogDescription className="gs170-dialog__description">
-            Film real Green Sound Music. Apasă Play pentru a porni videoclipul.
-          </DialogDescription>
-          {film && <VideoLite video={film.video} className="aspect-video w-full" />}
-        </DialogContent>
-      </Dialog>
-    </>
-  );
+        <svg className="gs297-final-wave" viewBox="0 0 500 105" fill="none" aria-hidden="true">
+          <path d="M0 52h90l10-10 10 20 14-38 14 56 15-75 17 98 15-75 15 56 14-38 12 16h274" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      </div>
+    </section>
+    <Dialog open={filmIndex !== null} onOpenChange={open => { if (!open) setFilmIndex(null); }}>
+      <DialogContent className="gs170-dialog w-[min(94vw,1000px)] max-w-none bg-[#0c1d15] text-white border-white/30">
+        <DialogTitle className="pr-8 font-display text-xl">{film?.label ?? "Film Green Sound Music"}</DialogTitle>
+        <DialogDescription className="text-white/80">Film real Green Sound Music. Apasă Play pentru a porni videoclipul.</DialogDescription>
+        {film && <VideoLite video={film.video} className="aspect-video w-full" />}
+      </DialogContent>
+    </Dialog>
+  </>;
 }

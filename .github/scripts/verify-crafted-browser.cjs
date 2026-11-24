@@ -42,7 +42,9 @@ async function main() {
       });
       assert(image.w>0&&image.h>0&&image.src.includes("/media/greensound/"),
         "First-party concert hero must decode");
-      assert.match((await page.locator(".gs170-hero h1").innerText()).replace(/\s+/g," "),/^Muzica\.\s*Lumina\.\s*Evenimentul tău\.$/i);
+      assert.match((await page.locator(".gs170-hero h1").innerText()).replace(/\s+/g," "),/^EVENIMENTE\s*de neuitat\.$/i);
+      assert.equal(await page.locator(".gs297-diptych figure").count(),2);
+      assert(await page.locator(".gs297-portrait img").evaluate(async im=>{await im.decode();return im.naturalWidth>0}));
       assert.equal(await page.locator(".gs-index__chapter").count(),3);
       assert.equal(await page.locator(".gs-index__service").count(),8);
       assert.equal(await page.locator(".gs170-service-card").count(),0);
@@ -50,9 +52,9 @@ async function main() {
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator("video[autoplay]").count(),0);
       assert.equal(await page.locator(".gs170-hero__control button[aria-pressed=true]").count(),2);
-      const noMotion=await page.locator(".gs170-stage__beams i").first()
-        .evaluate(el=>getComputedStyle(el).animationName);
-      assert.equal(noMotion,"none","Reduced motion must suppress stage beams");
+      const noMotion=await page.locator(".gs297-signal svg").evaluate(el=>getComputedStyle(el).animationName);
+      assert.equal(noMotion,"none","Reduced motion must suppress signal entrance");
+      assert.equal(await page.locator(".gs170-stage__beams,.gs170-stage__console").count(),0,"Removed decoration must not return");
       await noOverflow(page,"/",width);
       await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
       if(width===390||width===1440){
@@ -183,18 +185,18 @@ async function main() {
     await motionPage.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     const stage=motionPage.locator(".gs170-hero");
     assert.equal(await stage.getAttribute("data-lights"),"on");
-    const beam=await motionPage.locator(".gs170-stage__beams i").first()
-      .evaluate(el=>getComputedStyle(el).animationName);
-    assert.match(beam,/gs170-beam/);
+    const signal=await motionPage.locator(".gs297-signal svg").evaluate(el=>getComputedStyle(el).animationName);
+    assert.equal(signal,"gs297-signal-in");
+    const greenFilter=await motionPage.locator(".gs170-stage__image").evaluate(el=>getComputedStyle(el).filter);
     await motionPage.screenshot({path:output+"/v170-light-green-1440.png",animations:"allow"});
     await motionPage.getByRole("button",{name:"Rece"}).click();
     assert.equal(await stage.getAttribute("data-hue"),"cool");
+    await motionPage.waitForFunction(green=>getComputedStyle(document.querySelector(".gs170-stage__image")).filter!==green,greenFilter);
     await motionPage.screenshot({path:output+"/v170-light-cool-1440.png",animations:"disabled"});
     await motionPage.getByRole("button",{name:"Efect ON"}).click();
     assert.equal(await stage.getAttribute("data-lights"),"off");
     await motionPage.evaluate(()=>document.documentElement.setAttribute("data-gs-performance","lite"));
-    assert.equal(await motionPage.locator(".gs170-stage__beams i").first().evaluate(el=>
-      getComputedStyle(el).animationName),"none","Lite must suppress decorative motion");
+    assert.equal(await motionPage.locator(".gs297-signal svg").evaluate(el=>getComputedStyle(el).animationName),"none","Lite must suppress decorative motion");
     await motionPage.close();
 
     // V157: Contact editorial journey proof at the same real desktop/mobile widths.

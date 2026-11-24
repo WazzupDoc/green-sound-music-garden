@@ -1,3 +1,13 @@
+## V297 / 2026-11-24 — Owner-requested full homepage reconstruction (DRAFT)
+Owner rejected accumulated styling and asked for total reconstruction. Baseline V295 exact-head 972002afac6ab99f7295524c77e7ce4d7f5c126e principal CI #45389588007 success; V296 #334 failed CI #45412572854 and is deliberately not inherited. New branch design/v297-from-scratch-editorial.
+| Zone | Observable defect | New code | Validation |
+|---|---|---|---|
+| Home hero | dark left headline / right overlay, hidden old console, multiple legacy layers | paper editorial cover, large two-line type, genuine concert + DJ diptych, native navigation, photo tone controls | matched 390/1440 and six widths pending |
+| Services | overlapping legacy CSS, long stacked cards | alternating full-width photographic programme with eight original native links | screenshot and link tests pending |
+| Films | small/large stacked layout | full-width lead film, paired second row, real posters, explicit play | screenshot and modal Escape pending |
+| Conversion | repeated photograph and old styling | lime closing composition, one final quote CTA, original SVG signal | SSR/link tests pending |
+Removed five route-inline stylesheets from active homepage and replaced complete component; historical files kept for rollback. No main/deploy, dependencies or new media. Next: validate screenshots and apply system to interior routes only after owner visual feedback. No aesthetic sign-off or unmeasured performance claim.
+
 ## V295 / 2026-11-24 — Cinematic navigation (draft)
 - Zone: global header and native mobile menu. Source inspection found existing abstract setlist/equalizer and no photo preview. Replaced visible cue with a compact photographic register keyed to the focused/hovered link, original studio waveform (no external image), editorial serif opening, staggered transform/opacity entrance; desktop links opt into existing native route transitions. Keep six native links, search, service directory, focus restoration and native dialog. No image rendered while closed; Lite/reduced motion disable nonessential effects. Source `797fde34df702cc1575c94806abb006cd2fcc829`. Dedicated Chromium 390/768 before/after, six widths, focus/keyboard/route/preview image and motion checks written, not yet observed. V294 main CI success #45373732255; its dedicated screenshots not independently inspected. Next: portfolio transitions, spring CTA and shared-image audit. No main/deploy.
 

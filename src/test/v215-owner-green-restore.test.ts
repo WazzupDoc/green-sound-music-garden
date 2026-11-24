@@ -7,14 +7,15 @@ describe("V215: restore the owner's green concept without losing real discovery"
  it("keeps the actual V213 original content, media, mixer and no V214 vector score",()=>{
    const home=read("src/components/atelier/ConceptHomeV170.tsx");
    const route=read("src/routes/index.tsx");
-   expect(home).toContain('className="gs170-stage__console"');
+   expect(home).not.toContain('className="gs170-stage__console"');
+   expect(home).toContain("images.dj.src");
    expect(home).not.toContain("SceneScoreV214");
    expect(home).toContain("images.concert.src");
    expect(home).toContain("<ProductionIndex />");
    expect(home).not.toContain("featured.map((item, index)");
    expect(home).not.toContain("process.map((step, index)");
    expect(home).toContain("VideoLite video={film.video}");
-   expect(route).toContain('home-refinement-v215.css?inline');
+   expect(route).toContain('home-rebuild-v297.css?inline');
    expect(route).not.toContain("hero-signal-v214");
  });
  it("restores simple nav and improves usable finder with mobile-safe look",()=>{
