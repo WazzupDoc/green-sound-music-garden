@@ -1,3 +1,7 @@
+## V294 / 2026-11-24 — Event editorial cue (DRAFT)
+- Branch `design/v294-event-editorial-cue`, based on V293 exact HEAD `3944161fd991ee5d2bbe5052b93371f78dd900e2`; principal CI run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45361301819 success, including TS, SSR build, gzip, tests, Chromium, Contact hydration and sitemap audit.
+- Event detail opening: distinct serif headline, single lime quote CTA, secondary quicklinks, original waveform and image frame; event data, anchor/focus behavior, FAQ/video/form unchanged. Source commit `31152a3206d0e52d71f22fcaf5ad3617d7720c80`. Candidate CI and matched screenshot audit pending; do not merge/deploy. No new deps/media or main edits. Next: global navigation, event index.
+
 ## V293 — 2026-11-24 — Bespoke homepage rebuild (DRAFT, QA pending)
 Original full-home visual direction, based on V292 exact head 25afddbca9cdb9a8e564d89fb14d5eb0dcdbda72 (CI run 45275626040). Dark emerald service editorial, large three-line opening, asymmetrical film catalogue on paper, lime final CTA; retains three chapters/eight services, three films, existing light controls and contact routes. No added assets, packages, backend, automatic sending or production deployment. Six-width real Chromium before/after and exact-head QA required; no 60fps/CLS/rank claims. Next: inspect real captures, then events detail and global navigation. Rollback: discard isolated branch, no main changes.
 
