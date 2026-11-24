@@ -1,3 +1,8 @@
+## V295 / 2026-11-24 — Cinematic navigation (DRAFT)
+- Branch `design/v295-cinematic-navigation`, based on V294 head `54a159cf80ba6ec60530215e40f375a6d0b2ca0f`; principal CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45373732255 success. V294 dedicated visual artifact not independently inspected.
+- Global native menu: first-party photo preview by pointer/keyboard selection, custom studio waveform, staggered editorial reveal, responsive layout; desktop links use existing native route transitions. No new deps/assets or main/deployment edits. Source `797fde34df702cc1575c94806abb006cd2fcc829`.
+- Candidate principal CI and dedicated Chromium comparison pending, no visual sign-off. Next: portfolio shared-image transitions and spring CTA. Do not merge or publish without visual and exact-head verification.
+
 ## V294 / 2026-11-24 — Event editorial cue (DRAFT)
 - Branch `design/v294-event-editorial-cue`, based on V293 exact HEAD `3944161fd991ee5d2bbe5052b93371f78dd900e2`; principal CI run https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45361301819 success, including TS, SSR build, gzip, tests, Chromium, Contact hydration and sitemap audit.
 - Event detail opening: distinct serif headline, single lime quote CTA, secondary quicklinks, original waveform and image frame; event data, anchor/focus behavior, FAQ/video/form unchanged. Source commit `31152a3206d0e52d71f22fcaf5ad3617d7720c80`. Candidate CI and matched screenshot audit pending; do not merge/deploy. No new deps/media or main edits. Next: global navigation, event index.
