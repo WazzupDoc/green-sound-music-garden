@@ -1,3 +1,6 @@
+## V294 / 2026-11-24
+No added photography, video, font, icon library or dependency. Event images remain existing `event.image` records in `src/data/site.ts`; existing provenance unchanged. Custom arrow and waveform are original inline SVG geometry authored in this iteration. Existing self-hosted typography reused. No TikTok frames, stock or invented event imagery.
+
 ## V293 — 2026-11-24
 No new external assets or font imports. Existing project concert, service and three film media retain their existing provenance. New inline arrow/play marks and SVG turbulence texture are original code for this branch, not copied from external UI kits. No stock or AI event media.
 

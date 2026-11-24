@@ -1,3 +1,9 @@
+## V294 / 2026-11-24 — Event editorial cue
+- https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — notation as visual language, typography as composition. Adapted original waveform register and serif headline; no code or assets copied.
+- https://tympanus.net/codrops/2026/06/23/podium-building-a-website-where-running-becomes-storytelling/ — cinematic editorial restraint; adapted a single image frame, not extra effects. No third-party code used; no license relied on.
+- https://developers.google.com/search/docs/appearance/structured-data/sd-policies — visible factual content; keep existing FAQ schema tied to actual questions, no fake social proof or Product schema for non-product pages. No rankings promised.
+- Experiment gate: single conversion cue + editorial index. Reject extra scroll hijacking, fake live metrics, additional libraries, magnetic target movement that could reduce link accuracy. Existing native anchor retained; hover transforms only on fine pointer, disabled Lite/reduced-motion. No new costs/deps; browser verification pending; rollback by reverting isolated changes.
+
 ## V293 — 2026-11-24 — Editorial / motion research
 - https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — musical notation and differentiated type hierarchy; adapted as an original numbered composition, not copied assets/code.
 - https://tympanus.net/codrops/2026/06/29/inside-bisous-designing-an-editorial-experience-for-cinematic-cgi/ — restrained motion and media-led editorial layout; adapted asymmetrical film ordering and whitespace. No third-party code adopted, license not relied upon.
