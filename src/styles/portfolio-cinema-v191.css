@@ -227,3 +227,92 @@ html[data-gs-performance="lite"] .gs161-portfolio .rs-video-library__item,
 html[data-gs-performance="lite"] .gs161-portfolio .gs161-film-thumb img {
   animation:none!important;transition:none!important;transform:none!important;
 }
+
+
+/* V296 — contact-sheet viewer. The dialog is portalled outside the route root;
+   scope to its own class, not .gs161-portfolio. Original media only. */
+.gs296-contact-sheet {
+  --gs296-cut-time: 280ms;
+  --gs296-cut-ease: cubic-bezier(.2,.72,.25,1);
+  background: #0a1b13;
+  border-color: #a9c5a36b;
+  gap: clamp(10px,1.4vw,20px);
+}
+.gs296-contact-sheet [role="status"] { overflow-wrap: anywhere; }
+.gs296-contact-sheet .rs-photo-dialog__media {
+  min-width: 0;
+  background: #06110b;
+  border: 1px solid #a9c5a336;
+}
+.gs296-contact-sheet .rs-photo-dialog__media > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 51dvh;
+  object-fit: contain;
+  animation: gs296-edit-cut var(--gs296-cut-time) var(--gs296-cut-ease) both;
+}
+@keyframes gs296-edit-cut {
+  from { opacity: .52; }
+  to { opacity: 1; }
+}
+.gs296-contact-sheet .gs296-filmstrip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(0,1fr));
+  gap: 8px;
+  padding: 12px 0 0;
+  border-top: 1px solid #afcda55e;
+  min-width: 0;
+}
+.gs296-contact-sheet .gs296-filmstrip button {
+  position: relative;
+  display: block;
+  min-width: 0;
+  min-height: 44px;
+  aspect-ratio: 16/9;
+  background: #142c1c;
+  border: 2px solid transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.gs296-contact-sheet .gs296-filmstrip button img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gs296-contact-sheet .gs296-filmstrip button span {
+  position: absolute;
+  inset: auto auto 4px 4px;
+  padding: 3px 6px;
+  color: #f1f8e9;
+  background: #07180f;
+  font-size: .67rem;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+.gs296-contact-sheet .gs296-filmstrip button[aria-pressed="true"] {
+  border-color: #c9f4a7;
+}
+.gs296-contact-sheet .gs296-filmstrip button[aria-pressed="true"] span {
+  background: #c9f4a7;
+  color: #102417;
+}
+.gs296-contact-sheet .gs296-filmstrip button:focus-visible {
+  outline: 2px solid #e4ffd0;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .gs296-contact-sheet .gs296-filmstrip { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .gs296-contact-sheet .rs-photo-dialog__media > img { max-height: 39dvh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gs296-contact-sheet, .gs296-contact-sheet .rs-photo-dialog__media > img {
+    animation: none !important;
+  }
+}
+html[data-gs-performance="lite"] .gs296-contact-sheet,
+html[data-gs-performance="lite"] .gs296-contact-sheet .rs-photo-dialog__media > img {
+  animation: none !important;
+}
