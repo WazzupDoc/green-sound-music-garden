@@ -1,3 +1,6 @@
+## V295 / 2026-11-24
+Existing first-party `images.concert`, `images.dj`, `images.scena`, `images.hostess` reused as decorative menu previews; provenance unchanged, no external assets or new image download. Studio cue is original inline SVG waveform, not a studio photograph. No new fonts or packages; previews are rendered only while the native menu is open.
+
 ## V294 / 2026-11-24
 No added photography, video, font, icon library or dependency. Event images remain existing `event.image` records in `src/data/site.ts`; existing provenance unchanged. Custom arrow and waveform are original inline SVG geometry authored in this iteration. Existing self-hosted typography reused. No TikTok frames, stock or invented event imagery.
 

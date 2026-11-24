@@ -145,17 +145,23 @@ async function main() {
     await activePage.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     await activePage.locator(".atelier-header__menu-btn").click();
     await activePage.locator("dialog.atelier-mobile-menu[open]").waitFor();
-    const animationName = await activePage.locator(".gsm-nav-index__layout")
+    const animationName = await activePage.locator(".gsm-nav-index__entry").first()
       .evaluate(element => getComputedStyle(element).animationName);
-    assert.match(animationName, /gsm-nav-reveal/, "Full-motion menu entrance must be active");
+    assert.equal(animationName, "gs295-cue-in", "Full-motion staggered menu entrance must be active");
+    assert.equal(await activePage.locator(".gsm-nav-index__layout").evaluate(el => getComputedStyle(el).animationName), "none", "Avoid double entrance animation");
+    await activePage.locator(".gsm-nav-index__link").nth(1).focus();
+    assert.equal(await activePage.locator(".gs295-preview").getAttribute("data-section"), "Evenimente");
+    await activePage.locator(".gs295-preview img").evaluate(img => img.decode());
+    assert.equal(await activePage.locator(".gs295-preview img").evaluate(el => getComputedStyle(el).animationName), "gs295-photo-in");
     await activePage.screenshot({
       path: `${output}/stage-index-motion-390.png`, animations: "allow",
     });
     await activePage.evaluate(() =>
       document.documentElement.setAttribute("data-gs-performance", "lite"));
-    const liteAnimation = await activePage.locator(".gsm-nav-index__layout")
+    const liteAnimation = await activePage.locator(".gsm-nav-index__entry").first()
       .evaluate(element => getComputedStyle(element).animationName);
     assert.equal(liteAnimation, "none", "Lite must suppress navigation animation");
+    assert.equal(await activePage.locator(".gs295-preview img").evaluate(el => getComputedStyle(el).animationName), "none", "Lite must suppress photo motion");
     await activePage.screenshot({
       path: `${output}/stage-index-lite-390.png`, animations: "disabled",
     });

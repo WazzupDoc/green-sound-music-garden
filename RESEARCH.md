@@ -1,3 +1,8 @@
+## V295 / 2026-11-24 — Cinematic navigation
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — Waaark uses music-inspired imagery and rhythmic motion; adapted the navigation's photographic cue and original waveform, not their code or art.
+- https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using — native progressive transitions; existing TanStack Link viewTransition option used for desktop navigation, no additional package or copied code.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — disable nonessential transforms and transitions; Lite profile also disables snapshot motion. Rejected full-screen WebGL, pointer trail assets, delaying navigation for effect, new animation dependencies. No license reliance, cost or added package. Visual experiment: preview follows keyboard and pointer, evidence pending; revert isolated branch if it fails.
+
 ## V294 / 2026-11-24 — Event editorial cue
 - https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — notation as visual language, typography as composition. Adapted original waveform register and serif headline; no code or assets copied.
 - https://tympanus.net/codrops/2026/06/23/podium-building-a-website-where-running-becomes-storytelling/ — cinematic editorial restraint; adapted a single image frame, not extra effects. No third-party code used; no license relied on.
