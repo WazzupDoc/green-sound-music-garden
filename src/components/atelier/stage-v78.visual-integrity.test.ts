@@ -18,7 +18,7 @@ describe("Legacy visual assets retained, V86 signature loads instead of retired 
   expect(read("src/styles/stage-v79.css")).toContain(".gs-stage-v79");
   const activeHome=read("src/routes/index.tsx");
   expect(activeHome).toContain("<ConceptHomeV170 />");
-  expect(activeHome).toContain("home-reference-v170.css?inline");
+  expect(activeHome).toContain("home-rebuild-v297.css?inline");
   expect(signature).toContain(".gs-home-v86 .crafted-hero");
   expect(signature).toContain(".gs-home-v86 .gs-index__chapters");
   expect(read("src/styles/home-event-v89.css")).toContain(".gs-home-v86 .gs-index__chapters");
