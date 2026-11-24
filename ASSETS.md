@@ -1,3 +1,6 @@
+## V297 / 2026-11-24
+Existing `images.concert`, `images.dj` and ProductionIndex original photos; three existing video posters and IDs from `src/data/site.ts`. Preserve original provenance and dimensions, no new external media, no TikTok, no fabricated event imagery. Existing Hanken Grotesk and Instrument Serif loaded through the existing root; no new font licenses. Signal and arrows original inline SVG; no external code. Hero concert priority retained, secondary portrait lazy-loaded. No new runtime dependencies.
+
 ## V295 / 2026-11-24
 Existing first-party `images.concert`, `images.dj`, `images.scena`, `images.hostess` reused as decorative menu previews; provenance unchanged, no external assets or new image download. Studio cue is original inline SVG waveform, not a studio photograph. No new fonts or packages; previews are rendered only while the native menu is open.
 
