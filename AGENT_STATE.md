@@ -900,3 +900,6 @@ Visual audit: First V191 desktop screenshot was too empty above the film; tighte
 
 ### 2026-11-23 V286 rotation: Event detail timeline
 - Area: `/evenimente/$slug` planning section; source `EventPage.tsx`. Changed generic heading and repetitive paragraph to event-specific planning explanation. No visual screenshot or performance measurement; no premium redesign claim. QA pending. Next: browser evidence and navigation/mobile.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.

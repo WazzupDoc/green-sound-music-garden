@@ -1104,3 +1104,6 @@ Branch `fix/v134-photo-dialog-home-end-keyboard` stacked on V133. Photo dialog s
 
 ## V135 — Portfolio modal origin focus (DRAFT, QA pending)
 Branch `fix/v135-photo-dialog-origin-focus` based on V134. Photo modal now preserves the opening thumbnail as the focus-return target when navigating between photos; fallback remains gallery heading. Source change committed; TypeScript/SSR/Vitest/gzip, real Chromium before/after at 390/1440 and four other widths, and exact-head CI remain unverified. Main and production unchanged. Next: film archive flow and full browser regression.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.

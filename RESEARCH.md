@@ -789,3 +789,6 @@ Reference: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav — sem
 ### 2026-11-23 V286 — event planning clarity
 - https://www.w3.org/WAI/tutorials/page-structure/headings/ — descriptive headings help users navigate content; adapted original Romanian heading, no external code or assets.
 - https://web.dev/learn/accessibility/headings-and-landmarks — meaningful hierarchy improves scan/navigation; retained h2/h3 structure. No copied code. Rejected adding a decorative animated timeline because it adds weight without proven conversion benefit.
+
+
+V293 QA follow-up 2026-11-24: exact-head dc960803741406ae3a253b6326d4ad850e8a055c dedicated Chromium comparison passed (https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45356069325/artifacts/14903310026). Full CI failed at obsolete hero copy assertion, after TS/build/budget/unit gates. Update exact expected three-line heading and retain all other checks. No visual change or new assets in this follow-up; artifact images not independently inspected. V292 remains full-CI baseline. Next: verify new exact-head then event detail. No main/deploy.
