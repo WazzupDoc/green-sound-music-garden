@@ -1,25 +1,26 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ArrowUpRight, ChevronDown, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
-import { lazy, Suspense, useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Logo } from "./Logo";
 import stageIndexCss from "@/styles/navigation-v81.css?inline";
 import liveSetlistCss from "@/styles/navigation-v189.css?inline";
 import restoredNavCss from "@/styles/navigation-v215.css?inline";
 import productionNavCss from "@/styles/navigation-v217.css?inline";
 import { ServiceDirectoryV217 } from "./ServiceDirectoryV217";
-import { business } from "@/data/site";
+import { business, images } from "@/data/site";
+import cinematicNavCss from "@/styles/navigation-v295.css?inline";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
 // The searchable directory is requested only when opened, not on every page load.
 const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder").then(module => ({ default: module.FrequencyFinder })));
 
 const navigation = [
-  { to: "/", title: "Acasă", note: "Descoperă Green Sound Music" },
-  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live" },
-  { to: "/servicii", title: "Servicii", note: "Muzică, sonorizare, lumini și studio" },
-  { to: "/portofoliu", title: "Portofoliu", note: "Filmele și proiectele existente" },
-  { to: "/studio-inregistrari", title: "Studio", note: "Înregistrări și producție audio" },
-  { to: "/despre-noi", title: "Despre noi", note: "Povestea și abordarea echipei" },
+  { to: "/", title: "Acasă", note: "Muzică, lumină și producție", photo: images.concert },
+  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live", photo: images.dj },
+  { to: "/servicii", title: "Servicii", note: "Muzică, sonorizare, lumini și studio", photo: images.scena },
+  { to: "/portofoliu", title: "Portofoliu", note: "Filmele și proiectele existente", photo: images.concert },
+  { to: "/studio-inregistrari", title: "Studio", note: "Înregistrări și producție audio", photo: null },
+  { to: "/despre-noi", title: "Despre noi", note: "Povestea și abordarea echipei", photo: images.hostess },
 ] as const;
 
 export function SiteHeader() {
@@ -161,6 +162,8 @@ export function SiteHeader() {
     links[next]?.focus();
   };
 
+  const preview = navigation[menuSelection] ?? navigation[0];
+
   const onFinderOpenChange = (next: boolean) => {
     // Keep the dialog root mounted after first use; Radix owns close focus.
     setFinderOpen(next);
@@ -173,6 +176,7 @@ export function SiteHeader() {
       <style>{liveSetlistCss}</style>
       <style>{restoredNavCss}</style>
       <style>{productionNavCss}</style>
+      <style>{cinematicNavCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
@@ -287,10 +291,13 @@ export function SiteHeader() {
                 <span>CANAL {String(menuSelection + 1).padStart(2, "0")} / 06</span>
                 <strong>{navigation[menuSelection]?.note ?? navigation[0].note}</strong>
               </div>
-              <p className="gsm-nav-index__note">
-                Explorează evenimentele, producția și oamenii
-                din spatele Green Sound Music.
-              </p>
+              {open && <div className="gs295-preview" aria-hidden="true" data-section={preview.title}>
+                <div className="gs295-preview__media" key={preview.to}>
+                  {preview.photo ? <img src={preview.photo.src} width={preview.photo.w} height={preview.photo.h} alt="" decoding="async" /> : <svg viewBox="0 0 240 150" fill="none" aria-hidden="true" className="gs295-preview__signal"><path d="M0 75h36l12-22 12 46 17-72 14 98 16-84 14 60 13-32 14 6h92" stroke="currentColor" strokeWidth="1.5"/><path d="M0 34h240M0 116h240" stroke="currentColor" strokeOpacity=".3"/></svg>}
+                </div>
+                <div className="gs295-preview__caption"><small>0{menuSelection + 1} / 06</small><strong>{preview.title}</strong><span>{preview.note}</span></div>
+              </div>}
+              <p className="gsm-nav-index__note">Muzică, producție și oameni. Din Pitești.</p>
               <div className="gsm-nav-index__cue" aria-live="off" aria-hidden="true">
                 <span className="gsm-nav-index__cue-label">ACUM EXPLOREZI / {String(menuSelection + 1).padStart(2, "0")}</span>
                 <strong>{navigation[menuSelection]?.title ?? "Acasă"}</strong>
@@ -302,7 +309,7 @@ export function SiteHeader() {
             <nav aria-label="Navigare principală mobilă" className="gsm-nav-index__navigation">
               <ol className="gsm-nav-index__list" onKeyDown={onMenuKeyDown}>
                 {navigation.map((entry, index) => (
-                  <li key={entry.to} className="gsm-nav-index__entry" data-preview={index === menuSelection ? "true" : "false"}>
+                  <li key={entry.to} className="gsm-nav-index__entry" data-preview={index === menuSelection ? "true" : "false"} style={{ "--gs295-order": index } as CSSProperties}>
                     <Link
                       to={entry.to}
                       onPointerEnter={() => setMenuSelection(index)}
