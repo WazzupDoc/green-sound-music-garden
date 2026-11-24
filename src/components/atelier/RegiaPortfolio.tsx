@@ -96,7 +96,7 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
           if (thumbnail) thumbnail.focus();
           else document.getElementById("rs-gallery-title")?.focus();
           lastPhotoRef.current = null;
-        }} className="rs-photo-dialog max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
+        }} className="rs-photo-dialog gs296-contact-sheet max-h-[95dvh] w-[min(96vw,1200px)] max-w-none overflow-y-auto rounded-none border-[#F3F0E950] bg-[#0A0F15] p-4 sm:p-6">
           <DialogTitle className="text-xl font-semibold text-[#F3F0E9]">{selected?.title ?? "Fotografie"}</DialogTitle>
           <DialogDescription className="text-base text-[#B8BCB9]">
             {selected?.context ?? "Arhiva Green Sound Music"}. Folosește săgețile, Home/End sau glisează pentru a naviga.
@@ -117,13 +117,25 @@ export function RegiaPhotoRail({ activePhoto }: { activePhoto:string|undefined }
                 }
                 touchOrigin.current=null;
               }}>
-              <img src={selected.image.src} width={selected.image.w} height={selected.image.h}
+              <img key={selected.id} data-gs296-photo={selected.id} src={selected.image.src} width={selected.image.w} height={selected.image.h}
                 alt={selected.image.alt} decoding="async" />
             </div>
             <div className="rs-photo-dialog__actions">
               <button type="button" onClick={()=>step(-1)} aria-label={`Fotografia anterioară: ${previousPhoto?.title ?? ""}`}><ArrowLeft size={20} aria-hidden /> Anterior</button>
               <span role="status" aria-live="polite" aria-atomic="true">{selectedIndex + 1} din {frames.length}: {selected.title}</span>
               <button type="button" onClick={()=>step(1)} aria-label={`Fotografia următoare: ${nextPhoto?.title ?? ""}`}>Următor <ArrowRight size={20} aria-hidden /></button>
+            </div>
+            <div className="gs296-filmstrip" role="group" aria-label="Alege direct fotografia">
+              {frames.map((frame, index) => (
+                <button type="button" key={frame.id} data-frame-id={frame.id}
+                  aria-pressed={selected.id === frame.id}
+                  aria-label={`Fotografia ${index + 1}: ${frame.title}`}
+                  onClick={() => { if (frame.id !== selected.id) change(frame.id); }}>
+                  <img src={frame.image.src} alt="" width={frame.image.w} height={frame.image.h}
+                    loading="lazy" decoding="async" />
+                  <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                </button>
+              ))}
             </div>
           </>}
         </DialogContent>
