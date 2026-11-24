@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 const read=(path:string)=>readFileSync(path,"utf8");
 const route=read("src/routes/index.tsx");
 const page=read("src/components/atelier/ConceptHomeV170.tsx");
-const css=read("src/styles/home-reference-v170.css");
+const css=read("src/styles/home-rebuild-v297.css");
 const oldArtwork=read("src/components/atelier/ProductionDeckArt.tsx");
 const programme=read("src/components/atelier/ProductionIndex.tsx");
 describe("V170 production equipment is a lightweight UI illustration",()=>{
@@ -11,8 +11,8 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
    expect(oldArtwork).toContain('<svg viewBox="0 0 900 490"');
    expect(route).toContain("<ConceptHomeV170 />");
    expect(page).not.toContain("<ProductionDeckArt");
-   expect(page).toContain("gs170-stage__console");
-   expect(css).toContain("gs170-stage__eq");
+   expect(page).not.toContain("gs170-stage__console");
+   expect(css).toContain("gs297-diptych");
  });
  it("routes exactly eight actual catalogue services, without fabricated offerings",()=>{
    for (const slug of [
@@ -26,7 +26,8 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
    expect(programme).toContain("chapter.linkedServices.map((service)");
  });
  it("keeps provenance, reduced motion and no auto-playing media",()=>{
-   expect(page).toContain("Real first-party media");
+   expect(page).toContain("images.concert.src");
+   expect(page).toContain("images.dj.src");
    expect(page).toContain("VideoLite video={film.video}");
    expect(css).toContain("prefers-reduced-motion:reduce");
    expect(css).not.toContain("url(https:");
