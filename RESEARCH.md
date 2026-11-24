@@ -1,3 +1,9 @@
+## V297 / 2026-11-24 — Independent homepage rebuild
+- https://tympanus.net/codrops/2026/02/13/1820-productions-minimal-design-maximal-motion/ — production website emphasizes work instead of visual containers; adapted large lead film and restrained CSS motion, not code/assets.
+- https://tympanus.net/codrops/2026/07/27/between-print-and-digital-the-making-of-mersis-website/ — print/editorial structure; adapted cover typography, photo diptych and alternating running order. Rejected horizontal/forced scroll.
+- https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — musical notation as visual vocabulary; own inline SVG signal, no imported art or code.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — static photos and controls in reduced motion and Lite; no autoplay. No third-party code or dependencies adopted, so no external license relied upon. Signature experiment: poster cover with real paired photographs and one short waveform entrance. No scroll-hijack, WebGL or new tracking. Conceptual gate passes; measured performance, visual and interaction evidence pending.
+
 ## V295 / 2026-11-24 — Cinematic navigation
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — Waaark uses music-inspired imagery and rhythmic motion; adapted the navigation's photographic cue and original waveform, not their code or art.
 - https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using — native progressive transitions; existing TanStack Link viewTransition option used for desktop navigation, no additional package or copied code.
