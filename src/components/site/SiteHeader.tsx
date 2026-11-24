@@ -188,7 +188,7 @@ export function SiteHeader() {
                   setServicesOpen(false);
                 }
               }}>
-              <Link to="/servicii" className="atelier-header__link"
+              <Link to="/servicii" viewTransition className="atelier-header__link"
                 activeProps={{ className: "atelier-header__link--active" }}
                 onClick={() => setServicesOpen(false)}>Servicii</Link>
               <button type="button" ref={servicesButtonRef}
@@ -202,7 +202,7 @@ export function SiteHeader() {
               {servicesOpen && <ServiceDirectoryV217 onNavigate={() => setServicesOpen(false)} />}
             </div>
           ) : (
-            <Link key={entry.to} to={entry.to} activeOptions={{ exact: entry.to === "/" }}
+            <Link key={entry.to} to={entry.to} viewTransition activeOptions={{ exact: entry.to === "/" }}
               activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
               {entry.title}
             </Link>
@@ -220,7 +220,7 @@ export function SiteHeader() {
           <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
             <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
           </a>
-          <Link to="/contact" className="atelier-header__quote">
+          <Link to="/contact" viewTransition className="atelier-header__quote">
             Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
