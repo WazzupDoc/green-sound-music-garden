@@ -1,3 +1,10 @@
+## V296 / 2026-11-24 — Portfolio photographic viewer research
+- https://tympanus.net/codrops/2026/05/02/designing-against-the-gallery-a-two-year-journey-to-a-layered-portfolio-experience/ — layered gallery and modal presentation make context accessible; adapt as native buttons for direct selection inside the existing accessible viewer, not a cloned design.
+- https://tympanus.net/codrops/2025/01/30/case-study-gianluca-gradogna-portfolio-25/ — selective opacity and motion for photography; original 280ms photo cut, no custom scroll, JS animation library or copied code.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/view-transition-name — unique snapshot names required. Rejected native shared-image morph for this iteration: gallery and portalled dialog simultaneously render the same image, complicating unique names and focus; prefer local opacity cut with no snapshot overlay.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — remove the cut in reduced-motion and existing Lite. No third-party code, images, font, branding or license relied upon; no additional dependency or runtime service.
+- Addition test: quicker selection of known real photos; native buttons, URL and keyboard semantics, existing SSR gallery; lazy thumbnails repeat existing URLs only in open dialog (decode overhead not measured); original scoped CSS, no autoplay, no vendor cost. Candidate passes conceptual screen only, must meet real Chromium and bundle budget before acceptance. Reject WebGL, GSAP, autoplay and forced shared-element animation for now.
+
 ## V295 / 2026-11-24 — Cinematic navigation
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — Waaark uses music-inspired imagery and rhythmic motion; adapted the navigation's photographic cue and original waveform, not their code or art.
 - https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using — native progressive transitions; existing TanStack Link viewTransition option used for desktop navigation, no additional package or copied code.
