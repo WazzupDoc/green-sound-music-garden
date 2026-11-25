@@ -67,7 +67,7 @@ export function ConceptHomeV170() {
         </div>
         <div className="gs170-hero__content">
           <span className="gs300-eyebrow">MUZICĂ · TEHNICĂ · PRODUCȚIE EVENIMENTE</span>
-          <h1 id="gs170-title"><span>EVENIMENTE</span><em>DE NEUITAT</em></h1>
+          <h1 id="gs170-title"><span>EVENIMENTE</span><em>DE NEUITAT.</em></h1>
           <div className="gs297-cover-aside">
             <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
             <p className="gs170-hero__lead">Sunet, lumini și atmosferă pentru evenimente cu personalitate, în Pitești și Argeș. DJ & MC, trupă live și producție tehnică.</p>
