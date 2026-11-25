@@ -1,3 +1,6 @@
+## V302 / 2026-11-25
+Primary art reference is the owner's approved generated mockup, inspected directly beside the real V300 browser capture. Adapted outline geometry, active lime cue and three chapter marks; rejected V301 eight unrelated miniature icons. Original vector paths manually authored, no external code/assets/dependencies. No new external research performed in this targeted correction. Browser gate pending.
+
 ## V300 / 2026-11-25 — Cinematic owner-approved composition
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — rhythm and equalizer-inspired visual identity; adapted a deterministic vector waveform rather than a mouse image trail.
 - https://tympanus.net/codrops/2026/11/12/dkton/ — music as a design system; adapted silent visual signal, rejected automatic sound and Web Audio.
