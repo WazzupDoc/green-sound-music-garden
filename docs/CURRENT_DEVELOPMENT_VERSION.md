@@ -1,3 +1,6 @@
+## V302 / 2026-11-25 — Reference iconography (DRAFT)
+Branch design/v302-reference-iconography from validated V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274 success. V301 rejected by owner and not inherited. Header and three chapter icons hand-redrawn from approved mockup; preserve portfolio/finder and all eight service links. Exact candidate validation pending. Main unchanged.
+
 ## V300 / 2026-11-25 — Cinematic live stage (DRAFT)
 Branch design/v300-cinematic-live-stage from V299 exact e4212aa476d7004a5738ad95d79edf5c4998e3e5, principal CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45628115576 green; standard artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45628115576/artifacts/15029711960. Source e44ecdd230e22f2ff10865ba0371c1efd4839f4c; emerald stage hero, real photo layers, finite light cue, pointer depth, logo/nav icons, real film dialog. Retains eight service links, three films, final CTA and SEO metadata. New browser script and source contract test. Exact-head principal CI and candidate screenshot comparison pending, do not merge. No deployment or main changes. Next: inspect before/after and motion frames and fix fidelity/regressions.
 
