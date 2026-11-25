@@ -71,7 +71,7 @@ export function ConceptHomeV170() {
           <div className="gs297-cover-aside">
             <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
             <p className="gs170-hero__lead">Sunet, lumini și atmosferă pentru evenimente cu personalitate, în Pitești și Argeș. DJ & MC, trupă live și producție tehnică.</p>
-            <Link to="/contact" className="gs170-btn gs170-btn--green">Planifică evenimentul <Arrow /></Link>
+            <Link to="/contact" className="gs170-btn gs170-btn--green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 2v5m10-5v5M3 9h18M7 13h.1m5 0h.1m5 0h.1M7 17h.1m5 0h.1m5 0h.1"/></svg><span>Planifică evenimentul</span> <Arrow /></Link>
             <button type="button" className="gs300-showreel" onClick={() => setFilmIndex(1)}><Play /> Vezi showreel</button>
           </div>
         </div>
