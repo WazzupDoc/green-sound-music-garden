@@ -1,5 +1,5 @@
 import { ClientOnly, createFileRoute, useHydrated } from "@tanstack/react-router";
-import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, ArrowUpRight, ClipboardList, ScanText, Send } from "lucide-react";
 import { QuoteForm } from "@/components/site/QuoteForm";
 import { business, services as serviceCatalogue } from "@/data/site";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
@@ -71,8 +71,10 @@ function Contact() {
 
   return (
     <>
-      <section className="director-contact-intro" aria-labelledby="director-contact-title">
+      <section className="director-contact-intro gs-contact-v298" aria-labelledby="director-contact-title">
+        <style>{contactSheetCss}</style>
         <div className="container-site">
+          <div className="gs-contact-v298__heading">
           <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
           <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
           <p>
@@ -80,11 +82,12 @@ function Contact() {
               ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
               : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
           </p>
+          </div>
           <div className="director-contact-signal" aria-label="Etapele cererii de ofertă">
             <ol className="director-contact-signal__steps">
-              <li><span>01 / INPUT</span><strong>Spui ce pregătești</strong></li>
-              <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
-              <li><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></li>
+              <li><ClipboardList aria-hidden="true" className="gs-contact-v298__icon" /><div><span>01 / DETALII</span><strong>Spui ce pregătești</strong></div></li>
+              <li><ScanText aria-hidden="true" className="gs-contact-v298__icon" /><div><span>02 / VERIFICARE</span><strong>Verifici mesajul</strong></div></li>
+              <li><Send aria-hidden="true" className="gs-contact-v298__icon" /><div><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></div></li>
             </ol>
             <a href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
               // Keep the native fragment navigation while moving keyboard focus to the form heading.
@@ -95,9 +98,9 @@ function Contact() {
           </div>
         </div>
       </section>
-      <section className="section director-contact-brief-flow" aria-labelledby="contact-form-title">
+      <section className="section director-contact-brief-flow gs-contact-v298-flow" aria-labelledby="contact-form-title">
         <div className="container-site grid items-start gap-14 lg:grid-cols-[.72fr_1.28fr] xl:gap-24 director-contact-brief-layout">
-          <aside>
+          <aside className="gs-contact-v298__direct">
             <span className="crafted-index">01 / CONTACT DIRECT</span>
             <h2 className="crafted-heading mt-6">O discuție bună <em>pornește totul.</em></h2>
             <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">Trimite detaliile evenimentului. Formularul pregătește mesajul în WhatsApp sau email; îl trimiți tu din aplicația aleasă.</p>
@@ -148,3 +151,85 @@ function Contact() {
     </>
   );
 }
+
+/** V298: original production-sheet composition; isolated to Contact, SSR-visible. */
+const contactSheetCss = `
+main .director-contact-intro.gs-contact-v298 {
+  background: #101c16; color: #f4f0e6;
+  padding: clamp(104px, 9vw, 156px) 0 clamp(30px, 4vw, 60px);
+  border-bottom: 1px solid #617367;
+}
+main .director-contact-intro.gs-contact-v298::after { display: none; }
+main .gs-contact-v298 > .container-site {
+  display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+  gap: clamp(24px, 5vw, 76px); align-items: end;
+}
+main .gs-contact-v298 .gs-contact-v298__heading { min-width: 0; }
+main .gs-contact-v298 .crafted-index { color: #b9e7a8; }
+main .gs-contact-v298 h1 {
+  font-size: clamp(2.85rem, 5.3vw, 6.4rem); line-height: .98;
+  letter-spacing: -.065em; margin: 18px 0 0; max-width: 14ch;
+  font-weight: 650; text-wrap: balance;
+}
+main .gs-contact-v298 h1 em {
+  display: block; font-family: var(--font-serif); color: #cce8ac;
+  font-size: .98em; font-style: italic; font-weight: 400; letter-spacing: -.025em;
+}
+main .gs-contact-v298 p {
+  color: #e0e7dc; max-width: 55ch; margin-top: 18px;
+  font-size: clamp(.98rem, 1.2vw, 1.13rem); line-height: 1.55;
+}
+main .gs-contact-v298 .director-contact-signal {
+  display: grid; grid-template-columns: minmax(0,1fr); align-items: stretch;
+  gap: 20px; border-top: 0; border-left: 1px solid #617367;
+  padding: 0 0 0 24px; margin: 0; max-width: none;
+}
+main .gs-contact-v298 .director-contact-signal__steps {
+  display: grid; grid-template-columns: minmax(0,1fr); gap: 0;
+}
+main .gs-contact-v298 .director-contact-signal__steps li {
+  display: grid; grid-template-columns: 25px minmax(0,1fr); gap: 14px;
+  align-items: center; padding: 12px 0; border: 0; border-bottom: 1px solid #52645a;
+}
+main .gs-contact-v298 .gs-contact-v298__icon { width: 22px; height: 22px; color: #cce8ac; stroke-width: 1.5; }
+main .gs-contact-v298 .director-contact-signal__steps span { color: #b9e7a8; font-size: .68rem; letter-spacing: .1em; }
+main .gs-contact-v298 .director-contact-signal__steps strong { color: #f4f0e6; font-size: .95rem; line-height: 1.3; margin-top: 4px; }
+main .gs-contact-v298 .director-contact-signal__action {
+  width: 100%; min-width: 0; min-height: 54px; background: #d6f3a9; color: #101c16;
+  font-size: .95rem; font-weight: 750; border-radius: 2px; padding: 14px 18px;
+}
+main .gs-contact-v298 .director-contact-signal__action svg { transition: transform .22s ease; }
+main .gs-contact-v298 .director-contact-signal__action:hover { background: #effbd6; }
+main .gs-contact-v298 .director-contact-signal__action:focus-visible { outline: 3px solid #f4f0e6; outline-offset: 4px; }
+main .gs-contact-v298-flow { padding-top: clamp(32px, 5vw, 72px); }
+main .gs-contact-v298-flow .director-contact-brief-layout { gap: clamp(32px,5vw,72px); }
+main .gs-contact-v298-flow .director-contact-quote { border-top: 3px solid #b9e7a8; box-shadow: none; }
+main .gs-contact-v298-flow .gs-contact-v298__direct a { min-height: 44px; overflow-wrap: anywhere; }
+main .gs-contact-v298-flow .gs-contact-v298__direct a svg { flex-shrink: 0; }
+@media (hover:hover) and (pointer:fine) {
+  main .gs-contact-v298 .director-contact-signal__action:hover svg { transform: translate(3px,-3px); }
+}
+@media (max-width: 930px) {
+  main .gs-contact-v298 > .container-site { grid-template-columns: minmax(0,1fr); gap: 22px; }
+  main .gs-contact-v298 h1 { max-width: 18ch; }
+  main .gs-contact-v298 .director-contact-signal { border-left: 0; padding: 0; gap: 14px; }
+  main .gs-contact-v298 .director-contact-signal__steps { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+  main .gs-contact-v298 .director-contact-signal__steps li { grid-template-columns: minmax(0,1fr); align-content: start; gap: 6px; padding: 8px 0; }
+  main .gs-contact-v298 .director-contact-signal__steps strong { font-size: .83rem; }
+}
+@media (max-width: 680px) {
+  main .director-contact-intro.gs-contact-v298 { padding: 100px 0 28px; }
+  main .gs-contact-v298 h1 { font-size: clamp(2.65rem, 10vw, 4rem); }
+  main .gs-contact-v298 .director-contact-signal__steps { gap: 9px; }
+  main .gs-contact-v298 .director-contact-signal__steps span { font-size: .59rem; letter-spacing: .015em; }
+  main .gs-contact-v298 .director-contact-signal__steps strong { font-size: .82rem; }
+  main .gs-contact-v298-flow .director-contact-brief-layout { display: flex; flex-direction: column; }
+  main .gs-contact-v298-flow .director-contact-quote { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  main .gs-contact-v298 .director-contact-signal__action,
+  main .gs-contact-v298 .director-contact-signal__action svg { transition: none; transform: none; }
+}
+html[data-gs-performance="lite"] main .gs-contact-v298 .director-contact-signal__action,
+html[data-gs-performance="lite"] main .gs-contact-v298 .director-contact-signal__action svg { transition: none; transform: none; }
+`;
