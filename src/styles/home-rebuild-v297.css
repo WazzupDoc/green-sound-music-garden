@@ -129,3 +129,74 @@
  .gs170-home[data-bespoke="v297"] :is(.gs297-signal svg,.gs170-stage__image,.gs170-film-card__image img,.gs170-btn){animation:none!important;transition:none!important;transform:none!important}
 }
 html[data-gs-performance="lite"] .gs170-home[data-bespoke="v297"] :is(.gs297-signal svg,.gs170-stage__image,.gs170-film-card__image img,.gs170-btn){animation:none!important;transition:none!important;transform:none!important}
+
+/* V300 / APPROVED DARK CINEMATIC ART DIRECTION — original stage layers and vector signal.
+   Existing programme, film cards and semantic contract remain. */
+.gs170-home[data-bespoke="v297"]{--g297-paper:#f1f2e9;--g297-ink:#081b13;--g297-dark:#071710;--g297-lime:#c1fa43;background:#071710;color:#f1f2e9}
+.gs170-home[data-bespoke="v297"] .gs300-stage{isolation:isolate;overflow:hidden;min-height:clamp(610px,49vw,850px);padding:clamp(42px,5vw,82px) 0 20px;background:#061710;color:#f1f2e9;display:flex;align-items:center}
+.gs300-stage>.gs297-shell{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:center;min-height:inherit}
+.gs300-stage .gs297-coverline{display:none}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-hero__content{display:block;position:relative;z-index:3;width:57%;padding:clamp(25px,3vw,54px) 0 25px}
+.gs300-eyebrow{display:block;color:#e3e9d9;font-size:clamp(.68rem,.95vw,.9rem);font-weight:650;letter-spacing:.17em;margin-bottom:23px}
+.gs300-eyebrow::before{content:"";display:inline-block;vertical-align:middle;width:30px;height:2px;background:#baf73d;margin-right:13px}
+.gs170-home[data-bespoke="v297"] .gs300-stage h1{font-family:var(--font-serif),Georgia,serif;font-style:italic;font-size:clamp(3.6rem,6.35vw,8.2rem);font-weight:400;letter-spacing:-.055em;line-height:.89;color:#f3f2e9}
+.gs170-home[data-bespoke="v297"] .gs300-stage h1 em{font:inherit;color:#c1fa43;margin:9px 0 0;letter-spacing:-.065em;white-space:nowrap}
+.gs300-stage .gs297-cover-aside{padding:0;margin-top:24px}
+.gs300-stage .gs297-cover-aside>.gs170-kicker{display:none}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-hero__lead{color:#e3e9e0;font-size:clamp(1rem,1.28vw,1.24rem);max-width:48ch;line-height:1.5;margin:0 0 24px}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-btn{background:#c1fa43;color:#10200b;border:1px solid #e0ff97;min-height:55px;padding:13px 28px;clip-path:polygon(5% 0,100% 0,95% 100%,0 100%);font-weight:800}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-btn:hover{background:#e0ff97;color:#10200b}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-btn:focus-visible{clip-path:none}
+.gs300-showreel{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:8px 0;margin-left:18px;color:#f1f2e9;font-weight:700;font-size:.83rem;letter-spacing:.08em;background:none;border:0;cursor:pointer;text-transform:uppercase}
+.gs300-showreel svg{box-sizing:content-box;border:1px solid #baf73d;border-radius:50%;padding:9px;color:#c1fa43}
+.gs300-stage .gs297-diptych{position:absolute;inset:0;z-index:-2;display:block;pointer-events:none;overflow:hidden}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-stage{position:absolute;inset:0 0 0 28%;height:auto;width:auto;background:#173327;transform:translate(var(--gs300-x,0px),var(--gs300-y,0px)) scale(1.04)}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-stage__image{height:100%;object-position:64% 44%}
+.gs300-stage .gs297-diptych::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#061710 0%,#061710f7 24%,#061710b8 43%,#06171018 72%,#06171015),linear-gradient(0deg,#061710 0%,transparent 35%,transparent 80%,#06171055);pointer-events:none}
+.gs300-stage .gs297-portrait{position:absolute;z-index:1;bottom:9%;right:5%;width:22%;height:48%;border:1px solid #d6f3b066;transform:translate(calc(var(--gs300-x,0px)*-1.2),calc(var(--gs300-y,0px)*-1.2));clip-path:polygon(9% 0,100% 0,100% 88%,91% 100%,0 100%,0 12%);box-shadow:0 10px 45px #00130b}
+.gs300-stage .gs297-portrait img{object-position:50% 32%;filter:saturate(.85)}
+.gs300-stage .gs297-diptych figcaption{display:none}
+.gs300-stage .gs297-portrait figcaption{display:block;position:absolute;inset:auto 0 0;background:#071710d9;color:#d5e6d3;font-size:.62rem;letter-spacing:.13em;padding:10px}
+.gs300-atmosphere{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.gs300-atmosphere i{position:absolute;top:-12%;width:22%;height:94%;background:linear-gradient(180deg,#e5ffca5c,#aaf04022 40%,transparent 92%);clip-path:polygon(47% 0,53% 0,100% 100%,0 100%);transform-origin:50% 0;opacity:.48}
+.gs300-atmosphere i:nth-child(1){left:51%;transform:rotate(26deg)}.gs300-atmosphere i:nth-child(2){left:71%;transform:rotate(-20deg);background:linear-gradient(180deg,#d7fff19c,#8af3cf22 42%,transparent 94%)}.gs300-atmosphere i:nth-child(3){left:88%;transform:rotate(35deg);opacity:.3}
+.gs300-wave{position:absolute;z-index:2;left:35%;bottom:16%;width:59%;height:auto;color:#baf73d;pointer-events:none;opacity:.85;transform:translate(calc(var(--gs300-x,0px)*.5),calc(var(--gs300-y,0px)*.5))}
+.gs300-stage .gs297-cover-bottom{position:relative;z-index:3;border-top:1px solid #d7f1cb30;padding-top:13px;margin-top:auto;color:#e5f0e1}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-hero__control button{border:1px solid #b9d8bb60;color:#edf3e6}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-hero__control button[aria-pressed="true"]{color:#11200d;background:#c1fa43}
+.gs300-stage[data-lights="off"] :is(.gs300-wave,.gs300-atmosphere){display:none}
+.gs300-stage[data-lights="off"] :is(.gs170-stage,.gs297-portrait){transform:none}
+.gs300-stage[data-hue="cool"] .gs300-wave{color:#b9f4e2}
+.gs300-stage[data-hue="cool"] .gs300-atmosphere{color:#b9f4e2}
+.gs170-home[data-bespoke="v297"] .gs170-films{background:#0a1d14;color:#f1f2e9}
+.gs170-home[data-bespoke="v297"] .gs297-film-heading :is(p,h2 em),.gs170-home[data-bespoke="v297"] .gs170-film-card__title small{color:#c1e0bb}
+.gs170-home[data-bespoke="v297"] .gs170-film-card__title{border-color:#c1e0bb55}
+@media(min-width:1000px){
+.gs170-home[data-bespoke="v297"] .gs-index__intro{margin-bottom:16px}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter]{padding:20px 0}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter] .gs-index__photo{height:clamp(180px,19vw,315px)}
+}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+html:not([data-gs-performance="lite"]) .gs300-stage[data-lights="on"] .gs300-atmosphere i{animation:gs300-beam-cue 3.6s cubic-bezier(.2,.65,.3,1) 1 both}
+html:not([data-gs-performance="lite"]) .gs300-stage[data-lights="on"] .gs300-wave{animation:gs300-wave-cue 2.8s ease-out 1 both}
+html:not([data-gs-performance="lite"]) .gs300-stage[data-lights="on"] .gs297-portrait{transition:transform .22s ease-out}
+}
+@keyframes gs300-beam-cue{from{opacity:.06;scale:.72 1}45%{opacity:.68}to{opacity:.48;scale:1 1}}
+@keyframes gs300-wave-cue{from{opacity:0;scale:.88 .8}to{opacity:.85;scale:1 1}}
+@media(max-width:900px){
+.gs170-home[data-bespoke="v297"] .gs300-stage{min-height:0;padding:34px 0 18px}
+.gs300-stage>.gs297-shell{min-height:0}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-hero__content{width:100%;padding:22px 0 0}
+.gs170-home[data-bespoke="v297"] .gs300-stage h1{font-size:clamp(2.85rem,10.1vw,5.5rem);line-height:.95}
+.gs300-stage .gs297-diptych{position:relative;inset:auto;z-index:1;display:block;height:clamp(240px,55vw,440px);margin-top:20px;overflow:hidden}
+.gs170-home[data-bespoke="v297"] .gs300-stage .gs170-stage{inset:0;height:100%;transform:none}
+.gs300-stage .gs297-diptych::after{background:linear-gradient(0deg,#061710bb,transparent 55%)}
+.gs300-stage .gs297-portrait{right:4%;bottom:5%;width:32%;height:82%;transform:none}
+.gs300-wave{left:12%;bottom:16%;width:85%;opacity:.5;transform:none}
+.gs300-atmosphere{display:none}
+.gs300-showreel{margin-left:12px}
+.gs300-stage .gs297-cover-bottom{margin-top:14px}
+}
+@media(max-width:430px){.gs300-eyebrow{font-size:.59rem;letter-spacing:.09em;margin-bottom:16px}.gs300-eyebrow::before{width:15px;margin-right:8px}.gs300-stage .gs297-cover-aside{margin-top:18px}.gs300-showreel{margin-left:0;display:flex;margin-top:6px}.gs170-home[data-bespoke="v297"] .gs300-stage h1{font-size:clamp(2.45rem,10.1vw,3rem)}}
+@media(prefers-reduced-motion:reduce){.gs300-stage :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}}
+html[data-gs-performance="lite"] .gs300-stage :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}
