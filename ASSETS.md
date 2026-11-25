@@ -1,3 +1,6 @@
+## V300 / 2026-11-25
+No new photographs, fonts, music, dependencies or generated event images. Existing first-party media /media/greensound/concert-public-lumini.webp and /media/greensound/dj-mc-green-sound.webp reused from verified project data. Existing film posters retained. Original 21-line decorative SVG signal, CSS light beams, logo geometry and nav glyphs authored in source; no borrowed code. Owner-approved AI reference is not a deployed asset and its depicted headphones/stage are not represented as Green Sound property. Existing favicon retained. Baseline CI artifact #15029711960; candidate evidence pending.
+
 ## V299 / 2026-11-25
 Original inline SVG G/signal mark and six header control paths authored for this draft; not imported, no third-party media or dependency. Existing favicon.png retained as original brand asset and browser favicon; digital lockup is a candidate, not official rebrand. Existing Hanken Grotesk reused. No TikTok frames, stock, or generated event imagery.
 
