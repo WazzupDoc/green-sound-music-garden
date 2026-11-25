@@ -1,0 +1,64 @@
+name: V302 Reference iconography — matched browser evidence
+on:
+  push:
+    branches: [design/v302-reference-iconography]
+  pull_request:
+    branches: [design/v300-cinematic-live-stage]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  home-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - run: bun install --no-save
+      - name: Install Chromium
+        run: |
+          npm install --prefix /tmp/gs302-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs302-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture baseline and exact candidate
+        env:
+          NODE_PATH: /tmp/gs302-playwright/node_modules
+          HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          cp .github/scripts/v302-reference-browser.cjs /tmp/v302-reference-browser.cjs
+          for stage in before after; do
+            if [ "$stage" = before ]; then
+              git checkout --detach fc31a607e147cb3c10f5af47727281929a2c6e4f
+            else
+              git checkout --detach "$HEAD_SHA"
+            fi
+            ./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > "/tmp/v302-$stage.log" 2>&1 &
+            pid=$!
+            trap 'kill "$pid" 2>/dev/null || true' EXIT
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf http://127.0.0.1:4175/ >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" != 1 ]; then cat "/tmp/v302-$stage.log"; exit 1; fi
+            GS302_STAGE="$stage" node /tmp/v302-reference-browser.cjs
+            kill "$pid" || true
+            wait "$pid" || true
+            trap - EXIT
+          done
+          for width in 390 1440; do
+            if cmp -s "screenshots/v302/before-viewport-$width.png" "screenshots/v302/after-viewport-$width.png"; then
+              echo "No visual homepage change at $width"; exit 1
+            fi
+          done
+      - name: Upload matched Chromium captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v302-reference-fidelity
+          path: screenshots/v302/
+          if-no-files-found: warn
+          retention-days: 60
