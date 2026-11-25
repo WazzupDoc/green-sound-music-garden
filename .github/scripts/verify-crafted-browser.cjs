@@ -118,7 +118,7 @@ async function main() {
         path:`${output}/v94-navigation-open-${navWidth}.png`,
         animations:"disabled",fullPage:false,
       });
-      await navPage.locator(".gsm-nav-index__link").nth(2).focus();
+      await navPage.locator('.gsm-nav-index__link[href="/servicii"]').focus();
       assert.equal(await navPage.locator(".gsm-nav-index__cue strong").innerText(),"Servicii");
       await navPage.screenshot({
         path:`${output}/v94-navigation-focus-${navWidth}.png`,
@@ -132,7 +132,7 @@ async function main() {
     await navJourney.goto(base + "/", {waitUntil:"domcontentloaded"});
     await navJourney.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     await navJourney.locator(".atelier-header__menu-btn").click();
-    await navJourney.locator(".gsm-nav-index__link").nth(2).click();
+    await navJourney.locator('.gsm-nav-index__link[href="/servicii"]').click();
     await navJourney.waitForURL("**/servicii");
     assert.equal(await navJourney.locator("dialog.atelier-mobile-menu[open]").count(),0);
     assert.equal(await navJourney.locator(".atelier-header__menu-btn").getAttribute("aria-expanded"),"false");
