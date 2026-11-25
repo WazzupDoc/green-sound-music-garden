@@ -1,0 +1,62 @@
+name: V299 Brand signal header — matched browser evidence
+on:
+  push:
+    branches: [design/v299-brand-signal-header]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  header-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - run: bun install --no-save
+      - name: Install Chromium
+        run: |
+          npm install --prefix /tmp/gs299-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs299-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture baseline and exact candidate
+        env:
+          NODE_PATH: /tmp/gs299-playwright/node_modules
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          cp .github/scripts/v299-header-browser.cjs /tmp/v299-header-browser.cjs
+          for stage in before after; do
+            if [ "$stage" = before ]; then
+              git checkout --detach 1aa4ab8da947e31d7148f7fff4fcbafe063032ea
+            else
+              git checkout --detach "$HEAD_SHA"
+            fi
+            ./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > "/tmp/v299-$stage.log" 2>&1 &
+            pid=$!
+            trap 'kill "$pid" 2>/dev/null || true' EXIT
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf http://127.0.0.1:4175/ >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" != 1 ]; then cat "/tmp/v299-$stage.log"; exit 1; fi
+            GS299_STAGE="$stage" node /tmp/v299-header-browser.cjs
+            kill "$pid" || true
+            wait "$pid" || true
+            trap - EXIT
+          done
+          for width in 390 1440; do
+            if cmp -s "screenshots/v299/before-header-$width.png" "screenshots/v299/after-header-$width.png"; then
+              echo "No visual header change at $width"; exit 1
+            fi
+          done
+      - name: Upload matched Chromium captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v299-brand-signal-header
+          path: screenshots/v299/
+          if-no-files-found: warn
+          retention-days: 60
