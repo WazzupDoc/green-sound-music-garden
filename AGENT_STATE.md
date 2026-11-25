@@ -1,3 +1,11 @@
+## V300 / 2026-11-25 — Owner-approved cinematic reference (DRAFT)
+| Zone | Defect | Implementation | Evidence |
+|---|---|---|---|
+| Homepage hero | V297 ivory poster differs from owner-approved emerald cinematic reference | Rebuilt composition with italic headline, full photographic stage, foreground photo, original 21-line waveform, three animated beam layers, pointer depth, manual effects and real showreel dialog | Source e44ecdd230e22f2ff10865ba0371c1efd4839f4c; matched screenshots pending |
+| Global header | previous icon and logo rejected; owner approved icon-over-label reference | updated filled italic G/wave mark and six navigation icons with visible text | visual and six-width regression pending |
+| Remaining homepage | preserve 3 chapters/8 services, 3 films and one final CTA; darkened films and tightened programme spacing | existing native links and explicit-play preserved; no new widgets |
+Base V299 exact e4212aa476d7004a5738ad95d79edf5c4998e3e5 CI #45628115576 success, artifact #15029711960. V298 repaired separately, not inherited. Source code committed; no visual or new CI pass claimed. Next: verify screenshots and adjust fidelity, then interior components. Main untouched.
+
 ## V299 / 2026-11-25 — Global brand/header (DRAFT)
 | Zone | Defect | Change | Evidence |
 |---|---|---|---|

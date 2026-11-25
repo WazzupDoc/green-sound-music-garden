@@ -1,3 +1,9 @@
+## V300 / 2026-11-25 — Cinematic owner-approved composition
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — rhythm and equalizer-inspired visual identity; adapted a deterministic vector waveform rather than a mouse image trail.
+- https://tympanus.net/codrops/2026/11/12/dkton/ — music as a design system; adapted silent visual signal, rejected automatic sound and Web Audio.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — respect system motion preference, retain static content. https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Performance/CSS — small transform/opacity motion instead of per-frame rendering.
+Experiment: cinematic stage cue (21 static SVG paths, one-shot 2.8s reveal, three CSS beams and bounded pointer parallax). No external code copied; no runtime dependencies, no new license or costs. User-approved generated mockup is a visual reference, never a site asset. Rejected fake stage/equipment photographs, infinite animation, autoplay and WebGL. Existing motion opt-out and manual effects control retained. Browser proof pending; rollback by retaining V299.
+
 ## V299 / 2026-11-25 — Brand signal header
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — music-tech identity through bold typography and ticket-like navigation; adapted physical studio control geometry, not artwork/code. Rejected photo trails and extra animation library.
 - https://pwa-book.awwwards.com/chapter-6 — communicate state through more than just icon/color; kept accessible names, expanded state and text labels. https://pwa-book.awwwards.com/chapter-5 — coherent icon/naming identity; retained existing favicon pending approval of proposed digital mark.

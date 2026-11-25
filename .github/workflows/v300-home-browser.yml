@@ -1,0 +1,62 @@
+name: V300 Cinematic Stage — matched browser evidence
+on:
+  push:
+    branches: [design/v300-cinematic-live-stage]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  home-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.3
+      - run: bun install --no-save
+      - name: Install Chromium
+        run: |
+          npm install --prefix /tmp/gs300-playwright playwright@1.56.1 --no-audit --no-fund
+          /tmp/gs300-playwright/node_modules/.bin/playwright install chromium
+      - name: Capture baseline and exact candidate
+        env:
+          NODE_PATH: /tmp/gs300-playwright/node_modules
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          cp .github/scripts/v300-home-browser.cjs /tmp/v300-home-browser.cjs
+          for stage in before after; do
+            if [ "$stage" = before ]; then
+              git checkout --detach e4212aa476d7004a5738ad95d79edf5c4998e3e5
+            else
+              git checkout --detach "$HEAD_SHA"
+            fi
+            ./node_modules/.bin/vite dev --host 127.0.0.1 --port 4175 --strictPort > "/tmp/v300-$stage.log" 2>&1 &
+            pid=$!
+            trap 'kill "$pid" 2>/dev/null || true' EXIT
+            ready=0
+            for i in $(seq 1 60); do
+              if curl -sf http://127.0.0.1:4175/ >/dev/null; then ready=1; break; fi
+              sleep 2
+            done
+            if [ "$ready" != 1 ]; then cat "/tmp/v300-$stage.log"; exit 1; fi
+            GS300_STAGE="$stage" node /tmp/v300-home-browser.cjs
+            kill "$pid" || true
+            wait "$pid" || true
+            trap - EXIT
+          done
+          for width in 390 1440; do
+            if cmp -s "screenshots/v300/before-home-$width.png" "screenshots/v300/after-home-$width.png"; then
+              echo "No visual homepage change at $width"; exit 1
+            fi
+          done
+      - name: Upload matched Chromium captures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-sound-v300-cinematic-stage
+          path: screenshots/v300/
+          if-no-files-found: warn
+          retention-days: 60

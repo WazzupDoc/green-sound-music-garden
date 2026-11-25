@@ -191,7 +191,7 @@ export function SiteHeader() {
               }}>
               <Link to="/servicii" viewTransition className="atelier-header__link"
                 activeProps={{ className: "atelier-header__link--active" }}
-                onClick={() => setServicesOpen(false)}>Servicii</Link>
+                onClick={() => setServicesOpen(false)}><NavGlyph route="/servicii" /><span>Servicii</span></Link>
               <button type="button" ref={servicesButtonRef}
                 className="gs217-services-toggle"
                 aria-label={servicesOpen ? "Închide catalogul serviciilor" : "Deschide catalogul serviciilor"}
@@ -205,7 +205,7 @@ export function SiteHeader() {
           ) : (
             <Link key={entry.to} to={entry.to} viewTransition activeOptions={{ exact: entry.to === "/" }}
               activeProps={{ className: "atelier-header__link--active" }} className="atelier-header__link">
-              {entry.title}
+              <NavGlyph route={entry.to} /><span>{entry.title}</span>
             </Link>
           ))}
         </nav>
@@ -222,7 +222,7 @@ export function SiteHeader() {
             <SignalIcon kind="phone" /> {business.phoneDisplay}
           </a>
           <Link to="/contact" viewTransition className="atelier-header__quote">
-            Cere ofertă <SignalIcon kind="arrow" />
+            <NavGlyph route="/contact" /> Cere ofertă <SignalIcon kind="arrow" />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
@@ -369,4 +369,18 @@ function SignalIcon({ kind }: {kind: "expand" | "search" | "phone" | "arrow" | "
     menu: "M3 6h18 M3 12h18 M3 18h18 M8 3v6 M16 9v6 M10 15v6",
   } as const;
   return <svg className="gs299-control-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="square" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]} /></svg>;
+}
+
+/** Recognisable, consistent navigation pictograms with fine audio-inspired detail. */
+function NavGlyph({route}: {route:string}) {
+  const d: Record<string,string> = {
+    "/":"M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10",
+    "/servicii":"M3 5h18M3 12h18M3 19h18M8 2v6M16 9v6M10 16v6",
+    "/evenimente":"M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM7 2v6M17 2v6M3 10h18M7 14h1m4 0h1m4 0h1M7 17h1m4 0h1",
+    "/portofoliu":"M3 5h18v14H3zM3 9h18M8 5v4M16 5v4M10 12l5 3-5 3z",
+    "/studio-inregistrari":"M4 20V12h3v8zM10 20V4h3v16zM16 20V8h3v12zM3 23h18",
+    "/despre-noi":"M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-2a6 6 0 0 1 12 0v2M16 5a3.5 3.5 0 0 1 0 7M17 15a5 5 0 0 1 5 5v1",
+    "/contact":"M4 13V9a8 8 0 0 1 16 0v4M4 12h3v7H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zM20 12h-3v7h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2z",
+  };
+  return <svg className="gs300-nav-glyph" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d[route]??d["/"]}/></svg>;
 }
