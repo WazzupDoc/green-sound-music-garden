@@ -1,3 +1,7 @@
+## V301 / 2026-11-25
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — asymmetric tiles and equalizer-inspired interactions. Adapted the idea of rhythmic hierarchy into native links and a short five-bar chapter cue, not their artwork/code.
+- https://tympanus.net/codrops/2026/02/13/1820-productions-minimal-design-maximal-motion/ — typography and restrained motion as production-company identity. Adapted limited typography sizes and one finite cue; rejected scroll hijack, autoplay, animation libraries and hidden carousel content. No imported assets/code, licensing not relied upon. No dependencies. Browser gate pending; rollback isolated branch.
+
 ## V300 / 2026-11-25 — Cinematic owner-approved composition
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — rhythm and equalizer-inspired visual identity; adapted a deterministic vector waveform rather than a mouse image trail.
 - https://tympanus.net/codrops/2026/11/12/dkton/ — music as a design system; adapted silent visual signal, rejected automatic sound and Web Audio.
