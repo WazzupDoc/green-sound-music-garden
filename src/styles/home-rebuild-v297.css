@@ -206,3 +206,31 @@ html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-wave,.gs300
 .gs170-home[data-bespoke="v297"] .gs-index__chapter-body h3{margin-top:8px}
 .gs170-home[data-bespoke="v297"] .gs300-stage #gs170-title em{color:#c1fa43}
 @media(max-width:740px){.gs170-home[data-bespoke="v297"] .gs302-chapter-glyph{width:30px;height:30px}}
+
+/* V302 reference fidelity pass: one photographic scene, readable type, compact stage.
+   The existing DJ photo is an inset editorial detail, not a fabricated composite event. */
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]{padding:0;min-height:0;background:#061710}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{min-height:clamp(520px,40vw,730px);padding-top:clamp(40px,4.5vw,76px);padding-bottom:18px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__content{width:62%;padding:10px 0 32px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(3.5rem,6.15vw,7.65rem);line-height:.91;letter-spacing:-.045em}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title em{color:#c1fa43;margin-left:0;font-weight:400;letter-spacing:-.055em}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs297-cover-aside{margin-top:23px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__lead{max-width:43ch;line-height:1.55}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage{inset:0 0 0 24%;transform:translate(var(--gs300-x,0px),var(--gs300-y,0px)) scale(1.04)}
+[data-stage="cinematic"] .gs297-diptych::after{background:linear-gradient(90deg,#061710 0%,#061710f5 22%,#061710cf 37%,#06171065 54%,#0617100a 78%),linear-gradient(0deg,#061710 0%,transparent 23%,transparent 83%,#06171044)}
+[data-stage="cinematic"] .gs297-portrait{width:17%;height:37%;right:5%;bottom:16%;border:1px solid #c1fa4355;clip-path:none;box-shadow:none}
+[data-stage="cinematic"] .gs297-portrait figcaption{font-size:.58rem;letter-spacing:.13em;padding:7px 10px}
+[data-stage="cinematic"] .gs300-wave{left:34%;bottom:14%;width:62%;opacity:.8}
+[data-stage="cinematic"] .gs297-cover-bottom{gap:clamp(10px,2vw,30px);border-top-color:#b7d3b633}
+@media(max-width:900px){
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{min-height:0;padding-top:30px;padding-bottom:16px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__content{width:100%;padding:0}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(2.5rem,10vw,5.3rem)}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage{inset:0;transform:none}
+[data-stage="cinematic"] .gs297-diptych::after{background:linear-gradient(0deg,#061710a0,transparent 45%)}
+[data-stage="cinematic"] .gs297-portrait{width:30%;height:72%;right:4%;bottom:8%}
+[data-stage="cinematic"] .gs300-wave{left:8%;bottom:15%;width:87%;opacity:.5}
+}
+@media(max-width:430px){.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(2.4rem,10vw,3rem)}}
+@media(prefers-reduced-motion:reduce){[data-stage="cinematic"] .gs170-stage{transform:none!important}}
+html[data-gs-performance="lite"] [data-stage="cinematic"] .gs170-stage,[data-stage="cinematic"][data-lights="off"] .gs170-stage{transform:none!important}
