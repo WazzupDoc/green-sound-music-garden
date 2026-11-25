@@ -16,8 +16,8 @@ const FrequencyFinder = lazy(() => import("@/components/atelier/FrequencyFinder"
 
 const navigation = [
   { to: "/", title: "Acasă", note: "Muzică, lumină și producție", photo: images.concert },
-  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live", photo: images.dj },
   { to: "/servicii", title: "Servicii", note: "Muzică, sonorizare, lumini și studio", photo: images.scena },
+  { to: "/evenimente", title: "Evenimente", note: "Nunți, botezuri și producții live", photo: images.dj },
   { to: "/portofoliu", title: "Portofoliu", note: "Filmele și proiectele existente", photo: images.concert },
   { to: "/studio-inregistrari", title: "Studio", note: "Înregistrări și producție audio", photo: null },
   { to: "/despre-noi", title: "Despre noi", note: "Povestea și abordarea echipei", photo: images.hostess },
@@ -208,6 +208,7 @@ export function SiteHeader() {
               <NavGlyph route={entry.to} /><span>{entry.title}</span>
             </Link>
           ))}
+          <Link to="/contact" viewTransition className="atelier-header__link gs302-contact-link" activeProps={{className:"atelier-header__link--active"}}><NavGlyph route="/contact" /><span>Contact</span></Link>
         </nav>
         <div className="atelier-header__actions">
           <button ref={finderButtonRef} type="button" className="atelier-header__finder-btn"
@@ -222,7 +223,7 @@ export function SiteHeader() {
             <SignalIcon kind="phone" /> {business.phoneDisplay}
           </a>
           <Link to="/contact" viewTransition className="atelier-header__quote">
-            <NavGlyph route="/contact" /> Cere ofertă <SignalIcon kind="arrow" />
+            <NavGlyph route="headset" /> Cere ofertă <SignalIcon kind="arrow" />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
@@ -362,25 +363,26 @@ export function SiteHeader() {
 function SignalIcon({ kind }: {kind: "expand" | "search" | "phone" | "arrow" | "close" | "menu"}) {
   const paths = {
     expand: "M5 9h4l3 4 3-4h4",
-    search: "M4 5h10l4 4v5l-4 4H8l-4-4z M16 16l5 5 M7 11h3l2-4 2 7 2-3",
+    search: "M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM15 15l6 6",
     phone: "M5 3h4l2 6-3 2 5 5 2-3 6 2v4l-3 2C10 20 4 14 3 6z",
-    arrow: "M3 16h6l4-8h7 M15 3l5 5-5 5",
+    arrow: "M4 12h15m-6-6 6 6-6 6",
     close: "M5 5l14 14 M19 5L5 19",
-    menu: "M3 6h18 M3 12h18 M3 18h18 M8 3v6 M16 9v6 M10 15v6",
+    menu: "M3 5h18M3 12h18M3 19h18",
   } as const;
   return <svg className="gs299-control-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="square" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]} /></svg>;
 }
 
-/** Recognisable, consistent navigation pictograms with fine audio-inspired detail. */
+/** V302: hand-redrawn contours of the approved reference; no imported glyphs. */
 function NavGlyph({route}: {route:string}) {
   const d: Record<string,string> = {
-    "/":"M3 11 12 3l9 8M5 10v11h5v-7h4v7h5V10",
-    "/servicii":"M3 5h18M3 12h18M3 19h18M8 2v6M16 9v6M10 16v6",
-    "/evenimente":"M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM7 2v6M17 2v6M3 10h18M7 14h1m4 0h1m4 0h1M7 17h1m4 0h1",
-    "/portofoliu":"M3 5h18v14H3zM3 9h18M8 5v4M16 5v4M10 12l5 3-5 3z",
-    "/studio-inregistrari":"M4 20V12h3v8zM10 20V4h3v16zM16 20V8h3v12zM3 23h18",
-    "/despre-noi":"M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-2a6 6 0 0 1 12 0v2M16 5a3.5 3.5 0 0 1 0 7M17 15a5 5 0 0 1 5 5v1",
-    "/contact":"M4 13V9a8 8 0 0 1 16 0v4M4 12h3v7H4a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zM20 12h-3v7h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2z",
+    "/":"M2.5 11 12 2.5 21.5 11M5.5 9.3V21h4.7v-6.8h3.6V21h4.7V9.3M17 5V3h2.8v4.5",
+    "/servicii":"M2 5h8m4 0h8M2 12h3m4 0h13M2 19h12m4 0h4M10 5a2 2 0 1 0 4 0 2 2 0 1 0-4 0M5 12a2 2 0 1 0 4 0 2 2 0 1 0-4 0M14 19a2 2 0 1 0 4 0 2 2 0 1 0-4 0",
+    "/evenimente":"M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 2v5m10-5v5M3 9h18M7 13h.1m5 0h.1m5 0h.1M7 17h.1m5 0h.1m5 0h.1",
+    "/portofoliu":"M3 4h18v16H3zM3 8h18M8 4v4m8-4v4M10 11l5 3-5 3z",
+    "/studio-inregistrari":"M2 13h3v8H2zM7.5 8h3v13h-3zM13 3h3v18h-3zM18.5 7h3v14h-3zM3.5 16h0m5.5-5h0m5.5-5h0m5.5 4h0M2 10v-2m5.5-3V3M21.5 4V2",
+    "/despre-noi":"M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM1.5 21v-2a6.8 6.8 0 0 1 13.6 0v2zM16.5 3.8a3.7 3.7 0 0 1 0 7.3M16.5 13a6 6 0 0 1 6 6v2h-5",
+    "/contact":"M2 5h20v14H2zM2 5l10 8L22 5M2 19l7-8m13 8-7-8",
+    headset:"M4 13V10a8 8 0 0 1 16 0v3M4 12h3v8H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zM20 12h-3v8h3a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z",
   };
-  return <svg className="gs300-nav-glyph" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.55" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d[route]??d["/"]}/></svg>;
+  return <svg className="gs300-nav-glyph gs302-reference-glyph" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d[route]??d["/"]}/></svg>;
 }
