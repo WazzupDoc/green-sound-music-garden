@@ -151,7 +151,7 @@ async function main() {
       .evaluate(element => getComputedStyle(element).animationName);
     assert.equal(animationName, "gs295-cue-in", "Full-motion staggered menu entrance must be active");
     assert.equal(await activePage.locator(".gsm-nav-index__layout").evaluate(el => getComputedStyle(el).animationName), "none", "Avoid double entrance animation");
-    await activePage.locator(".gsm-nav-index__link").nth(1).focus();
+    await activePage.locator('.gsm-nav-index__link[href="/evenimente"]').focus();
     assert.equal(await activePage.locator(".gs295-preview").getAttribute("data-section"), "Evenimente");
     await activePage.locator(".gs295-preview img").evaluate(img => img.decode());
     assert.equal(await activePage.locator(".gs295-preview img").evaluate(el => getComputedStyle(el).animationName), "gs295-photo-in");
