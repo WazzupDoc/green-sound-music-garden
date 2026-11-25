@@ -54,7 +54,7 @@ export function ConceptHomeV170() {
   }, [lightsOn]);
 
   return <>
-    <section ref={heroRef} className="gs170-hero gs300-stage" aria-labelledby="gs170-title"
+    <section ref={heroRef} className="gs170-hero" data-stage="cinematic" aria-labelledby="gs170-title"
       data-hydrated={hydrated ? "true" : "false"} data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}>
       <div className="gs297-shell">
         <div className="gs300-atmosphere" aria-hidden="true"><i/><i/><i/></div>
