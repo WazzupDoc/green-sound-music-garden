@@ -1,3 +1,14 @@
+## V302 follow-up / 2026-11-25 — Internal audit
+| Priority | Component | Finding | Action | Verification |
+|---|---|---|---|---|
+| P0 | Navigation | Old test coupled to positional index after owner-approved order change | Assert actual /servicii link and keep focus/navigation assertions; 9726830378731f7ab1b635d28ac90a9479ab4368 | CI pending |
+| P1 | Hero | Lime title selector referenced missing class; excessive height and competing photo inset | Correct actual data-stage selector, compact stage and restrained photo hierarchy; 462eefa5d823dc1482b9ae5ac762c03589dea0e3 | Browser comparison pending |
+| P1 | Header | Icon fidelity and route sizing | V302 vectors, no V301 miniature icons | Recheck 360–1920 and keyboard |
+| P1 | Services / films | Match reference spacing and photography, preserve native links and explicit playback | Next visual audit | Pending |
+| P1 | Contact / finder | Validate funnel, clipboard, focus, no false send | Next functional audit | Pending |
+| P2 | SEO / SSR / security / performance | Recheck exact-head sitemap, canonical, JSON-LD, 404 and budgets | Existing CI retained | Pending |
+Baseline V300 principal green #45641237274; V302 initial exact-head #45642189654 passed TS/build/gzip/unit but failed browser navigation assertion. Partial artifact #15035612689, not a passing visual gate. No main or production changes. Perfection is not a measured status; repeat audit until acceptance criteria and owner visual approval.
+
 ## V302 / 2026-11-25 — Approved reference icon fidelity (DRAFT)
 Owner rejected V301 eight small service glyphs. Inspected approved mockup a_highly_polished_cinematic_dark_green_neon_gree.png and actual V300 artifact #15037030193. Base V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI #45641237274 success; V301 not inherited. Redrew header home, sliders, calendar, studio meter, people, envelope and headset; portfolio and finder preserved, direct Contact link added at wider sizes. Restored three lime chapter marks only; calendar in hero CTA and lime headline specificity fixed. Candidate CI and screenshots pending; no claim of pixel equivalence. Next: verify real browser, particularly header width and focus, then reference layout fidelity. Main unchanged.
 
