@@ -56,8 +56,8 @@ export function ConceptHomeV170() {
   return <>
     <section ref={heroRef} className="gs170-hero gs300-stage" aria-labelledby="gs170-title"
       data-hydrated={hydrated ? "true" : "false"} data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}>
-      <div className="gs300-atmosphere" aria-hidden="true"><i/><i/><i/></div>
       <div className="gs297-shell">
+        <div className="gs300-atmosphere" aria-hidden="true"><i/><i/><i/></div>
         <div className="gs297-coverline">
           <span>GREEN SOUND MUSIC</span>
           <span className="gs297-signal" aria-hidden="true"><svg viewBox="0 0 90 22" width="90" height="22">
