@@ -1,3 +1,11 @@
+## V298 / 2026-11-25 — Contact production sheet (DRAFT)
+Baseline V297 PR #335, exact SHA 1aa4ab8da947e31d7148f7fff4fcbafe063032ea, primary CI #45417030056 successful. Downloaded artifact #14931044503 and directly inspected v157-contact-intro-390.png and 1440.png. PR #335 and #19 currently report mergeable=false; no merge.
+| Zone | Observed problem | Intervention | Evidence |
+|---|---|---|---|
+| Contact opening | Large empty dark area, very small three-step labels, form below opening | Compact split editorial heading, original numbered icon-led signal path, restrained arrow motion, clearer Romanian labels | Existing baseline captures inspected; new matched Chromium pending |
+| Contact body | Direct links can wrap on narrow displays; heavy form panel | Target sizing, wrapping, tighter spacing and single accent border; actual form and SSR fallback unchanged | six-width and keyboard regression pending |
+No new external assets, backend, tracking or runtime dependencies. Source e28b9442262cd45f6c9afa417d362ad9a95d9d82. Dedicated browser workflow compares baseline with candidate, checks six widths, keyboard, no-JS, Lite/reduced-motion and hover. No aesthetic sign-off or new CI pass claimed. Next: verify exact-head and captured screenshots, then portfolio/film archive coherence and navigation. Main unchanged.
+
 ## V297 / 2026-11-24 — Owner-requested full homepage reconstruction (DRAFT)
 Owner rejected accumulated styling and asked for total reconstruction. Baseline V295 exact-head 972002afac6ab99f7295524c77e7ce4d7f5c126e principal CI #45389588007 success; V296 #334 failed CI #45412572854 and is deliberately not inherited. New branch design/v297-from-scratch-editorial.
 | Zone | Observable defect | New code | Validation |
