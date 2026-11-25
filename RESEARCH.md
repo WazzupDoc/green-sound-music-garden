@@ -1,3 +1,9 @@
+## V298 / 2026-11-25 — Contact design research
+- https://tympanus.net/codrops/2026/10/20/maria-vasilyeva-portfolio/ — notation as a recurring visual language; adapted into a numbered production sheet with functional pictograms, not their assets or code.
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — music and motion as an identity system; adapted only the principle of rhythmic composition and a short arrow transition.
+- https://web.dev/learn/forms/design-basics — clear labels, readable spacing and keyboard operation; retain actual validated form and native link.
+Experiment: compact, icon-led production handoff. Rejected WebGL, autoplay, animated form steps and new dependencies; do not disguise the three explanatory steps as a real booking tracker. No copied code or external licensing reliance, no added service. Motion disabled on Lite and reduced-motion. Measured browser evidence pending; rollback by discarding draft branch.
+
 ## V297 / 2026-11-24 — Independent homepage rebuild
 - https://tympanus.net/codrops/2026/02/13/1820-productions-minimal-design-maximal-motion/ — production website emphasizes work instead of visual containers; adapted large lead film and restrained CSS motion, not code/assets.
 - https://tympanus.net/codrops/2026/07/27/between-print-and-digital-the-making-of-mersis-website/ — print/editorial structure; adapted cover typography, photo diptych and alternating running order. Rejected horizontal/forced scroll.

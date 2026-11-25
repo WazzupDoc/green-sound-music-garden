@@ -10,7 +10,10 @@ describe("Contact signal path", () => {
   it("shows a real three-step client-controlled quote flow without claiming submission", () => {
     expect(contact).toContain('aria-label="Etapele cererii de ofertă"');
     expect(contact).toContain('<ol className="director-contact-signal__steps">');
-    expect((contact.match(/<li><span>0[123] \/ /g) ?? [])).toHaveLength(3);
+    const steps = contact.match(/<ol className="director-contact-signal__steps">([\s\S]*?)<\/ol>/)?.[1] ?? "";
+    expect(steps.match(/<li>/g)).toHaveLength(3);
+    expect([...steps.matchAll(/<span>(0[123]) \/ /g)].map(match => match[1])).toEqual(["01", "02", "03"]);
+    expect(steps.match(/aria-hidden="true" className="gs-contact-v298__icon"/g)).toHaveLength(3);
     expect(contact).toContain("Tu confirmi trimiterea în aplicație");
     expect(contact).toContain("03 / DESCHIDERE");
     expect(contact).not.toContain("03 / SEND");
