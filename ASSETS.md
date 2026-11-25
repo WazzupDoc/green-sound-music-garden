@@ -1,3 +1,6 @@
+## V302 / 2026-11-25
+First-party inline SVG redraws based on approved concept; no raster mockup embedded, no imported icons, photos, fonts or dependencies. Existing media retained. Baseline artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274/artifacts/15037030193 inspected. Candidate evidence pending.
+
 ## V300 / 2026-11-25
 No new photographs, fonts, music, dependencies or generated event images. Existing first-party media /media/greensound/concert-public-lumini.webp and /media/greensound/dj-mc-green-sound.webp reused from verified project data. Existing film posters retained. Original 21-line decorative SVG signal, CSS light beams, logo geometry and nav glyphs authored in source; no borrowed code. Owner-approved AI reference is not a deployed asset and its depicted headphones/stage are not represented as Green Sound property. Existing favicon retained. Baseline CI artifact #15029711960; candidate evidence pending.
 
