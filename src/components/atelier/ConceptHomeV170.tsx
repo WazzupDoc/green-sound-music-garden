@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { images, videos, ytThumb, type Video } from "@/data/site";
 import { ProductionIndex } from "@/components/atelier/ProductionIndex";
@@ -25,16 +25,38 @@ const films: { label: string; eyebrow: string; video: Video }[] = [
 /** V297: a new poster composition, in normal document flow. Native links and
  * the real existing service programme; no video load before explicit Play. */
 export function ConceptHomeV170() {
+  const heroRef = useRef<HTMLElement>(null);
   const [hydrated, setHydrated] = useState(false);
   const [lightsOn, setLightsOn] = useState(true);
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
   const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const film = filmIndex === null ? null : films[filmIndex];
   useEffect(() => { setHydrated(true); }, []);
+  // Pointer depth is progressive and only attached to a fine pointer. No React render per frame.
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el || !lightsOn) return;
+    const media = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    let frame = 0;
+    const reset = () => { cancelAnimationFrame(frame); el.style.removeProperty("--gs300-x"); el.style.removeProperty("--gs300-y"); };
+    const move = (e: PointerEvent) => {
+      if (!media.matches || document.documentElement.dataset.gsPerformance === "lite") { reset(); return; }
+      const rect = el.getBoundingClientRect();
+      const x = Math.max(-1, Math.min(1, 2*(e.clientX-rect.left)/rect.width-1));
+      const y = Math.max(-1, Math.min(1, 2*(e.clientY-rect.top)/rect.height-1));
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {el.style.setProperty("--gs300-x", (x*9).toFixed(2)+"px");el.style.setProperty("--gs300-y",(y*6).toFixed(2)+"px");});
+    };
+    el.addEventListener("pointermove", move, {passive:true});
+    el.addEventListener("pointerleave", reset);
+    media.addEventListener("change", reset);
+    return () => {reset();el.removeEventListener("pointermove",move);el.removeEventListener("pointerleave",reset);media.removeEventListener("change",reset);};
+  }, [lightsOn]);
 
   return <>
-    <section className="gs170-hero" aria-labelledby="gs170-title"
+    <section ref={heroRef} className="gs170-hero gs300-stage" aria-labelledby="gs170-title"
       data-hydrated={hydrated ? "true" : "false"} data-lights={lightsOn ? "on" : "off"} data-hue={lightHue}>
+      <div className="gs300-atmosphere" aria-hidden="true"><i/><i/><i/></div>
       <div className="gs297-shell">
         <div className="gs297-coverline">
           <span>GREEN SOUND MUSIC</span>
@@ -44,11 +66,13 @@ export function ConceptHomeV170() {
           <span>PITEȘTI / ARGEȘ</span>
         </div>
         <div className="gs170-hero__content">
-          <h1 id="gs170-title"><span>EVENIMENTE</span><em>de neuitat.</em></h1>
+          <span className="gs300-eyebrow">MUZICĂ · TEHNICĂ · PRODUCȚIE EVENIMENTE</span>
+          <h1 id="gs170-title"><span>EVENIMENTE</span><em>DE NEUITAT</em></h1>
           <div className="gs297-cover-aside">
             <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
-            <p className="gs170-hero__lead">DJ & MC, trupă live și producție tehnică pentru nunți, petreceri și concerte.</p>
-            <Link to="/contact" className="gs170-btn gs170-btn--green">Solicită o ofertă <Arrow diagonal /></Link>
+            <p className="gs170-hero__lead">Sunet, lumini și atmosferă pentru evenimente cu personalitate, în Pitești și Argeș. DJ & MC, trupă live și producție tehnică.</p>
+            <Link to="/contact" className="gs170-btn gs170-btn--green">Planifică evenimentul <Arrow /></Link>
+            <button type="button" className="gs300-showreel" onClick={() => setFilmIndex(1)}><Play /> Vezi showreel</button>
           </div>
         </div>
         <div className="gs297-diptych">
@@ -62,11 +86,12 @@ export function ConceptHomeV170() {
             <figcaption>02 / DJ & MC</figcaption>
           </figure>
         </div>
+        <StageWave />
         <div className="gs297-cover-bottom">
           <a href="#gs-production-index" className="gs170-inline">Explorează serviciile <Arrow /></a>
           <a href="#gs170-films" className="gs170-inline">Vezi portofoliul <Play /></a>
           <div className="gs170-hero__control" role="group" aria-label="Atmosfera vizuală a site-ului">
-            <span className="gs297-control-label">TON FOTO</span>
+            <span className="gs297-control-label">ATMOSFERĂ</span>
             <button type="button" aria-pressed={lightsOn} onClick={() => setLightsOn(value => !value)}>{lightsOn ? "Efect ON" : "Efect OFF"}</button>
             <button type="button" aria-pressed={lightHue === "green"} onClick={() => setLightHue("green")}>Verde</button>
             <button type="button" aria-pressed={lightHue === "cool"} onClick={() => setLightHue("cool")}>Rece</button>
@@ -125,4 +150,21 @@ export function ConceptHomeV170() {
       </DialogContent>
     </Dialog>
   </>;
+}
+
+/** Original deterministic vector ribbon; a decorative visual, not an audio meter. */
+function StageWave() {
+  const paths = Array.from({length: 21}, (_, line) => {
+    const t = line / 20;
+    return Array.from({length: 65}, (_, i) => {
+      const u = i / 64;
+      const x = u * 1000;
+      const envelope = Math.sin(Math.PI*u);
+      const y = 116 + Math.sin(u*Math.PI*3.7 + t*1.25)*envelope*(30+t*51) + (t-.5)*28*envelope;
+      return (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1);
+    }).join(" ");
+  });
+  return <svg className="gs300-wave" viewBox="0 0 1000 240" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+    {paths.map((d,i)=><path key={i} d={d} stroke="currentColor" strokeWidth={i===10?1.5:.65} opacity={.25+Math.sin(i/20*Math.PI)*.65}/>)}
+  </svg>;
 }
