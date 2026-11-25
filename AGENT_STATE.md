@@ -1,3 +1,6 @@
+## V302 / 2026-11-25 — Approved reference icon fidelity (DRAFT)
+Owner rejected V301 eight small service glyphs. Inspected approved mockup a_highly_polished_cinematic_dark_green_neon_gree.png and actual V300 artifact #15037030193. Base V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI #45641237274 success; V301 not inherited. Redrew header home, sliders, calendar, studio meter, people, envelope and headset; portfolio and finder preserved, direct Contact link added at wider sizes. Restored three lime chapter marks only; calendar in hero CTA and lime headline specificity fixed. Candidate CI and screenshots pending; no claim of pixel equivalence. Next: verify real browser, particularly header width and focus, then reference layout fidelity. Main unchanged.
+
 ## V300 / 2026-11-25 — Owner-approved cinematic reference (DRAFT)
 | Zone | Defect | Implementation | Evidence |
 |---|---|---|---|
