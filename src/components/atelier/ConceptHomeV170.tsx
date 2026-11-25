@@ -40,7 +40,7 @@ export function ConceptHomeV170() {
     let frame = 0;
     const reset = () => { cancelAnimationFrame(frame); el.style.removeProperty("--gs300-x"); el.style.removeProperty("--gs300-y"); };
     const move = (e: PointerEvent) => {
-      if (!media.matches || document.documentElement.dataset.gsPerformance === "lite") { reset(); return; }
+      if (!media.matches || document.documentElement.dataset["gsPerformance"] === "lite") { reset(); return; }
       const rect = el.getBoundingClientRect();
       const x = Math.max(-1, Math.min(1, 2*(e.clientX-rect.left)/rect.width-1));
       const y = Math.max(-1, Math.min(1, 2*(e.clientY-rect.top)/rect.height-1));
