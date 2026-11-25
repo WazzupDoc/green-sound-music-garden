@@ -14,8 +14,8 @@ for(const width of after?[360,390,430,768,1440,1920]:[390,1440]){
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+2),"overflow "+width);
  if(after){
  assert.equal(await page.locator(".gs300-wave path").count(),21);assert.equal(await page.locator(".gs300-wave").evaluate(e=>getComputedStyle(e).animationName),"none");
- assert.equal(await page.locator(".gs300-stage").evaluate(e=>getComputedStyle(e).backgroundColor),"rgb(6, 23, 16)");
- assert(await page.locator(".gs300-stage h1").evaluate(e=>[...e.children].every(c=>c.getBoundingClientRect().right<=innerWidth+2)),"headline clipped "+width);
+ assert.equal(await page.locator("[data-stage=cinematic]").evaluate(e=>getComputedStyle(e).backgroundColor),"rgb(6, 23, 16)");
+ assert(await page.locator("[data-stage=cinematic] h1").evaluate(e=>[...e.children].every(c=>c.getBoundingClientRect().right<=innerWidth+2)),"headline clipped "+width);
  }
  await page.screenshot({path:dir+"/"+stage+"-home-"+width+".png",fullPage:true,animations:"disabled"});
  await page.screenshot({path:dir+"/"+stage+"-viewport-"+width+".png",animations:"disabled"});
@@ -25,7 +25,7 @@ for(const width of after?[360,390,430,768,1440,1920]:[390,1440]){
 if(after){const p=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:"no-preference"});await p.goto("http://127.0.0.1:4175/");await p.locator('.gs170-hero[data-hydrated="true"]').waitFor();await p.evaluate(()=>document.documentElement.dataset.gsPerformance="full");
 const wave=p.locator(".gs300-wave");assert.equal(await wave.evaluate(e=>getComputedStyle(e).animationName),"gs300-wave-cue");
 await wave.evaluate(e=>{const a=e.getAnimations()[0];if(a){a.pause();a.currentTime=250}});await p.screenshot({path:dir+"/motion-start.png",animations:"allow"});
-await wave.evaluate(e=>{const a=e.getAnimations()[0];if(a)a.currentTime=2000});await p.mouse.move(1000,440);await p.waitForTimeout(300);assert.notEqual(await p.locator(".gs300-stage").evaluate(e=>e.style.getPropertyValue("--gs300-x")),"");await p.screenshot({path:dir+"/motion-active.png",animations:"allow"});
+await wave.evaluate(e=>{const a=e.getAnimations()[0];if(a)a.currentTime=2000});await p.mouse.move(1000,440);await p.waitForTimeout(300);assert.notEqual(await p.locator("[data-stage=cinematic]").evaluate(e=>e.style.getPropertyValue("--gs300-x")),"");await p.screenshot({path:dir+"/motion-active.png",animations:"allow"});
 await p.evaluate(()=>document.documentElement.dataset.gsPerformance="lite");assert.equal(await wave.evaluate(e=>getComputedStyle(e).animationName),"none");await p.close();
 const ctx=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:900}});const n=await ctx.newPage();assert.equal((await n.goto("http://127.0.0.1:4175/")).status(),200);assert.equal(await n.locator(".gs-index__service").count(),8);assert.equal(await n.locator(".gs300-wave path").count(),21);await ctx.close();}
 }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
