@@ -1,0 +1,3 @@
+import {readFileSync} from "node:fs";
+import {describe,it,expect} from "vitest";
+describe("V301 cinematic service programme",()=>{it("renders decorative service glyphs without changing native service links",()=>{const s=readFileSync("src/components/atelier/ProductionIndex.tsx","utf8");expect(s).toContain("<ServiceGlyph slug={service.slug} />");expect(s).toContain("Record<ServiceSlug,string>");expect(s).toContain("aria-hidden=\"true\"><path");expect(s).toContain("chapter.linkedServices.map");});it("has asymmetric layout and motion opt-outs",()=>{const s=readFileSync("src/styles/home-rebuild-v297.css","utf8");expect(s).toContain("gs301-channel-cue");expect(s).toContain("prefers-reduced-motion:reduce");expect(s).toContain('data-gs-performance="lite"');});});

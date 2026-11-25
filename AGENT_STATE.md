@@ -1,3 +1,6 @@
+## V301 / 2026-11-25 — Cinematic service programme (DRAFT)
+V300 #338 exact 80e6517b8c4cb0df69a1f86c2d8c39accf43060b failed browser headline punctuation check #45640682997; restored full stop in fc31a607e147cb3c10f5af47727281929a2c6e4f. V299 remains last confirmed principal green; V301 experimental stack on corrected but not yet validated V300. Service area source showed three full-width repeated rows; replaced with one major music act and two smaller stacked acts, eight bespoke pictograms and finite chapter signal cue. Eight native links, 3 chapters, 3 films and one final CTA preserved. Source fe1dd0a8ce772c242dd3711708c32d3471551675. Dedicated matched 390/1440 and six-width browser script added, screenshots pending. Next: exact-head validation and visual inspection, then interior services. Main unchanged.
+
 ## V300 / 2026-11-25 — Owner-approved cinematic reference (DRAFT)
 | Zone | Defect | Implementation | Evidence |
 |---|---|---|---|
