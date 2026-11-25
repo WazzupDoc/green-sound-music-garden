@@ -1,3 +1,8 @@
+## V299 / 2026-11-25 — Brand signal header
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — music-tech identity through bold typography and ticket-like navigation; adapted physical studio control geometry, not artwork/code. Rejected photo trails and extra animation library.
+- https://pwa-book.awwwards.com/chapter-6 — communicate state through more than just icon/color; kept accessible names, expanded state and text labels. https://pwa-book.awwwards.com/chapter-5 — coherent icon/naming identity; retained existing favicon pending approval of proposed digital mark.
+Experiment: original G + waveform and matching hardware-inspired control glyphs with short hover displacement only; no external code/assets or new dependency; reduced-motion and Lite disable transitions. Browser/visual gate pending; rollback via isolated branch. No new license reliance.
+
 ## V297 / 2026-11-24 — Independent homepage rebuild
 - https://tympanus.net/codrops/2026/02/13/1820-productions-minimal-design-maximal-motion/ — production website emphasizes work instead of visual containers; adapted large lead film and restrained CSS motion, not code/assets.
 - https://tympanus.net/codrops/2026/07/27/between-print-and-digital-the-making-of-mersis-website/ — print/editorial structure; adapted cover typography, photo diptych and alternating running order. Rejected horizontal/forced scroll.

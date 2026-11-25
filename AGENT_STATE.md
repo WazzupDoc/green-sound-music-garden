@@ -1,3 +1,10 @@
+## V299 / 2026-11-25 — Global brand/header (DRAFT)
+| Zone | Defect | Change | Evidence |
+|---|---|---|---|
+| Logo/header | favicon reused as logo; generic Lucide controls and gradient/shadow buttons (source inspection, owner feedback) | original angular G/waveform digital lockup, custom search/menu/phone/arrow/expand controls, flat green ink masthead | matched browser 390/1440 and six widths configured; not inspected |
+| Contact | V298 primary CI failed on old literal `<li><span>` contract | separate V298 test repair c8207b255656bf766ed277dad79706d1ec24b780; does not enter V299 | exact-head result pending |
+Base V297 1aa4ab8da947e31d7148f7fff4fcbafe063032ea principal CI #45417030056 successful; V298 failed #45586667967; PR #19 mergeable=false. Next: inspect matched header/Contact artifacts and resolve regressions, then service icon family. No main/deploy.
+
 ## V297 / 2026-11-24 — Owner-requested full homepage reconstruction (DRAFT)
 Owner rejected accumulated styling and asked for total reconstruction. Baseline V295 exact-head 972002afac6ab99f7295524c77e7ce4d7f5c126e principal CI #45389588007 success; V296 #334 failed CI #45412572854 and is deliberately not inherited. New branch design/v297-from-scratch-editorial.
 | Zone | Observable defect | New code | Validation |

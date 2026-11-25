@@ -1,5 +1,4 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { ArrowUpRight, ChevronDown, Menu, Phone, X, MessageCircle, Search } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent } from "react";
 import { Logo } from "./Logo";
 import stageIndexCss from "@/styles/navigation-v81.css?inline";
@@ -9,6 +8,7 @@ import productionNavCss from "@/styles/navigation-v217.css?inline";
 import { ServiceDirectoryV217 } from "./ServiceDirectoryV217";
 import { business, images } from "@/data/site";
 import cinematicNavCss from "@/styles/navigation-v295.css?inline";
+import brandNavCss from "@/styles/navigation-v299.css?inline";
 import { defaultWhatsappText, whatsappUrl } from "@/lib/quote";
 
 // The searchable directory is requested only when opened, not on every page load.
@@ -177,6 +177,7 @@ export function SiteHeader() {
       <style>{restoredNavCss}</style>
       <style>{productionNavCss}</style>
       <style>{cinematicNavCss}</style>
+      <style>{brandNavCss}</style>
       <a href="#continut" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:p-3 focus:text-primary-foreground">Sari la conținut</a>
       <div className="container-site atelier-header__inner">
         <Logo />
@@ -197,7 +198,7 @@ export function SiteHeader() {
                 aria-haspopup="true" aria-expanded={servicesOpen}
                 aria-controls="gs217-service-directory"
                 onClick={() => setServicesOpen(previous => !previous)}>
-                <ChevronDown aria-hidden="true" size={15} />
+                <SignalIcon kind="expand" />
               </button>
               {servicesOpen && <ServiceDirectoryV217 onNavigate={() => setServicesOpen(false)} />}
             </div>
@@ -213,19 +214,19 @@ export function SiteHeader() {
             aria-label="Caută servicii și evenimente" aria-haspopup="dialog"
             aria-keyshortcuts="Control+K Meta+K" title="Caută servicii, evenimente și pagini (Ctrl+K)"
             onClick={() => { setOpen(false); setServicesOpen(false); setFinderActivated(true); setFinderOpen(true); }}>
-            <Search className="size-5" aria-hidden />
+            <SignalIcon kind="search" />
             <span className="gs215-search-text" aria-hidden="true">Caută</span>
             <span className="atelier-header__finder-hint" aria-hidden>⌘K</span>
           </button>
           <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
-            <Phone className="size-4" aria-hidden /> {business.phoneDisplay}
+            <SignalIcon kind="phone" /> {business.phoneDisplay}
           </a>
           <Link to="/contact" viewTransition className="atelier-header__quote">
-            Cere ofertă <ArrowUpRight className="size-4" aria-hidden />
+            Cere ofertă <SignalIcon kind="arrow" />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
-            {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
+            <SignalIcon kind={open ? "close" : "menu"} />
           </button>
         </div>
       </div>
@@ -355,4 +356,17 @@ export function SiteHeader() {
       </Suspense>
     </header>
   );
+}
+
+/** Original 24-unit glyph family: shared chamfered line terminals, signal/mixer references. */
+function SignalIcon({ kind }: {kind: "expand" | "search" | "phone" | "arrow" | "close" | "menu"}) {
+  const paths = {
+    expand: "M5 9h4l3 4 3-4h4",
+    search: "M4 5h10l4 4v5l-4 4H8l-4-4z M16 16l5 5 M7 11h3l2-4 2 7 2-3",
+    phone: "M5 3h4l2 6-3 2 5 5 2-3 6 2v4l-3 2C10 20 4 14 3 6z",
+    arrow: "M3 16h6l4-8h7 M15 3l5 5-5 5",
+    close: "M5 5l14 14 M19 5L5 19",
+    menu: "M3 6h18 M3 12h18 M3 18h18 M8 3v6 M16 9v6 M10 15v6",
+  } as const;
+  return <svg className="gs299-control-icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="square" strokeLinejoin="round" aria-hidden="true"><path d={paths[kind]} /></svg>;
 }

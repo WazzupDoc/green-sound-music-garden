@@ -1,0 +1,26 @@
+/* V299 — audio hardware inspired masthead, no glow or generic pill controls. */
+.atelier-header:has(.gs299-brand){background:#101d16;border-bottom:1px solid #617366;box-shadow:none}
+.atelier-header:has(.gs299-brand)::after{background:none}
+.atelier-header .gs299-brand{min-height:44px;text-decoration:none;gap:10px}
+.atelier-header .gs299-brand__mark{flex:none;width:42px;height:42px}
+.atelier-header .atelier-header__nav .atelier-header__link{font-size:.83rem;font-weight:650;letter-spacing:-.015em}
+.atelier-header .atelier-header__actions{gap:8px}
+.atelier-header .atelier-header__finder-btn,.atelier-header .atelier-header__menu-btn{border:1px solid #687d6e;background:transparent;border-radius:0;box-shadow:none;min-height:44px;color:#f2f4e9}
+.atelier-header .atelier-header__finder-btn:hover,.atelier-header .atelier-header__menu-btn:hover{background:#263d2d;border-color:#c7f29b}
+.atelier-header .atelier-header__quote{background:#c7f29b;color:#112016;border:1px solid #c7f29b;border-radius:0;box-shadow:none;min-height:44px}
+.atelier-header .atelier-header__quote:is(:hover,:focus-visible){background:#e0f8c7;color:#112016;box-shadow:none}
+.atelier-header .atelier-header__finder-hint{border:0;padding:0 3px;color:#c7d6c6}
+.atelier-header .gs299-control-icon{flex:none;width:21px;height:21px}
+.atelier-header .atelier-header__phone .gs299-control-icon{width:17px;height:17px}
+.atelier-header .gs217-services-toggle .gs299-control-icon{width:18px;height:18px}
+.atelier-header :is(.gs299-brand,.atelier-header__quote,.atelier-header__menu-btn,.atelier-header__finder-btn):focus-visible{outline:2px solid #e0f8c7;outline-offset:3px}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+html:not([data-gs-performance="lite"]) .atelier-header .gs299-brand__mark{transition:transform .26s cubic-bezier(.2,.8,.2,1)}
+html:not([data-gs-performance="lite"]) .atelier-header .gs299-brand:hover .gs299-brand__mark{transform:translateX(2px)}
+html:not([data-gs-performance="lite"]) .atelier-header .atelier-header__quote .gs299-control-icon{transition:transform .22s ease}
+html:not([data-gs-performance="lite"]) .atelier-header .atelier-header__quote:hover .gs299-control-icon{transform:translateX(3px)}
+}
+@media(max-width:1023px){.atelier-header .atelier-header__finder-btn{min-width:44px;width:44px;padding:8px}.atelier-header .gs215-search-text,.atelier-header .atelier-header__finder-hint{display:none}}
+@media(max-width:430px){.atelier-header .gs299-brand{gap:6px}.atelier-header .gs299-brand__mark{width:36px;height:36px}.atelier-header .gs299-brand>span>span:first-child{font-size:.94rem}.atelier-header .atelier-header__actions{gap:6px}}
+@media(prefers-reduced-motion:reduce){.atelier-header .gs299-brand__mark,.atelier-header .gs299-control-icon{transition:none!important;animation:none!important}}
+html[data-gs-performance="lite"] .atelier-header .gs299-brand__mark,html[data-gs-performance="lite"] .atelier-header .gs299-control-icon{transition:none!important;animation:none!important}
