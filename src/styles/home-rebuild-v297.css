@@ -200,3 +200,9 @@ html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-lights="on"
 @media(max-width:430px){.gs300-eyebrow{font-size:.59rem;letter-spacing:.09em;margin-bottom:16px}.gs300-eyebrow::before{width:15px;margin-right:8px}[data-stage="cinematic"] .gs297-cover-aside{margin-top:18px}.gs300-showreel{margin-left:0;display:flex;margin-top:6px}.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] h1{font-size:clamp(2.45rem,10.1vw,3rem)}}
 @media(prefers-reduced-motion:reduce){[data-stage="cinematic"] :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}}
 html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}
+
+/* V302: the reference uses three large lime chapter pictograms, not eight miniature line icons. */
+.gs170-home[data-bespoke="v297"] .gs302-chapter-glyph{display:block;width:34px;height:34px;margin-top:16px;color:#d6ff31;flex:none}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter-body h3{margin-top:8px}
+.gs170-home[data-bespoke="v297"] .gs300-stage #gs170-title em{color:#c1fa43}
+@media(max-width:740px){.gs170-home[data-bespoke="v297"] .gs302-chapter-glyph{width:30px;height:30px}}
