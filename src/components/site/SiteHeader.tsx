@@ -221,8 +221,8 @@ export function SiteHeader() {
           <a href={business.phoneHref} className="atelier-header__phone" aria-label={`Sună Green Sound Music la ${business.phoneDisplay}`}>
             <SignalIcon kind="phone" /> {business.phoneDisplay}
           </a>
-          <Link to="/contact" viewTransition className="atelier-header__quote" aria-label="Cere ofertă">
-            <NavGlyph route="/contact" /> Discută un eveniment <SignalIcon kind="arrow" />
+          <Link to="/contact" viewTransition className="atelier-header__quote">
+            <NavGlyph route="/contact" /> Cere ofertă <SignalIcon kind="arrow" />
           </Link>
           <button ref={menuButtonRef} type="button" className="atelier-header__menu-btn" aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-controls="atelier-mobile-navigation" aria-expanded={open} onClick={() => { setMenuSelection(Math.max(0, navigation.findIndex(item => item.to === path))); setOpen(value => !value); }}>
