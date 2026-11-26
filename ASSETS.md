@@ -1,3 +1,6 @@
+## 2026-11-26 — Original signal deck
+Hand-authored SVG in ConceptHomeV170.tsx, decorative abstract console, not a photograph or actual equipment/audio meter. No external media, code or dependencies. Removed duplicate DJ image from hero; retained it in the music chapter. Existing concert and film assets unchanged.
+
 ## 2026-11-26 — V302 Live Cue
 No assets, fonts, external code or dependencies added. Existing concert and DJ photos unchanged; optical beams, rim lights and decorative pulse are original CSS overlays, not documentary footage or a real audio meter. No TikTok or AI imagery integrated.
 
