@@ -1,3 +1,9 @@
+## 2026-11-26 — V302 Live Cue, PR #340
+| Zone | Severity | Observed defect | Intervention | Evidence / acceptance | Status |
+|---|---|---|---|---|---|
+| Homepage hero | High visual | V302 screenshot showed hard static-looking wedges, muted photograph and flat CTA; owner rejected AI-like aesthetic | Soft optical beams with finite choreography, decorative waveform pulse, rim lighting, hover/focus cue | Baseline artifact 15043299509; same 390/1440 before/after and 6 widths, active frames, OFF/cool/Lite in updated browser job | Code committed e4ec94ad7ae41c5b60395fa130b1db548dfc0a1e; CI and visual acceptance pending |
+Next: inspect exact-head captures and repair visual/motion failures; then original navigation icon motion and route transitions as separate scoped changes. Main untouched. Rollback: revert the scoped commits on draft branch if rejected.
+
 ## V302 follow-up / 2026-11-25 — Internal audit
 | Priority | Component | Finding | Action | Verification |
 |---|---|---|---|---|
