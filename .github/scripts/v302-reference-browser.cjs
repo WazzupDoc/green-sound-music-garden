@@ -43,4 +43,32 @@ for(const width of after?[360,390,430,768,1440,1920]:[390,1440]){
  }
  assert.deepEqual(errors,[]);await page.close();
 }
+
+if(after){
+ const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1,reducedMotion:"no-preference"});
+ await page.goto("http://127.0.0.1:4175/");
+ const hero=page.locator('.gs170-hero[data-hydrated="true"]');
+ await hero.waitFor();
+ const beam=hero.locator(".gs300-atmosphere i").first();
+ const wave=hero.locator(".gs300-wave");
+ await page.waitForFunction(()=>getComputedStyle(document.querySelector(".gs300-atmosphere i")).animationName==="gs302-live-sweep");
+ await page.waitForTimeout(450);
+ const a=await beam.evaluate(e=>getComputedStyle(e).transform);
+ await page.screenshot({path:dir+"/live-cue-early-1440.png"});
+ await page.waitForTimeout(950);
+ const b=await beam.evaluate(e=>getComputedStyle(e).transform);
+ assert.notEqual(a,b,"stage light must actually move");
+ await page.screenshot({path:dir+"/live-cue-mid-1440.png"});
+ await hero.getByRole("button",{name:"Efect ON"}).click();
+ assert.equal(await wave.evaluate(e=>getComputedStyle(e).display),"none");
+ await page.screenshot({path:dir+"/live-cue-off-1440.png"});
+ await hero.getByRole("button",{name:"Efect OFF"}).click();
+ await hero.getByRole("button",{name:"Rece"}).click();
+ assert.equal(await hero.getAttribute("data-hue"),"cool");
+ await page.screenshot({path:dir+"/live-cue-cool-1440.png"});
+ await page.evaluate(()=>{document.documentElement.dataset.gsPerformance="lite"});
+ assert.equal(await beam.evaluate(e=>getComputedStyle(e).animationName),"none");
+ assert.equal(await wave.evaluate(e=>getComputedStyle(e).animationName),"none");
+ await page.close();
+}
 }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});
