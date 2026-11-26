@@ -31,7 +31,7 @@ jobs:
           cp .github/scripts/v302-reference-browser.cjs /tmp/v302-reference-browser.cjs
           for stage in before after; do
             if [ "$stage" = before ]; then
-              git checkout --detach fc31a607e147cb3c10f5af47727281929a2c6e4f
+              git checkout --detach f551a601698dca30eb137d80c69dea12da0928d3
             else
               git checkout --detach "$HEAD_SHA"
             fi
