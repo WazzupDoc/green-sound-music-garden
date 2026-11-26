@@ -1,3 +1,10 @@
+## 2026-11-26 — Live Cue
+- https://webflow.com/made-in-webflow/website/felicia-festival — project description highlights animated music/art journey; adapted principle of event-specific cues, not layout or assets.
+- https://webflow.com/made-in-webflow/website/gerrits-sublime-site — electronic music festival project description; adapted idea of an energetic event entry, not branding. Neither project code nor imagery reused; no license assumed. Only project descriptions reviewed, not a full interactive inspection.
+- https://web.dev/articles/animations-guide — use transform/opacity for motion; original finite sweeps, not animated blur.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — static fallback and existing Lite gate.
+Experiment: optical live cue with existing photo and controls; no dependencies, no sound, no perpetual loops, no strobe; acceptance requires real screenshots and browser motion check. Rejected full-screen strobe, endless autoplay and fabricated DJ imagery. Performance not yet measured.
+
 ## V302 / 2026-11-25
 Primary art reference is the owner's approved generated mockup, inspected directly beside the real V300 browser capture. Adapted outline geometry, active lime cue and three chapter marks; rejected V301 eight unrelated miniature icons. Original vector paths manually authored, no external code/assets/dependencies. No new external research performed in this targeted correction. Browser gate pending.
 
