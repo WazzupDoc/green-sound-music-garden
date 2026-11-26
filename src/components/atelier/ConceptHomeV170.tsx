@@ -81,9 +81,9 @@ export function ConceptHomeV170() {
               height={images.concert.h} className="gs170-stage__image" decoding="async" fetchPriority="high" />
             <figcaption><span>01 / PRODUCȚIE LIVE</span><span>ARHIVA GREEN SOUND</span></figcaption>
           </figure>
-          <figure className="gs297-portrait">
-            <img src={images.dj.src} alt={images.dj.alt} width={images.dj.w} height={images.dj.h} decoding="async" loading="lazy" />
-            <figcaption>02 / DJ & MC</figcaption>
+          <figure className="gs297-portrait gs-live-deck" aria-hidden="true">
+            <LiveDeck />
+            <figcaption>GREEN SOUND / SIGNAL</figcaption>
           </figure>
         </div>
         <StageWave />
@@ -166,5 +166,29 @@ function StageWave() {
   });
   return <svg className="gs300-wave" viewBox="0 0 1000 240" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
     {paths.map((d,i)=><path key={i} d={d} stroke="currentColor" strokeWidth={i===10?1.5:.65} opacity={.25+Math.sin(i/20*Math.PI)*.65}/>)}
+  </svg>;
+}
+
+/** Original decorative DJ-console illustration. No real audio input or equipment claim. */
+function LiveDeck() {
+  return <svg className="gs-live-deck__art" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+    <path d="M18 40V18h22m220 0h22v22M18 180v22h22m220 0h22v-22" stroke="#b7f843" strokeWidth="1.4"/>
+    <path d="M24 62h252M24 170h252" stroke="#89b49b" strokeOpacity=".24"/>
+    <g className="gs-live-deck__disc">
+      <circle cx="92" cy="114" r="44" stroke="#91b6a5" strokeOpacity=".5"/>
+      <circle cx="92" cy="114" r="37" stroke="#b7f843" strokeDasharray="54 12 2 14 28 123"/>
+      <circle cx="92" cy="114" r="30" stroke="#91b6a5" strokeOpacity=".35"/>
+      <circle cx="92" cy="114" r="11" stroke="#b7f843"/>
+      <path d="M92 74v15m0 50v15M52 114h15m50 0h15" stroke="#a3c2ae" strokeOpacity=".55"/>
+      <circle cx="92" cy="114" r="2" fill="#b7f843"/>
+    </g>
+    <g stroke="#91b6a5" strokeOpacity=".6">
+      <path d="M162 80v68m36-68v68m36-68v68m30-68v68"/>
+      <path d="M154 91h16m20 33h16m20-22h16m14 30h16" stroke="#c4fa55" strokeWidth="5"/>
+    </g>
+    <g className="gs-live-deck__meter" stroke="#c4fa55" strokeWidth="2.5" strokeLinecap="round">
+      {[8,15,25,11,32,18,38,24,13,30,17,8,22,11,5].map((h,i)=><path key={i} style={{animationDelay:(i%5)*.08+"s"}} d={"M"+(36+i*16)+" "+(45-h/2)+"v"+h}/>)}
+    </g>
+    <path d="M32 184h40l6-5 6 10 8-18 8 18 6-5h160" stroke="#b7f843" strokeOpacity=".7"/>
   </svg>;
 }
