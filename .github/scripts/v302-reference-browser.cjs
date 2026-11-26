@@ -19,6 +19,10 @@ for(const width of after?[360,390,430,768,1440,1920]:[390,1440]){
  assert.equal(await page.locator(".gs170-film-card").count(),3);
  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),"horizontal overflow "+width);
  if(after){
+ const sources=await page.locator(".gs170-hero img,.gs-index__photo img,.gs170-film-card img").evaluateAll(es=>es.map(e=>e.currentSrc||e.src));
+ assert.equal(new Set(sources).size,sources.length,"Repeated homepage photograph");
+ assert.equal(await page.locator(".gs-live-deck__art").count(),1);
+ assert.equal(await page.locator(".gs-live-deck__disc").evaluate(e=>getComputedStyle(e).animationName),"none");
  assert.equal(await page.locator(".gs302-chapter-glyph").count(),3);
  assert.equal(await page.locator("#gs170-title em").evaluate(e=>getComputedStyle(e).color),"rgb(193, 250, 67)");
  assert.equal(await page.locator(".gs300-wave").evaluate(e=>getComputedStyle(e).animationName),"none");
@@ -53,14 +57,19 @@ if(after){
  const wave=hero.locator(".gs300-wave");
  await page.waitForFunction(()=>getComputedStyle(document.querySelector(".gs300-atmosphere i")).animationName==="gs302-live-sweep");
  await page.waitForTimeout(450);
+ const disc=hero.locator(".gs-live-deck__disc");
+ assert.equal(await disc.evaluate(e=>getComputedStyle(e).animationName),"gs-live-deck-spin");
+ const discA=await disc.evaluate(e=>getComputedStyle(e).transform);
  const a=await beam.evaluate(e=>getComputedStyle(e).transform);
  await page.screenshot({path:dir+"/live-cue-early-1440.png"});
  await page.waitForTimeout(950);
  const b=await beam.evaluate(e=>getComputedStyle(e).transform);
  assert.notEqual(a,b,"stage light must actually move");
+ assert.notEqual(discA,await disc.evaluate(e=>getComputedStyle(e).transform),"Deck must rotate");
  await page.screenshot({path:dir+"/live-cue-mid-1440.png"});
  await hero.getByRole("button",{name:"Efect ON"}).click();
  assert.equal(await wave.evaluate(e=>getComputedStyle(e).display),"none");
+ assert.equal(await disc.evaluate(e=>getComputedStyle(e).animationName),"none");
  await page.screenshot({path:dir+"/live-cue-off-1440.png"});
  await hero.getByRole("button",{name:"Efect OFF"}).click();
  await hero.getByRole("button",{name:"Rece"}).click();
@@ -68,6 +77,7 @@ if(after){
  await page.screenshot({path:dir+"/live-cue-cool-1440.png"});
  await page.evaluate(()=>{document.documentElement.dataset.gsPerformance="lite"});
  assert.equal(await beam.evaluate(e=>getComputedStyle(e).animationName),"none");
+ assert.equal(await disc.evaluate(e=>getComputedStyle(e).animationName),"none");
  assert.equal(await wave.evaluate(e=>getComputedStyle(e).animationName),"none");
  await page.close();
 }
