@@ -1,3 +1,6 @@
+## V302 Live Cue / 2026-11-26 — DRAFT
+Existing PR #340 retained. Exact baseline f551a601698dca30eb137d80c69dea12da0928d3; previous CI and screenshot artifact 15043299509 green. New source e4ec94ad7ae41c5b60395fa130b1db548dfc0a1e: soft moving optical beams, signal pulse, brighter original stage photo, rim light, CTA sweep, OFF and Lite/reduced motion. Matched browser script now tests active motion, OFF and cool state. New exact-head CI, screenshots and owner approval pending; do not merge or deploy. No new assets or dependencies.
+
 ## V302 / 2026-11-25 — Reference iconography (DRAFT)
 Branch design/v302-reference-iconography from validated V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274 success. V301 rejected by owner and not inherited. Header and three chapter icons hand-redrawn from approved mockup; preserve portfolio/finder and all eight service links. Exact candidate validation pending. Main unchanged.
 
