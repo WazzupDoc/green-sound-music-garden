@@ -1,3 +1,8 @@
+## 2026-11-26 — Signal deck / unique photography
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — equalizer as music identity; adapted original finite vector pulse, rejected repeated photo trails.
+- https://webflow.com/made-in-webflow/website/felicia-festival — animated event identity; adapted silent musical visual cue rather than futuristic template or extra navigation widgets.
+Only editorial references reviewed; no external code or assets copied, no license assumed. No dependencies. Original SVG/CSS, static for reduced motion and Lite. Acceptance: distinct photos, real browser motion and screenshots; pending. Rollback by reverting scoped commits.
+
 ## 2026-11-26 — Live Cue
 - https://webflow.com/made-in-webflow/website/felicia-festival — project description highlights animated music/art journey; adapted principle of event-specific cues, not layout or assets.
 - https://webflow.com/made-in-webflow/website/gerrits-sublime-site — electronic music festival project description; adapted idea of an energetic event entry, not branding. Neither project code nor imagery reused; no license assumed. Only project descriptions reviewed, not a full interactive inspection.
