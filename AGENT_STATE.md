@@ -1,3 +1,9 @@
+## 2026-11-26 — Unique media / signal deck (PR #340)
+| Zone | Severity | Defect | Remedy | Acceptance | Status |
+|---|---|---|---|---|---|
+| Homepage hero | High | Same DJ portrait repeated in hero and service programme | Replace hero inset with original silent SVG DJ console, finite platter and equalizer animation; preserve actual service photograph | All homepage image URLs unique; 6 viewport captures; active motion and OFF/Lite/reduced checks | Source 067e0b142e6b9ee1deb1a768c3ce17d7ddebfc39; browser test 0c3e2610605887ef693d3e6a54f05ed360504b89; CI and owner visual review pending |
+Next: inspect actual captures, then section transitions and navigation icon motion. Main untouched.
+
 ## 2026-11-26 — V302 Live Cue, PR #340
 | Zone | Severity | Observed defect | Intervention | Evidence / acceptance | Status |
 |---|---|---|---|---|---|
