@@ -1,3 +1,6 @@
+## V302 — Unique media / signal deck (DRAFT, 2026-11-26)
+PR #340 remains the candidate. Source 067e0b142e6b9ee1deb1a768c3ce17d7ddebfc39; test 0c3e2610605887ef693d3e6a54f05ed360504b89. Original SVG console replaces repeated photo; finite motion with OFF/Lite/reduced fallback. Exact-head CI and matched screenshots pending. No main or deploy.
+
 ## V302 Live Cue / 2026-11-26 — DRAFT
 Existing PR #340 retained. Exact baseline f551a601698dca30eb137d80c69dea12da0928d3; previous CI and screenshot artifact 15043299509 green. New source e4ec94ad7ae41c5b60395fa130b1db548dfc0a1e: soft moving optical beams, signal pulse, brighter original stage photo, rim light, CTA sweep, OFF and Lite/reduced motion. Matched browser script now tests active motion, OFF and cool state. New exact-head CI, screenshots and owner approval pending; do not merge or deploy. No new assets or dependencies.
 
