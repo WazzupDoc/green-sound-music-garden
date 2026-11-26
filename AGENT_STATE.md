@@ -1,3 +1,6 @@
+## 2026-11-27 — V302 release blocker: stale media contracts
+P1: principal CI #45785681559 failed five suites expecting removed duplicate DJ photo. Matched browser #45785681524 passed, artifact #15099629277 (not visually inspected in this run). Repair all five contracts to require original LiveDeck SVG and absence of duplicate photo, retaining concert, films, services and motion assertions. No UI change. Acceptance: principal exact-head green; pending. Next: inspect artifact and rotate to Contact. No main/deploy.
+
 ## 2026-11-26 — Unique media / signal deck (PR #340)
 | Zone | Severity | Defect | Remedy | Acceptance | Status |
 |---|---|---|---|---|---|

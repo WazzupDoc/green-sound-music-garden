@@ -19,7 +19,10 @@ describe("V297 independent editorial homepage", () => {
     expect(indices).toEqual([...indices].sort((a, b) => a - b));
     expect(page.match(/to="\/contact"/g)?.length).toBe(2);
     expect(page).toContain("images.concert.src");
-    expect(page).toContain("images.dj.src");
+    expect(page).not.toContain("images.dj.src");
+    expect(page).toContain("<LiveDeck />");
+    expect(page).toContain('className="gs-live-deck__art"');
+    expect(page).toContain('aria-hidden="true"');
     expect(page).toContain("<VideoLite");
     expect(page).not.toContain("gs170-stage__console");
     expect(page).not.toContain("gs170-stage__beams");
