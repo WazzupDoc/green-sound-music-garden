@@ -1,3 +1,6 @@
+## 2026-11-26 — V302 Live Cue
+No assets, fonts, external code or dependencies added. Existing concert and DJ photos unchanged; optical beams, rim lights and decorative pulse are original CSS overlays, not documentary footage or a real audio meter. No TikTok or AI imagery integrated.
+
 ## V302 / 2026-11-25
 First-party inline SVG redraws based on approved concept; no raster mockup embedded, no imported icons, photos, fonts or dependencies. Existing media retained. Baseline artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274/artifacts/15037030193 inspected. Candidate evidence pending.
 
