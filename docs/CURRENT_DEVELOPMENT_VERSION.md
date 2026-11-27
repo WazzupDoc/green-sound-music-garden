@@ -1,3 +1,6 @@
+## V302 — steps 4–10 release candidate (DRAFT, 2026-11-27)
+PR #340, design/v302-reference-iconography. Last fully green 401653b1dddf7acac0544cf5bdd624b797e230e8, principal #45969960136 and visual #45969959998. Step 4.2 visual #45970635936 success, principal #45970636158 cancelled; actual matched artifact #15184457839 inspected. Latest combined source includes film focus, filmstrip/final CTA, detail copy, dialog target/layer, privacy, local schema, scroll padding, env ignore and new browser gates; README 6f8e778e041ae775945e5d1bb3cc68390a76ce97. Exact-head new CI and screenshot acceptance pending. See AGENT_STATE. No main, deployment, backup tag, costs or domain change. Not launch-ready.
+
 ## V302 — step 4.2 editorial programme (DRAFT, 2026-11-27)
 PR #340. Validated base 401653b1dddf7acac0544cf5bdd624b797e230e8, principal #45969960136 and dedicated #45969959998 green; masthead fix visually confirmed, baseline screenshots #15185235042. New CSS f94ac2909b6b7318eb403614276bec71f1a556c2 and browser checks 0e4afc3baf005c0ef9c378fc646ac1c4ccbc79f5. Asymmetric service spread and focal cropping; no new assets or dependencies; matched after and exact-head CI pending. No main/deploy.
 
