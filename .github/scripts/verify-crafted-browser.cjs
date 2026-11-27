@@ -44,7 +44,17 @@ async function main() {
         "First-party concert hero must decode");
       assert.match((await page.locator(".gs170-hero h1").innerText()).replace(/\s+/g," "),/^EVENIMENTE\s*de neuitat\.$/i);
       assert.equal(await page.locator(".gs297-diptych figure").count(),2);
-      assert(await page.locator(".gs297-portrait img").evaluate(async im=>{await im.decode();return im.naturalWidth>0}));
+      // V302 intentionally replaces the repeated DJ portrait with original decorative vector art.
+      const deck = page.locator(".gs297-portrait.gs-live-deck");
+      assert.equal(await deck.count(),1,"The original signal deck must exist");
+      assert.equal(await deck.getAttribute("aria-hidden"),"true");
+      assert.equal(await deck.locator("img").count(),0,"Do not reintroduce the duplicate DJ photograph");
+      assert.equal(await deck.locator("svg.gs-live-deck__art").count(),1);
+      const deckGeometry=await deck.locator("svg.gs-live-deck__art").evaluate(el=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height,paths:el.querySelectorAll("path").length}));
+      assert(deckGeometry.w>0&&deckGeometry.h>0&&deckGeometry.paths>0,"Signal deck must render actual vector geometry");
+      const photoSources=await page.locator(".gs170-home main img, .gs170-home section img").evaluateAll(imgs=>imgs.map(img=>img.getAttribute("src")).filter(Boolean));
+      assert.equal(new Set(photoSources).size,photoSources.length,"Homepage must not repeat image URLs");
+      assert.equal(await deck.locator(".gs-live-deck__disc").evaluate(el=>getComputedStyle(el).animationName),"none","Reduced motion must suppress deck animation");
       assert.equal(await page.locator(".gs-index__chapter").count(),3);
       assert.equal(await page.locator(".gs-index__service").count(),8);
       assert.equal(await page.locator(".gs170-service-card").count(),0);
