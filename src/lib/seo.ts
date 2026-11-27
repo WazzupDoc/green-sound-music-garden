@@ -75,9 +75,8 @@ export const localBusinessLd = () => ({
   areaServed: [
     { "@type": "City", name: "Pitești" },
     { "@type": "AdministrativeArea", name: "Județul Argeș" },
-    { "@type": "Country", name: "România" },
   ],
-  knowsAbout: ["DJ nuntă Pitești", "sonorizare evenimente", "lumini profesionale", "trupă live", "producție muzicală"],
+  knowsAbout: ["DJ și MC", "Sonorizare evenimente", "Lumini și scenotehnică", "Trupă live", "Producție muzicală"],
 
   address: {
     "@type": "PostalAddress",
@@ -108,7 +107,7 @@ export const serviceLd = (name: string, description: string, path: string) => ({
   description,
   url: canonicalUrl(path),
   provider: { "@id": `${SITE_URL}/#business` },
-  areaServed: { "@type": "City", name: "Pitești" },
+  areaServed: [{ "@type": "City", name: "Pitești" }, { "@type": "AdministrativeArea", name: "Județul Argeș" }],
 });
 
 export const faqLd = (faqs: { q: string; a: string }[]) => ({
