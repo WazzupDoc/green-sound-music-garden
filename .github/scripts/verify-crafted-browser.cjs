@@ -65,6 +65,17 @@ async function main() {
       const noMotion=await page.locator(".gs297-signal svg").evaluate(el=>getComputedStyle(el).animationName);
       assert.equal(noMotion,"none","Reduced motion must suppress signal entrance");
       assert.equal(await page.locator(".gs170-stage__beams,.gs170-stage__console").count(),0,"Removed decoration must not return");
+      // Fixed navigation must never cover the editorial introduction at initial load.
+      const clearance=await page.evaluate(()=>{
+        const rect=selector=>document.querySelector(selector).getBoundingClientRect();
+        const header=rect(".atelier-header"), eyebrow=rect(".gs300-eyebrow"), title=rect("#gs170-title"), cta=rect(".gs170-hero .gs170-btn");
+        const line=rect("#gs170-title span");
+        return {headerBottom:header.bottom,eyebrowTop:eyebrow.top,titleTop:title.top,titleRight:line.right,ctaTop:cta.top,viewport:document.documentElement.clientWidth};
+      });
+      assert(clearance.eyebrowTop>=clearance.headerBottom+12, "Hero eyebrow obscured by fixed navigation at "+width+": "+JSON.stringify(clearance));
+      assert(clearance.titleTop>=clearance.headerBottom+12,"Hero title obscured at "+width);
+      assert(clearance.titleRight<=clearance.viewport+1,"Hero headline exceeds viewport at "+width);
+      assert(clearance.ctaTop>clearance.headerBottom,"Primary action obscured at "+width);
       await noOverflow(page,"/",width);
       await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
       if(width===390||width===1440){
