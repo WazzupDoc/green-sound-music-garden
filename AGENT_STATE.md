@@ -1,3 +1,12 @@
+## 2026-11-27 — Sequential delivery, step 3 / copy audit
+Baseline exact SHA 64427ad5c06cf83f3f973072b0b8dae384b3e894: principal CI #45965750400 and matched Chromium #45965750431 green; 70 Vitest files, TS/SSR, all six widths, Contact SSR and sitemap audit. Measured gzip 123.4/32.0/49.9 kB (caps 190/50/52). Real screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45965750431/artifacts/15181624875 downloaded; inspected desktop and 390px viewport. Desktop retains approved identity, but mobile screenshot shows header overlapping top of hero heading; P1 defect, fix at homepage/mobile gate, not visually approved. 
+| Zone | Severity | Defect | Change | Evidence / status |
+|---|---|---|---|---|
+| Service and event copy | P1 | Unsupported absolute promises, generic claims and inconsistent tone | 26 targeted replacements in src/data/site.ts, including all eight service headings/lead/short/highlights as applicable, three event headings, and explicit Contact handoff; preserve slugs, metadata, service details, media, FAQ and route contracts | source 2241d0ec351c155f1e0f0181963d43931fbeb926; new CI and screenshot review pending |
+| Mobile hero | P1 | Header overlaps first title line at 390px | Pending actual layout fix in step 4, test 360–1920 and zoom | after-viewport-390.png from artifact 15181624875 |
+| Copy factual verification | P1 | Existing equipment brands, package quantities, credentials, coverage require owner confirmation before launch | Do not invent or expand facts; finish remaining route copy audit next | Open |
+Reference brief: PR #341, https://github.com/WazzupDoc/green-sound-music-garden/blob/a0eb39fa9ac7e3e409ef8d934628af8288689b1f/docs/PREMIUM_STAGE_WEBSITE_BRIEF.md. No new dependencies, assets, UI layout or publication. PR #340 remains candidate. Step 3 partial; next homepage/general pages/contact/privacy copy consistency, verify exact-head CI and screenshots, then step 4. No main/deploy.
+
 ## 2026-11-27 — V302 release blocker: stale media contracts
 P1: principal CI #45785681559 failed five suites expecting removed duplicate DJ photo. Matched browser #45785681524 passed, artifact #15099629277 (not visually inspected in this run). Repair all five contracts to require original LiveDeck SVG and absence of duplicate photo, retaining concert, films, services and motion assertions. No UI change. Acceptance: principal exact-head green; pending. Next: inspect artifact and rotate to Contact. No main/deploy.
 
