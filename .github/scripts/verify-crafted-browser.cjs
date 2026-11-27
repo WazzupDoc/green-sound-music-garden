@@ -114,6 +114,14 @@ async function main() {
       assert.equal(await filmDialog.locator("iframe").count(),0,"Real video requires visitor Play");
       await page.keyboard.press("Escape");
       await filmDialog.waitFor({state:"hidden",timeout:8000});
+      await page.waitForFunction(()=>document.activeElement===document.querySelectorAll(".gs170-film-card")[1]);
+      await page.locator(".gs300-showreel").click();
+      await filmDialog.waitFor({timeout:8000});
+      const playerBounds=await filmDialog.evaluate(el=>({top:el.getBoundingClientRect().top,bottom:el.getBoundingClientRect().bottom,height:innerHeight}));
+      assert(playerBounds.top>=0&&playerBounds.bottom<=playerBounds.height+1,"Video dialog must fit the viewport");
+      await page.keyboard.press("Escape");
+      await filmDialog.waitFor({state:"hidden",timeout:8000});
+      await page.waitForFunction(()=>document.activeElement===document.querySelector(".gs300-showreel"));
       if(width<=768){
         const menu=page.locator(".atelier-header__menu-btn");
         await menu.click();
