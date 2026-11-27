@@ -316,3 +316,85 @@ html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-atmosphere 
   }
   .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs297-cover-aside{margin-top:16px}
 }
+
+/* Step 4.2 — production programme as an asymmetric editorial spread.
+   Lead musical act, two smaller horizontal features; no new widgets or imagery.
+   Preserve native DOM/focus order and the three original chapter glyphs. */
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo img{
+  object-position:50% 8%;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo img{
+  object-position:50% 60%;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+  object-position:50% 24%;
+}
+@media(min-width:1200px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapters{
+    grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);
+    gap:0 clamp(28px,3vw,56px);
+    align-items:stretch;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound]{
+    grid-column:1;grid-row:1 / span 2;
+    display:flex;flex-direction:column;align-items:stretch;gap:22px;
+    padding:20px 0 0;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:clamp(320px,29vw,480px);
+    flex:none;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__chapter-body{
+    flex:1;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage],
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{
+    grid-column:2;
+    grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr);
+    gap:clamp(18px,2vw,32px);align-items:stretch;
+    padding:20px 0;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage]{grid-row:1}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{grid-row:2}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] :is(.gs-index__photo,.gs-index__chapter-body){
+    grid-row:1;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo{grid-column:1}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{grid-column:2}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo{
+    height:auto;min-height:230px;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body h3,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__chapter-body h3{
+    font-size:clamp(2rem,2.7vw,3.8rem)!important;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__service,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__service{
+    font-size:clamp(.87rem,1.03vw,1.08rem);
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo img,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+    position:absolute;inset:0;
+  }
+}
+@media(max-width:740px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:auto;aspect-ratio:4/3;
+  }
+}
+/* Signature cue: a single lime signal line for the active service, without layout shift. */
+.gs170-home[data-bespoke="v297"] .gs-index__service{position:relative}
+.gs170-home[data-bespoke="v297"] .gs-index__service::after{
+  content:"";position:absolute;inset:auto 0 0;height:2px;background:#c1fa43;
+  transform:scaleX(0);transform-origin:left;pointer-events:none;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__service:focus-visible::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){
+  .gs170-home[data-bespoke="v297"] .gs-index__service:hover::after{transform:scaleX(1)}
+}
+@media(prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  html:not([data-gs-performance="lite"]) .gs170-home[data-bespoke="v297"] .gs-index__service::after{
+    transition:transform .28s var(--g297-ease);
+  }
+}
