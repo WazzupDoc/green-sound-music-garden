@@ -31,6 +31,11 @@ export function ConceptHomeV170() {
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
   const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const film = filmIndex === null ? null : films[filmIndex];
+  const filmTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const openFilm = (index: number, trigger: HTMLButtonElement) => {
+    filmTriggerRef.current = trigger;
+    setFilmIndex(index);
+  };
   useEffect(() => { setHydrated(true); }, []);
   // Pointer depth is progressive and only attached to a fine pointer. No React render per frame.
   useEffect(() => {
@@ -72,7 +77,7 @@ export function ConceptHomeV170() {
             <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
             <p className="gs170-hero__lead">DJ & MC, trupă live, sonorizare și lumini pentru nunți, petreceri și concerte. Din Pitești, pentru evenimentul tău.</p>
             <Link to="/contact" className="gs170-btn gs170-btn--green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 2v5m10-5v5M3 9h18M7 13h.1m5 0h.1m5 0h.1M7 17h.1m5 0h.1m5 0h.1"/></svg><span>Planifică evenimentul</span> <Arrow /></Link>
-            <button type="button" className="gs300-showreel" onClick={() => setFilmIndex(1)}><Play /> Vezi showreel</button>
+            <button type="button" className="gs300-showreel" onClick={event => openFilm(1, event.currentTarget)}><Play /> Vezi showreel</button>
           </div>
         </div>
         <div className="gs297-diptych">
@@ -114,7 +119,7 @@ export function ConceptHomeV170() {
         </div>
         <div className="gs170-films__cards">
           {films.map((item, index) => <button className="gs170-film-card" key={item.video.id} type="button"
-            onClick={() => setFilmIndex(index)} aria-label={"Deschide filmul: " + item.label}>
+            onClick={event => openFilm(index, event.currentTarget)} aria-label={"Deschide filmul: " + item.label}>
             <span className="gs170-film-card__image">
               <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360} loading="lazy" decoding="async" />
               <span className="gs170-film-card__play"><Play /> <span>Redă filmul</span></span>
@@ -143,7 +148,14 @@ export function ConceptHomeV170() {
       </div>
     </section>
     <Dialog open={filmIndex !== null} onOpenChange={open => { if (!open) setFilmIndex(null); }}>
-      <DialogContent className="gs170-dialog w-[min(94vw,1000px)] max-w-none bg-[#0c1d15] text-white border-white/30">
+      <DialogContent className="gs170-dialog w-[min(94vw,1000px)] max-w-none max-h-[85dvh] overflow-y-auto bg-[#0c1d15] text-white border-white/30" onCloseAutoFocus={event => {
+        const trigger = filmTriggerRef.current;
+        if (trigger?.isConnected) {
+          event.preventDefault();
+          trigger.focus({ preventScroll: true });
+        }
+        filmTriggerRef.current = null;
+      }}>
         <DialogTitle className="pr-8 font-display text-xl">{film?.label ?? "Film Green Sound Music"}</DialogTitle>
         <DialogDescription className="text-white/80">Film real Green Sound Music. Apasă Play pentru a porni videoclipul.</DialogDescription>
         {film && <VideoLite video={film.video} className="aspect-video w-full" />}
