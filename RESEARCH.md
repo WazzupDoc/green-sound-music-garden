@@ -1,3 +1,9 @@
+## 2026-11-27 — Step 4.2 editorial programme
+- https://webflow.com/made-in-webflow/website/shootwood — visual storytelling by distinct production categories; adapt varied photographic framing, no copied layout/media.
+- https://webflow.com/templates/html/ritmo-website-template — dark editorial studio direction; adapt contrast and hierarchy, reject scroll choreography and count-up metrics. No template purchase or code reuse.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-position and https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids — native focal-point cropping and layout; original CSS, no third-party dependency or asset license needed.
+Experiment: service link lime signal cue, CSS-only, finite transform, visible keyboard focus and no motion in Lite/reduced mode. Reject JS reveal and duplicated image. Actual browser acceptance pending.
+
 ## 2026-11-27 — Step 4 masthead clearance
 - https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum — fixed overlays can obscure focused controls. Applied initial hero clearance; full keyboard scroll behavior still needs separate audit.
 - https://web.dev/learn/design/screen-configurations — device safe-area insets. Applied env(safe-area-inset-top,0px) and fluid title sizing. Original CSS, no imported code or assets. Rejected adding JS layout measurement or animation for a static spacing defect.
