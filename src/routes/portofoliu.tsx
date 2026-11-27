@@ -37,7 +37,7 @@ function Portfolio(){
         <span className="gs161-hero__eyebrow">GREEN SOUND MUSIC — ARHIVA VIZUALĂ</span>
         <h1 id="rs-portfolio-title">DINCOLO<br/>DE <em>SCENĂ.</em></h1>
         <div className="gs161-hero__foot">
-          <p>Momente reale, văzute dinspre public, scenă și echipă. Fotografii și filme din arhiva Green Sound Music.</p>
+          <p>Fotografii și filme din arhiva Green Sound Music: nunți, concerte, lumini, spectacole și producție muzicală.</p>
           <nav aria-label="Explorează portofoliul">
             <a href="#portfolio-photos" onClick={() => document.getElementById("rs-gallery-title")?.focus()}>Fotografii <ArrowDownRight className="size-4" aria-hidden /></a>
             <a href="#portfolio-films" onClick={() => document.getElementById("rs-video-library-title")?.focus()}>Filme <ArrowUpRight className="size-4" aria-hidden /></a>
