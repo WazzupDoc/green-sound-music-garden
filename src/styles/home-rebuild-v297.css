@@ -398,3 +398,41 @@ html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-atmosphere 
     transition:transform .28s var(--g297-ease);
   }
 }
+
+/* Step 4.3 — preserve the full people photograph, compact cinematic filmstrip,
+   and finish with one high-contrast inquiry action. No media or route changes. */
+@media(min-width:1200px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    align-items:center;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo{
+    width:100%;height:auto;min-height:0;aspect-ratio:810/541;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+    object-position:center;object-fit:contain;
+  }
+  .gs170-home[data-bespoke="v297"] .gs170-films__cards{
+    grid-template-columns:minmax(0,1.42fr) minmax(0,1fr) minmax(0,1fr);
+    align-items:start;gap:clamp(18px,2vw,34px);
+  }
+  .gs170-home[data-bespoke="v297"] .gs170-film-card:first-child{grid-column:auto}
+  .gs170-home[data-bespoke="v297"] .gs170-film-card:first-child .gs170-film-card__image{aspect-ratio:16/9}
+  .gs170-home[data-bespoke="v297"] .gs170-film-card__title strong{
+    font-size:clamp(1.15rem,1.65vw,2rem);
+  }
+  .gs170-home[data-bespoke="v297"] .gs297-film-heading h2{font-size:clamp(5rem,7vw,9rem)}
+}
+.gs170-home[data-bespoke="v297"] .gs170-final{
+  background:#102a1e;color:#f1f2e9;border-block-start:1px solid #c1fa4360;
+  padding:clamp(40px,5.5vw,85px) 0 0;
+}
+.gs170-home[data-bespoke="v297"] .gs170-final h2 em{color:#c1fa43}
+.gs170-home[data-bespoke="v297"] .gs170-final p{color:#d8e6d9}
+.gs170-home[data-bespoke="v297"] .gs170-final .gs170-btn{
+  background:#c1fa43;color:#10200b;border-color:#c1fa43;
+}
+.gs170-home[data-bespoke="v297"] .gs170-final .gs170-btn:is(:hover,:focus-visible){
+  background:#e0ff97;color:#10200b;
+}
+.gs170-home[data-bespoke="v297"] .gs297-final-wave{height:clamp(48px,6vw,92px);color:#c1fa4370}
