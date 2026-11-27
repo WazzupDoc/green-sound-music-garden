@@ -1,3 +1,6 @@
+## V302 — step 4 masthead clearance (DRAFT, 2026-11-27)
+PR #340, branch design/v302-reference-iconography. Last fully green baseline 4c6b6a756c482e7f85bb33835bb91014a81f0a6b: principal #45967943153, matched browser #45967943064. Baseline artifact #15184270367 inspected at 390/1440. CSS fix 2b843bec4fb3cced2832bf4226aae8ff1a028ec1; six-width geometry regression 352bbbc3d364272a38eaf38db7b73027f4a25342. New exact-head CI and matched visual acceptance pending. No new assets, main or deployment.
+
 ## V302 — Unique media / signal deck (DRAFT, 2026-11-26)
 PR #340 remains the candidate. Source 067e0b142e6b9ee1deb1a768c3ce17d7ddebfc39; test 0c3e2610605887ef693d3e6a54f05ed360504b89. Original SVG console replaces repeated photo; finite motion with OFF/Lite/reduced fallback. Exact-head CI and matched screenshots pending. No main or deploy.
 
