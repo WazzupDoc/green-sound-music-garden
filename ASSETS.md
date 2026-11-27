@@ -1,3 +1,6 @@
+## 2026-11-27 — Step 4–10 media audit
+No new media files or dependencies added. Existing DJ/MC, concert and ursitoare photographs plus local film-nunta-ramada.webp, film-show-lumini.webp and film-studio-live.webp retained. Actual source catalogue also contains i.ytimg.com images for studio and smoke; some remote thumbnail requests may occur before video playback. Privacy copy now distinguishes thumbnails from explicit youtube-nocookie playback. Original CSS cropping/layout only; no TikTok frames, stock, copied template or AI event media. Owner confirmation of rights and eventual authorized local replacements for remote thumbnails remains open.
+
 ## 2026-11-26 — Original signal deck
 Hand-authored SVG in ConceptHomeV170.tsx, decorative abstract console, not a photograph or actual equipment/audio meter. No external media, code or dependencies. Removed duplicate DJ image from hero; retained it in the music chapter. Existing concert and film assets unchanged.
 
