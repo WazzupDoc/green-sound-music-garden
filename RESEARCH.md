@@ -1,3 +1,12 @@
+## 2026-11-27 — Combined release audit
+- https://www.studio1642.com/portfolio/invisible-arts — sound-production portfolio described with visual work samples; adapt proof-first filmstrip, not their layout or media.
+- https://webflow.com/made-in-webflow/website/group-project-70a2ec — Stonehut Studio production portfolio; reference for direct work presentation; no template code or assets used.
+- https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ and https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum — dialog focus restoration, layered controls, fixed-bar clearance. Original application code, existing Radix component.
+- https://developers.google.com/search/docs/appearance/structured-data/local-business — accurate local business metadata. https://greensoundmusic.com/ and https://greensoundmusic.com/trupa/ and https://greensoundmusic.com/studio-inregistrari/ corroborate business categories; no unconditional nationwide coverage confirmed. Keep Pitești/Argeș and other locations subject to confirmation. No fabricated rankings or volumes.
+- SERP 2026-11-27 (observed results, not measured keyword volumes): https://www.olx.ro/servicii-afaceri-colaborari/arges-judet/q-sonorizare-evenimente/ (technical and event-specific language); https://www.trupa-atelier.ro/formatie-nunta-pitesti/ (live band and wedding intent); official studio page above (recording/mix/mastering intent). No competitor claims copied, no new city doorway pages. Backlog: Search Console once authorized, actual supported travel areas and first-party conversion measurement; autocomplete/PAA/Trends not measured.
+- https://docs.lovable.dev/features/publish — documented manual publish flow; actual project integration/settings unverified. No publication or cost.
+Experiment: compact filmstrip and calmer final CTA, native CSS; reject autoplay, external motion packages and extra widgets. No license-bearing code/media imported. Latest browser and budget acceptance pending.
+
 ## 2026-11-27 — Step 4.2 editorial programme
 - https://webflow.com/made-in-webflow/website/shootwood — visual storytelling by distinct production categories; adapt varied photographic framing, no copied layout/media.
 - https://webflow.com/templates/html/ritmo-website-template — dark editorial studio direction; adapt contrast and hierarchy, reject scroll choreography and count-up metrics. No template purchase or code reuse.
