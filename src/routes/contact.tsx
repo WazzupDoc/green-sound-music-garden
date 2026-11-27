@@ -74,16 +74,16 @@ function Contact() {
       <section className="director-contact-intro" aria-labelledby="director-contact-title">
         <div className="container-site">
           <span className="crafted-index">GREEN SOUND / CERERE DE OFERTĂ</span>
-          <h1 id="director-contact-title">Spune-ne povestea. <em>Noi aducem atmosfera.</em></h1>
+          <h1 id="director-contact-title">Pregătește cererea. <em>Discutăm detaliile.</em></h1>
           <p>
             {fromBrief
               ? "Am precompletat opțiunile alese mai devreme. Verifică serviciile, completează datele de contact și pregătește mesajul pentru WhatsApp sau email."
-              : "Spune-ne ce eveniment pregătești, data și locul. Împreună alegem muzica, sunetul, luminile și detaliile care fac atmosfera."}
+              : "Spune-ne tipul evenimentului, data, locația și serviciile dorite. Verifică mesajul și trimite-l prin WhatsApp sau email pentru a solicita o ofertă."}
           </p>
           <div className="director-contact-signal" aria-label="Etapele cererii de ofertă">
             <ol className="director-contact-signal__steps">
-              <li><span>01 / INPUT</span><strong>Spui ce pregătești</strong></li>
-              <li><span>02 / REVIEW</span><strong>Verifici mesajul</strong></li>
+              <li><span>01 / DETALII</span><strong>Spui ce pregătești</strong></li>
+              <li><span>02 / VERIFICARE</span><strong>Verifici mesajul</strong></li>
               <li><span>03 / DESCHIDERE</span><strong>Tu confirmi trimiterea în aplicație</strong></li>
             </ol>
             <a href="#contact-form-title" className="director-contact-signal__action" onClick={() => {
@@ -99,8 +99,8 @@ function Contact() {
         <div className="container-site grid items-start gap-14 lg:grid-cols-[.72fr_1.28fr] xl:gap-24 director-contact-brief-layout">
           <aside>
             <span className="crafted-index">01 / CONTACT DIRECT</span>
-            <h2 className="crafted-heading mt-6">O discuție bună <em>pornește totul.</em></h2>
-            <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">Trimite detaliile evenimentului. Formularul pregătește mesajul în WhatsApp sau email; îl trimiți tu din aplicația aleasă.</p>
+            <h2 className="crafted-heading mt-6">Preferi să <em>discutăm direct?</em></h2>
+            <p className="mt-6 max-w-md leading-relaxed text-muted-foreground">Poți suna sau scrie direct. Formularul pregătește mesajul în WhatsApp sau email; îl trimiți tu din aplicația aleasă.</p>
             <div className="mt-12 space-y-7 border-t border-border pt-8">
               <a href={business.phoneHref} className="group flex items-center gap-4 text-xl font-semibold"><Phone className="size-5 text-primary" aria-hidden /> {business.phoneDisplay}<ArrowUpRight className="size-4 text-primary transition-transform group-hover:translate-x-1" aria-hidden /></a>
               <a href={whatsappUrl(defaultWhatsappText)} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 text-lg"><MessageCircle className="size-5 text-primary" aria-hidden /> Scrie-ne pe WhatsApp<ArrowUpRight className="size-4 text-primary" aria-hidden /></a>
