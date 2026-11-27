@@ -1,3 +1,21 @@
+## V302 — steps 4–10 release candidate (DRAFT, 2026-11-27)
+PR #340, design/v302-reference-iconography. Last fully green 401653b1dddf7acac0544cf5bdd624b797e230e8, principal #45969960136 and visual #45969959998. Step 4.2 visual #45970635936 success, principal #45970636158 cancelled; actual matched artifact #15184457839 inspected. Latest combined source includes film focus, filmstrip/final CTA, detail copy, dialog target/layer, privacy, local schema, scroll padding, env ignore and new browser gates; README 6f8e778e041ae775945e5d1bb3cc68390a76ce97. Exact-head new CI and screenshot acceptance pending. See AGENT_STATE. No main, deployment, backup tag, costs or domain change. Not launch-ready.
+
+## V302 — step 4.2 editorial programme (DRAFT, 2026-11-27)
+PR #340. Validated base 401653b1dddf7acac0544cf5bdd624b797e230e8, principal #45969960136 and dedicated #45969959998 green; masthead fix visually confirmed, baseline screenshots #15185235042. New CSS f94ac2909b6b7318eb403614276bec71f1a556c2 and browser checks 0e4afc3baf005c0ef9c378fc646ac1c4ccbc79f5. Asymmetric service spread and focal cropping; no new assets or dependencies; matched after and exact-head CI pending. No main/deploy.
+
+## V302 — step 4 masthead clearance (DRAFT, 2026-11-27)
+PR #340, branch design/v302-reference-iconography. Last fully green baseline 4c6b6a756c482e7f85bb33835bb91014a81f0a6b: principal #45967943153, matched browser #45967943064. Baseline artifact #15184270367 inspected at 390/1440. CSS fix 2b843bec4fb3cced2832bf4226aae8ff1a028ec1; six-width geometry regression 352bbbc3d364272a38eaf38db7b73027f4a25342. New exact-head CI and matched visual acceptance pending. No new assets, main or deployment.
+
+## V302 — Unique media / signal deck (DRAFT, 2026-11-26)
+PR #340 remains the candidate. Source 067e0b142e6b9ee1deb1a768c3ce17d7ddebfc39; test 0c3e2610605887ef693d3e6a54f05ed360504b89. Original SVG console replaces repeated photo; finite motion with OFF/Lite/reduced fallback. Exact-head CI and matched screenshots pending. No main or deploy.
+
+## V302 Live Cue / 2026-11-26 — DRAFT
+Existing PR #340 retained. Exact baseline f551a601698dca30eb137d80c69dea12da0928d3; previous CI and screenshot artifact 15043299509 green. New source e4ec94ad7ae41c5b60395fa130b1db548dfc0a1e: soft moving optical beams, signal pulse, brighter original stage photo, rim light, CTA sweep, OFF and Lite/reduced motion. Matched browser script now tests active motion, OFF and cool state. New exact-head CI, screenshots and owner approval pending; do not merge or deploy. No new assets or dependencies.
+
+## V302 / 2026-11-25 — Reference iconography (DRAFT)
+Branch design/v302-reference-iconography from validated V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274 success. V301 rejected by owner and not inherited. Header and three chapter icons hand-redrawn from approved mockup; preserve portfolio/finder and all eight service links. Exact candidate validation pending. Main unchanged.
+
 ## V300 / 2026-11-25 — Cinematic live stage (DRAFT)
 Branch design/v300-cinematic-live-stage from V299 exact e4212aa476d7004a5738ad95d79edf5c4998e3e5, principal CI https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45628115576 green; standard artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45628115576/artifacts/15029711960. Source e44ecdd230e22f2ff10865ba0371c1efd4839f4c; emerald stage hero, real photo layers, finite light cue, pointer depth, logo/nav icons, real film dialog. Retains eight service links, three films, final CTA and SEO metadata. New browser script and source contract test. Exact-head principal CI and candidate screenshot comparison pending, do not merge. No deployment or main changes. Next: inspect before/after and motion frames and fix fidelity/regressions.
 

@@ -19,7 +19,10 @@ describe("V170 removes rejected static hero without regressing movie and contact
  });
  it("keeps clear source and performance fallbacks",()=>{
    expect(page).toContain("images.concert.src");
-   expect(page).toContain("images.dj.src");
+   expect(page).not.toContain("images.dj.src");
+    expect(page).toContain("<LiveDeck />");
+    expect(page).toContain('className="gs-live-deck__art"');
+    expect(page).toContain('aria-hidden="true"');
    expect(css).toContain('html[data-gs-performance="lite"]');
    expect(css).toContain('.gs170-hero__control button[aria-pressed="true"]');
  });

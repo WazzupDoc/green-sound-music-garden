@@ -31,6 +31,11 @@ export function ConceptHomeV170() {
   const [lightHue, setLightHue] = useState<"green" | "cool">("green");
   const [filmIndex, setFilmIndex] = useState<number | null>(null);
   const film = filmIndex === null ? null : films[filmIndex];
+  const filmTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const openFilm = (index: number, trigger: HTMLButtonElement) => {
+    filmTriggerRef.current = trigger;
+    setFilmIndex(index);
+  };
   useEffect(() => { setHydrated(true); }, []);
   // Pointer depth is progressive and only attached to a fine pointer. No React render per frame.
   useEffect(() => {
@@ -70,9 +75,9 @@ export function ConceptHomeV170() {
           <h1 id="gs170-title"><span>EVENIMENTE</span><em>DE NEUITAT.</em></h1>
           <div className="gs297-cover-aside">
             <span className="gs170-kicker">MUZICĂ · SUNET · LUMINĂ</span>
-            <p className="gs170-hero__lead">Sunet, lumini și atmosferă pentru evenimente cu personalitate, în Pitești și Argeș. DJ & MC, trupă live și producție tehnică.</p>
-            <Link to="/contact" className="gs170-btn gs170-btn--green">Planifică evenimentul <Arrow /></Link>
-            <button type="button" className="gs300-showreel" onClick={() => setFilmIndex(1)}><Play /> Vezi showreel</button>
+            <p className="gs170-hero__lead">DJ & MC, trupă live, sonorizare și lumini pentru nunți, petreceri și concerte. Din Pitești, pentru evenimentul tău.</p>
+            <Link to="/contact" className="gs170-btn gs170-btn--green"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM7 2v5m10-5v5M3 9h18M7 13h.1m5 0h.1m5 0h.1M7 17h.1m5 0h.1m5 0h.1"/></svg><span>Planifică evenimentul</span> <Arrow /></Link>
+            <button type="button" className="gs300-showreel" onClick={event => openFilm(1, event.currentTarget)}><Play /> Vezi showreel</button>
           </div>
         </div>
         <div className="gs297-diptych">
@@ -81,9 +86,9 @@ export function ConceptHomeV170() {
               height={images.concert.h} className="gs170-stage__image" decoding="async" fetchPriority="high" />
             <figcaption><span>01 / PRODUCȚIE LIVE</span><span>ARHIVA GREEN SOUND</span></figcaption>
           </figure>
-          <figure className="gs297-portrait">
-            <img src={images.dj.src} alt={images.dj.alt} width={images.dj.w} height={images.dj.h} decoding="async" loading="lazy" />
-            <figcaption>02 / DJ & MC</figcaption>
+          <figure className="gs297-portrait gs-live-deck" aria-hidden="true">
+            <LiveDeck />
+            <figcaption>GREEN SOUND / SIGNAL</figcaption>
           </figure>
         </div>
         <StageWave />
@@ -114,7 +119,7 @@ export function ConceptHomeV170() {
         </div>
         <div className="gs170-films__cards">
           {films.map((item, index) => <button className="gs170-film-card" key={item.video.id} type="button"
-            onClick={() => setFilmIndex(index)} aria-label={"Deschide filmul: " + item.label}>
+            onClick={event => openFilm(index, event.currentTarget)} aria-label={"Deschide filmul: " + item.label}>
             <span className="gs170-film-card__image">
               <img src={item.video.poster || ytThumb(item.video, "sd")} alt="" width={640} height={360} loading="lazy" decoding="async" />
               <span className="gs170-film-card__play"><Play /> <span>Redă filmul</span></span>
@@ -134,7 +139,7 @@ export function ConceptHomeV170() {
           <h2 id="gs170-final-title">Spune-ne data.<br/><em>Stabilim detaliile.</em></h2>
         </div>
         <div>
-          <p>Locația, tipul evenimentului și serviciile dorite sunt suficiente pentru a începe discuția.</p>
+          <p>Spune-ne unde și când are loc evenimentul, câți invitați aștepți și ce servicii te interesează.</p>
           <Link to="/contact" className="gs170-btn gs170-btn--green">Solicită o ofertă <Arrow diagonal /></Link>
         </div>
         <svg className="gs297-final-wave" viewBox="0 0 500 105" fill="none" aria-hidden="true">
@@ -143,7 +148,14 @@ export function ConceptHomeV170() {
       </div>
     </section>
     <Dialog open={filmIndex !== null} onOpenChange={open => { if (!open) setFilmIndex(null); }}>
-      <DialogContent className="gs170-dialog w-[min(94vw,1000px)] max-w-none bg-[#0c1d15] text-white border-white/30">
+      <DialogContent className="gs170-dialog w-[min(94vw,1000px)] max-w-none max-h-[85dvh] overflow-y-auto bg-[#0c1d15] text-white border-white/30" onCloseAutoFocus={event => {
+        const trigger = filmTriggerRef.current;
+        if (trigger?.isConnected) {
+          event.preventDefault();
+          trigger.focus({ preventScroll: true });
+        }
+        filmTriggerRef.current = null;
+      }}>
         <DialogTitle className="pr-8 font-display text-xl">{film?.label ?? "Film Green Sound Music"}</DialogTitle>
         <DialogDescription className="text-white/80">Film real Green Sound Music. Apasă Play pentru a porni videoclipul.</DialogDescription>
         {film && <VideoLite video={film.video} className="aspect-video w-full" />}
@@ -166,5 +178,29 @@ function StageWave() {
   });
   return <svg className="gs300-wave" viewBox="0 0 1000 240" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
     {paths.map((d,i)=><path key={i} d={d} stroke="currentColor" strokeWidth={i===10?1.5:.65} opacity={.25+Math.sin(i/20*Math.PI)*.65}/>)}
+  </svg>;
+}
+
+/** Original decorative DJ-console illustration. No real audio input or equipment claim. */
+function LiveDeck() {
+  return <svg className="gs-live-deck__art" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+    <path d="M18 40V18h22m220 0h22v22M18 180v22h22m220 0h22v-22" stroke="#b7f843" strokeWidth="1.4"/>
+    <path d="M24 62h252M24 170h252" stroke="#89b49b" strokeOpacity=".24"/>
+    <g className="gs-live-deck__disc">
+      <circle cx="92" cy="114" r="44" stroke="#91b6a5" strokeOpacity=".5"/>
+      <circle cx="92" cy="114" r="37" stroke="#b7f843" strokeDasharray="54 12 2 14 28 123"/>
+      <circle cx="92" cy="114" r="30" stroke="#91b6a5" strokeOpacity=".35"/>
+      <circle cx="92" cy="114" r="11" stroke="#b7f843"/>
+      <path d="M92 74v15m0 50v15M52 114h15m50 0h15" stroke="#a3c2ae" strokeOpacity=".55"/>
+      <circle cx="92" cy="114" r="2" fill="#b7f843"/>
+    </g>
+    <g stroke="#91b6a5" strokeOpacity=".6">
+      <path d="M162 80v68m36-68v68m36-68v68m30-68v68"/>
+      <path d="M154 91h16m20 33h16m20-22h16m14 30h16" stroke="#c4fa55" strokeWidth="5"/>
+    </g>
+    <g className="gs-live-deck__meter" stroke="#c4fa55" strokeWidth="2.5" strokeLinecap="round">
+      {[8,15,25,11,32,18,38,24,13,30,17,8,22,11,5].map((h,i)=><path key={i} style={{animationDelay:(i%5)*.08+"s"}} d={"M"+(36+i*16)+" "+(45-h/2)+"v"+h}/>)}
+    </g>
+    <path d="M32 184h40l6-5 6 10 8-18 8 18 6-5h160" stroke="#b7f843" strokeOpacity=".7"/>
   </svg>;
 }

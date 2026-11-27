@@ -14,7 +14,10 @@ describe("V170 authentic event-production art direction",()=>{
    expect(page).toContain("images.concert.src");
    expect(page).not.toContain('className="gs170-stage__beams"');
    expect(page).not.toContain('className="gs170-stage__console"');
-   expect(page).toContain("images.dj.src");
+   expect(page).not.toContain("images.dj.src");
+    expect(page).toContain("<LiveDeck />");
+    expect(page).toContain('className="gs-live-deck__art"');
+    expect(page).toContain('aria-hidden="true"');
    expect(page).toContain("<ProductionIndex />");
    expect(page).not.toContain("featured.map((item, index)");
    expect(page).not.toContain("process.map((step, index)");

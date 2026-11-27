@@ -109,6 +109,7 @@ export function ProductionIndex() {
                   <span className="gs-index__chapter-line" aria-hidden="true" />
                   <span>{chapter.overline}</span>
                 </div>
+                <ChapterGlyph art={chapter.art} />
                 <h3 id={`gs-index-chapter-${chapter.index}`}>{chapter.title}</h3>
                 <p id={`gs-index-note-${chapter.index}`}>{chapter.note}</p>
                 <ul className="gs-index__links" aria-labelledby={`gs-index-chapter-${chapter.index}`} aria-describedby={`gs-index-note-${chapter.index}`}>
@@ -127,10 +128,20 @@ export function ProductionIndex() {
           ))}
         </div>
         <div className="gs-index__footer">
-          <span>DIN PITEȘTI / ÎN TOATĂ ROMÂNIA</span>
+          <span>DIN PITEȘTI / ALTE LOCALITĂȚI, LA CERERE</span>
           <span>MUZICĂ · LUMINĂ · PRODUCȚIE</span>
         </div>
       </div>
     </section>
   );
+}
+
+/** The three chapter marks from the approved visual reference, recreated as vectors. */
+function ChapterGlyph({art}: {art: Chapter["art"]}) {
+  const paths = {
+    sound: "M1 14h3m3-6v12m4-17v22m4-25v28m4-21v14m4-10v6m3-3h3",
+    stage: "M15 9a6 6 0 1 0 0 12 6 6 0 1 0 0-12zM15 1v5m0 18v5M1 15h5m18 0h5M5 5l4 4m12 12 4 4M5 25l4-4M21 9l4-4",
+    people: "M10 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM2 28v-4a8 8 0 0 1 16 0v4zM21 4a5 5 0 0 1 0 10M21 17a8 8 0 0 1 8 8v3h-7",
+  } as const;
+  return <svg className="gs302-chapter-glyph" width="32" height="32" viewBox="0 0 30 30" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={paths[art]}/></svg>;
 }

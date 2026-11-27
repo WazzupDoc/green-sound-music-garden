@@ -8,7 +8,10 @@ describe("V215: restore the owner's green concept without losing real discovery"
    const home=read("src/components/atelier/ConceptHomeV170.tsx");
    const route=read("src/routes/index.tsx");
    expect(home).not.toContain('className="gs170-stage__console"');
-   expect(home).toContain("images.dj.src");
+   expect(home).not.toContain("images.dj.src");
+    expect(home).toContain("<LiveDeck />");
+    expect(home).toContain('className="gs-live-deck__art"');
+    expect(home).toContain('aria-hidden="true"');
    expect(home).not.toContain("SceneScoreV214");
    expect(home).toContain("images.concert.src");
    expect(home).toContain("<ProductionIndex />");

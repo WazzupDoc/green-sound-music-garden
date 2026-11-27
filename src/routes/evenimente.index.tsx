@@ -78,7 +78,7 @@ function Events() {
             <div className="gs173-statement">
               <span className="gs173-statement__edition">GREEN SOUND / LIVE PRODUCTION <span>01—05</span></span>
               <h1 id="gs173-title"><span>NU TOATE</span><span>SERILE</span><span className="gs173-statement__script">SUNĂ LA FEL.</span></h1>
-              <p>Nunți, botezuri, petreceri sau producții mari. Nu începem cu un pachet. Începem cu evenimentul tău.</p>
+              <p>Nunți, botezuri, petreceri, evenimente corporate, concerte și festivaluri. Alege tipul evenimentului pentru a vedea serviciile potrivite.</p>
               <a href="#gs173-setlist-title" className="gs173-statement__jump">Alege atmosfera <ArrowDownRight size={20} aria-hidden="true" /></a>
               <div className="gs173-statement__registration"><span aria-hidden="true">GS—M / LIVE</span><span role="status" aria-live="polite" aria-atomic="true">Selectat: {activeEvent.name}</span></div>
             </div>
@@ -100,7 +100,7 @@ function Events() {
           </div>
           <div className="gs173-setlist__header" id="gs173-setlist-title">
             <span>01 / SETLIST DE EVENIMENTE</span>
-            <p>Alege scena. Ilustrațiile reprezintă categoriile; fotografia reală și momentele se schimbă după selecție.</p>
+            <p>Alege tipul evenimentului. Vezi o fotografie din arhivă și exemple de momente și servicii.</p>
           </div>
           <ol className="gs173-setlist" aria-label="Alege tipul de eveniment">
             {events.map((event, index) => {
@@ -131,7 +131,7 @@ function Events() {
               <span className="gs173-cues__eyebrow" aria-live="polite">În regie: {activeEvent.name}</span>
               <h2 id="gs173-cues-title">Fiecare detaliu.<span>La timpul lui.</span></h2>
             </div>
-            <div className="gs173-cues__summary"><p>{activeEvent.short}</p><p>O schiță orientativă a momentelor și serviciilor care pot intra în desfășurător.</p></div>
+            <div className="gs173-cues__summary"><p>{activeEvent.short}</p><p>Exemple de momente și servicii pe care le putem discuta pentru programul tău.</p></div>
           </div>
           <div className="gs173-cues__sheet">
             <div className="gs173-cues__sheet-heading"><span>MOMENT / REGIE</span><span>SERVICIU RELEVANT</span></div>

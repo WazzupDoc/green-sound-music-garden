@@ -44,17 +44,62 @@ async function main() {
         "First-party concert hero must decode");
       assert.match((await page.locator(".gs170-hero h1").innerText()).replace(/\s+/g," "),/^EVENIMENTE\s*de neuitat\.$/i);
       assert.equal(await page.locator(".gs297-diptych figure").count(),2);
-      assert(await page.locator(".gs297-portrait img").evaluate(async im=>{await im.decode();return im.naturalWidth>0}));
+      // V302 intentionally replaces the repeated DJ portrait with original decorative vector art.
+      const deck = page.locator(".gs297-portrait.gs-live-deck");
+      assert.equal(await deck.count(),1,"The original signal deck must exist");
+      assert.equal(await deck.getAttribute("aria-hidden"),"true");
+      assert.equal(await deck.locator("img").count(),0,"Do not reintroduce the duplicate DJ photograph");
+      assert.equal(await deck.locator("svg.gs-live-deck__art").count(),1);
+      const deckGeometry=await deck.locator("svg.gs-live-deck__art").evaluate(el=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height,paths:el.querySelectorAll("path").length}));
+      assert(deckGeometry.w>0&&deckGeometry.h>0&&deckGeometry.paths>0,"Signal deck must render actual vector geometry");
+      const photoSources=await page.locator(".gs170-home main img, .gs170-home section img").evaluateAll(imgs=>imgs.map(img=>img.getAttribute("src")).filter(Boolean));
+      assert.equal(new Set(photoSources).size,photoSources.length,"Homepage must not repeat image URLs");
+      assert.equal(await deck.locator(".gs-live-deck__disc").evaluate(el=>getComputedStyle(el).animationName),"none","Reduced motion must suppress deck animation");
       assert.equal(await page.locator(".gs-index__chapter").count(),3);
       assert.equal(await page.locator(".gs-index__service").count(),8);
+      // A real editorial spread must remain asymmetric on desktop and linear on phones.
+      const programme=await page.locator(".gs-index__chapters").evaluate(el=>{
+        const chapters=[...el.querySelectorAll(".gs-index__chapter")].map(c=>{
+          const b=c.getBoundingClientRect();return {x:b.x,y:b.y,bottom:b.bottom,width:b.width};
+        });
+        const links=[...el.querySelectorAll(".gs-index__service")].map(a=>({href:a.getAttribute("href"),height:a.getBoundingClientRect().height}));
+        const crop=getComputedStyle(el.querySelector('[data-chapter="sound"] img')).objectPosition;
+        return {chapters,links,crop};
+      });
+      const [music,stage,people]=programme.chapters;
+      assert.equal(new Set(programme.links.map(a=>a.href)).size,8,"Eight distinct service routes");
+      assert(programme.links.every(a=>a.height>=44),"Service touch targets must be at least 44px");
+      assert.equal(programme.crop,"50% 8%","DJ portrait focal point must preserve faces");
+      if(width>=1200){
+        assert(music.x+music.width<=stage.x+1&&Math.abs(stage.x-people.x)<=1&&people.y>stage.y,"Desktop must render lead music act and stacked secondary acts");
+      }else if(width<=768){
+        assert(music.bottom<=stage.y+1&&stage.bottom<=people.y+1,"Mobile must preserve linear chapter order");
+      }
       assert.equal(await page.locator(".gs170-service-card").count(),0);
       assert.equal(await page.locator(".gs170-film-card").count(),3);
+      if(width>=1200){
+        const films=await page.locator(".gs170-film-card").evaluateAll(items=>items.map(e=>{const b=e.getBoundingClientRect();return {x:b.x,y:b.y,w:b.width}}));
+        assert(films[0].w>films[1].w&&films[0].x<films[1].x&&films[1].x<films[2].x&&Math.abs(films[0].y-films[2].y)<2,"Desktop filmstrip must be asymmetric and on one row");
+        assert.equal(await page.locator('[data-chapter="people"] img').evaluate(el=>getComputedStyle(el).objectFit),"contain","People photograph must retain full framing");
+      }
+      assert.equal(await page.locator(".gs170-final a[href='/contact']").count(),1,"Final section retains one inquiry CTA");
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator("video[autoplay]").count(),0);
       assert.equal(await page.locator(".gs170-hero__control button[aria-pressed=true]").count(),2);
       const noMotion=await page.locator(".gs297-signal svg").evaluate(el=>getComputedStyle(el).animationName);
       assert.equal(noMotion,"none","Reduced motion must suppress signal entrance");
       assert.equal(await page.locator(".gs170-stage__beams,.gs170-stage__console").count(),0,"Removed decoration must not return");
+      // Fixed navigation must never cover the editorial introduction at initial load.
+      const clearance=await page.evaluate(()=>{
+        const rect=selector=>document.querySelector(selector).getBoundingClientRect();
+        const header=rect(".atelier-header"), eyebrow=rect(".gs300-eyebrow"), title=rect("#gs170-title"), cta=rect(".gs170-hero .gs170-btn");
+        const line=rect("#gs170-title span");
+        return {headerBottom:header.bottom,eyebrowTop:eyebrow.top,titleTop:title.top,titleRight:line.right,ctaTop:cta.top,viewport:document.documentElement.clientWidth};
+      });
+      assert(clearance.eyebrowTop>=clearance.headerBottom+12, "Hero eyebrow obscured by fixed navigation at "+width+": "+JSON.stringify(clearance));
+      assert(clearance.titleTop>=clearance.headerBottom+12,"Hero title obscured at "+width);
+      assert(clearance.titleRight<=clearance.viewport+1,"Hero headline exceeds viewport at "+width);
+      assert(clearance.ctaTop>clearance.headerBottom,"Primary action obscured at "+width);
       await noOverflow(page,"/",width);
       await page.screenshot({path:output+"/editorial-home-"+width+".png",fullPage:true,animations:"disabled"});
       if(width===390||width===1440){
@@ -73,8 +118,20 @@ async function main() {
       const filmDialog=page.getByRole("dialog");
       await filmDialog.waitFor({timeout:8000});
       assert.equal(await filmDialog.locator("iframe").count(),0,"Real video requires visitor Play");
+      const close=filmDialog.getByRole("button",{name:"Închide",exact:true});
+      const closeBox=await close.boundingBox();
+      assert(closeBox&&closeBox.width>=44&&closeBox.height>=44,"Dialog close target must be at least 44px");
+      assert(await filmDialog.evaluate(el=>Number(getComputedStyle(el).zIndex)>Number(getComputedStyle(document.querySelector(".atelier-header")).zIndex)),"Dialog must layer above the fixed masthead");
       await page.keyboard.press("Escape");
       await filmDialog.waitFor({state:"hidden",timeout:8000});
+      await page.waitForFunction(()=>document.activeElement===document.querySelectorAll(".gs170-film-card")[1]);
+      await page.locator(".gs300-showreel").click();
+      await filmDialog.waitFor({timeout:8000});
+      const playerBounds=await filmDialog.evaluate(el=>({top:el.getBoundingClientRect().top,bottom:el.getBoundingClientRect().bottom,height:innerHeight}));
+      assert(playerBounds.top>=0&&playerBounds.bottom<=playerBounds.height+1,"Video dialog must fit the viewport");
+      await page.keyboard.press("Escape");
+      await filmDialog.waitFor({state:"hidden",timeout:8000});
+      await page.waitForFunction(()=>document.activeElement===document.querySelector(".gs300-showreel"));
       if(width<=768){
         const menu=page.locator(".atelier-header__menu-btn");
         await menu.click();
@@ -118,7 +175,7 @@ async function main() {
         path:`${output}/v94-navigation-open-${navWidth}.png`,
         animations:"disabled",fullPage:false,
       });
-      await navPage.locator(".gsm-nav-index__link").nth(2).focus();
+      await navPage.locator('.gsm-nav-index__link[href="/servicii"]').focus();
       assert.equal(await navPage.locator(".gsm-nav-index__cue strong").innerText(),"Servicii");
       await navPage.screenshot({
         path:`${output}/v94-navigation-focus-${navWidth}.png`,
@@ -132,7 +189,7 @@ async function main() {
     await navJourney.goto(base + "/", {waitUntil:"domcontentloaded"});
     await navJourney.locator('.gs170-hero[data-hydrated="true"]').waitFor();
     await navJourney.locator(".atelier-header__menu-btn").click();
-    await navJourney.locator(".gsm-nav-index__link").nth(2).click();
+    await navJourney.locator('.gsm-nav-index__link[href="/servicii"]').click();
     await navJourney.waitForURL("**/servicii");
     assert.equal(await navJourney.locator("dialog.atelier-mobile-menu[open]").count(),0);
     assert.equal(await navJourney.locator(".atelier-header__menu-btn").getAttribute("aria-expanded"),"false");
@@ -151,7 +208,7 @@ async function main() {
       .evaluate(element => getComputedStyle(element).animationName);
     assert.equal(animationName, "gs295-cue-in", "Full-motion staggered menu entrance must be active");
     assert.equal(await activePage.locator(".gsm-nav-index__layout").evaluate(el => getComputedStyle(el).animationName), "none", "Avoid double entrance animation");
-    await activePage.locator(".gsm-nav-index__link").nth(1).focus();
+    await activePage.locator('.gsm-nav-index__link[href="/evenimente"]').focus();
     assert.equal(await activePage.locator(".gs295-preview").getAttribute("data-section"), "Evenimente");
     await activePage.locator(".gs295-preview img").evaluate(img => img.decode());
     assert.equal(await activePage.locator(".gs295-preview img").evaluate(el => getComputedStyle(el).animationName), "gs295-photo-in");
@@ -388,6 +445,25 @@ async function main() {
         "Interior pages must retain the mobile quick contact navigation");
       assert.equal(await page.locator("main h1").count(), 1, `H1 ${route}`);
       await noOverflow(page, route, 390);
+    }
+    // Release candidate: representative detail pages and privacy at desktop/mobile.
+    for(const detailWidth of [390,1440]){
+      const detail=await browser.newPage({viewport:{width:detailWidth,height:900},reducedMotion:"reduce"});
+      const detailErrors=[];detail.on("pageerror",error=>detailErrors.push(error.message));
+      for(const route of ["/echipamente-de-sunet-si-lumini","/ursitoare-botez","/start-veselia","/confidentialitate"]){
+        const response=await detail.goto(base+route,{waitUntil:"domcontentloaded"});
+        assert.equal(response.status(),200,route);
+        assert.equal(await detail.locator("main h1").count(),1,route);
+        await noOverflow(detail,route,detailWidth);
+        if(route==="/confidentialitate"){
+          assert.match(await detail.locator("main").innerText(),/i\.ytimg\.com/,"Disclose remote thumbnail requests separately from video playback");
+        }else{
+          assert(!((await detail.locator("main").innerText()).includes("[DE COMPLETAT DE PROPRIETAR]")),"No internal commercial placeholders on "+route);
+        }
+        await detail.screenshot({path:output+"/release-"+route.slice(1)+"-"+detailWidth+".png",fullPage:true,animations:"disabled"});
+      }
+      assert.deepEqual(detailErrors,[],"Detail route runtime errors");
+      await detail.close();
     }
     const contact = await page.goto(base + "/contact", { waitUntil: "domcontentloaded" });
     assert.equal(contact.status(), 200);

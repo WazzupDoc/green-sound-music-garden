@@ -1,3 +1,15 @@
+## 2026-11-27 — Step 4–10 media audit
+No new media files or dependencies added. Existing DJ/MC, concert and ursitoare photographs plus local film-nunta-ramada.webp, film-show-lumini.webp and film-studio-live.webp retained. Actual source catalogue also contains i.ytimg.com images for studio and smoke; some remote thumbnail requests may occur before video playback. Privacy copy now distinguishes thumbnails from explicit youtube-nocookie playback. Original CSS cropping/layout only; no TikTok frames, stock, copied template or AI event media. Owner confirmation of rights and eventual authorized local replacements for remote thumbnails remains open.
+
+## 2026-11-26 — Original signal deck
+Hand-authored SVG in ConceptHomeV170.tsx, decorative abstract console, not a photograph or actual equipment/audio meter. No external media, code or dependencies. Removed duplicate DJ image from hero; retained it in the music chapter. Existing concert and film assets unchanged.
+
+## 2026-11-26 — V302 Live Cue
+No assets, fonts, external code or dependencies added. Existing concert and DJ photos unchanged; optical beams, rim lights and decorative pulse are original CSS overlays, not documentary footage or a real audio meter. No TikTok or AI imagery integrated.
+
+## V302 / 2026-11-25
+First-party inline SVG redraws based on approved concept; no raster mockup embedded, no imported icons, photos, fonts or dependencies. Existing media retained. Baseline artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45641237274/artifacts/15037030193 inspected. Candidate evidence pending.
+
 ## V300 / 2026-11-25
 No new photographs, fonts, music, dependencies or generated event images. Existing first-party media /media/greensound/concert-public-lumini.webp and /media/greensound/dj-mc-green-sound.webp reused from verified project data. Existing film posters retained. Original 21-line decorative SVG signal, CSS light beams, logo geometry and nav glyphs authored in source; no borrowed code. Owner-approved AI reference is not a deployed asset and its depicted headphones/stage are not represented as Green Sound property. Existing favicon retained. Baseline CI artifact #15029711960; candidate evidence pending.
 

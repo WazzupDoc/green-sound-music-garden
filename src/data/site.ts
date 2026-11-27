@@ -149,8 +149,8 @@ export const services: Service[] = [
     seoDescription:
       "DJ Green Sound și MC Dana: muzică pentru nunți, botezuri, aniversări, corporate și festivaluri, cu sunet și lumini proprii. Cere o ofertă pentru data ta.",
     eyebrow: "Serviciu · DJ & MC",
-    h1: "DJ și MC pentru evenimente care nu se golesc la miezul nopții",
-    lead: "DJ Green Sound și MC Dana lucrează în tandem: unul citește ringul, celălalt ține legătura cu invitații. Venim cu sistem de sunet și lumini proprii, deja calibrat pentru sală.",
+    h1: "DJ și MC pentru nunți, petreceri și evenimente",
+    lead: "DJ Green Sound mixează muzica, iar MC Dana prezintă momentele importante ale evenimentului. Discutăm repertoriul, programul și echipamentele de sunet și lumini în funcție de locație.",
     image: images.dj,
     highlights: [
       { title: "DJ + MC în echipă", text: "Momentele cheie — intrarea, dansul, tortul — sunt anunțate și ritmate de MC, iar DJ-ul ajustează muzica în timp real." },
@@ -177,18 +177,18 @@ export const services: Service[] = [
   {
     slug: "trupa",
     name: "Trupă live, soliști și instrumentiști",
-    short: "Muzicieni profesioniști și un inginer de sunet care mixează live toată seara.",
+    short: "Trupă, soliști și instrumentiști, cu inginer de sunet pentru seturile live.",
     formLabel: "Trupă live",
     seoTitle: "Trupă live pentru nunți și evenimente — Pitești | Green Sound Music",
     seoDescription:
       "Trupă live cu soliști și instrumentiști profesioniști, repertoriu de la hit-uri actuale la muzică populară și inginer de sunet dedicat. Cere ofertă.",
     eyebrow: "Serviciu · Trupă live",
-    h1: "Muzică live cântată aproape de original, de la disco la populară",
-    lead: "Soliști și instrumentiști absolvenți ai școlilor de muzică din țară, cu experiență în emisiuni TV, radio, concursuri și turnee, plus un inginer de sunet care mixează live pe tot parcursul evenimentului.",
+    h1: "Trupă live: de la disco la muzică populară",
+    lead: "Soliști, instrumentiști și inginer de sunet pentru programul live. Stabilim repertoriul și modul în care seturile se potrivesc cu celelalte momente ale evenimentului.",
     image: images.scena,
     highlights: [
       { title: "Muzicieni full-time", text: "Toți membrii trupei sunt muzicieni profesioniști, atent selecționați." },
-      { title: "Inginer de sunet dedicat", text: "După repetiții și probe de sunet, mixul din sală rămâne echilibrat de la primul la ultimul set." },
+      { title: "Inginer de sunet dedicat", text: "Inginerul de sunet se ocupă de probe și de mixajul pe durata seturilor live." },
       { title: "Repertoriu personalizat", text: "Lista de melodii se adaptează dorințelor tale și publicului." },
     ],
     sections: [
@@ -233,8 +233,8 @@ export const services: Service[] = [
     seoDescription:
       "Închiriere și operare sisteme de sunet TW Audio, DYNACORD, FBT, lumini LS, moving head-uri beam/wash și ecrane LED pentru evenimente, concerte și conferințe.",
     eyebrow: "Serviciu · Scenotehnică",
-    h1: "Sunet echilibrat, lumini care construiesc atmosfera, ecrane LED la vedere",
-    lead: "O trupă poate fi extraordinară, dar cu echipamente slabe sunetul nu va fi pe măsură. Ne ocupăm de sonorizare de înaltă performanță: niciodată prea tare, niciodată prea încet.",
+    h1: "Sonorizare, lumini și ecrane LED pentru evenimente",
+    lead: "Configurăm partea tehnică în funcție de spațiu, program și numărul de participanți: sonorizare pentru muzică sau discursuri, lumini de scenă și ecrane LED.",
     image: images.concert,
     highlights: [
       { title: "Branduri profesionale", text: "Sisteme audio TW Audio, DYNACORD, FBT și altele, testate regulat înainte de fiecare eveniment." },
@@ -279,7 +279,7 @@ export const services: Service[] = [
     seoDescription:
       "Mașină de fum greu cu 18 kg gheață carbonică certificată alimentar și operator, plus mașină de baloane cu fum. Pentru dansul mirilor, tort și momente de efect.",
     eyebrow: "Serviciu · Efecte speciale",
-    h1: "Fum greu pentru dansul mirilor, baloane cu fum pentru intrarea perfectă",
+    h1: "Fum greu pentru dansul mirilor și baloane cu fum",
     lead: "Pachetul de bază include mașina de fum greu, 18 kg de gheață carbonică și operatorul specializat. Gheața carbonică este certificată alimentar.",
     image: images.scena,
     highlights: [
@@ -319,8 +319,8 @@ export const services: Service[] = [
     seoDescription:
       "Studio de înregistrări în Pitești, fondat în 2009: înregistrări, mixaje, mastering, compoziție, aranjamente și producție muzicală completă. Programează o sesiune.",
     eyebrow: "Studio · Producție muzicală",
-    h1: "Un studio din Pitești în care piesa ta își găsește sunetul",
-    lead: "Studioul Green Sound Music este o cameră multifuncțională de înregistrări, situată central în Pitești. Fondat în 2009 de Cosmin Ivascu, cu gândul la un mediu artistic prietenos în care muzica se poate exprima liber.",
+    h1: "Studio de înregistrări și producție muzicală în Pitești",
+    lead: "Înregistrări de voce și instrumente, compoziție, aranjamente, mixaj și mastering. Spune-ne în ce etapă se află piesa și ce ai nevoie să pregătești în studio.",
     image: images.dj,
     highlights: [
       { title: "Înregistrări", text: "Voce și instrumente, într-un spațiu pregătit pentru sesiuni relaxate." },
@@ -346,14 +346,14 @@ export const services: Service[] = [
   {
     slug: "hostess",
     name: "Hostess",
-    short: "Echipă tânără pentru primirea invitaților, cu zâmbetul pe buze.",
+    short: "Personal pentru întâmpinarea și orientarea invitaților.",
     formLabel: "Hostess",
     seoTitle: "Hostess pentru evenimente și nunți — Pitești | Green Sound Music",
     seoDescription:
       "Hostess pentru nunți, evenimente corporate, târguri și lansări în Pitești. Primire elegantă a invitaților, coordonată cu restul echipei Green Sound Music.",
     eyebrow: "Serviciu · Hostess",
-    h1: "O primire ca la carte, de la prima ușă deschisă",
-    lead: "Green Sound Music vă întâmpină cu o echipă tânără și energică, pregătită să vă asculte dorințele și să primească invitații cu brațele deschise.",
+    h1: "Hostess pentru primirea invitaților",
+    lead: "Echipa de hostess întâmpină invitații la intrare. Stabilim înainte rolurile, ținuta și modul de primire, în funcție de tipul evenimentului.",
     image: images.hostess,
     highlights: [
       { title: "Primirea invitaților", text: "Prima impresie a evenimentului tău, gestionată cu grijă." },
@@ -382,13 +382,13 @@ export const services: Service[] = [
     seoDescription:
       "Ursitoare pentru botez și animație pentru petreceri de copii: personaje, modelaj de baloane și pictură pe față. Combină cu DJ și sonorizare. Cere ofertă.",
     eyebrow: "Serviciu · Botez & copii",
-    h1: "Ursitoare pentru botez și animație care îi ține pe cei mici în poveste",
-    lead: "Pentru un eveniment plin de emoție și distracție: ursitoare la botez și animație cu personaje încântătoare la petrecerile copiilor.",
+    h1: "Ursitoare la botez și animatori pentru copii",
+    lead: "Momentul ursitoarelor la botez, personaje pentru petreceri, modelaj de baloane și pictură pe față. Alegem activitățile în funcție de vârsta copiilor și de ocazie.",
     image: images.ursitoare2,
     highlights: [
       { title: "Ursitoare", text: "Momentul tradițional al botezului, într-o interpretare elegantă." },
       { title: "Modelaj baloane & pictură pe față", text: "Activități care îi țin pe copii implicați." },
-      { title: "Idei creative", text: "Venim cu propuneri pentru ca ziua copilului să fie cu adevărat specială." },
+      { title: "Idei creative", text: "Discutăm activitățile potrivite vârstei și spațiului disponibil." },
     ],
     sections: [
       {
@@ -412,17 +412,17 @@ export const services: Service[] = [
     seoDescription:
       "Start Veselia: spectacol educativ cu muzică, dans și personajele Miraluna, Zâna Rază de Soare, NU Vreau, NU Pot, Zooly și Tărăboi. Pentru 1 Iunie, zilele orașului și sărbători.",
     eyebrow: "Spectacol pentru copii",
-    h1: "Start Veselia: o aventură cu muzică, dans și multă voie bună",
+    h1: "Start Veselia — spectacol interactiv pentru copii",
     lead: "Cei mici sunt invitați într-o aventură alături de Miraluna, Zâna Rază de Soare și cei trei frați — NU Vreau, NU Pot și Zooly — dar și de mascota veselă, Tărăboi.",
     image: images.copii,
     highlights: [
       { title: "Interacțiune directă", text: "Copiii nu sunt doar spectatori, ci parte din poveste." },
-      { title: "Muzică, dans și momente comice", text: "Un show antrenant care captivează și educă în același timp." },
+      { title: "Muzică, dans și momente comice", text: "Cântece, dans și momente comice cu participarea copiilor." },
       { title: "Adaptat ocaziei", text: "Paște, 1 Iunie, zilele orașului, sărbătorile de iarnă și alte ocazii." },
     ],
     sections: [
       {
-        title: "Magia educației prin muzică și dans",
+        title: "Muzică, dans și participarea copiilor",
         paragraphs: [
           "Start Veselia nu este doar un spectacol, ci o aventură educativă și muzicală, în care personajele îi provoacă pe cei mici să fie activi, să își respecte părinții și bunicii și să descopere cât de importantă este responsabilitatea în familie și comunitate.",
         ],
@@ -507,8 +507,8 @@ export const events: EventType[] = [
     seoTitle: "Ursitoare, DJ și animație pentru botez — Pitești | Green Sound Music",
     seoDescription:
       "Botez organizat cu o singură echipă: ursitoare, DJ & MC, animatori pentru copii, sonorizare, lumini și fum greu. Green Sound Music, Pitești, din 2008.",
-    h1: "Un botez cu ursitoare, muzică bună și copii care se distrează",
-    lead: "Momentul ursitoarelor, animația pentru cei mici și petrecerea părinților, gândite împreună ca să curgă natural.",
+    h1: "Ursitoare, DJ și animație pentru botezuri",
+    lead: "Poți alege separat sau combina momentul ursitoarelor, activitățile pentru copii și muzica petrecerii. Spune-ne programul și locația botezului.",
     image: images.ursitoare2,
     moments: [
       { title: "Ursitoarele", text: "Momentul tradițional, cu costume și scenariu.", service: "ursitoare-botez" },
@@ -535,7 +535,7 @@ export const events: EventType[] = [
     seoTitle: "Sonorizare, ecrane LED și DJ pentru evenimente corporate | Green Sound Music",
     seoDescription:
       "Conferințe, târguri, expoziții, lansări de produse și petreceri de firmă: sonorizare, lumini, ecrane LED, hostess, DJ și trupă live. Cere ofertă.",
-    h1: "Evenimente de firmă care sună clar și arată bine pe scenă",
+    h1: "Sonorizare și program artistic pentru evenimente corporate",
     lead: "De la microfoane pentru discursuri și ecrane LED pentru prezentări, până la petrecerea de la final, coordonate de o singură echipă tehnică.",
     image: images.concert,
     moments: [
@@ -588,7 +588,7 @@ export const events: EventType[] = [
     seoTitle: "DJ și lumini pentru aniversări, majorate și petreceri private | Green Sound Music",
     seoDescription:
       "Aniversări, majorate și petreceri private în Pitești: DJ & MC, sonorizare, lumini, fum greu, baloane cu fum și animație pentru copii.",
-    h1: "Aniversări și majorate cu ring plin și lumini pe măsură",
+    h1: "DJ, sunet și lumini pentru aniversări și majorate",
     lead: "Spune-ne câți invitați aveți și unde, iar noi propunem combinația potrivită de muzică, sunet și efecte.",
     image: images.dj,
     moments: [
@@ -635,7 +635,7 @@ export const generalFaqs = [
   },
   {
     q: "Cum aflu prețul?",
-    a: "Prețul depinde de dată, locație, durată și serviciile alese, de aceea lucrăm cu oferte personalizate. Completează formularul sau sună-ne la 0766 566 275.",
+    a: "Prețul depinde de dată, locație, durată și serviciile alese, de aceea lucrăm cu oferte personalizate. Pregătește cererea în pagina Contact și trimite mesajul prin canalul ales sau sună-ne la 0766 566 275.",
   },
   {
     q: "Putem personaliza muzica?",
@@ -644,7 +644,7 @@ export const generalFaqs = [
 ];
 
 export const process = [
-  { title: "Ne spui despre eveniment", text: "Tipul, data, locația și câți invitați aștepți — prin formular, telefon sau WhatsApp." },
+  { title: "Ne spui despre eveniment", text: "Tipul, data, locația și numărul de invitați. Pregătești cererea pe pagina Contact și alegi cum ne trimiți mesajul sau ne suni." },
   { title: "Stabilim combinația", text: "Îți propunem serviciile potrivite și răspundem la întrebări." },
   { title: "Primești oferta", text: "O ofertă personalizată pentru data și locația ta." },
   { title: "Ziua evenimentului", text: "Montaj, probe de sunet și o echipă prezentă la ora stabilită." },

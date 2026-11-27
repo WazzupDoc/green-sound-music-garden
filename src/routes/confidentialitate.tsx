@@ -23,9 +23,9 @@ function Privacy(){return <section className="rs-privacy">
     <p>Formularul generează local un mesaj pe care îl poți deschide în WhatsApp, în aplicația de email sau îl poți copia. Website-ul nu transmite automat cererea. Doar tu alegi dacă și unde expediezi mesajul.</p>
     <p>Sunt solicitate numele, telefonul și tipul evenimentului; opțional poți completa adresa de email, data, locația, numărul invitaților și serviciile dorite.</p></section>
    <section><h2>Preferințe vizuale</h2>
-    <p>Dacă alegi o temperatură a luminii din controlul site-ului, aceasta este păstrată în browser prin localStorage, sub cheia <code>gsm-light</code>. Nu este o informație personală și poate fi eliminată din datele site-ului din browser.</p></section>
+    <p>Dacă alegi o temperatură a luminii din controlul site-ului, aceasta este păstrată în browser prin localStorage, sub cheia <code>gsm-light</code>. Preferința poate fi eliminată din datele site-ului din browser.</p></section>
    <section><h2>Conținut extern</h2>
-    <p>Videoclipurile YouTube folosesc youtube-nocookie și sunt încărcate după ce alegi explicit redarea. WhatsApp și serviciile de email sunt aplicații externe și aplică propriile politici.</p>
+    <p>Playerul video YouTube este încărcat din youtube-nocookie după ce alegi explicit redarea. Unele fotografii de previzualizare pot fi solicitate de la i.ytimg.com înainte de redare; serviciul extern poate primi adresa IP și informații tehnice despre browser. WhatsApp și serviciile de email sunt aplicații externe și aplică propriile politici.</p>
     <p>Fonturile interfeței sunt servite local din pachetele proiectului.</p></section>
    <section><h2>Contact și drepturi</h2>
     <p>Pentru solicitări privind datele comunicate, scrie la <a href={`mailto:${business.email}`}>{business.email}</a> sau sună la <a href={business.phoneHref}>{business.phoneDisplay}</a>.</p>

@@ -1,3 +1,41 @@
+## 2026-11-27 — Combined release audit
+- https://www.studio1642.com/portfolio/invisible-arts — sound-production portfolio described with visual work samples; adapt proof-first filmstrip, not their layout or media.
+- https://webflow.com/made-in-webflow/website/group-project-70a2ec — Stonehut Studio production portfolio; reference for direct work presentation; no template code or assets used.
+- https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/ and https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum — dialog focus restoration, layered controls, fixed-bar clearance. Original application code, existing Radix component.
+- https://developers.google.com/search/docs/appearance/structured-data/local-business — accurate local business metadata. https://greensoundmusic.com/ and https://greensoundmusic.com/trupa/ and https://greensoundmusic.com/studio-inregistrari/ corroborate business categories; no unconditional nationwide coverage confirmed. Keep Pitești/Argeș and other locations subject to confirmation. No fabricated rankings or volumes.
+- SERP 2026-11-27 (observed results, not measured keyword volumes): https://www.olx.ro/servicii-afaceri-colaborari/arges-judet/q-sonorizare-evenimente/ (technical and event-specific language); https://www.trupa-atelier.ro/formatie-nunta-pitesti/ (live band and wedding intent); official studio page above (recording/mix/mastering intent). No competitor claims copied, no new city doorway pages. Backlog: Search Console once authorized, actual supported travel areas and first-party conversion measurement; autocomplete/PAA/Trends not measured.
+- https://docs.lovable.dev/features/publish — documented manual publish flow; actual project integration/settings unverified. No publication or cost.
+Experiment: compact filmstrip and calmer final CTA, native CSS; reject autoplay, external motion packages and extra widgets. No license-bearing code/media imported. Latest browser and budget acceptance pending.
+
+## 2026-11-27 — Step 4.2 editorial programme
+- https://webflow.com/made-in-webflow/website/shootwood — visual storytelling by distinct production categories; adapt varied photographic framing, no copied layout/media.
+- https://webflow.com/templates/html/ritmo-website-template — dark editorial studio direction; adapt contrast and hierarchy, reject scroll choreography and count-up metrics. No template purchase or code reuse.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/object-position and https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Grids — native focal-point cropping and layout; original CSS, no third-party dependency or asset license needed.
+Experiment: service link lime signal cue, CSS-only, finite transform, visible keyboard focus and no motion in Lite/reduced mode. Reject JS reveal and duplicated image. Actual browser acceptance pending.
+
+## 2026-11-27 — Step 4 masthead clearance
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum — fixed overlays can obscure focused controls. Applied initial hero clearance; full keyboard scroll behavior still needs separate audit.
+- https://web.dev/learn/design/screen-configurations — device safe-area insets. Applied env(safe-area-inset-top,0px) and fluid title sizing. Original CSS, no imported code or assets. Rejected adding JS layout measurement or animation for a static spacing defect.
+
+## 2026-11-27 — Step 3, clear Romanian website copy
+- https://www.w3.org/WAI/tips/writing/ — clear concise text, meaningful headings and action labels. Applied to Contact instructions and Romanian step labels. No code or asset reused.
+- https://developers.google.com/search/docs/fundamentals/creating-helpful-content — descriptive main headings and people-first information. Applied to existing service/event/general page copy; rejected keyword stuffing and unverified promises. No dependency or license reliance. No measured ranking claims.
+
+## 2026-11-26 — Signal deck / unique photography
+- https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — equalizer as music identity; adapted original finite vector pulse, rejected repeated photo trails.
+- https://webflow.com/made-in-webflow/website/felicia-festival — animated event identity; adapted silent musical visual cue rather than futuristic template or extra navigation widgets.
+Only editorial references reviewed; no external code or assets copied, no license assumed. No dependencies. Original SVG/CSS, static for reduced motion and Lite. Acceptance: distinct photos, real browser motion and screenshots; pending. Rollback by reverting scoped commits.
+
+## 2026-11-26 — Live Cue
+- https://webflow.com/made-in-webflow/website/felicia-festival — project description highlights animated music/art journey; adapted principle of event-specific cues, not layout or assets.
+- https://webflow.com/made-in-webflow/website/gerrits-sublime-site — electronic music festival project description; adapted idea of an energetic event entry, not branding. Neither project code nor imagery reused; no license assumed. Only project descriptions reviewed, not a full interactive inspection.
+- https://web.dev/articles/animations-guide — use transform/opacity for motion; original finite sweeps, not animated blur.
+- https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/%40media/prefers-reduced-motion — static fallback and existing Lite gate.
+Experiment: optical live cue with existing photo and controls; no dependencies, no sound, no perpetual loops, no strobe; acceptance requires real screenshots and browser motion check. Rejected full-screen strobe, endless autoplay and fabricated DJ imagery. Performance not yet measured.
+
+## V302 / 2026-11-25
+Primary art reference is the owner's approved generated mockup, inspected directly beside the real V300 browser capture. Adapted outline geometry, active lime cue and three chapter marks; rejected V301 eight unrelated miniature icons. Original vector paths manually authored, no external code/assets/dependencies. No new external research performed in this targeted correction. Browser gate pending.
+
 ## V300 / 2026-11-25 — Cinematic owner-approved composition
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — rhythm and equalizer-inspired visual identity; adapted a deterministic vector waveform rather than a mouse image trail.
 - https://tympanus.net/codrops/2026/11/12/dkton/ — music as a design system; adapted silent visual signal, rejected automatic sound and Web Audio.

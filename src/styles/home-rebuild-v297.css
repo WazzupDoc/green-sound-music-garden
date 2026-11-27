@@ -200,3 +200,239 @@ html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-lights="on"
 @media(max-width:430px){.gs300-eyebrow{font-size:.59rem;letter-spacing:.09em;margin-bottom:16px}.gs300-eyebrow::before{width:15px;margin-right:8px}[data-stage="cinematic"] .gs297-cover-aside{margin-top:18px}.gs300-showreel{margin-left:0;display:flex;margin-top:6px}.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] h1{font-size:clamp(2.45rem,10.1vw,3rem)}}
 @media(prefers-reduced-motion:reduce){[data-stage="cinematic"] :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}}
 html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-wave,.gs300-atmosphere i,.gs297-portrait,.gs170-stage){animation:none!important;transition:none!important;transform:none!important}
+
+/* V302: the reference uses three large lime chapter pictograms, not eight miniature line icons. */
+.gs170-home[data-bespoke="v297"] .gs302-chapter-glyph{display:block;width:34px;height:34px;margin-top:16px;color:#d6ff31;flex:none}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter-body h3{margin-top:8px}
+.gs170-home[data-bespoke="v297"] .gs300-stage #gs170-title em{color:#c1fa43}
+@media(max-width:740px){.gs170-home[data-bespoke="v297"] .gs302-chapter-glyph{width:30px;height:30px}}
+
+/* V302 reference fidelity pass: one photographic scene, readable type, compact stage.
+   The existing DJ photo is an inset editorial detail, not a fabricated composite event. */
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]{padding:0;min-height:0;background:#061710}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{min-height:clamp(520px,40vw,730px);padding-top:clamp(40px,4.5vw,76px);padding-bottom:18px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__content{width:62%;padding:10px 0 32px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(3.5rem,6.15vw,7.65rem);line-height:.91;letter-spacing:-.045em}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title em{color:#c1fa43;margin-left:0;font-weight:400;letter-spacing:-.055em}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs297-cover-aside{margin-top:23px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__lead{max-width:43ch;line-height:1.55}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage{inset:0 0 0 24%;transform:translate(var(--gs300-x,0px),var(--gs300-y,0px)) scale(1.04)}
+[data-stage="cinematic"] .gs297-diptych::after{background:linear-gradient(90deg,#061710 0%,#061710f5 22%,#061710cf 37%,#06171065 54%,#0617100a 78%),linear-gradient(0deg,#061710 0%,transparent 23%,transparent 83%,#06171044)}
+[data-stage="cinematic"] .gs297-portrait{width:17%;height:37%;right:5%;bottom:16%;border:1px solid #c1fa4355;clip-path:none;box-shadow:none}
+[data-stage="cinematic"] .gs297-portrait figcaption{font-size:.58rem;letter-spacing:.13em;padding:7px 10px}
+[data-stage="cinematic"] .gs300-wave{left:34%;bottom:14%;width:62%;opacity:.8}
+[data-stage="cinematic"] .gs297-cover-bottom{gap:clamp(10px,2vw,30px);border-top-color:#b7d3b633}
+@media(max-width:900px){
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{min-height:0;padding-top:30px;padding-bottom:16px}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-hero__content{width:100%;padding:0}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(2.5rem,10vw,5.3rem)}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage{inset:0;transform:none}
+[data-stage="cinematic"] .gs297-diptych::after{background:linear-gradient(0deg,#061710a0,transparent 45%)}
+[data-stage="cinematic"] .gs297-portrait{width:30%;height:72%;right:4%;bottom:8%}
+[data-stage="cinematic"] .gs300-wave{left:8%;bottom:15%;width:87%;opacity:.5}
+}
+@media(max-width:430px){.gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{font-size:clamp(2.4rem,10vw,3rem)}}
+@media(prefers-reduced-motion:reduce){[data-stage="cinematic"] .gs170-stage{transform:none!important}}
+html[data-gs-performance="lite"] [data-stage="cinematic"] .gs170-stage,[data-stage="cinematic"][data-lights="off"] .gs170-stage{transform:none!important}
+
+
+/* V302 live cue — original optical stage treatment, not a fabricated event photo.
+   Finite entrance; hover/focus cues are user initiated. The existing OFF switch wins. */
+[data-stage="cinematic"]{--gs-live-light:#c8fa48;--gs-live-haze:#90cb52}
+[data-stage="cinematic"][data-hue="cool"]{--gs-live-light:#c4f7ff;--gs-live-haze:#77a9ff}
+@media(min-width:901px){
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{min-height:clamp(565px,44vw,780px)}
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage{inset:-3% -1% 0 18%}
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs170-stage__image{object-position:64% 38%}
+  [data-stage="cinematic"] .gs297-diptych::after{background:linear-gradient(90deg,#061710 0%,#061710f7 20%,#061710d9 34%,#06171058 55%,transparent 78%),linear-gradient(0deg,#061710 0%,transparent 28%,transparent 88%,#06171044)}
+  [data-stage="cinematic"] .gs300-atmosphere i{top:0;left:var(--beam-x);width:24%;height:88%;clip-path:none;transform-origin:50% 0;transform:rotate(var(--beam-angle));opacity:.64;background:radial-gradient(ellipse at 50% 1%,#fff 0%,var(--gs-live-light) 3%,transparent 13%),conic-gradient(from 180deg at 50% 0%,transparent 0deg,var(--gs-live-haze) 10deg,transparent 23deg 337deg,var(--gs-live-light) 350deg,transparent 360deg);mask-image:linear-gradient(#000 0%,#0009 45%,transparent 96%);filter:blur(2px);mix-blend-mode:screen}
+  [data-stage="cinematic"] .gs300-atmosphere i:nth-child(1){--beam-x:52%;--beam-angle:32deg;--beam-shift:-18deg}
+  [data-stage="cinematic"] .gs300-atmosphere i:nth-child(2){--beam-x:70%;--beam-angle:-24deg;--beam-shift:24deg}
+  [data-stage="cinematic"] .gs300-atmosphere i:nth-child(3){--beam-x:86%;--beam-angle:35deg;--beam-shift:-28deg;opacity:.58}
+  [data-stage="cinematic"][data-lights="on"] .gs300-atmosphere::after{content:"";position:absolute;inset:0 0 0 40%;background:radial-gradient(ellipse at 55% 62%,#a9ed3220,transparent 58%),radial-gradient(ellipse at 86% 9%,#d3ff6540,transparent 35%);mix-blend-mode:screen}
+  [data-stage="cinematic"][data-hue="cool"] .gs300-atmosphere::after{background:radial-gradient(ellipse at 55% 62%,#77a9ff24,transparent 58%),radial-gradient(ellipse at 86% 9%,#c4f7ff40,transparent 35%)}
+}
+[data-stage="cinematic"][data-lights="on"] .gs297-portrait{border-color:var(--gs-live-light);box-shadow:0 0 20px #bafa3633,inset 0 0 12px #bafa3620}
+[data-stage="cinematic"][data-lights="on"] .gs297-portrait::before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(110deg,var(--gs-live-light),transparent 24%) top left/65% 2px no-repeat,linear-gradient(290deg,var(--gs-live-light),transparent 24%) bottom right/65% 2px no-repeat}
+[data-stage="cinematic"][data-lights="on"] .gs300-eyebrow::after{content:"";display:inline-block;vertical-align:middle;width:42px;height:17px;margin-left:12px;background:var(--gs-live-light);clip-path:polygon(0 46%,10% 46%,16% 25%,22% 75%,30% 12%,37% 88%,44% 0,51% 100%,59% 25%,66% 70%,73% 38%,80% 60%,86% 46%,100% 46%,100% 54%,86% 54%,80% 70%,73% 50%,66% 83%,59% 38%,51% 100%,44% 15%,37% 100%,30% 25%,22% 87%,16% 38%,10% 54%,0 54%)}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"][data-lights="on"] .gs170-btn--green{position:relative;isolation:isolate;box-shadow:0 0 24px #bafa3638}
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"][data-lights="on"] .gs170-btn--green::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 22%,#fff8 49%,transparent 72%);opacity:0;transform:translateX(-35%);z-index:-1}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-hydrated="true"][data-lights="on"] .gs300-atmosphere i{animation:gs302-live-sweep 4.6s cubic-bezier(.45,.05,.25,1) 1 both}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-hydrated="true"][data-lights="on"] .gs300-atmosphere i:nth-child(2){animation-delay:.16s;animation-duration:4.4s}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-hydrated="true"][data-lights="on"] .gs300-atmosphere i:nth-child(3){animation-delay:.28s;animation-duration:4.2s}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-hydrated="true"][data-lights="on"] .gs300-wave{animation:gs302-live-ribbon 4.6s ease-in-out 1 both}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-hydrated="true"][data-lights="on"] .gs300-eyebrow::after{animation:gs302-live-pulse .9s ease-in-out 4 alternate}
+  html:not([data-gs-performance="lite"]) .gs170-home[data-bespoke="v297"] [data-stage="cinematic"][data-lights="on"] .gs170-btn--green:is(:hover,:focus-visible)::after{animation:gs302-live-shine .65s ease-out 1}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-lights="on"] .gs300-showreel:is(:hover,:focus-visible) svg{animation:gs302-live-play .7s ease-out 1}
+}
+@keyframes gs302-live-sweep{0%{transform:rotate(calc(var(--beam-angle) + var(--beam-shift)));opacity:.18}40%{transform:rotate(calc(var(--beam-angle) - var(--beam-shift)*.65));opacity:.85}72%{transform:rotate(calc(var(--beam-angle) + var(--beam-shift)*.25));opacity:.42}100%{transform:rotate(var(--beam-angle));opacity:.64}}
+@keyframes gs302-live-ribbon{0%{scale:.95 .66;opacity:.25}40%{scale:1 1.12;opacity:.85}72%{scale:1 .92;opacity:.65}100%{scale:1 1;opacity:.8}}
+@keyframes gs302-live-pulse{from{scale:1 .55;opacity:.65}to{scale:1 1;opacity:1}}
+@keyframes gs302-live-shine{0%{opacity:0;transform:translateX(-35%)}50%{opacity:.85}100%{opacity:0;transform:translateX(35%)}}
+@keyframes gs302-live-play{0%,100%{scale:1}45%{scale:1.14}}
+@media(max-width:430px){[data-stage="cinematic"] .gs300-eyebrow::after{display:none!important}}
+@media(prefers-reduced-motion:reduce){[data-stage="cinematic"] :is(.gs300-atmosphere i,.gs300-wave,.gs300-showreel svg),[data-stage="cinematic"] .gs300-eyebrow::after,[data-stage="cinematic"] .gs170-btn--green::after{animation:none!important}}
+html[data-gs-performance="lite"] [data-stage="cinematic"] :is(.gs300-atmosphere i,.gs300-wave,.gs300-showreel svg),html[data-gs-performance="lite"] [data-stage="cinematic"] .gs300-eyebrow::after,html[data-gs-performance="lite"] [data-stage="cinematic"] .gs170-btn--green::after{animation:none!important}
+
+/* Live signal artwork: a bespoke silent DJ-console motif instead of the duplicate portrait. */
+[data-stage="cinematic"] .gs297-portrait.gs-live-deck{
+  width:clamp(205px,22%,330px);height:auto;aspect-ratio:1.28;bottom:15%;right:4%;
+  background:linear-gradient(145deg,#122c22f5,#040d0bf2 70%);
+  border:1px solid #9abc8055;clip-path:polygon(0 0,100% 0,100% 88%,92% 100%,0 100%);
+  box-shadow:0 14px 30px #0008;
+}
+.gs-live-deck__art{display:block;width:100%;height:100%;padding:5px 5px 19px;overflow:visible}
+[data-stage="cinematic"] .gs-live-deck figcaption{background:transparent;color:#c9e0c9;border-top:1px solid #91b6a533;padding:8px 13px;letter-spacing:.16em}
+[data-stage="cinematic"][data-lights="on"] .gs-live-deck{border-color:var(--gs-live-light);box-shadow:0 0 22px #bafa3620,0 14px 30px #0008}
+.gs-live-deck__disc{transform-box:fill-box;transform-origin:center}
+.gs-live-deck__meter path{transform-box:fill-box;transform-origin:center}
+@media(prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-lights="on"][data-hydrated="true"] .gs-live-deck__disc{animation:gs-live-deck-spin 4.5s cubic-bezier(.2,.6,.3,1) 1 both}
+  html:not([data-gs-performance="lite"]) [data-stage="cinematic"][data-lights="on"][data-hydrated="true"] .gs-live-deck__meter path{animation:gs-live-deck-beat .6s ease-in-out 6 alternate}
+}
+@keyframes gs-live-deck-spin{from{transform:rotate(-75deg)}to{transform:rotate(110deg)}}
+@keyframes gs-live-deck-beat{from{transform:scaleY(.4);opacity:.65}to{transform:scaleY(1);opacity:1}}
+@media(max-width:900px){[data-stage="cinematic"] .gs297-portrait.gs-live-deck{width:clamp(118px,36%,230px);bottom:8%;right:4%}}
+@media(max-width:430px){[data-stage="cinematic"] .gs-live-deck figcaption{font-size:.42rem;padding:5px 8px}.gs-live-deck__art{padding-bottom:12px}}
+
+/* Step 4 — keep the entire hero introduction below the fixed 77/68px masthead.
+   The photographic stage still extends behind the header; only foreground content is inset. */
+.gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{
+  padding-top:calc(77px + clamp(24px,3vw,48px) + env(safe-area-inset-top,0px));
+}
+@media(max-width:900px){
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"]>.gs297-shell{
+    padding-top:calc(68px + 24px + env(safe-area-inset-top,0px));
+  }
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{
+    font-size:clamp(2.4rem,11.4vw,5.3rem);
+    line-height:1;
+  }
+}
+@media(max-width:430px){
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] #gs170-title{
+    font-size:clamp(2.4rem,11.4vw,3.15rem);
+  }
+  .gs170-home[data-bespoke="v297"] [data-stage="cinematic"] .gs297-cover-aside{margin-top:16px}
+}
+
+/* Step 4.2 — production programme as an asymmetric editorial spread.
+   Lead musical act, two smaller horizontal features; no new widgets or imagery.
+   Preserve native DOM/focus order and the three original chapter glyphs. */
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo img{
+  object-position:50% 8%;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo img{
+  object-position:50% 60%;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+  object-position:50% 24%;
+}
+@media(min-width:1200px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapters{
+    grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);
+    gap:0 clamp(28px,3vw,56px);
+    align-items:stretch;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound]{
+    grid-column:1;grid-row:1 / span 2;
+    display:flex;flex-direction:column;align-items:stretch;gap:22px;
+    padding:20px 0 0;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:clamp(320px,29vw,480px);
+    flex:none;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__chapter-body{
+    flex:1;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage],
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{
+    grid-column:2;
+    grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr);
+    gap:clamp(18px,2vw,32px);align-items:stretch;
+    padding:20px 0;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage]{grid-row:1}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{grid-row:2}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] :is(.gs-index__photo,.gs-index__chapter-body){
+    grid-row:1;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo{grid-column:1}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body{grid-column:2}
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo{
+    height:auto;min-height:230px;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__chapter-body h3,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__chapter-body h3{
+    font-size:clamp(2rem,2.7vw,3.8rem)!important;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__service,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__service{
+    font-size:clamp(.87rem,1.03vw,1.08rem);
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=stage] .gs-index__photo img,
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+    position:absolute;inset:0;
+  }
+}
+@media(max-width:740px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=sound] .gs-index__photo{
+    height:auto;aspect-ratio:4/3;
+  }
+}
+/* Signature cue: a single lime signal line for the active service, without layout shift. */
+.gs170-home[data-bespoke="v297"] .gs-index__service{position:relative}
+.gs170-home[data-bespoke="v297"] .gs-index__service::after{
+  content:"";position:absolute;inset:auto 0 0;height:2px;background:#c1fa43;
+  transform:scaleX(0);transform-origin:left;pointer-events:none;
+}
+.gs170-home[data-bespoke="v297"] .gs-index__service:focus-visible::after{transform:scaleX(1)}
+@media(hover:hover) and (pointer:fine){
+  .gs170-home[data-bespoke="v297"] .gs-index__service:hover::after{transform:scaleX(1)}
+}
+@media(prefers-reduced-motion:no-preference) and (hover:hover) and (pointer:fine){
+  html:not([data-gs-performance="lite"]) .gs170-home[data-bespoke="v297"] .gs-index__service::after{
+    transition:transform .28s var(--g297-ease);
+  }
+}
+
+/* Step 4.3 — preserve the full people photograph, compact cinematic filmstrip,
+   and finish with one high-contrast inquiry action. No media or route changes. */
+@media(min-width:1200px){
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people]{
+    grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);
+    align-items:center;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo{
+    width:100%;height:auto;min-height:0;aspect-ratio:810/541;
+  }
+  .gs170-home[data-bespoke="v297"] .gs-index__chapter[data-chapter=people] .gs-index__photo img{
+    object-position:center;object-fit:contain;
+  }
+  .gs170-home[data-bespoke="v297"] .gs170-films__cards{
+    grid-template-columns:minmax(0,1.42fr) minmax(0,1fr) minmax(0,1fr);
+    align-items:start;gap:clamp(18px,2vw,34px);
+  }
+  .gs170-home[data-bespoke="v297"] .gs170-film-card:first-child{grid-column:auto}
+  .gs170-home[data-bespoke="v297"] .gs170-film-card:first-child .gs170-film-card__image{aspect-ratio:16/9}
+  .gs170-home[data-bespoke="v297"] .gs170-film-card__title strong{
+    font-size:clamp(1.15rem,1.65vw,2rem);
+  }
+  .gs170-home[data-bespoke="v297"] .gs297-film-heading h2{font-size:clamp(5rem,7vw,9rem)}
+}
+.gs170-home[data-bespoke="v297"] .gs170-final{
+  background:#102a1e;color:#f1f2e9;border-block-start:1px solid #c1fa4360;
+  padding:clamp(40px,5.5vw,85px) 0 0;
+}
+.gs170-home[data-bespoke="v297"] .gs170-final h2 em{color:#c1fa43}
+.gs170-home[data-bespoke="v297"] .gs170-final p{color:#d8e6d9}
+.gs170-home[data-bespoke="v297"] .gs170-final .gs170-btn{
+  background:#c1fa43;color:#10200b;border-color:#c1fa43;
+}
+.gs170-home[data-bespoke="v297"] .gs170-final .gs170-btn:is(:hover,:focus-visible){
+  background:#e0ff97;color:#10200b;
+}
+.gs170-home[data-bespoke="v297"] .gs297-final-wave{height:clamp(48px,6vw,92px);color:#c1fa4370}

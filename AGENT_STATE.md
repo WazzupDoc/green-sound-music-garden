@@ -1,3 +1,67 @@
+## 2026-11-27 — Combined steps 4–10, owner requested all
+Baseline 401653b1dddf7acac0544cf5bdd624b797e230e8 passed principal #45969960136 and visual #45969959998. Step 4.2 source 1a39a1c67b332ad2ac31e93ea9dfa9161f5edd8c visual #45970635936 passed, principal #45970636158 cancelled by later pushes (not a pass). Inspected matched screenshots 390/1440 from https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45970635936/artifacts/15184457839 against artifact #15185235042. Services height 1440: 1596→1272px; mobile 390: 2314→2354px. DJ faces now visible; secondary People desktop image cropped at sides, fixed in candidate but new screenshot pending.
+| Step / zone | Priority | Work and evidence | Gate |
+|---|---|---|---|
+| 1 Strategy | P0 | Reference brief PR #341, 20 routes, inquiry path | Documented |
+| 2 Design | P1 | Owner approved concept; original iconography and media retained | Actual visual signoff pending |
+| 3 Copy | P1 | Prior source edits verified by #45967943153 | First pass; factual/legal review pending |
+| 4 Home | P1 | Asymmetric services evidence above; new crop, compact filmstrip and dark final CTA 7aa390b0b1553c3fac32515b490b1ce9e6310c74 | Latest CI + after images pending |
+| 5 Interior | P1 | ServiceSignature cb3863e3a8d90dee465250e418e43563890610bb removed three internal placeholders without inventing inventory, characters or availability; inspected shared ServicePage and existing routes | Detail browser checks pending; visual audit not complete |
+| 6 Features | P1 | Video focus restoration and scrollable viewport 02c2751c0f33a6ea804d738a2f26fd7dba31ef4d; existing validated quote preview, clipboard and explicit handoff retained | New regression pending; no invented server |
+| 7 Mobile/a11y | P1 | Shared dialog 58d47f9ba83bb239edd8dc0da0e4391130635279 Romanian close, 44px target and proper z-layer; mobile contact scroll padding c03e7c38c0eb24373326e8eee938b5ec2819b2be | Six-width checks and zoom/focus review pending |
+| 8 SEO/privacy/perf | P1 | 4953736983b4d4c5cec57732e1bd67d7ee30ba31 limits schema coverage to confirmed Pitești/Argeș and natural topics; 5f55b24419bd99e6c926edce88e5f3134d0dc9d1 conditional travel copy. Privacy 34e1dfbfb0a439df4fe1306d294ff26cc7ab1788 clarifies pre-play thumbnail requests; no new dependencies/assets | New gzip/SSR and metadata audit pending; field CWV unavailable |
+| 9 QA/security | P0 | e39ecec080a5ddd868c8b16cdcb1fcfe801221ce adds film geometry, close target/layer, detail routes/screenshots and privacy checks; .gitignore e33fc981d0ba774a66fb8093f22336dd41d7fecc excludes future local env secrets | No current full secret history scan or latest CI proof |
+| 10 Launch | P0 | README 6f8e778e041ae775945e5d1bb3cc68390a76ce97 local setup, quality, SSR hosting, production env, release backup and rollback guide | Hosting settings, legal data, exact-head green, visual approval, separate publish approval; no tag/deploy performed |
+PR #340 remains stacked on design/v300-cinematic-live-stage; #19 still conflicted. No main modifications, dependencies, assets, domain or cost changes. Do not mark the 10 stages fully accepted. Next: review exact-head failures, inspect latest 390/1440 filmstrip/services/CTA and detail captures, full functional/zoom/SEO security retest; ask for legal facts and explicit publishing authorization only when all other gates pass.
+
+## 2026-11-27 — Step 4.2 / production programme
+Baseline 401653b1dddf7acac0544cf5bdd624b797e230e8 passed principal #45969960136 and matched browser #45969959998. Actual screenshots inspected at 390 and 1440: masthead clearance fixed; service programme repeated three alternating rows, DJ portrait faces cropped, long mobile scroll. Artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45969959998/artifacts/15185235042.
+P1 design: asymmetric lead Music act and stacked Stage/People on desktop >=1200; mobile retains DOM reading order, DJ focal point moves to 8%, photo aspect 4:3. Single lime service signal on keyboard focus/hover, static for reduced motion/Lite. Original media and approved three SVG chapter marks unchanged. CSS f94ac2909b6b7318eb403614276bec71f1a556c2; geometry/link regression 0e4afc3baf005c0ef9c378fc646ac1c4ccbc79f5. Acceptance: exact-head CI and matched screenshots, verify actual crop (not inferred from CSS) and mobile/desktop geometry. Pending. Next: inspect new spread, adjust if needed, then homepage films/final CTA. No main/deploy.
+
+## 2026-11-27 — Step 4 / hero masthead collision
+Baseline 4c6b6a756c482e7f85bb33835bb91014a81f0a6b passed principal #45967943153 and matched Chromium #45967943064. Inspected actual before screenshots (after-viewport-390.png and after-viewport-1440.png from https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45967943064/artifacts/15184270367). P1: fixed header obscured hero eyebrow and first title line at 390px; desktop eyebrow too close to masthead. Cause: V302 shell top padding 30px on mobile, fixed header 68px. CSS source 2b843bec4fb3cced2832bf4226aae8ff1a028ec1 reserves 68/77px header plus breathing room and safe-area inset, restores fluid mobile title scale. Browser regression 352bbbc3d364272a38eaf38db7b73027f4a25342 asserts eyebrow/title/CTA clearance and headline width at 360/390/430/768/1440/1920. No new assets, dependencies, sections or motion. No main/deploy. Acceptance requires exact-head green and actual matched before/after screenshots; not yet signed off. Next: review new hero screenshots, then refine homepage service programme if needed before interior routes. Privacy owner data remains a release blocker.
+
+## 2026-11-27 — Step 3 continuation: general routes and Contact
+Six source files changed, 18 targeted copy replacements: homepage, Contact, About, Services index, Events index, Portfolio. Existing approved H1 on home, links, forms, icons, media and privacy placeholders preserved. Clear handoff text and Romanian step labels. Source head 1665a808fb55a582d2879fe47692b60a1a9330fe; principal #45967885591 pending and matched browser #45967885608 running at observation. Earlier copy head 48b258c20f0afd05702e37f4aa2bdcd17c8e7a77 visual #45967729156 passed; principal #45967729158 still running. PR #340 mergeable true at source head; no main/deploy. Privacy legal entity/CUI, lawful bases, recipients and retention still need owner input. Copy first pass across route families completed; factual validation, remaining individual text review, exact-head CI and matched screenshots pending. Next: step 4, mobile header/hero collision, preserve editorial four-section contract. No visual redesign claimed.
+
+## 2026-11-27 — Sequential delivery, step 3 / copy audit
+Baseline exact SHA 64427ad5c06cf83f3f973072b0b8dae384b3e894: principal CI #45965750400 and matched Chromium #45965750431 green; 70 Vitest files, TS/SSR, all six widths, Contact SSR and sitemap audit. Measured gzip 123.4/32.0/49.9 kB (caps 190/50/52). Real screenshot artifact https://github.com/WazzupDoc/green-sound-music-garden/actions/runs/45965750431/artifacts/15181624875 downloaded; inspected desktop and 390px viewport. Desktop retains approved identity, but mobile screenshot shows header overlapping top of hero heading; P1 defect, fix at homepage/mobile gate, not visually approved. 
+| Zone | Severity | Defect | Change | Evidence / status |
+|---|---|---|---|---|
+| Service and event copy | P1 | Unsupported absolute promises, generic claims and inconsistent tone | 26 targeted replacements in src/data/site.ts, including all eight service headings/lead/short/highlights as applicable, three event headings, and explicit Contact handoff; preserve slugs, metadata, service details, media, FAQ and route contracts | source 2241d0ec351c155f1e0f0181963d43931fbeb926; new CI and screenshot review pending |
+| Mobile hero | P1 | Header overlaps first title line at 390px | Pending actual layout fix in step 4, test 360–1920 and zoom | after-viewport-390.png from artifact 15181624875 |
+| Copy factual verification | P1 | Existing equipment brands, package quantities, credentials, coverage require owner confirmation before launch | Do not invent or expand facts; finish remaining route copy audit next | Open |
+Reference brief: PR #341, https://github.com/WazzupDoc/green-sound-music-garden/blob/a0eb39fa9ac7e3e409ef8d934628af8288689b1f/docs/PREMIUM_STAGE_WEBSITE_BRIEF.md. No new dependencies, assets, UI layout or publication. PR #340 remains candidate. Step 3 partial; next homepage/general pages/contact/privacy copy consistency, verify exact-head CI and screenshots, then step 4. No main/deploy.
+
+## 2026-11-27 — V302 release blocker: stale media contracts
+P1: principal CI #45785681559 failed five suites expecting removed duplicate DJ photo. Matched browser #45785681524 passed, artifact #15099629277 (not visually inspected in this run). Repair all five contracts to require original LiveDeck SVG and absence of duplicate photo, retaining concert, films, services and motion assertions. No UI change. Acceptance: principal exact-head green; pending. Next: inspect artifact and rotate to Contact. No main/deploy.
+
+## 2026-11-26 — Unique media / signal deck (PR #340)
+| Zone | Severity | Defect | Remedy | Acceptance | Status |
+|---|---|---|---|---|---|
+| Homepage hero | High | Same DJ portrait repeated in hero and service programme | Replace hero inset with original silent SVG DJ console, finite platter and equalizer animation; preserve actual service photograph | All homepage image URLs unique; 6 viewport captures; active motion and OFF/Lite/reduced checks | Source 067e0b142e6b9ee1deb1a768c3ce17d7ddebfc39; browser test 0c3e2610605887ef693d3e6a54f05ed360504b89; CI and owner visual review pending |
+Next: inspect actual captures, then section transitions and navigation icon motion. Main untouched.
+
+## 2026-11-26 — V302 Live Cue, PR #340
+| Zone | Severity | Observed defect | Intervention | Evidence / acceptance | Status |
+|---|---|---|---|---|---|
+| Homepage hero | High visual | V302 screenshot showed hard static-looking wedges, muted photograph and flat CTA; owner rejected AI-like aesthetic | Soft optical beams with finite choreography, decorative waveform pulse, rim lighting, hover/focus cue | Baseline artifact 15043299509; same 390/1440 before/after and 6 widths, active frames, OFF/cool/Lite in updated browser job | Code committed e4ec94ad7ae41c5b60395fa130b1db548dfc0a1e; CI and visual acceptance pending |
+Next: inspect exact-head captures and repair visual/motion failures; then original navigation icon motion and route transitions as separate scoped changes. Main untouched. Rollback: revert the scoped commits on draft branch if rejected.
+
+## V302 follow-up / 2026-11-25 — Internal audit
+| Priority | Component | Finding | Action | Verification |
+|---|---|---|---|---|
+| P0 | Navigation | Old test coupled to positional index after owner-approved order change | Assert actual /servicii link and keep focus/navigation assertions; 9726830378731f7ab1b635d28ac90a9479ab4368 | CI pending |
+| P1 | Hero | Lime title selector referenced missing class; excessive height and competing photo inset | Correct actual data-stage selector, compact stage and restrained photo hierarchy; 462eefa5d823dc1482b9ae5ac762c03589dea0e3 | Browser comparison pending |
+| P1 | Header | Icon fidelity and route sizing | V302 vectors, no V301 miniature icons | Recheck 360–1920 and keyboard |
+| P1 | Services / films | Match reference spacing and photography, preserve native links and explicit playback | Next visual audit | Pending |
+| P1 | Contact / finder | Validate funnel, clipboard, focus, no false send | Next functional audit | Pending |
+| P2 | SEO / SSR / security / performance | Recheck exact-head sitemap, canonical, JSON-LD, 404 and budgets | Existing CI retained | Pending |
+Baseline V300 principal green #45641237274; V302 initial exact-head #45642189654 passed TS/build/gzip/unit but failed browser navigation assertion. Partial artifact #15035612689, not a passing visual gate. No main or production changes. Perfection is not a measured status; repeat audit until acceptance criteria and owner visual approval.
+
+## V302 / 2026-11-25 — Approved reference icon fidelity (DRAFT)
+Owner rejected V301 eight small service glyphs. Inspected approved mockup a_highly_polished_cinematic_dark_green_neon_gree.png and actual V300 artifact #15037030193. Base V300 fc31a607e147cb3c10f5af47727281929a2c6e4f, CI #45641237274 success; V301 not inherited. Redrew header home, sliders, calendar, studio meter, people, envelope and headset; portfolio and finder preserved, direct Contact link added at wider sizes. Restored three lime chapter marks only; calendar in hero CTA and lime headline specificity fixed. Candidate CI and screenshots pending; no claim of pixel equivalence. Next: verify real browser, particularly header width and focus, then reference layout fidelity. Main unchanged.
+
 ## V300 / 2026-11-25 — Owner-approved cinematic reference (DRAFT)
 | Zone | Defect | Implementation | Evidence |
 |---|---|---|---|

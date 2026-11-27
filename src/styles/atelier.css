@@ -5,6 +5,8 @@
  */
 :root{--atelier-bg:#080c09;--atelier-obsidian:#050907;--atelier-surface:#101914;--atelier-paper:#e9e7df;--atelier-text:#f4f4ed;--atelier-muted:#b1baad;--atelier-green:#a8d890;--atelier-border:rgba(238,245,233,.18);--atelier-ease:cubic-bezier(.16,1,.3,1)}
 html{scroll-padding-top:108px;overflow-x:clip}
+/* Reserve the mobile contact bar when scrolling focused controls into view. */
+@media(max-width:639px){html:has(nav[aria-label="Contact rapid"]){scroll-padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}}
 body{background:var(--atelier-bg);overflow-x:clip}
 .atelier-menu-locked{overflow:hidden}
 #continut{min-width:0}

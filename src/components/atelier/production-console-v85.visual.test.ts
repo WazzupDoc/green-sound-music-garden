@@ -27,7 +27,10 @@ describe("V170 production equipment is a lightweight UI illustration",()=>{
  });
  it("keeps provenance, reduced motion and no auto-playing media",()=>{
    expect(page).toContain("images.concert.src");
-   expect(page).toContain("images.dj.src");
+   expect(page).not.toContain("images.dj.src");
+    expect(page).toContain("<LiveDeck />");
+    expect(page).toContain('className="gs-live-deck__art"');
+    expect(page).toContain('aria-hidden="true"');
    expect(page).toContain("VideoLite video={film.video}");
    expect(css).toContain("prefers-reduced-motion:reduce");
    expect(css).not.toContain("url(https:");

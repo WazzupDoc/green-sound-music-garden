@@ -22,8 +22,8 @@ export const Route=createFileRoute("/servicii")({
 function Services(){
  return <>
   <style>{serviceIndexEditorialCss + "\n" + categorySignalCss}</style><style>{illustratedCategoryCss}</style>
-  <PageHero eyebrow="Serviciile noastre" title="Alegem oamenii și echipamentele după eveniment."
-    lead="Poți discuta cu noi despre un serviciu separat sau despre o combinație de muzică, scenă și activități pentru invitați."
+  <PageHero eyebrow="Serviciile noastre" title="Muzică, sonorizare, lumini și servicii pentru evenimente."
+    lead="Alege un serviciu sau combină mai multe: program muzical, echipamente tehnice și activități pentru invitați."
     image={images.scena} crumbs={[{name:"Acasă",to:"/"},{name:"Servicii"}]}/>
   <section className="rs-service-index gs198-services gs201-services" aria-labelledby="rs-services-title">
    <div className="container-site">
@@ -32,7 +32,7 @@ function Services(){
      <div className="rs-service-index__group" key={group.name}>
       <div className="rs-service-index__group-title">
        <span aria-hidden="true">{String(index+1).padStart(2,"0")}</span>
-       <h3>{group.name}</h3><p>{group.intro}</p><span className="v91-service-count">{group.slugs.length} direcții de producție</span>
+       <h3>{group.name}</h3><p>{group.intro}</p><span className="v91-service-count">{group.slugs.length} servicii</span>
       </div>
       <ul>{group.slugs.map(slug=>{
         const service=services.find(item=>item.slug===slug)!;

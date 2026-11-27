@@ -27,7 +27,7 @@ function About() {
             </nav>
             <p className="gs-about-v95__eyebrow">GREEN SOUND MUSIC <span aria-hidden="true">—</span> PITEȘTI</p>
             <h1>Din culise.<br /><em>În mijlocul</em><br />evenimentului.</h1>
-            <p className="gs-about-v95__lead">Din {business.founded}, pregătim muzica, sunetul, luminile și momentele care țin un eveniment împreună. O discuție clară înainte, o echipă coordonată în ziua evenimentului.</p>
+            <p className="gs-about-v95__lead">Din {business.founded}, Green Sound Music lucrează în Pitești în domeniul muzicii și al producției de evenimente. Discutăm programul artistic și cerințele tehnice înainte de ofertă.</p>
             <Link to="/servicii" className="gs-about-v95__text-link">Descoperă serviciile <ArrowUpRight size={20} aria-hidden="true" /></Link>
           </div>
           <figure className="gs-about-v95__photo">
@@ -39,7 +39,7 @@ function About() {
       </header>
       <section className="gs-about-v95__statement container-site" aria-labelledby="gs-about-statement">
         <p className="gs-about-v95__section-index">01 / CUM LUCRĂM</p>
-        <h2 id="gs-about-statement">Muzica și partea tehnică <em>nu sunt două povești separate.</em></h2>
+        <h2 id="gs-about-statement">Program artistic și <em>producție tehnică.</em></h2>
         <div className="gs-about-v95__statement-copy">
           <p>Green Sound Music reunește DJ & MC, trupă live, studio de înregistrări, sonorizare, lumini, ecrane LED și efecte. Pentru anumite evenimente oferim și hostess, ursitoare sau animație pentru copii.</p>
           <p>Serviciile pot fi discutate separat. Înainte de ofertă stabilim tipul evenimentului, spațiul, data și programul, apoi oamenii și echipamentele necesare.</p>
@@ -47,7 +47,7 @@ function About() {
       </section>
       <section className="gs-about-v95__process" aria-labelledby="gs-about-process">
         <div className="container-site">
-          <div className="gs-about-v95__process-heading"><p className="gs-about-v95__section-index">02 / FLUXUL DE PRODUCȚIE</p><h2 id="gs-about-process">De la primul detaliu<br /><em>la ultimul moment.</em></h2></div>
+          <div className="gs-about-v95__process-heading"><p className="gs-about-v95__section-index">02 / FLUXUL DE PRODUCȚIE</p><h2 id="gs-about-process">Cum pregătim<br /><em>evenimentul.</em></h2></div>
           <p className="gs-about-v95__process-intro">Patru momente ale pregătirii, de la discuția inițială la coordonarea din ziua evenimentului.</p>\n          <ol className="gs-about-v95__steps">{process.map((step, index) => <li key={step.title}>
             <span className="gs-about-v95__step-no" aria-hidden="true">{String(index + 1).padStart(2, "0")}<span className="gs-about-v95__step-track" /></span>
             <div><h3>{step.title}</h3><p>{step.text}</p></div>

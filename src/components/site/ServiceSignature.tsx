@@ -57,7 +57,7 @@ export function ServiceSignature({service:s}:{service:Service}){
             <BeamPhoto image={images.scena} className="rs-service-feature__image"/>
             <div><h3>Din oferta tehnică</h3>
               <ul>{(list.length?list:s.highlights.map(item=>item.title)).map(text=><li key={text}>{text}</li>)}</ul>
-              <p>Modelele și cantitățile exacte: [DE COMPLETAT DE PROPRIETAR].</p>
+              <p>Modelele și cantitățile se stabilesc după cerințele tehnice ale evenimentului.</p>
               <SectionLink slug={s.slug}/></div>
           </div>
         </div>
@@ -93,7 +93,7 @@ export function ServiceSignature({service:s}:{service:Service}){
           <BeamPhoto image={images.ursitoare2} className="rs-service-feature__image"/>
           <div><p className="rs-service-feature__eyebrow">Pentru botez</p><h2>Momentul ursitoarelor</h2>
             <p>Un moment dedicat copilului și familiei. Detaliile scenariului, numărul de personaje și desfășurarea se discută înainte de eveniment.</p>
-            <p>Scenariu și personaje exacte: [DE COMPLETAT DE PROPRIETAR].</p>
+            <p>Întreabă-ne despre scenariu și personajele disponibile pentru data botezului.</p>
             <SectionLink slug={s.slug}/></div>
         </div>
       </section>;
@@ -103,7 +103,7 @@ export function ServiceSignature({service:s}:{service:Service}){
           <BeamPhoto image={images.copii} className="rs-service-feature__kids-photo"/>
           <div className="rs-service-feature__kids-text"><p className="rs-service-feature__eyebrow">Pentru cei mici</p>
             <h2>Start Veselia</h2><p>Animație și activități pentru copii, în cadrul petrecerilor și evenimentelor.</p>
-            <p>Personajele disponibile pentru data ta: [DE COMPLETAT DE PROPRIETAR].</p>
+            <p>Spune-ne vârsta copiilor și data petrecerii pentru a discuta programul disponibil.</p>
             <SectionLink slug={s.slug}/></div>
         </div>
       </section>;
