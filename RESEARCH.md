@@ -1,3 +1,7 @@
+## 2026-11-27 — Step 3, clear Romanian website copy
+- https://www.w3.org/WAI/tips/writing/ — clear concise text, meaningful headings and action labels. Applied to Contact instructions and Romanian step labels. No code or asset reused.
+- https://developers.google.com/search/docs/fundamentals/creating-helpful-content — descriptive main headings and people-first information. Applied to existing service/event/general page copy; rejected keyword stuffing and unverified promises. No dependency or license reliance. No measured ranking claims.
+
 ## 2026-11-26 — Signal deck / unique photography
 - https://tympanus.net/codrops/2025/04/16/case-study-24-7-artists/ — equalizer as music identity; adapted original finite vector pulse, rejected repeated photo trails.
 - https://webflow.com/made-in-webflow/website/felicia-festival — animated event identity; adapted silent musical visual cue rather than futuristic template or extra navigation widgets.
