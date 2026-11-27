@@ -77,6 +77,12 @@ async function main() {
       }
       assert.equal(await page.locator(".gs170-service-card").count(),0);
       assert.equal(await page.locator(".gs170-film-card").count(),3);
+      if(width>=1200){
+        const films=await page.locator(".gs170-film-card").evaluateAll(items=>items.map(e=>{const b=e.getBoundingClientRect();return {x:b.x,y:b.y,w:b.width}}));
+        assert(films[0].w>films[1].w&&films[0].x<films[1].x&&films[1].x<films[2].x&&Math.abs(films[0].y-films[2].y)<2,"Desktop filmstrip must be asymmetric and on one row");
+        assert.equal(await page.locator('[data-chapter="people"] img').evaluate(el=>getComputedStyle(el).objectFit),"contain","People photograph must retain full framing");
+      }
+      assert.equal(await page.locator(".gs170-final a[href='/contact']").count(),1,"Final section retains one inquiry CTA");
       assert.equal(await page.locator("main form").count(),0);
       assert.equal(await page.locator("video[autoplay]").count(),0);
       assert.equal(await page.locator(".gs170-hero__control button[aria-pressed=true]").count(),2);
@@ -112,6 +118,10 @@ async function main() {
       const filmDialog=page.getByRole("dialog");
       await filmDialog.waitFor({timeout:8000});
       assert.equal(await filmDialog.locator("iframe").count(),0,"Real video requires visitor Play");
+      const close=filmDialog.getByRole("button",{name:"Închide",exact:true});
+      const closeBox=await close.boundingBox();
+      assert(closeBox&&closeBox.width>=44&&closeBox.height>=44,"Dialog close target must be at least 44px");
+      assert(await filmDialog.evaluate(el=>Number(getComputedStyle(el).zIndex)>Number(getComputedStyle(document.querySelector(".atelier-header")).zIndex)),"Dialog must layer above the fixed masthead");
       await page.keyboard.press("Escape");
       await filmDialog.waitFor({state:"hidden",timeout:8000});
       await page.waitForFunction(()=>document.activeElement===document.querySelectorAll(".gs170-film-card")[1]);
@@ -435,6 +445,25 @@ async function main() {
         "Interior pages must retain the mobile quick contact navigation");
       assert.equal(await page.locator("main h1").count(), 1, `H1 ${route}`);
       await noOverflow(page, route, 390);
+    }
+    // Release candidate: representative detail pages and privacy at desktop/mobile.
+    for(const detailWidth of [390,1440]){
+      const detail=await browser.newPage({viewport:{width:detailWidth,height:900},reducedMotion:"reduce"});
+      const detailErrors=[];detail.on("pageerror",error=>detailErrors.push(error.message));
+      for(const route of ["/echipamente-de-sunet-si-lumini","/ursitoare-botez","/start-veselia","/confidentialitate"]){
+        const response=await detail.goto(base+route,{waitUntil:"domcontentloaded"});
+        assert.equal(response.status(),200,route);
+        assert.equal(await detail.locator("main h1").count(),1,route);
+        await noOverflow(detail,route,detailWidth);
+        if(route==="/confidentialitate"){
+          assert.match(await detail.locator("main").innerText(),/i\.ytimg\.com/,"Disclose remote thumbnail requests separately from video playback");
+        }else{
+          assert(!((await detail.locator("main").innerText()).includes("[DE COMPLETAT DE PROPRIETAR]")),"No internal commercial placeholders on "+route);
+        }
+        await detail.screenshot({path:output+"/release-"+route.slice(1)+"-"+detailWidth+".png",fullPage:true,animations:"disabled"});
+      }
+      assert.deepEqual(detailErrors,[],"Detail route runtime errors");
+      await detail.close();
     }
     const contact = await page.goto(base + "/contact", { waitUntil: "domcontentloaded" });
     assert.equal(contact.status(), 200);
