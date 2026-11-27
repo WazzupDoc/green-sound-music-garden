@@ -1,3 +1,7 @@
+## 2026-11-27 — Step 4 masthead clearance
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum — fixed overlays can obscure focused controls. Applied initial hero clearance; full keyboard scroll behavior still needs separate audit.
+- https://web.dev/learn/design/screen-configurations — device safe-area insets. Applied env(safe-area-inset-top,0px) and fluid title sizing. Original CSS, no imported code or assets. Rejected adding JS layout measurement or animation for a static spacing defect.
+
 ## 2026-11-27 — Step 3, clear Romanian website copy
 - https://www.w3.org/WAI/tips/writing/ — clear concise text, meaningful headings and action labels. Applied to Contact instructions and Romanian step labels. No code or asset reused.
 - https://developers.google.com/search/docs/fundamentals/creating-helpful-content — descriptive main headings and people-first information. Applied to existing service/event/general page copy; rejected keyword stuffing and unverified promises. No dependency or license reliance. No measured ranking claims.
