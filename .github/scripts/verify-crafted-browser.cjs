@@ -57,6 +57,24 @@ async function main() {
       assert.equal(await deck.locator(".gs-live-deck__disc").evaluate(el=>getComputedStyle(el).animationName),"none","Reduced motion must suppress deck animation");
       assert.equal(await page.locator(".gs-index__chapter").count(),3);
       assert.equal(await page.locator(".gs-index__service").count(),8);
+      // A real editorial spread must remain asymmetric on desktop and linear on phones.
+      const programme=await page.locator(".gs-index__chapters").evaluate(el=>{
+        const chapters=[...el.querySelectorAll(".gs-index__chapter")].map(c=>{
+          const b=c.getBoundingClientRect();return {x:b.x,y:b.y,bottom:b.bottom,width:b.width};
+        });
+        const links=[...el.querySelectorAll(".gs-index__service")].map(a=>({href:a.getAttribute("href"),height:a.getBoundingClientRect().height}));
+        const crop=getComputedStyle(el.querySelector('[data-chapter="sound"] img')).objectPosition;
+        return {chapters,links,crop};
+      });
+      const [music,stage,people]=programme.chapters;
+      assert.equal(new Set(programme.links.map(a=>a.href)).size,8,"Eight distinct service routes");
+      assert(programme.links.every(a=>a.height>=44),"Service touch targets must be at least 44px");
+      assert.equal(programme.crop,"50% 8%","DJ portrait focal point must preserve faces");
+      if(width>=1200){
+        assert(music.x+music.width<=stage.x+1&&Math.abs(stage.x-people.x)<=1&&people.y>stage.y,"Desktop must render lead music act and stacked secondary acts");
+      }else if(width<=768){
+        assert(music.bottom<=stage.y+1&&stage.bottom<=people.y+1,"Mobile must preserve linear chapter order");
+      }
       assert.equal(await page.locator(".gs170-service-card").count(),0);
       assert.equal(await page.locator(".gs170-film-card").count(),3);
       assert.equal(await page.locator("main form").count(),0);
